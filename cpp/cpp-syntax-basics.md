@@ -1,893 +1,894 @@
 # C++ 基础语法 (C++ Syntax Basics)
-
-> @Version: v4.0.0
-> @Module: cpp
-
-> @Author: Anonymous
-> @Category: C++ Basics
-> @Description: C++ 基础数据类型、控制流、输入输出、命名空间及作用域。 | C++ primitive types, control flow, I/O, namespace, and scope.
-
----
-
-## 目录
-
-1. [数据类型](#数据类型)
-2. [控制流](#控制流)
-3. [输入输出](#输入输出)
-4. [命名空间](#命名空间)
-5. [作用域](#作用域)
-
----
-
-## 1. 数据类型 (Data Types)
-
-C++ 具有丰富的类型系统，分为基本类型和复合类型。
-
-### 1.1 基本数据类型
-
-| 类型 | 描述 | 大小 (字节) | 示例 |
-| :--- | :--- | :--- | :--- |
-| **整数类型** | | | |
-| `char` | 字符 | 1 | `char c = 'A';` |
-| `unsigned char` | 无符号字符 | 1 | `unsigned char uc = 255;` |
-| `short` | 短整数 | 2 | `short s = 32767;` |
-| `unsigned short` | 无符号短整数 | 2 | `unsigned short us = 65535;` |
-| `int` | 整数 | 4 | `int x = 10;` |
-| `unsigned int` | 无符号整数 | 4 | `unsigned int ux = 4294967295;` |
-| `long` | 长整数 | 4 或 8 | `long l = 1000000;` |
-| `unsigned long` | 无符号长整数 | 4 或 8 | `unsigned long ul = 1000000;` |
-| `long long` | 长长整数 (C++11) | 8 | `long long ll = 10000000000;` |
-| `unsigned long long` | 无符号长长整数 (C++11) | 8 | `unsigned long long ull = 18446744073709551615;` |
-| **浮点类型** | | | |
-| `float` | 单精度浮点数 | 4 | `float f = 3.14f;` |
-| `double` | 双精度浮点数 | 8 | `double d = 3.1415926535;` |
-| `long double` | 长双精度浮点数 | 8 或 16 | `long double ld = 3.14159265358979323846;` |
-| **布尔类型** | | | |
-| `bool` | 布尔值 | 1 | `bool is_valid = true;` |
-| **空类型** | | | |
-| `void` | 无类型 | - | 用于函数返回或通用指针 |
-
-### 1.2 复合数据类型
-
-| 类型 | 描述 | 示例 |
-| :--- | :--- | :--- |
-| **数组** | 相同类型元素的集合 | `int arr[5] = {1, 2, 3, 4, 5};` |
-| **字符串** | 字符序列 | `std::string s = "Hello C++";` |
-| **指针** | 存储内存地址 | `int* p = &x;` |
-| **引用** | 变量的别名 | `int& ref = x;` |
-| **结构体** | 不同类型成员的集合 | `struct Person { std::string name; int age; };` |
-| **联合体** | 共用内存的不同类型 | `union Data { int i; float f; char c; };` |
-| **枚举** | 命名常量集合 | `enum Color { RED, GREEN, BLUE };` |
-| **类** | 面向对象的类型 | `class MyClass { /* ... */ };` |
-
-### 1.3 类型修饰符
-
-| 修饰符 | 描述 | 示例 |
-| :--- | :--- | :--- |
-| `signed` | 有符号类型 (默认) | `signed int x = -10;` |
-| `unsigned` | 无符号类型 | `unsigned int y = 10;` |
-| `short` | 短类型 | `short s = 100;` |
-| `long` | 长类型 | `long l = 1000000;` |
-| `const` | 常量类型 | `const int MAX = 100;` |
-| `volatile` | 易变类型 | `volatile int flag = 0;` |
-| `constexpr` | 编译期常量 (C++11) | `constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }` |
-| `auto` | 自动类型推断 (C++11) | `auto i = 10;` |
-| `decltype` | 类型推导 (C++11) | `decltype(i) j = 20;` |
-
-### 1.4 类型转换
-
-#### 1.4.1 隐式类型转换
-
+ False
+ False> @Version: v4.0.0
+ False> @Module: cpp
+ False
+ False> @Author: Anonymous
+ False> @Category: C++ Basics
+ False> @Description: C++ 基础数据类型、控制流、输入输出、命名空间及作用域。 | C++ primitive types, control flow, I/O, namespace, and scope.
+ False
+ False---
+ False
+ False## 目录
+ False
+ False1. [数据类型](#数据类型)
+ False2. [控制流](#控制流)
+ False3. [输入输出](#输入输出)
+ False4. [命名空间](#命名空间)
+ False5. [作用域](#作用域)
+ False
+ False---
+ False
+ False## 1. 数据类型 (Data Types)
+ False
+ FalseC++ 具有丰富的类型系统，分为基本类型和复合类型。
+ False
+ False### 1.1 基本数据类型
+ False
+ False| 类型 | 描述 | 大小 (字节) | 示例 |
+ False| :--- | :--- | :--- | :--- |
+ False| **整数类型** | | | |
+ False| `char` | 字符 | 1 | `char c = 'A';` |
+ False| `unsigned char` | 无符号字符 | 1 | `unsigned char uc = 255;` |
+ False| `short` | 短整数 | 2 | `short s = 32767;` |
+ False| `unsigned short` | 无符号短整数 | 2 | `unsigned short us = 65535;` |
+ False| `int` | 整数 | 4 | `int x = 10;` |
+ False| `unsigned int` | 无符号整数 | 4 | `unsigned int ux = 4294967295;` |
+ False| `long` | 长整数 | 4 或 8 | `long l = 1000000;` |
+ False| `unsigned long` | 无符号长整数 | 4 或 8 | `unsigned long ul = 1000000;` |
+ False| `long long` | 长长整数 (C++11) | 8 | `long long ll = 10000000000;` |
+ False| `unsigned long long` | 无符号长长整数 (C++11) | 8 | `unsigned long long ull = 18446744073709551615;` |
+ False| **浮点类型** | | | |
+ False| `float` | 单精度浮点数 | 4 | `float f = 3.14f;` |
+ False| `double` | 双精度浮点数 | 8 | `double d = 3.1415926535;` |
+ False| `long double` | 长双精度浮点数 | 8 或 16 | `long double ld = 3.14159265358979323846;` |
+ False| **布尔类型** | | | |
+ False| `bool` | 布尔值 | 1 | `bool is_valid = true;` |
+ False| **空类型** | | | |
+ False| `void` | 无类型 | - | 用于函数返回或通用指针 |
+ False
+ False### 1.2 复合数据类型
+ False
+ False| 类型 | 描述 | 示例 |
+ False| :--- | :--- | :--- |
+ False| **数组** | 相同类型元素的集合 | `int arr[5] = {1, 2, 3, 4, 5};` |
+ False| **字符串** | 字符序列 | `std::string s = "Hello C++";` |
+ False| **指针** | 存储内存地址 | `int* p = &x;` |
+ False| **引用** | 变量的别名 | `int& ref = x;` |
+ False| **结构体** | 不同类型成员的集合 | `struct Person { std::string name; int age; };` |
+ False| **联合体** | 共用内存的不同类型 | `union Data { int i; float f; char c; };` |
+ False| **枚举** | 命名常量集合 | `enum Color { RED, GREEN, BLUE };` |
+ False| **类** | 面向对象的类型 | `class MyClass { /* ... */ };` |
+ False
+ False### 1.3 类型修饰符
+ False
+ False| 修饰符 | 描述 | 示例 |
+ False| :--- | :--- | :--- |
+ False| `signed` | 有符号类型 (默认) | `signed int x = -10;` |
+ False| `unsigned` | 无符号类型 | `unsigned int y = 10;` |
+ False| `short` | 短类型 | `short s = 100;` |
+ False| `long` | 长类型 | `long l = 1000000;` |
+ False| `const` | 常量类型 | `const int MAX = 100;` |
+ False| `volatile` | 易变类型 | `volatile int flag = 0;` |
+ False| `constexpr` | 编译期常量 (C++11) | `constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }` |
+ False| `auto` | 自动类型推断 (C++11) | `auto i = 10;` |
+ False| `decltype` | 类型推导 (C++11) | `decltype(i) j = 20;` |
+ False
+ False### 1.4 类型转换
+ False
+ False#### 1.4.1 隐式类型转换
+ False
 ```cpp
-int i = 10;
-double d = i; // 隐式转换：int -> double
+ Trueint i = 10;
+ Truedouble d = i; // 隐式转换：int -> double
+ True
+ Truechar c = 'A';
+ Truei = c; // 隐式转换：char -> int
+ True```
 
-char c = 'A';
-i = c; // 隐式转换：char -> int
-```
-
-#### 1.4.2 显式类型转换
-
+ False#### 1.4.2 显式类型转换
+ False
 ```cpp
-// C 风格转换
-double d = 3.14;
-int i = (int)d; // 截断小数部分
+ True// C 风格转换
+ Truedouble d = 3.14;
+ Trueint i = (int)d; // 截断小数部分
+ True
+ True// C++ 风格转换
+ True// static_cast: 静态类型转换
+ Truei = static_cast<int>(d);
+ True
+ True// dynamic_cast: 动态类型转换（用于多态）
+ TrueBase* base = new Derived();
+ TrueDerived* derived = dynamic_cast<Derived*>(base);
+ True
+ True// const_cast: 移除 const 修饰
+ Trueconst int& const_ref = i;
+ Trueint& ref = const_cast<int&>(const_ref);
+ True
+ True// reinterpret_cast: 重新解释类型
+ Trueint* p = &i;
+ Truelong addr = reinterpret_cast<long>(p);
+ True```
 
-// C++ 风格转换
-// static_cast: 静态类型转换
-i = static_cast<int>(d);
-
-// dynamic_cast: 动态类型转换（用于多态）
-Base* base = new Derived();
-Derived* derived = dynamic_cast<Derived*>(base);
-
-// const_cast: 移除 const 修饰
-const int& const_ref = i;
-int& ref = const_cast<int&>(const_ref);
-
-// reinterpret_cast: 重新解释类型
-int* p = &i;
-long addr = reinterpret_cast<long>(p);
-```
-
-## 2. 控制流 (Control Flow)
-
-### 2.1 条件判断
-
-#### 2.1.1 if 语句
-
+ False## 2. 控制流 (Control Flow)
+ False
+ False### 2.1 条件判断
+ False
+ False#### 2.1.1 if 语句
+ False
 ```cpp
-// 基本 if 语句
-int score = 85;
+ True// 基本 if 语句
+ Trueint score = 85;
+ True
+ Trueif (score >= 90) {
+ True std::cout << "优秀" << std::endl;
+ True} else if (score >= 80) {
+ True std::cout << "良好" << std::endl;
+ True} else if (score >= 60) {
+ True std::cout << "及格" << std::endl;
+ True} else {
+ True std::cout << "不及格" << std::endl;
+ True}
+ True
+ True// 嵌套 if 语句
+ Trueint x = 10, y = 20;
+ Trueif (x > 0) {
+ True if (y > 0) {
+ True std::cout << "x 和 y 都是正数" << std::endl;
+ True } else {
+ True std::cout << "x 是正数，y 不是正数" << std::endl;
+ True }
+ True}
+ True
+ True// 使用逻辑运算符
+ Trueint a = 5, b = 10, c = 15;
+ Trueif (a > 0 && b > 0 && c > 0) {
+ True std::cout << "所有数都是正数" << std::endl;
+ True}
+ True
+ Trueif (a > 10 || b > 10 || c > 10) {
+ True std::cout << "至少有一个数大于 10" << std::endl;
+ True}
+ True```
 
-if (score >= 90) {
-    std::cout << "优秀" << std::endl;
-} else if (score >= 80) {
-    std::cout << "良好" << std::endl;
-} else if (score >= 60) {
-    std::cout << "及格" << std::endl;
-} else {
-    std::cout << "不及格" << std::endl;
-}
-
-// 嵌套 if 语句
-int x = 10, y = 20;
-if (x > 0) {
-    if (y > 0) {
-        std::cout << "x 和 y 都是正数" << std::endl;
-    } else {
-        std::cout << "x 是正数，y 不是正数" << std::endl;
-    }
-}
-
-// 使用逻辑运算符
-int a = 5, b = 10, c = 15;
-if (a > 0 && b > 0 && c > 0) {
-    std::cout << "所有数都是正数" << std::endl;
-}
-
-if (a > 10 || b > 10 || c > 10) {
-    std::cout << "至少有一个数大于 10" << std::endl;
-}
-```
-
-#### 2.1.2 switch 语句
-
+ False#### 2.1.2 switch 语句
+ False
 ```cpp
-// 基本 switch 语句
-int day = 3;
+ True// 基本 switch 语句
+ Trueint day = 3;
+ True
+ Trueswitch (day) {
+ True case 1:
+ True std::cout << "星期一" << std::endl;
+ True break;
+ True case 2:
+ True std::cout << "星期二" << std::endl;
+ True break;
+ True case 3:
+ True std::cout << "星期三" << std::endl;
+ True break;
+ True case 4:
+ True std::cout << "星期四" << std::endl;
+ True break;
+ True case 5:
+ True std::cout << "星期五" << std::endl;
+ True break;
+ True case 6:
+ True case 7:
+ True std::cout << "周末" << std::endl;
+ True break;
+ True default:
+ True std::cout << "无效的日期" << std::endl;
+ True break;
+ True}
+ True
+ True// 使用枚举的 switch 语句
+ Trueenum Color { RED, GREEN, BLUE };
+ TrueColor color = GREEN;
+ True
+ Trueswitch (color) {
+ True case RED:
+ True std::cout << "红色" << std::endl;
+ True break;
+ True case GREEN:
+ True std::cout << "绿色" << std::endl;
+ True break;
+ True case BLUE:
+ True std::cout << "蓝色" << std::endl;
+ True break;
+ True default:
+ True std::cout << "未知颜色" << std::endl;
+ True break;
+ True}
+ True
+ True// 使用枚举类的 switch 语句 (C++11)
+ Trueenum class Direction { UP, DOWN, LEFT, RIGHT };
+ TrueDirection dir = Direction::UP;
+ True
+ Trueswitch (dir) {
+ True case Direction::UP:
+ True std::cout << "向上" << std::endl;
+ True break;
+ True case Direction::DOWN:
+ True std::cout << "向下" << std::endl;
+ True break;
+ True case Direction::LEFT:
+ True std::cout << "向左" << std::endl;
+ True break;
+ True case Direction::RIGHT:
+ True std::cout << "向右" << std::endl;
+ True break;
+ True}
+ True```
 
-switch (day) {
-    case 1:
-        std::cout << "星期一" << std::endl;
-        break;
-    case 2:
-        std::cout << "星期二" << std::endl;
-        break;
-    case 3:
-        std::cout << "星期三" << std::endl;
-        break;
-    case 4:
-        std::cout << "星期四" << std::endl;
-        break;
-    case 5:
-        std::cout << "星期五" << std::endl;
-        break;
-    case 6:
-    case 7:
-        std::cout << "周末" << std::endl;
-        break;
-    default:
-        std::cout << "无效的日期" << std::endl;
-        break;
-}
-
-// 使用枚举的 switch 语句
-enum Color { RED, GREEN, BLUE };
-Color color = GREEN;
-
-switch (color) {
-    case RED:
-        std::cout << "红色" << std::endl;
-        break;
-    case GREEN:
-        std::cout << "绿色" << std::endl;
-        break;
-    case BLUE:
-        std::cout << "蓝色" << std::endl;
-        break;
-    default:
-        std::cout << "未知颜色" << std::endl;
-        break;
-}
-
-// 使用枚举类的 switch 语句 (C++11)
-enum class Direction { UP, DOWN, LEFT, RIGHT };
-Direction dir = Direction::UP;
-
-switch (dir) {
-    case Direction::UP:
-        std::cout << "向上" << std::endl;
-        break;
-    case Direction::DOWN:
-        std::cout << "向下" << std::endl;
-        break;
-    case Direction::LEFT:
-        std::cout << "向左" << std::endl;
-        break;
-    case Direction::RIGHT:
-        std::cout << "向右" << std::endl;
-        break;
-}
-```
-
-### 2.2 循环结构
-
-#### 2.2.1 for 循环
-
+ False### 2.2 循环结构
+ False
+ False#### 2.2.1 for 循环
+ False
 ```cpp
-// 传统 for 循环
-for (int i = 0; i < 10; ++i) {
-    std::cout << i << " ";
-}
-std::cout << std::endl;
+ True// 传统 for 循环
+ Truefor (int i = 0; i < 10; ++i) {
+ True std::cout << i << " ";
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 循环变量作用域控制
+ True{
+ True for (int i = 0; i < 5; ++i) {
+ True std::cout << i << " ";
+ True }
+ True // i 在这里不可见
+ True}
+ True
+ True// 多变量 for 循环
+ Truefor (int i = 0, j = 10; i < 5 && j > 5; ++i, --j) {
+ True std::cout << "i: " << i << ", j: " << j << std::endl;
+ True}
+ True
+ True// 范围 for 循环 (C++11)
+ Truestd::vector<int> numbers = {1, 2, 3, 4, 5};
+ Truefor (int num : numbers) {
+ True std::cout << num << " ";
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 使用 auto 的范围 for 循环 (C++11)
+ Truefor (auto num : numbers) {
+ True std::cout << num << " ";
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 使用 const 引用的范围 for 循环（避免复制）
+ Truefor (const auto& num : numbers) {
+ True std::cout << num << " ";
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 使用引用的范围 for 循环（可以修改元素）
+ Truefor (auto& num : numbers) {
+ True num *= 2; // 每个元素都乘以 2
+ True}
+ True
+ True// 遍历数组
+ Trueint arr[] = {10, 20, 30, 40, 50};
+ Truefor (int x : arr) {
+ True std::cout << x << " ";
+ True}
+ Truestd::cout << std::endl;
+ True```
 
-// 循环变量作用域控制
-{
-    for (int i = 0; i < 5; ++i) {
-        std::cout << i << " ";
-    }
-    // i 在这里不可见
-}
-
-// 多变量 for 循环
-for (int i = 0, j = 10; i < 5 && j > 5; ++i, --j) {
-    std::cout << "i: " << i << ", j: " << j << std::endl;
-}
-
-// 范围 for 循环 (C++11)
-std::vector<int> numbers = {1, 2, 3, 4, 5};
-for (int num : numbers) {
-    std::cout << num << " ";
-}
-std::cout << std::endl;
-
-// 使用 auto 的范围 for 循环 (C++11)
-for (auto num : numbers) {
-    std::cout << num << " ";
-}
-std::cout << std::endl;
-
-// 使用 const 引用的范围 for 循环（避免复制）
-for (const auto& num : numbers) {
-    std::cout << num << " ";
-}
-std::cout << std::endl;
-
-// 使用引用的范围 for 循环（可以修改元素）
-for (auto& num : numbers) {
-    num *= 2; // 每个元素都乘以 2
-}
-
-// 遍历数组
-int arr[] = {10, 20, 30, 40, 50};
-for (int x : arr) {
-    std::cout << x << " ";
-}
-std::cout << std::endl;
-```
-
-#### 2.2.2 while 循环
-
+ False#### 2.2.2 while 循环
+ False
 ```cpp
-// 基本 while 循环
-int i = 0;
-while (i < 10) {
-    std::cout << i << " ";
-    ++i;
-}
-std::cout << std::endl;
+ True// 基本 while 循环
+ Trueint i = 0;
+ Truewhile (i < 10) {
+ True std::cout << i << " ";
+ True ++i;
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 无限循环（需要内部 break）
+ Truei = 0;
+ Truewhile (true) {
+ True std::cout << i << " ";
+ True ++i;
+ True if (i >= 10) {
+ True break;
+ True }
+ True}
+ Truestd::cout << std::endl;
+ True
+ True// 基于条件的 while 循环
+ Truestd::string input;
+ Truewhile (true) {
+ True std::cout << "输入 'quit' 退出: ";
+ True std::cin >> input;
+ True if (input == "quit") {
+ True break;
+ True }
+ True std::cout << "你输入了: " << input << std::endl;
+ True}
+ True```
 
-// 无限循环（需要内部 break）
-i = 0;
-while (true) {
-    std::cout << i << " ";
-    ++i;
-    if (i >= 10) {
-        break;
-    }
-}
-std::cout << std::endl;
-
-// 基于条件的 while 循环
-std::string input;
-while (true) {
-    std::cout << "输入 'quit' 退出: ";
-    std::cin >> input;
-    if (input == "quit") {
-        break;
-    }
-    std::cout << "你输入了: " << input << std::endl;
-}
-```
-
-#### 2.2.3 do-while 循环
-
+ False#### 2.2.3 do-while 循环
+ False
 ```cpp
-// 基本 do-while 循环
-int i = 0;
-do {
-    std::cout << i << " ";
-    ++i;
-} while (i < 10);
-std::cout << std::endl;
+ True// 基本 do-while 循环
+ Trueint i = 0;
+ Truedo {
+ True std::cout << i << " ";
+ True ++i;
+ True} while (i < 10);
+ Truestd::cout << std::endl;
+ True
+ True// 至少执行一次的情况
+ Truestd::string password;
+ Truedo {
+ True std::cout << "请输入密码: ";
+ True std::cin >> password;
+ True} while (password != "123456");
+ Truestd::cout << "密码正确！" << std::endl;
+ True```
 
-// 至少执行一次的情况
-std::string password;
-do {
-    std::cout << "请输入密码: ";
-    std::cin >> password;
-} while (password != "123456");
-std::cout << "密码正确！" << std::endl;
-```
-
-### 2.3 跳转语句
-
-#### 2.3.1 break 语句
-
+ False### 2.3 跳转语句
+ False
+ False#### 2.3.1 break 语句
+ False
 ```cpp
-// 在 for 循环中使用 break
-for (int i = 0; i < 10; ++i) {
-    if (i == 5) {
-        break; // 跳出循环
-    }
-    std::cout << i << " ";
-}
-// 输出: 0 1 2 3 4
+ True// 在 for 循环中使用 break
+ Truefor (int i = 0; i < 10; ++i) {
+ True if (i == 5) {
+ True break; // 跳出循环
+ True }
+ True std::cout << i << " ";
+ True}
+ True// 输出: 0 1 2 3 4
+ True
+ True// 在 while 循环中使用 break
+ Trueint j = 0;
+ Truewhile (j < 10) {
+ True if (j == 5) {
+ True break;
+ True }
+ True std::cout << j << " ";
+ True ++j;
+ True}
+ True
+ True// 在 switch 语句中使用 break
+ Trueint value = 2;
+ Trueswitch (value) {
+ True case 1:
+ True std::cout << "值为 1" << std::endl;
+ True break;
+ True case 2:
+ True std::cout << "值为 2" << std::endl;
+ True break; // 没有这个 break 会继续执行下一个 case
+ True case 3:
+ True std::cout << "值为 3" << std::endl;
+ True break;
+ True}
+ True```
 
-// 在 while 循环中使用 break
-int j = 0;
-while (j < 10) {
-    if (j == 5) {
-        break;
-    }
-    std::cout << j << " ";
-    ++j;
-}
-
-// 在 switch 语句中使用 break
-int value = 2;
-switch (value) {
-    case 1:
-        std::cout << "值为 1" << std::endl;
-        break;
-    case 2:
-        std::cout << "值为 2" << std::endl;
-        break; // 没有这个 break 会继续执行下一个 case
-    case 3:
-        std::cout << "值为 3" << std::endl;
-        break;
-}
-```
-
-#### 2.3.2 continue 语句
-
+ False#### 2.3.2 continue 语句
+ False
 ```cpp
-// 在 for 循环中使用 continue
-for (int i = 0; i < 10; ++i) {
-    if (i % 2 == 0) {
-        continue; // 跳过当前迭代
-    }
-    std::cout << i << " ";
-}
-// 输出: 1 3 5 7 9
+ True// 在 for 循环中使用 continue
+ Truefor (int i = 0; i < 10; ++i) {
+ True if (i % 2 == 0) {
+ True continue; // 跳过当前迭代
+ True }
+ True std::cout << i << " ";
+ True}
+ True// 输出: 1 3 5 7 9
+ True
+ True// 在 while 循环中使用 continue
+ Trueint j = 0;
+ Truewhile (j < 10) {
+ True ++j;
+ True if (j % 2 == 0) {
+ True continue;
+ True }
+ True std::cout << j << " ";
+ True}
+ True
+ True// 在范围 for 循环中使用 continue
+ Truestd::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+ Truefor (auto num : nums) {
+ True if (num % 3 == 0) {
+ True continue;
+ True }
+ True std::cout << num << " ";
+ True}
+ True```
 
-// 在 while 循环中使用 continue
-int j = 0;
-while (j < 10) {
-    ++j;
-    if (j % 2 == 0) {
-        continue;
-    }
-    std::cout << j << " ";
-}
-
-// 在范围 for 循环中使用 continue
-std::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-for (auto num : nums) {
-    if (num % 3 == 0) {
-        continue;
-    }
-    std::cout << num << " ";
-}
-```
-
-#### 2.3.3 return 语句
-
+ False#### 2.3.3 return 语句
+ False
 ```cpp
-// 基本 return 语句
-int add(int a, int b) {
-    return a + b; // 返回值并结束函数
-}
+ True// 基本 return 语句
+ Trueint add(int a, int b) {
+ True return a + b; // 返回值并结束函数
+ True}
+ True
+ True// 提前返回
+ Truebool is_even(int n) {
+ True if (n % 2 == 0) {
+ True return true; // 提前返回
+ True }
+ True return false;
+ True}
+ True
+ True// 返回引用
+ Trueint& get_largest(int& a, int& b) {
+ True if (a > b) {
+ True return a;
+ True }
+ True return b;
+ True}
+ True
+ True// 返回空
+ Truevoid print_hello() {
+ True std::cout << "Hello!" << std::endl;
+ True return; // 可选
+ True}
+ True
+ Trueint main() {
+ True int result = add(5, 3);
+ True std::cout << "5 + 3 = " << result << std::endl;
+ True
+ True int x = 10, y = 20;
+ True int& largest = get_largest(x, y);
+ True largest = 100; // 修改返回的引用
+ True std::cout << "x: " << x << ", y: " << y << std::endl;
+ True
+ True return 0; // 结束主函数
+ True}
+ True```
 
-// 提前返回
-bool is_even(int n) {
-    if (n % 2 == 0) {
-        return true; // 提前返回
-    }
-    return false;
-}
-
-// 返回引用
-int& get_largest(int& a, int& b) {
-    if (a > b) {
-        return a;
-    }
-    return b;
-}
-
-// 返回空
-void print_hello() {
-    std::cout << "Hello!" << std::endl;
-    return; // 可选
-}
-
-int main() {
-    int result = add(5, 3);
-    std::cout << "5 + 3 = " << result << std::endl;
-
-    int x = 10, y = 20;
-    int& largest = get_largest(x, y);
-    largest = 100; // 修改返回的引用
-    std::cout << "x: " << x << ", y: " << y << std::endl;
-
-    return 0; // 结束主函数
-}
-```
-
-#### 2.3.4 goto 语句（不推荐使用）
-
+ False#### 2.3.4 goto 语句（不推荐使用）
+ False
 ```cpp
-// 基本 goto 语句
-int main() {
-    int i = 0;
-loop:
-    std::cout << i << " ";
-    ++i;
-    if (i < 10) {
-        goto loop; // 跳转到标签处
-    }
-    return 0;
-}
+ True// 基本 goto 语句
+ Trueint main() {
+ True int i = 0;
+ Trueloop:
+ True std::cout << i << " ";
+ True ++i;
+ True if (i < 10) {
+ True goto loop; // 跳转到标签处
+ True }
+ True return 0;
+ True}
+ True
+ True// 使用 goto 跳出多层循环
+ Truevoid nested_loops() {
+ True for (int i = 0; i < 10; ++i) {
+ True for (int j = 0; j < 10; ++j) {
+ True if (i * j > 20) {
+ True goto exit_loops; // 跳出所有循环
+ True }
+ True std::cout << "i: " << i << ", j: " << j << std::endl;
+ True }
+ True }
+ Trueexit_loops:
+ True std::cout << "跳出循环" << std::endl;
+ True}
+ True
+ True// 使用 goto 进行错误处理
+ Truebool process_data() {
+ True // 模拟错误
+ True bool error = true;
+ True if (error) {
+ True goto error_handler;
+ True }
+ True // 正常处理
+ True return true;
+ True
+ Trueerror_handler:
+ True std::cout << "处理错误" << std::endl;
+ True return false;
+ True}
+ True```
 
-// 使用 goto 跳出多层循环
-void nested_loops() {
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            if (i * j > 20) {
-                goto exit_loops; // 跳出所有循环
-            }
-            std::cout << "i: " << i << ", j: " << j << std::endl;
-        }
-    }
-exit_loops:
-    std::cout << "跳出循环" << std::endl;
-}
-
-// 使用 goto 进行错误处理
-bool process_data() {
-    // 模拟错误
-    bool error = true;
-    if (error) {
-        goto error_handler;
-    }
-    // 正常处理
-    return true;
-
-error_handler:
-    std::cout << "处理错误" << std::endl;
-    return false;
-}
-```
-
-## 3. 输入输出 (I/O)
-
-### 3.1 标准输入输出
-
-#### 3.1.1 输出
-
+ False## 3. 输入输出 (I/O)
+ False
+ False### 3.1 标准输入输出
+ False
+ False#### 3.1.1 输出
+ False
 ```cpp
-#include <iostream>
+ True#include <iostream>
+ True
+ Trueint main() {
+ True // 基本输出
+ True std::cout << "Hello, C++!" << std::endl;
+ True
+ True // 多个值输出
+ True int x = 10;
+ True double y = 3.14;
+ True std::cout << "x = " << x << ", y = " << y << std::endl;
+ True
+ True // 使用 endl 换行并刷新缓冲区
+ True std::cout << "Line 1" << std::endl;
+ True std::cout << "Line 2" << std::endl;
+ True
+ True // 使用 \n 仅换行
+ True std::cout << "Line 1\nLine 2" << std::endl;
+ True
+ True // 输出布尔值
+ True bool flag = true;
+ True std::cout << "Flag: " << flag << std::endl; // 输出 1
+ True std::cout << std::boolalpha << "Flag: " << flag << std::endl; // 输出 true
+ True
+ True // 输出字符和字符串
+ True char c = 'A';
+ True std::string s = "Hello";
+ True std::cout << "Character: " << c << std::endl;
+ True std::cout << "String: " << s << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 基本输出
-    std::cout << "Hello, C++!" << std::endl;
-
-    // 多个值输出
-    int x = 10;
-    double y = 3.14;
-    std::cout << "x = " << x << ", y = " << y << std::endl;
-
-    // 使用 endl 换行并刷新缓冲区
-    std::cout << "Line 1" << std::endl;
-    std::cout << "Line 2" << std::endl;
-
-    // 使用 \n 仅换行
-    std::cout << "Line 1\nLine 2" << std::endl;
-
-    // 输出布尔值
-    bool flag = true;
-    std::cout << "Flag: " << flag << std::endl; // 输出 1
-    std::cout << std::boolalpha << "Flag: " << flag << std::endl; // 输出 true
-
-    // 输出字符和字符串
-    char c = 'A';
-    std::string s = "Hello";
-    std::cout << "Character: " << c << std::endl;
-    std::cout << "String: " << s << std::endl;
-
-    return 0;
-}
-```
-
-#### 3.1.2 输入
-
+ False#### 3.1.2 输入
+ False
 ```cpp
-#include <iostream>
-#include <string>
+ True#include <iostream>
+ True#include <string>
+ True
+ Trueint main() {
+ True // 输入整数
+ True int x;
+ True std::cout << "Enter an integer: ";
+ True std::cin >> x;
+ True std::cout << "You entered: " << x << std::endl;
+ True
+ True // 输入浮点数
+ True double y;
+ True std::cout << "Enter a double: ";
+ True std::cin >> y;
+ True std::cout << "You entered: " << y << std::endl;
+ True
+ True // 输入布尔值
+ True bool flag;
+ True std::cout << "Enter a boolean (0 or 1): ";
+ True std::cin >> flag;
+ True std::cout << "You entered: " << std::boolalpha << flag << std::endl;
+ True
+ True // 输入字符
+ True char c;
+ True std::cout << "Enter a character: ";
+ True std::cin >> c;
+ True std::cout << "You entered: " << c << std::endl;
+ True
+ True // 输入字符串（遇到空格停止）
+ True std::string name;
+ True std::cout << "Enter your name: ";
+ True std::cin >> name;
+ True std::cout << "Hello, " << name << "!" << std::endl;
+ True
+ True // 输入一行字符串
+ True std::string line;
+ True std::cout << "Enter a line: ";
+ True std::cin.ignore(); // 忽略之前的换行符
+ True std::getline(std::cin, line);
+ True std::cout << "You entered: " << line << std::endl;
+ True
+ True // 输入多个值
+ True int a, b;
+ True std::cout << "Enter two integers: ";
+ True std::cin >> a >> b;
+ True std::cout << "You entered: " << a << " and " << b << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 输入整数
-    int x;
-    std::cout << "Enter an integer: ";
-    std::cin >> x;
-    std::cout << "You entered: " << x << std::endl;
-
-    // 输入浮点数
-    double y;
-    std::cout << "Enter a double: ";
-    std::cin >> y;
-    std::cout << "You entered: " << y << std::endl;
-
-    // 输入布尔值
-    bool flag;
-    std::cout << "Enter a boolean (0 or 1): ";
-    std::cin >> flag;
-    std::cout << "You entered: " << std::boolalpha << flag << std::endl;
-
-    // 输入字符
-    char c;
-    std::cout << "Enter a character: ";
-    std::cin >> c;
-    std::cout << "You entered: " << c << std::endl;
-
-    // 输入字符串（遇到空格停止）
-    std::string name;
-    std::cout << "Enter your name: ";
-    std::cin >> name;
-    std::cout << "Hello, " << name << "!" << std::endl;
-
-    // 输入一行字符串
-    std::string line;
-    std::cout << "Enter a line: ";
-    std::cin.ignore(); // 忽略之前的换行符
-    std::getline(std::cin, line);
-    std::cout << "You entered: " << line << std::endl;
-
-    // 输入多个值
-    int a, b;
-    std::cout << "Enter two integers: ";
-    std::cin >> a >> b;
-    std::cout << "You entered: " << a << " and " << b << std::endl;
-
-    return 0;
-}
-```
-
-#### 3.1.3 输入验证
-
+ False#### 3.1.3 输入验证
+ False
 ```cpp
-#include <iostream>
-#include <limits>
+ True#include <iostream>
+ True#include <limits>
+ True
+ Trueint main() {
+ True int age;
+ True
+ True // 验证输入是否为整数
+ True while (true) {
+ True std::cout << "Enter your age: ";
+ True if (std::cin >> age) {
+ True // 输入成功
+ True break;
+ True } else {
+ True // 输入失败，清除错误状态
+ True std::cin.clear();
+ True // 忽略无效输入
+ True std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+ True std::cout << "Invalid input. Please enter a number." << std::endl;
+ True }
+ True }
+ True
+ True std::cout << "Your age is: " << age << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    int age;
-
-    // 验证输入是否为整数
-    while (true) {
-        std::cout << "Enter your age: ";
-        if (std::cin >> age) {
-            // 输入成功
-            break;
-        } else {
-            // 输入失败，清除错误状态
-            std::cin.clear();
-            // 忽略无效输入
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a number." << std::endl;
-        }
-    }
-
-    std::cout << "Your age is: " << age << std::endl;
-
-    return 0;
-}
-```
-
-### 3.2 格式化输出
-
+ False### 3.2 格式化输出
+ False
 ```cpp
-#include <iostream>
-#include <iomanip>
+ True#include <iostream>
+ True#include <iomanip>
+ True
+ Trueint main() {
+ True // 设置输出宽度
+ True std::cout << std::setw(10) << "Name" << std::setw(10) << "Age" << std::endl;
+ True std::cout << std::setw(10) << "Alice" << std::setw(10) << 25 << std::endl;
+ True std::cout << std::setw(10) << "Bob" << std::setw(10) << 30 << std::endl;
+ True
+ True // 设置填充字符
+ True std::cout << std::setw(10) << std::setfill('*') << "Hello" << std::endl;
+ True
+ True // 设置精度
+ True double pi = 3.1415926535;
+ True std::cout << "Pi: " << std::setprecision(5) << pi << std::endl;
+ True
+ True // 固定精度
+ True std::cout << "Pi (fixed): " << std::fixed << std::setprecision(2) << pi << std::endl;
+ True
+ True // 科学计数法
+ True double large_num = 123456789.123456;
+ True std::cout << "Large number: " << std::scientific << large_num << std::endl;
+ True
+ True // 十六进制输出
+ True int x = 255;
+ True std::cout << "Hex: " << std::hex << x << std::endl;
+ True std::cout << "Hex (uppercase): " << std::hex << std::uppercase << x << std::endl;
+ True
+ True // 八进制输出
+ True std::cout << "Octal: " << std::oct << x << std::endl;
+ True
+ True // 重置为十进制
+ True std::cout << "Decimal: " << std::dec << x << std::endl;
+ True
+ True // 显示正负号
+ True int positive = 10;
+ True int negative = -10;
+ True std::cout << "Positive: " << std::showpos << positive << std::endl;
+ True std::cout << "Negative: " << negative << std::endl;
+ True std::cout << std::noshowpos; // 关闭显示正负号
+ True
+ True // 显示前导零
+ True int num = 42;
+ True std::cout << "With leading zeros: " << std::setw(5) << std::setfill('0') << num << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 设置输出宽度
-    std::cout << std::setw(10) << "Name" << std::setw(10) << "Age" << std::endl;
-    std::cout << std::setw(10) << "Alice" << std::setw(10) << 25 << std::endl;
-    std::cout << std::setw(10) << "Bob" << std::setw(10) << 30 << std::endl;
-
-    // 设置填充字符
-    std::cout << std::setw(10) << std::setfill('*') << "Hello" << std::endl;
-
-    // 设置精度
-    double pi = 3.1415926535;
-    std::cout << "Pi: " << std::setprecision(5) << pi << std::endl;
-
-    // 固定精度
-    std::cout << "Pi (fixed): " << std::fixed << std::setprecision(2) << pi << std::endl;
-
-    // 科学计数法
-    double large_num = 123456789.123456;
-    std::cout << "Large number: " << std::scientific << large_num << std::endl;
-
-    // 十六进制输出
-    int x = 255;
-    std::cout << "Hex: " << std::hex << x << std::endl;
-    std::cout << "Hex (uppercase): " << std::hex << std::uppercase << x << std::endl;
-
-    // 八进制输出
-    std::cout << "Octal: " << std::oct << x << std::endl;
-
-    // 重置为十进制
-    std::cout << "Decimal: " << std::dec << x << std::endl;
-
-    // 显示正负号
-    int positive = 10;
-    int negative = -10;
-    std::cout << "Positive: " << std::showpos << positive << std::endl;
-    std::cout << "Negative: " << negative << std::endl;
-    std::cout << std::noshowpos; // 关闭显示正负号
-
-    // 显示前导零
-    int num = 42;
-    std::cout << "With leading zeros: " << std::setw(5) << std::setfill('0') << num << std::endl;
-
-    return 0;
-}
-```
-
-### 3.3 文件输入输出
-
+ False### 3.3 文件输入输出
+ False
 ```cpp
-#include <iostream>
-#include <fstream>
-#include <string>
+ True#include <iostream>
+ True#include <fstream>
+ True#include <string>
+ True
+ Trueint main() {
+ True // 写入文件
+ True std::ofstream outfile("example.txt");
+ True if (outfile.is_open()) {
+ True outfile << "Hello, File!" << std::endl;
+ True outfile << "This is a test." << std::endl;
+ True outfile << "Number: " << 42 << std::endl;
+ True outfile.close();
+ True std::cout << "File written successfully." << std::endl;
+ True } else {
+ True std::cerr << "Unable to open file for writing." << std::endl;
+ True }
+ True
+ True // 读取文件
+ True std::ifstream infile("example.txt");
+ True if (infile.is_open()) {
+ True std::string line;
+ True std::cout << "File contents:" << std::endl;
+ True while (std::getline(infile, line)) {
+ True std::cout << line << std::endl;
+ True }
+ True infile.close();
+ True } else {
+ True std::cerr << "Unable to open file for reading." << std::endl;
+ True }
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 写入文件
-    std::ofstream outfile("example.txt");
-    if (outfile.is_open()) {
-        outfile << "Hello, File!" << std::endl;
-        outfile << "This is a test." << std::endl;
-        outfile << "Number: " << 42 << std::endl;
-        outfile.close();
-        std::cout << "File written successfully." << std::endl;
-    } else {
-        std::cerr << "Unable to open file for writing." << std::endl;
-    }
-
-    // 读取文件
-    std::ifstream infile("example.txt");
-    if (infile.is_open()) {
-        std::string line;
-        std::cout << "File contents:" << std::endl;
-        while (std::getline(infile, line)) {
-            std::cout << line << std::endl;
-        }
-        infile.close();
-    } else {
-        std::cerr << "Unable to open file for reading." << std::endl;
-    }
-
-    return 0;
-}
-```
-
-### 3.4 字符串流
-
+ False### 3.4 字符串流
+ False
 ```cpp
-#include <iostream>
-#include <sstream>
-#include <string>
+ True#include <iostream>
+ True#include <sstream>
+ True#include <string>
+ True
+ Trueint main() {
+ True // 输出字符串流
+ True std::stringstream ss;
+ True ss << "Name: " << "Alice" << ", Age: " << 25 << ", Score: " << 95.5;
+ True std::string result = ss.str();
+ True std::cout << "String stream result: " << result << std::endl;
+ True
+ True // 输入字符串流
+ True std::string data = "10 3.14 Hello";
+ True std::stringstream input_ss(data);
+ True
+ True int i;
+ True double d;
+ True std::string s;
+ True
+ True input_ss >> i >> d >> s;
+ True std::cout << "Parsed values: " << i << ", " << d << ", " << s << std::endl;
+ True
+ True // 格式化数字为字符串
+ True std::stringstream format_ss;
+ True format_ss << std::fixed << std::setprecision(2) << 3.14159;
+ True std::string pi_str = format_ss.str();
+ True std::cout << "Formatted pi: " << pi_str << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 输出字符串流
-    std::stringstream ss;
-    ss << "Name: " << "Alice" << ", Age: " << 25 << ", Score: " << 95.5;
-    std::string result = ss.str();
-    std::cout << "String stream result: " << result << std::endl;
-
-    // 输入字符串流
-    std::string data = "10 3.14 Hello";
-    std::stringstream input_ss(data);
-
-    int i;
-    double d;
-    std::string s;
-
-    input_ss >> i >> d >> s;
-    std::cout << "Parsed values: " << i << ", " << d << ", " << s << std::endl;
-
-    // 格式化数字为字符串
-    std::stringstream format_ss;
-    format_ss << std::fixed << std::setprecision(2) << 3.14159;
-    std::string pi_str = format_ss.str();
-    std::cout << "Formatted pi: " << pi_str << std::endl;
-
-    return 0;
-}
-```
-
-## 4. 命名空间 (Namespace)
-
-### 4.1 命名空间的定义
-
+ False## 4. 命名空间 (Namespace)
+ False
+ False### 4.1 命名空间的定义
+ False
 ```cpp
-// 定义命名空间
-namespace MyNamespace {
-    int add(int a, int b) {
-        return a + b;
-    }
+ True// 定义命名空间
+ Truenamespace MyNamespace {
+ True int add(int a, int b) {
+ True return a + b;
+ True }
+ True
+ True namespace Nested {
+ True int multiply(int a, int b) {
+ True return a * b;
+ True }
+ True }
+ True}
+ True
+ Trueint main() {
+ True // 使用命名空间
+ True int result1 = MyNamespace::add(5, 3);
+ True int result2 = MyNamespace::Nested::multiply(5, 3);
+ True
+ True std::cout << "5 + 3 = " << result1 << std::endl;
+ True std::cout << "5 * 3 = " << result2 << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-    namespace Nested {
-        int multiply(int a, int b) {
-            return a * b;
-        }
-    }
-}
-
-int main() {
-    // 使用命名空间
-    int result1 = MyNamespace::add(5, 3);
-    int result2 = MyNamespace::Nested::multiply(5, 3);
-
-    std::cout << "5 + 3 = " << result1 << std::endl;
-    std::cout << "5 * 3 = " << result2 << std::endl;
-
-    return 0;
-}
-```
-
-### 4.2 using 声明
-
+ False### 4.2 using 声明
+ False
 ```cpp
-#include <iostream>
+ True#include <iostream>
+ True
+ True// 使用命名空间中的特定成员
+ Trueusing std::cout;
+ Trueusing std::endl;
+ True
+ Trueint main() {
+ True cout << "Hello, C++!" << endl;
+ True return 0;
+ True}
+ True```
 
-// 使用命名空间中的特定成员
-using std::cout;
-using std::endl;
-
-int main() {
-    cout << "Hello, C++!" << endl;
-    return 0;
-}
-```
-
-### 4.3 using 指令
-
+ False### 4.3 using 指令
+ False
 ```cpp
-#include <iostream>
+ True#include <iostream>
+ True
+ True// 使用整个命名空间
+ Trueusing namespace std;
+ True
+ Trueint main() {
+ True cout << "Hello, C++!" << endl;
+ True return 0;
+ True}
+ True```
 
-// 使用整个命名空间
-using namespace std;
-
-int main() {
-    cout << "Hello, C++!" << endl;
-    return 0;
-}
-```
-
-### 4.4 命名空间别名
-
+ False### 4.4 命名空间别名
+ False
 ```cpp
-#include <iostream>
+ True#include <iostream>
+ True
+ Truenamespace long_namespace_name {
+ True void func() {
+ True std::cout << "Function in long namespace" << std::endl;
+ True }
+ True}
+ True
+ True// 命名空间别名
+ Truenamespace lnn = long_namespace_name;
+ True
+ Trueint main() {
+ True lnn::func();
+ True return 0;
+ True}
+ True```
 
-namespace long_namespace_name {
-    void func() {
-        std::cout << "Function in long namespace" << std::endl;
-    }
-}
-
-// 命名空间别名
-namespace lnn = long_namespace_name;
-
-int main() {
-    lnn::func();
-    return 0;
-}
-```
-
-## 5. 作用域 (Scope)
-
-### 5.1 块作用域
-
+ False## 5. 作用域 (Scope)
+ False
+ False### 5.1 块作用域
+ False
 ```cpp
-int main() {
-    // 全局作用域
-    int global_var = 10;
+ Trueint main() {
+ True // 全局作用域
+ True int global_var = 10;
+ True
+ True if (true) {
+ True // 块作用域
+ True int local_var = 20;
+ True std::cout << "local_var: " << local_var << std::endl;
+ True std::cout << "global_var: " << global_var << std::endl;
+ True }
+ True
+ True // 这里无法访问 local_var
+ True std::cout << "global_var: " << global_var << std::endl;
+ True
+ True return 0;
+ True}
+ True```
 
-    if (true) {
-        // 块作用域
-        int local_var = 20;
-        std::cout << "local_var: " << local_var << std::endl;
-        std::cout << "global_var: " << global_var << std::endl;
-    }
-
-    // 这里无法访问 local_var
-    std::cout << "global_var: " << global_var << std::endl;
-
-    return 0;
-}
-```
-
-### 5.2 函数作用域
-
+ False### 5.2 函数作用域
+ False
 ```cpp
-void func() {
-    // 函数作用域
-    int func_var = 100;
-    std::cout << "func_var: " << func_var << std::endl;
-}
+ Truevoid func() {
+ True // 函数作用域
+ True int func_var = 100;
+ True std::cout << "func_var: " << func_var << std::endl;
+ True}
+ True
+ Trueint main() {
+ True // 这里无法访问 func_var
+ True func();
+ True return 0;
+ True}
+ True```
 
-int main() {
-    // 这里无法访问 func_var
-    func();
-    return 0;
-}
-```
-
-### 5.3 类作用域
-
+ False### 5.3 类作用域
+ False
 ```cpp
-class MyClass {
-public:
-    int public_var; // 类作用域
-private:
-    int private_var; // 类作用域
-};
+ Trueclass MyClass {
+ Truepublic:
+ True int public_var; // 类作用域
+ Trueprivate:
+ True int private_var; // 类作用域
+ True};
+ True
+ Trueint main() {
+ True MyClass obj;
+ True obj.public_var = 10; // 可以访问
+ True // obj.private_var = 20; // 无法访问，private 成员
+ True return 0;
+ True}
+ True```
 
-int main() {
-    MyClass obj;
-    obj.public_var = 10; // 可以访问
-    // obj.private_var = 20; // 无法访问，private 成员
-    return 0;
-}
-```
-
-### 5.4 命名空间作用域
-
+ False### 5.4 命名空间作用域
+ False
 ```cpp
-namespace MyNS {
-    int ns_var = 1000; // 命名空间作用域
-}
+ Truenamespace MyNS {
+ True int ns_var = 1000; // 命名空间作用域
+ True}
+ True
+ Trueint main() {
+ True std::cout << MyNS::ns_var << std::endl;
+ True return 0;
+ True}
+ True```
 
-int main() {
-    std::cout << MyNS::ns_var << std::endl;
-    return 0;
-}
-```
-
----
-
-### 更新日志 (Changelog)
-- 2026-05-27: 从 C13_102 拆分，专注于基础语法（数据类型、控制流、I/O、命名空间、作用域）。
+ False---
+ False
+ False### 更新日志 (Changelog)
+ False- 2026-05-27: 从 C13_102 拆分，专注于基础语法（数据类型、控制流、I/O、命名空间、作用域）。
+ False
