@@ -1,8 +1,11 @@
+html, body { height: 100%; overflow: hidden; }
+
 .app-layout {
   display: grid;
   grid-template-rows: var(--nav-height) 1fr;
   grid-template-columns: var(--sidebar-width) 1fr;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
 }
 
 @media (max-width: 768px) {
