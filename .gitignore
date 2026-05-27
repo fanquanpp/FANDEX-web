@@ -1,0 +1,264 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+*.lcov
+.nyc_output
+
+# Production
+dist
+dist-ssr
+build
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+.cache
+
+# OS generated files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.pyc
+
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# Archive files (keep note archives if needed)
+# *.zip
+# *.tar.gz
+# *.rar
+
+# Database
+*.sqlite
+*.db
+
+# IDE
+# .vscode/
+# .idea/
+
+# C/C++
+*.a
+*.lib
+*.out
+*.app
+*.i
+*.ii
+*.s
+*.so
+*.dylib
+*.d
+*.dSYM/
+*.dll
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+bin/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+dist/
+.nuxt
+.nuxt.dist
+.output
+.cache
+.parcel-cache
+.next
+.vuepress/dist
+.cache
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# TypeScript
+*.tsbuildinfo
+*.tsbuildinfo
+*.d.ts.map
+
+# Vue
+*.vue.d.ts
+*.vue.d.ts.map
+
+# Godot
+.import/
+export_presets.cfg
+*.translation
+*.godot/
+.project
+.csharp/
+addons/
+*.import
+.tmp/
+
+# Ren'Py
+*.rpyc
+*.rpyb
+*.rpymc
+log.txt
+errors.txt
+cache/
+saves/
+game/cache/
+game/saves/
+
+# MySQL
+*.sql.backup
+*.sql.bak
+*.sql.tmp
+*.dump
+*.bak.sql
+
+# Markdown preview temp files
+*.md.swp
+*.md.swo
+*~
+
+# amWiki cache
+$navigation.md.bak
+
+# Compiled documentation
+_site
+.doctor
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
