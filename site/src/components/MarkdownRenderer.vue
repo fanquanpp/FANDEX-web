@@ -25,7 +25,7 @@ const md = new MarkdownIt({
 })
 
 md.use(anchor, {
-  slugify: (s: string) => s.trim().toLowerCase().replace(/[\s+]/g, '-'),
+  slugify: (s: string) => s.trim().toLowerCase().replace(/[\s+]+/g, '-'),
   permalink: anchor.permalink['ariaHidden'],
 })
 
@@ -45,7 +45,7 @@ function wrapCodeBlocks(html: string): string {
   return html.replace(/<pre[^>]*class="shiki"[^>]*>/g, (match) => {
     const langMatch = match.match(/language-(\w+)/)
     const lang = langMatch ? langMatch[1] : 'code'
-    const wrapper = '<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">' + lang + '</span><button class="copy-button" data-action="copy">Copy</button></div>'
+    const wrapper = '<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">' + lang + '</span><button class="copy-button" data-action="copy">复制</button></div>'
     return wrapper + match
   })
 }
@@ -77,9 +77,9 @@ function handleCopy(e: Event) {
   const code = wrapper.querySelector('code')
   if (!code) return
   navigator.clipboard.writeText(code.textContent || '').then(() => {
-    btn.textContent = 'Copied'
+    btn.textContent = '已复制'
     btn.classList.add('copied')
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied') }, 2000)
+    setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied') }, 2000)
   })
 }
 
@@ -133,7 +133,8 @@ function toggleToc() {
 }
 
 .toc-section {
-  margin-bottom: var(--spacing-lg);
+  max-width: var(--content-width);
+  margin: 0 auto var(--spacing-lg) auto;
 }
 
 .toc-toggle {
@@ -144,11 +145,10 @@ function toggleToc() {
   border: 1px solid var(--color-border);
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
-  font-size: 0.78em;
-  font-family: var(--font-display);
+  font-size: 0.8em;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: all var(--transition-fast);
-  letter-spacing: 0.03em;
 }
 
 .toc-toggle:hover {
@@ -175,13 +175,15 @@ function toggleToc() {
   padding: 0 var(--spacing-md);
   background: var(--color-bg-card);
   border: 1px solid var(--color-border-light);
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+  margin-top: 0;
 }
 
 .toc-panel.expanded {
-  max-height: 400px;
+  max-height: 420px;
   overflow-y: auto;
   padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-xs);
 }
 
 .toc-list {
@@ -196,15 +198,13 @@ function toggleToc() {
 
 .toc-link {
   display: block;
-  padding: 2px 0;
+  padding: 3px 0;
   color: var(--color-text-secondary);
-  font-size: 0.82em;
-  line-height: 1.4;
+  font-size: 0.85em;
+  line-height: 1.6;
   transition: color var(--transition-fast);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   border-bottom: none;
+  font-family: var(--font-body);
 }
 
 .toc-link:hover {

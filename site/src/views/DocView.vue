@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useProgress } from '@/composables/useProgress'
 import { getModuleMeta } from '@/data/modules'
 import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import type { Module, ModuleFile } from '@/types'
 
 const route = useRoute()
@@ -18,6 +18,7 @@ const docPath = computed(() => moduleId.value + '/' + slug.value + '.md')
 const content = ref('')
 const files = ref<ModuleFile[]>([])
 const loading = ref(true)
+const showBackTop = ref(false)
 
 const base = import.meta.env.BASE_URL || '/MyNotebook/'
 
@@ -39,6 +40,8 @@ async function loadDoc() {
     console.error(e)
   } finally {
     loading.value = false
+    await nextTick()
+    scrollToTop()
   }
 }
 
@@ -64,7 +67,29 @@ function navigateToDoc(fileSlug: string) {
   router.push({ name: 'doc', params: { moduleId: moduleId.value, slug: fileSlug } })
 }
 
-onMounted(() => { loadDoc(); loadFiles() })
+function scrollToTop() {
+  const el = document.querySelector('.app-main')
+  if (el) {
+    el.scrollTo({ top: 0, behavior: 'smooth' })
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
+
+function handleScroll(e: Event) {
+  const el = e.target as HTMLElement
+  showBackTop.value = el.scrollTop > 400
+}
+
+onMounted(() => {
+  loadDoc()
+  loadFiles()
+  const el = document.querySelector('.app-main')
+  if (el) {
+    el.addEventListener('scroll', handleScroll)
+  }
+})
+
 watch([moduleId, slug], () => { loadDoc() })
 </script>
 
@@ -116,6 +141,12 @@ watch([moduleId, slug], () => { loadDoc() })
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 6 18 12 6 18"/></svg>
       </button>
     </nav>
+
+    <button v-show="showBackTop" class="back-to-top" @click="scrollToTop" title="返回顶部">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
   </div>
 </template>
 
@@ -124,15 +155,18 @@ watch([moduleId, slug], () => { loadDoc() })
   padding: var(--spacing-md) var(--spacing-lg) var(--spacing-2xl);
   max-width: 100%;
   width: 100%;
+  position: relative;
 }
 
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  max-width: var(--content-width);
+  margin: 0 auto;
   padding: var(--spacing-sm) 0;
-  margin-bottom: var(--spacing-md);
-  font-size: 0.78em;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.82em;
   color: var(--color-text-tertiary);
   border-bottom: 1px solid var(--color-border-light);
 }
@@ -156,7 +190,7 @@ watch([moduleId, slug], () => { loadDoc() })
 .bc-current {
   color: var(--color-text);
   font-weight: 500;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
 }
 
 .doc-content {
@@ -167,6 +201,8 @@ watch([moduleId, slug], () => { loadDoc() })
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  max-width: var(--content-width);
+  margin: 0 auto;
   padding: var(--spacing-3xl);
   color: var(--color-text-tertiary);
 }
@@ -184,14 +220,14 @@ watch([moduleId, slug], () => { loadDoc() })
 
 .loading-text {
   margin-top: var(--spacing-md);
-  font-family: var(--font-display);
-  font-size: 0.78em;
+  font-family: var(--font-body);
+  font-size: 0.85em;
   color: var(--color-text-tertiary);
-  letter-spacing: 0.05em;
 }
 
 .doc-footer {
-  margin: var(--spacing-lg) 0;
+  max-width: var(--content-width);
+  margin: var(--spacing-lg) auto;
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--color-border-light);
 }
@@ -204,11 +240,10 @@ watch([moduleId, slug], () => { loadDoc() })
   border: 1px solid var(--color-border);
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
-  font-size: 0.78em;
-  font-family: var(--font-display);
+  font-size: 0.82em;
+  font-family: var(--font-body);
   cursor: pointer;
   transition: all var(--transition-fast);
-  letter-spacing: 0.02em;
 }
 
 .read-toggle:hover {
@@ -239,6 +274,8 @@ watch([moduleId, slug], () => { loadDoc() })
   display: flex;
   justify-content: space-between;
   gap: var(--spacing-md);
+  max-width: var(--content-width);
+  margin: 0 auto;
   margin-top: var(--spacing-lg);
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--color-border-light);
@@ -275,15 +312,13 @@ watch([moduleId, slug], () => { loadDoc() })
 }
 
 .nav-label {
-  font-size: 0.62em;
+  font-size: 0.68em;
   color: var(--color-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
 }
 
 .nav-title {
-  font-size: 0.78em;
+  font-size: 0.82em;
   font-weight: 500;
   color: var(--color-text);
   overflow: hidden;
@@ -294,5 +329,30 @@ watch([moduleId, slug], () => { loadDoc() })
 
 .nav-spacer {
   flex: 1;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 36px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  z-index: 80;
+  transition: all var(--transition-fast);
+  opacity: 0.85;
+}
+
+.back-to-top:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  opacity: 1;
 }
 </style>

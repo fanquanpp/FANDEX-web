@@ -27,7 +27,15 @@ watch(() => router.currentRoute.value, (to) => {
     currentFiles.value = []
     currentDocPath.value = ''
   }
+  scrollToTop()
 }, { immediate: true })
+
+function scrollToTop() {
+  const el = document.querySelector('.app-main')
+  if (el) {
+    el.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }
+}
 
 async function fetchModuleData(moduleId: string) {
   try {
@@ -50,6 +58,7 @@ function navigateToDoc(moduleId: string, slug: string) {
 }
 
 function goHome() {
+  sidebarOpen.value = false
   router.push({ name: 'home' })
 }
 
@@ -175,7 +184,6 @@ function toggleSidebar() {
   width: 28px;
   height: 28px;
   border: 1px solid var(--color-border);
-  border-radius: 0;
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
   cursor: pointer;
@@ -240,7 +248,6 @@ function toggleSidebar() {
   width: 28px;
   height: 28px;
   border: 1px solid var(--color-border);
-  border-radius: 0;
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
   cursor: pointer;
@@ -297,7 +304,6 @@ function toggleSidebar() {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 0;
   color: #fff;
   font-weight: 700;
   font-size: 0.8em;
@@ -338,7 +344,6 @@ function toggleSidebar() {
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
   border: 2px solid transparent;
-  border-radius: 0;
   background: transparent;
   color: var(--color-text-secondary);
   font-size: 0.8em;
@@ -372,7 +377,6 @@ function toggleSidebar() {
   padding: var(--spacing-sm) var(--spacing-md);
   border: none;
   border-left: 3px solid transparent;
-  border-radius: 0;
   background: transparent;
   color: var(--color-text-secondary);
   font-size: 0.8em;
@@ -403,7 +407,6 @@ function toggleSidebar() {
 .file-status-block {
   width: 8px;
   height: 8px;
-  border-radius: 0;
   background: var(--color-border-light);
   flex-shrink: 0;
   transition: background var(--transition-fast);
@@ -428,5 +431,6 @@ function toggleSidebar() {
   grid-column: 2;
   overflow-y: auto;
   min-height: 0;
+  scroll-behavior: smooth;
 }
 </style>
