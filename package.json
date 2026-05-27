@@ -1,0 +1,13 @@
+{
+  "name": "mynotebook",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Comprehensive tech learning notebook - refactored v4",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --build && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {}
+}
