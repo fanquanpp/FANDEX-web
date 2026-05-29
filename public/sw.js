@@ -1,19 +1,10 @@
-const CACHE_NAME = 'fandex-v1';
+const CACHE_NAME = 'fandex-v2';
 const BASE = '/FANDEX/';
 
 const PRECACHE_URLS = [BASE, BASE + 'data/glossary-index.json'];
 
-const CACHE_FIRST_EXTS = new Set([
-  '.css',
-  '.js',
-  '.woff2',
-  '.woff',
-  '.ttf',
-  '.webp',
-  '.svg',
-  '.png',
-]);
-const STALE_REVALIDATE_EXTS = new Set(['.json']);
+const HASHED_EXTS = new Set(['.css', '.js', '.woff2', '.woff', '.ttf']);
+const STALE_REVALIDATE_EXTS = new Set(['.json', '.html', '.webp', '.svg', '.png', '.avif']);
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS)));
@@ -37,32 +28,18 @@ self.addEventListener('fetch', (event) => {
   if (!url.pathname.startsWith(BASE)) return;
 
   const ext = getExt(url.pathname);
+  const isHTML = ext === '' || ext === '.html' || url.pathname.endsWith('/');
 
-  if (CACHE_FIRST_EXTS.has(ext)) {
-    event.respondWith(cacheFirst(event.request));
-  } else if (STALE_REVALIDATE_EXTS.has(ext)) {
+  if (HASHED_EXTS.has(ext)) {
+    event.respondWith(cacheFirstLong(event.request));
+  } else if (STALE_REVALIDATE_EXTS.has(ext) || isHTML) {
     event.respondWith(staleWhileRevalidate(event.request));
   } else {
-    event.respondWith(networkFirst(event.request));
+    event.respondWith(staleWhileRevalidate(event.request));
   }
 });
 
-async function networkFirst(request) {
-  try {
-    const response = await fetch(request);
-    if (response.ok) {
-      const cache = await caches.open(CACHE_NAME);
-      cache.put(request, response.clone());
-    }
-    return response;
-  } catch {
-    const cached = await caches.match(request);
-    if (cached) return cached;
-    return new Response('Offline', { status: 503, statusText: 'Service Unavailable' });
-  }
-}
-
-async function cacheFirst(request) {
+async function cacheFirstLong(request) {
   const cached = await caches.match(request);
   if (cached) return cached;
   try {
@@ -84,14 +61,25 @@ async function staleWhileRevalidate(request) {
       if (response.ok) {
         const cache = await caches.open(CACHE_NAME);
         cache.put(request, response.clone());
+        notifyUpdate();
       }
       return response;
     })
-    .catch(() => cached || new Response('', { status: 503 }));
+    .catch(() => cached || new Response('Offline', { status: 503, statusText: 'Offline' }));
   return cached || fetchPromise;
+}
+
+async function notifyUpdate() {
+  const clients = await self.clients.matchAll({ type: 'window' });
+  clients.forEach((client) => {
+    client.postMessage({ type: 'sw-update' });
+  });
 }
 
 function getExt(path) {
   const idx = path.lastIndexOf('.');
-  return idx > 0 ? path.substring(idx) : '';
+  if (idx <= 0) return '';
+  const ext = path.substring(idx);
+  if (ext.includes('/')) return '';
+  return ext;
 }

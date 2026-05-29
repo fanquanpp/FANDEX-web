@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'fandex-progress';
 const DB_NAME = 'fandex-progress-db';
 const DB_STORE = 'progress';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 export type DocStatus = 'unread' | 'reading' | 'done';
 
@@ -15,7 +15,7 @@ export type ProgressMap = Record<string, ReadingProgress>;
 
 function openDB(): Promise<IDBDatabase | null> {
   if (typeof indexedDB === 'undefined') return Promise.resolve(null);
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
     req.onupgradeneeded = () => {
       const db = req.result;
@@ -24,20 +24,38 @@ function openDB(): Promise<IDBDatabase | null> {
       }
     };
     req.onsuccess = () => resolve(req.result);
-    req.onerror = () => resolve(null);
+    req.onerror = () => {
+      console.error('[FANDEX] IndexedDB open failed', req.error);
+      reject(req.error);
+    };
   });
 }
 
 async function backupToIndexedDB(data: ProgressMap): Promise<void> {
-  const db = await openDB();
-  if (!db) return;
-  return new Promise((resolve) => {
-    const tx = db.transaction(DB_STORE, 'readwrite');
-    const store = tx.objectStore(DB_STORE);
-    store.put(data, STORAGE_KEY);
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => resolve();
-  });
+  try {
+    const db = await openDB();
+    if (!db) return;
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(DB_STORE, 'readwrite');
+      const store = tx.objectStore(DB_STORE);
+      store.put(data, STORAGE_KEY);
+      tx.oncomplete = () => {
+        db.close();
+        resolve();
+      };
+      tx.onerror = () => {
+        console.error('[FANDEX] IndexedDB backup failed', tx.error);
+        reject(tx.error);
+      };
+    });
+  } catch (e) {
+    console.error('[FANDEX] Backup failed', e);
+    window.dispatchEvent(
+      new CustomEvent('toast', {
+        detail: { message: '进度备份失败，请检查存储空间', type: 'error' },
+      })
+    );
+  }
 }
 
 export function getAllProgress(): ProgressMap {
@@ -54,8 +72,13 @@ function saveAllProgress(data: ProgressMap): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     backupToIndexedDB(data);
-  } catch {
-    // localStorage full or unavailable
+  } catch (e) {
+    console.error('[FANDEX] localStorage save failed', e);
+    window.dispatchEvent(
+      new CustomEvent('toast', {
+        detail: { message: '进度保存失败，请检查存储空间', type: 'error' },
+      })
+    );
   }
 }
 
@@ -72,12 +95,14 @@ export function setProgress(slug: string, status: DocStatus, scrollPos = 0): voi
 
 export function toggleStatus(slug: string): DocStatus {
   const current = getProgress(slug);
-  const next: DocStatus =
-    !current || current.status === 'unread'
-      ? 'done'
-      : current.status === 'done'
-        ? 'unread'
-        : 'done';
+  let next: DocStatus;
+  if (!current || current.status === 'unread') {
+    next = 'reading';
+  } else if (current.status === 'reading') {
+    next = 'done';
+  } else {
+    next = 'unread';
+  }
   setProgress(slug, next);
   return next;
 }
@@ -144,4 +169,18 @@ export async function restoreFromIndexedDB(): Promise<boolean> {
     };
     req.onerror = () => resolve(false);
   });
+}
+
+if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEY) {
+      window.dispatchEvent(new CustomEvent('progress-sync'));
+    }
+  });
+  if (typeof BroadcastChannel !== 'undefined') {
+    const channel = new BroadcastChannel('fandex-progress');
+    channel.onmessage = () => {
+      window.dispatchEvent(new CustomEvent('progress-sync'));
+    };
+  }
 }

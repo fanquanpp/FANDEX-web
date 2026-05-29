@@ -535,6 +535,9 @@ const moduleMapJson = JSON.stringify(
   (() => {
     let index: any[] | null = null;
     let sortMode: 'relevance' | 'date' = 'relevance';
+    let worker: Worker | null = null;
+    let useWorker = false;
+    let fuse: any = null;
 
     const input = document.getElementById('search-input') as HTMLInputElement;
     const moduleSelect = document.getElementById('filter-module') as HTMLSelectElement;
@@ -578,7 +581,63 @@ const moduleMapJson = JSON.stringify(
       } catch {
         statusEl.textContent = '搜索索引加载失败，请先运行 npm run build';
         index = [];
+        return;
       }
+      initSearchBackend();
+    }
+
+    async function initSearchBackend() {
+      if (!index) return;
+      try {
+        const FuseModule = await import('fuse.js');
+        const FuseClass = FuseModule.default || FuseModule;
+
+        try {
+          worker = new Worker(
+            new URL('@/workers/search-worker.ts', import.meta.url),
+            { type: 'module' }
+          );
+          worker.onmessage = (e) => {
+            if (e.data.type === 'ready') {
+              useWorker = true;
+            }
+            if (e.data.type === 'results') {
+              renderResults(e.data.payload.results, e.data.payload.query);
+            }
+          };
+          worker.onerror = () => {
+            worker = null;
+            fallbackToFuse(FuseClass);
+          };
+          worker.postMessage({ type: 'init', payload: { index } });
+          setTimeout(() => {
+            if (!useWorker) {
+              worker?.terminate();
+              worker = null;
+              fallbackToFuse(FuseClass);
+            }
+          }, 3000);
+        } catch {
+          fallbackToFuse(FuseClass);
+        }
+      } catch {
+        // Fuse.js not available, use basic search
+      }
+    }
+
+    function fallbackToFuse(FuseClass: any) {
+      fuse = new FuseClass(index, {
+        keys: [
+          { name: 'title', weight: 0.4 },
+          { name: 'tags', weight: 0.25 },
+          { name: 'slug', weight: 0.15 },
+          { name: 'description', weight: 0.2 },
+        ],
+        threshold: 0.4,
+        distance: 200,
+        minMatchCharLength: 2,
+        includeScore: true,
+      });
     }
 
     function doSearch() {
@@ -591,9 +650,42 @@ const moduleMapJson = JSON.stringify(
 
     function performSearch() {
       if (!index) return;
-      const query = input.value.trim().toLowerCase();
+      const query = input.value.trim();
       const moduleFilter = moduleSelect.value;
 
+      if (useWorker && worker) {
+        worker.postMessage({
+          type: 'search',
+          payload: { query, moduleFilter, sortMode },
+        });
+        return;
+      }
+
+      if (fuse && query) {
+        let results = fuse.search(query);
+        if (moduleFilter) {
+          results = results.filter((r: any) => r.item.module === moduleFilter);
+        }
+        const items = results.map((r: any) => ({
+          ...r.item,
+          score: r.score ? 1 - r.score : 1,
+        }));
+        if (sortMode === 'date') {
+          items.sort((a: any, b: any) => {
+            const da = a.updated || '';
+            const db = b.updated || '';
+            return db.localeCompare(da) || b.score - a.score;
+          });
+        }
+        renderResults(items.slice(0, 50), query);
+        return;
+      }
+
+      performBasicSearch(query, moduleFilter);
+    }
+
+    function performBasicSearch(query: string, moduleFilter: string) {
+      if (!index) return;
       let results = index;
 
       if (moduleFilter) {
@@ -601,7 +693,7 @@ const moduleMapJson = JSON.stringify(
       }
 
       if (query) {
-        const terms = query.split(/\s+/).filter(Boolean);
+        const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
         const scored = results
           .map((d: any) => {
             let score = 0;

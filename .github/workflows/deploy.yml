@@ -15,18 +15,66 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  setup:
+    runs-on: ubuntu-22.04
+    outputs:
+      cache-hit: ${{ steps.cache.outputs.cache-hit }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  build:
+    runs-on: ubuntu-22.04
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Cache Astro build cache
+        uses: actions/cache@v4
+        with:
+          path: .astro
+          key: ${{ runner.os }}-astro-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
       - name: QA Check
         run: npm run qa
+
       - name: Preserve CNAME if exists
         run: |
           if [ -f public/CNAME ]; then
@@ -35,6 +83,7 @@ jobs:
           else
             echo "No CNAME file found, skipping"
           fi
+
       - name: Verify Pagefind index
         run: |
           if [ -d "dist/pagefind" ]; then
@@ -43,13 +92,21 @@ jobs:
           else
             echo "::warning::Pagefind index not found - search will not work"
           fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist
+          retention-days: 30
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -1,10 +1,15 @@
 <template>
   <div class="progress-toggle" :class="statusClass">
-    <button class="progress-btn" :title="statusLabel" @click="handleToggle">
+    <button
+      class="progress-btn"
+      :title="statusLabel"
+      :aria-label="statusLabel"
+      @click="handleToggle"
+    >
       <span class="progress-dot"></span>
       <span class="progress-label">{{ statusLabel }}</span>
     </button>
-    <button class="progress-export" title="导出进度" @click="handleExport">
+    <button class="progress-export" title="导出进度" aria-label="导出进度" @click="handleExport">
       <svg
         width="14"
         height="14"
@@ -18,7 +23,7 @@
         <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
     </button>
-    <button class="progress-import" title="导入进度" @click="triggerImport">
+    <button class="progress-import" title="导入进度" aria-label="导入进度" @click="triggerImport">
       <svg
         width="14"
         height="14"
@@ -171,8 +176,8 @@ function handleImport(e: Event) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--color-border);
   border-radius: 0;
   background: transparent;

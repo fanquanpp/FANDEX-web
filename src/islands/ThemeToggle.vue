@@ -2,14 +2,15 @@
 import { ref, onMounted } from 'vue';
 
 const theme = ref<'light' | 'dark'>('light');
+let mounted = ref(false);
 
 onMounted(() => {
+  mounted.value = true;
   const saved = localStorage.getItem('fandex-theme');
   if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     theme.value = 'dark';
-    document.documentElement.setAttribute('data-theme', 'dark');
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
+    theme.value = 'light';
   }
 });
 
@@ -21,7 +22,13 @@ function toggle() {
 </script>
 
 <template>
-  <button class="theme-toggle" @click="toggle" :title="theme === 'dark' ? '亮色模式' : '暗色模式'">
+  <button
+    v-if="mounted"
+    class="theme-toggle"
+    @click="toggle"
+    :title="theme === 'dark' ? '亮色模式' : '暗色模式'"
+    :aria-label="theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
+  >
     <svg
       v-if="theme === 'dark'"
       width="16"

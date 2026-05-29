@@ -17,6 +17,8 @@ const hasSidebar = Astro.slots.has('sidebar')
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href={`${base}fonts/fonts.css`} />
+    <link rel="preload" href={`${base}fonts/jetbrains-mono-400.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}fonts/jetbrains-mono-700.woff2`} as="font" type="font/woff2" crossorigin />
     <script is:inline>
       (function() {
         var t = localStorage.getItem('fandex-theme');
@@ -81,7 +83,7 @@ const hasSidebar = Astro.slots.has('sidebar')
         <span>搜索</span>
       </a>
       {hasSidebar && (
-        <button class="mobile-nav-link" id="mobile-sidebar-btn">
+        <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -100,11 +102,36 @@ const hasSidebar = Astro.slots.has('sidebar')
 
   function openSidebar() {
     document.body.classList.add('sidebar-open')
+    syncSidebarUrl()
   }
 
   function closeSidebar() {
     document.body.classList.remove('sidebar-open')
+    syncSidebarUrl()
   }
+
+  function syncSidebarUrl() {
+    const params = new URLSearchParams(window.location.search)
+    if (document.body.classList.contains('sidebar-open')) {
+      params.set('sidebar', '1')
+    } else {
+      params.delete('sidebar')
+    }
+    const newSearch = params.toString()
+    const newUrl = newSearch
+      ? window.location.pathname + '?' + newSearch + window.location.hash
+      : window.location.pathname + window.location.hash
+    history.replaceState(null, '', newUrl)
+  }
+
+  function restoreSidebarFromUrl() {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('sidebar') === '1') {
+      document.body.classList.add('sidebar-open')
+    }
+  }
+
+  restoreSidebarFromUrl()
 
   if (toggle) toggle.addEventListener('click', () => {
     if (document.body.classList.contains('sidebar-open')) {
@@ -243,6 +270,11 @@ const hasSidebar = Astro.slots.has('sidebar')
   if ('serviceWorker' in navigator) {
     const base = import.meta.env.BASE_URL
     navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
+    navigator.serviceWorker.addEventListener('message', (e) => {
+      if (e.data?.type === 'sw-update') {
+        console.log('[FANDEX] Content updated in background')
+      }
+    })
   }
 
   document.addEventListener('keydown', (e) => {

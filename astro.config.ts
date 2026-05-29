@@ -8,6 +8,16 @@ import { rehypeLazyImages } from './src/lib/rehype-lazy-images';
 export default defineConfig({
   site: 'https://fanquanpp.github.io',
   base: '/FANDEX/',
+  build: {
+    inlineStylesheets: 'auto',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash][extname]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
+      },
+    },
+  },
   prefetch: {
     prefetchAll: false,
     defaultStrategy: 'hover',
@@ -22,7 +32,8 @@ export default defineConfig({
       wrap: true,
     },
   },
-  build: {
-    inlineStylesheets: 'auto',
+  trailingSlash: 'always',
+  server: {
+    port: 3000,
   },
 });

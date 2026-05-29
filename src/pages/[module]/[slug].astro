@@ -108,7 +108,7 @@ const breadcrumb = [
       </header>
       <Content />
     </article>
-    <QuizBlock client:load quiz={doc.data.quiz || []} />
+    <QuizBlock client:visible quiz={doc.data.quiz || []} />
     <DocNav moduleId={module} currentSlug={slug} />
   </div>
 </Layout>

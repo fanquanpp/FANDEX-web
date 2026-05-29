@@ -9,7 +9,9 @@
     "build": "node scripts/build-glossary-index.mjs && node scripts/build-search-index.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "prepare": "husky",
-    "qa": "node scripts/qa-check.mjs"
+    "qa": "node scripts/qa-check.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
@@ -17,6 +19,7 @@
     "@astrojs/sitemap": "^3.3.0",
     "@astrojs/vue": "^5.0.0",
     "astro": "^5.5.0",
+    "fuse.js": "^7.3.0",
     "vue": "^3.5.0"
   },
   "devDependencies": {
@@ -25,7 +28,8 @@
     "lint-staged": "^17.0.5",
     "pagefind": "^1.5.2",
     "prettier": "^3.8.3",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.7"
   },
   "lint-staged": {
     "*.{astro,ts,js,mjs,css,json,md}": [

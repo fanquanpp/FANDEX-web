@@ -2,6 +2,7 @@ const MAX_MATCHES = 50;
 const GLOSSARY_URL = `${import.meta.env.BASE_URL}data/glossary-index.json`;
 
 let glossaryData: Record<string, { module: string; def: string; slug: string }> | null = null;
+let cachedRegex: RegExp | null = null;
 
 async function loadGlossary() {
   if (glossaryData !== null) return glossaryData;
@@ -13,6 +14,19 @@ async function loadGlossary() {
   } catch {
     return null;
   }
+}
+
+function escapeHtml(text: string) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function createTermRegex(terms: string[]) {
+  const escapedTerms = terms
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return new RegExp(`(?:^|\\W)(${escapedTerms.join('|')})(?:$|\\W)`, 'g');
 }
 
 function createTooltip(
@@ -30,54 +44,63 @@ function createTooltip(
 
   const popup = document.createElement('span');
   popup.className = 'term-popup';
-  popup.innerHTML = `<span class="term-popup-def">${data.def}</span><a class="term-popup-link" href="${import.meta.env.BASE_URL}${data.slug}">查看详情</a>`;
+
+  const defSpan = document.createElement('span');
+  defSpan.className = 'term-popup-def';
+  defSpan.textContent = data.def;
+  popup.appendChild(defSpan);
+
+  const link = document.createElement('a');
+  link.className = 'term-popup-link';
+  link.href = `${import.meta.env.BASE_URL}${data.slug}`;
+  link.textContent = '查看详情';
+  popup.appendChild(link);
 
   tip.appendChild(abbr);
   tip.appendChild(popup);
   return tip;
 }
 
-function processTextNode(textNode: Text, terms: string[], matched: Set<string>): number {
+function processTextNode(
+  textNode: Text,
+  regex: RegExp,
+  termsData: Map<string, { module: string; def: string; slug: string }>
+) {
   const text = textNode.textContent || '';
-  let count = 0;
+  if (!text) return;
 
-  const sortedTerms = terms
-    .filter((t) => !matched.has(t) && text.includes(t))
-    .sort((a, b) => b.length - a.length);
+  regex.lastIndex = 0;
+  const match = regex.exec(text);
+  if (!match) return;
 
-  if (sortedTerms.length === 0) return 0;
-
-  const firstTerm = sortedTerms[0];
-  const idx = text.indexOf(firstTerm);
-  if (idx === -1) return 0;
-
-  const before = text.substring(0, idx);
-  const after = text.substring(idx + firstTerm.length);
+  const term = match[1];
+  const idx = match.index + (match[0].startsWith(' ') ? 1 : 0);
+  const data = termsData.get(term);
+  if (!data) return;
 
   const parent = textNode.parentNode;
-  if (!parent) return 0;
+  if (!parent) return;
 
-  const data = glossaryData![firstTerm];
-  if (!data) return 0;
+  const before = text.substring(0, idx);
+  const after = text.substring(idx + term.length);
 
   if (before) parent.insertBefore(document.createTextNode(before), textNode);
-
-  const tip = createTooltip(firstTerm, data);
-  parent.insertBefore(tip, textNode);
-
+  parent.insertBefore(createTooltip(term, data), textNode);
   if (after) {
     const afterNode = document.createTextNode(after);
     parent.insertBefore(afterNode, textNode);
+    processTextNode(afterNode, regex, termsData);
   }
 
   parent.removeChild(textNode);
-  matched.add(firstTerm);
-  count++;
-
-  return count;
 }
 
-function walkTextNodes(root: Node, terms: string[], matched: Set<string>, limit: number): number {
+function walkTextNodes(
+  root: Node,
+  regex: RegExp,
+  termsData: Map<string, { module: string; def: string; slug: string }>,
+  limit: number
+): number {
   let count = 0;
   const SKIP_TAGS = new Set([
     'CODE',
@@ -114,7 +137,8 @@ function walkTextNodes(root: Node, terms: string[], matched: Set<string>, limit:
   for (const textNode of nodesToProcess) {
     if (count >= limit) break;
     if (!textNode.parentNode) continue;
-    count += processTextNode(textNode, terms, matched);
+    processTextNode(textNode, regex, termsData);
+    count++;
   }
 
   return count;
@@ -127,8 +151,12 @@ export async function initTermTooltip() {
   const article = document.querySelector('article.prose');
   if (!article) return;
 
-  const terms = Object.keys(data).sort((a, b) => b.length - a.length);
-  const matched = new Set<string>();
+  const terms = Object.keys(data);
+  const termsData = new Map(Object.entries(data));
 
-  walkTextNodes(article, terms, matched, MAX_MATCHES);
+  if (!cachedRegex) {
+    cachedRegex = createTermRegex(terms);
+  }
+
+  walkTextNodes(article, cachedRegex, termsData, MAX_MATCHES);
 }
