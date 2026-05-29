@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fandex-v2';
+const CACHE_NAME = 'fandex-v3';
 const BASE = '/FANDEX/';
 
 const PRECACHE_URLS = [BASE, BASE + 'data/glossary-index.json'];
