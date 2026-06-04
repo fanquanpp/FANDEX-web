@@ -163,9 +163,11 @@ function createTooltip(
         showTermModal(term, data);
       } else {
         positionPopup();
-        popup.style.display = 'block';
+        popup.style.visibility = 'visible';
+        popup.style.opacity = '1';
         setTimeout(() => {
-          popup.style.display = '';
+          popup.style.visibility = '';
+          popup.style.opacity = '';
         }, 3000);
       }
     }
@@ -187,7 +189,8 @@ function processTextNode(
   if (!match) return;
 
   const term = match[1];
-  const idx = match.index + (match[0].startsWith(' ') ? 1 : 0);
+  const termOffset = match[0].indexOf(match[1]);
+  const idx = match.index + termOffset;
   const data = termsData.get(term);
   if (!data) return;
 

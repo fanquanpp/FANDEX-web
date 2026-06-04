@@ -173,6 +173,7 @@ function handleImport(e: Event) {
   align-items: center;
   gap: 5px;
   padding: 3px 10px;
+  height: 32px;
   border: 1px solid var(--color-border);
   border-radius: 0;
   background: transparent;
@@ -182,6 +183,7 @@ function handleImport(e: Event) {
   cursor: pointer;
   transition: all var(--transition-fast);
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .progress-btn:hover {
@@ -229,6 +231,7 @@ function handleImport(e: Event) {
   cursor: pointer;
   transition: all var(--transition-fast);
   padding: 0;
+  box-sizing: border-box;
 }
 
 .progress-export:hover,

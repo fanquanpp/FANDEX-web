@@ -13,13 +13,18 @@ export function setupMicroInteractions() {
     anchor.addEventListener('click', (e) => {
       const href = (anchor as HTMLAnchorElement).getAttribute('href');
       if (!href || href === '#') return;
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({
-          top: (target as HTMLElement).offsetTop - 20,
-          behavior: 'smooth',
-        });
+      try {
+        const id = decodeURIComponent(href.slice(1));
+        const target = document.querySelector('#' + CSS.escape(id));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: (target as HTMLElement).offsetTop - 20,
+            behavior: 'smooth',
+          });
+        }
+      } catch {
+        // ignore invalid selectors
       }
     });
   });

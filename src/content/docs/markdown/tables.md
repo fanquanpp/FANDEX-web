@@ -210,25 +210,66 @@ updated: 2026-05-03
  </tr>
 </table>
 ### 4.2 嵌套表格
+
+Markdown 原生不支持合并单元格，需要使用 HTML `<table>` 标签实现嵌套结构。
+
 **示例**：
-```markdown
- | 类别 | 详情 |
- |------|------|
- | 水果 | 苹果、香蕉、橙子 |
- | 蔬菜 | 西红柿、黄瓜、土豆 |
- | 联系方式 |
- | 电话 | 13800138000 |
- | 邮箱 | zhangsan@example.com |
- ```
+
+```html
+<table>
+  <tr>
+    <th>类别</th>
+    <th>详情</th>
+  </tr>
+  <tr>
+    <td>水果</td>
+    <td>苹果、香蕉、橙子</td>
+  </tr>
+  <tr>
+    <td>蔬菜</td>
+    <td>西红柿、黄瓜、土豆</td>
+  </tr>
+  <tr>
+    <th colspan="2">联系方式</th>
+  </tr>
+  <tr>
+    <td>电话</td>
+    <td>13800138000</td>
+  </tr>
+  <tr>
+    <td>邮箱</td>
+    <td>zhangsan@example.com</td>
+  </tr>
+</table>
+```
 
 **渲染效果**：
-| 类别 | 详情 |
-|------|------|
-| 水果 | 苹果、香蕉、橙子 |
-| 蔬菜 | 西红柿、黄瓜、土豆 |
-| 联系方式 |
-| 电话 | 13800138000 |
-| 邮箱 | <zhangsan@example.com> |
+
+<table>
+  <tr>
+    <th>类别</th>
+    <th>详情</th>
+  </tr>
+  <tr>
+    <td>水果</td>
+    <td>苹果、香蕉、橙子</td>
+  </tr>
+  <tr>
+    <td>蔬菜</td>
+    <td>西红柿、黄瓜、土豆</td>
+  </tr>
+  <tr>
+    <th colspan="2">联系方式</th>
+  </tr>
+  <tr>
+    <td>电话</td>
+    <td>13800138000</td>
+  </tr>
+  <tr>
+    <td>邮箱</td>
+    <td>zhangsan@example.com</td>
+  </tr>
+</table>
 
 ## 5. 最佳实践
 

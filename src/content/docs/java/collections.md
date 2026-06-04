@@ -16,22 +16,25 @@ author: 'Anonymous'
 
 Java 集合框架主要由以下接口和类组成：
 
-```
- ┌
- │ java.util.Collection │
- ├─────────────────────────────────────────────────────────────────────┤
- │ List Set Queue │
- ├─────────┬─────────┬─────────├─────────┬─────────┬─────────├─────────┤
- │ArrayList│LinkedList│Vector │HashSet │TreeSet │LinkedHashSet│PriorityQueue│
- └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
- ┌
- │ java.util.Map │
- ├─────────────────────────────────────────────────────────────────────┤
- │HashMap TreeMap LinkedHashMap │
- ├─────────────────────────────────────────────────────────────────────┤
- │ConcurrentHashMap Hashtable Properties │
- └─────────────────────────────────────────────────────────────────────┘
-```
+- **Collection** 接口体系
+  - **List**（有序可重复）
+    - `ArrayList` — 动态数组，随机访问快
+    - `LinkedList` — 双向链表，插入删除快
+    - `Vector` — 线程安全的动态数组
+  - **Set**（无序不重复）
+    - `HashSet` — 哈希表实现，查找快
+    - `TreeSet` — 红黑树实现，自然排序
+    - `LinkedHashSet` — 保持插入顺序
+  - **Queue**（队列）
+    - `PriorityQueue` — 优先级队列
+
+- **Map** 接口体系
+  - `HashMap` — 哈希表实现，键值对存储
+  - `TreeMap` — 红黑树实现，按键排序
+  - `LinkedHashMap` — 保持插入顺序
+  - `ConcurrentHashMap` — 线程安全的哈希表
+  - `Hashtable` — 线程安全（遗留类）
+  - `Properties` — 键值对配置
 
 ### 1.2 核心接口
 

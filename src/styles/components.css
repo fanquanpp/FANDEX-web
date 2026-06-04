@@ -87,10 +87,18 @@
   white-space: nowrap;
 }
 
-.nav-back-to-top:hover {
+.nav-back-to-top:hover:not(:focus) {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
+}
+
+.nav-back-to-top:focus-visible {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .nav-back-to-top svg {
@@ -387,6 +395,8 @@
 .term-tip {
   position: relative;
   display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 .term-abbr {
@@ -394,10 +404,12 @@
   text-underline-offset: 3px;
   cursor: help;
   color: var(--color-primary);
+  margin: 0;
+  padding: 0;
 }
 
 .term-popup {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 9999;
   min-width: 200px;
@@ -411,11 +423,23 @@
   color: var(--color-text-secondary);
   white-space: normal;
   pointer-events: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
 .term-tip:hover .term-popup,
 .term-tip:focus-within .term-popup {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .term-tip:hover .term-popup,
+  .term-tip:focus-within .term-popup {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 
 .term-popup-def {

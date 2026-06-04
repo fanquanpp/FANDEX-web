@@ -56,10 +56,6 @@ const moduleMapJson = JSON.stringify(
               <option value={m.id}>{m.title}</option>
             ))}
           </select>
-          <div class="sort-toggle" id="sort-toggle">
-            <button class="sort-btn active" data-sort="relevance">相关度</button>
-            <button class="sort-btn" data-sort="date">更新日期</button>
-          </div>
         </div>
         <div id="search-status" class="search-status"></div>
       </div>
@@ -306,37 +302,6 @@ const moduleMapJson = JSON.stringify(
   border-color: var(--color-primary);
 }
 
-.sort-toggle {
-  display: flex;
-  border: 1px solid var(--color-border-light);
-  overflow: hidden;
-}
-
-.sort-btn {
-  padding: 9px 14px;
-  border: none;
-  background: var(--color-bg-card);
-  color: var(--color-text-tertiary);
-  font-family: var(--font-display);
-  font-size: 0.82em;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.sort-btn:not(:last-child) {
-  border-right: 1px solid var(--color-border-light);
-}
-
-.sort-btn.active {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-.sort-btn:hover:not(.active) {
-  background: var(--color-bg-hover);
-  color: var(--color-text);
-}
-
 .search-status {
   font-size: 0.85em;
   color: var(--color-text-tertiary);
@@ -511,16 +476,6 @@ const moduleMapJson = JSON.stringify(
     font-size: 0.82em;
   }
 
-  .sort-toggle {
-    flex: none;
-    width: auto;
-  }
-
-  .sort-btn {
-    padding: 7px 10px;
-    font-size: 0.78em;
-  }
-
   .result-header {
     flex-wrap: wrap;
   }
@@ -534,14 +489,12 @@ const moduleMapJson = JSON.stringify(
 
   (() => {
     let index: any[] | null = null;
-    let sortMode: 'relevance' | 'date' = 'relevance';
     let worker: Worker | null = null;
     let useWorker = false;
     let fuse: any = null;
 
     const input = document.getElementById('search-input') as HTMLInputElement;
     const moduleSelect = document.getElementById('filter-module') as HTMLSelectElement;
-    const sortToggle = document.getElementById('sort-toggle')!;
     const statusEl = document.getElementById('search-status')!;
     const resultsEl = document.getElementById('search-results')!;
     const tagGroups = document.querySelectorAll<HTMLElement>('.tag-group');
@@ -554,17 +507,6 @@ const moduleMapJson = JSON.stringify(
       intermediate: '进阶',
       advanced: '高级',
     };
-
-    sortToggle.addEventListener('click', (e) => {
-      const btn = (e.target as HTMLElement).closest('.sort-btn');
-      if (!btn) return;
-      const mode = (btn as HTMLElement).dataset.sort as 'relevance' | 'date';
-      if (mode === sortMode) return;
-      sortMode = mode;
-      sortToggle.querySelectorAll('.sort-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      doSearch();
-    });
 
     let debounceTimer: ReturnType<typeof setTimeout>;
     input.addEventListener('input', () => {
@@ -656,7 +598,7 @@ const moduleMapJson = JSON.stringify(
       if (useWorker && worker) {
         worker.postMessage({
           type: 'search',
-          payload: { query, moduleFilter, sortMode },
+          payload: { query, moduleFilter },
         });
         return;
       }
@@ -670,13 +612,6 @@ const moduleMapJson = JSON.stringify(
           ...r.item,
           score: r.score ? 1 - r.score : 1,
         }));
-        if (sortMode === 'date') {
-          items.sort((a: any, b: any) => {
-            const da = a.updated || '';
-            const db = b.updated || '';
-            return db.localeCompare(da) || b.score - a.score;
-          });
-        }
         renderResults(items.slice(0, 50), query);
         return;
       }
@@ -711,24 +646,8 @@ const moduleMapJson = JSON.stringify(
           })
           .filter((d: any) => d.score > 0);
 
-        if (sortMode === 'relevance') {
-          scored.sort((a: any, b: any) => b.score - a.score);
-        } else {
-          scored.sort((a: any, b: any) => {
-            const da = a.updated || '';
-            const db = b.updated || '';
-            return db.localeCompare(da) || b.score - a.score;
-          });
-        }
+        scored.sort((a: any, b: any) => b.score - a.score);
         results = scored;
-      } else {
-        if (sortMode === 'date') {
-          results = [...results].sort((a: any, b: any) => {
-            const da = a.updated || '';
-            const db = b.updated || '';
-            return db.localeCompare(da);
-          });
-        }
       }
 
       renderResults(results, query);

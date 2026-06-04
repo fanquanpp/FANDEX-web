@@ -15,13 +15,12 @@ description: 'JVM 原理、类加载机制与内存管理核心知识。'
                     +-- 准备(Preparation)
                     +-- 解析(Resolution)
 
-````
-
 #### 加载（Loading）
 
 通过类的全限定名获取二进制字节流，将字节流转化为方法区的运行时数据结构，在堆中生成对应的 `java.lang.Class` 对象。
 
 字节流来源：
+
 - 本地文件系统（.class 文件）
 - JAR/WAR 包
 - 网络下载
@@ -47,7 +46,7 @@ public class Example {
         C = 30;
     }
 }
-````
+```
 
 ### 双亲委派模型
 

@@ -440,6 +440,7 @@
   .prose table {
     display: block;
     width: 100%;
+    table-layout: fixed;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }

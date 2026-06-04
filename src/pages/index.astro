@@ -33,7 +33,7 @@ allDocs.forEach(doc => {
   <div class="home-page">
     <section class="hero">
       <div class="hero-badge">KNOWLEDGE BASE</div>
-      <h1 class="hero-title">FANDEX</h1>
+      <h1 class="hero-title"><span class="hero-title-fan">FAN</span>DEX</h1>
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num">{modules.length}</span>
@@ -164,6 +164,10 @@ allDocs.forEach(doc => {
   letter-spacing: 0.25em;
   margin: 0 0 var(--spacing-sm);
   color: var(--color-text);
+}
+
+.hero-title-fan {
+  color: var(--color-primary);
 }
 
 .hero-stats {
