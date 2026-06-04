@@ -10,36 +10,6 @@ description: 'Java 发展历史、平台体系与开发环境搭建。'
 author: 'Anonymous'
 ---
 
-## 知识地图
-
-```mermaid
-graph TD
-    A[Java 概述与开发环境] --> B[快速入门]
-    A --> C[基础语法]
-    C --> C1[程序结构与基本语法]
-    C --> C2[数据类型与类型转换]
-    C --> C3[变量与常量]
-    C --> C4[运算符与表达式]
-    C --> C5[控制流]
-    A --> D[核心编程]
-    D --> D1[数组详解]
-    D --> D2[方法详解]
-    D --> D3[面向对象编程]
-    D --> D4[抽象类与接口]
-    A --> E[高级特性]
-    E --> E1[集合框架详解]
-    E --> E2[泛型详解]
-    E --> E3[异常处理机制]
-    E --> E4[I/O 流与文件操作]
-    E --> E5[多线程基础]
-    E --> E6[JVM 内存模型]
-    A --> F[框架与工具]
-    F --> F1[Spring Boot]
-    F --> F2[Spring Cloud]
-    F --> F3[Java Swing]
-    A --> G[项目示例]
-```
-
 ## 1. Java 概述 (Overview)
 
 Java 是一种由 **Sun Microsystems** (后被 Oracle 收购) 于 1995 年发布的面向对象编程语言。其核心理念是 **"Write Once, Run Anywhere" (WORA)**，即一次编写，到处运行。Java 不仅是一种编程语言，更是一个完整的平台，包括运行环境、开发工具和丰富的类库。

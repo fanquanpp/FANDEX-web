@@ -10,18 +10,6 @@ description: 'Lua 语言特点、应用场景与开发环境搭建。'
 author: 'Anonymous'
 ---
 
-## 知识地图
-
-```mermaid
-graph TD
-    A[Lua 概述与环境配置] --> B[程序结构与基本语法]
-    A --> C[数据类型与 Table 详解]
-    A --> D[函数与闭包]
-    A --> E[元表与面向对象编程]
-    A --> F[模块与包]
-    A --> G[协程与异步]
-```
-
 ## 1. Lua 概述 (Overview)
 
 Lua 是一门简洁、轻量、可扩展的脚本语言，由巴西里约热内卢天主教大学的 Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo 于 1993 年开发。它的核心设计目标是：**易于嵌入到宿主程序中**，提供灵活的脚本扩展能力。

@@ -11,26 +11,6 @@ author: 'fanquanpp'
 updated: 2026-05-03
 ---
 
-## 知识地图
-
-```mermaid
-graph TD
-    A[Vue3 概述与环境] --> B[快速入门]
-    A --> C[模板语法]
-    A --> D[指令系统]
-    A --> E[响应式系统]
-    A --> F[组合式 API]
-    A --> G[组件系统]
-    G --> G1[高级组件特性]
-    A --> H[状态管理]
-    H --> H1[Pinia]
-    A --> I[路由]
-    I --> I1[Vue Router]
-    A --> J[TypeScript 集成]
-    A --> K[性能优化]
-    A --> L[项目示例]
-```
-
 ## 1. Vue3 概述 | Vue3 Overview
 
 Vue3 是 Vue.js 框架的第三个主要版本，于 2020 年 9 月正式发布。它带来了许多重要的改进和新特性，包括：
