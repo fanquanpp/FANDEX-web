@@ -18,10 +18,20 @@ export function setupMicroInteractions() {
         const target = document.querySelector('#' + CSS.escape(id));
         if (target) {
           e.preventDefault();
-          window.scrollTo({
-            top: (target as HTMLElement).offsetTop - 20,
-            behavior: 'smooth',
-          });
+          const main = document.getElementById('app-main');
+          if (main) {
+            const mainRect = main.getBoundingClientRect();
+            const targetRect = (target as HTMLElement).getBoundingClientRect();
+            main.scrollTo({
+              top: main.scrollTop + targetRect.top - mainRect.top - 20,
+              behavior: 'smooth',
+            });
+          } else {
+            window.scrollTo({
+              top: (target as HTMLElement).offsetTop - 20,
+              behavior: 'smooth',
+            });
+          }
         }
       } catch {
         // ignore invalid selectors
