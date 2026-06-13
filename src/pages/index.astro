@@ -28,7 +28,7 @@ allDocs.forEach(doc => {
 ---
 
 <HomeLayout title="首页">
-  <SEO slot="head" title="FANDEX - 开发者知识库" description="18个模块的技术学习笔记，覆盖前端/后端/基础/工具全栈知识体系" type="website" />
+  <SEO slot="head" title="FANDEX - 开发者知识库" description="28个模块的技术学习笔记，覆盖编程语言·前端工程·数据技术·数学基础·基础设施·新兴领域全栈知识体系" type="website" />
 
   <div class="home-page">
     <section class="hero">
@@ -82,9 +82,12 @@ allDocs.forEach(doc => {
         <ModuleCard mod={modules.find(m => m.id === 'c')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'cpp')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'java')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'kotlin')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'csharp')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'python')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'javascript')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'typescript')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'go')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'lua')!} color="#10b981" />
       </div>
     </section>
@@ -99,6 +102,7 @@ allDocs.forEach(doc => {
         <ModuleCard mod={modules.find(m => m.id === 'javascript')!} color="#f59e0b" />
         <ModuleCard mod={modules.find(m => m.id === 'typescript')!} color="#f59e0b" />
         <ModuleCard mod={modules.find(m => m.id === 'vue3')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'react')!} color="#f59e0b" />
       </div>
     </section>
 
@@ -109,6 +113,7 @@ allDocs.forEach(doc => {
       <div class="feature-grid">
         <ModuleCard mod={modules.find(m => m.id === 'python')!} color="#ef4444" />
         <ModuleCard mod={modules.find(m => m.id === 'mysql')!} color="#ef4444" />
+        <ModuleCard mod={modules.find(m => m.id === 'sql')!} color="#ef4444" />
         <ModuleCard mod={modules.find(m => m.id === 'data-analysis')!} color="#ef4444" />
       </div>
     </section>
@@ -120,6 +125,35 @@ allDocs.forEach(doc => {
       <div class="feature-grid">
         <ModuleCard mod={modules.find(m => m.id === 'algorithm')!} color="#8b5cf6" />
         <ModuleCard mod={modules.find(m => m.id === 'cs-fundamentals')!} color="#8b5cf6" />
+      </div>
+    </section>
+
+    <section class="category-section" data-category="math">
+      <div class="category-header">
+        <span class="category-tag">数学基础</span>
+      </div>
+      <div class="feature-grid">
+        <ModuleCard mod={modules.find(m => m.id === 'calculus')!} color="#ec4899" />
+        <ModuleCard mod={modules.find(m => m.id === 'discrete-math')!} color="#ec4899" />
+      </div>
+    </section>
+
+    <section class="category-section" data-category="infrastructure">
+      <div class="category-header">
+        <span class="category-tag">基础设施</span>
+      </div>
+      <div class="feature-grid">
+        <ModuleCard mod={modules.find(m => m.id === 'devops')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'iot')!} color="#f97316" />
+      </div>
+    </section>
+
+    <section class="category-section" data-category="emerging">
+      <div class="category-header">
+        <span class="category-tag">新兴领域</span>
+      </div>
+      <div class="feature-grid">
+        <ModuleCard mod={modules.find(m => m.id === 'agent')!} color="#06b6d4" />
       </div>
     </section>
 
