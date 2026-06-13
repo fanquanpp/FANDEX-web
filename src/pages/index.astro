@@ -28,7 +28,7 @@ allDocs.forEach(doc => {
 ---
 
 <HomeLayout title="首页">
-  <SEO slot="head" title="FANDEX - 开发者知识库" description="35个模块的技术学习笔记，覆盖编程语言·前端工程·数据技术·数学基础·基础设施·新兴领域全栈知识体系" type="website" />
+  <SEO slot="head" title="FANDEX - 开发者知识库" description="35个模块的技术学习笔记，覆盖开发语言·数据库·计算机科学·工程基础设施·数据技术全栈知识体系" type="website" />
 
   <div class="home-page">
     <section class="hero">
@@ -62,47 +62,69 @@ allDocs.forEach(doc => {
       </div>
     </section>
 
-    <section class="category-section" data-category="basic-tools">
+    <section class="category-section" data-category="dev-lang">
       <div class="category-header">
-        <span class="category-tag">工具链</span>
+        <span class="category-tag">开发语言</span>
       </div>
       <div class="feature-grid">
         <ModuleCard mod={modules.find(m => m.id === 'getting-started')!} color="#6366f1" />
         <ModuleCard mod={modules.find(m => m.id === 'markdown')!} color="#6366f1" />
         <ModuleCard mod={modules.find(m => m.id === 'git')!} color="#6366f1" />
         <ModuleCard mod={modules.find(m => m.id === 'github')!} color="#6366f1" />
-      </div>
-    </section>
-
-    <section class="category-section" data-category="programming">
-      <div class="category-header">
-        <span class="category-tag">编程语言</span>
-      </div>
-      <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'c')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'cpp')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'java')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'kotlin')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'csharp')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'python')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'html5')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'css')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'javascript')!} color="#10b981" />
         <ModuleCard mod={modules.find(m => m.id === 'typescript')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'go')!} color="#10b981" />
-        <ModuleCard mod={modules.find(m => m.id === 'lua')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'vue3')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'react')!} color="#10b981" />
+        <ModuleCard mod={modules.find(m => m.id === 'c')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'cpp')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'java')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'kotlin')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'csharp')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'python')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'go')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'lua')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'harmonyos')!} color="#06b6d4" />
       </div>
     </section>
 
-    <section class="category-section" data-category="web-frontend">
+    <section class="category-section" data-category="database">
       <div class="category-header">
-        <span class="category-tag">前端工程</span>
+        <span class="category-tag">数据库</span>
       </div>
       <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'html5')!} color="#f59e0b" />
-        <ModuleCard mod={modules.find(m => m.id === 'css')!} color="#f59e0b" />
-        <ModuleCard mod={modules.find(m => m.id === 'javascript')!} color="#f59e0b" />
-        <ModuleCard mod={modules.find(m => m.id === 'typescript')!} color="#f59e0b" />
-        <ModuleCard mod={modules.find(m => m.id === 'vue3')!} color="#f59e0b" />
-        <ModuleCard mod={modules.find(m => m.id === 'react')!} color="#f59e0b" />
+        <ModuleCard mod={modules.find(m => m.id === 'mysql')!} color="#ef4444" />
+        <ModuleCard mod={modules.find(m => m.id === 'sql')!} color="#ef4444" />
+        <ModuleCard mod={modules.find(m => m.id === 'postgresql')!} color="#ef4444" />
+        <ModuleCard mod={modules.find(m => m.id === 'redis')!} color="#ef4444" />
+      </div>
+    </section>
+
+    <section class="category-section" data-category="comp-sci">
+      <div class="category-header">
+        <span class="category-tag">计算机科学</span>
+      </div>
+      <div class="feature-grid">
+        <ModuleCard mod={modules.find(m => m.id === 'algorithm')!} color="#8b5cf6" />
+        <ModuleCard mod={modules.find(m => m.id === 'cs-fundamentals')!} color="#8b5cf6" />
+        <ModuleCard mod={modules.find(m => m.id === 'calculus')!} color="#ec4899" />
+        <ModuleCard mod={modules.find(m => m.id === 'discrete-math')!} color="#ec4899" />
+      </div>
+    </section>
+
+    <section class="category-section" data-category="eng-infra">
+      <div class="category-header">
+        <span class="category-tag">工程与基础设施</span>
+      </div>
+      <div class="feature-grid">
+        <ModuleCard mod={modules.find(m => m.id === 'devops')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'networking')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'cybersecurity')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'cloud-computing')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'iot')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'software-testing')!} color="#f97316" />
+        <ModuleCard mod={modules.find(m => m.id === 'agent')!} color="#06b6d4" />
       </div>
     </section>
 
@@ -111,56 +133,7 @@ allDocs.forEach(doc => {
         <span class="category-tag">数据技术</span>
       </div>
       <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'python')!} color="#ef4444" />
-        <ModuleCard mod={modules.find(m => m.id === 'mysql')!} color="#ef4444" />
-        <ModuleCard mod={modules.find(m => m.id === 'sql')!} color="#ef4444" />
-        <ModuleCard mod={modules.find(m => m.id === 'postgresql')!} color="#ef4444" />
-        <ModuleCard mod={modules.find(m => m.id === 'redis')!} color="#ef4444" />
-        <ModuleCard mod={modules.find(m => m.id === 'data-analysis')!} color="#ef4444" />
-      </div>
-    </section>
-
-    <section class="category-section" data-category="cs">
-      <div class="category-header">
-        <span class="category-tag">计算理论</span>
-      </div>
-      <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'algorithm')!} color="#8b5cf6" />
-        <ModuleCard mod={modules.find(m => m.id === 'cs-fundamentals')!} color="#8b5cf6" />
-      </div>
-    </section>
-
-    <section class="category-section" data-category="math">
-      <div class="category-header">
-        <span class="category-tag">数学基础</span>
-      </div>
-      <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'calculus')!} color="#ec4899" />
-        <ModuleCard mod={modules.find(m => m.id === 'discrete-math')!} color="#ec4899" />
-      </div>
-    </section>
-
-    <section class="category-section" data-category="infrastructure">
-      <div class="category-header">
-        <span class="category-tag">基础设施</span>
-      </div>
-      <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'devops')!} color="#f97316" />
-        <ModuleCard mod={modules.find(m => m.id === 'networking')!} color="#f97316" />
-        <ModuleCard mod={modules.find(m => m.id === 'cybersecurity')!} color="#f97316" />
-        <ModuleCard mod={modules.find(m => m.id === 'cloud-computing')!} color="#f97316" />
-        <ModuleCard mod={modules.find(m => m.id === 'iot')!} color="#f97316" />
-      </div>
-    </section>
-
-    <section class="category-section" data-category="emerging">
-      <div class="category-header">
-        <span class="category-tag">新兴领域</span>
-      </div>
-      <div class="feature-grid">
-        <ModuleCard mod={modules.find(m => m.id === 'agent')!} color="#06b6d4" />
-        <ModuleCard mod={modules.find(m => m.id === 'harmonyos')!} color="#06b6d4" />
-        <ModuleCard mod={modules.find(m => m.id === 'software-testing')!} color="#06b6d4" />
+        <ModuleCard mod={modules.find(m => m.id === 'data-analysis')!} color="#0ea5e9" />
       </div>
     </section>
 
