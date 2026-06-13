@@ -42,6 +42,16 @@
   gap: var(--spacing-sm);
 }
 
+.nav-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-logo:hover {
+  opacity: 0.85;
+}
+
 .logo-mark {
   display: inline-block;
   width: 8px;
@@ -70,6 +80,37 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+}
+
+.nav-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.78em;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+}
+
+.nav-github-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.nav-github-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .nav-github-text {
+    display: none;
+  }
 }
 
 .nav-back-to-top {
