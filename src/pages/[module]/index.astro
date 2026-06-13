@@ -3,7 +3,7 @@ import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
-import { getModule } from '@/lib/modules'
+import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
@@ -36,7 +36,7 @@ const breadcrumb = [
     <Breadcrumb items={breadcrumb} hasSidebar />
 
     <div class="module-header">
-      <span class="header-bar" style={`background:${meta.color}`}></span>
+      <span class="header-bar" style={`background:${categoryColors[getPrimaryCategory(meta)]}`}></span>
       <div class="header-body">
         <h1 class="header-title">{meta.title}</h1>
         <p class="header-desc">{meta.description}</p>
@@ -47,7 +47,7 @@ const breadcrumb = [
       {sortedDocs.map(doc => (
         <li class="doc-list-item">
           <a href={`${import.meta.env.BASE_URL}${module}/${slug(doc.id)}/`} class="doc-list-link">
-            <span class="doc-list-icon" style={`background:${meta.color}`}>
+            <span class="doc-list-icon" style={`background:${categoryColors[getPrimaryCategory(meta)]}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
