@@ -291,13 +291,6 @@ export const modules = [
     description: 'Code Review·On-Call·事故复盘',
     categories: ['eng-infra'],
   },
-  {
-    id: 'career',
-    title: '职业发展',
-    icon: '职发',
-    description: '面试·晋升·学习路线',
-    categories: ['eng-infra'],
-  },
 
   // ── 数据技术 ──
   {

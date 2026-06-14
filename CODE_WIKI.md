@@ -1,12 +1,12 @@
 # FANDEX Code Wiki
 
-> **FANDEX** — 开发者知识库 | Astro 5 + Vue 3 | 45 模块 · 1511 篇文档
+> **FANDEX** — 开发者知识库 | Astro 5 + Vue 3 | 44 模块 · 1504 篇文档
 
 ---
 
 ## 1. 项目概述
 
-FANDEX 是一个基于 Astro 5 SSG 的开发者知识库站点，使用 Vue 3 岛屿架构实现客户端交互。项目覆盖 45 个技术模块、1511 篇文档、13 篇术语表，部署在 GitHub Pages 上。
+FANDEX 是一个基于 Astro 5 SSG 的开发者知识库站点，使用 Vue 3 岛屿架构实现客户端交互。项目覆盖 44 个技术模块、1504 篇文档、13 篇术语表，部署在 GitHub Pages 上。
 
 **核心特性：**
 
@@ -141,13 +141,12 @@ FANDEX-vue/
 │   │   ├── SEO.astro                 # SEO 元数据
 │   │   └── Sidebar.astro             # 侧边栏
 │   ├── content/
-│   │   ├── docs/                     # 文档内容（45 模块 / 1511 篇）
+│   │   ├── docs/                     # 文档内容（44 模块 / 1504 篇）
 │   │   │   ├── agent/                # AI Agent
 │   │   │   ├── algorithm/            # 算法与数据结构
 │   │   │   ├── big-data/             # 大数据
 │   │   │   ├── c/                    # C 语言
 │   │   │   ├── calculus/             # 高等数学
-│   │   │   ├── career/               # 职业发展
 │   │   │   ├── cloud-computing/      # 云计算
 │   │   │   ├── cpp/                  # C++
 │   │   │   ├── csharp/               # C#
@@ -261,7 +260,7 @@ FANDEX-vue/
 | 模块                   | 文件                    | 职责                                                                                     |
 | :--------------------- | :---------------------- | :--------------------------------------------------------------------------------------- |
 | **constants**          | `constants.ts`          | 站点元信息常量（标题、URL、作者、语言）                                                  |
-| **modules**            | `modules.ts`            | 45 个模块定义、categories 数组、categoryColors 颜色体系、icon 字段、前置关系图、查询函数 |
+| **modules**            | `modules.ts`            | 44 个模块定义、categories 数组、categoryColors 颜色体系、icon 字段、前置关系图、查询函数 |
 | **progress**           | `progress.ts`           | 阅读进度管理：localStorage 主存储 + IndexedDB 备份，支持导出/导入/跨标签同步             |
 | **store**              | `store.ts`              | Vue reactive 全局状态（进度、搜索、移动端检测），BroadcastChannel 跨标签同步             |
 | **animations**         | `animations.ts`         | 微交互：卡片悬浮阴影、锚点平滑滚动、侧边栏过渡动画                                       |
@@ -510,7 +509,7 @@ quiz:
 | `dev-lang`  | 开发语言       | `#d63031` | HTML5 · CSS · JavaScript · TypeScript · Vue 3 · React · C · C++ · Java · Kotlin · C# · Python · Go · Lua · HarmonyOS |
 | `database`  | 数据库         | `#00b894` | SQL · MySQL · PostgreSQL · Redis                                                                                     |
 | `comp-sci`  | 计算机科学     | `#8854d0` | 算法与数据结构 · 计算机基础 · 高等数学 · 离散数学 · 线性代数 · 概率论与数理统计 · 英语                               |
-| `eng-infra` | 工程与基础设施 | `#e05a2b` | 运维 · 网络技术 · 网络安全 · 云计算 · 物联网 · 软件测试 · AI Agent · 软件工程 · 软件架构 · 工程实践 · 职业发展       |
+| `eng-infra` | 工程与基础设施 | `#e05a2b` | 运维 · 网络技术 · 网络安全 · 云计算 · 物联网 · 软件测试 · AI Agent · 软件工程 · 软件架构 · 工程实践                  |
 | `data`      | 数据技术       | `#f9a825` | 数据分析 · 大数据 · 机器学习 · 深度学习 · 概率论与数理统计                                                           |
 
 > 部分模块属于多个分类：C/C++ 同时属于开发语言和计算机科学；Python 同时属于开发语言和数据技术；Go 同时属于开发语言和工程与基础设施；Redis 同时属于数据库和工程与基础设施；网络技术 同时属于工程与基础设施和计算机科学；AI Agent 同时属于工程与基础设施和数据技术；概率论与数理统计 同时属于计算机科学和数据技术。
@@ -896,4 +895,4 @@ node scripts/clean-true-prefix.mjs
 
 ---
 
-> FANDEX v4.0.0 | 45 模块 · 1511 篇文档
+> FANDEX v4.0.0 | 44 模块 · 1504 篇文档
