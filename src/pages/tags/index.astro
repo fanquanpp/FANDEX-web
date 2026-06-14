@@ -483,6 +483,14 @@ const moduleMapJson = JSON.stringify(
 </style>
 
 <script>
+  // Load DOMPurify for safe innerHTML
+  if (!(window as any).DOMPurify) {
+    const s = document.createElement('script')
+    s.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
+    s.async = true
+    document.head.appendChild(s)
+  }
+
   const MODULE_MAP: Record<string, { title: string; color: string }> = JSON.parse(
     document.getElementById('search-section')!.dataset.modules || '{}'
   );
@@ -707,7 +715,8 @@ const moduleMapJson = JSON.stringify(
         })
         .join('');
 
-      resultsEl.innerHTML = html;
+      const purify = (window as any).DOMPurify
+      resultsEl.innerHTML = purify ? purify.sanitize(html) : html
     }
   })();
 </script>

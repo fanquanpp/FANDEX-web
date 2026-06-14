@@ -16,6 +16,8 @@ const hasSidebar = Astro.slots.has('sidebar')
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -228,7 +230,8 @@ const hasSidebar = Astro.slots.has('sidebar')
           const { svg } = await mermaid.render(id, code)
           const container = document.createElement('div')
           container.className = 'mermaid-output'
-          container.innerHTML = svg
+          const purify = (window as any).DOMPurify
+          container.innerHTML = purify ? purify.sanitize(svg) : svg
           pre.replaceWith(container)
         } catch {
           const errDiv = document.createElement('div')
@@ -246,12 +249,21 @@ const hasSidebar = Astro.slots.has('sidebar')
 
     let script = document.getElementById('mermaid-script') as HTMLScriptElement | null
     if (!script) {
+      // Load DOMPurify first, then Mermaid
+      const loadPurify = new Promise<void>((resolve) => {
+        if ((window as any).DOMPurify) { resolve(); return }
+        const p = document.createElement('script')
+        p.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
+        p.onload = () => resolve()
+        p.onerror = () => resolve() // continue without purify
+        document.head.appendChild(p)
+      })
       script = document.createElement('script')
       script.id = 'mermaid-script'
       script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
       script.onload = () => {
         script!.dataset.loaded = '1'
-        render()
+        loadPurify.then(() => render())
       }
       document.head.appendChild(script)
       return
