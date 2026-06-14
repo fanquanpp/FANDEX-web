@@ -40,26 +40,26 @@
 | 前置知识 | 模块间依赖关系展示，自动渲染前置模块链接                          |
 | 全文搜索 | Pagefind 客户端搜索索引 + Fuse.js Web Worker，支持按模块/难度筛选 |
 | 标签索引 | 跨模块知识检索，按模块/难度/相关度筛选                            |
-| 学习路线 | 5 条职业方向路径可视化（全栈入门/前端/数据/系统/CS）              |
-| 离线可用 | Service Worker 缓存（Cache First + Stale While Revalidate）       |
+| 学习路线 | 10 条职业方向路径可视化（11 阶段递进）                            |
+| 离线可用 | Service Worker 缓存（Cache First + Network First + SWR）          |
 | 暗色模式 | Dark / Light 主题切换，localStorage 持久化 + 闪烁防护             |
 | 响应式   | 桌面端侧边栏 + 移动端抽屉导航 + 底部导航栏                        |
 | 代码运行 | JS/TS 代码块 Web Worker 沙箱执行，5 秒超时保护                    |
 
 ## 技术栈
 
-| 层级  | 技术                           | 说明                                                        |
-| :---- | :----------------------------- | :---------------------------------------------------------- |
-| 框架  | Astro 5                        | 静态站点生成 (SSG)，岛屿架构                                |
-| 交互  | Vue 3                          | `client:load` / `client:visible` 按需水合                   |
-| 高亮  | Shiki                          | 双主题代码高亮 (github-light / github-dark)，构建时零 JS    |
-| 搜索  | Pagefind + Fuse.js             | 构建后索引 + Web Worker 模糊搜索                            |
-| 图表  | Mermaid 11                     | 知识地图渲染，CDN 按需加载                                  |
-| SEO   | JSON-LD + Sitemap              | 结构化数据 + Open Graph + Twitter Card                      |
-| 离线  | Service Worker                 | Cache First (哈希资源) + Stale While Revalidate (HTML/JSON) |
-| 测试  | Vitest                         | 单元测试                                                    |
-| 质量  | Husky + lint-staged + Prettier | Pre-commit 自动格式化                                       |
-| CI/CD | GitHub Actions                 | 三阶段流水线 (setup → build → deploy)                       |
+| 层级  | 技术                           | 说明                                                            |
+| :---- | :----------------------------- | :-------------------------------------------------------------- |
+| 框架  | Astro 5                        | 静态站点生成 (SSG)，岛屿架构                                    |
+| 交互  | Vue 3                          | `client:load` / `client:visible` 按需水合                       |
+| 高亮  | Shiki                          | 双主题代码高亮 (github-light / github-dark)，构建时零 JS        |
+| 搜索  | Pagefind + Fuse.js             | 构建后索引 + Web Worker 模糊搜索                                |
+| 图表  | Mermaid 11                     | 知识地图渲染，CDN 按需加载                                      |
+| SEO   | JSON-LD + Sitemap              | 结构化数据 + Open Graph + Twitter Card                          |
+| 离线  | Service Worker                 | Cache First (哈希资源) + Network First (HTML/数据) + SWR (图片) |
+| 测试  | Vitest                         | 单元测试                                                        |
+| 质量  | Husky + lint-staged + Prettier | Pre-commit 自动格式化                                           |
+| CI/CD | GitHub Actions                 | 三阶段流水线 (setup → build → deploy)                           |
 
 ## 仅获取文档内容
 
@@ -81,41 +81,51 @@ git checkout
 
 ```
 src/content/docs/
-├── agent/            # AI Agent
-├── algorithm/        # 算法与数据结构
-├── c/                # C 语言
-├── calculus/         # 高等数学
-├── cloud-computing/  # 云计算
-├── cpp/              # C++
-├── csharp/           # C#
-├── cs-fundamentals/  # 计算机基础
-├── css/              # CSS
-├── cybersecurity/    # 网络安全
-├── data-analysis/    # 数据分析
-├── devops/           # 运维
-├── discrete-math/    # 离散数学
-├── getting-started/  # 入门指南
-├── git/              # Git
-├── github/           # GitHub
-├── go/               # Go
-├── harmonyos/        # 鸿蒙开发
-├── html5/            # HTML5
-├── iot/              # 物联网
-├── java/             # Java
-├── javascript/       # JavaScript
-├── kotlin/           # Kotlin
-├── lua/              # Lua
-├── markdown/         # Markdown
-├── mysql/            # MySQL
-├── networking/       # 网络技术
-├── postgresql/       # PostgreSQL
-├── python/           # Python
-├── react/            # React
-├── redis/            # Redis
-├── software-testing/ # 软件测试
-├── sql/              # SQL
-├── typescript/       # TypeScript
-└── vue3/             # Vue 3
+├── agent/                  # AI Agent
+├── algorithm/              # 算法与数据结构
+├── big-data/               # 大数据
+├── c/                      # C 语言
+├── calculus/               # 高等数学
+├── career/                 # 职业发展
+├── cloud-computing/        # 云计算
+├── cpp/                    # C++
+├── csharp/                 # C#
+├── cs-fundamentals/        # 计算机基础
+├── css/                    # CSS
+├── cybersecurity/          # 网络安全
+├── data-analysis/          # 数据分析
+├── deep-learning/          # 深度学习
+├── devops/                 # 运维
+├── discrete-math/          # 离散数学
+├── engineering-practices/  # 工程实践
+├── english/                # 英语
+├── getting-started/        # 入门指南
+├── git/                    # Git
+├── github/                 # GitHub
+├── go/                     # Go
+├── harmonyos/              # 鸿蒙开发
+├── html5/                  # HTML5
+├── iot/                    # 物联网
+├── java/                   # Java
+├── javascript/             # JavaScript
+├── kotlin/                 # Kotlin
+├── linear-algebra/         # 线性代数
+├── lua/                    # Lua
+├── machine-learning/       # 机器学习
+├── markdown/               # Markdown
+├── mysql/                  # MySQL
+├── networking/             # 网络技术
+├── postgresql/             # PostgreSQL
+├── probability-statistics/ # 概率论与数理统计
+├── python/                 # Python
+├── react/                  # React
+├── redis/                  # Redis
+├── software-architecture/  # 软件架构
+├── software-engineering/   # 软件工程
+├── software-testing/       # 软件测试
+├── sql/                    # SQL
+├── typescript/             # TypeScript
+└── vue3/                   # Vue 3
 ```
 
 > 每篇文档均为独立 Markdown 文件，包含 frontmatter 元数据（标题、模块、难度、标签等）和正文内容，可直接在任何 Markdown 阅读器中使用。
@@ -177,7 +187,7 @@ FANDEX/
 │   │   ├── ModuleCard.astro        # 模块卡片
 │   │   └── DocNav.astro            # 上下篇导航
 │   ├── content/
-│   │   ├── docs/{18 模块}/ # 文档内容 (236 篇)
+│   │   ├── docs/{45 模块}/ # 文档内容 (1521 篇)
 │   │   ├── glossary/      # 术语表 (17 篇)
 │   │   └── config.ts      # Zod Schema 定义
 │   ├── islands/           # Vue 岛屿组件

@@ -1,5 +1,5 @@
 /** @type {string} 缓存版本号，更新时修改以清除旧缓存 */
-const CACHE_NAME = 'fandex-v4';
+const CACHE_NAME = 'fandex-v5';
 /** @type {string} 站点基础路径 */
 const BASE = '/FANDEX/';
 
@@ -38,8 +38,9 @@ self.addEventListener('activate', (event) => {
 /**
  * Fetch 事件：根据资源类型选择缓存策略
  * - 含 hash 的资源（CSS/JS/字体）：Cache First
- * - JSON 数据文件（search-index/glossary-index）：Network First（确保数据新鲜）
- * - HTML/图片/其他：Stale While Revalidate
+ * - JSON 数据文件（search-index/glossary-index）：Network First
+ * - HTML 页面：Network First（确保用户始终看到最新版本）
+ * - 图片/其他：Stale While Revalidate
  * @param {FetchEvent} event
  */
 self.addEventListener('fetch', (event) => {
@@ -54,7 +55,9 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(cacheFirstLong(event.request));
   } else if (JSON_DATA_PATTERN.test(url.pathname)) {
     event.respondWith(networkFirst(event.request));
-  } else if (ext === '.json' || STALE_REVALIDATE_EXTS.has(ext) || isHTML) {
+  } else if (isHTML) {
+    event.respondWith(networkFirstWithCacheFallback(event.request));
+  } else if (STALE_REVALIDATE_EXTS.has(ext) || ext === '.json') {
     event.respondWith(staleWhileRevalidate(event.request));
   } else {
     event.respondWith(staleWhileRevalidate(event.request));
@@ -97,6 +100,29 @@ async function networkFirst(request) {
     if (response.ok) {
       const cache = await caches.open(CACHE_NAME);
       cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    const cached = await caches.match(request);
+    return cached || new Response('Offline', { status: 503, statusText: 'Offline' });
+  }
+}
+
+/**
+ * Network First + 缓存回退策略（HTML 专用）
+ * 优先从网络获取最新 HTML，确保用户始终看到最新版本
+ * 网络失败时回退缓存（离线可用）
+ * 网络成功时更新缓存并通知客户端
+ * @param {Request} request
+ * @returns {Promise<Response>}
+ */
+async function networkFirstWithCacheFallback(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(request, response.clone());
+      notifyUpdate();
     }
     return response;
   } catch {

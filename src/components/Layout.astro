@@ -301,10 +301,9 @@ const hasSidebar = Astro.slots.has('sidebar')
   if ('serviceWorker' in navigator) {
     const base = import.meta.env.BASE_URL
     navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
-    navigator.serviceWorker.addEventListener('message', (e) => {
-      if (e.data?.type === 'sw-update') {
-        console.log('[FANDEX] Content updated in background')
-      }
+    // 新 SW 激活后自动刷新页面，确保用户看到最新版本
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload()
     })
   }
 
