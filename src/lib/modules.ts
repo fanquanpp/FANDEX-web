@@ -321,6 +321,55 @@ export const modules = [
     description: 'CNN·RNN·Transformer',
     categories: ['data'],
   },
+  {
+    id: 'ai-engineering',
+    title: 'AI工程',
+    icon: 'AIE',
+    description: '从数学基础到Agent工程·503课全栈课程',
+    categories: ['data'],
+  },
+  {
+    id: 'computer-vision',
+    title: '计算机视觉',
+    icon: 'CV',
+    description: '图像分类·目标检测·图像生成',
+    categories: ['data'],
+  },
+  {
+    id: 'nlp',
+    title: '自然语言处理',
+    icon: 'NLP',
+    description: '文本分类·信息抽取·对话系统',
+    categories: ['data'],
+  },
+  {
+    id: 'llm',
+    title: '大语言模型',
+    icon: 'LLM',
+    description: 'Tokenizer·训练·微调·RLHF',
+    categories: ['data'],
+  },
+  {
+    id: 'generative-ai',
+    title: '生成式AI',
+    icon: 'Gen',
+    description: 'VAE·GAN·Diffusion·视频生成',
+    categories: ['data'],
+  },
+  {
+    id: 'multimodal',
+    title: '多模态AI',
+    icon: 'MM',
+    description: '视觉-语言·音频-文本·跨模态',
+    categories: ['data'],
+  },
+  {
+    id: 'ai-ethics',
+    title: 'AI伦理与安全',
+    icon: '伦理',
+    description: '对齐·红队测试·双用风险',
+    categories: ['data'],
+  },
 ] as const;
 
 export type Module = (typeof modules)[number];
