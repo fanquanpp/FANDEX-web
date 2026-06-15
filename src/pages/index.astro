@@ -81,7 +81,21 @@ allDocs.forEach(doc => {
     ))}
 
     <footer class="home-footer">
-      <p>Built with Astro 5 SSG | Hosted on GitHub Pages</p>
+      <div class="footer-links">
+        <a href={`${base}getting-started/免责声明/`}>免责声明</a>
+        <span class="footer-divider">|</span>
+        <a href="https://github.com/fanquanpp/FANDEX" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="footer-stats">
+        <span>{allDocs.length} 篇文档</span>
+        <span class="footer-divider">·</span>
+        <span>{modules.length} 个模块</span>
+        <span class="footer-divider">·</span>
+        <span>{totalTags.size} 个标签</span>
+      </div>
+      <div class="footer-tech">
+        Built with Astro 5 SSG · Hosted on GitHub Pages
+      </div>
     </footer>
   </div>
 </HomeLayout>
@@ -259,12 +273,45 @@ allDocs.forEach(doc => {
 
 .home-footer {
   margin-top: var(--spacing-2xl);
-  padding-top: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
   border-top: 1px solid var(--color-border-light);
   text-align: center;
   font-family: var(--font-display);
   font-size: 0.72em;
   color: var(--color-text-tertiary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.footer-stats {
+  color: var(--color-text-tertiary);
+}
+
+.footer-tech {
+  color: var(--color-text-tertiary);
+  opacity: 0.7;
+}
+
+.footer-divider {
+  opacity: 0.4;
 }
 
 @media (max-width: 768px) {

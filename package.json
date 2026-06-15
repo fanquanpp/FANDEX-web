@@ -6,12 +6,15 @@
   "description": "循序渐进的自学之旅 — 51 模块 · 2031 篇文档 · 从第一行代码到理解整个世界",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-cheatsheet-highlights.js",
     "build": "node scripts/build-glossary-index.mjs && node scripts/build-search-index.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "prepare": "husky",
     "qa": "node scripts/qa-check.mjs",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint:docs": "remark src/content/docs --ext .md,.mdx",
+    "lint:docs:fix": "remark src/content/docs --ext .md,.mdx --output"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
@@ -35,6 +38,8 @@
     "lint-staged": "^17.0.5",
     "pagefind": "^1.5.2",
     "prettier": "^3.8.3",
+    "remark-cli": "^12.0.1",
+    "remark-preset-lint-consistent": "^6.0.1",
     "typescript": "^5.7.0",
     "vitest": "^4.1.7"
   },

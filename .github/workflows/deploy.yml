@@ -67,6 +67,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-astro-
 
+      - name: 文档格式检查
+        run: npm run lint:docs
+
       - name: Build
         run: npm run build
         env:

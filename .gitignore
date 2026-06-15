@@ -14,3 +14,4 @@ npm-debug.log*
 .uploads/
 public/data/glossary-index.json
 public/data/search-index.json
+.cache/

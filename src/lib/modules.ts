@@ -209,7 +209,7 @@ export const modules = [
     id: 'probability-statistics',
     title: '概率论与数理统计',
     icon: '概率',
-    description: '概率论与数理统计',
+    description: '概率模型与统计推断',
     categories: ['comp-sci', 'data'],
   },
   {
@@ -325,7 +325,7 @@ export const modules = [
     id: 'ai-engineering',
     title: 'AI工程',
     icon: 'AIE',
-    description: '从数学基础到Agent工程·503课全栈课程',
+    description: '涵盖数学基础、机器学习与智能体工程',
     categories: ['data'],
   },
   {
@@ -389,7 +389,7 @@ export function getPrimaryCategory(mod: Module): string {
 
 /** 从 content collection id 中提取 slug（文件名去除 .md 后缀） */
 export function docSlug(id: string): string {
-  return (id.split('/').pop() || id).replace(/\.md$/, '');
+  return (id.split('/').pop() || id).replace(/\.(md|mdx)$/, '');
 }
 
 export const categoryOrder = ['toolchain', 'dev-lang', 'database', 'comp-sci', 'eng-infra', 'data'];

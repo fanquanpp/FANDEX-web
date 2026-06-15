@@ -180,10 +180,16 @@ const hasSidebar = Astro.slots.has('sidebar')
       const span = fullscreenBtn.querySelector('span')
       if (document.fullscreenElement) {
         span && (span.textContent = '退出')
+        try { localStorage.setItem('fandex-fullscreen', 'true') } catch {}
       } else {
         span && (span.textContent = '全屏')
+        try { localStorage.removeItem('fandex-fullscreen') } catch {}
       }
     })
+    // 恢复全屏状态
+    if (localStorage.getItem('fandex-fullscreen') === 'true' && !document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {})
+    }
   }
 
   function initCopyButtons() {
