@@ -1,12 +1,19 @@
 ---
 order: 92
 title: 'Agent 安全与沙盒'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'advanced'
+difficulty: advanced
 description: '托管沙盒隔离执行、响应式 API 流式返回、多智能体协作模式与具身智能。'
-author: 'fanquanpp'
-updated: 2026-06-15
+author: fanquanpp
+updated: '2026-06-15'
+related:
+  - agent/Agent核心模块详解
+  - agent/MCP与A2A协议
+  - agent/ReAct模式
+  - agent/思维链与思维树
+prerequisites:
+  - agent/概述与架构
 ---
 
 ## 1. Agent 安全概述

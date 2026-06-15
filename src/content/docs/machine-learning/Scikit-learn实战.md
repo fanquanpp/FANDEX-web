@@ -2,11 +2,17 @@
 order: 23
 title: 'Scikit-learn实战'
 module: 'machine-learning'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Scikit-learn Pipeline、模型选择、超参调优与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'machine-learning/特征工程详解'
+  - 'machine-learning/强化学习基础'
+  - 'machine-learning/不平衡数据处理'
+  - 'machine-learning/策略梯度与REINFORCE'
+prerequisites: []
 ---
 
 ## 1. Scikit-learn核心API

@@ -1,9 +1,21 @@
 ---
 title: '从CLIP到BLIP-2：Q-Former模态桥接'
 description: '理解Q-Former如何作为可训练瓶颈连接冻结视觉编码器和冻结LLM'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['BLIP-2', 'Q-Former', '跨注意力', '模态桥接', 'VLM']
+module: multimodal
+difficulty: intermediate
+tags:
+  - 'BLIP-2'
+  - 'Q-Former'
+  - 跨注意力
+  - 模态桥接
+  - VLM
+related:
+  - multimodal/音频语言模型从Whisper到AF3
+  - multimodal/长视频百万Token理解
+  - multimodal/Chameleon与早期融合
+  - multimodal/CLIP与对比预训练
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 从CLIP到BLIP-2 — Q-Former作为模态桥接

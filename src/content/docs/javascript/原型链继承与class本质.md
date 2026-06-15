@@ -1,12 +1,19 @@
 ---
 order: 101
-title: '原型链继承与class本质'
-module: 'javascript'
+title: 原型链继承与class本质
+module: javascript
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'JavaScript原型链继承机制与class语法糖本质深度解析。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: JavaScript原型链继承机制与class语法糖本质深度解析。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/异步编程
+  - javascript/闭包的内存泄露与优化
+  - javascript/事件循环详解
+  - javascript/Promise静态方法
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. 原型链基础

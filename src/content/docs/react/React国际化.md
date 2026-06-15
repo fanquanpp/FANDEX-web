@@ -1,12 +1,19 @@
 ---
 order: 63
-title: 'React国际化'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
+title: React国际化
+module: react
+category: React
+difficulty: intermediate
 description: 'React i18n实现方案'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React测试
+  - react/React路由进阶
+  - react/React动画
+  - react/React服务端渲染
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. react-i18next

@@ -1,12 +1,19 @@
 ---
 order: 68
-title: 'Go与测试'
-module: 'go'
-category: 'Go'
-difficulty: 'intermediate'
-description: 'Go测试框架与基准测试'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Go与测试
+module: go
+category: Go
+difficulty: intermediate
+description: Go测试框架与基准测试
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Go与Redis
+  - go/Go与消息队列
+  - go/Go与Fuzzing
+  - go/Go与性能分析
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. 测试

@@ -1,15 +1,22 @@
 ---
 order: 160
 tags:
-  - 'mysql'
-  - 'performance'
-  - 'database'
-difficulty: 'advanced'
+  - mysql
+  - performance
+  - database
+difficulty: advanced
 title: 'SQL 注入攻击类型与实战'
-module: 'mysql'
+module: mysql
 category: 'MySQL Advanced'
-description: '联合注入、盲注、报错注入与绕过技巧。'
-author: 'Anonymous'
+description: 联合注入、盲注、报错注入与绕过技巧。
+author: Anonymous
+related:
+  - mysql/控制器与应用
+  - mysql/SQL注入基础与检测
+  - mysql/SQL注入防御策略
+  - 'mysql/项目示例-电商数据库设计'
+prerequisites:
+  - mysql/语法速查
 ---
 
 ---

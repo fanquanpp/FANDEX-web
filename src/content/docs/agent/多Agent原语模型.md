@@ -1,9 +1,21 @@
 ---
 title: '多Agent原语模型 — 四维设计空间'
-description: '掌握Agent、Handoff、共享状态、编排器四个原语，将所有2026年多Agent框架映射到同一坐标系'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['多Agent原语', 'Handoff', '共享状态', '编排器', '框架映射']
+description: 掌握Agent、Handoff、共享状态、编排器四个原语，将所有2026年多Agent框架映射到同一坐标系
+module: agent
+difficulty: intermediate
+tags:
+  - 多Agent原语
+  - Handoff
+  - 共享状态
+  - 编排器
+  - 框架映射
+related:
+  - agent/多会话交接
+  - agent/多Agent辩论与协作
+  - agent/工具接口
+  - agent/工具生态项目
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 多Agent原语模型 — 四维设计空间

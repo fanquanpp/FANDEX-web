@@ -2,6 +2,13 @@
 title: 生成式Agent与涌现模拟
 description: "Park 等人 2023 (UIST '23, arXiv:2304.03442) 用三部分架构填充了 Smallville，一个 25 Agent 沙箱：记忆流（自然语言日志）、反思（Agent 关于自己流生成的更高层次综合）和计划（日级行为，然后子计划）。标志性结果是情人节派对涌现：一个 ..."
 module: agent
+related:
+  - agent/生产扩展队列与检查点
+  - agent/生产运行时
+  - agent/失败模式MAST与群体思维
+  - agent/思维树与LATS
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 生成式 Agent 与涌现模拟

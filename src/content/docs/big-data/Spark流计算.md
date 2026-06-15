@@ -2,11 +2,17 @@
 order: 14
 title: 'Spark-Streaming'
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Spark Streaming流处理原理、DStream、Structured Streaming、窗口操作与Exactly-Once语义。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/MapReduce编程模型'
+  - 'big-data/Spark核心'
+  - 'big-data/Hive数据仓库'
+  - 'big-data/HBase列族数据库'
+prerequisites: []
 ---
 
 ## 1. Spark Streaming概述

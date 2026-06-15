@@ -1,12 +1,19 @@
 ---
 order: 67
 title: 'Promise-withResolvers'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'intermediate'
-description: 'Promise.withResolvers()详解'
-author: 'fanquanpp'
-updated: 2026-06-14
+module: javascript
+category: JavaScript
+difficulty: intermediate
+description: Promise.withResolvers()详解
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/时间API
+  - javascript/迭代器帮助器
+  - javascript/Records与Tuples
+  - javascript/对象与数组
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Promise.withResolvers 概述

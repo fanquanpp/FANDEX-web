@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'Fiber架构'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
+title: Fiber架构
+module: react
+category: React
+difficulty: advanced
 description: 'React Fiber协调引擎'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/Next.js全栈开发
+  - react/JSX深度解析
+  - react/Concurrent模式
+  - react/服务端组件
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Fiber 概述

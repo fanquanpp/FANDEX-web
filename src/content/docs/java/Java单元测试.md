@@ -1,12 +1,19 @@
 ---
 order: 69
-title: 'Java单元测试'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
+title: Java单元测试
+module: java
+category: Java
+difficulty: intermediate
 description: 'JUnit 5与Mockito'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java网络编程
+  - java/Java日志系统
+  - java/Java构建工具
+  - java/控制流
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. JUnit 5

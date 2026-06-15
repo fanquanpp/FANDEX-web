@@ -1,9 +1,21 @@
 ---
-title: 'JAX入门'
-description: 'JAX用函数式编程和XLA编译实现高性能数值计算和自动微分'
+title: JAX入门
+description: JAX用函数式编程和XLA编译实现高性能数值计算和自动微分
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['JAX', 'XLA', '函数式编程', 'vmap', 'jit']
+difficulty: advanced
+tags:
+  - JAX
+  - XLA
+  - 函数式编程
+  - vmap
+  - jit
+related:
+  - 'ai-engineering/GPU与云计算'
+  - 'ai-engineering/GPU自动伸缩与Kubernetes'
+  - 'ai-engineering/Jupyter笔记本'
+  - 'ai-engineering/KNN与距离度量'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # JAX入门

@@ -1,12 +1,19 @@
 ---
 order: 78
-title: 'C++图形编程'
-module: 'cpp'
-category: 'C++'
-difficulty: 'advanced'
-description: 'OpenGL与图形基础'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++图形编程
+module: cpp
+category: C++
+difficulty: advanced
+description: OpenGL与图形基础
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++序列化
+  - cpp/C++网络编程
+  - cpp/C++游戏开发
+  - cpp/C++嵌入式开发
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. OpenGL 初始化

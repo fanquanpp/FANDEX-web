@@ -1,12 +1,18 @@
 ---
 order: 13
-title: 'Spark核心'
+title: Spark核心
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Spark核心概念：RDD、DataFrame、Spark SQL原理与实战。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/HDFS分布式文件系统'
+  - 'big-data/MapReduce编程模型'
+  - 'big-data/Spark流计算'
+  - 'big-data/Hive数据仓库'
+prerequisites: []
 ---
 
 ## 1. Spark概述

@@ -1,9 +1,21 @@
 ---
 title: 'MCP安全I — 工具投毒、地毯拉扯、跨服务器影子'
-description: '掌握MCP七种攻击类别，构建工具投毒检测器和哈希固定存储，理解深度防御策略'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP安全', '工具投毒', '地毯拉扯', '影子攻击', '二规则']
+description: 掌握MCP七种攻击类别，构建工具投毒检测器和哈希固定存储，理解深度防御策略
+module: agent
+difficulty: advanced
+tags:
+  - MCP安全
+  - 工具投毒
+  - 地毯拉扯
+  - 影子攻击
+  - 二规则
+related:
+  - agent/MARL寮哄寲瀛︿範
+  - agent/MARL强化学习
+  - agent/MCP安全OAuth2.1
+  - agent/MCP采样
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP安全I — 工具投毒、地毯拉扯、跨服务器影子

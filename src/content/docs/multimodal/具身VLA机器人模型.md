@@ -1,9 +1,23 @@
 ---
 title: '具身VLA：RT-2、OpenVLA、pi0与GR00T'
 description: '理解视觉-语言-动作模型的演进，从离散动作token到流匹配动作专家'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['VLA', '机器人', 'RT-2', 'OpenVLA', 'pi0', 'GR00T', '动作分词']
+module: multimodal
+difficulty: advanced
+tags:
+  - VLA
+  - 机器人
+  - 'RT-2'
+  - OpenVLA
+  - pi0
+  - GR00T
+  - 动作分词
+related:
+  - multimodal/多模态Agent与计算机使用
+  - multimodal/多模态RAG与跨模态检索
+  - multimodal/开源VLM方案
+  - 'multimodal/全能模型Thinker-Talker架构'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 具身VLA：RT-2、OpenVLA、pi0与GR00T

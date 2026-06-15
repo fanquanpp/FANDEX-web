@@ -1,9 +1,19 @@
 ---
 title: 'Vision Transformer与Patch-Token原语'
 description: '深入理解ViT的Patch-Token流水线，从图像到序列token的完整转换过程'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['Vision Transformer', 'Patch Token', '位置编码', 'DINOv2', 'SigLIP']
+module: multimodal
+difficulty: intermediate
+tags:
+  - 'Vision Transformer'
+  - 'Patch Token'
+  - 位置编码
+  - DINOv2
+  - SigLIP
+related:
+  - 'multimodal/Show-o离散扩散统一模型'
+  - multimodal/Transfusion双损失统一模型
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Vision Transformer与Patch-Token原语

@@ -1,12 +1,19 @@
 ---
 order: 56
-title: 'Kubernetes存储'
+title: Kubernetes存储
 module: 'cloud-computing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Kubernetes存储：PV、PVC、StorageClass、CSI 与数据持久化详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cloud-computing/Kubernetes网络'
+  - 'cloud-computing/云网络服务'
+  - 'cloud-computing/云安全服务'
+  - 'cloud-computing/Helm包管理'
+prerequisites:
+  - 'cloud-computing/云计算基础'
 ---
 
 ## 1. 存储概述

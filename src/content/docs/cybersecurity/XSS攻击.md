@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'XSS攻击'
-module: 'cybersecurity'
+title: XSS攻击
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: '跨站脚本攻击原理、分类、利用方式与防御策略详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 跨站脚本攻击原理、分类、利用方式与防御策略详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/二进制安全与应急响应
+  - cybersecurity/安全工具与实战
+  - cybersecurity/安全模型与框架
+  - cybersecurity/CSRF攻击
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. XSS 攻击原理

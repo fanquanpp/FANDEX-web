@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'Python与GraphQL'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Strawberry与Ariadne'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与GraphQL
+module: python
+category: Python
+difficulty: intermediate
+description: Strawberry与Ariadne
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与Docker
+  - python/Python与Redis
+  - python/Python与机器学习
+  - python/Python与深度学习
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Strawberry

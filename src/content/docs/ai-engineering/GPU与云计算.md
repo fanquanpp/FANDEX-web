@@ -1,9 +1,21 @@
 ---
-title: 'GPU与云计算'
+title: GPU与云计算
 description: '验证本地 GPU 可用性，配置 Google Colab T4 GPU，基准测试 CPU vs GPU 矩阵乘法，估算 VRAM 可容纳的最大模型'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['GPU', 'CUDA', '云计算', 'Google Colab', '性能基准']
+difficulty: beginner
+tags:
+  - GPU
+  - CUDA
+  - 云计算
+  - 'Google Colab'
+  - 性能基准
+related:
+  - 'ai-engineering/Git与协作'
+  - 'ai-engineering/GitHub-Issue到PR自主代理'
+  - 'ai-engineering/GPU自动伸缩与Kubernetes'
+  - 'ai-engineering/JAX入门'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # GPU 与云计算

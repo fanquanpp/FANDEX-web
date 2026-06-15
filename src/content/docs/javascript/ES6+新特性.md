@@ -1,15 +1,22 @@
 ---
 order: 105
 tags:
-  - 'javascript'
-  - 'es6'
-difficulty: 'intermediate'
+  - javascript
+  - es6
+difficulty: intermediate
 title: 'ES6+ 新特性'
-module: 'javascript'
+module: javascript
 category: 'JS Basics'
-description: 'ES6至ES2024重要新特性：解构赋值、展开运算符、Symbol、Proxy、可选链、空值合并等详解。'
-author: 'fanquanpp'
-updated: 2026-06-13
+description: ES6至ES2024重要新特性：解构赋值、展开运算符、Symbol、Proxy、可选链、空值合并等详解。
+author: fanquanpp
+updated: '2026-06-13'
+related:
+  - javascript/Promise静态方法
+  - javascript/异步并发控制
+  - javascript/深拷贝与浅拷贝
+  - javascript/防抖与节流
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. 解构赋值

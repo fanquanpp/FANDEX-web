@@ -1,12 +1,19 @@
 ---
 order: 87
-title: 'C++日期时间'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'chrono与日期时间处理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++日期时间
+module: cpp
+category: C++
+difficulty: intermediate
+description: chrono与日期时间处理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/智能指针
+  - cpp/C++正则表达式
+  - cpp/C++格式化输出
+  - cpp/C++26与最新标准
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. chrono

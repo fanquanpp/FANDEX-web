@@ -1,12 +1,19 @@
 ---
 order: 106
-title: 'Grafana仪表盘配置'
-module: 'devops'
+title: Grafana仪表盘配置
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Grafana 仪表盘配置：数据源、面板类型、变量模板与告警集成。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'devops/Ansible-Playbook配置管理'
+  - devops/Prometheus指标采集与告警
+  - 'devops/ELK-Stack日志分析'
+  - devops/OpenTelemetry可观测性
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. 数据源配置

@@ -1,9 +1,21 @@
 ---
 title: '音频语言模型：从Whisper到Audio Flamingo 3'
 description: '理解从语音识别到音频推理的演进路径，包括log-Mel频谱图和音频Q-Former'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['音频语言模型', 'Whisper', 'Audio Flamingo 3', 'log-Mel频谱图', '音频Q-Former']
+module: multimodal
+difficulty: intermediate
+tags:
+  - 音频语言模型
+  - Whisper
+  - 'Audio Flamingo 3'
+  - 'log-Mel频谱图'
+  - '音频Q-Former'
+related:
+  - multimodal/视频语言模型与时间定位
+  - multimodal/文档与图表理解
+  - multimodal/长视频百万Token理解
+  - 'multimodal/BLIP-2与Q-Former桥接'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 音频语言模型：从Whisper到Audio Flamingo 3的演进

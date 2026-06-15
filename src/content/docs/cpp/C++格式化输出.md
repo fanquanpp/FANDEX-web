@@ -1,12 +1,19 @@
 ---
 order: 88
-title: 'C++格式化输出'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
+title: C++格式化输出
+module: cpp
+category: C++
+difficulty: intermediate
 description: 'std::format与格式化'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++正则表达式
+  - cpp/C++日期时间
+  - cpp/C++26与最新标准
+  - cpp/STL容器与迭代器
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. std::format（C++20）

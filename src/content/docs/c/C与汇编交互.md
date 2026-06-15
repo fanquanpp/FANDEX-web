@@ -1,12 +1,19 @@
 ---
 order: 75
-title: 'C与汇编交互'
-module: 'c'
-category: 'C'
-difficulty: 'advanced'
-description: '内联汇编与外部汇编'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C与汇编交互
+module: c
+category: C
+difficulty: advanced
+description: 内联汇编与外部汇编
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/跨平台编程
+  - c/嵌入式C编程
+  - c/数组详解
+  - c/预处理器与宏
+prerequisites:
+  - c/概述
 ---
 
 ## 1. 内联汇编

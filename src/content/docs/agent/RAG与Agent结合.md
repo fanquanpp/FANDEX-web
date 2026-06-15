@@ -1,12 +1,19 @@
 ---
 order: 109
-title: 'RAG与Agent结合'
-module: 'agent'
+title: RAG与Agent结合
+module: agent
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'RAG 与 Agent 结合：检索增强生成、Agent-RAG 融合架构。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - agent/提示工程
+  - agent/智能体评估
+  - agent/智能体安全
+  - agent/案例研究与SOTA
+prerequisites:
+  - agent/概述与架构
 ---
 
 ## 1. RAG 基础

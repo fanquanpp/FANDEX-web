@@ -1,12 +1,19 @@
 ---
 order: 81
-title: 'satisfies操作符'
-module: 'typescript'
-category: 'TypeScript'
-difficulty: 'intermediate'
-description: 'satisfies操作符详解'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: satisfies操作符
+module: typescript
+category: TypeScript
+difficulty: intermediate
+description: satisfies操作符详解
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/TypeScript5新特性
+  - typescript/工程化配置
+  - typescript/迁移实战
+  - typescript/条件类型与infer
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. satisfies 语法

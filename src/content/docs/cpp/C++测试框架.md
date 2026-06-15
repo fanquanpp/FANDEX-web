@@ -1,12 +1,19 @@
 ---
 order: 73
-title: 'C++测试框架'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
+title: C++测试框架
+module: cpp
+category: C++
+difficulty: intermediate
 description: 'Google Test与Catch2'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++内存模型
+  - cpp/C++工具链
+  - cpp/C++与Python交互
+  - cpp/C++性能优化
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. Google Test

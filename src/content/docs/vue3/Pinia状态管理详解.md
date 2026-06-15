@@ -1,14 +1,21 @@
 ---
 order: 90
 tags:
-  - 'vue3'
-difficulty: 'intermediate'
+  - vue3
+difficulty: intermediate
 title: 'Pinia 状态管理详解'
-module: 'vue3'
+module: vue3
 category: 'Vue3 Basics'
 description: 'Store 定义、状态读写、异步操作与插件机制。'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - vue3/组件系统
+  - vue3/TypeScript集成
+  - vue3/插件开发
+  - vue3/computed缓存机制与watch执行时机
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. Pinia 概述

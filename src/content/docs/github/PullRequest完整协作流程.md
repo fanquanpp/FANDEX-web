@@ -1,13 +1,20 @@
 ---
 order: 70
 tags:
-  - 'github'
-difficulty: 'intermediate'
+  - github
+difficulty: intermediate
 title: 'Pull Request 完整协作流程'
-module: 'github'
+module: github
 category: 'GitHub Advanced'
 description: 'Pull Request 完整生命周期：Fork、分支、提交、推送、审查、合并到同步上游。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/代码所有者
+  - github/社区健康文件
+  - github/GitHubPages多站点方案
+  - github/GitHubActions与CICD
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 背景

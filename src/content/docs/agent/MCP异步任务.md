@@ -1,9 +1,20 @@
 ---
 title: 'MCP异步任务 — 即时调用、稍后获取'
 description: '掌握SEP-1686异步任务原语，实现长时间运行工具的异步执行、状态轮询和崩溃恢复'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP异步任务', 'SEP-1686', '任务生命周期', '崩溃恢复']
+module: agent
+difficulty: advanced
+tags:
+  - MCP异步任务
+  - 'SEP-1686'
+  - 任务生命周期
+  - 崩溃恢复
+related:
+  - agent/MCP生产认证
+  - agent/MCP网关与注册表
+  - agent/MCP应用
+  - agent/MCP资源与提示
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP异步任务 — 即时调用、稍后获取

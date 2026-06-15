@@ -1,14 +1,21 @@
 ---
 order: 50
 tags:
-  - 'html5'
+  - html5
   - 'web-api'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'HTML5 离线存储与 Web API'
-module: 'html5'
+module: html5
 category: 'HTML5 Basics'
 description: 'localStorage、sessionStorage、IndexedDB 与 Web Workers。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - html5/多媒体与Canvas绘图
+  - html5/文档类型声明
+  - html5/元数据与字符编码
+  - html5/文本语义
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. Web 存储 (Web Storage)

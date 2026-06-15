@@ -1,9 +1,21 @@
 ---
 title: 'Agent工作台为何模型失败 — 七种失败模式'
-description: '识别Agent在真实代码库中失败的七种模式，理解线束工程比模型选择更重要的实证数据'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['Agent失败', '线束工程', '范围蔓延', '上下文丢失', '幻觉验证']
+description: 识别Agent在真实代码库中失败的七种模式，理解线束工程比模型选择更重要的实证数据
+module: agent
+difficulty: intermediate
+tags:
+  - Agent失败
+  - 线束工程
+  - 范围蔓延
+  - 上下文丢失
+  - 幻觉验证
+related:
+  - agent/A2A协议
+  - agent/A2A协议深入
+  - agent/Agent工作台项目
+  - agent/Agent经济体与声誉
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agent工作台为何模型失败 — 七种失败模式

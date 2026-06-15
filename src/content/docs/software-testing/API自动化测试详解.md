@@ -1,12 +1,19 @@
 ---
 order: 102
-title: 'API自动化测试详解'
+title: API自动化测试详解
 module: 'software-testing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'API 自动化测试：Postman、RestAssured、Supertest 的使用与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-testing/白盒测试覆盖度'
+  - 'software-testing/自动化测试框架对比'
+  - 'software-testing/压力测试与稳定性测试'
+  - 'software-testing/安全测试'
+prerequisites:
+  - 'software-testing/测试基础与方法'
 ---
 
 ## 1. Postman

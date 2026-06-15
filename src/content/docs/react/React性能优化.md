@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'React性能优化'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React应用性能优化策略'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React性能优化
+module: react
+category: React
+difficulty: intermediate
+description: React应用性能优化策略
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/自定义Hooks设计模式
+  - react/状态管理方案对比
+  - react/React错误边界
+  - react/React表单处理
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 避免不必要渲染

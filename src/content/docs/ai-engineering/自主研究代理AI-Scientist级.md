@@ -2,8 +2,21 @@
 title: '自主研究代理AI-Scientist级'
 description: 'Sakana AI-Scientist-v2发表了完整论文，Agent Laboratory运行实验。2026年形态是计划-执行-验证树搜索：预算成本、沙盒代码执行、视觉反馈LaTeX编写器、自动化NeurIPS风格审稿人集成。构建一个，每篇论文$30内端到端运行，存活Sakana记录的沙盒逃逸红队。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['自主研究', 'AI-Scientist', '树搜索', '沙盒', '自动化审稿', 'LaTeX']
+difficulty: advanced
+tags:
+  - 自主研究
+  - 'AI-Scientist'
+  - 树搜索
+  - 沙盒
+  - 自动化审稿
+  - LaTeX
+related:
+  - 'ai-engineering/终端原生编码代理'
+  - 'ai-engineering/自托管服务引擎选择'
+  - 'ai-engineering/AI的SRE事件响应'
+  - 'ai-engineering/AI网关比较'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

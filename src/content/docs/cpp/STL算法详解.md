@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'STL算法详解'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'STL算法库深入'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: STL算法详解
+module: cpp
+category: C++
+difficulty: intermediate
+description: STL算法库深入
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/运算符重载
+  - cpp/面向对象基础
+  - cpp/字符串处理
+  - cpp/文件IO与文件系统
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 排序与搜索

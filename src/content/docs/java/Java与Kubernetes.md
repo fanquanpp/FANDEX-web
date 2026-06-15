@@ -1,12 +1,19 @@
 ---
 order: 83
-title: 'Java与Kubernetes'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Java云原生部署'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java与Kubernetes
+module: java
+category: Java
+difficulty: intermediate
+description: Java云原生部署
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与虚拟线程
+  - java/Java与GraalVM
+  - java/Java记录类
+  - java/Java文本块
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Kubernetes 部署

@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'SELECT执行顺序'
-module: 'sql'
-category: 'SQL'
-difficulty: 'intermediate'
+title: SELECT执行顺序
+module: sql
+category: SQL
+difficulty: intermediate
 description: 'SQL SELECT语句的逻辑执行顺序：FROM→JOIN→WHERE→GROUP BY→HAVING→SELECT→ORDER BY→LIMIT的完整解析'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/数据类型
+  - sql/约束
+  - sql/过滤条件
+  - sql/聚合函数
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 执行顺序概述

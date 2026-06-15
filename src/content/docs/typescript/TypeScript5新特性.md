@@ -1,12 +1,19 @@
 ---
 order: 80
-title: 'TypeScript5新特性'
-module: 'typescript'
-category: 'TypeScript'
-difficulty: 'intermediate'
+title: TypeScript5新特性
+module: typescript
+category: TypeScript
+difficulty: intermediate
 description: 'TypeScript 5.x新特性详解'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/类型安全的发布订阅
+  - typescript/类型安全的环境变量
+  - typescript/工程化配置
+  - typescript/satisfies操作符
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. 装饰器（Stage 3）

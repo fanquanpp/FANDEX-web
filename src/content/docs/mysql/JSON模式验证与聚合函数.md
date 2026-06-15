@@ -1,12 +1,19 @@
 ---
 order: 92
-title: 'JSON模式验证与聚合函数'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'advanced'
+title: JSON模式验证与聚合函数
+module: mysql
+category: MySQL
+difficulty: advanced
 description: 'MySQL JSON模式验证与JSON聚合函数：JSON_SCHEMA_VALID、JSON_ARRAYAGG、JSON_OBJECTAGG'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/MySQL9新特性与并行查询
+  - mysql/VECTOR向量类型
+  - mysql/复制与高可用
+  - mysql/不可见索引
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. JSON 模式验证

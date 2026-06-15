@@ -1,12 +1,19 @@
 ---
 order: 62
 title: 'Web-Workers'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'advanced'
+module: html5
+category: HTML5
+difficulty: advanced
 description: 'Web Workers'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/拖拽API
+  - html5/地理位置定位
+  - 'html5/Service-Worker与PWA'
+  - html5/历史记录API
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. Web Workers 概述

@@ -1,7 +1,14 @@
 ---
-title: Claude Agent SDK：子Agent与会话存储
+title: 'Claude Agent SDK：子Agent与会话存储'
 description: 'Claude Agent SDK是Claude Code线束的库形式。内置工具、子Agent用于上下文隔离、钩子、W3C追踪传播、会话存储对等。Claude Managed Agents是长时间运行异步工作的托管替代。'
 module: agent
+related:
+  - 'agent/AutoGen-Actor模型与Agent框架'
+  - 'agent/CAIS-CAISI与社会规模风险'
+  - 'agent/Claude-Code权限模式'
+  - agent/CrewAI角色团队与流程
+prerequisites:
+  - agent/概述与架构
 ---
 
 ﻿---

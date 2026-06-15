@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'Flow冷流与SharedFlow和StateFlow'
-module: 'kotlin'
+title: Flow冷流与SharedFlow和StateFlow
+module: kotlin
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Kotlin Flow冷流与SharedFlow和StateFlow详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与安全
+  - kotlin/协程调度器与上下文
+  - kotlin/Channel与BroadcastChannel
+  - kotlin/密封类与密封接口
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Flow（冷流）

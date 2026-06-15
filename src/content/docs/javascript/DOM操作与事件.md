@@ -1,13 +1,20 @@
 ---
 order: 80
 tags:
-  - 'javascript'
-difficulty: 'intermediate'
+  - javascript
+difficulty: intermediate
 title: 'DOM 操作与事件'
-module: 'javascript'
+module: javascript
 category: 'JS Basics'
 description: 'DOM 树操作、事件模型与事件委托。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - javascript/Records与Tuples
+  - javascript/对象与数组
+  - javascript/JavaScript最新特性与运行时
+  - javascript/模块化
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. DOM 基础 (DOM Basics)

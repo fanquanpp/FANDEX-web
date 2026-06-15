@@ -1,9 +1,20 @@
 ---
 title: RAG检索增强生成
-description: 理解 RAG 的完整架构，包括文档索引、向量检索、上下文注入和生成
+description: '理解 RAG 的完整架构，包括文档索引、向量检索、上下文注入和生成'
 module: llm
 difficulty: intermediate
-tags: [RAG, retrieval augmented, 向量搜索, 文档检索, 知识增强]
+tags:
+  - RAG
+  - 'retrieval augmented'
+  - 向量搜索
+  - 文档检索
+  - 知识增强
+related:
+  - llm/LLM工程评估
+  - llm/LLM评估
+  - llm/RLHF人类反馈强化学习
+prerequisites:
+  - llm/安全护栏
 ---
 
 # RAG检索增强生成

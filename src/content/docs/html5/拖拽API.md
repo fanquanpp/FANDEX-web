@@ -1,12 +1,19 @@
 ---
 order: 60
-title: '拖拽API'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'intermediate'
-description: 'drag/drop'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 拖拽API
+module: html5
+category: HTML5
+difficulty: intermediate
+description: drag/drop
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/progress与meter
+  - html5/WebComponents与PWA开发
+  - html5/地理位置定位
+  - html5/Web工作线程
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. 拖拽 API 概述

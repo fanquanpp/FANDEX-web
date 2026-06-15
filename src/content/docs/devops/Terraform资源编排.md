@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'Terraform资源编排'
-module: 'devops'
+title: Terraform资源编排
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Terraform 基础设施即代码：Provider、Resource、State、Module 与工作流。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/Kubernetes核心资源详解
+  - 'devops/Helm-Chart应用打包'
+  - 'devops/Ansible-Playbook配置管理'
+  - devops/Prometheus指标采集与告警
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Terraform 核心概念

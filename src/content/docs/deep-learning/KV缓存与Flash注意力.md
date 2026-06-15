@@ -1,9 +1,21 @@
 ---
-title: 'KV缓存与Flash注意力'
+title: KV缓存与Flash注意力
 description: '训练是并行的且受FLOP限制,推理是串行的且受内存限制,不同的瓶颈需要不同的技巧'
 module: 'deep-learning'
-difficulty: 'advanced'
-tags: ['KV缓存', 'Flash Attention', '推理优化', 'PagedAttention', '连续批处理']
+difficulty: advanced
+tags:
+  - KV缓存
+  - 'Flash Attention'
+  - 推理优化
+  - PagedAttention
+  - 连续批处理
+related:
+  - 'deep-learning/GPT因果语言建模'
+  - 'deep-learning/JAX入门'
+  - 'deep-learning/PyTorch入门'
+  - 'deep-learning/T5与BART编码器解码器'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # KV缓存, Flash Attention与推理优化

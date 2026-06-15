@@ -1,9 +1,21 @@
 ---
-title: '策略梯度与REINFORCE'
-description: '直接优化策略的梯度方法，REINFORCE算法与基线方差缩减'
+title: 策略梯度与REINFORCE
+description: 直接优化策略的梯度方法，REINFORCE算法与基线方差缩减
 module: 'machine-learning'
-difficulty: 'advanced'
-tags: ['策略梯度', 'REINFORCE', '策略优化', '基线', '方差缩减']
+difficulty: advanced
+tags:
+  - 策略梯度
+  - REINFORCE
+  - 策略优化
+  - 基线
+  - 方差缩减
+related:
+  - 'machine-learning/Scikit-learn实战'
+  - 'machine-learning/不平衡数据处理'
+  - 'machine-learning/超参数调优'
+  - 'machine-learning/动态规划'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # 策略梯度与 REINFORCE

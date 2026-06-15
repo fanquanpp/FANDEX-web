@@ -1,9 +1,20 @@
 ---
 title: '最小Agent工作台 — 三个文件'
 description: '构建最小可行Agent工作台：agent-rules.md、agent_state.json、task_board.json，实现规则即代码和状态持久化'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['Agent工作台', '规则即代码', '状态持久化', '任务板']
+module: agent
+difficulty: intermediate
+tags:
+  - Agent工作台
+  - 规则即代码
+  - 状态持久化
+  - 任务板
+related:
+  - agent/自精炼与CRITIC
+  - agent/自主编码Agent格局
+  - agent/作用域契约
+  - agent/A2A协议
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 最小Agent工作台 — 三个文件

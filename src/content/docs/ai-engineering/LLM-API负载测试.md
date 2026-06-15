@@ -1,9 +1,23 @@
 ---
 title: 'LLM API负载测试 — 为什么k6和Locust会撒谎'
-description: '理解传统负载测试工具在LLM场景下的两个陷阱和2026年正确工具选择'
+description: 理解传统负载测试工具在LLM场景下的两个陷阱和2026年正确工具选择
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['负载测试', 'k6', 'Locust', 'GenAI-Perf', 'LLMPerf', '流式响应', 'GIL陷阱']
+difficulty: intermediate
+tags:
+  - 负载测试
+  - k6
+  - Locust
+  - 'GenAI-Perf'
+  - LLMPerf
+  - 流式响应
+  - GIL陷阱
+related:
+  - 'ai-engineering/KNN与距离度量'
+  - 'ai-engineering/Linux与AI'
+  - 'ai-engineering/LLM-FinOps单位经济学'
+  - 'ai-engineering/LLM功能AB测试'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # LLM API负载测试 — 为什么k6和Locust会撒谎

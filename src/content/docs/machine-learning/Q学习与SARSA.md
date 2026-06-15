@@ -1,9 +1,21 @@
 ---
-title: 'Q学习与SARSA'
-description: '时序差分学习与无模型控制，Q学习的离轨策略与SARSA的在轨策略'
+title: Q学习与SARSA
+description: 时序差分学习与无模型控制，Q学习的离轨策略与SARSA的在轨策略
 module: 'machine-learning'
-difficulty: 'intermediate'
-tags: ['Q学习', 'SARSA', '时序差分', '离轨', '在轨', '无模型控制']
+difficulty: intermediate
+tags:
+  - Q学习
+  - SARSA
+  - 时序差分
+  - 离轨
+  - 在轨
+  - 无模型控制
+related:
+  - 'machine-learning/ML流水线'
+  - 'machine-learning/PPO近端策略优化'
+  - 'machine-learning/RL在游戏中的应用'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # Q 学习与 SARSA

@@ -1,12 +1,19 @@
 ---
 order: 74
 title: 'CSS-Modules'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
+module: css
+category: CSS
+difficulty: intermediate
 description: 'CSS Modules'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/BEM命名方法论
+  - css/CSS原子化
+  - css/关键渲染路径优化
+  - css/CSS原生嵌套
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. CSS Modules 概述

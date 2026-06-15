@@ -1,12 +1,19 @@
 ---
 order: 67
-title: 'Python与NLP'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: '自然语言处理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与NLP
+module: python
+category: Python
+difficulty: intermediate
+description: 自然语言处理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与机器学习
+  - python/Python与深度学习
+  - python/Python与计算机视觉
+  - python/Python与Web爬虫
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. spaCy

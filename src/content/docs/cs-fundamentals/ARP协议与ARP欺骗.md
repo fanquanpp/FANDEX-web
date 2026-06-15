@@ -1,12 +1,19 @@
 ---
 order: 117
-title: 'ARP协议与ARP欺骗'
+title: ARP协议与ARP欺骗
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'ARP 协议原理与 ARP 欺骗攻击：地址解析流程、欺骗原理与防御措施。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/WebSocket帧格式'
+  - 'cs-fundamentals/QUIC协议'
+  - 'cs-fundamentals/BGP路由协议'
+  - 'cs-fundamentals/词法分析'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. ARP 协议

@@ -1,12 +1,17 @@
 ---
 order: 20
-title: 'Zookeeper协调服务'
+title: Zookeeper协调服务
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
-description: 'ZooKeeper架构、ZAB协议、Watcher机制、Leader选举与分布式协调应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: ZooKeeper架构、ZAB协议、Watcher机制、Leader选举与分布式协调应用。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/Flink流处理'
+  - 'big-data/数据湖'
+  - 'big-data/YARN资源管理'
+prerequisites: []
 ---
 
 ## 1. ZooKeeper架构

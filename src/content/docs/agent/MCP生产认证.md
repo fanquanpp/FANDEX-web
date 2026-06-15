@@ -1,9 +1,22 @@
 ---
 title: 'MCP生产认证 — 注册、JWKS刷新、受众固定Token'
-description: '掌握生产MCP认证的完整表面：客户端注册（CIMD/DCR）、JWKS缓存刷新、受众固定token验证和IdP能力矩阵'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP认证', 'JWKS', 'CIMD', 'DCR', '受众验证', '生产部署']
+description: 掌握生产MCP认证的完整表面：客户端注册（CIMD/DCR）、JWKS缓存刷新、受众固定token验证和IdP能力矩阵
+module: agent
+difficulty: advanced
+tags:
+  - MCP认证
+  - JWKS
+  - CIMD
+  - DCR
+  - 受众验证
+  - 生产部署
+related:
+  - agent/MCP根目录与诱导
+  - agent/MCP基础
+  - agent/MCP网关与注册表
+  - agent/MCP异步任务
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP生产认证 — 注册、JWKS刷新、受众固定Token

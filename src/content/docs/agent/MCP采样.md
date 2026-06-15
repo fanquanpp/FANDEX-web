@@ -1,9 +1,20 @@
 ---
 title: 'MCP采样 — 服务器请求的LLM补全与Agent循环'
-description: '掌握sampling机制使服务器能通过客户端LLM进行推理，实现无需API密钥的服务器端Agent循环'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP采样', 'sampling', 'Agent循环', 'modelPreferences']
+description: 掌握sampling机制使服务器能通过客户端LLM进行推理，实现无需API密钥的服务器端Agent循环
+module: agent
+difficulty: advanced
+tags:
+  - MCP采样
+  - sampling
+  - Agent循环
+  - modelPreferences
+related:
+  - agent/MCP安全工具投毒
+  - agent/MCP安全OAuth2.1
+  - agent/MCP传输
+  - agent/MCP根目录与诱导
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP采样 — 服务器请求的LLM补全与Agent循环

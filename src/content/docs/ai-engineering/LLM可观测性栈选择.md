@@ -1,9 +1,22 @@
 ---
-title: 'LLM可观测性栈选择'
-description: '比较2026年LLM可观测性市场两大类别：开发平台vs网关/遥测工具'
+title: LLM可观测性栈选择
+description: 比较2026年LLM可观测性市场两大类别：开发平台vs网关/遥测工具
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['可观测性', 'LangSmith', 'Langfuse', 'Phoenix', 'Helicone', 'OpenTelemetry']
+difficulty: beginner
+tags:
+  - 可观测性
+  - LangSmith
+  - Langfuse
+  - Phoenix
+  - Helicone
+  - OpenTelemetry
+related:
+  - 'ai-engineering/LLM功能AB测试'
+  - 'ai-engineering/LLM可观测性与评估仪表板'
+  - 'ai-engineering/LLM生产混沌工程'
+  - 'ai-engineering/MCP服务器与注册中心与治理'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # LLM可观测性栈选择

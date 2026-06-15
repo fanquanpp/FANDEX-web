@@ -1,12 +1,17 @@
 ---
 order: 2
 title: 'LLM 基础'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'beginner'
+difficulty: beginner
 description: '大语言模型原理、Transformer 架构、Tokenization、Prompt Engineering 及模型选择。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - agent/概述与架构
+  - agent/Agent框架
+  - 'agent/工具使用与Function Calling'
+prerequisites: []
 ---
 
 ## 1. 大语言模型原理

@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'Unicode属性转义'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'intermediate'
-description: '正则表达式Unicode属性转义'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Unicode属性转义
+module: javascript
+category: JavaScript
+difficulty: intermediate
+description: 正则表达式Unicode属性转义
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/具名捕获组
+  - javascript/断言
+  - 'javascript/函数-作用域与闭包'
+  - javascript/自定义Error
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Unicode 属性转义

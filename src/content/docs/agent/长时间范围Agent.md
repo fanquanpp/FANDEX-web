@@ -2,6 +2,13 @@
 title: 长时间范围Agent
 description: 'METR 的 2024-2025 测量显示，Agent 在 1 小时任务上得分 50%，但在 8 小时任务上仅得分 10%。差距不是线性的——它是超线性的。每个额外小时的人类等价工作需要不成比例更多的 Agent 步骤，因为错误累积、上下文衰减和工具失败复合。当前 Agent 在约 30 分钟...'
 module: agent
+related:
+  - 'agent/语音Agent-Pipecat与LiveKit'
+  - agent/运行时反馈循环
+  - agent/长时间运行Agent持久执行
+  - agent/真实仓库工作台
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 长时间范围 Agent — METR 曲线, 8 小时工作日, 扩展瓶颈

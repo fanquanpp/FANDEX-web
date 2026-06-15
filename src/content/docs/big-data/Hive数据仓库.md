@@ -1,12 +1,18 @@
 ---
 order: 15
-title: 'Hive数据仓库'
+title: Hive数据仓库
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
-description: 'Hive架构、HQL语法、分区与桶、UDF开发、性能优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: Hive架构、HQL语法、分区与桶、UDF开发、性能优化。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/Spark核心'
+  - 'big-data/Spark流计算'
+  - 'big-data/HBase列族数据库'
+  - 'big-data/Kafka消息队列'
+prerequisites: []
 ---
 
 ## 1. Hive架构与原理

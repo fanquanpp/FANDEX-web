@@ -1,12 +1,19 @@
 ---
 order: 112
-title: 'TCP粘包与拆包'
+title: TCP粘包与拆包
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'TCP 粘包与拆包问题：Nagle 算法、CORK 选项与解决方案。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/HTTPS握手过程'
+  - 'cs-fundamentals/TCP拥塞控制'
+  - 'cs-fundamentals/DNS解析流程'
+  - 'cs-fundamentals/CDN原理'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. 粘包与拆包现象

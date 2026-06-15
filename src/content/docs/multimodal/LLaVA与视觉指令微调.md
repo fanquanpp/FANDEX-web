@@ -1,9 +1,21 @@
 ---
-title: 'LLaVA与视觉指令微调'
+title: LLaVA与视觉指令微调
 description: '理解LLaVA如何用简单MLP投影器和GPT-4生成指令数据实现VLM'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['LLaVA', '视觉指令微调', 'MLP投影器', 'GPT-4数据生成', 'VLM']
+module: multimodal
+difficulty: intermediate
+tags:
+  - LLaVA
+  - 视觉指令微调
+  - MLP投影器
+  - 'GPT-4数据生成'
+  - VLM
+related:
+  - 'multimodal/Janus-Pro解耦编码器'
+  - 'multimodal/LLaVA-OneVision统一模型'
+  - multimodal/MIO任意到任意流式模型
+  - 'multimodal/Qwen-VL家族与动态FPS'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # LLaVA与视觉指令微调

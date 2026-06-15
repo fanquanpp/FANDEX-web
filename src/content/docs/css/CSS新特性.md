@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'CSS新特性'
-module: 'css'
+title: CSS新特性
+module: css
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'CSS现代新特性详解：@container容器查询、@layer层叠层、逻辑属性、:has()选择器。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/CSS架构方法论
+  - css/理论知识点
+  - css/CSS性能优化详解
+  - css/HTML语义化与SEO优化
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. @container 容器查询

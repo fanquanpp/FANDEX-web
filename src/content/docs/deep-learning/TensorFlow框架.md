@@ -1,12 +1,18 @@
 ---
 order: 19
-title: 'TensorFlow框架'
+title: TensorFlow框架
 module: 'deep-learning'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'TensorFlow/Keras核心概念、Eager Mode、SavedModel与部署。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'deep-learning/预训练模型'
+  - 'deep-learning/PyTorch框架'
+  - 'deep-learning/模型优化与部署'
+  - 'deep-learning/调试神经网络'
+prerequisites: []
 ---
 
 ## 1. TensorFlow核心概念

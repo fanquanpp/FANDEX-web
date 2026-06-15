@@ -1,9 +1,21 @@
 ---
 title: 'OpenTelemetry GenAI — Agent可观测性语义约定'
 description: '掌握OpenTelemetry GenAI语义约定，实现LLM调用的分布式追踪、token计量和成本归因'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['OpenTelemetry', '可观测性', '分布式追踪', 'token计量', '成本归因']
+module: agent
+difficulty: intermediate
+tags:
+  - OpenTelemetry
+  - 可观测性
+  - 分布式追踪
+  - token计量
+  - 成本归因
+related:
+  - agent/OpenAI准备性与DeepMind前沿安全框架
+  - 'agent/OpenTelemetry-GenAI语义约定'
+  - agent/Reflexion语言强化学习
+  - agent/ReWOO与计划执行
+prerequisites:
+  - agent/概述与架构
 ---
 
 # OpenTelemetry GenAI — Agent可观测性语义约定

@@ -1,12 +1,19 @@
 ---
 order: 58
 title: 'C#与Blazor'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Blazor WebAssembly与Server'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/源生成器
+  - 'csharp/C#与Unity游戏开发'
+  - 'csharp/C#与MAUI'
+  - 'csharp/C#与EF Core'
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. Blazor 组件

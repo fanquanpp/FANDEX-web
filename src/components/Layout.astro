@@ -1,4 +1,9 @@
 ---
+/**
+ * 文档页主布局组件
+ * 提供文档页面的整体结构：顶部导航栏、侧边栏、主内容区、移动端底部导航
+ * 支持暗色模式切换、全屏模式、侧边栏状态持久化、代码复制、Mermaid 图表渲染等功能
+ */
 import '@/styles/variables.css'
 import '@/styles/global.css'
 import '@/styles/typography.css'
@@ -9,6 +14,7 @@ import { SITE } from '@/lib/constants'
 
 const { title } = Astro.props
 const base = import.meta.env.BASE_URL
+// 检测是否包含侧边栏插槽，用于条件渲染遮罩层和移动端导航按钮
 const hasSidebar = Astro.slots.has('sidebar')
 ---
 
@@ -16,19 +22,24 @@ const hasSidebar = Astro.slots.has('sidebar')
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 内容安全策略：限制脚本、样式、字体等资源的加载来源 -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data:; img-src 'self' data:; connect-src 'self'" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
+    <!-- 预连接 CDN 以加速资源加载 -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
+    <!-- 字体资源预加载 -->
     <link rel="stylesheet" href={`${base}fonts/fonts.css`} />
     <link rel="preload" href={`${base}fonts/jetbrains-mono-400.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}fonts/jetbrains-mono-700.woff2`} as="font" type="font/woff2" crossorigin />
+    <!-- 暗色模式初始化脚本：在页面渲染前读取用户偏好，避免闪烁 -->
     <script is:inline>
       (function() {
         var raw = localStorage.getItem('fandex-theme');
         var isDark = false;
+        // 优先使用用户手动设置的主题，否则跟随系统偏好
         if (raw === 'dark' || (!raw && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           isDark = true;
         }
@@ -41,12 +52,16 @@ const hasSidebar = Astro.slots.has('sidebar')
     <slot name="head" />
   </head>
   <body>
+    <!-- 确保页面撑满视口高度，禁止 body 自身滚动（由内部容器控制滚动） -->
     <style is:inline>
       html { height: 100%; }
       body { height: 100vh; height: 100dvh; overflow: hidden; }
     </style>
+    <!-- 侧边栏遮罩层：移动端打开侧边栏时显示，点击关闭 -->
     {hasSidebar && <div class="sidebar-backdrop" id="sidebar-backdrop"></div>}
+    <!-- 主布局容器：根据是否有侧边栏添加不同类名 -->
     <div class="app-layout" class:list={{ 'no-sidebar': !hasSidebar }}>
+      <!-- 顶部导航栏 -->
       <header class="app-nav">
         <div class="nav-left">
           <a href={base} class="nav-logo">
@@ -55,20 +70,25 @@ const hasSidebar = Astro.slots.has('sidebar')
           </a>
         </div>
         <div class="nav-right">
+          <!-- 返回顶部按钮 -->
           <button class="nav-back-to-top" id="nav-back-to-top" aria-label="返回顶部" title="返回顶部">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <polyline points="18 15 12 9 6 15" />
             </svg>
             <span class="nav-back-to-top-text">返回顶部</span>
           </button>
+          <!-- 主题切换按钮（Vue 交互组件） -->
           <ThemeToggle client:load />
         </div>
       </header>
+      <!-- 侧边栏插槽 -->
       <slot name="sidebar" />
+      <!-- 主内容区域 -->
       <main class="app-main" id="app-main">
         <slot />
       </main>
     </div>
+    <!-- 移动端底部导航栏 -->
     <nav class="mobile-nav">
       <a href={base} class="mobile-nav-link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -84,6 +104,7 @@ const hasSidebar = Astro.slots.has('sidebar')
         </svg>
         <span>搜索</span>
       </a>
+      <!-- 模块切换按钮：仅在有侧边栏时显示 -->
       {hasSidebar && (
         <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -93,6 +114,7 @@ const hasSidebar = Astro.slots.has('sidebar')
           <span>模块</span>
         </button>
       )}
+      <!-- 全屏切换按钮 -->
       <button class="mobile-nav-link" id="mobile-fullscreen-btn" aria-label="全屏">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
@@ -104,20 +126,24 @@ const hasSidebar = Astro.slots.has('sidebar')
 </html>
 
 <script>
+  // ========== 侧边栏开关逻辑 ==========
   const backdrop = document.getElementById('sidebar-backdrop')
   const toggle = document.getElementById('nav-toggle')
   const mobileBtn = document.getElementById('mobile-sidebar-btn')
 
+  /** 打开侧边栏并同步 URL 参数 */
   function openSidebar() {
     document.body.classList.add('sidebar-open')
     syncSidebarUrl()
   }
 
+  /** 关闭侧边栏并同步 URL 参数 */
   function closeSidebar() {
     document.body.classList.remove('sidebar-open')
     syncSidebarUrl()
   }
 
+  /** 将侧边栏开关状态同步到 URL 查询参数，便于刷新后恢复 */
   function syncSidebarUrl() {
     const params = new URLSearchParams(window.location.search)
     if (document.body.classList.contains('sidebar-open')) {
@@ -132,6 +158,7 @@ const hasSidebar = Astro.slots.has('sidebar')
     history.replaceState(null, '', newUrl)
   }
 
+  /** 从 URL 查询参数恢复侧边栏状态 */
   function restoreSidebarFromUrl() {
     const params = new URLSearchParams(window.location.search)
     if (params.get('sidebar') === '1') {
@@ -141,6 +168,7 @@ const hasSidebar = Astro.slots.has('sidebar')
 
   restoreSidebarFromUrl()
 
+  // 顶部菜单按钮：切换章节视图并打开侧边栏
   if (toggle) toggle.addEventListener('click', () => {
     if (document.body.classList.contains('sidebar-open')) {
       closeSidebar()
@@ -150,13 +178,16 @@ const hasSidebar = Astro.slots.has('sidebar')
     }
   })
 
+  // 移动端模块按钮：切换模块视图并打开侧边栏
   if (mobileBtn) mobileBtn.addEventListener('click', () => {
     document.dispatchEvent(new CustomEvent('fandex-switch-modules'))
     openSidebar()
   })
 
+  // 点击遮罩层关闭侧边栏
   if (backdrop) backdrop.addEventListener('click', closeSidebar)
 
+  // ========== 返回顶部按钮 ==========
   const backToTopBtn = document.getElementById('nav-back-to-top')
   const mainEl = document.getElementById('app-main')
   if (backToTopBtn && mainEl) {
@@ -165,8 +196,10 @@ const hasSidebar = Astro.slots.has('sidebar')
     })
   }
 
+  // 页面切换时自动关闭侧边栏
   document.addEventListener('astro:page-load', closeSidebar)
 
+  // ========== 全屏模式切换 ==========
   const fullscreenBtn = document.getElementById('mobile-fullscreen-btn')
   if (fullscreenBtn) {
     fullscreenBtn.addEventListener('click', () => {
@@ -176,6 +209,7 @@ const hasSidebar = Astro.slots.has('sidebar')
         document.exitFullscreen().catch(() => {})
       }
     })
+    // 监听全屏状态变化，更新按钮文字和持久化状态
     document.addEventListener('fullscreenchange', () => {
       const span = fullscreenBtn.querySelector('span')
       if (document.fullscreenElement) {
@@ -192,6 +226,7 @@ const hasSidebar = Astro.slots.has('sidebar')
     }
   }
 
+  // ========== 代码块复制按钮 ==========
   function initCopyButtons() {
     document.querySelectorAll('pre > code').forEach(codeEl => {
       const pre = codeEl.parentElement
@@ -200,6 +235,7 @@ const hasSidebar = Astro.slots.has('sidebar')
       const wrapper = document.createElement('div')
       wrapper.className = 'code-block'
 
+      // 提取代码语言标识
       const lang = (codeEl.className.match(/language-(\S+)/) || [])[1] || ''
       if (lang) wrapper.setAttribute('data-lang', lang)
 
@@ -211,6 +247,7 @@ const hasSidebar = Astro.slots.has('sidebar')
       btn.addEventListener('click', async () => {
         const text = codeEl.textContent || ''
         try {
+          // 优先使用 Clipboard API 复制
           await navigator.clipboard.writeText(text)
           btn.classList.add('copied')
           btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>'
@@ -219,6 +256,7 @@ const hasSidebar = Astro.slots.has('sidebar')
             btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
           }, 2000)
         } catch {
+          // Clipboard API 不可用时回退到 execCommand
           const ta = document.createElement('textarea')
           ta.value = text
           ta.style.cssText = 'position:fixed;opacity:0'
@@ -231,6 +269,7 @@ const hasSidebar = Astro.slots.has('sidebar')
         }
       })
 
+      // 将代码块包裹在容器中，并添加复制按钮
       pre.parentNode!.insertBefore(wrapper, pre)
       wrapper.appendChild(pre)
       wrapper.appendChild(btn)
@@ -240,15 +279,18 @@ const hasSidebar = Astro.slots.has('sidebar')
   document.addEventListener('astro:page-load', initCopyButtons)
   initCopyButtons()
 
+  // ========== Mermaid 图表渲染 ==========
   function initMermaid() {
     const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"] code, code.language-mermaid')
     if (mermaidBlocks.length === 0) return
 
+    /** 执行 Mermaid 渲染 */
     const render = () => {
       const mermaid = (window as any).mermaid
       if (!mermaid) return
       mermaid.initialize({
         startOnLoad: false,
+        // 根据当前主题选择 Mermaid 配色
         theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
         securityLevel: 'strict',
       })
@@ -261,6 +303,7 @@ const hasSidebar = Astro.slots.has('sidebar')
           const { svg } = await mermaid.render(id, code)
           const container = document.createElement('div')
           container.className = 'mermaid-output'
+          // 使用 DOMPurify 防止 XSS
           const purify = (window as any).DOMPurify
           container.innerHTML = purify ? purify.sanitize(svg) : svg
           pre.replaceWith(container)
@@ -273,20 +316,22 @@ const hasSidebar = Astro.slots.has('sidebar')
       })
     }
 
+    // Mermaid 已加载则直接渲染
     if ((window as any).mermaid) {
       render()
       return
     }
 
+    // 动态加载 Mermaid 脚本
     let script = document.getElementById('mermaid-script') as HTMLScriptElement | null
     if (!script) {
-      // Load DOMPurify first, then Mermaid
+      // 先加载 DOMPurify，再加载 Mermaid
       const loadPurify = new Promise<void>((resolve) => {
         if ((window as any).DOMPurify) { resolve(); return }
         const p = document.createElement('script')
         p.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
         p.onload = () => resolve()
-        p.onerror = () => resolve() // continue without purify
+        p.onerror = () => resolve() // DOMPurify 加载失败时继续执行
         document.head.appendChild(p)
       })
       script = document.createElement('script')
@@ -300,6 +345,7 @@ const hasSidebar = Astro.slots.has('sidebar')
       return
     }
 
+    // 脚本已加载但尚未执行完毕
     if (script.dataset.loaded === '1') {
       render()
       return
@@ -311,6 +357,7 @@ const hasSidebar = Astro.slots.has('sidebar')
   document.addEventListener('astro:page-load', initMermaid)
   initMermaid()
 
+  // ========== 术语提示气泡 ==========
   async function initTermTooltip() {
     const article = document.querySelector('article.prose')
     if (!article) return
@@ -320,6 +367,7 @@ const hasSidebar = Astro.slots.has('sidebar')
     } catch { /* ignore */ }
   }
 
+  // ========== 微交互动画 ==========
   async function initAnimations() {
     try {
       const { setupMicroInteractions } = await import('@/lib/animations')
@@ -327,6 +375,7 @@ const hasSidebar = Astro.slots.has('sidebar')
     } catch { /* ignore */ }
   }
 
+  // ========== 代码运行器 ==========
   async function initCodeRunners() {
     try {
       const { initCodeRunners: init } = await import('@/lib/code-runner')
@@ -334,6 +383,7 @@ const hasSidebar = Astro.slots.has('sidebar')
     } catch { /* ignore */ }
   }
 
+  // 注册各功能模块的页面加载回调
   document.addEventListener('astro:page-load', initTermTooltip)
   document.addEventListener('astro:page-load', initAnimations)
   document.addEventListener('astro:page-load', initCodeRunners)
@@ -341,11 +391,13 @@ const hasSidebar = Astro.slots.has('sidebar')
   initAnimations()
   initCodeRunners()
 
+  // 注册 Service Worker 以支持离线访问
   if ('serviceWorker' in navigator) {
     const base = import.meta.env.BASE_URL
     navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
   }
 
+  // 快捷键 Ctrl/Cmd + K 跳转到搜索页
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
       e.preventDefault()
@@ -356,6 +408,7 @@ const hasSidebar = Astro.slots.has('sidebar')
 </script>
 
 <style>
+/* 侧边栏遮罩层：移动端打开侧边栏时显示半透明背景 */
 .sidebar-backdrop {
   display: none;
   position: fixed;
@@ -366,6 +419,7 @@ const hasSidebar = Astro.slots.has('sidebar')
 }
 body.sidebar-open .sidebar-backdrop { display: block; }
 
+/* 菜单切换按钮：默认隐藏，移动端显示 */
 .nav-toggle { display: none; }
 
 @media (max-width: 768px) {

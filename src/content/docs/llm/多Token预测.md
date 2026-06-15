@@ -1,9 +1,20 @@
 ---
 title: 多Token预测
-description: 理解多 Token 预测（Multi-Token Prediction），让模型一次预测多个 token 提升训练效率
+description: '理解多 Token 预测（Multi-Token Prediction），让模型一次预测多个 token 提升训练效率'
 module: llm
 difficulty: advanced
-tags: [multi-token prediction, MTP, 训练效率, 并行预测]
+tags:
+  - 'multi-token prediction'
+  - MTP
+  - 训练效率
+  - 并行预测
+related:
+  - llm/安全护栏
+  - llm/差分注意力V2
+  - llm/分词器
+  - llm/高级RAG
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 多Token预测

@@ -1,12 +1,19 @@
 ---
 order: 100
-title: '条件类型与infer'
-module: 'typescript'
+title: 条件类型与infer
+module: typescript
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'TypeScript条件类型与infer关键字详解：Conditional Types、类型推断与分布式条件类型。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/satisfies操作符
+  - typescript/迁移实战
+  - typescript/编译与性能优化
+  - typescript/映射类型与键重映射
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. 条件类型基础

@@ -1,9 +1,20 @@
 ---
 title: 推测解码EAGLE3
-description: 理解 EAGLE3 推测解码算法，通过特征级预测实现高效推理加速
+description: '理解 EAGLE3 推测解码算法，通过特征级预测实现高效推理加速'
 module: llm
 difficulty: advanced
-tags: [speculative decoding, EAGLE, 推理加速, 推测解码]
+tags:
+  - 'speculative decoding'
+  - EAGLE
+  - 推理加速
+  - 推测解码
+related:
+  - llm/提示缓存
+  - llm/推测解码
+  - llm/推理优化
+  - llm/微调与LoRA
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 推测解码EAGLE3

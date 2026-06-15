@@ -1,12 +1,19 @@
 ---
 order: 88
 title: 'SSL-TLS加密'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'intermediate'
+module: mysql
+category: MySQL
+difficulty: intermediate
 description: 'MySQL SSL/TLS加密连接：证书配置、强制加密、客户端验证与安全最佳实践'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/分库分表中间件
+  - mysql/账户与权限管理
+  - mysql/防火墙插件
+  - mysql/InnoDB体系架构
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. SSL/TLS 概述

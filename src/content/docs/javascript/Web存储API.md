@@ -1,12 +1,19 @@
 ---
 order: 63
-title: 'Web存储API'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'beginner'
-description: 'localStorage、sessionStorage与Cookie'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Web存储API
+module: javascript
+category: JavaScript
+difficulty: beginner
+description: localStorage、sessionStorage与Cookie
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/浏览器对象模型
+  - javascript/网络请求API
+  - javascript/索引数据库
+  - javascript/时间API
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Web 存储对比

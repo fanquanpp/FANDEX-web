@@ -1,12 +1,19 @@
 ---
 order: 68
-title: 'React与WebSocket'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React中WebSocket实时通信'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与WebSocket
+module: react
+category: React
+difficulty: intermediate
+description: React中WebSocket实时通信
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React设计模式
+  - react/React与WebAssembly
+  - react/React与GraphQL
+  - react/React与微前端
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. WebSocket Hook

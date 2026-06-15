@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'Kubernetes架构'
+title: Kubernetes架构
 module: 'cloud-computing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Kubernetes核心架构：控制平面、节点组件、etcd、API Server 等详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cloud-computing/Docker深度解析'
+  - 'cloud-computing/云原生应用'
+  - 'cloud-computing/云数据库服务'
+  - 'cloud-computing/Kubernetes核心资源'
+prerequisites:
+  - 'cloud-computing/云计算基础'
 ---
 
 ## 1. Kubernetes 整体架构

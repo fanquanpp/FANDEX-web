@@ -1,9 +1,22 @@
 ---
-title: 'BERT掩码语言建模'
+title: BERT掩码语言建模
 description: 'GPT预测下一个词,BERT预测缺失的词,一句话的差异——和半个decade所有嵌入形态的应用'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['BERT', 'MLM', '掩码语言建模', '编码器', '预训练', '微调']
+difficulty: intermediate
+tags:
+  - BERT
+  - MLM
+  - 掩码语言建模
+  - 编码器
+  - 预训练
+  - 微调
+related:
+  - 'deep-learning/注意力变体'
+  - 'deep-learning/自注意力从零实现'
+  - 'deep-learning/GPT因果语言建模'
+  - 'deep-learning/JAX入门'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # BERT — 掩码语言建模

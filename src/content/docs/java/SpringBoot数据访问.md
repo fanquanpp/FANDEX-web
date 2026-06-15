@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'SpringBoot数据访问'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'JPA、MyBatis与数据访问'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: SpringBoot数据访问
+module: java
+category: Java
+difficulty: intermediate
+description: JPA、MyBatis与数据访问
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/SpringBoot进阶
+  - java/SpringBoot安全
+  - java/Java设计模式
+  - java/Java函数式编程
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. JPA

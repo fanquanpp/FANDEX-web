@@ -1,7 +1,14 @@
 ---
-title: OpenAI Agents SDK：交接、护栏、追踪
+title: 'OpenAI Agents SDK：交接、护栏、追踪'
 description: 'OpenAI Agents SDK是构建在Responses API上的轻量级多Agent框架。五个原语：Agent、Handoff、Guardrail、Session、Tracing。交接是名为transfer_to_<agent>的工具。护栏在输入或输出时触发。追踪默认开启。'
 module: agent
+related:
+  - agent/MCP资源与提示
+  - agent/METR时间范围与外部评估
+  - agent/OpenAI准备性与DeepMind前沿安全框架
+  - 'agent/OpenTelemetry-GenAI语义约定'
+prerequisites:
+  - agent/概述与架构
 ---
 
 ﻿---

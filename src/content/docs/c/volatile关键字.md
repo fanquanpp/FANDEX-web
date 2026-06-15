@@ -1,12 +1,19 @@
 ---
 order: 106
-title: 'volatile关键字'
-module: 'c'
+title: volatile关键字
+module: c
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'C语言volatile关键字作用与使用场景。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: C语言volatile关键字作用与使用场景。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/函数指针回调与跳转表
+  - c/动态库与静态库
+  - c/位域
+  - c/文件IO操作
+prerequisites:
+  - c/概述
 ---
 
 ## 1. volatile 的作用

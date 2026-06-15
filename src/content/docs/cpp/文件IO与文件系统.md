@@ -1,12 +1,19 @@
 ---
 order: 63
-title: '文件IO与文件系统'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
+title: 文件IO与文件系统
+module: cpp
+category: C++
+difficulty: intermediate
 description: '文件操作与std::filesystem'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/STL算法详解
+  - cpp/字符串处理
+  - cpp/异常安全
+  - cpp/多线程与并发
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 文件流

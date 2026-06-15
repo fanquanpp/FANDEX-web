@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Object扩展'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'intermediate'
+title: Object扩展
+module: javascript
+category: JavaScript
+difficulty: intermediate
 description: 'ES6+ Object新方法与特性'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/生成器函数
+  - javascript/Proxy与Reflect
+  - javascript/事件循环
+  - javascript/具名捕获组
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Object 静态方法

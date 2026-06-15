@@ -1,12 +1,19 @@
 ---
 order: 70
-title: '设计模式与C++'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'C++实现常见设计模式'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 设计模式与C++
+module: cpp
+category: C++
+difficulty: intermediate
+description: C++实现常见设计模式
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/constexpr与编译期计算
+  - cpp/命名空间与链接
+  - cpp/面向对象进阶
+  - cpp/C++内存模型
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 单例模式

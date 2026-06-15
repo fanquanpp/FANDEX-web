@@ -1,12 +1,19 @@
 ---
 order: 68
-title: 'Python与计算机视觉'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'OpenCV与图像处理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与计算机视觉
+module: python
+category: Python
+difficulty: intermediate
+description: OpenCV与图像处理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与深度学习
+  - python/Python与NLP
+  - python/Python与Web爬虫
+  - python/Python与自动化
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. OpenCV

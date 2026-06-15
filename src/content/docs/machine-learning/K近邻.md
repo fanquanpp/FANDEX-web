@@ -1,12 +1,18 @@
 ---
 order: 16
-title: 'K近邻'
+title: K近邻
 module: 'machine-learning'
-category: 'data'
-difficulty: 'intermediate'
-description: 'K近邻算法原理、距离度量、K值选择、KD树加速与优缺点分析。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: K近邻算法原理、距离度量、K值选择、KD树加速与优缺点分析。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'machine-learning/逻辑回归'
+  - 'machine-learning/决策树'
+  - 'machine-learning/集成学习'
+  - 'machine-learning/聚类算法'
+prerequisites: []
 ---
 
 ## 1. K近邻算法原理

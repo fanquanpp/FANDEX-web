@@ -1,9 +1,22 @@
 ---
-title: '无服务器LLM冷启动缓解'
-description: '理解五层冷启动缓解策略：预置镜像、模型流式加载、GPU快照、温池和分层加载'
+title: 无服务器LLM冷启动缓解
+description: 理解五层冷启动缓解策略：预置镜像、模型流式加载、GPU快照、温池和分层加载
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['冷启动', '无服务器', '模型流式加载', 'GPU快照', '温池', 'ServerlessLLM']
+difficulty: intermediate
+tags:
+  - 冷启动
+  - 无服务器
+  - 模型流式加载
+  - GPU快照
+  - 温池
+  - ServerlessLLM
+related:
+  - 'ai-engineering/托管LLM平台比较'
+  - 'ai-engineering/文本转语音'
+  - 'ai-engineering/无监督学习'
+  - 'ai-engineering/线性代数直觉'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 无服务器LLM冷启动缓解

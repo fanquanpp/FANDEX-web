@@ -1,9 +1,22 @@
 ---
 title: '托管LLM平台 — Bedrock、Vertex AI、Azure OpenAI'
-description: '比较三大超大规模云平台的LLM服务策略、延迟差距和FinOps归属'
+description: 比较三大超大规模云平台的LLM服务策略、延迟差距和FinOps归属
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['Bedrock', 'Vertex AI', 'Azure OpenAI', 'PTU', 'FinOps', '多供应商策略']
+difficulty: beginner
+tags:
+  - Bedrock
+  - 'Vertex AI'
+  - 'Azure OpenAI'
+  - PTU
+  - FinOps
+  - 多供应商策略
+related:
+  - 'ai-engineering/推理平台经济学'
+  - 'ai-engineering/推理指标体系'
+  - 'ai-engineering/文本转语音'
+  - 'ai-engineering/无服务器LLM冷启动缓解'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 托管LLM平台 — Bedrock、Vertex AI、Azure OpenAI

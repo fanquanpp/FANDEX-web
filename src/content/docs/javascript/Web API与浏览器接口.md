@@ -1,15 +1,22 @@
 ---
 order: 120
 tags:
-  - 'javascript'
+  - javascript
   - 'web-api'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'Web API 与浏览器接口'
-module: 'javascript'
+module: javascript
 category: 'JS Basics'
 description: '浏览器Web API详解：Fetch、Storage、IntersectionObserver、Web Workers、Geolocation等常用接口。'
-author: 'fanquanpp'
-updated: 2026-06-13
+author: fanquanpp
+updated: '2026-06-13'
+related:
+  - javascript/错误边界与全局错误捕获
+  - javascript/内存泄漏排查
+  - javascript/调试与性能优化
+  - javascript/典型项目实战
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Fetch API

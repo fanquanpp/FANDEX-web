@@ -1,12 +1,19 @@
 ---
 order: 65
-title: 'Temporal'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'advanced'
+title: Temporal
+module: javascript
+category: JavaScript
+difficulty: advanced
 description: 'TC39 Temporal日期时间API提案'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/Web存储API
+  - javascript/索引数据库
+  - javascript/迭代器帮助器
+  - javascript/Promise构造器
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Temporal 概述

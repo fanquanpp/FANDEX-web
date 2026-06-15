@@ -1,9 +1,21 @@
 ---
 title: '全能模型：Qwen2.5-Omni与Thinker-Talker分离架构'
 description: '理解Thinker-Talker分离架构如何实现流式实时语音对话'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Qwen2.5-Omni', 'Thinker-Talker', 'TMRoPE', '流式语音', '实时对话']
+module: multimodal
+difficulty: advanced
+tags:
+  - 'Qwen2.5-Omni'
+  - 'Thinker-Talker'
+  - TMRoPE
+  - 流式语音
+  - 实时对话
+related:
+  - multimodal/具身VLA机器人模型
+  - multimodal/开源VLM方案
+  - 'multimodal/任意分辨率与Patch-n-Pack'
+  - multimodal/视频语言模型与时间定位
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 全能模型：Qwen2.5-Omni与Thinker-Talker分离架构

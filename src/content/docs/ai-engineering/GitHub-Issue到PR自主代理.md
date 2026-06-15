@@ -2,8 +2,21 @@
 title: 'GitHub Issue到PR自主代理'
 description: 'AWS Remote SWE Agents、Cursor Background Agents、OpenAI Codex cloud和Google Jules都发布2026年相同产品形态：标记issue，获得PR。在云沙盒中运行代理，验证测试通过，发布带理由的review-ready PR。难点在于自动复现仓库构建环境、防止凭证泄露、强制每仓库预算、确保代理不能force-push。构建自托管版本并在成本和通过率上与托管替代比较。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['Issue到PR', '云沙盒', 'GitHub App', '异步代理', '凭证范围', '预算强制']
+difficulty: advanced
+tags:
+  - Issue到PR
+  - 云沙盒
+  - 'GitHub App'
+  - 异步代理
+  - 凭证范围
+  - 预算强制
+related:
+  - 'ai-engineering/EAGLE-3投机解码'
+  - 'ai-engineering/Git与协作'
+  - 'ai-engineering/GPU与云计算'
+  - 'ai-engineering/GPU自动伸缩与Kubernetes'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'React测试'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React组件测试策略'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React测试
+module: react
+category: React
+difficulty: intermediate
+description: React组件测试策略
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React表单处理
+  - react/React与TypeScript
+  - react/React路由进阶
+  - react/React国际化
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. React Testing Library

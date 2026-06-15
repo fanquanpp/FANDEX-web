@@ -1,9 +1,22 @@
 ---
-title: 'SGLang与RadixAttention前缀密集工作负载'
-description: '理解SGLang如何通过基数树KV缓存和缓存感知调度实现前缀共享加速'
+title: SGLang与RadixAttention前缀密集工作负载
+description: 理解SGLang如何通过基数树KV缓存和缓存感知调度实现前缀共享加速
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['SGLang', 'RadixAttention', '基数树', '前缀共享', 'KV缓存复用', '缓存感知调度']
+difficulty: intermediate
+tags:
+  - SGLang
+  - RadixAttention
+  - 基数树
+  - 前缀共享
+  - KV缓存复用
+  - 缓存感知调度
+related:
+  - 'ai-engineering/Python环境管理'
+  - 'ai-engineering/PyTorch入门'
+  - 'ai-engineering/TensorRT-LLM与Blackwell'
+  - 'ai-engineering/vLLM服务内部机制'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # SGLang与RadixAttention前缀密集工作负载

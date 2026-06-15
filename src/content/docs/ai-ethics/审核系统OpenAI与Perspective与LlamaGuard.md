@@ -1,9 +1,22 @@
 ---
-title: '审核系统OpenAI与Perspective与LlamaGuard'
+title: 审核系统OpenAI与Perspective与LlamaGuard
 description: '生产审核系统操作化第12-16课的安全策略。OpenAI Moderation API：基于GPT-4o的13类别分类器，支持文本+图像；Llama Guard 3/4：14类MLCommons危害，8种语言(v3)，多模态(v4)；Perspective API：前LLM时代毒性评分基线。三层审核模式：输入审核、输出审核、自定义审核。Azure Content Moderator 2027年2月退役。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['审核系统', 'OpenAI Moderation', 'Llama Guard', 'Perspective API', '三层审核', '内容安全']
+difficulty: advanced
+tags:
+  - 审核系统
+  - 'OpenAI Moderation'
+  - 'Llama Guard'
+  - 'Perspective API'
+  - 三层审核
+  - 内容安全
+related:
+  - 'ai-ethics/前沿安全框架RSP与PF与FSF'
+  - 'ai-ethics/前沿模型的上下文内策划'
+  - 'ai-ethics/数据溯源与训练数据治理'
+  - 'ai-ethics/双用风险网络与生物与化学与核'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

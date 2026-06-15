@@ -2,6 +2,11 @@
 title: STaR自教推理
 description: '最小的可能自改进循环存在于推理依据中。模型生成思维链，保留那些得到正确答案的，并在其上微调。这就是 STaR。V-STaR 添加验证者以改善推理时选择。Quiet-STaR 将推理依据推到每个 token。三者都有效。没有一个是魔法——循环保留了碰巧达到正确答案的任何捷径。'
 module: agent
+related:
+  - agent/Reflexion语言强化学习
+  - agent/ReWOO与计划执行
+prerequisites:
+  - agent/概述与架构
 ---
 
 # STaR, V-STaR, Quiet-STaR — 自教推理

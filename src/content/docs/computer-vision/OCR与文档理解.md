@@ -1,9 +1,21 @@
 ---
-title: 'OCR与文档理解'
-description: 'OCR将图像中的文字转换为机器可读文本。文档理解在OCR之上添加布局分析和语义理解。'
+title: OCR与文档理解
+description: OCR将图像中的文字转换为机器可读文本。文档理解在OCR之上添加布局分析和语义理解。
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['OCR', '文档理解', '文字识别', '布局分析', 'TrOCR']
+difficulty: intermediate
+tags:
+  - OCR
+  - 文档理解
+  - 文字识别
+  - 布局分析
+  - TrOCR
+related:
+  - 'computer-vision/CNN从LeNet到ResNet'
+  - 'computer-vision/DiffusionTransformer'
+  - 'computer-vision/SAM开放词汇分割'
+  - 'computer-vision/StableDiffusion'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # OCR与文档理解

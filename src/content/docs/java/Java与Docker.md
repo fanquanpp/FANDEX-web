@@ -1,12 +1,19 @@
 ---
 order: 74
-title: 'Java与Docker'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Java容器化部署'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java与Docker
+module: java
+category: Java
+difficulty: intermediate
+description: Java容器化部署
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与消息队列
+  - java/Java与Redis
+  - java/Java与GraphQL
+  - java/Java性能调优
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Dockerfile

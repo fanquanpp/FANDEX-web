@@ -2,6 +2,13 @@
 title: 自精炼与CRITIC
 description: 'Self-Refine（Madaan等人，2023）用一个LLM扮演三个角色——生成、反馈、精炼——循环执行。7个任务平均提升20个绝对百分点。CRITIC（Gou等人，2023）通过将验证路由到外部工具来强化反馈步骤。在2026年，这个模式在每个框架中都以"评估器-优化器"（Anthropi...'
 module: agent
+related:
+  - agent/终止开关与金丝雀令牌
+  - agent/自动化对齐研究AAR
+  - agent/自主编码Agent格局
+  - agent/最小Agent工作台
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 自精炼与CRITIC：迭代输出改进

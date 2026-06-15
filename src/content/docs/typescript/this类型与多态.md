@@ -1,12 +1,19 @@
 ---
 order: 63
-title: 'this类型与多态'
-module: 'typescript'
-category: 'TypeScript'
-difficulty: 'intermediate'
-description: 'TypeScript中this类型与多态this'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: this类型与多态
+module: typescript
+category: TypeScript
+difficulty: intermediate
+description: TypeScript中this类型与多态this
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/类型体操实用模式
+  - typescript/协变与逆变
+  - typescript/符号与唯一类型
+  - typescript/命名空间与模块
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. this 类型

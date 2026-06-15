@@ -1,9 +1,21 @@
 ---
-title: 'LlamaGuard与输入输出分类'
+title: LlamaGuard与输入输出分类
 description: '掌握Llama Guard 3/4分类器、NeMo Guardrails防护栏和MLCommons危害分类法，理解分类器层的优势与局限'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['LlamaGuard', '分类器', 'NeMo Guardrails', 'MLCommons', 'Emoji走私攻击']
+module: agent
+difficulty: intermediate
+tags:
+  - LlamaGuard
+  - 分类器
+  - 'NeMo Guardrails'
+  - MLCommons
+  - Emoji走私攻击
+related:
+  - agent/HTN规划与进化搜索
+  - agent/LangGraph状态图与持久执行
+  - agent/LLM路由层
+  - agent/MARL寮哄寲瀛︿範
+prerequisites:
+  - agent/概述与架构
 ---
 
 # LlamaGuard与输入输出分类

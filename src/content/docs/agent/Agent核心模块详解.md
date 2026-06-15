@@ -1,12 +1,19 @@
 ---
 order: 90
 title: 'Agent 核心模块详解'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'advanced'
+difficulty: advanced
 description: '感知、规划、行动、反思四大核心模块深度解析，以及 ReAct 模式的原理与实现。'
-author: 'fanquanpp'
-updated: 2026-06-15
+author: fanquanpp
+updated: '2026-06-15'
+related:
+  - agent/Agent评估与安全
+  - agent/实战项目
+  - agent/MCP与A2A协议
+  - agent/Agent安全与沙盒
+prerequisites:
+  - agent/概述与架构
 ---
 
 ## 1. Agent 核心模块总览

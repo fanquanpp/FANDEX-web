@@ -1,9 +1,20 @@
 ---
 title: 'MCP资源与提示 — 超越工具的上下文暴露'
-description: '掌握工具、资源、提示三种原语的选择决策，实现资源订阅和提示模板'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['MCP资源', 'MCP提示', '原语选择', '资源订阅']
+description: 掌握工具、资源、提示三种原语的选择决策，实现资源订阅和提示模板
+module: agent
+difficulty: intermediate
+tags:
+  - MCP资源
+  - MCP提示
+  - 原语选择
+  - 资源订阅
+related:
+  - agent/MCP异步任务
+  - agent/MCP应用
+  - agent/METR时间范围与外部评估
+  - 'agent/OpenAI-Agents-SDK'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP资源与提示 — 超越工具的上下文暴露

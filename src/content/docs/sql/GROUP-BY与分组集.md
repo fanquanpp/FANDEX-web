@@ -1,12 +1,19 @@
 ---
 order: 55
 title: 'GROUP BY与分组集'
-module: 'sql'
-category: 'SQL'
-difficulty: 'advanced'
+module: sql
+category: SQL
+difficulty: advanced
 description: 'SQL分组与分组集：GROUP BY子句、ROLLUP、CUBE、GROUPING SETS多维分析、GROUPING函数与报表生成'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/过滤条件
+  - sql/聚合函数
+  - sql/连接查询
+  - sql/自然连接与USING
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. GROUP BY 基础

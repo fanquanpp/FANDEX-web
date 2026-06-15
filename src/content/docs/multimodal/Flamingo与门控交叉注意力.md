@@ -1,9 +1,21 @@
 ---
-title: 'Flamingo与门控交叉注意力'
-description: '理解Flamingo如何通过门控交叉注意力实现少样本多模态推理'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Flamingo', '门控交叉注意力', 'Perceiver Resampler', '少样本学习', '交错输入']
+title: Flamingo与门控交叉注意力
+description: 理解Flamingo如何通过门控交叉注意力实现少样本多模态推理
+module: multimodal
+difficulty: advanced
+tags:
+  - Flamingo
+  - 门控交叉注意力
+  - 'Perceiver Resampler'
+  - 少样本学习
+  - 交错输入
+related:
+  - multimodal/ColPali视觉原生文档RAG
+  - multimodal/Emu3下一token预测生成
+  - multimodal/InternVL3原生多模态预训练
+  - 'multimodal/Janus-Pro解耦编码器'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Flamingo与门控交叉注意力用于少样本VLM

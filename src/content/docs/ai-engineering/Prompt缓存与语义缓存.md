@@ -1,9 +1,22 @@
 ---
-title: 'Prompt缓存与语义缓存经济学'
-description: '理解L2提供商级缓存和L1应用级语义缓存的两层缓存策略'
+title: Prompt缓存与语义缓存经济学
+description: 理解L2提供商级缓存和L1应用级语义缓存的两层缓存策略
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['Prompt缓存', '语义缓存', 'KV缓存复用', 'Anthropic缓存', 'OpenAI缓存', '命中率']
+difficulty: intermediate
+tags:
+  - Prompt缓存
+  - 语义缓存
+  - KV缓存复用
+  - Anthropic缓存
+  - OpenAI缓存
+  - 命中率
+related:
+  - 'ai-engineering/MCP服务器与注册中心与治理'
+  - 'ai-engineering/ML流水线'
+  - 'ai-engineering/Python环境管理'
+  - 'ai-engineering/PyTorch入门'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Prompt缓存与语义缓存经济学

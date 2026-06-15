@@ -2,6 +2,13 @@
 title: 浏览器Agent与间接注入
 description: 'ChatGPT agent（2025 年 7 月）将 Operator 和深度研究合并为一个浏览器/终端 Agent，BrowseComp SOTA 达 68.9%。OpenAI 于 2025 年 8 月 31 日关闭 Operator——产品层整合。Anthropic 的 Vercept 收...'
 module: agent
+related:
+  - agent/角色专业化
+  - agent/结构化输出
+  - agent/评估驱动Agent开发
+  - agent/评估与协调基准
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 浏览器 Agent 与长时间范围 Web 任务

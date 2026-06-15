@@ -1,9 +1,21 @@
 ---
-title: '语音识别ASR'
+title: 语音识别ASR
 description: '理解CTC、RNN-T和注意力机制三种语音识别范式'
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['ASR', 'CTC', 'RNN-T', 'Whisper', '语音识别']
+difficulty: intermediate
+tags:
+  - ASR
+  - CTC
+  - 'RNN-T'
+  - Whisper
+  - 语音识别
+related:
+  - 'ai-engineering/语音活动检测'
+  - 'ai-engineering/语音克隆与转换'
+  - 'ai-engineering/语音助手流水线'
+  - 'ai-engineering/张量运算'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 语音识别 (ASR) — CTC、RNN-T、注意力机制

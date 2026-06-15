@@ -1,9 +1,21 @@
 ---
 title: 'MCP应用 — 通过ui://的交互式UI资源'
 description: '掌握MCP Apps扩展，使用ui://资源方案和iframe沙箱postMessage协议实现交互式HTML界面'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP Apps', 'UI资源方案', '交互式UI', 'iframe沙箱', 'CSP']
+module: agent
+difficulty: advanced
+tags:
+  - 'MCP Apps'
+  - UI资源方案
+  - 交互式UI
+  - iframe沙箱
+  - CSP
+related:
+  - agent/MCP网关与注册表
+  - agent/MCP异步任务
+  - agent/MCP资源与提示
+  - agent/METR时间范围与外部评估
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP应用 — 通过ui://的交互式UI资源

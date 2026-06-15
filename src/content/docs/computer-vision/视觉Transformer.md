@@ -1,9 +1,21 @@
 ---
-title: '视觉Transformer'
-description: 'ViT将图像分割为patch序列，用标准Transformer处理。当数据量足够大时，它超越了所有CNN。'
+title: 视觉Transformer
+description: ViT将图像分割为patch序列，用标准Transformer处理。当数据量足够大时，它超越了所有CNN。
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['ViT', 'Transformer', 'patch嵌入', '自注意力', '图像分类']
+difficulty: intermediate
+tags:
+  - ViT
+  - Transformer
+  - patch嵌入
+  - 自注意力
+  - 图像分类
+related:
+  - 'computer-vision/视觉管线项目'
+  - 'computer-vision/视觉语言模型'
+  - 'computer-vision/视频理解'
+  - 'computer-vision/图像分类'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 视觉Transformer

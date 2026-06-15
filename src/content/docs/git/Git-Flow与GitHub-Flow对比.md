@@ -1,12 +1,19 @@
 ---
 order: 100
 title: 'Git-Flow与GitHub-Flow对比'
-module: 'git'
-category: 'toolchain'
-difficulty: 'advanced'
+module: git
+category: toolchain
+difficulty: advanced
 description: 'Git Flow与GitHub Flow两种分支工作流的深度对比分析，适用场景与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - git/工作树管理
+  - git/垃圾回收
+  - git/交互式rebase
+  - 'git/git-revert与reset对比'
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. Git Flow 工作流

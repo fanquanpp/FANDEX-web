@@ -1,12 +1,19 @@
 ---
 order: 81
-title: 'C++与Rust对比'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'C++与Rust语言对比'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++与Rust对比
+module: cpp
+category: C++
+difficulty: intermediate
+description: C++与Rust语言对比
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++嵌入式开发
+  - cpp/内存管理
+  - cpp/C++代码规范
+  - cpp/C++与WebAssembly
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 内存安全

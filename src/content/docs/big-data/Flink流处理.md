@@ -1,12 +1,18 @@
 ---
 order: 18
-title: 'Flink流处理'
+title: Flink流处理
 module: 'big-data'
-category: 'data'
-difficulty: 'advanced'
+category: data
+difficulty: advanced
 description: 'Flink流处理架构、窗口机制、水位线、状态管理、Checkpoint与Exactly-Once保证。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/HBase列族数据库'
+  - 'big-data/Kafka消息队列'
+  - 'big-data/数据湖'
+  - 'big-data/Zookeeper协调服务'
+prerequisites: []
 ---
 
 ## 1. Flink架构与核心概念

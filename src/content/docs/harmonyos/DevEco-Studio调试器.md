@@ -1,12 +1,17 @@
 ---
 order: 109
 title: 'DevEco-Studio调试器'
-module: 'harmonyos'
+module: harmonyos
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'HarmonyOS DevEco Studio调试器详解：断点、变量查看、性能分析。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - harmonyos/跨设备调用
+  - harmonyos/元服务开发与发布
+prerequisites:
+  - harmonyos/概述与环境搭建
 ---
 
 ## 1. 断点调试

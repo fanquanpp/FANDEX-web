@@ -1,12 +1,19 @@
 ---
 order: 105
-title: 'Prometheus指标采集与告警'
-module: 'devops'
+title: Prometheus指标采集与告警
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Prometheus 指标采集与 Alertmanager 告警：PromQL、规则配置与通知路由。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/Terraform资源编排
+  - 'devops/Ansible-Playbook配置管理'
+  - devops/Grafana仪表盘配置
+  - 'devops/ELK-Stack日志分析'
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Prometheus 架构

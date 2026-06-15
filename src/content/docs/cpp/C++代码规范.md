@@ -1,12 +1,19 @@
 ---
 order: 82
-title: 'C++代码规范'
-module: 'cpp'
-category: 'C++'
-difficulty: 'beginner'
-description: 'C++编码规范与最佳实践'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++代码规范
+module: cpp
+category: C++
+difficulty: beginner
+description: C++编码规范与最佳实践
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/内存管理
+  - cpp/C++与Rust对比
+  - cpp/C++与WebAssembly
+  - cpp/C++反射与元编程
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 命名规范

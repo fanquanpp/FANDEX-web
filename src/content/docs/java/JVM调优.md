@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'JVM调优'
-module: 'java'
+title: JVM调优
+module: java
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'JVM调优详解：堆参数、GC日志、MAT分析。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: JVM调优详解：堆参数、GC日志、MAT分析。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java新特性与生态
+  - java/数组详解
+  - java/集合框架详解
+  - java/并发编程详解
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 堆内存参数

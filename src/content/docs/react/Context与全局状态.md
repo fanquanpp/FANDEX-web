@@ -1,14 +1,20 @@
 ---
 order: 5
 tags:
-  - 'react'
-difficulty: 'intermediate'
-title: 'Context与全局状态'
-module: 'react'
-category: 'React'
+  - react
+difficulty: intermediate
+title: Context与全局状态
+module: react
+category: React
 description: 'Context API、Provider 模式、useContext 优化、状态管理方案对比与状态机。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/状态与事件
+  - react/Hooks深入
+  - react/React19新特性
+  - react/路由与数据获取
+prerequisites: []
 ---
 
 ## 1. Context API

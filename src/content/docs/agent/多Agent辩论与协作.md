@@ -2,6 +2,13 @@
 title: 多Agent辩论与协作
 description: 'Du等人（ICML 2024，"Society of Minds"）运行N个模型实例独立提出答案，然后在R轮中迭代批评彼此以收敛。改善事实性、规则遵循、推理。稀疏拓扑在token成本上击败全网格。'
 module: agent
+related:
+  - agent/递归自改进与对齐竞赛
+  - agent/多会话交接
+  - agent/多Agent原语模型
+  - agent/工具接口
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 多Agent辩论与协作

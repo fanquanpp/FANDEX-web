@@ -1,9 +1,22 @@
 ---
-title: '视频理解管线场景与QA与搜索'
+title: 视频理解管线场景与QA与搜索
 description: 'Twelve Labs产品化Marengo+Pegasus，VideoDB发布视频CRUD API，AI2 Molmo 2发布开放VLM检查点，Gemini长上下文原生处理小时级视频。2026年管线：场景分割、每场景字幕+嵌入、转录对齐、多向量索引、带(start,end)时间戳+帧预览的查询回答。摄取100小时，命中公开基准，测量计数和动作问题的幻觉。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['视频理解', '场景分割', 'VLM', '时间定位', '多向量索引', '视频QA']
+difficulty: advanced
+tags:
+  - 视频理解
+  - 场景分割
+  - VLM
+  - 时间定位
+  - 多向量索引
+  - 视频QA
+related:
+  - 'ai-engineering/实时音频处理'
+  - 'ai-engineering/实时语音助手ASR到LLM到TTS'
+  - 'ai-engineering/数据管理'
+  - 'ai-engineering/数值稳定性'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

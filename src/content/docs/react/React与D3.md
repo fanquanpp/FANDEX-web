@@ -1,12 +1,19 @@
 ---
 order: 74
-title: 'React与D3'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
-description: 'React中D3数据可视化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与D3
+module: react
+category: React
+difficulty: advanced
+description: React中D3数据可视化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与PWA
+  - react/React与Canvas
+  - react/React与Storybook
+  - 'react/React与CI-CD'
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 集成方式

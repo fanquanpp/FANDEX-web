@@ -1,12 +1,19 @@
 ---
 order: 65
-title: 'Go与数据库'
-module: 'go'
-category: 'Go'
-difficulty: 'intermediate'
-description: 'database/sql与GORM'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Go与数据库
+module: go
+category: Go
+difficulty: intermediate
+description: database/sql与GORM
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Go与Docker
+  - go/Go与Kubernetes
+  - go/Go与Redis
+  - go/Go与消息队列
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. database/sql

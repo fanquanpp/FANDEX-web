@@ -1,14 +1,21 @@
 ---
 order: 180
 tags:
-  - 'java'
-difficulty: 'intermediate'
+  - java
+difficulty: intermediate
 title: 'Spring Boot 学习笔记'
-module: 'java'
+module: java
 category: 'Java Basics'
 description: 'Spring Boot 核心特性、自动配置与快速开发。'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - java/Lambda与函数式编程
+  - java/流式API
+  - java/网络编程
+  - java/SpringCloud微服务开发
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 核心概念

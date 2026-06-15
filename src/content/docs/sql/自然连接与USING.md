@@ -1,12 +1,19 @@
 ---
 order: 57
-title: '自然连接与USING'
-module: 'sql'
-category: 'SQL'
-difficulty: 'intermediate'
+title: 自然连接与USING
+module: sql
+category: SQL
+difficulty: intermediate
 description: 'SQL自然连接NATURAL JOIN与USING子句：语法、语义、使用场景与潜在陷阱'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'sql/GROUP-BY与分组集'
+  - sql/连接查询
+  - sql/自连接
+  - sql/半连接与反半连接
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 自然连接（NATURAL JOIN）

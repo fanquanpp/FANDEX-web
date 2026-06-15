@@ -1,12 +1,19 @@
 ---
 order: 81
-title: 'Python与设计模式'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Python实现设计模式'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与设计模式
+module: python
+category: Python
+difficulty: intermediate
+description: Python实现设计模式
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/内置数据结构
+  - python/正则表达式
+  - python/Python与打包发布
+  - python/Python与Jupyter
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. 常用模式

@@ -1,9 +1,20 @@
 ---
-title: '频谱图与Mel特征'
-description: '从STFT到Mel频谱图，理解音频AI最核心的特征表示'
+title: 频谱图与Mel特征
+description: 从STFT到Mel频谱图，理解音频AI最核心的特征表示
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['频谱图', 'Mel特征', 'MFCC', '特征提取']
+difficulty: beginner
+tags:
+  - 频谱图
+  - Mel特征
+  - MFCC
+  - 特征提取
+related:
+  - 'ai-engineering/批量API经济学'
+  - 'ai-engineering/偏差方差与学习曲线'
+  - 'ai-engineering/朴素贝叶斯'
+  - 'ai-engineering/奇异值分解'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 频谱图与Mel特征 — 音频AI的通用语言

@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'Concurrent模式'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
-description: '并发渲染与Suspense集成'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Concurrent模式
+module: react
+category: React
+difficulty: advanced
+description: 并发渲染与Suspense集成
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/JSX深度解析
+  - react/Fiber架构
+  - react/服务端组件
+  - react/Hooks原理
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 并发渲染

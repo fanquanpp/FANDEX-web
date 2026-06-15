@@ -1,4 +1,9 @@
 ---
+/**
+ * 文档详情页路由
+ * 动态路由 [module]/[slug]，为每篇文档生成独立页面
+ * 包含面包屑导航、前置知识提示、文档内容、知识检测、上下篇导航
+ */
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
@@ -9,6 +14,7 @@ import QuizBlock from '@/islands/QuizBlock.vue'
 import { getModule, modulePrerequisites, docSlug, categoryColors, getPrimaryCategory } from '@/lib/modules'
 import { getCollection } from 'astro:content'
 
+/** 生成静态路径：为每篇文档创建一个页面 */
 export async function getStaticPaths() {
   const docs = await getCollection('docs')
   return docs.map(doc => {
@@ -22,15 +28,18 @@ export async function getStaticPaths() {
 
 const { doc } = Astro.props as any
 const { module, slug } = Astro.params as { module: string; slug: string }
+// 渲染 Markdown 内容并获取标题列表
 const { Content, headings } = await doc.render()
 const meta = getModule(module || '')
 
-// Pre-fetch sorted docs for Sidebar to avoid duplicate getCollection calls
+// 预获取排序后的文档列表，传递给 Sidebar 避免重复查询
 const allModuleDocs = await getCollection('docs', ({ data }) => data.module === module)
 const sortedDocs = allModuleDocs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
 
+/** 计算预计阅读时间（分钟），优先使用 frontmatter 中的值 */
 function computeReadingTime(body: string, readingTime?: number): number {
   if (readingTime && readingTime > 0) return readingTime
+  // 去除代码块和 Markdown 标记后，按每分钟 300 字估算
   const stripped = body.replace(/```[\s\S]*?```/g, '').replace(/[#*`~\[\]()>_\-!|]/g, '')
   const chars = stripped.replace(/\s/g, '').length
   return Math.max(1, Math.ceil(chars / 300))
@@ -38,6 +47,7 @@ function computeReadingTime(body: string, readingTime?: number): number {
 
 const readingTime = computeReadingTime(doc.body || '', doc.data.readingTime)
 
+// 面包屑导航数据
 const breadcrumb = [
   { label: '首页', href: `${import.meta.env.BASE_URL}` },
   { label: meta?.title || module, href: `${import.meta.env.BASE_URL}${module}/` },
@@ -55,7 +65,9 @@ const breadcrumb = [
   <Sidebar slot="sidebar" moduleId={module} currentSlug={slug} headings={headings} sortedDocs={sortedDocs} />
 
   <div class="doc-page">
+    <!-- 面包屑导航 -->
     <Breadcrumb items={breadcrumb} hasSidebar />
+    <!-- 前置知识提示 -->
     {(() => {
       const prereqs = doc.data.prerequisites?.length > 0
         ? doc.data.prerequisites
@@ -75,15 +87,18 @@ const breadcrumb = [
         </div>
       )
     })()}
+    <!-- 文章主体 -->
     <article class="prose"
       data-pagefind-body
       data-pagefind-filter={`difficulty:${doc.data.difficulty || 'intermediate'}, module:${module}${doc.data.category ? ', category:' + doc.data.category : ''}`}
       style={`--module-color:${categoryColors[getPrimaryCategory(meta)]}`}
     >
+      <!-- 标题行：标题 + 进度追踪按钮 -->
       <div class="doc-title-row">
         <h1 class="doc-title">{doc.data.title}</h1>
         <ProgressToggle client:load slug={`${module}/${slug}`} />
       </div>
+      <!-- 文档元信息：阅读时间、难度、更新日期 -->
       <header class="doc-header">
         <div class="doc-meta">
           <span class="doc-meta-item doc-reading-time">
@@ -100,6 +115,7 @@ const breadcrumb = [
             </span>
           )}
         </div>
+        <!-- 标签列表 -->
         {doc.data.tags && doc.data.tags.length > 0 && (
           <div class="doc-tags">
             {doc.data.tags.map((tag: string) => (
@@ -107,24 +123,30 @@ const breadcrumb = [
             ))}
           </div>
         )}
+        <!-- 文档描述 -->
         {doc.data.description && (
           <p class="doc-description">{doc.data.description}</p>
         )}
       </header>
+      <!-- 文档正文内容 -->
       <Content />
     </article>
+    <!-- 知识检测组件：进入视口时加载 -->
     <QuizBlock client:visible quiz={doc.data.quiz || []} />
+    <!-- 上下篇导航 -->
     <DocNav moduleId={module} currentSlug={slug} />
   </div>
 </Layout>
 
 <style>
+/* 文档页面容器 */
 .doc-page {
   padding: var(--spacing-md) var(--spacing-lg) var(--spacing-2xl);
   width: 100%;
   min-height: 100%;
 }
 
+/* 前置知识提示条 */
 .prereq-notice {
   display: flex;
   align-items: center;
@@ -152,12 +174,14 @@ const breadcrumb = [
   text-decoration: underline;
 }
 
+/* 文档头部元信息区域 */
 .doc-header {
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--color-border-light);
 }
 
+/* 标题行：粘性定位，包含标题和进度按钮 */
 .doc-title-row {
   position: sticky;
   top: 0;
@@ -180,12 +204,14 @@ const breadcrumb = [
   margin-bottom: 0;
 }
 
+/* 文档标题 */
 .doc-title {
   margin-bottom: var(--spacing-sm);
   font-size: 1.6em;
   line-height: 1.3;
 }
 
+/* 元信息行 */
 .doc-meta {
   display: flex;
   align-items: center;
@@ -203,6 +229,7 @@ const breadcrumb = [
   color: var(--color-text-tertiary);
 }
 
+/* 难度标签：不同难度使用不同颜色 */
 .doc-difficulty {
   padding: 2px 8px;
   border-radius: 3px;
@@ -210,21 +237,25 @@ const breadcrumb = [
   letter-spacing: 0.02em;
 }
 
+/* 入门级：绿色 */
 .diff-beginner {
   background: #e8f5e9;
   color: #2e7d32;
 }
 
+/* 中级：橙色 */
 .diff-intermediate {
   background: #fff3e0;
   color: #e65100;
 }
 
+/* 高级：红色 */
 .diff-advanced {
   background: #fce4ec;
   color: #c62828;
 }
 
+/* 暗色模式下的难度标签颜色 */
 :root[data-theme="dark"] .diff-beginner {
   background: #1b3a1b;
   color: #81c784;
@@ -240,6 +271,7 @@ const breadcrumb = [
   color: #ef9a9a;
 }
 
+/* 标签列表 */
 .doc-tags {
   display: flex;
   flex-wrap: wrap;
@@ -247,6 +279,7 @@ const breadcrumb = [
   margin-top: var(--spacing-sm);
 }
 
+/* 单个标签 */
 .doc-tag {
   display: inline-block;
   padding: 2px 10px;
@@ -265,6 +298,7 @@ const breadcrumb = [
   background: var(--color-bg-hover);
 }
 
+/* 文档描述 */
 .doc-description {
   margin-top: var(--spacing-sm);
   font-size: 0.92em;
@@ -272,6 +306,7 @@ const breadcrumb = [
   line-height: 1.6;
 }
 
+/* 移动端适配 */
 @media (max-width: 768px) {
   .doc-page {
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-2xl);

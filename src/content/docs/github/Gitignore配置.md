@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'Gitignore配置'
-module: 'github'
-category: 'GitHub'
-difficulty: 'beginner'
-description: '.gitignore配置详解：忽略规则、全局配置与模板使用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Gitignore配置
+module: github
+category: GitHub
+difficulty: beginner
+description: .gitignore配置详解：忽略规则、全局配置与模板使用。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/README文件
+  - github/分支模型与分支保护规则
+  - github/开源许可证选择
+  - github/依赖安全选项
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. .gitignore 概述

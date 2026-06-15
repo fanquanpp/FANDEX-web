@@ -1,9 +1,21 @@
 ---
 title: '视觉自回归模型 -- VAR'
-description: '从光栅扫描到多尺度生成，视觉自回归模型VAR的原理与架构'
+description: 从光栅扫描到多尺度生成，视觉自回归模型VAR的原理与架构
 module: 'generative-ai'
-difficulty: 'advanced'
-tags: ['自回归', 'VAR', '多尺度生成', '图像tokenizer', '视觉生成']
+difficulty: advanced
+tags:
+  - 自回归
+  - VAR
+  - 多尺度生成
+  - 图像tokenizer
+  - 视觉生成
+related:
+  - 'generative-ai/生成模型分类与历史'
+  - 'generative-ai/生成模型评估FID与CLIP分数'
+  - 'generative-ai/视频生成'
+  - 'generative-ai/条件GAN与Pix2Pix'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 视觉自回归模型 -- VAR

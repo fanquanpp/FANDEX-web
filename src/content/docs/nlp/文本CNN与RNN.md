@@ -1,9 +1,21 @@
 ---
-title: '文本CNN与RNN'
-description: '理解TextCNN、LSTM、GRU和双向RNN在文本分类中的应用'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['TextCNN', 'LSTM', 'GRU', 'RNN', '文本分类']
+title: 文本CNN与RNN
+description: 理解TextCNN、LSTM、GRU和双向RNN在文本分类中的应用
+module: nlp
+difficulty: intermediate
+tags:
+  - TextCNN
+  - LSTM
+  - GRU
+  - RNN
+  - 文本分类
+related:
+  - nlp/文本生成
+  - nlp/文本摘要
+  - nlp/问答系统
+  - nlp/信息检索与搜索
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # 文本CNN与RNN

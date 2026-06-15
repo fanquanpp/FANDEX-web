@@ -1,7 +1,14 @@
 ---
-title: Claude-Code权限模式与Auto模式
+title: 'Claude-Code权限模式与Auto模式'
 description: 'Claude Code 暴露七种权限模式。plan 在每个动作前询问，default 仅对有风险的动作询问，acceptEdits 自动批准文件写入但仍确认 Shell 执行，bypassPermissions 批准一切。Auto 模式用两阶段并行安全分类器替代逐动作批准。'
 module: agent
+related:
+  - 'agent/CAIS-CAISI与社会规模风险'
+  - 'agent/Claude-Agent-SDK'
+  - agent/CrewAI角色团队与流程
+  - 'agent/Darwin-Godel自修改Agent'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Claude Code 权限模式与 Auto 模式

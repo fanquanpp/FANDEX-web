@@ -1,12 +1,19 @@
 ---
 order: 107
 title: 'Vue-Router导航守卫'
-module: 'vue3'
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue Router导航守卫详解：全局守卫、路由独享守卫、组件内守卫。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/异步组件与Suspense
+  - vue3/Pinia持久化插件
+  - vue3/Vue性能优化详解
+  - vue3/性能优化
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 全局守卫

@@ -1,13 +1,20 @@
 ---
 order: 80
 tags:
-  - 'github'
-difficulty: 'intermediate'
+  - github
+difficulty: intermediate
 title: 'GitHub Pages 多站点方案'
-module: 'github'
+module: github
 category: 'GitHub Advanced'
 description: 'GitHub Pages 静态站点部署方案：Jekyll、VitePress、Hugo 构建与发布。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/社区健康文件
+  - github/PullRequest完整协作流程
+  - github/GitHubActions与CICD
+  - github/Actions触发器
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 背景

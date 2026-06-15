@@ -1,7 +1,14 @@
 ---
-title: CAIS-CAISI与社会规模风险
+title: 'CAIS-CAISI与社会规模风险'
 description: 'AI 安全中心 (CAIS, 旧金山，2022 年由 Hendrycks 和 Zhang 创立) 发布四风险框架——恶意使用、AI 竞赛、组织风险、失控 AI——以及 2023 年 5 月由数百名教授和公司领导签署的灭绝风险声明。CAIS 2026 年发布：前沿模型评估 AI 仪表板、远程劳动...'
 module: agent
+related:
+  - agent/AnthropicRSP
+  - 'agent/AutoGen-Actor模型与Agent框架'
+  - 'agent/Claude-Agent-SDK'
+  - 'agent/Claude-Code权限模式'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # CAIS, CAISI 与社会规模风险

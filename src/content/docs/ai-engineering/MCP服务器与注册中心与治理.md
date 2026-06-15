@@ -1,9 +1,22 @@
 ---
-title: 'MCP服务器与注册中心与治理'
+title: MCP服务器与注册中心与治理
 description: 'Model Context Protocol在2026年从未来变成默认工具使用规范。Anthropic、OpenAI、Google和每个主要IDE都发布MCP客户端。Pinterest发布内部MCP服务器生态。AAIF Registry在.well-known正式化能力元数据。2026年生产形态：StreamableHTTP传输、OAuth 2.1范围、OPA策略门控、注册中心让平台团队发现验证启用服务器。端到端构建。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['MCP', '工具注册', 'StreamableHTTP', 'OAuth 2.1', 'OPA策略', 'AAIF Registry']
+difficulty: advanced
+tags:
+  - MCP
+  - 工具注册
+  - StreamableHTTP
+  - 'OAuth 2.1'
+  - OPA策略
+  - 'AAIF Registry'
+related:
+  - 'ai-engineering/LLM可观测性栈选择'
+  - 'ai-engineering/LLM生产混沌工程'
+  - 'ai-engineering/ML流水线'
+  - 'ai-engineering/Prompt缓存与语义缓存'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

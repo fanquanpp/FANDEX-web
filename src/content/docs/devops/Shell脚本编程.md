@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'Shell脚本编程'
-module: 'devops'
-category: '运维'
-difficulty: 'intermediate'
-description: 'Shell脚本编程：Bash语法、流程控制、函数、文本处理与自动化脚本'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Shell脚本编程
+module: devops
+category: 运维
+difficulty: intermediate
+description: Shell脚本编程：Bash语法、流程控制、函数、文本处理与自动化脚本
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/基础设施即代码
+  - devops/云原生与SRE
+  - devops/包管理与仓库
+  - devops/服务网格
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Bash 基础语法

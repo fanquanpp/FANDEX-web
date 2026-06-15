@@ -1,12 +1,19 @@
 ---
 order: 104
 title: 'Ansible-Playbook配置管理'
-module: 'devops'
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Ansible Playbook 配置管理：Inventory、Module、Role 与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'devops/Helm-Chart应用打包'
+  - devops/Terraform资源编排
+  - devops/Prometheus指标采集与告警
+  - devops/Grafana仪表盘配置
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Ansible 架构

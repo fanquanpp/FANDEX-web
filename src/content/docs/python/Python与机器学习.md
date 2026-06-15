@@ -1,12 +1,19 @@
 ---
 order: 65
-title: 'Python与机器学习'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
+title: Python与机器学习
+module: python
+category: Python
+difficulty: intermediate
 description: 'scikit-learn与ML基础'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与Redis
+  - python/Python与GraphQL
+  - python/Python与深度学习
+  - python/Python与NLP
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. scikit-learn

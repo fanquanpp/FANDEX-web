@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'Provide与Inject'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'intermediate'
-description: '依赖注入与跨层级通信'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Provide与Inject
+module: vue3
+category: Vue3
+difficulty: intermediate
+description: 依赖注入与跨层级通信
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Teleport与Suspense
+  - vue3/组合式API
+  - vue3/自定义指令进阶
+  - vue3/Transition与动画
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 基本用法

@@ -1,9 +1,20 @@
 ---
 title: '扩散模型 -- DDPM从零开始'
-description: '从DDPM的噪声预测到反向采样，理解扩散模型的核心训练与推理流程'
+description: 从DDPM的噪声预测到反向采样，理解扩散模型的核心训练与推理流程
 module: 'generative-ai'
-difficulty: 'advanced'
-tags: ['扩散模型', 'DDPM', '去噪', '噪声调度', 'CFG']
+difficulty: advanced
+tags:
+  - 扩散模型
+  - DDPM
+  - 去噪
+  - 噪声调度
+  - CFG
+related:
+  - 'generative-ai/3D生成'
+  - 'generative-ai/流匹配与整流流'
+  - 'generative-ai/潜扩散与Stable-Diffusion'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 扩散模型 -- DDPM 从零开始

@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'C++内存模型'
-module: 'cpp'
-category: 'C++'
-difficulty: 'advanced'
-description: 'C++原子操作与内存序'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++内存模型
+module: cpp
+category: C++
+difficulty: advanced
+description: C++原子操作与内存序
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/设计模式与C++
+  - cpp/面向对象进阶
+  - cpp/C++工具链
+  - cpp/C++测试框架
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 原子操作

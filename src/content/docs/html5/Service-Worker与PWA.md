@@ -1,12 +1,19 @@
 ---
 order: 63
 title: 'Service-Worker与PWA'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'advanced'
+module: html5
+category: HTML5
+difficulty: advanced
 description: 'Service Worker与PWA'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/地理位置定位
+  - html5/Web工作线程
+  - html5/历史记录API
+  - html5/全双工通信
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. Service Worker 概述

@@ -1,9 +1,20 @@
 ---
 title: 构建完整LLM流水线
-description: 将分词、预训练、SFT、对齐和评估整合为完整的 LLM 训练流水线
+description: '将分词、预训练、SFT、对齐和评估整合为完整的 LLM 训练流水线'
 module: llm
 difficulty: advanced
-tags: [pipeline, 训练流水线, 端到端, LLM工程]
+tags:
+  - pipeline
+  - 训练流水线
+  - 端到端
+  - LLM工程
+related:
+  - llm/高级RAG
+  - llm/构建分词器
+  - llm/函数调用
+  - llm/缓存与成本
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 构建完整LLM流水线

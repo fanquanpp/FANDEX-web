@@ -1,9 +1,21 @@
 ---
 title: 高级RAG
-description: 掌握高级 RAG 技术，包括混合搜索、重排序、HyDE 和父子文档检索
+description: '掌握高级 RAG 技术，包括混合搜索、重排序、HyDE 和父子文档检索'
 module: llm
 difficulty: advanced
-tags: [advanced RAG, reranking, hybrid search, HyDE, 父子文档]
+tags:
+  - 'advanced RAG'
+  - reranking
+  - 'hybrid search'
+  - HyDE
+  - 父子文档
+related:
+  - llm/多Token预测
+  - llm/分词器
+  - llm/构建分词器
+  - llm/构建完整LLM流水线
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 高级RAG

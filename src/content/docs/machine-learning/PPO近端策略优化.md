@@ -1,9 +1,21 @@
 ---
-title: 'PPO近端策略优化'
-description: '裁剪策略更新幅度，稳定训练的近端策略优化算法，RLHF的核心训练方法'
+title: PPO近端策略优化
+description: 裁剪策略更新幅度，稳定训练的近端策略优化算法，RLHF的核心训练方法
 module: 'machine-learning'
-difficulty: 'advanced'
-tags: ['PPO', '近端策略优化', '裁剪目标', 'RLHF', '策略优化']
+difficulty: advanced
+tags:
+  - PPO
+  - 近端策略优化
+  - 裁剪目标
+  - RLHF
+  - 策略优化
+related:
+  - 'machine-learning/MDP状态动作与奖励'
+  - 'machine-learning/ML流水线'
+  - 'machine-learning/Q学习与SARSA'
+  - 'machine-learning/RL在游戏中的应用'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # PPO 近端策略优化

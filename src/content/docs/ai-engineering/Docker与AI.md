@@ -1,9 +1,22 @@
 ---
-title: 'Docker与AI'
+title: Docker与AI
 description: '构建 GPU 支持的 Docker 镜像，挂载卷持久化模型和数据，配置 NVIDIA Container Toolkit，使用 Docker Compose 编排多服务 AI 应用'
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['Docker', '容器化', 'NVIDIA', 'Docker Compose', 'GPU', 'CUDA']
+difficulty: intermediate
+tags:
+  - Docker
+  - 容器化
+  - NVIDIA
+  - 'Docker Compose'
+  - GPU
+  - CUDA
+related:
+  - 'ai-engineering/API与密钥'
+  - 'ai-engineering/DevOps故障排查代理Kubernetes'
+  - 'ai-engineering/EAGLE-3投机解码'
+  - 'ai-engineering/Git与协作'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Docker 与 AI

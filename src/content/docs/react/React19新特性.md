@@ -1,14 +1,20 @@
 ---
 order: 6
 tags:
-  - 'react'
-difficulty: 'advanced'
-title: 'React19新特性'
-module: 'react'
-category: 'React'
+  - react
+difficulty: advanced
+title: React19新特性
+module: react
+category: React
 description: 'React Server Components、use() Hook、Actions、useFormStatus、useOptimistic、useActionState、Suspense 进阶与流式 SSR。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/Hooks深入
+  - react/Context与全局状态
+  - react/路由与数据获取
+  - react/性能优化
+prerequisites: []
 ---
 
 ## 1. React Server Components (RSC)

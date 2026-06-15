@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'RAII与资源管理'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: '资源获取即初始化模式'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: RAII与资源管理
+module: cpp
+category: C++
+difficulty: intermediate
+description: 资源获取即初始化模式
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++20模块
+  - cpp/C++23与C++26新特性
+  - cpp/运算符重载
+  - cpp/面向对象基础
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. RAII 原则

@@ -1,9 +1,21 @@
 ---
 title: 微调与LoRA
-description: 理解 LoRA 和 QLoRA 微调技术，用极少参数高效适配 LLM
+description: '理解 LoRA 和 QLoRA 微调技术，用极少参数高效适配 LLM'
 module: llm
 difficulty: advanced
-tags: [LoRA, QLoRA, fine-tuning, PEFT, 参数高效微调]
+tags:
+  - LoRA
+  - QLoRA
+  - 'fine-tuning'
+  - PEFT
+  - 参数高效微调
+related:
+  - llm/推测解码EAGLE3
+  - llm/推理优化
+  - llm/异步Hogwild推理
+  - 'llm/预训练Mini-GPT'
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 微调与LoRA

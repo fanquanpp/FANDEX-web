@@ -1,12 +1,19 @@
 ---
 order: 113
-title: 'DNS解析流程'
+title: DNS解析流程
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'DNS 解析流程：递归查询、迭代查询、DNS 缓存与记录类型。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/TCP拥塞控制'
+  - 'cs-fundamentals/TCP粘包与拆包'
+  - 'cs-fundamentals/CDN原理'
+  - 'cs-fundamentals/WebSocket帧格式'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. DNS 体系结构

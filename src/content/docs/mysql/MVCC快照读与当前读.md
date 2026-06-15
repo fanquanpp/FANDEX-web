@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'MVCC快照读与当前读'
-module: 'mysql'
-category: 'database'
-difficulty: 'advanced'
+title: MVCC快照读与当前读
+module: mysql
+category: database
+difficulty: advanced
 description: 'MySQL InnoDB MVCC 机制详解：快照读与当前读的区别、ReadView 创建时机、Undo Log 版本链与一致性非锁定读原理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/函数索引
+  - mysql/存储过程与函数
+  - mysql/索引原理与性能优化
+  - mysql/触发器与事件
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. MVCC 基础概念

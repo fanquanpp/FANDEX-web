@@ -1,12 +1,19 @@
 ---
 order: 77
-title: 'Python与gRPC'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'gRPC服务开发'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与gRPC
+module: python
+category: Python
+difficulty: intermediate
+description: gRPC服务开发
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/装饰器
+  - python/Python与消息队列
+  - python/Python与WebSocket
+  - 'python/Python与CI-CD'
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. gRPC

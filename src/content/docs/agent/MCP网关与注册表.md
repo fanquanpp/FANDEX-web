@@ -1,9 +1,21 @@
 ---
 title: 'MCP网关与注册表 — 企业控制平面'
-description: '掌握MCP网关的五大职责和官方注册表体系，理解企业级MCP部署的集中化策略'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP网关', '注册表', 'RBAC', '审计', '策略即代码']
+description: 掌握MCP网关的五大职责和官方注册表体系，理解企业级MCP部署的集中化策略
+module: agent
+difficulty: advanced
+tags:
+  - MCP网关
+  - 注册表
+  - RBAC
+  - 审计
+  - 策略即代码
+related:
+  - agent/MCP基础
+  - agent/MCP生产认证
+  - agent/MCP异步任务
+  - agent/MCP应用
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP网关与注册表 — 企业控制平面

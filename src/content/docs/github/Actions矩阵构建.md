@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'Actions矩阵构建'
-module: 'github'
-category: 'toolchain'
-difficulty: 'advanced'
+title: Actions矩阵构建
+module: github
+category: toolchain
+difficulty: advanced
 description: 'GitHub Actions矩阵策略详解：多操作系统、多版本、多配置的并行构建。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/Actions触发器
+  - github/常见问题排查
+  - github/Actions缓存依赖
+  - github/Actions自托管运行器
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 矩阵策略基础

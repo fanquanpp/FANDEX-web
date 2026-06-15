@@ -2,6 +2,13 @@
 title: CrewAI角色团队与流程
 description: 'CrewAI是2026年基于角色的多Agent框架。四个原语：Agent、Task、Crew、Process。两种顶层形状：Crew（自主、基于角色的协作）和Flow（事件驱动、确定性）。文档直言："对于任何生产就绪应用，从Flow开始。"'
 module: agent
+related:
+  - 'agent/Claude-Agent-SDK'
+  - 'agent/Claude-Code权限模式'
+  - 'agent/Darwin-Godel自修改Agent'
+  - 'agent/FIPA-ACL遗产'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # CrewAI：角色团队与流程

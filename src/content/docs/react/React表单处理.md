@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'React表单处理'
-module: 'react'
-category: 'React'
-difficulty: 'beginner'
-description: '受控组件与非受控组件'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React表单处理
+module: react
+category: React
+difficulty: beginner
+description: 受控组件与非受控组件
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React性能优化
+  - react/React错误边界
+  - react/React与TypeScript
+  - react/React测试
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 受控组件

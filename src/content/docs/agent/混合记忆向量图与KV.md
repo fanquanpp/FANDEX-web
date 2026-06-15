@@ -1,7 +1,14 @@
 ---
 title: 混合记忆向量图与KV
-description: 'Mem0（Chhikara等人，2025）将记忆视为三个并行存储——向量用于语义相似性，KV用于快速事实查找，图用于实体关系推理。一个评分层在检索时融合三者。这是2026年外部记忆的生产标准。'
+description: Mem0（Chhikara等人，2025）将记忆视为三个并行存储——向量用于语义相似性，KV用于快速事实查找，图用于实体关系推理。一个评分层在检索时融合三者。这是2026年外部记忆的生产标准。
 module: agent
+related:
+  - agent/函数调用深入
+  - agent/鎬濈淮鏍戜笌LATS
+  - 'agent/基准测试SWE-bench与GAIA'
+  - agent/基准测试WebArena与OSWorld
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 混合记忆：向量 + 图 + KV（Mem0）

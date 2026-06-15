@@ -3,7 +3,19 @@ title: 指令微调SFT
 description: 理解监督微调（SFT）的原理和实现，将预训练模型转化为指令遵循模型
 module: llm
 difficulty: intermediate
-tags: [SFT, instruction tuning, 监督微调, 指令微调, 对齐]
+tags:
+  - SFT
+  - 'instruction tuning'
+  - 监督微调
+  - 指令微调
+  - 对齐
+related:
+  - 'llm/预训练Mini-GPT'
+  - llm/原生稀疏注意力
+  - llm/Agent框架权衡
+  - 'llm/Constitutional-AI与自我改进'
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 指令微调SFT

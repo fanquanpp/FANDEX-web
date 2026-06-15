@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'Actions触发器'
-module: 'github'
-category: 'toolchain'
-difficulty: 'intermediate'
+title: Actions触发器
+module: github
+category: toolchain
+difficulty: intermediate
 description: 'GitHub Actions触发器详解：push、pull_request、schedule、workflow_dispatch等事件类型与条件配置。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/GitHubPages多站点方案
+  - github/GitHubActions与CICD
+  - github/常见问题排查
+  - github/Actions矩阵构建
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 触发器概述

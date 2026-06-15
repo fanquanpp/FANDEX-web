@@ -1,13 +1,20 @@
 ---
 order: 130
 tags:
-  - 'python'
-difficulty: 'intermediate'
+  - python
+difficulty: intermediate
 title: '文件 I/O 与上下文管理器'
-module: 'python'
+module: python
 category: 'Python Basics'
 description: '文件读写、路径操作、with 语句与上下文管理。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - python/面向对象编程
+  - python/异常处理
+  - 'python/项目示例-网页爬虫与数据分析'
+  - python/理论知识点
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. 文件打开与关闭 (Open & Close)

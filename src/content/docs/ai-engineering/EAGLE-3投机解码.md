@@ -2,8 +2,20 @@
 title: 'EAGLE-3投机解码：树验证器方法'
 description: '理解EAGLE-3如何通过树状投机和自验证实现2.5-3.5x推理加速'
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['投机解码', 'EAGLE-3', '树验证器', 'draft模型', '推理加速']
+difficulty: intermediate
+tags:
+  - 投机解码
+  - 'EAGLE-3'
+  - 树验证器
+  - draft模型
+  - 推理加速
+related:
+  - 'ai-engineering/DevOps故障排查代理Kubernetes'
+  - 'ai-engineering/Docker与AI'
+  - 'ai-engineering/Git与协作'
+  - 'ai-engineering/GitHub-Issue到PR自主代理'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # EAGLE-3投机解码：树验证器方法

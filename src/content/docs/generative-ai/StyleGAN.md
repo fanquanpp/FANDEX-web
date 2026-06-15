@@ -1,9 +1,19 @@
 ---
-title: 'StyleGAN'
-description: 'StyleGAN的映射网络与AdaIN机制，从风格解耦到照片级人脸生成'
+title: StyleGAN
+description: StyleGAN的映射网络与AdaIN机制，从风格解耦到照片级人脸生成
 module: 'generative-ai'
-difficulty: 'intermediate'
-tags: ['StyleGAN', 'AdaIN', '风格解耦', '人脸生成', '映射网络']
+difficulty: intermediate
+tags:
+  - StyleGAN
+  - AdaIN
+  - 风格解耦
+  - 人脸生成
+  - 映射网络
+related:
+  - 'generative-ai/ControlNet与LoRA条件化'
+  - 'generative-ai/GAN生成器与判别器'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # StyleGAN

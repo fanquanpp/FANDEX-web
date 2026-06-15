@@ -1,12 +1,19 @@
 ---
 order: 107
 title: 'Floyd-Warshall'
-module: 'algorithm'
+module: algorithm
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Floyd-Warshall 多源最短路径算法：动态规划推导、路径重建、负环检测与传递闭包。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - algorithm/KMP字符串匹配
+  - algorithm/动态规划状态压缩
+  - algorithm/Kruskal算法
+  - algorithm/拓扑排序
+prerequisites:
+  - algorithm/算法分析基础与学习路线
 ---
 
 ## 1. 算法原理

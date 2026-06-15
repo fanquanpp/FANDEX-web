@@ -1,12 +1,19 @@
 ---
 order: 101
-title: '递归CTE遍历树结构'
-module: 'sql'
-category: 'database'
-difficulty: 'advanced'
+title: 递归CTE遍历树结构
+module: sql
+category: database
+difficulty: advanced
 description: '递归 CTE 遍历树形与图结构：组织架构层级查询、评论回复树构建、路径枚举与环检测。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/多版本并发控制
+  - sql/窗口函数框架
+  - sql/乐观锁与悲观锁
+  - sql/常见SQL反模式
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 递归 CTE 基础

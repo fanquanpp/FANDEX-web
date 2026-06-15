@@ -1,12 +1,19 @@
 ---
 order: 105
-title: 'KMP字符串匹配'
-module: 'algorithm'
+title: KMP字符串匹配
+module: algorithm
 category: 'comp-sci'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'KMP 字符串匹配算法：部分匹配表（PMT/next数组）构建、匹配过程、时间复杂度证明与优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - algorithm/跳跃表
+  - algorithm/布隆过滤器
+  - algorithm/动态规划状态压缩
+  - 'algorithm/Floyd-Warshall算法'
+prerequisites:
+  - algorithm/算法分析基础与学习路线
 ---
 
 ## 1. KMP 算法原理

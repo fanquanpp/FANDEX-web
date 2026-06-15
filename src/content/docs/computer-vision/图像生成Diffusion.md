@@ -1,9 +1,21 @@
 ---
-title: '图像生成Diffusion'
-description: '扩散模型通过学习逆转逐步加噪过程来生成图像。训练稳定，生成质量超越GAN。'
+title: 图像生成Diffusion
+description: 扩散模型通过学习逆转逐步加噪过程来生成图像。训练稳定，生成质量超越GAN。
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['扩散模型', '去噪', 'DDPM', '噪声调度', '图像生成']
+difficulty: advanced
+tags:
+  - 扩散模型
+  - 去噪
+  - DDPM
+  - 噪声调度
+  - 图像生成
+related:
+  - 'computer-vision/图像基础'
+  - 'computer-vision/图像检索'
+  - 'computer-vision/图像生成GAN'
+  - 'computer-vision/语义分割UNet'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 图像生成Diffusion

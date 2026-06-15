@@ -1,9 +1,20 @@
 ---
-title: 'GloVe、FastText与子词嵌入'
-description: '理解GloVe共现矩阵分解、FastText子词嵌入和BPE子词分词'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['GloVe', 'FastText', 'BPE', '子词嵌入', '共现矩阵']
+title: GloVe、FastText与子词嵌入
+description: 理解GloVe共现矩阵分解、FastText子词嵌入和BPE子词分词
+module: nlp
+difficulty: intermediate
+tags:
+  - GloVe
+  - FastText
+  - BPE
+  - 子词嵌入
+  - 共现矩阵
+related:
+  - nlp/子词分词
+  - nlp/自然语言推理
+  - nlp/LLM评估框架
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # GloVe、FastText与子词嵌入

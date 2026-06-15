@@ -1,12 +1,19 @@
 ---
 order: 105
-title: '类型注解与mypy'
-module: 'python'
+title: 类型注解与mypy
+module: python
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'Python类型注解与mypy静态检查详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: Python类型注解与mypy静态检查详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/元类与单例模式
+  - python/异步编程详解
+  - python/数据类与字段默认值
+  - python/描述符
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. 基本类型注解

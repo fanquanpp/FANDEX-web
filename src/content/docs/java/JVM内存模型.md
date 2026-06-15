@@ -1,13 +1,20 @@
 ---
 title: 'JVM 内存模型'
-module: 'java'
+module: java
 category: 'Java Advanced'
 order: 170
 tags:
-  - 'java'
-  - 'memory'
-difficulty: 'advanced'
-description: '运行时数据区、垃圾回收算法与内存调优。'
+  - java
+  - memory
+difficulty: advanced
+description: 运行时数据区、垃圾回收算法与内存调优。
+related:
+  - java/IO流与文件操作
+  - java/多线程基础
+  - java/Lambda与函数式编程
+  - java/流式API
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 前置知识

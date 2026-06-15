@@ -1,12 +1,19 @@
 ---
 order: 90
 title: 'JavaScript 最新特性与运行时'
-module: 'javascript'
+module: javascript
 category: 'JS Advanced'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'ES2024-2026 新特性、V8 引擎原理、Node.js 22+、Deno 2.0、Bun 运行时与 WebAssembly 进阶。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/对象与数组
+  - javascript/DOM操作与事件
+  - javascript/模块化
+  - javascript/异步编程
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. ES2024-ES2026 新特性

@@ -1,9 +1,21 @@
 ---
-title: 'JAX入门'
-description: 'JAX用函数式编程和XLA编译实现高性能数值计算和自动微分'
+title: JAX入门
+description: JAX用函数式编程和XLA编译实现高性能数值计算和自动微分
 module: 'deep-learning'
-difficulty: 'advanced'
-tags: ['JAX', 'XLA', '函数式编程', 'vmap', 'jit']
+difficulty: advanced
+tags:
+  - JAX
+  - XLA
+  - 函数式编程
+  - vmap
+  - jit
+related:
+  - 'deep-learning/BERT掩码语言建模'
+  - 'deep-learning/GPT因果语言建模'
+  - 'deep-learning/KV缓存与Flash注意力'
+  - 'deep-learning/PyTorch入门'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # JAX入门

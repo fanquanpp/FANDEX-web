@@ -1,12 +1,19 @@
 ---
 order: 54
-title: 'Hooks原理'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
+title: Hooks原理
+module: react
+category: React
+difficulty: advanced
 description: 'React Hooks底层实现原理'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/Concurrent模式
+  - react/服务端组件
+  - react/自定义Hooks设计模式
+  - react/状态管理方案对比
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Hooks 链表

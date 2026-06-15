@@ -1,9 +1,21 @@
 ---
-title: 预训练Mini-GPT
-description: 从零构建和训练一个小型 GPT 模型，理解预训练的完整流程
+title: '预训练Mini-GPT'
+description: '从零构建和训练一个小型 GPT 模型，理解预训练的完整流程'
 module: llm
 difficulty: advanced
-tags: [pre-training, GPT, transformer, 预训练, 语言模型]
+tags:
+  - 'pre-training'
+  - GPT
+  - transformer
+  - 预训练
+  - 语言模型
+related:
+  - llm/微调与LoRA
+  - llm/异步Hogwild推理
+  - llm/原生稀疏注意力
+  - llm/指令微调SFT
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 预训练Mini-GPT

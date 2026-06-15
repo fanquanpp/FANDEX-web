@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'CodeQL代码扫描'
-module: 'github'
-category: 'GitHub'
-difficulty: 'intermediate'
+title: CodeQL代码扫描
+module: github
+category: GitHub
+difficulty: intermediate
 description: 'GitHub CodeQL代码扫描：静态分析、查询编写与安全漏洞检测。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'github/Issues模板-标签与里程碑'
+  - github/密钥扫描
+  - github/命令行工具
+  - 'github/REST与GraphQL-API'
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. CodeQL 概述

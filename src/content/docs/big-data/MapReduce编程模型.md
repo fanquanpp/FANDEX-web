@@ -1,12 +1,18 @@
 ---
 order: 12
-title: 'MapReduce'
+title: MapReduce
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
-description: 'MapReduce编程模型、Shuffle机制、Combiner优化、数据流与性能调优。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: MapReduce编程模型、Shuffle机制、Combiner优化、数据流与性能调优。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/大数据概述'
+  - 'big-data/HDFS分布式文件系统'
+  - 'big-data/Spark核心'
+  - 'big-data/Spark流计算'
+prerequisites: []
 ---
 
 ## 1. MapReduce编程模型

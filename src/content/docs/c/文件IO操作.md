@@ -1,13 +1,20 @@
 ---
 order: 110
 tags:
-  - 'c'
-difficulty: 'intermediate'
+  - c
+difficulty: intermediate
 title: '文件 I/O 操作'
-module: 'c'
+module: c
 category: 'C Basics'
-description: '标准文件流操作、二进制文件及错误处理。'
-author: 'Anonymous'
+description: 标准文件流操作、二进制文件及错误处理。
+author: Anonymous
+related:
+  - c/volatile关键字
+  - c/位域
+  - c/理论知识点
+  - c/高级特性与系统编程
+prerequisites:
+  - c/概述
 ---
 
 ## 1. 文件 I/O 的概念与重要性

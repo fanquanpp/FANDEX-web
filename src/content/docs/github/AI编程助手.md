@@ -1,12 +1,19 @@
 ---
 order: 58
 title: 'GitHub-Copilot'
-module: 'github'
-category: 'GitHub'
-difficulty: 'intermediate'
+module: github
+category: GitHub
+difficulty: intermediate
 description: 'GitHub Copilot详解：AI辅助编程工具的使用、配置与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/知识库
+  - github/社区讨论
+  - github/依赖自动更新
+  - 'github/Issues模板-标签与里程碑'
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. Copilot 概述

@@ -1,12 +1,19 @@
 ---
 order: 84
-title: 'C++反射与元编程'
-module: 'cpp'
-category: 'C++'
-difficulty: 'advanced'
-description: '编译期反射与代码生成'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++反射与元编程
+module: cpp
+category: C++
+difficulty: advanced
+description: 编译期反射与代码生成
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++代码规范
+  - cpp/C++与WebAssembly
+  - cpp/C++数学库
+  - cpp/智能指针
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 编译期类型信息

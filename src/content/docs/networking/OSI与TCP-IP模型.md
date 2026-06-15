@@ -1,12 +1,19 @@
 ---
 order: 50
 title: 'OSI与TCP-IP模型'
-module: 'networking'
-category: '网络技术'
-difficulty: 'intermediate'
+module: networking
+category: 网络技术
+difficulty: intermediate
 description: 'OSI与TCP-IP模型深度：协议层次、数据封装、PDU与协议数据单元分析'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - networking/网络系统管理
+  - networking/网络布线与施工
+  - networking/交换与路由技术
+  - networking/网络安全技术
+prerequisites:
+  - networking/网络基础与协议
 ---
 
 ## 1. OSI 七层模型详解

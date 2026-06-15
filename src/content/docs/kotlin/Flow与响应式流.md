@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Flow与响应式流'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'advanced'
+title: Flow与响应式流
+module: kotlin
+category: Kotlin
+difficulty: advanced
 description: 'Kotlin Flow与Channel'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/委托属性
+  - kotlin/协程基础
+  - kotlin/Kotlin与Spring
+  - kotlin/Kotlin与Android
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Flow

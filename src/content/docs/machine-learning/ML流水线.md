@@ -1,9 +1,21 @@
 ---
-title: 'ML流水线'
-description: 'ML流水线将预处理、训练和预测串联成可复现、可部署的自动化流程'
+title: ML流水线
+description: ML流水线将预处理、训练和预测串联成可复现、可部署的自动化流程
 module: 'machine-learning'
-difficulty: 'intermediate'
-tags: ['ML流水线', 'Pipeline', '数据预处理', '自动化', '部署']
+difficulty: intermediate
+tags:
+  - ML流水线
+  - Pipeline
+  - 数据预处理
+  - 自动化
+  - 部署
+related:
+  - 'machine-learning/KNN与距离度量'
+  - 'machine-learning/MDP状态动作与奖励'
+  - 'machine-learning/PPO近端策略优化'
+  - 'machine-learning/Q学习与SARSA'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # ML流水线

@@ -1,12 +1,19 @@
 ---
 order: 73
-title: 'Kotlin与协程Channel'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'advanced'
-description: 'Channel与Select'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Kotlin与协程Channel
+module: kotlin
+category: Kotlin
+difficulty: advanced
+description: Channel与Select
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'kotlin/Kotlin与ktor-client'
+  - kotlin/Kotlin与测试
+  - kotlin/Kotlin与编译器插件
+  - kotlin/Kotlin与DSL
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Channel

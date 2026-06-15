@@ -1,9 +1,22 @@
 ---
-title: '完整Transformer'
+title: 完整Transformer
 description: '注意力是主角,其他一切——残差、归一化、前馈网络、交叉注意力——是让你能深度堆叠的脚手架'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['Transformer', '编码器', '解码器', '残差连接', 'RMSNorm', 'SwiGLU']
+difficulty: intermediate
+tags:
+  - Transformer
+  - 编码器
+  - 解码器
+  - 残差连接
+  - RMSNorm
+  - SwiGLU
+related:
+  - 'deep-learning/缩放定律'
+  - 'deep-learning/推测解码'
+  - 'deep-learning/为什么需要Transformer'
+  - 'deep-learning/位置编码'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # 完整Transformer — 编码器 + 解码器

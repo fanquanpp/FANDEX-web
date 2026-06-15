@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Lua与C交互'
-module: 'lua'
-category: 'Lua'
-difficulty: 'advanced'
+title: Lua与C交互
+module: lua
+category: Lua
+difficulty: advanced
 description: 'Lua C API'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/环境与模块
+  - lua/字符串模式匹配
+  - lua/Lua即时编译器
+  - lua/Lua与Love2D
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. C 函数注册

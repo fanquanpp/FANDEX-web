@@ -1,9 +1,21 @@
 ---
-title: 'KNN与距离度量'
+title: KNN与距离度量
 description: 'K近邻算法通过找最近的邻居来分类，距离度量的选择决定了什么是"近"'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['KNN', '距离度量', '分类', '回归', '懒惰学习']
+difficulty: beginner
+tags:
+  - KNN
+  - 距离度量
+  - 分类
+  - 回归
+  - 懒惰学习
+related:
+  - 'ai-engineering/JAX入门'
+  - 'ai-engineering/Jupyter笔记本'
+  - 'ai-engineering/Linux与AI'
+  - 'ai-engineering/LLM-API负载测试'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # KNN与距离度量

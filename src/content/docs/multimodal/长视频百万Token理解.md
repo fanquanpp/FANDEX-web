@@ -1,9 +1,21 @@
 ---
-title: '百万Token上下文下的长视频理解'
-description: '理解暴力上下文、环形注意力和Agent检索三种长视频扩展路径'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['长视频', '百万Token上下文', '环形注意力', 'Agent检索', 'Needle-in-Haystack']
+title: 百万Token上下文下的长视频理解
+description: 理解暴力上下文、环形注意力和Agent检索三种长视频扩展路径
+module: multimodal
+difficulty: advanced
+tags:
+  - 长视频
+  - 百万Token上下文
+  - 环形注意力
+  - Agent检索
+  - 'Needle-in-Haystack'
+related:
+  - multimodal/文档与图表理解
+  - multimodal/音频语言模型从Whisper到AF3
+  - 'multimodal/BLIP-2与Q-Former桥接'
+  - multimodal/Chameleon与早期融合
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 百万Token上下文下的长视频理解

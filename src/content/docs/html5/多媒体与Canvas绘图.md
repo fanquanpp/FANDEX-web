@@ -1,13 +1,20 @@
 ---
 order: 40
 tags:
-  - 'html5'
-difficulty: 'intermediate'
+  - html5
+difficulty: intermediate
 title: 'HTML5 多媒体与 Canvas 绘图'
-module: 'html5'
+module: html5
 category: 'HTML5 Basics'
 description: 'audio/video 元素、Canvas API 与 SVG 基础。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - html5/无障碍访问
+  - html5/表单与验证
+  - html5/文档类型声明
+  - html5/离线存储与WebAPI
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. 音视频支持

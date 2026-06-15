@@ -1,12 +1,18 @@
 ---
 order: 16
-title: 'K近邻'
+title: K近邻
 module: 'ai-engineering'
-category: 'data'
-difficulty: 'intermediate'
-description: 'K近邻算法原理、距离度量、K值选择、KD树加速与优缺点分析。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: K近邻算法原理、距离度量、K值选择、KD树加速与优缺点分析。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'ai-engineering/循环神经网络'
+  - 'ai-engineering/Transformer架构'
+  - 'ai-engineering/生成模型'
+  - 'ai-engineering/集成学习'
+prerequisites: []
 ---
 
 ## 1. K近邻算法原理

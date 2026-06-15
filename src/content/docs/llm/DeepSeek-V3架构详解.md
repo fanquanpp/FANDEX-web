@@ -1,9 +1,21 @@
 ---
-title: DeepSeek-V3架构详解
-description: 深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe
+title: 'DeepSeek-V3架构详解'
+description: '深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe'
 module: llm
 difficulty: advanced
-tags: [DeepSeek, MoE, MLA, MTP, 架构创新]
+tags:
+  - DeepSeek
+  - MoE
+  - MLA
+  - MTP
+  - 架构创新
+related:
+  - llm/Agent框架权衡
+  - 'llm/Constitutional-AI与自我改进'
+  - llm/DPO直接偏好优化
+  - llm/DualPipe并行
+prerequisites:
+  - llm/安全护栏
 ---
 
 # DeepSeek-V3架构详解

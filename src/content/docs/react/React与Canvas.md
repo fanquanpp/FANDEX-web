@@ -1,12 +1,19 @@
 ---
 order: 73
-title: 'React与Canvas'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React中Canvas绘图'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与Canvas
+module: react
+category: React
+difficulty: intermediate
+description: React中Canvas绘图
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React无障碍
+  - react/React与PWA
+  - react/React与D3
+  - react/React与Storybook
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Canvas 组件

@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'EXPLAIN输出详解'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'advanced'
+title: EXPLAIN输出详解
+module: mysql
+category: MySQL
+difficulty: advanced
 description: 'MySQL EXPLAIN输出详解：type、key、rows、filtered、Extra字段的含义与性能诊断'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/SQL函数与高级查询
+  - mysql/索引失效场景
+  - mysql/慢查询日志
+  - mysql/优化器追踪
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. EXPLAIN 输出列

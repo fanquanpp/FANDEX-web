@@ -1,12 +1,17 @@
 ---
 order: 103
 title: 'Code-Review流程与最佳实践'
-module: 'git'
-category: 'toolchain'
-difficulty: 'intermediate'
+module: git
+category: toolchain
+difficulty: intermediate
 description: 'Code Review流程设计、审查要点、工具选型与团队最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - git/交互式rebase
+  - 'git/git-revert与reset对比'
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. Code Review 的价值

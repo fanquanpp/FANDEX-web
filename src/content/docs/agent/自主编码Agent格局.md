@@ -2,6 +2,13 @@
 title: 自主编码Agent格局
 description: 'SWE-bench Verified 在不到三年内从 4% 升至 80.9%。相同的 Claude Sonnet 4.5 在 SWE-agent v1 上得分 43.2%，在 Cline autonomous 上得分 59.8%——模型周围的脚手架现在与模型本身一样重要。OpenHands（前...'
 module: agent
+related:
+  - agent/自动化对齐研究AAR
+  - agent/自精炼与CRITIC
+  - agent/最小Agent工作台
+  - agent/作用域契约
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 自主编码 Agent 格局 (2026)

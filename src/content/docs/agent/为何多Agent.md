@@ -2,7 +2,14 @@
 title: 为何多Agent
 description: '一个 Agent 遇到瓶颈时，明智之举不是更大的 Agent，而是更多的 Agent。'
 module: agent
-updated: 2026-06-15
+updated: '2026-06-15'
+related:
+  - agent/通信协议
+  - agent/投票辩论拓扑
+  - agent/先提议后提交模式
+  - agent/宪法AI与价值观对齐
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 为何多Agent?

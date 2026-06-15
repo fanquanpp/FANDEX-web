@@ -1,12 +1,17 @@
 ---
 order: 107
-title: 'WAF规则'
-module: 'cybersecurity'
+title: WAF规则
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Web 应用防火墙 WAF：规则引擎、绕过技术与自定义规则。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/安全基线
+  - cybersecurity/漏洞扫描工具
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. WAF 架构

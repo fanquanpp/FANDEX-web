@@ -1,9 +1,21 @@
 ---
-title: 'KNN与距离度量'
+title: KNN与距离度量
 description: 'K近邻算法通过找最近的邻居来分类，距离度量的选择决定了什么是"近"'
 module: 'machine-learning'
-difficulty: 'beginner'
-tags: ['KNN', '距离度量', '分类', '回归', '懒惰学习']
+difficulty: beginner
+tags:
+  - KNN
+  - 距离度量
+  - 分类
+  - 回归
+  - 懒惰学习
+related:
+  - 'machine-learning/Actor-Critic与A2C-A3C'
+  - 'machine-learning/DQN深度Q网络'
+  - 'machine-learning/MDP状态动作与奖励'
+  - 'machine-learning/ML流水线'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # KNN与距离度量

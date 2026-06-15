@@ -1,9 +1,22 @@
 ---
 title: 'LLM功能A/B测试 — GrowthBook、Statsig与Vibes问题'
-description: '理解LLM非确定性A/B测试的挑战和2026年平台选择'
+description: 理解LLM非确定性A/B测试的挑战和2026年平台选择
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['AB测试', 'GrowthBook', 'Statsig', '非确定性', 'CUPED', '序列测试']
+difficulty: intermediate
+tags:
+  - AB测试
+  - GrowthBook
+  - Statsig
+  - 非确定性
+  - CUPED
+  - 序列测试
+related:
+  - 'ai-engineering/LLM-API负载测试'
+  - 'ai-engineering/LLM-FinOps单位经济学'
+  - 'ai-engineering/LLM可观测性与评估仪表板'
+  - 'ai-engineering/LLM可观测性栈选择'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # LLM功能A/B测试 — GrowthBook、Statsig与Vibes问题

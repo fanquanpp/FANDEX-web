@@ -1,12 +1,19 @@
 ---
 order: 64
-title: '图片CDN加速'
-module: 'markdown'
+title: 图片CDN加速
+module: markdown
 category: 'Markdown Basics'
-difficulty: 'intermediate'
-description: 'Markdown图片CDN加速方案：图床选择、CDN配置、懒加载与性能优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Markdown图片CDN加速方案：图床选择、CDN配置、懒加载与性能优化。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - markdown/自动目录
+  - markdown/锚点跳转
+  - markdown/版本控制下的PR协作
+  - markdown/代码块与语法高亮
+prerequisites:
+  - markdown/语法指南
 ---
 
 ## 1. 图片托管概述

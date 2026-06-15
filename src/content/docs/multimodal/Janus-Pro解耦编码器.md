@@ -1,9 +1,21 @@
 ---
 title: 'Janus-Pro：解耦编码器统一多模态模型'
 description: '理解Janus-Pro如何通过解耦视觉编码器同时优化理解和生成'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Janus-Pro', '解耦编码器', '统一模型', 'SigLIP', 'VQ分词器']
+module: multimodal
+difficulty: advanced
+tags:
+  - 'Janus-Pro'
+  - 解耦编码器
+  - 统一模型
+  - SigLIP
+  - VQ分词器
+related:
+  - multimodal/Flamingo与门控交叉注意力
+  - multimodal/InternVL3原生多模态预训练
+  - 'multimodal/LLaVA-OneVision统一模型'
+  - multimodal/LLaVA与视觉指令微调
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Janus-Pro：解耦编码器用于统一多模态模型

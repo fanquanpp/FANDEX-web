@@ -1,9 +1,22 @@
 ---
-title: '红队工具Garak与LlamaGuard'
+title: 红队工具Garak与LlamaGuard
 description: '2026年红队栈三大生产工具：Llama Guard (Meta) — 14类MLCommons危害分类器；Garak (NVIDIA) — 开源LLM漏洞扫描器，含静态/动态/自适应探针；PyRIT (Microsoft) — 多轮红队战役编排器，支持Crescendo和TAP。三者构成生产红队评估的默认配置。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['Llama Guard', 'Garak', 'PyRIT', '红队工具', 'MLCommons', '安全分类器']
+difficulty: advanced
+tags:
+  - 'Llama Guard'
+  - Garak
+  - PyRIT
+  - 红队工具
+  - MLCommons
+  - 安全分类器
+related:
+  - 'ai-ethics/公平性标准群体个体与反事实'
+  - 'ai-ethics/红队测试PAIR与自动化攻击'
+  - 'ai-ethics/间接提示注入与生产攻击面'
+  - 'ai-ethics/监管框架EU与US与UK与韩国'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

@@ -1,7 +1,14 @@
 ---
 title: Agent失败模式
-description: 'MASFT（Berkeley，2025）将14个多Agent失败模式编入3个类别。Microsoft的分类法文档了现有AI失败如何在Agent设置中放大。行业领域数据趋同于五个反复出现的模式：幻觉动作、范围蔓延、级联错误、上下文丢失、工具误用。'
+description: MASFT（Berkeley，2025）将14个多Agent失败模式编入3个类别。Microsoft的分类法文档了现有AI失败如何在Agent设置中放大。行业领域数据趋同于五个反复出现的模式：幻觉动作、范围蔓延、级联错误、上下文丢失、工具误用。
 module: agent
+related:
+  - agent/Agent经济体与声誉
+  - agent/Agent可观测性平台
+  - agent/Agent循环
+  - agent/Agno与Mastra生产运行时
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 失败模式：为什么Agent会崩溃

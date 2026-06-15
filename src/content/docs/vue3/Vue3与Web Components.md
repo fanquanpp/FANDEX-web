@@ -1,12 +1,19 @@
 ---
 order: 57
 title: 'Vue3与Web Components'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'intermediate'
+module: vue3
+category: Vue3
+difficulty: intermediate
 description: 'Vue组件与Web Components互操作'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/生命周期钩子
+  - vue3/Vue3测试策略
+  - vue3/Vue3性能优化实践
+  - vue3/响应式系统
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 定义 Vue Web Component

@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'ThreadLocal内存泄漏'
-module: 'java'
+title: ThreadLocal内存泄漏
+module: java
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Java ThreadLocal内存泄漏原因与解决方案。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/并发编程详解
+  - java/CompletableFuture异步编排
+  - java/反射与动态代理
+  - java/注解处理器
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 泄漏原因

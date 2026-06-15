@@ -1,12 +1,19 @@
 ---
 order: 74
-title: 'Kotlin与编译器插件'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'advanced'
-description: 'kapt、KSP与编译器插件'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Kotlin与编译器插件
+module: kotlin
+category: Kotlin
+difficulty: advanced
+description: kapt、KSP与编译器插件
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与测试
+  - kotlin/Kotlin与协程Channel
+  - kotlin/Kotlin与DSL
+  - kotlin/Kotlin与原子操作
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. KSP（Kotlin Symbol Processing）

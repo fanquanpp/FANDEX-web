@@ -1,12 +1,16 @@
 ---
 order: 19
-title: 'DevOps与CICD集成'
+title: DevOps与CICD集成
 module: 'software-engineering'
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'DevOps文化、CI/CD流水线、自动化测试集成与发布策略。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: DevOps文化、CI/CD流水线、自动化测试集成与发布策略。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-engineering/软件度量'
+  - 'software-engineering/技术债务管理'
+prerequisites: []
 ---
 
 ## 1. DevOps概述

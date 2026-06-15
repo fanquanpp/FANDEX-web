@@ -1,9 +1,22 @@
 ---
 title: Agent框架权衡
-description: 深入分析不同 Agent 框架的设计权衡，选择适合你场景的框架
+description: '深入分析不同 Agent 框架的设计权衡，选择适合你场景的框架'
 module: llm
 difficulty: advanced
-tags: [agent, framework, LangChain, CrewAI, AutoGen, 框架对比]
+tags:
+  - agent
+  - framework
+  - LangChain
+  - CrewAI
+  - AutoGen
+  - 框架对比
+related:
+  - llm/原生稀疏注意力
+  - llm/指令微调SFT
+  - 'llm/Constitutional-AI与自我改进'
+  - 'llm/DeepSeek-V3架构详解'
+prerequisites:
+  - llm/安全护栏
 ---
 
 # Agent框架权衡

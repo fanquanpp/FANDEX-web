@@ -1,12 +1,19 @@
 ---
 order: 69
-title: 'Python与Web爬虫'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Scrapy与BeautifulSoup'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与Web爬虫
+module: python
+category: Python
+difficulty: intermediate
+description: Scrapy与BeautifulSoup
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与NLP
+  - python/Python与计算机视觉
+  - python/Python与自动化
+  - python/函数详解
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. BeautifulSoup

@@ -1,7 +1,14 @@
 ---
-title: 基准测试SWE-bench与GAIA
+title: '基准测试SWE-bench与GAIA'
 description: '三个基准锚定2026年Agent评估。SWE-bench测试代码补丁。GAIA测试通用工具使用。AgentBench测试多环境推理。了解它们的组成、污染故事以及它们不测量的内容。'
 module: agent
+related:
+  - agent/鎬濈淮鏍戜笌LATS
+  - agent/混合记忆向量图与KV
+  - agent/基准测试WebArena与OSWorld
+  - agent/计算机使用Agent
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 基准测试：SWE-bench、GAIA、AgentBench

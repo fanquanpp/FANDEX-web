@@ -1,12 +1,19 @@
 ---
 order: 106
-title: 'Lua脚本原子执行'
-module: 'redis'
-category: 'database'
-difficulty: 'advanced'
+title: Lua脚本原子执行
+module: redis
+category: database
+difficulty: advanced
 description: 'Redis Lua 脚本原子执行机制：EVAL/EVALSHA、脚本缓存、沙箱限制、调试与性能优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'redis/Redis-Cluster哈希槽'
+  - redis/管道与事务原子性
+  - redis/缓存穿透击穿雪崩
+  - redis/内存淘汰策略
+prerequisites:
+  - redis/概述与核心数据结构
 ---
 
 ## 1. Lua 脚本基础

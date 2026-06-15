@@ -1,9 +1,20 @@
 ---
 title: DualPipe并行
-description: 理解 DualPipe 双向流水线并行策略，减少流水线气泡提高训练效率
+description: '理解 DualPipe 双向流水线并行策略，减少流水线气泡提高训练效率'
 module: llm
 difficulty: advanced
-tags: [pipeline parallelism, DualPipe, 流水线并行, 训练优化]
+tags:
+  - 'pipeline parallelism'
+  - DualPipe
+  - 流水线并行
+  - 训练优化
+related:
+  - 'llm/DeepSeek-V3架构详解'
+  - llm/DPO直接偏好优化
+  - 'llm/Jamba混合SSM-Transformer'
+  - llm/LangGraph状态机
+prerequisites:
+  - llm/安全护栏
 ---
 
 # DualPipe并行

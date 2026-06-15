@@ -1,12 +1,19 @@
 ---
 order: 102
-title: 'ArkUI声明式语法'
-module: 'harmonyos'
+title: ArkUI声明式语法
+module: harmonyos
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'HarmonyOS ArkUI声明式语法详解：@Component、@Entry、@State、@Prop、@Link。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - harmonyos/Stage模型与FA模型区别
+  - harmonyos/ArkTS与TypeScript差异
+  - harmonyos/组件生命周期详解
+  - harmonyos/路由跳转与路由栈
+prerequisites:
+  - harmonyos/概述与环境搭建
 ---
 
 ## 1. 核心装饰器

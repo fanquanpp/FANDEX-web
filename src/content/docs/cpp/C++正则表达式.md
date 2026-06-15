@@ -1,12 +1,19 @@
 ---
 order: 86
-title: 'C++正则表达式'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
+title: C++正则表达式
+module: cpp
+category: C++
+difficulty: intermediate
 description: 'std::regex与正则匹配'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++数学库
+  - cpp/智能指针
+  - cpp/C++日期时间
+  - cpp/C++格式化输出
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 基本用法

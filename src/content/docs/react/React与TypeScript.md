@@ -1,12 +1,19 @@
 ---
 order: 60
-title: 'React与TypeScript'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
+title: React与TypeScript
+module: react
+category: React
+difficulty: intermediate
 description: 'React TypeScript最佳实践'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React错误边界
+  - react/React表单处理
+  - react/React测试
+  - react/React路由进阶
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 组件类型

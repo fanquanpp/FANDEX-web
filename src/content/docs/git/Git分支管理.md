@@ -1,15 +1,22 @@
 ---
 order: 40
 tags:
-  - 'git'
+  - git
   - 'git-workflow'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'Git 分支管理'
-module: 'git'
+module: git
 category: 'Git Basics'
-description: '分支创建、合并、变基与分支策略。'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: 分支创建、合并、变基与分支策略。
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - git/Git环境配置与初始化
+  - git/Git基本操作
+  - git/Git远程仓库操作
+  - git/分布式版本控制原理
+prerequisites:
+  - git/语法速查
 ---
 
 ## 2. 分支概述

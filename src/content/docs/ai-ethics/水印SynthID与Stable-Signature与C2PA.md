@@ -2,8 +2,21 @@
 title: '水印SynthID与Stable-Signature与C2PA'
 description: '2026年AI生成内容溯源三大技术：SynthID (Google) — 跨文本/图像/音频/视频水印，文本水印通过偏置采样实现，2025年11月统一检测器；Stable Signature (ICCV 2023) — 图像潜在扩散解码器微调水印，2024年被微调移除攻击打破；C2PA — 加密签名防篡改元数据标准。水印与C2PA互补。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['水印', 'SynthID', 'Stable Signature', 'C2PA', '溯源', '深度伪造']
+difficulty: advanced
+tags:
+  - 水印
+  - SynthID
+  - 'Stable Signature'
+  - C2PA
+  - 溯源
+  - 深度伪造
+related:
+  - 'ai-ethics/数据溯源与训练数据治理'
+  - 'ai-ethics/双用风险网络与生物与化学与核'
+  - 'ai-ethics/直接偏好优化家族'
+  - 'ai-ethics/指令遵循作为对齐信号'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

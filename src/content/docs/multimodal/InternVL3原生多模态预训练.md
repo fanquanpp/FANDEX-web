@@ -1,9 +1,21 @@
 ---
-title: 'InternVL3：原生多模态预训练'
-description: '理解InternVL3如何通过原生预训练消除后置对齐债务'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['InternVL3', '原生预训练', '对齐债务', 'V2PE', 'ViR']
+title: InternVL3：原生多模态预训练
+description: 理解InternVL3如何通过原生预训练消除后置对齐债务
+module: multimodal
+difficulty: advanced
+tags:
+  - InternVL3
+  - 原生预训练
+  - 对齐债务
+  - V2PE
+  - ViR
+related:
+  - multimodal/Emu3下一token预测生成
+  - multimodal/Flamingo与门控交叉注意力
+  - 'multimodal/Janus-Pro解耦编码器'
+  - 'multimodal/LLaVA-OneVision统一模型'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # InternVL3：原生多模态预训练

@@ -1,12 +1,18 @@
 ---
 order: 5
 title: 'IoT 平台'
-module: 'iot'
-category: '物联网'
-difficulty: 'intermediate'
+module: iot
+category: 物联网
+difficulty: intermediate
 description: 'AWS IoT Core、Azure IoT Hub、阿里云 IoT、ThingsBoard、EMQX 与设备管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - iot/通信协议
+  - iot/边缘计算
+  - iot/数据处理与分析
+  - iot/安全与隐私
+prerequisites: []
 ---
 
 ## 1. IoT 平台概述

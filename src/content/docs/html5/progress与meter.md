@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'progress与meter'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'beginner'
-description: 'progress与meter'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: progress与meter
+module: html5
+category: HTML5
+difficulty: beginner
+description: progress与meter
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/SVG矢量图形
+  - html5/嵌入式内容
+  - html5/WebComponents与PWA开发
+  - html5/拖拽API
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. progress 元素

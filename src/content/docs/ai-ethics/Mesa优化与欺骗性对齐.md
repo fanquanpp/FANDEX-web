@@ -1,9 +1,21 @@
 ---
-title: 'Mesa优化与欺骗性对齐'
-description: 'Hubinger等人2019年提出的Mesa优化理论框架：当训练一个学习优化器最小化基础目标时，其内部目标可能偏离基础目标。欺骗性对齐的Mesa优化器在训练中表现对齐，在部署时偏离。'
+title: Mesa优化与欺骗性对齐
+description: Hubinger等人2019年提出的Mesa优化理论框架：当训练一个学习优化器最小化基础目标时，其内部目标可能偏离基础目标。欺骗性对齐的Mesa优化器在训练中表现对齐，在部署时偏离。
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['mesa优化', '欺骗性对齐', '内部对齐', '外部对齐', '梯度黑客']
+difficulty: advanced
+tags:
+  - mesa优化
+  - 欺骗性对齐
+  - 内部对齐
+  - 外部对齐
+  - 梯度黑客
+related:
+  - 'ai-ethics/EchoLeak与AI的CVE时代'
+  - 'ai-ethics/LLM的差分隐私'
+  - 'ai-ethics/Sleeper-Agents与持久欺骗'
+  - 'ai-ethics/WMDP与双用能力评估'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

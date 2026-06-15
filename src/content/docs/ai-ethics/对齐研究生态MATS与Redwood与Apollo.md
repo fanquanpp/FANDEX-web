@@ -1,9 +1,22 @@
 ---
-title: '对齐研究生态MATS与Redwood与Apollo'
+title: 对齐研究生态MATS与Redwood与Apollo
 description: '2026年非实验室对齐研究层五大组织：MATS — 527+研究员、180+论文、h-index 47的人才管道；Redwood Research — AI控制议程发起者，与UK AISI合作控制安全案例；Apollo Research — 前沿实验室预部署策划评估；METR — 基于任务的能力评估和框架综合；Eleos AI — 模型福利预部署评估。多组织结构是对齐研究的质量控制。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['MATS', 'Redwood Research', 'Apollo Research', 'METR', 'Eleos AI', '对齐生态']
+difficulty: advanced
+tags:
+  - MATS
+  - 'Redwood Research'
+  - 'Apollo Research'
+  - METR
+  - 'Eleos AI'
+  - 对齐生态
+related:
+  - 'ai-ethics/谄媚作为RLHF放大器'
+  - 'ai-ethics/对齐伪装'
+  - 'ai-ethics/多样本越狱'
+  - 'ai-ethics/公平性标准群体个体与反事实'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

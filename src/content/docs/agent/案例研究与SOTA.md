@@ -2,6 +2,13 @@
 title: 案例研究与2026年SOTA
 description: '三个生产级参考端到端研究，每个说明多 Agent 工程的不同切片。Anthropic 研究系统（编排者-工作者，15 倍 token，相对单 Agent Opus 4 +90.2%，彩虹部署）是规范监督者案例。MetaGPT / ChatDev（SOP 编码的角色专业化用于软件工程；ChatD...'
 module: agent
+related:
+  - agent/RAG与Agent结合
+  - agent/智能体安全
+  - agent/编排模式
+  - agent/并行群体网络
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 案例研究与 2026 年最新技术水平

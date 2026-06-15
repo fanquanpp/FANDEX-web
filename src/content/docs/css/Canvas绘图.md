@@ -1,15 +1,22 @@
 ---
 order: 80
 tags:
-  - 'css'
-  - 'performance'
-difficulty: 'intermediate'
+  - css
+  - performance
+difficulty: intermediate
 title: 'CSS Canvas 绘图'
-module: 'css'
+module: css
 category: 'CSS Basics'
-description: 'Canvas绘图API与动画实战'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: Canvas绘图API与动画实战
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - css/关键渲染路径优化
+  - css/CSS原生嵌套
+  - 'css/CSS-in-JS与高级布局技巧'
+  - css/CSS架构方法论
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. Canvas 概述 | Canvas Overview

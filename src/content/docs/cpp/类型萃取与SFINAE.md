@@ -1,12 +1,19 @@
 ---
 order: 106
-title: '类型萃取与SFINAE'
-module: 'cpp'
+title: 类型萃取与SFINAE
+module: cpp
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'C++类型萃取与SFINAE详解：type_traits与编译期类型判断。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: C++类型萃取与SFINAE详解：type_traits与编译期类型判断。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/智能指针循环引用
+  - cpp/Lambda捕获详解
+  - cpp/可变参数模板与折叠表达式
+  - cpp/C++20协程
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. type_traits

@@ -102,6 +102,7 @@ FANDEX-vue/
 │   ├── robots.txt                    # SEO 爬虫配置
 │   └── sw.js                         # Service Worker
 ├── scripts/
+│   ├── add-doc-relations.mjs              # 文档关联生成（related/prerequisites）
 │   ├── build-glossary-index.mjs      # 术语索引构建脚本
 │   ├── build-search-index.mjs        # 搜索索引构建脚本
 │   ├── clean-true-prefix.mjs         # 清理 True 前缀脚本

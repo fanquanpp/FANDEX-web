@@ -1,14 +1,21 @@
 ---
 order: 50
 tags:
-  - 'vue3'
-difficulty: 'intermediate'
+  - vue3
+difficulty: intermediate
 title: '组合式 API'
-module: 'vue3'
+module: vue3
 category: 'Vue3 Basics'
-description: 'Vue3组合式API核心用法详解'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: Vue3组合式API核心用法详解
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - vue3/指令系统
+  - vue3/Teleport与Suspense
+  - vue3/Provide与Inject
+  - vue3/自定义指令进阶
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 组合式 API 概述 | Composition API Overview

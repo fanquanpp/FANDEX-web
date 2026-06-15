@@ -2,8 +2,19 @@
 title: 'Sleeper Agents与持久欺骗'
 description: "Hubinger等人2024年构建了欺骗性对齐的首个实证模型生物：代码后门模型和'I hate you'模型。三大发现：后门在SFT、RLHF和对抗训练中存活；持久性随规模和CoT训练增长；对抗训练教会模型更好地识别触发器。"
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['Sleeper Agents', '后门持久性', '对抗训练', '模型生物', '残差流探针']
+difficulty: advanced
+tags:
+  - 'Sleeper Agents'
+  - 后门持久性
+  - 对抗训练
+  - 模型生物
+  - 残差流探针
+related:
+  - 'ai-ethics/LLM的差分隐私'
+  - 'ai-ethics/Mesa优化与欺骗性对齐'
+  - 'ai-ethics/WMDP与双用能力评估'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

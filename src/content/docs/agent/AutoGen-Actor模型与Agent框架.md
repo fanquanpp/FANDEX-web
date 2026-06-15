@@ -1,7 +1,14 @@
 ---
-title: AutoGen-Actor模型与Agent框架
+title: 'AutoGen-Actor模型与Agent框架'
 description: 'AutoGen v0.4（Microsoft Research，2025年1月）围绕Actor模型重新设计了Agent编排。异步消息交换、事件驱动Agent、故障隔离、天然并发。该框架目前处于维护模式，Microsoft Agent Framework（2025年10月公开预览）成为继任者。'
 module: agent
+related:
+  - agent/Anthropic工作流模式
+  - agent/AnthropicRSP
+  - 'agent/CAIS-CAISI与社会规模风险'
+  - 'agent/Claude-Agent-SDK'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # AutoGen v0.4：Actor模型与Agent框架

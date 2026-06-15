@@ -1,12 +1,19 @@
 ---
 order: 58
-title: 'Java序列化'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: '序列化与反序列化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java序列化
+module: java
+category: Java
+difficulty: intermediate
+description: 序列化与反序列化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/JVM垃圾回收
+  - java/Java反射
+  - java/JavaIO与NIO
+  - java/Java新特性
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Serializable

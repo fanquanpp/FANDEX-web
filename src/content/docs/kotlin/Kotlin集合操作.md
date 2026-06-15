@@ -1,12 +1,19 @@
 ---
 order: 62
-title: 'Kotlin集合操作'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'beginner'
-description: '函数式集合操作'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Kotlin集合操作
+module: kotlin
+category: Kotlin
+difficulty: beginner
+description: 函数式集合操作
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin契约
+  - kotlin/Kotlin序列化
+  - kotlin/Kotlin作用域函数
+  - kotlin/Kotlin类型系统
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. 常用操作

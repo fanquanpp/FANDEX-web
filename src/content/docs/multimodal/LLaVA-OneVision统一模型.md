@@ -1,9 +1,21 @@
 ---
 title: 'LLaVA-OneVision：单图像、多图像、视频统一模型'
 description: '理解LLaVA-OneVision如何通过统一token预算和课程训练实现三场景统一'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['LLaVA-OneVision', '多图像推理', '视频理解', '课程训练', 'token预算']
+module: multimodal
+difficulty: advanced
+tags:
+  - 'LLaVA-OneVision'
+  - 多图像推理
+  - 视频理解
+  - 课程训练
+  - token预算
+related:
+  - multimodal/InternVL3原生多模态预训练
+  - 'multimodal/Janus-Pro解耦编码器'
+  - multimodal/LLaVA与视觉指令微调
+  - multimodal/MIO任意到任意流式模型
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # LLaVA-OneVision：单图像、多图像、视频统一模型

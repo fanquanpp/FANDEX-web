@@ -1,12 +1,19 @@
 ---
 order: 102
-title: 'Channel与BroadcastChannel'
-module: 'kotlin'
+title: Channel与BroadcastChannel
+module: kotlin
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Kotlin Channel与BroadcastChannel详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/协程调度器与上下文
+  - kotlin/Flow冷流与SharedFlow和StateFlow
+  - kotlin/密封类与密封接口
+  - kotlin/内联类
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Channel

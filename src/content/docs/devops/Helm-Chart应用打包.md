@@ -1,12 +1,19 @@
 ---
 order: 102
 title: 'Helm-Chart应用打包'
-module: 'devops'
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Helm Chart 应用打包：Chart 结构、模板语法、Values 覆盖与仓库管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/Dockerfile多阶段构建
+  - devops/Kubernetes核心资源详解
+  - devops/Terraform资源编排
+  - 'devops/Ansible-Playbook配置管理'
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Chart 结构

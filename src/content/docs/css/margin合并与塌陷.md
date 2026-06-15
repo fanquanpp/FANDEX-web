@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'margin合并与塌陷'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
-description: 'margin合并与塌陷'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: margin合并与塌陷
+module: css
+category: CSS
+difficulty: intermediate
+description: margin合并与塌陷
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/优先级计算
+  - css/样式表引入方式
+  - css/定位详解
+  - css/浮动与清除
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. margin 合并

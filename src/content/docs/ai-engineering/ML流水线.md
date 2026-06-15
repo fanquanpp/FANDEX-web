@@ -1,9 +1,21 @@
 ---
-title: 'ML流水线'
-description: 'ML流水线将预处理、训练和预测串联成可复现、可部署的自动化流程'
+title: ML流水线
+description: ML流水线将预处理、训练和预测串联成可复现、可部署的自动化流程
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['ML流水线', 'Pipeline', '数据预处理', '自动化', '部署']
+difficulty: intermediate
+tags:
+  - ML流水线
+  - Pipeline
+  - 数据预处理
+  - 自动化
+  - 部署
+related:
+  - 'ai-engineering/LLM生产混沌工程'
+  - 'ai-engineering/MCP服务器与注册中心与治理'
+  - 'ai-engineering/Prompt缓存与语义缓存'
+  - 'ai-engineering/Python环境管理'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # ML流水线

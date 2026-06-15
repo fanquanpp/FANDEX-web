@@ -1,12 +1,17 @@
 ---
 order: 103
-title: '常见SQL反模式'
-module: 'sql'
-category: 'database'
-difficulty: 'intermediate'
+title: 常见SQL反模式
+module: sql
+category: database
+difficulty: intermediate
 description: 'SQL 开发中的常见反模式：存储 CSV 列、滥用枚举、预优化、隐式类型转换等，以及对应的正确实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/递归CTE遍历树结构
+  - sql/乐观锁与悲观锁
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 存储 CSV 列

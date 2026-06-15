@@ -1,12 +1,19 @@
 ---
 order: 66
 title: 'GROUP-BY与ORDER-BY优化'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'advanced'
+module: mysql
+category: MySQL
+difficulty: advanced
 description: 'MySQL GROUP BY与ORDER BY优化：松散索引扫描、紧凑索引扫描、临时表与filesort优化'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/子查询优化
+  - mysql/派生表优化
+  - mysql/JOIN算法
+  - mysql/事务隔离级别底层实现
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. GROUP BY 优化

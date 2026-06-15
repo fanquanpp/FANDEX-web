@@ -1,9 +1,21 @@
 ---
-title: 'PyTorch入门'
-description: 'PyTorch是深度学习的工业标准框架，动态计算图让调试和实验更直观'
+title: PyTorch入门
+description: PyTorch是深度学习的工业标准框架，动态计算图让调试和实验更直观
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['PyTorch', '张量', '自动微分', 'GPU', '训练循环']
+difficulty: beginner
+tags:
+  - PyTorch
+  - 张量
+  - 自动微分
+  - GPU
+  - 训练循环
+related:
+  - 'ai-engineering/Prompt缓存与语义缓存'
+  - 'ai-engineering/Python环境管理'
+  - 'ai-engineering/SGLang与RadixAttention'
+  - 'ai-engineering/TensorRT-LLM与Blackwell'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # PyTorch入门

@@ -1,12 +1,18 @@
 ---
 order: 9
 title: 'PL-SQL与存储过程'
-module: 'sql'
-category: 'SQL'
-difficulty: 'advanced'
+module: sql
+category: SQL
+difficulty: advanced
 description: '存储过程与函数、触发器、游标、异常处理、动态 SQL 与方言对比'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/高级查询
+  - sql/性能优化
+  - sql/SQL实战与面试
+  - sql/数据类型
+prerequisites: []
 ---
 
 # PL-SQL与存储过程

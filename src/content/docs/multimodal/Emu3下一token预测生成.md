@@ -1,9 +1,21 @@
 ---
-title: 'Emu3：下一token预测用于图像和视频生成'
-description: '理解Emu3如何仅用下一token预测在图像生成上击败扩散模型'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Emu3', '下一token预测', 'VQ分词器', '视频生成', '统一模型']
+title: Emu3：下一token预测用于图像和视频生成
+description: 理解Emu3如何仅用下一token预测在图像生成上击败扩散模型
+module: multimodal
+difficulty: advanced
+tags:
+  - Emu3
+  - 下一token预测
+  - VQ分词器
+  - 视频生成
+  - 统一模型
+related:
+  - multimodal/CLIP与对比预训练
+  - multimodal/ColPali视觉原生文档RAG
+  - multimodal/Flamingo与门控交叉注意力
+  - multimodal/InternVL3原生多模态预训练
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Emu3：下一token预测用于图像和视频生成

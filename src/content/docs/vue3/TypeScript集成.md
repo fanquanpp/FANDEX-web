@@ -1,15 +1,22 @@
 ---
 order: 80
 tags:
-  - 'vue3'
-  - 'typescript'
-difficulty: 'intermediate'
+  - vue3
+  - typescript
+difficulty: intermediate
 title: 'TypeScript 集成'
-module: 'vue3'
+module: vue3
 category: 'Vue3 Basics'
-description: 'Vue3中TypeScript的集成与使用'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: Vue3中TypeScript的集成与使用
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - vue3/自定义Hook
+  - vue3/组件系统
+  - vue3/Pinia状态管理详解
+  - vue3/插件开发
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. TypeScript 集成概述 | TypeScript Integration Overview

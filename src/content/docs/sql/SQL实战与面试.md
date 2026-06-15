@@ -1,12 +1,18 @@
 ---
 order: 10
-title: 'SQL实战与面试'
-module: 'sql'
-category: 'SQL'
-difficulty: 'advanced'
+title: SQL实战与面试
+module: sql
+category: SQL
+difficulty: advanced
 description: '经典面试题、业务场景 SQL、数据仓库 SQL 与编码规范'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/性能优化
+  - 'sql/PL-SQL与存储过程'
+  - sql/数据类型
+  - sql/约束
+prerequisites: []
 ---
 
 # SQL实战与面试

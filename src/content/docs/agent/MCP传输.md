@@ -1,9 +1,21 @@
 ---
 title: 'MCP传输 — stdio vs Streamable HTTP vs SSE迁移'
 description: '理解stdio与Streamable HTTP传输的选择、Origin验证、DNS重绑定防护和SSE迁移策略'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['MCP传输', 'Streamable HTTP', 'stdio', 'SSE', 'DNS重绑定']
+module: agent
+difficulty: intermediate
+tags:
+  - MCP传输
+  - 'Streamable HTTP'
+  - stdio
+  - SSE
+  - DNS重绑定
+related:
+  - agent/MCP安全OAuth2.1
+  - agent/MCP采样
+  - agent/MCP根目录与诱导
+  - agent/MCP基础
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP传输 — stdio vs Streamable HTTP vs SSE迁移

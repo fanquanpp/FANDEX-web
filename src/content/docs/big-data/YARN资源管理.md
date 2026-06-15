@@ -1,12 +1,16 @@
 ---
 order: 21
-title: 'YARN资源管理'
+title: YARN资源管理
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
-description: 'YARN架构设计、ResourceManager/NodeManager机制、调度器对比、容器与队列管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: YARN架构设计、ResourceManager/NodeManager机制、调度器对比、容器与队列管理。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/数据湖'
+  - 'big-data/Zookeeper协调服务'
+prerequisites: []
 ---
 
 ## 1. YARN架构设计

@@ -1,12 +1,19 @@
 ---
 order: 58
-title: 'LaTeX数学公式'
-module: 'markdown'
+title: LaTeX数学公式
+module: markdown
 category: 'Markdown Basics'
-difficulty: 'intermediate'
-description: 'Markdown中LaTeX数学公式的完整语法：行内公式、块级公式与KaTeX兼容性。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Markdown中LaTeX数学公式的完整语法：行内公式、块级公式与KaTeX兼容性。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - markdown/Emoji表情
+  - markdown/下标与上标
+  - markdown/Mermaid图表
+  - markdown/编辑器功能
+prerequisites:
+  - markdown/语法指南
 ---
 
 ## 1. 数学公式概述

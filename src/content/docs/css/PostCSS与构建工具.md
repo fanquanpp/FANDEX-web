@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'PostCSS'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
-description: 'PostCSS（autoprefixer、cssnano）'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: PostCSS
+module: css
+category: CSS
+difficulty: intermediate
+description: PostCSS（autoprefixer、cssnano）
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/Less与Stylus
+  - css/响应式设计
+  - css/BEM命名方法论
+  - css/CSS原子化
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. PostCSS 概述

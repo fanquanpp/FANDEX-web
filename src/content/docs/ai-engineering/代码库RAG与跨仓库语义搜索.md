@@ -1,9 +1,22 @@
 ---
-title: '代码库RAG与跨仓库语义搜索'
+title: 代码库RAG与跨仓库语义搜索
 description: '2026年每个严肃工程组织都运行理解语义的内部代码搜索：tree-sitter解析、函数/类级分块、混合搜索(稠密+BM25)、重排序、带引用的回答。构建处理2M行代码跨10个仓库的系统，在每次git push时存活增量重新索引。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['代码搜索', 'RAG', 'tree-sitter', '混合检索', 'AST感知', '增量索引']
+difficulty: advanced
+tags:
+  - 代码搜索
+  - RAG
+  - 'tree-sitter'
+  - 混合检索
+  - AST感知
+  - 增量索引
+related:
+  - 'ai-engineering/采样方法'
+  - 'ai-engineering/超参数调优'
+  - 'ai-engineering/代码迁移代理仓库级语言与运行时升级'
+  - 'ai-engineering/调试神经网络'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

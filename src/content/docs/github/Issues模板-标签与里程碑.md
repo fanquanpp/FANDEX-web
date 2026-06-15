@@ -1,13 +1,20 @@
 ---
 order: 60
 tags:
-  - 'github'
-difficulty: 'intermediate'
+  - github
+difficulty: intermediate
 title: 'Issues 模板、标签与里程碑'
-module: 'github'
+module: github
 category: 'GitHub Advanced'
 description: 'Issues 模板配置、Labels、Milestones、自动化关闭关键词与项目板衔接。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/AI编程助手
+  - github/依赖自动更新
+  - github/密钥扫描
+  - github/CodeQL代码扫描
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 背景

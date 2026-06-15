@@ -1,9 +1,22 @@
 ---
-title: '实时语音助手ASR到LLM到TTS'
-description: '感觉正确的语音代理端到端延迟低于800ms，知道你何时停止说话，处理打断，可以在不卡顿的情况下调用工具。流式ASR、转向检测器、流式LLM和流式TTS通过WebRTC连接。构建一个，测量WER、MOS和误切率，在丢包下运行。'
+title: 实时语音助手ASR到LLM到TTS
+description: 感觉正确的语音代理端到端延迟低于800ms，知道你何时停止说话，处理打断，可以在不卡顿的情况下调用工具。流式ASR、转向检测器、流式LLM和流式TTS通过WebRTC连接。构建一个，测量WER、MOS和误切率，在丢包下运行。
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['语音代理', 'ASR', 'TTS', 'WebRTC', '流式管线', '延迟优化']
+difficulty: advanced
+tags:
+  - 语音代理
+  - ASR
+  - TTS
+  - WebRTC
+  - 流式管线
+  - 延迟优化
+related:
+  - 'ai-engineering/时间序列'
+  - 'ai-engineering/实时音频处理'
+  - 'ai-engineering/视频理解管线场景与QA与搜索'
+  - 'ai-engineering/数据管理'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

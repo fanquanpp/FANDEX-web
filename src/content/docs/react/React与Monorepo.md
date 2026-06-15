@@ -1,12 +1,19 @@
 ---
 order: 77
-title: 'React与Monorepo'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
+title: React与Monorepo
+module: react
+category: React
+difficulty: advanced
 description: 'React Monorepo架构'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与Storybook
+  - 'react/React与CI-CD'
+  - 'react/React-Compiler自动记忆化'
+  - 'react/Server-Components与Client-Components'
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 项目结构

@@ -1,9 +1,21 @@
 ---
-title: '音频Transformer与Whisper'
+title: 音频Transformer与Whisper
 description: '音频是频率随时间的图像,Whisper是一个吃mel频谱图并说回来的ViT'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['Whisper', '语音识别', 'ASR', 'mel频谱图', '编码器-解码器']
+difficulty: intermediate
+tags:
+  - Whisper
+  - 语音识别
+  - ASR
+  - mel频谱图
+  - '编码器-解码器'
+related:
+  - 'deep-learning/位置编码'
+  - 'deep-learning/学习率调度'
+  - 'deep-learning/优化器'
+  - 'deep-learning/正则化'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # 音频Transformer — Whisper架构

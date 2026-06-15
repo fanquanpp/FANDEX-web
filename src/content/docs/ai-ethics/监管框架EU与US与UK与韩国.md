@@ -1,9 +1,22 @@
 ---
-title: '监管框架EU与US与UK与韩国'
+title: 监管框架EU与US与UK与韩国
 description: '2026年AI治理四大监管体系：EU AI Act风险分级(2024年8月生效，2025-2027年逐步适用)；GPAI实践准则三章(透明度、版权、安全)；UK AISI更名为AI安全研究所(2025年2月)；US AISI更名为CAISI(2025年6月)转向促增长姿态；韩国AI框架法(2024年12月通过，2026年1月生效)为亚洲首个综合AI法规。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['EU AI Act', 'GPAI', 'UK AISI', 'CAISI', '韩国AI框架法', '监管']
+difficulty: advanced
+tags:
+  - 'EU AI Act'
+  - GPAI
+  - 'UK AISI'
+  - CAISI
+  - 韩国AI框架法
+  - 监管
+related:
+  - 'ai-ethics/红队工具Garak与LlamaGuard'
+  - 'ai-ethics/间接提示注入与生产攻击面'
+  - 'ai-ethics/奖励黑客与Goodhart定律'
+  - 'ai-ethics/可扩展监督与弱到强泛化'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

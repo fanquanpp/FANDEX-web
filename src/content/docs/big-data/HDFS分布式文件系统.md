@@ -1,12 +1,17 @@
 ---
 order: 11
-title: 'HDFS分布式文件系统'
+title: HDFS分布式文件系统
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
-description: 'HDFS架构设计、NameNode/DataNode机制、读写流程、容错与高可用方案。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: HDFS架构设计、NameNode/DataNode机制、读写流程、容错与高可用方案。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/大数据概述'
+  - 'big-data/MapReduce编程模型'
+  - 'big-data/Spark核心'
+prerequisites: []
 ---
 
 ## 1. HDFS架构设计

@@ -1,12 +1,19 @@
 ---
 order: 87
-title: 'Go与OAuth2'
-module: 'go'
-category: 'Go'
-difficulty: 'intermediate'
-description: 'OAuth2客户端实现'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Go与OAuth2
+module: go
+category: Go
+difficulty: intermediate
+description: OAuth2客户端实现
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Go与HTTP服务器
+  - go/Go与中间件
+  - go/Go与分布式追踪
+  - go/Go与限流
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. golang.org/x/oauth2

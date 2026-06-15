@@ -1,12 +1,19 @@
 ---
 order: 104
 title: 'Redis-Cluster哈希槽'
-module: 'redis'
-category: 'database'
-difficulty: 'advanced'
+module: redis
+category: database
+difficulty: advanced
 description: 'Redis Cluster 哈希槽机制详解：CRC16 校验、16384 槽位分配、槽迁移、重定向与集群伸缩。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - redis/主从复制缓冲区
+  - redis/哨兵选举
+  - redis/管道与事务原子性
+  - redis/Lua脚本原子执行
+prerequisites:
+  - redis/概述与核心数据结构
 ---
 
 ## 1. 哈希槽原理

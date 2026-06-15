@@ -1,9 +1,21 @@
 ---
-title: '语义分割UNet'
+title: 语义分割UNet
 description: '分割是像素级分类。U-Net的编码器-解码器结构与跳跃连接是医学影像和密集预测的骨干架构。'
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['语义分割', 'UNet', '编码器-解码器', '跳跃连接', '像素级分类']
+difficulty: intermediate
+tags:
+  - 语义分割
+  - UNet
+  - '编码器-解码器'
+  - 跳跃连接
+  - 像素级分类
+related:
+  - 'computer-vision/图像生成Diffusion'
+  - 'computer-vision/图像生成GAN'
+  - 'computer-vision/自监督视觉'
+  - 'computer-vision/CNN从LeNet到ResNet'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 语义分割UNet

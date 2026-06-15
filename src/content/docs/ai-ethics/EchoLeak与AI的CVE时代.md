@@ -1,9 +1,22 @@
 ---
-title: 'EchoLeak与AI的CVE时代'
+title: EchoLeak与AI的CVE时代
 description: 'CVE-2025-32711 EchoLeak (CVSS 9.3)是首个公开记录的生产LLM系统零点击提示注入(Microsoft 365 Copilot)。攻击者发送精心构造的邮件，Copilot在RAG检索中执行隐藏指令，通过CSP批准的Microsoft域泄露敏感数据。CamoLeak (CVSS 9.6)利用GitHub Copilot Chat的Camo图像代理。Aim Labs提出LLM范围违反框架：检索、范围、输出三个边界必须独立控制。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['EchoLeak', 'CVE', '零点击', '范围违反', 'CamoLeak', 'OWASP']
+difficulty: advanced
+tags:
+  - EchoLeak
+  - CVE
+  - 零点击
+  - 范围违反
+  - CamoLeak
+  - OWASP
+related:
+  - 'ai-ethics/ASCII艺术与视觉越狱'
+  - 'ai-ethics/Constitutional-AI与RLAIF'
+  - 'ai-ethics/LLM的差分隐私'
+  - 'ai-ethics/Mesa优化与欺骗性对齐'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

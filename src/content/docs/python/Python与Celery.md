@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'Python与Celery'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Celery异步任务队列'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与Celery
+module: python
+category: Python
+difficulty: intermediate
+description: Celery异步任务队列
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与SQLAlchemy
+  - python/控制流
+  - python/Python与Docker
+  - python/Python与Redis
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Celery 配置

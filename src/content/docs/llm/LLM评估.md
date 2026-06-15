@@ -1,9 +1,21 @@
 ---
 title: LLM评估
-description: 理解 LLM 评估的完整框架，包括基准测试、人工评估和自动化评估方法
+description: '理解 LLM 评估的完整框架，包括基准测试、人工评估和自动化评估方法'
 module: llm
 difficulty: intermediate
-tags: [evaluation, benchmark, 评估, 基准测试, MMLU]
+tags:
+  - evaluation
+  - benchmark
+  - 评估
+  - 基准测试
+  - MMLU
+related:
+  - llm/LangGraph状态机
+  - llm/LLM工程评估
+  - llm/RAG检索增强生成
+  - llm/RLHF人类反馈强化学习
+prerequisites:
+  - llm/安全护栏
 ---
 
 # LLM评估

@@ -1,12 +1,19 @@
 ---
 order: 75
-title: 'Kotlin与DSL'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+title: Kotlin与DSL
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: 'Kotlin DSL设计'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与协程Channel
+  - kotlin/Kotlin与编译器插件
+  - kotlin/Kotlin与原子操作
+  - kotlin/Kotlin与Benchmark
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. DSL 构建

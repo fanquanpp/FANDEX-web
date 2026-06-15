@@ -1,12 +1,19 @@
 ---
 order: 56
-title: 'AOF日志持久化'
-module: 'redis'
-category: 'Redis'
-difficulty: 'advanced'
+title: AOF日志持久化
+module: redis
+category: Redis
+difficulty: advanced
 description: 'Redis AOF日志持久化：appendfsync策略、AOF重写机制、配置优化与恢复流程'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - redis/向量集
+  - redis/RDB快照持久化
+  - redis/混合持久化
+  - redis/无盘复制
+prerequisites:
+  - redis/概述与核心数据结构
 ---
 
 ## 1. AOF 概述

@@ -1,7 +1,14 @@
 ---
-title: OpenTelemetry-GenAI语义约定
+title: 'OpenTelemetry-GenAI语义约定'
 description: 'OpenTelemetry的GenAI SIG（2024年4月启动）定义了Agent遥测的标准Schema。Span名称、属性和内容捕获规则跨供应商趋同，使Agent追踪在Datadog、Grafana、Jaeger和Honeycomb中含义相同。'
 module: agent
+related:
+  - 'agent/OpenAI-Agents-SDK'
+  - agent/OpenAI准备性与DeepMind前沿安全框架
+  - agent/OpenTelemetryGenAI
+  - agent/Reflexion语言强化学习
+prerequisites:
+  - agent/概述与架构
 ---
 
 # OpenTelemetry GenAI语义约定

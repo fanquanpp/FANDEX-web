@@ -2,6 +2,13 @@
 title: 思维树与LATS
 description: '单条思维链轨迹没有回溯的空间。ToT（Yao等人，2023）将推理变成带有每个节点自评估的树。LATS（Zhou等人，2024）在蒙特卡洛树搜索下统一了ToT、ReAct和Reflexion。Game of 24从4%（CoT）提升到74%（ToT）；LATS在HumanEval上达到92.7...'
 module: agent
+related:
+  - agent/生成式Agent与涌现模拟
+  - agent/失败模式MAST与群体思维
+  - agent/提示注入防御
+  - agent/通信协议
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 思维树与LATS：审慎搜索

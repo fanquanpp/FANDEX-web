@@ -2,8 +2,21 @@
 title: 'TensorRT-LLM与Blackwell FP8/NVFP4'
 description: '理解Blackwell上TRT-LLM如何通过FP8+NVFP4+MTP实现7x成本优势'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['TensorRT-LLM', 'Blackwell', 'FP8', 'NVFP4', 'MTP', 'Dynamo']
+difficulty: advanced
+tags:
+  - 'TensorRT-LLM'
+  - Blackwell
+  - FP8
+  - NVFP4
+  - MTP
+  - Dynamo
+related:
+  - 'ai-engineering/PyTorch入门'
+  - 'ai-engineering/SGLang与RadixAttention'
+  - 'ai-engineering/vLLM服务内部机制'
+  - 'ai-engineering/vLLM生产栈与LMCache'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # TensorRT-LLM与Blackwell FP8/NVFP4

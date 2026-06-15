@@ -1,15 +1,22 @@
 ---
 order: 175
 tags:
-  - 'java'
-  - 'stream'
-difficulty: 'intermediate'
+  - java
+  - stream
+difficulty: intermediate
 title: 'Stream API'
-module: 'java'
+module: java
 category: 'Java Basics'
 description: 'Java 8 Stream API流式操作、中间操作与终端操作、并行流与收集器详解。'
-author: 'fanquanpp'
-updated: 2026-06-13
+author: fanquanpp
+updated: '2026-06-13'
+related:
+  - java/JVM内存模型
+  - java/Lambda与函数式编程
+  - java/SpringBoot学习笔记
+  - java/网络编程
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Stream API 概述

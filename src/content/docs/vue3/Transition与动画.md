@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'Transition与动画'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'intermediate'
-description: 'Vue3过渡与动画系统'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Transition与动画
+module: vue3
+category: Vue3
+difficulty: intermediate
+description: Vue3过渡与动画系统
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Provide与Inject
+  - vue3/自定义指令进阶
+  - vue3/Vue3编译优化
+  - vue3/Vue3服务端渲染
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. Transition 组件

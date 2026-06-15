@@ -1,9 +1,22 @@
 ---
-title: 'DevOps故障排查代理Kubernetes'
+title: DevOps故障排查代理Kubernetes
 description: '2026年SRE叙事：AI代理分类事件，人类批准修复。AWS DevOps Agent、Resolve AI、NeuBird、Metoro都发布此形态。告警webhook触发，代理读取遥测，遍历K8s对象图，排序根因假设，发布带审批按钮的Slack简报。默认只读，每次修复需人工批准。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['DevOps代理', 'Kubernetes', 'SRE', '根因分析', 'Slack集成', 'RBAC']
+difficulty: advanced
+tags:
+  - DevOps代理
+  - Kubernetes
+  - SRE
+  - 根因分析
+  - Slack集成
+  - RBAC
+related:
+  - 'ai-engineering/AI网关比较'
+  - 'ai-engineering/API与密钥'
+  - 'ai-engineering/Docker与AI'
+  - 'ai-engineering/EAGLE-3投机解码'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

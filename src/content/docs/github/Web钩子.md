@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'Webhooks'
-module: 'github'
-category: 'GitHub'
-difficulty: 'intermediate'
+title: Webhooks
+module: github
+category: GitHub
+difficulty: intermediate
 description: 'GitHub Webhooks详解：事件订阅、负载格式与安全验证。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/命令行工具
+  - 'github/REST与GraphQL-API'
+  - github/包管理服务
+  - github/在线开发环境
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. Webhooks 概述

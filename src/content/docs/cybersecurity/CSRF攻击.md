@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'CSRF攻击'
-module: 'cybersecurity'
+title: CSRF攻击
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: '跨站请求伪造攻击原理、攻击方式与防御机制详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 跨站请求伪造攻击原理、攻击方式与防御机制详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/XSS攻击
+  - cybersecurity/安全模型与框架
+  - cybersecurity/密码学应用
+  - cybersecurity/SQL注入
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. CSRF 攻击原理

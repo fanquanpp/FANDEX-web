@@ -1,9 +1,20 @@
 ---
-title: 'T5与BART编码器解码器'
+title: T5与BART编码器解码器
 description: '编码器理解,解码器生成,把它们放回去你就得到一个为输入→输出任务构建的模型'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['T5', 'BART', '编码器-解码器', '序列到序列', '翻译', '摘要']
+difficulty: intermediate
+tags:
+  - T5
+  - BART
+  - '编码器-解码器'
+  - 序列到序列
+  - 翻译
+  - 摘要
+related:
+  - 'deep-learning/KV缓存与Flash注意力'
+  - 'deep-learning/PyTorch入门'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # T5, BART — 编码器-解码器模型

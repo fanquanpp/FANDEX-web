@@ -1,9 +1,21 @@
 ---
-title: '开源VLM方案：什么真正重要'
+title: 开源VLM方案：什么真正重要
 description: '从MM1、Idefics2、Cambrian-1等消融实验中提炼VLM设计的关键决策'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['VLM方案', '消融实验', '编码器选择', '数据质量', 'MM1']
+module: multimodal
+difficulty: intermediate
+tags:
+  - VLM方案
+  - 消融实验
+  - 编码器选择
+  - 数据质量
+  - MM1
+related:
+  - multimodal/多模态RAG与跨模态检索
+  - multimodal/具身VLA机器人模型
+  - 'multimodal/全能模型Thinker-Talker架构'
+  - 'multimodal/任意分辨率与Patch-n-Pack'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 开源VLM方案：什么真正重要

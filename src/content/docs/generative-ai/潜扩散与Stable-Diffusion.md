@@ -2,8 +2,20 @@
 title: '潜扩散与Stable Diffusion'
 description: '从像素空间到潜空间的扩散，Stable Diffusion的两阶段架构与文本条件化'
 module: 'generative-ai'
-difficulty: 'advanced'
-tags: ['潜扩散', 'Stable Diffusion', 'DiT', 'CFG', '文本条件化']
+difficulty: advanced
+tags:
+  - 潜扩散
+  - 'Stable Diffusion'
+  - DiT
+  - CFG
+  - 文本条件化
+related:
+  - 'generative-ai/扩散模型DDPM从零开始'
+  - 'generative-ai/流匹配与整流流'
+  - 'generative-ai/生成模型分类与历史'
+  - 'generative-ai/生成模型评估FID与CLIP分数'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 潜扩散与 Stable Diffusion

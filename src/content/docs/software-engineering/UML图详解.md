@@ -1,12 +1,18 @@
 ---
 order: 13
-title: 'UML图详解'
+title: UML图详解
 module: 'software-engineering'
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'UML类图、时序图、活动图、状态图等核心图类型详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: UML类图、时序图、活动图、状态图等核心图类型详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-engineering/敏捷开发'
+  - 'software-engineering/需求分析方法'
+  - 'software-engineering/设计模式详解'
+  - 'software-engineering/代码重构'
+prerequisites: []
 ---
 
 ## 1. UML概述

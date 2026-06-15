@@ -1,9 +1,21 @@
 ---
-title: '为什么需要Transformer'
+title: 为什么需要Transformer
 description: 'RNN逐token处理,Transformer并行处理所有token,这一架构选择改变了2017年后深度学习的所有扩展曲线'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['Transformer', 'RNN', '注意力机制', '序列建模', '并行计算']
+difficulty: intermediate
+tags:
+  - Transformer
+  - RNN
+  - 注意力机制
+  - 序列建模
+  - 并行计算
+related:
+  - 'deep-learning/推测解码'
+  - 'deep-learning/完整Transformer'
+  - 'deep-learning/位置编码'
+  - 'deep-learning/学习率调度'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # 为什么需要Transformer -- RNN的问题

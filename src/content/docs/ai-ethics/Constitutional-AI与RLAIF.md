@@ -2,8 +2,21 @@
 title: 'Constitutional AI与RLAIF'
 description: '理解Constitutional AI的自批评修订机制和2026年Claude宪法更新'
 module: 'ai-ethics'
-difficulty: 'intermediate'
-tags: ['Constitutional AI', 'RLAIF', '自批评', '宪法', 'Claude宪法', 'AI反馈']
+difficulty: intermediate
+tags:
+  - 'Constitutional AI'
+  - RLAIF
+  - 自批评
+  - 宪法
+  - Claude宪法
+  - AI反馈
+related:
+  - 'ai-ethics/AI控制与颠覆下安全'
+  - 'ai-ethics/ASCII艺术与视觉越狱'
+  - 'ai-ethics/EchoLeak与AI的CVE时代'
+  - 'ai-ethics/LLM的差分隐私'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 # Constitutional AI与RLAIF

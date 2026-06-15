@@ -1,9 +1,22 @@
 ---
-title: '红队测试PAIR与自动化攻击'
+title: 红队测试PAIR与自动化攻击
 description: 'PAIR（Prompt Automatic Iterative Refinement）是经典的自动化黑盒越狱：攻击者LLM迭代提出越狱，通常在20次查询内成功，比GCG高效数个数量级且无需白盒访问。JailbreakBench和HarmBench标准化评估协议。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['PAIR', '红队', 'GCG', 'JailbreakBench', 'HarmBench', '自动化攻击']
+difficulty: advanced
+tags:
+  - PAIR
+  - 红队
+  - GCG
+  - JailbreakBench
+  - HarmBench
+  - 自动化攻击
+related:
+  - 'ai-ethics/多样本越狱'
+  - 'ai-ethics/公平性标准群体个体与反事实'
+  - 'ai-ethics/红队工具Garak与LlamaGuard'
+  - 'ai-ethics/间接提示注入与生产攻击面'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

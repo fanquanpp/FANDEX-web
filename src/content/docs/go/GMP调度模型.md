@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'GMP调度模型'
-module: 'go'
+title: GMP调度模型
+module: go
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Go GMP调度模型详解：G、M、P结构。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Go与限流
+  - go/goroutine与channel通信原理
+  - go/并发模式
+  - go/反射实现通用函数
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. 三个核心概念

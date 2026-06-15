@@ -1,12 +1,19 @@
 ---
 order: 56
-title: 'Kotlin与Spring'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+title: Kotlin与Spring
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: 'Kotlin Spring Boot开发'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/协程基础
+  - kotlin/Flow与响应式流
+  - kotlin/Kotlin与Android
+  - kotlin/Kotlin内联类
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Spring Boot with Kotlin

@@ -1,12 +1,19 @@
 ---
 order: 66
-title: '类型特征与SFINAE'
-module: 'cpp'
-category: 'C++'
-difficulty: 'advanced'
-description: '类型特征与编译期类型判断'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 类型特征与SFINAE
+module: cpp
+category: C++
+difficulty: advanced
+description: 类型特征与编译期类型判断
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/异常安全
+  - cpp/多线程与并发
+  - cpp/变参模板
+  - cpp/constexpr与编译期计算
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 类型特征

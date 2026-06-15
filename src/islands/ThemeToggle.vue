@@ -1,11 +1,19 @@
+<!--
+  主题切换组件
+  在亮色和暗色模式之间切换，状态持久化到 localStorage
+  挂载前不渲染按钮，避免服务端渲染与客户端状态不一致
+-->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
+/** 当前主题状态 */
 const theme = ref<'light' | 'dark'>('light');
+/** 是否已完成客户端挂载，用于避免 SSR/CSR 不一致 */
 let mounted = ref(false);
 
 onMounted(() => {
   mounted.value = true;
+  // 读取用户保存的主题偏好，无保存值时跟随系统
   const saved = localStorage.getItem('fandex-theme');
   if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     theme.value = 'dark';
@@ -14,6 +22,7 @@ onMounted(() => {
   }
 });
 
+/** 切换主题并持久化到 localStorage */
 function toggle() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme.value);
@@ -22,6 +31,7 @@ function toggle() {
 </script>
 
 <template>
+  <!-- 仅在客户端挂载后渲染，避免水合不匹配 -->
   <button
     v-if="mounted"
     class="theme-toggle"
@@ -29,6 +39,7 @@ function toggle() {
     :title="theme === 'dark' ? '亮色模式' : '暗色模式'"
     :aria-label="theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
   >
+    <!-- 暗色模式下显示太阳图标（切换到亮色） -->
     <svg
       v-if="theme === 'dark'"
       width="16"
@@ -48,6 +59,7 @@ function toggle() {
       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
     </svg>
+    <!-- 亮色模式下显示月亮图标（切换到暗色） -->
     <svg
       v-else
       width="16"
@@ -63,6 +75,7 @@ function toggle() {
 </template>
 
 <style scoped>
+/* 主题切换按钮 */
 .theme-toggle {
   display: flex;
   align-items: center;

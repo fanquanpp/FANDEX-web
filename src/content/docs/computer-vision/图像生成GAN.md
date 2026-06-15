@@ -1,9 +1,21 @@
 ---
-title: '图像生成GAN'
-description: 'GAN是两个网络——生成器和判别器——在对抗博弈中训练。生成器学习从噪声生成逼真图像。'
+title: 图像生成GAN
+description: GAN是两个网络——生成器和判别器——在对抗博弈中训练。生成器学习从噪声生成逼真图像。
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['GAN', '生成对抗网络', '图像生成', '判别器', '生成器']
+difficulty: advanced
+tags:
+  - GAN
+  - 生成对抗网络
+  - 图像生成
+  - 判别器
+  - 生成器
+related:
+  - 'computer-vision/图像检索'
+  - 'computer-vision/图像生成Diffusion'
+  - 'computer-vision/语义分割UNet'
+  - 'computer-vision/自监督视觉'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 图像生成GAN

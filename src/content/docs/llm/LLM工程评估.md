@@ -1,9 +1,21 @@
 ---
 title: LLM工程评估
-description: 理解 LLM 应用的评估框架，包括 LLM-as-Judge、评估流水线和回归测试
+description: '理解 LLM 应用的评估框架，包括 LLM-as-Judge、评估流水线和回归测试'
 module: llm
 difficulty: intermediate
-tags: [evaluation, LLM-as-Judge, 评估流水线, 回归测试, promptfoo]
+tags:
+  - evaluation
+  - 'LLM-as-Judge'
+  - 评估流水线
+  - 回归测试
+  - promptfoo
+related:
+  - 'llm/Jamba混合SSM-Transformer'
+  - llm/LangGraph状态机
+  - llm/LLM评估
+  - llm/RAG检索增强生成
+prerequisites:
+  - llm/安全护栏
 ---
 
 # LLM工程评估

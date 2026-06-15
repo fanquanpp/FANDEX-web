@@ -1,12 +1,18 @@
 ---
 order: 84
-title: 'F检验'
+title: F检验
 module: 'probability-statistics'
 category: 'comp-sci'
-difficulty: 'intermediate'
-description: '两总体方差比的F检验、方差分析基础。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 两总体方差比的F检验、方差分析基础。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'probability-statistics/t检验'
+  - 'probability-statistics/卡方检验'
+  - 'probability-statistics/假设检验典型例题'
+prerequisites:
+  - 'probability-statistics/样本空间与事件'
 ---
 
 ## 1. 两总体方差比的 F 检验

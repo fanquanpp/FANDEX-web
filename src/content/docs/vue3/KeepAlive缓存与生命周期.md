@@ -1,12 +1,19 @@
 ---
 order: 104
-title: 'KeepAlive缓存与生命周期'
-module: 'vue3'
+title: KeepAlive缓存与生命周期
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue 3 KeepAlive组件缓存机制与activated/deactivated生命周期。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/自定义组合函数封装
+  - vue3/Teleport传送门应用
+  - vue3/异步组件与Suspense
+  - vue3/Pinia持久化插件
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. KeepAlive 基础

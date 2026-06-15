@@ -1,9 +1,22 @@
 ---
-title: '个人AI导师自适应多模态与记忆'
+title: 个人AI导师自适应多模态与记忆
 description: 'Khanmigo (Khan Academy)、Duolingo Max、Google LearnLM/Gemini for Education、Quizlet Q-Chat和Synthesis Tutor都在2026年大规模发布自适应多模态辅导。共同形态：苏格拉底策略(永不直接给答案)、每次交互后更新的学习者模型(贝叶斯知识追踪)、语音+文本+照片数学输入、课程图检索、间隔重复调度、年龄适宜内容的硬安全过滤器。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['AI导师', '自适应学习', '苏格拉底策略', '知识追踪', '间隔重复', 'COPPA']
+difficulty: advanced
+tags:
+  - AI导师
+  - 自适应学习
+  - 苏格拉底策略
+  - 知识追踪
+  - 间隔重复
+  - COPPA
+related:
+  - 'ai-engineering/概率与分布'
+  - 'ai-engineering/感知机'
+  - 'ai-engineering/合规框架'
+  - 'ai-engineering/机器学习统计'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

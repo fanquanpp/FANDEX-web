@@ -2,12 +2,19 @@
 order: 50
 tags:
   - 'data-analysis'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'Seaborn -- 统计可视化、热力图与分布图'
 module: 'data-analysis'
 category: 'Data Science / Seaborn'
 description: 'Seaborn 高级统计可视化：分布图、关系图、分类图、热力图与多图网格'
-author: 'fanquanpp'
+author: fanquanpp
+related:
+  - 'data-analysis/Pandas-DataFrameSeries-数据清洗-合并重塑'
+  - 'data-analysis/Matplotlib-折线图-柱状图-散点图与子图'
+  - 'data-analysis/统计学-描述统计-推断统计与假设检验'
+  - 'data-analysis/数据清洗-缺失值-异常值与数据类型转换'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. Seaborn 简介

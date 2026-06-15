@@ -1,12 +1,19 @@
 ---
 order: 60
-title: 'Java新特性'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
+title: Java新特性
+module: java
+category: Java
+difficulty: intermediate
 description: 'Java 17-21新特性'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java序列化
+  - java/JavaIO与NIO
+  - java/运算符与表达式
+  - java/Spring基础
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Record（Java 16）

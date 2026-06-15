@@ -1,9 +1,22 @@
 ---
-title: '生产RAG聊天机器人监管垂直领域'
+title: 生产RAG聊天机器人监管垂直领域
 description: 'Harvey、Glean、Mendable和LlamaCloud在2026年运行相同生产形态：docling/Unstructured + ColPali摄取、混合搜索、bge-reranker-v2-gemma重排序、Claude Sonnet 4.7合成(60-80%提示缓存命中)、Llama Guard 4 + NeMo Guardrails防护、Langfuse/Phoenix监控、RAGAS评估。在监管领域(法律、临床、保险)构建，通过金集、红队和漂移仪表板。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['生产RAG', '监管合规', '提示缓存', 'Llama Guard', 'RAGAS', '漂移检测']
+difficulty: advanced
+tags:
+  - 生产RAG
+  - 监管合规
+  - 提示缓存
+  - 'Llama Guard'
+  - RAGAS
+  - 漂移检测
+related:
+  - 'ai-engineering/神经音频编解码'
+  - 'ai-engineering/生产量化策略'
+  - 'ai-engineering/时间序列'
+  - 'ai-engineering/实时音频处理'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

@@ -1,12 +1,19 @@
 ---
 order: 105
-title: 'tsconfig严格模式'
-module: 'typescript'
+title: tsconfig严格模式
+module: typescript
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'TypeScript tsconfig严格模式详解：strict、noImplicitAny、strictNullChecks等选项。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/类型体操
+  - typescript/模块声明与全局类型增强
+  - typescript/装饰器标准实现
+  - 'typescript/项目示例-类型安全的API客户端'
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. strict 总开关

@@ -1,12 +1,19 @@
 ---
 order: 82
-title: 't检验'
+title: t检验
 module: 'probability-statistics'
 category: 'comp-sci'
-difficulty: 'intermediate'
-description: '单总体t检验、双总体t检验（等方差与不等方差）、配对t检验。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 单总体t检验、双总体t检验（等方差与不等方差）、配对t检验。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'probability-statistics/假设检验基本概念'
+  - 'probability-statistics/Z检验'
+  - 'probability-statistics/卡方检验'
+  - 'probability-statistics/F检验'
+prerequisites:
+  - 'probability-statistics/样本空间与事件'
 ---
 
 ## 1. 单总体均值的 t 检验

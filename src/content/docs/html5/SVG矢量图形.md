@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'SVG'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'intermediate'
-description: '基本形状、viewBox、路径、文本、滤镜'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: SVG
+module: html5
+category: HTML5
+difficulty: intermediate
+description: 基本形状、viewBox、路径、文本、滤镜
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/图像与响应式图片
+  - html5/音频与视频
+  - html5/嵌入式内容
+  - html5/progress与meter
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. SVG 基础

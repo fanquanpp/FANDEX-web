@@ -1,12 +1,19 @@
 ---
 order: 111
-title: 'TCP拥塞控制'
+title: TCP拥塞控制
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'TCP 拥塞控制：慢启动、拥塞避免、快速重传、快速恢复算法与 BBR。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/HTTP缓存策略'
+  - 'cs-fundamentals/HTTPS握手过程'
+  - 'cs-fundamentals/TCP粘包与拆包'
+  - 'cs-fundamentals/DNS解析流程'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. 拥塞控制基础

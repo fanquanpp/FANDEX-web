@@ -1,9 +1,20 @@
 ---
-title: 'SAM开放词汇分割'
+title: SAM开放词汇分割
 description: '给模型一个文本提示和一张图像，获取每个匹配物体的掩码。SAM 3将此变为单次前向传播。'
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['SAM', '开放词汇分割', '文本提示分割', 'SAM3', '实例分割']
+difficulty: intermediate
+tags:
+  - SAM
+  - 开放词汇分割
+  - 文本提示分割
+  - SAM3
+  - 实例分割
+related:
+  - 'computer-vision/DiffusionTransformer'
+  - 'computer-vision/OCR与文档理解'
+  - 'computer-vision/StableDiffusion'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # SAM开放词汇分割

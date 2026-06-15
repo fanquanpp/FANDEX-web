@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'Teleport传送门应用'
-module: 'vue3'
+title: Teleport传送门应用
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue 3 Teleport传送门组件应用：模态框、通知、全屏遮罩。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/组合式API优势场景
+  - vue3/自定义组合函数封装
+  - vue3/KeepAlive缓存与生命周期
+  - vue3/异步组件与Suspense
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. Teleport 基础

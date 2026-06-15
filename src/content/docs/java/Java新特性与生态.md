@@ -1,12 +1,19 @@
 ---
 order: 90
 title: 'Java 新特性与生态'
-module: 'java'
+module: java
 category: 'Java Advanced'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Java 21-24 新特性、模块系统、Spring Boot 3.x、构建工具与 GraalVM 原生镜像。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java模块系统
+  - java/Java与数据库连接
+  - java/数组详解
+  - java/JVM调优
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Java 21-24 新特性概览

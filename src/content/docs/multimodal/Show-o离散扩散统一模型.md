@@ -1,9 +1,21 @@
 ---
 title: 'Show-o与离散扩散统一模型'
 description: '理解Show-o如何用掩码离散扩散实现并行图像生成'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Show-o', '掩码离散扩散', 'MaskGIT', '并行解码', '图像修复']
+module: multimodal
+difficulty: advanced
+tags:
+  - 'Show-o'
+  - 掩码离散扩散
+  - MaskGIT
+  - 并行解码
+  - 图像修复
+related:
+  - multimodal/MIO任意到任意流式模型
+  - 'multimodal/Qwen-VL家族与动态FPS'
+  - multimodal/Transfusion双损失统一模型
+  - 'multimodal/Vision-Transformer与Patch-Token原语'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Show-o与离散扩散统一模型

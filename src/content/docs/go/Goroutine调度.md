@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'Goroutine调度'
-module: 'go'
-category: 'Go'
-difficulty: 'advanced'
-description: 'GMP调度模型'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Goroutine调度
+module: go
+category: Go
+difficulty: advanced
+description: GMP调度模型
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Map原理
+  - go/Channel原理
+  - go/Context详解
+  - go/接口与类型断言
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. GMP 模型

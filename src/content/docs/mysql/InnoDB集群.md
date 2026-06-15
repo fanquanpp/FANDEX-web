@@ -1,12 +1,19 @@
 ---
 order: 84
 title: 'InnoDB-Cluster'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'advanced'
+module: mysql
+category: MySQL
+difficulty: advanced
 description: 'MySQL InnoDB Cluster与InnoDB ClusterSet：MySQL Shell、MGR、MySQL Router集成高可用方案'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - mysql/并行复制
+  - mysql/组复制
+  - mysql/分区表
+  - mysql/分库分表中间件
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. InnoDB Cluster 概述

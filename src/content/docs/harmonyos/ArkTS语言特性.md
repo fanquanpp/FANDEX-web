@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'ArkTS语言特性'
-module: 'harmonyos'
-category: 'HarmonyOS'
-difficulty: 'intermediate'
-description: 'ArkTS扩展语法与限制'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: ArkTS语言特性
+module: harmonyos
+category: HarmonyOS
+difficulty: intermediate
+description: ArkTS扩展语法与限制
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - harmonyos/网络与数据持久化
+  - harmonyos/多媒体与设备能力
+  - harmonyos/状态管理
+  - harmonyos/自定义组件
+prerequisites:
+  - harmonyos/概述与环境搭建
 ---
 
 ## 1. ArkTS 特性

@@ -1,12 +1,19 @@
 ---
 order: 102
-title: 'CompletableFuture异步编排'
-module: 'java'
+title: CompletableFuture异步编排
+module: java
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Java CompletableFuture异步编排详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/集合框架详解
+  - java/并发编程详解
+  - java/ThreadLocal内存泄漏
+  - java/反射与动态代理
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 创建异步任务

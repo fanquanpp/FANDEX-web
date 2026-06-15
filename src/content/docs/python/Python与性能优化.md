@@ -1,12 +1,19 @@
 ---
 order: 80
-title: 'Python与性能优化'
-module: 'python'
-category: 'Python'
-difficulty: 'advanced'
-description: '性能分析与优化技巧'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与性能优化
+module: python
+category: Python
+difficulty: advanced
+description: 性能分析与优化技巧
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与WebSocket
+  - 'python/Python与CI-CD'
+  - python/内置数据结构
+  - python/正则表达式
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. 性能分析

@@ -1,9 +1,21 @@
 ---
 title: '生成模型评估 -- FID与CLIP分数'
-description: 'FID、CLIP分数、Inception分数等生成模型评估指标的原理与局限'
+description: FID、CLIP分数、Inception分数等生成模型评估指标的原理与局限
 module: 'generative-ai'
-difficulty: 'intermediate'
-tags: ['FID', 'CLIP分数', '评估指标', 'Inception分数', '生成质量']
+difficulty: intermediate
+tags:
+  - FID
+  - CLIP分数
+  - 评估指标
+  - Inception分数
+  - 生成质量
+related:
+  - 'generative-ai/潜扩散与Stable-Diffusion'
+  - 'generative-ai/生成模型分类与历史'
+  - 'generative-ai/视觉自回归模型VAR'
+  - 'generative-ai/视频生成'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 生成模型评估 -- FID 与 CLIP 分数

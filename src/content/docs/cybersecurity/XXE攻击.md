@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'XXE攻击'
-module: 'cybersecurity'
+title: XXE攻击
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'XXE（XML 外部实体）攻击：原理、利用方式与防御。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/认证与授权
+  - 'cybersecurity/OWASP-Top-10详解'
+  - cybersecurity/反序列化漏洞
+  - cybersecurity/零信任架构
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. XXE 原理

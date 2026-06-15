@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Projects看板'
-module: 'github'
-category: 'GitHub'
-difficulty: 'intermediate'
+title: Projects看板
+module: github
+category: GitHub
+difficulty: intermediate
 description: 'GitHub Projects看板：项目管理、自动化工作流与视图配置。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/依赖安全选项
+  - github/Fork工作流
+  - github/知识库
+  - github/社区讨论
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. Projects 概述

@@ -1,9 +1,21 @@
 ---
 title: 'A2A协议 — Agent间通信'
 description: '掌握Google A2A协议的Agent Card、Task生命周期和认证模型，实现跨框架Agent互操作'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['A2A协议', 'Agent Card', 'Agent间通信', 'Task生命周期', '互操作']
+module: agent
+difficulty: advanced
+tags:
+  - A2A协议
+  - 'Agent Card'
+  - Agent间通信
+  - Task生命周期
+  - 互操作
+related:
+  - agent/最小Agent工作台
+  - agent/作用域契约
+  - agent/A2A协议深入
+  - agent/Agent工作台为何模型失败
+prerequisites:
+  - agent/概述与架构
 ---
 
 # A2A协议 — Agent间通信

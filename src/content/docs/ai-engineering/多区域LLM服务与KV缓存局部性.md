@@ -1,9 +1,21 @@
 ---
-title: '多区域LLM服务与KV缓存局部性'
-description: '理解缓存感知路由如何避免跨区域预填充惩罚和灾难恢复陷阱'
+title: 多区域LLM服务与KV缓存局部性
+description: 理解缓存感知路由如何避免跨区域预填充惩罚和灾难恢复陷阱
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['多区域', 'KV缓存局部性', '缓存感知路由', '灾难恢复', '前缀哈希']
+difficulty: intermediate
+tags:
+  - 多区域
+  - KV缓存局部性
+  - 缓存感知路由
+  - 灾难恢复
+  - 前缀哈希
+related:
+  - 'ai-engineering/多代理软件工程团队'
+  - 'ai-engineering/多模态文档QA视觉优先PDF与表格与图表'
+  - 'ai-engineering/反欺骗与音频水印'
+  - 'ai-engineering/反向传播'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 多区域LLM服务与KV缓存局部性

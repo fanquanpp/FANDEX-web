@@ -2,8 +2,20 @@
 title: 'Actor-Critic与A2C/A3C'
 description: '结合策略梯度与价值函数的Actor-Critic架构，A2C与A3C的同步与异步训练'
 module: 'machine-learning'
-difficulty: 'advanced'
-tags: ['Actor-Critic', 'A2C', 'A3C', '优势函数', '异步训练']
+difficulty: advanced
+tags:
+  - 'Actor-Critic'
+  - A2C
+  - A3C
+  - 优势函数
+  - 异步训练
+related:
+  - 'machine-learning/异常检测'
+  - 'machine-learning/支持向量机'
+  - 'machine-learning/DQN深度Q网络'
+  - 'machine-learning/KNN与距离度量'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # Actor-Critic 与 A2C/A3C

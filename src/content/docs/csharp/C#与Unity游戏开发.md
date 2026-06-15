@@ -1,12 +1,19 @@
 ---
 order: 57
 title: 'C#与Unity游戏开发'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'intermediate'
-description: 'Unity脚本与组件系统'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Unity脚本与组件系统
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/Span与Memory
+  - csharp/源生成器
+  - 'csharp/C#与Blazor'
+  - 'csharp/C#与MAUI'
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. MonoBehaviour

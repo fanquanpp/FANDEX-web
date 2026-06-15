@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'Actions自托管运行器'
-module: 'github'
-category: 'toolchain'
-difficulty: 'advanced'
+title: Actions自托管运行器
+module: github
+category: toolchain
+difficulty: advanced
 description: 'GitHub Actions自托管运行器详解：安装配置、自动扩展、安全加固与运维管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/Actions矩阵构建
+  - github/Actions缓存依赖
+  - github/Actions制品传递
+  - github/Actions环境部署
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 自托管运行器概述

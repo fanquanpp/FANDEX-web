@@ -1,12 +1,19 @@
 ---
 order: 60
-title: '自定义Error'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'intermediate'
-description: '创建自定义错误类型与错误链'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 自定义Error
+module: javascript
+category: JavaScript
+difficulty: intermediate
+description: 创建自定义错误类型与错误链
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/Unicode属性转义
+  - 'javascript/函数-作用域与闭包'
+  - javascript/浏览器对象模型
+  - javascript/网络请求API
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. 自定义错误类

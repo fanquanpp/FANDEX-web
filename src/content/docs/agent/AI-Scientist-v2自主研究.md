@@ -1,7 +1,14 @@
 ---
-title: AI-Scientist-v2自主研究
+title: 'AI-Scientist-v2自主研究'
 description: 'Sakana 的 AI Scientist v2 (Yamada 等人, arXiv:2504.08066) 运行完整研究循环：假设、代码、实验、图表、论文、提交。它是第一个有生成论文通过 ICLR 2025 workshop 同行评审的系统。独立评估 (Beel 等人) 发现 42% 的实验...'
 module: agent
+related:
+  - agent/Agent循环
+  - agent/Agno与Mastra生产运行时
+  - agent/AlphaEvolve进化编码
+  - agent/Anthropic工作流模式
+prerequisites:
+  - agent/概述与架构
 ---
 
 # AI Scientist v2 — Workshop 级自主研究

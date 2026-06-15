@@ -3,10 +3,16 @@ order: 13
 title: 'On-Call最佳实践'
 module: 'engineering-practices'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: '值班制度、告警管理、轮值策略与On-Call素养。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'engineering-practices/设计文档规范'
+  - 'engineering-practices/代码审查清单'
+  - 'engineering-practices/事故复盘方法论'
+  - 'engineering-practices/技术方案评审'
+prerequisites: []
 ---
 
 ## 1. On-Call制度

@@ -1,12 +1,19 @@
 ---
 order: 66
-title: 'Socket网络编程'
-module: 'c'
-category: 'C'
-difficulty: 'advanced'
-description: 'TCP/UDP套接字编程'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Socket网络编程
+module: c
+category: C
+difficulty: advanced
+description: TCP/UDP套接字编程
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/复杂声明解析
+  - c/POSIX线程
+  - c/进程与管道
+  - c/共享内存与信号量
+prerequisites:
+  - c/概述
 ---
 
 ## 1. TCP 服务器

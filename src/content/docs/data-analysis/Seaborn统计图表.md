@@ -1,12 +1,19 @@
 ---
 order: 107
-title: 'Seaborn统计图表'
+title: Seaborn统计图表
 module: 'data-analysis'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Seaborn 统计图表：heatmap、pairplot、violinplot、catplot 详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'data-analysis/NumPy广播机制'
+  - 'data-analysis/Matplotlib子图布局'
+  - 'data-analysis/假设检验详解'
+  - 'data-analysis/相关性分析'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. 热力图

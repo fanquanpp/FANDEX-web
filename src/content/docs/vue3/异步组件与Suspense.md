@@ -1,12 +1,19 @@
 ---
 order: 105
-title: '异步组件与Suspense'
-module: 'vue3'
+title: 异步组件与Suspense
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue 3异步组件defineAsyncComponent与Suspense配合使用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Teleport传送门应用
+  - vue3/KeepAlive缓存与生命周期
+  - vue3/Pinia持久化插件
+  - 'vue3/Vue-Router导航守卫'
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. defineAsyncComponent

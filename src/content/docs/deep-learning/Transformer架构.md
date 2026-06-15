@@ -1,12 +1,18 @@
 ---
 order: 15
-title: 'Transformer架构'
+title: Transformer架构
 module: 'deep-learning'
-category: 'data'
-difficulty: 'advanced'
-description: '自注意力机制、多头注意力、位置编码与Transformer架构详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: advanced
+description: 自注意力机制、多头注意力、位置编码与Transformer架构详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'deep-learning/卷积神经网络'
+  - 'deep-learning/循环神经网络'
+  - 'deep-learning/生成模型'
+  - 'deep-learning/预训练模型'
+prerequisites: []
 ---
 
 ## 1. 自注意力机制

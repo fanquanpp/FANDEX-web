@@ -1,12 +1,19 @@
 ---
 order: 70
-title: '事务ACID特性'
-module: 'sql'
-category: 'SQL'
-difficulty: 'intermediate'
-description: 'SQL事务ACID特性：原子性、一致性、隔离性、持久性的原理、实现机制与保证'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 事务ACID特性
+module: sql
+category: SQL
+difficulty: intermediate
+description: SQL事务ACID特性：原子性、一致性、隔离性、持久性的原理、实现机制与保证
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/索引
+  - sql/执行计划
+  - sql/隔离级别
+  - sql/脏读不可重复读幻读
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 事务概述

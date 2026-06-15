@@ -1,9 +1,21 @@
 ---
-title: 'Jupyter笔记本'
+title: Jupyter笔记本
 description: '安装和启动 JupyterLab，使用魔法命令进行基准测试和可视化，区分笔记本与脚本的使用场景，避免常见笔记本陷阱'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['Jupyter', 'Notebook', '数据探索', '可视化', 'Colab']
+difficulty: beginner
+tags:
+  - Jupyter
+  - Notebook
+  - 数据探索
+  - 可视化
+  - Colab
+related:
+  - 'ai-engineering/GPU自动伸缩与Kubernetes'
+  - 'ai-engineering/JAX入门'
+  - 'ai-engineering/KNN与距离度量'
+  - 'ai-engineering/Linux与AI'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Jupyter 笔记本

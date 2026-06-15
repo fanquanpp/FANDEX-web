@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'CoAP协议'
-module: 'iot'
+title: CoAP协议
+module: iot
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'CoAP协议详解：受限环境下的RESTful协议、消息模型、观察模式与安全机制。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: CoAP协议详解：受限环境下的RESTful协议、消息模型、观察模式与安全机制。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - iot/实战项目
+  - iot/MQTT协议
+  - iot/Arduino开发
+  - iot/ESP32开发
+prerequisites:
+  - iot/概述与架构
 ---
 
 ## 1. CoAP 概述

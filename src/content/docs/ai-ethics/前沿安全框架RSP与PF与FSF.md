@@ -1,9 +1,22 @@
 ---
-title: '前沿安全框架RSP与PF与FSF'
+title: 前沿安全框架RSP与PF与FSF
 description: '三大实验室框架定义2026年前沿能力行业治理：Anthropic RSP v3.0的ASL分层(ASL-1到ASL-5+)；OpenAI PF v2的五项追踪标准；DeepMind FSF v3.0的关键能力级别含新增有害操纵CCL。三者均含竞争者调整条款。安全案例三支柱：监控、不可读性、无能力。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['RSP', 'Preparedness Framework', 'FSF', 'ASL', '安全案例', '竞争者调整']
+difficulty: advanced
+tags:
+  - RSP
+  - 'Preparedness Framework'
+  - FSF
+  - ASL
+  - 安全案例
+  - 竞争者调整
+related:
+  - 'ai-ethics/模型卡与系统卡与数据集卡'
+  - 'ai-ethics/偏见与代表性伤害'
+  - 'ai-ethics/前沿模型的上下文内策划'
+  - 'ai-ethics/审核系统OpenAI与Perspective与LlamaGuard'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

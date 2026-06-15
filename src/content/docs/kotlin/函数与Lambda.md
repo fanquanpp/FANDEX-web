@@ -1,12 +1,18 @@
 ---
 order: 12
 title: 'Kotlin 函数与 Lambda'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: '函数定义、扩展函数、Lambda 表达式、高阶函数、内联函数与 SAM 转换。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/概述与环境配置
+  - kotlin/基础语法
+  - kotlin/类与对象
+  - kotlin/泛型与类型系统
+prerequisites: []
 ---
 
 ## 1. 函数定义

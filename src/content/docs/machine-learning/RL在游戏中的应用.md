@@ -1,9 +1,20 @@
 ---
-title: 'RL在游戏中的应用'
-description: '从Atari到星际争霸，强化学习在游戏AI中的里程碑与核心技术'
+title: RL在游戏中的应用
+description: 从Atari到星际争霸，强化学习在游戏AI中的里程碑与核心技术
 module: 'machine-learning'
-difficulty: 'intermediate'
-tags: ['游戏AI', 'Atari', 'AlphaGo', 'AlphaStar', '自博弈', 'MCTS']
+difficulty: intermediate
+tags:
+  - 游戏AI
+  - Atari
+  - AlphaGo
+  - AlphaStar
+  - 自博弈
+  - MCTS
+related:
+  - 'machine-learning/PPO近端策略优化'
+  - 'machine-learning/Q学习与SARSA'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # RL 在游戏中的应用

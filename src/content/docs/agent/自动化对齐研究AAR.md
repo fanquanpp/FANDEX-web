@@ -2,6 +2,13 @@
 title: 自动化对齐研究AAR
 description: 'Anthropic 在独立沙箱中运行了并行的 Claude Opus 4.6 自主对齐研究员团队，通过共享论坛协调，其日志存储在任何沙箱之外（因此 Agent 不能删除自己的记录）。在弱到强训练问题上，AAR 超越了人类研究员。Anthropic 自己的总结指出，规定性工作流经常约束 AAR ...'
 module: agent
+related:
+  - agent/指令作为可执行约束
+  - agent/终止开关与金丝雀令牌
+  - agent/自精炼与CRITIC
+  - agent/自主编码Agent格局
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 自动化对齐研究 (Anthropic AAR)

@@ -2,7 +2,14 @@
 title: A2A协议深入
 description: 'Google 于 2025 年 4 月宣布 A2A；到 2026 年 4 月，规范位于 https://a2a-protocol.org/latest/specification/，150+ 组织支持它。A2A 是 MCP (Lesson 13) 的水平补充：MCP 是垂直的（Agent ↔ ...'
 module: agent
-updated: 2026-06-15
+updated: '2026-06-15'
+related:
+  - agent/作用域契约
+  - agent/A2A协议
+  - agent/Agent工作台为何模型失败
+  - agent/Agent工作台项目
+prerequisites:
+  - agent/概述与架构
 ---
 
 # A2A — Agent 到 Agent 协议

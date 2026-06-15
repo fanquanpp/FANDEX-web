@@ -1,15 +1,22 @@
 ---
 order: 90
 tags:
-  - 'css'
+  - css
   - 'css-layout'
-difficulty: 'advanced'
+difficulty: advanced
 title: 'CSS-in-JS 与高级布局技巧'
-module: 'css'
+module: css
 category: 'CSS Basics'
 description: 'CSS-in-JS方案与Grid高级布局'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - css/CSS原生嵌套
+  - css/Canvas绘图
+  - css/CSS架构方法论
+  - css/理论知识点
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. CSS-in-JS 概述

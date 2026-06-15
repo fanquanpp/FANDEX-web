@@ -1,9 +1,21 @@
 ---
-title: 'CLIP与对比视觉语言预训练'
-description: '从InfoNCE到Sigmoid损失，深入理解CLIP和SigLIP的对比学习机制'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['CLIP', 'SigLIP', '对比学习', 'InfoNCE', '零样本分类']
+title: CLIP与对比视觉语言预训练
+description: 从InfoNCE到Sigmoid损失，深入理解CLIP和SigLIP的对比学习机制
+module: multimodal
+difficulty: intermediate
+tags:
+  - CLIP
+  - SigLIP
+  - 对比学习
+  - InfoNCE
+  - 零样本分类
+related:
+  - 'multimodal/BLIP-2与Q-Former桥接'
+  - multimodal/Chameleon与早期融合
+  - multimodal/ColPali视觉原生文档RAG
+  - multimodal/Emu3下一token预测生成
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # CLIP与对比视觉语言预训练

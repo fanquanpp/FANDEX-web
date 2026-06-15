@@ -1,9 +1,21 @@
 ---
-title: '视觉Transformer'
+title: 视觉Transformer
 description: '图像是patch的网格,句子是token的网格,同一个transformer可以处理两者'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['ViT', '视觉Transformer', '图像分类', 'DINOv2', 'patch']
+difficulty: intermediate
+tags:
+  - ViT
+  - 视觉Transformer
+  - 图像分类
+  - DINOv2
+  - patch
+related:
+  - 'deep-learning/迷你框架'
+  - 'deep-learning/权重初始化'
+  - 'deep-learning/损失函数'
+  - 'deep-learning/缩放定律'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # 视觉Transformer (ViT)

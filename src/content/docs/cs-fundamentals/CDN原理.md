@@ -1,12 +1,19 @@
 ---
 order: 114
-title: 'CDN原理'
+title: CDN原理
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'CDN 内容分发网络：边缘节点、回源机制、缓存策略与调度算法。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/TCP粘包与拆包'
+  - 'cs-fundamentals/DNS解析流程'
+  - 'cs-fundamentals/WebSocket帧格式'
+  - 'cs-fundamentals/QUIC协议'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. CDN 架构

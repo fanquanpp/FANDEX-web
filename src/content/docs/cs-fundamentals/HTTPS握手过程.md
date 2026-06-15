@@ -1,12 +1,19 @@
 ---
 order: 110
-title: 'HTTPS握手过程'
+title: HTTPS握手过程
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'HTTPS 握手过程详解：TLS 1.2 与 TLS 1.3 的握手差异、密钥交换与证书验证。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/进程间通信'
+  - 'cs-fundamentals/HTTP缓存策略'
+  - 'cs-fundamentals/TCP拥塞控制'
+  - 'cs-fundamentals/TCP粘包与拆包'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. TLS 1.2 握手

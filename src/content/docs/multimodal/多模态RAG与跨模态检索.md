@@ -1,9 +1,20 @@
 ---
-title: '多模态RAG与跨模态检索'
-description: '理解跨文本、图像、音频和视频的多模态RAG检索融合与生成接地'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['多模态RAG', '跨模态检索', '融合策略', '生成接地', 'MuRAG']
+title: 多模态RAG与跨模态检索
+description: 理解跨文本、图像、音频和视频的多模态RAG检索融合与生成接地
+module: multimodal
+difficulty: intermediate
+tags:
+  - 多模态RAG
+  - 跨模态检索
+  - 融合策略
+  - 生成接地
+  - MuRAG
+related:
+  - multimodal/多模态Agent与计算机使用
+  - multimodal/具身VLA机器人模型
+  - multimodal/开源VLM方案
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 多模态RAG与跨模态检索

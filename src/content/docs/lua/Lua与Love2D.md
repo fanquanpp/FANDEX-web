@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'Lua与Love2D'
-module: 'lua'
-category: 'Lua'
-difficulty: 'intermediate'
-description: 'Love2D游戏开发'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Lua与Love2D
+module: lua
+category: Lua
+difficulty: intermediate
+description: Love2D游戏开发
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/Lua与C交互
+  - lua/Lua即时编译器
+  - lua/Lua与Neovim
+  - lua/Lua与Redis脚本
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. Love2D 基础

@@ -1,14 +1,21 @@
 ---
 order: 60
 tags:
-  - 'mysql'
-  - 'database'
-difficulty: 'intermediate'
+  - mysql
+  - database
+difficulty: intermediate
 title: 'SQL 函数与高级查询'
-module: 'mysql'
+module: mysql
 category: 'MySQL Basics'
-description: '聚合函数、窗口函数、子查询与公用表表达式。'
-author: 'Anonymous'
+description: 聚合函数、窗口函数、子查询与公用表表达式。
+author: Anonymous
+related:
+  - mysql/索引提示与强制索引
+  - mysql/索引统计信息与直方图
+  - mysql/索引失效场景
+  - mysql/EXPLAIN输出详解
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. 内置函数详解

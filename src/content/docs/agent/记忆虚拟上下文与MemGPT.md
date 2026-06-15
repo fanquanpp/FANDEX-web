@@ -1,7 +1,14 @@
 ---
 title: 记忆虚拟上下文与MemGPT
-description: '上下文窗口是有限的。对话、文档和工具轨迹不是。MemGPT（Packer等人，2023）将其框架为操作系统虚拟内存——主上下文是RAM，外部存储是磁盘，Agent在它们之间换页。这是每个2026年记忆系统继承的模式。'
+description: 上下文窗口是有限的。对话、文档和工具轨迹不是。MemGPT（Packer等人，2023）将其框架为操作系统虚拟内存——主上下文是RAM，外部存储是磁盘，Agent在它们之间换页。这是每个2026年记忆系统继承的模式。
 module: agent
+related:
+  - agent/计算机使用Agent
+  - agent/记忆块与睡眠时间计算
+  - agent/技能库与终身学习
+  - agent/技能与AgentSDK
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 记忆：虚拟上下文与MemGPT

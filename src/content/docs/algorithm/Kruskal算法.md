@@ -1,12 +1,19 @@
 ---
 order: 108
-title: 'Kruskal算法'
-module: 'algorithm'
+title: Kruskal算法
+module: algorithm
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Kruskal 最小生成树算法：贪心策略、并查集优化、边排序与实际应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - algorithm/动态规划状态压缩
+  - 'algorithm/Floyd-Warshall算法'
+  - algorithm/拓扑排序
+  - algorithm/算法理论知识点
+prerequisites:
+  - algorithm/算法分析基础与学习路线
 ---
 
 ## 1. 最小生成树

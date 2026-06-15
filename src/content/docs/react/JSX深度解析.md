@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'JSX深度解析'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'JSX语法原理与编译过程'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: JSX深度解析
+module: react
+category: React
+difficulty: intermediate
+description: JSX语法原理与编译过程
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/测试与工程化
+  - react/Next.js全栈开发
+  - react/Fiber架构
+  - react/Concurrent模式
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. JSX 本质

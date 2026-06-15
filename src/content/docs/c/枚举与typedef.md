@@ -1,12 +1,19 @@
 ---
 order: 51
-title: '枚举与typedef'
-module: 'c'
-category: 'C'
-difficulty: 'beginner'
-description: '枚举类型与类型别名'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 枚举与typedef
+module: c
+category: C
+difficulty: beginner
+description: 枚举类型与类型别名
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/位运算与位域
+  - c/运算符与表达式
+  - c/多文件编译
+  - c/动态内存管理
+prerequisites:
+  - c/概述
 ---
 
 ## 1. 枚举

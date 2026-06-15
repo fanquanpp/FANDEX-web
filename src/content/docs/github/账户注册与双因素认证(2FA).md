@@ -1,14 +1,19 @@
 ---
 order: 10
 tags:
-  - 'github'
-  - 'security'
-difficulty: 'intermediate'
-title: '账户注册与双因素认证（2FA）'
-module: 'github'
+  - github
+  - security
+difficulty: intermediate
+title: 账户注册与双因素认证（2FA）
+module: github
 category: 'GitHub Basics'
 description: 'GitHub 账户注册、邮箱验证、密码策略与双因素认证（2FA）配置指南。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/GitHub概述
+  - 'github/仓库创建-克隆-归档-删除'
+  - github/SSH与HTTPS远程配置
+prerequisites: []
 ---
 
 ## 1. 背景

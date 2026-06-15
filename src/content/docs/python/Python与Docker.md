@@ -1,12 +1,19 @@
 ---
 order: 62
-title: 'Python与Docker'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Python容器化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与Docker
+module: python
+category: Python
+difficulty: intermediate
+description: Python容器化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/控制流
+  - python/Python与Celery
+  - python/Python与Redis
+  - python/Python与GraphQL
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Dockerfile

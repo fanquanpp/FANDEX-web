@@ -1,9 +1,21 @@
 ---
 title: 'Qwen-VL家族与动态FPS视频'
 description: '理解Qwen-VL家族的M-RoPE、动态FPS采样和结构化Agent输出'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Qwen-VL', 'M-RoPE', '动态FPS', '视频理解', 'Agent输出']
+module: multimodal
+difficulty: advanced
+tags:
+  - 'Qwen-VL'
+  - 'M-RoPE'
+  - 动态FPS
+  - 视频理解
+  - Agent输出
+related:
+  - multimodal/LLaVA与视觉指令微调
+  - multimodal/MIO任意到任意流式模型
+  - 'multimodal/Show-o离散扩散统一模型'
+  - multimodal/Transfusion双损失统一模型
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Qwen-VL家族与动态FPS视频

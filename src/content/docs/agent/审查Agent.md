@@ -1,9 +1,21 @@
 ---
 title: '审查Agent — 分离构建者与标记者'
-description: '构建独立审查Agent，使用五维度评分标准对构建者产出进行定性评审，实现角色分离和偏差缓解'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['审查Agent', '角色分离', '评分标准', '偏差缓解', '校准集']
+description: 构建独立审查Agent，使用五维度评分标准对构建者产出进行定性评审，实现角色分离和偏差缓解
+module: agent
+difficulty: intermediate
+tags:
+  - 审查Agent
+  - 角色分离
+  - 评分标准
+  - 偏差缓解
+  - 校准集
+related:
+  - agent/群聊与发言者选择
+  - agent/群体优化PSO与ACO
+  - agent/生产扩展队列与检查点
+  - agent/生产运行时
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 审查Agent — 分离构建者与标记者

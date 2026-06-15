@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'RDB快照持久化'
-module: 'redis'
-category: 'Redis'
-difficulty: 'advanced'
+title: RDB快照持久化
+module: redis
+category: Redis
+difficulty: advanced
 description: 'Redis RDB快照持久化：save与bgsave机制、写时复制原理、配置优化与恢复流程'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - redis/流
+  - redis/向量集
+  - redis/AOF日志持久化
+  - redis/混合持久化
+prerequisites:
+  - redis/概述与核心数据结构
 ---
 
 ## 1. RDB 概述

@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'Lambda表达式'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'Lambda捕获、泛型Lambda与C++23改进'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Lambda表达式
+module: cpp
+category: C++
+difficulty: intermediate
+description: Lambda捕获、泛型Lambda与C++23改进
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/指针
+  - cpp/智能指针详解
+  - cpp/模板元编程
+  - cpp/C++20范围
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 基本语法

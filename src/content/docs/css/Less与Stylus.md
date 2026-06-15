@@ -1,12 +1,19 @@
 ---
 order: 70
-title: 'Less与Stylus'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
-description: 'Less与Stylus'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Less与Stylus
+module: css
+category: CSS
+difficulty: intermediate
+description: Less与Stylus
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/滚动捕捉
+  - css/Sass预处理器
+  - css/响应式设计
+  - css/PostCSS与构建工具
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. Less

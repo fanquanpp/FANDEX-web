@@ -1,9 +1,21 @@
 ---
 title: LangGraph状态机
-description: 理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流
+description: '理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流'
 module: llm
 difficulty: advanced
-tags: [LangGraph, state machine, 工作流, Agent, 状态机]
+tags:
+  - LangGraph
+  - 'state machine'
+  - 工作流
+  - Agent
+  - 状态机
+related:
+  - llm/DualPipe并行
+  - 'llm/Jamba混合SSM-Transformer'
+  - llm/LLM工程评估
+  - llm/LLM评估
+prerequisites:
+  - llm/安全护栏
 ---
 
 # LangGraph状态机

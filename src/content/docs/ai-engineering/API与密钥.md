@@ -1,9 +1,21 @@
 ---
-title: 'API与密钥'
+title: API与密钥
 description: '安全存储 API 密钥，使用 Anthropic Python SDK 和原始 HTTP 调用 LLM API，比较 SDK 和原始 HTTP 格式，处理常见 API 错误'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['API', '密钥管理', 'Anthropic', 'OpenAI', 'HTTP']
+difficulty: beginner
+tags:
+  - API
+  - 密钥管理
+  - Anthropic
+  - OpenAI
+  - HTTP
+related:
+  - 'ai-engineering/AI的SRE事件响应'
+  - 'ai-engineering/AI网关比较'
+  - 'ai-engineering/DevOps故障排查代理Kubernetes'
+  - 'ai-engineering/Docker与AI'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # API 与密钥

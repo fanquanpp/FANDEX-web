@@ -2,6 +2,13 @@
 title: 宪法AI与价值观对齐
 description: 'Anthropic 的宪法 AI (CAI, Bai 等人, 2022) 用两阶段过程替代人类反馈 RLHF：SL（监督学习，模型批评自己的输出并修订）和 RL（强化学习，模型根据宪法原则自我评估）。Claude 的宪法 (2026 年 1 月更新) 包含来自联合国人权宣言、Apple 的服务...'
 module: agent
+related:
+  - agent/为何多Agent
+  - agent/先提议后提交模式
+  - agent/协商与讨价还价
+  - agent/心智理论与涌现协调
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 宪法 AI 与价值观对齐

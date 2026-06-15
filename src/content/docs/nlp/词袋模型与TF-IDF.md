@@ -1,9 +1,19 @@
 ---
 title: '词袋模型与TF-IDF'
 description: '理解词袋模型、TF-IDF文本表示及其在2026年仍然有效的场景'
-module: 'nlp'
-difficulty: 'beginner'
-tags: ['词袋模型', 'TF-IDF', '文本表示', '稀疏向量']
+module: nlp
+difficulty: beginner
+tags:
+  - 词袋模型
+  - 'TF-IDF'
+  - 文本表示
+  - 稀疏向量
+related:
+  - nlp/词嵌入Word2Vec
+  - nlp/词性标注与句法解析
+  - python/语法速查
+  - algorithm/算法分析基础与学习路线
+prerequisites: []
 ---
 
 # 词袋模型、TF-IDF与文本表示

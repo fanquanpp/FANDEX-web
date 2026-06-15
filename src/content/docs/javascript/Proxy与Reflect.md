@@ -1,12 +1,19 @@
 ---
 order: 54
-title: 'Proxy与Reflect'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'advanced'
-description: '元编程：代理与反射API'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Proxy与Reflect
+module: javascript
+category: JavaScript
+difficulty: advanced
+description: 元编程：代理与反射API
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/柯里化与偏函数
+  - javascript/生成器函数
+  - javascript/Object扩展
+  - javascript/事件循环
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Proxy 概述

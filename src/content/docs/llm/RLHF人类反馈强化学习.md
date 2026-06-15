@@ -1,9 +1,19 @@
 ---
 title: RLHF人类反馈强化学习
-description: 理解 RLHF 的完整流程：奖励模型训练和 PPO 强化学习对齐
+description: '理解 RLHF 的完整流程：奖励模型训练和 PPO 强化学习对齐'
 module: llm
 difficulty: advanced
-tags: [RLHF, reward model, PPO, 对齐, 强化学习]
+tags:
+  - RLHF
+  - 'reward model'
+  - PPO
+  - 对齐
+  - 强化学习
+related:
+  - llm/LLM评估
+  - llm/RAG检索增强生成
+prerequisites:
+  - llm/安全护栏
 ---
 
 # RLHF人类反馈强化学习

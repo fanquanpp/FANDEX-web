@@ -1,9 +1,20 @@
 ---
 title: 'Agent工作台项目 — 可复用工作台包'
 description: '将七种工作台表面打包为可复用的drop-in目录，实现一键安装、版本控制和跨项目复用'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['工作台包', '可复用', '安装器', '版本控制']
+module: agent
+difficulty: intermediate
+tags:
+  - 工作台包
+  - 可复用
+  - 安装器
+  - 版本控制
+related:
+  - agent/A2A协议深入
+  - agent/Agent工作台为何模型失败
+  - agent/Agent经济体与声誉
+  - agent/Agent可观测性平台
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agent工作台项目 — 可复用工作台包

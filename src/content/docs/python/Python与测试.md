@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'Python与测试'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'pytest与测试最佳实践'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与测试
+module: python
+category: Python
+difficulty: intermediate
+description: pytest与测试最佳实践
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与自动化
+  - python/函数详解
+  - python/Python与日志
+  - python/Python与加密
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. pytest

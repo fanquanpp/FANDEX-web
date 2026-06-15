@@ -1,14 +1,21 @@
 ---
 order: 90
 tags:
-  - 'github'
-  - 'devops'
-difficulty: 'intermediate'
+  - github
+  - devops
+difficulty: intermediate
 title: 'GitHub Actions 与 CI/CD'
-module: 'github'
+module: github
 category: 'GitHub Advanced'
 description: 'GitHub Actions workflow 语法、市场使用、CI/CD 示例（Node/Java/Python）。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/PullRequest完整协作流程
+  - github/GitHubPages多站点方案
+  - github/Actions触发器
+  - github/常见问题排查
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 背景

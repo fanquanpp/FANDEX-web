@@ -2,6 +2,13 @@
 title: 长时间运行Agent持久执行
 description: '生产长时间范围 Agent 不在 while True 中运行。每个 LLM 调用成为带检查点、重试和重放的活动。Temporal 的 OpenAI Agents SDK 集成于 2026 年 3 月 GA。Claude Code Routines (Anthropic) 运行调度的 Clau...'
 module: agent
+related:
+  - agent/运行时反馈循环
+  - agent/长时间范围Agent
+  - agent/真实仓库工作台
+  - agent/指令作为可执行约束
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 长时间运行后台 Agent：持久执行

@@ -1,9 +1,22 @@
 ---
-title: '多模态文档QA视觉优先PDF与表格与图表'
+title: 多模态文档QA视觉优先PDF与表格与图表
 description: '2026年文档QA前沿从OCR-then-text转向视觉优先后期交互。ColPali、ColQwen2.5和ColQwen3-omni将每页PDF视为图像，用多向量后期交互嵌入，让查询直接关注patch。在金融10-K、科学论文和手写笔记上大幅超越OCR优先方案。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['文档QA', 'ColPali', '视觉优先', '后期交互', 'PDF解析', 'ViDoRe']
+difficulty: advanced
+tags:
+  - 文档QA
+  - ColPali
+  - 视觉优先
+  - 后期交互
+  - PDF解析
+  - ViDoRe
+related:
+  - 'ai-engineering/多层网络'
+  - 'ai-engineering/多代理软件工程团队'
+  - 'ai-engineering/多区域LLM服务与KV缓存局部性'
+  - 'ai-engineering/反欺骗与音频水印'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

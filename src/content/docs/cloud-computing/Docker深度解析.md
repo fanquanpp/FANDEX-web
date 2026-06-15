@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'Docker深度解析'
+title: Docker深度解析
 module: 'cloud-computing'
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'Docker进阶：镜像构建优化、多阶段构建、网络模式、存储驱动与安全实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Docker进阶：镜像构建优化、多阶段构建、网络模式、存储驱动与安全实践。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cloud-computing/云架构设计'
+  - 'cloud-computing/公有云与私有云与混合云'
+  - 'cloud-computing/云原生应用'
+  - 'cloud-computing/Kubernetes架构'
+prerequisites:
+  - 'cloud-computing/云计算基础'
 ---
 
 ## 1. Docker 镜像优化

@@ -1,9 +1,22 @@
 ---
 title: 'LLM的FinOps — 单位经济学与多租户归属'
-description: '理解传统FinOps在LLM支出上的失效和2026年三维度归属方案'
+description: 理解传统FinOps在LLM支出上的失效和2026年三维度归属方案
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['FinOps', '单位经济学', '多租户', '成本归属', 'kill switch', 'token层']
+difficulty: intermediate
+tags:
+  - FinOps
+  - 单位经济学
+  - 多租户
+  - 成本归属
+  - 'kill switch'
+  - token层
+related:
+  - 'ai-engineering/Linux与AI'
+  - 'ai-engineering/LLM-API负载测试'
+  - 'ai-engineering/LLM功能AB测试'
+  - 'ai-engineering/LLM可观测性与评估仪表板'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # LLM的FinOps — 单位经济学与多租户归属

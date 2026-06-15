@@ -1,9 +1,21 @@
 ---
-title: Constitutional AI与自我改进
-description: 理解 Constitutional AI 方法，让 AI 通过自我批评和修正实现安全对齐
+title: 'Constitutional AI与自我改进'
+description: '理解 Constitutional AI 方法，让 AI 通过自我批评和修正实现安全对齐'
 module: llm
 difficulty: advanced
-tags: [Constitutional AI, self-improvement, 对齐, 安全, 自我批评]
+tags:
+  - 'Constitutional AI'
+  - 'self-improvement'
+  - 对齐
+  - 安全
+  - 自我批评
+related:
+  - llm/指令微调SFT
+  - llm/Agent框架权衡
+  - 'llm/DeepSeek-V3架构详解'
+  - llm/DPO直接偏好优化
+prerequisites:
+  - llm/安全护栏
 ---
 
 # Constitutional AI与自我改进

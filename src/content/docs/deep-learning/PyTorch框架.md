@@ -1,12 +1,18 @@
 ---
 order: 18
-title: 'PyTorch框架'
+title: PyTorch框架
 module: 'deep-learning'
-category: 'data'
-difficulty: 'intermediate'
-description: 'PyTorch核心概念：Tensor、Autograd、nn.Module、训练循环与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: PyTorch核心概念：Tensor、Autograd、nn.Module、训练循环与最佳实践。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'deep-learning/生成模型'
+  - 'deep-learning/预训练模型'
+  - 'deep-learning/TensorFlow框架'
+  - 'deep-learning/模型优化与部署'
+prerequisites: []
 ---
 
 ## 1. Tensor张量

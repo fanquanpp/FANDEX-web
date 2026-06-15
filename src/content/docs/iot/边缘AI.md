@@ -1,12 +1,19 @@
 ---
 order: 55
-title: '边缘AI'
-module: 'iot'
+title: 边缘AI
+module: iot
 category: 'eng-infra'
-difficulty: 'advanced'
-description: '边缘AI：TinyML、模型压缩、边缘推理框架与端侧智能应用详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: 边缘AI：TinyML、模型压缩、边缘推理框架与端侧智能应用详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - iot/ESP32开发
+  - 'iot/RT-Thread实时系统'
+  - iot/LwM2M设备管理
+  - iot/时序数据库
+prerequisites:
+  - iot/概述与架构
 ---
 
 ## 1. 边缘 AI 概述

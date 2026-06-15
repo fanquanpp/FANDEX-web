@@ -1,9 +1,22 @@
 ---
-title: 'ColPali与视觉原生文档RAG'
-description: '理解ColPali如何跳过OCR直接嵌入页面图像实现视觉原生检索'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['ColPali', '视觉RAG', 'ColBERT', 'MaxSim', '文档检索', 'PaliGemma']
+title: ColPali与视觉原生文档RAG
+description: 理解ColPali如何跳过OCR直接嵌入页面图像实现视觉原生检索
+module: multimodal
+difficulty: intermediate
+tags:
+  - ColPali
+  - 视觉RAG
+  - ColBERT
+  - MaxSim
+  - 文档检索
+  - PaliGemma
+related:
+  - multimodal/Chameleon与早期融合
+  - multimodal/CLIP与对比预训练
+  - multimodal/Emu3下一token预测生成
+  - multimodal/Flamingo与门控交叉注意力
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # ColPali与视觉原生文档RAG

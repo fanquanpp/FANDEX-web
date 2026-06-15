@@ -1,14 +1,21 @@
 ---
 order: 100
 tags:
-  - 'vue3'
-difficulty: 'intermediate'
+  - vue3
+difficulty: intermediate
 title: 'Vue Router 详解'
-module: 'vue3'
+module: vue3
 category: 'Vue3 Basics'
-description: '路由配置、导航守卫、懒加载与路由元信息。'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: 路由配置、导航守卫、懒加载与路由元信息。
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - vue3/插件开发
+  - vue3/computed缓存机制与watch执行时机
+  - vue3/组合式API优势场景
+  - vue3/自定义组合函数封装
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. Vue Router 概述

@@ -1,12 +1,19 @@
 ---
 order: 65
-title: '版本控制下的PR协作'
-module: 'markdown'
+title: 版本控制下的PR协作
+module: markdown
 category: 'Markdown Basics'
-difficulty: 'intermediate'
-description: 'Markdown在版本控制PR协作中的应用：模板、评论、审查与文档维护。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Markdown在版本控制PR协作中的应用：模板、评论、审查与文档维护。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - markdown/锚点跳转
+  - markdown/图片CDN加速
+  - markdown/代码块与语法高亮
+  - markdown/表格
+prerequisites:
+  - markdown/语法指南
 ---
 
 ## 1. PR 协作概述

@@ -1,13 +1,19 @@
 ---
 order: 30
 tags:
-  - 'github'
-difficulty: 'intermediate'
+  - github
+difficulty: intermediate
 title: 'SSH 与 HTTPS 远程配置'
-module: 'github'
+module: github
 category: 'GitHub Basics'
 description: 'SSH 与 HTTPS 远程配置对比、公钥配置、HTTPS+PAT 配置指南。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - github/账户注册与双因素认证(2FA)
+  - 'github/仓库创建-克隆-归档-删除'
+  - github/协作开发规范
+  - github/README文件
+prerequisites: []
 ---
 
 ## 1. 背景

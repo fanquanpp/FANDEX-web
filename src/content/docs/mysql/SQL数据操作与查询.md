@@ -1,14 +1,21 @@
 ---
 order: 50
 tags:
-  - 'mysql'
-  - 'database'
-difficulty: 'intermediate'
+  - mysql
+  - database
+difficulty: intermediate
 title: 'SQL 数据操作与查询'
-module: 'mysql'
+module: mysql
 category: 'MySQL Basics'
 description: 'INSERT/UPDATE/DELETE、SELECT 基础与条件查询。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - mysql/SQL数据定义与高级对象
+  - mysql/MyISAM存储引擎
+  - mysql/Memory存储引擎
+  - mysql/NDB集群
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. SQL 概述

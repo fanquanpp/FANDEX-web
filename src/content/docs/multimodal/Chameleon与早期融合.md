@@ -1,9 +1,21 @@
 ---
-title: 'Chameleon与早期融合Token统一模型'
+title: Chameleon与早期融合Token统一模型
 description: '理解VQ-VAE图像分词器和共享词表的早期融合多模态架构'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Chameleon', '早期融合', 'VQ-VAE', '共享词表', '混合模态生成']
+module: multimodal
+difficulty: advanced
+tags:
+  - Chameleon
+  - 早期融合
+  - 'VQ-VAE'
+  - 共享词表
+  - 混合模态生成
+related:
+  - multimodal/长视频百万Token理解
+  - 'multimodal/BLIP-2与Q-Former桥接'
+  - multimodal/CLIP与对比预训练
+  - multimodal/ColPali视觉原生文档RAG
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Chameleon与早期融合Token统一多模态模型

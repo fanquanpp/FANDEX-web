@@ -1,12 +1,18 @@
 ---
 order: 72
-title: '奇异值分解SVD'
+title: 奇异值分解SVD
 module: 'linear-algebra'
 category: 'comp-sci'
-difficulty: 'advanced'
-description: 'SVD定理的表述与证明，奇异值的计算方法，SVD的几何意义，SVD在数据压缩和降维中的应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: SVD定理的表述与证明，奇异值的计算方法，SVD的几何意义，SVD在数据压缩和降维中的应用。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'linear-algebra/LU分解'
+  - 'linear-algebra/QR分解'
+  - 'linear-algebra/矩阵分解应用'
+prerequisites:
+  - 'linear-algebra/行列式定义与几何意义'
 ---
 
 ## 1. SVD 定理

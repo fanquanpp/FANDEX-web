@@ -2,6 +2,13 @@
 title: Agent可观测性平台
 description: '三个开源Agent可观测性平台主导2026年。Langfuse（MIT）— 6M+安装/月，追踪 + 提示管理 + 评估 + 会话回放。Arize Phoenix（Elastic 2.0）— 深度Agent特定评估，RAG相关性，OpenInference自动仪器化。Comet Opik（Ap...'
 module: agent
+related:
+  - agent/Agent工作台项目
+  - agent/Agent经济体与声誉
+  - agent/Agent失败模式
+  - agent/Agent循环
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agent可观测性：Langfuse、Phoenix、Opik

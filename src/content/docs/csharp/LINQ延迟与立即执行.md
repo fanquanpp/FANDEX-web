@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'LINQ延迟与立即执行'
-module: 'csharp'
+title: LINQ延迟与立即执行
+module: csharp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'C# LINQ延迟执行与立即执行详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'csharp/C#12与C#13新特性'
+  - 'csharp/C#与反射'
+  - 'csharp/async-await状态机'
+  - csharp/委托与事件底层原理
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 延迟执行

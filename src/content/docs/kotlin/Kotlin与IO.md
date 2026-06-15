@@ -1,12 +1,19 @@
 ---
 order: 78
-title: 'Kotlin与IO'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+title: Kotlin与IO
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: 'kotlinx-io与文件操作'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与原子操作
+  - kotlin/Kotlin与Benchmark
+  - kotlin/Kotlin与正则
+  - kotlin/Kotlin与时间
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. 文件操作

@@ -2,6 +2,13 @@
 title: AlphaEvolve进化编码
 description: '将前沿编码模型与进化循环和机器可检查评估器配对。让循环运行足够长时间。它发现了一个使用 48 次标量乘法的 4x4 复矩阵乘法程序——56 年来对 Strassen 的首次改进。它还找到了一个 Google 范围的 Borg 调度启发式，在生产中恢复了约 0.7% 的集群计算。架构故意无聊。胜...'
 module: agent
+related:
+  - agent/Agno与Mastra生产运行时
+  - 'agent/AI-Scientist-v2自主研究'
+  - agent/Anthropic工作流模式
+  - agent/AnthropicRSP
+prerequisites:
+  - agent/概述与架构
 ---
 
 # AlphaEvolve — 进化编码 Agent

@@ -1,12 +1,19 @@
 ---
 order: 63
-title: 'Kotlin作用域函数'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'beginner'
-description: 'let/run/with/apply/also'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Kotlin作用域函数
+module: kotlin
+category: Kotlin
+difficulty: beginner
+description: let/run/with/apply/also
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin序列化
+  - kotlin/Kotlin集合操作
+  - kotlin/Kotlin类型系统
+  - kotlin/Kotlin与Compose
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. 作用域函数对比

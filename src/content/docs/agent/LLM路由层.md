@@ -1,9 +1,21 @@
 ---
 title: 'LLM路由层 — 模型选择、回退、成本优化'
-description: '构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['LLM路由', '模型选择', '回退链', '成本优化', 'AB测试']
+description: 构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试
+module: agent
+difficulty: intermediate
+tags:
+  - LLM路由
+  - 模型选择
+  - 回退链
+  - 成本优化
+  - AB测试
+related:
+  - agent/LangGraph状态图与持久执行
+  - agent/LlamaGuard
+  - agent/MARL寮哄寲瀛︿範
+  - agent/MARL强化学习
+prerequisites:
+  - agent/概述与架构
 ---
 
 # LLM路由层 — 模型选择、回退、成本优化

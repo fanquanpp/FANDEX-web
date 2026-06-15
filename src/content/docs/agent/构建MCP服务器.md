@@ -1,9 +1,20 @@
 ---
 title: '构建MCP服务器 — Python + TypeScript SDK'
-description: '从零构建完整的MCP服务器，实现tools、resources、prompts三个原语，掌握调度循环和注解机制'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['MCP服务器', 'FastMCP', 'stdio', 'JSON-RPC']
+description: 从零构建完整的MCP服务器，实现tools、resources、prompts三个原语，掌握调度循环和注解机制
+module: agent
+difficulty: intermediate
+tags:
+  - MCP服务器
+  - FastMCP
+  - stdio
+  - 'JSON-RPC'
+related:
+  - agent/共识与拜占庭容错
+  - agent/共享记忆与黑板
+  - agent/构建MCP客户端
+  - agent/函数调用深入
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 构建MCP服务器 — Python + TypeScript SDK

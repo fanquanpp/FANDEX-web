@@ -2,6 +2,13 @@
 title: METR时间范围与外部能力评估
 description: 'METR (前 ARC Evals) 自 2023 年 12 月起为独立 501(c)(3)。他们的时间范围 1.1 基准 (2026 年 1 月) 对任务成功概率 vs log(专家人类完成时间) 拟合逻辑曲线；50% 概率处的交点定义模型的时间范围。2025-2026 年参与集覆盖 GPT...'
 module: agent
+related:
+  - agent/MCP应用
+  - agent/MCP资源与提示
+  - 'agent/OpenAI-Agents-SDK'
+  - agent/OpenAI准备性与DeepMind前沿安全框架
+prerequisites:
+  - agent/概述与架构
 ---
 
 # METR 时间范围与外部能力评估

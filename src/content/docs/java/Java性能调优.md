@@ -1,12 +1,19 @@
 ---
 order: 76
-title: 'Java性能调优'
-module: 'java'
-category: 'Java'
-difficulty: 'advanced'
-description: 'Java应用性能优化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java性能调优
+module: java
+category: Java
+difficulty: advanced
+description: Java应用性能优化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与Docker
+  - java/Java与GraphQL
+  - java/Java与AI
+  - java/Java与安全
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 性能分析工具

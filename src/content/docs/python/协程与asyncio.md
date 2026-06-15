@@ -1,12 +1,19 @@
 ---
 order: 54
-title: '协程与asyncio'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'async/await与异步IO'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 协程与asyncio
+module: python
+category: Python
+difficulty: intermediate
+description: async/await与异步IO
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/元类
+  - python/描述符协议
+  - python/多进程与多线程
+  - python/数据类与Pydantic
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. async/await

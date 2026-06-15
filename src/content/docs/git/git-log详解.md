@@ -1,12 +1,19 @@
 ---
 order: 56
 title: 'git-log详解'
-module: 'git'
+module: git
 category: 'Git Basics'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'git log多种格式与过滤选项：自定义输出、搜索过滤与可视化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'git/git-diff与暂存区操作'
+  - 'git/git-restore与文件操作'
+  - git/引用日志
+  - git/代码追溯
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. git log 基础

@@ -1,12 +1,18 @@
 ---
 order: 16
-title: 'HBase列族数据库'
+title: HBase列族数据库
 module: 'big-data'
-category: 'data'
-difficulty: 'advanced'
-description: 'HBase架构原理、Region管理、RowKey设计、读写流程与性能优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: advanced
+description: HBase架构原理、Region管理、RowKey设计、读写流程与性能优化。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/Spark流计算'
+  - 'big-data/Hive数据仓库'
+  - 'big-data/Kafka消息队列'
+  - 'big-data/Flink流处理'
+prerequisites: []
 ---
 
 ## 1. HBase架构设计

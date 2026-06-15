@@ -1,12 +1,19 @@
 ---
 order: 105
-title: 'NumPy广播机制'
+title: NumPy广播机制
 module: 'data-analysis'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'NumPy 广播机制：不同形状数组的运算规则与内存效率。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'data-analysis/Pandas分组聚合'
+  - 'data-analysis/Pandas时间序列'
+  - 'data-analysis/Matplotlib子图布局'
+  - 'data-analysis/Seaborn统计图表'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. 广播规则

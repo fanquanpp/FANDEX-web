@@ -1,12 +1,19 @@
 ---
 order: 62
-title: '高级SQL'
-module: 'postgresql'
-category: 'PostgreSQL'
-difficulty: 'advanced'
-description: 'PostgreSQL高级SQL：窗口函数、CTE与递归CTE、横向连接、分组集与高级聚合'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 高级SQL
+module: postgresql
+category: PostgreSQL
+difficulty: advanced
+description: PostgreSQL高级SQL：窗口函数、CTE与递归CTE、横向连接、分组集与高级聚合
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - postgresql/分区表
+  - postgresql/分区裁剪与分区连接
+  - postgresql/MERGE语句增强
+  - postgresql/JSON表格函数
+prerequisites:
+  - postgresql/概述与安装配置
 ---
 
 ## 1. 窗口函数

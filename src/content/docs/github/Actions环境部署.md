@@ -1,12 +1,17 @@
 ---
 order: 105
-title: 'Actions环境部署'
-module: 'github'
-category: 'toolchain'
-difficulty: 'advanced'
+title: Actions环境部署
+module: github
+category: toolchain
+difficulty: advanced
 description: 'GitHub Actions环境（Environments）详解：dev/test/staging/production环境保护规则与部署策略。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/Actions自托管运行器
+  - github/Actions制品传递
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 环境概述

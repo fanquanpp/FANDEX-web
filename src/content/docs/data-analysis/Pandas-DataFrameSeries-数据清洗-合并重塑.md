@@ -2,12 +2,18 @@
 order: 30
 tags:
   - 'data-analysis'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'Pandas -- DataFrame/Series、数据清洗、合并重塑'
 module: 'data-analysis'
 category: 'Data Science / Pandas'
 description: 'Pandas 核心数据结构与操作：Series/DataFrame 创建、索引筛选、分组聚合、合并拼接与重塑'
-author: 'fanquanpp'
+author: fanquanpp
+related:
+  - 'data-analysis/数据分析概述'
+  - 'data-analysis/NumPy数组操作-线性代数与随机数'
+  - 'data-analysis/Matplotlib-折线图-柱状图-散点图与子图'
+  - 'data-analysis/Seaborn-统计可视化-热力图与分布图'
+prerequisites: []
 ---
 
 ## 1. Pandas 简介

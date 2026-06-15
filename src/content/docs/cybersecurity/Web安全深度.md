@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'Web安全深度'
-module: 'cybersecurity'
-category: '网络安全'
-difficulty: 'advanced'
-description: 'Web安全深度：SQL注入、XSS、CSRF、SSRF、JWT安全与API安全'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Web安全深度
+module: cybersecurity
+category: 网络安全
+difficulty: advanced
+description: Web安全深度：SQL注入、XSS、CSRF、SSRF、JWT安全与API安全
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/密码学应用
+  - cybersecurity/SQL注入
+  - cybersecurity/命令注入
+  - cybersecurity/安全运营中心
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. SQL 注入

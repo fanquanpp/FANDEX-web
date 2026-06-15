@@ -1,7 +1,14 @@
 ---
 title: 计算机使用Agent
-description: '2026年三个生产计算机使用模型。三者都是基于视觉的。三者都将截图、DOM文本和工具输出视为不可信输入。只有直接用户指令算作许可。每步安全服务是常态。'
+description: 2026年三个生产计算机使用模型。三者都是基于视觉的。三者都将截图、DOM文本和工具输出视为不可信输入。只有直接用户指令算作许可。每步安全服务是常态。
 module: agent
+related:
+  - 'agent/基准测试SWE-bench与GAIA'
+  - agent/基准测试WebArena与OSWorld
+  - agent/记忆块与睡眠时间计算
+  - agent/记忆虚拟上下文与MemGPT
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 计算机使用：Claude、OpenAI CUA、Gemini

@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'Java与微服务'
-module: 'java'
-category: 'Java'
-difficulty: 'advanced'
+title: Java与微服务
+module: java
+category: Java
+difficulty: advanced
 description: 'Spring Cloud微服务架构'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java构建工具
+  - java/控制流
+  - java/Java与消息队列
+  - java/Java与Redis
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 核心组件

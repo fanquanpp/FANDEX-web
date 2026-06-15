@@ -1,12 +1,19 @@
 ---
 order: 62
 title: 'Fetch-API'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'intermediate'
-description: '现代网络请求API详解'
-author: 'fanquanpp'
-updated: 2026-06-14
+module: javascript
+category: JavaScript
+difficulty: intermediate
+description: 现代网络请求API详解
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/自定义Error
+  - javascript/浏览器对象模型
+  - javascript/Web存储API
+  - javascript/索引数据库
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Fetch API 基础

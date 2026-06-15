@@ -1,7 +1,14 @@
 ---
-title: FIPA-ACL遗产
+title: 'FIPA-ACL遗产'
 description: '在 MCP 之前，在 A2A 之前，有 FIPA-ACL。2000 年，IEEE 智能物理代理基金会批准了一种代理通信语言，包含二十个施事行为、两种内容语言和一组交互协议——合同网、订阅/通知、请求-当。它从行业中消退，因为本体开销对 Web 来说太重了，但 LLM 复兴的多 Agent 系统...'
 module: agent
+related:
+  - agent/CrewAI角色团队与流程
+  - 'agent/Darwin-Godel自修改Agent'
+  - agent/HTN规划与进化搜索
+  - agent/LangGraph状态图与持久执行
+prerequisites:
+  - agent/概述与架构
 ---
 
 # FIPA-ACL 和言语行为的遗产

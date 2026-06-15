@@ -1,14 +1,21 @@
 ---
 order: 40
 tags:
-  - 'mysql'
-  - 'database'
-difficulty: 'intermediate'
+  - mysql
+  - database
+difficulty: intermediate
 title: 'SQL 数据定义与高级对象'
-module: 'mysql'
+module: mysql
 category: 'MySQL Basics'
-description: 'CREATE/ALTER/DROP、视图、索引与存储过程。'
-author: 'Anonymous'
+description: CREATE/ALTER/DROP、视图、索引与存储过程。
+author: Anonymous
+related:
+  - mysql/环境搭建
+  - mysql/数据类型与约束
+  - mysql/MyISAM存储引擎
+  - mysql/SQL数据操作与查询
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. DDL (数据定义语言) - Data Definition Language

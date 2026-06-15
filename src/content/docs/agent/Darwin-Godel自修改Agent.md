@@ -1,7 +1,14 @@
 ---
-title: Darwin-Godel自修改Agent
+title: 'Darwin-Godel自修改Agent'
 description: 'Schmidhuber 2003 年的 Godel Machine 要求在接受任何自修改之前有正式证明其有益。那个证明在实践中不可能。Darwin Godel Machine (Zhang 等人, 2025) 放弃证明保留档案：Agent 提议对其自身 Python 源代码的编辑，每个变体在 ...'
 module: agent
+related:
+  - 'agent/Claude-Code权限模式'
+  - agent/CrewAI角色团队与流程
+  - 'agent/FIPA-ACL遗产'
+  - agent/HTN规划与进化搜索
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Darwin Godel Machine — 开放式自修改 Agent

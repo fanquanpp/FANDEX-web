@@ -1,9 +1,20 @@
 ---
-title: 'WMDP与双用能力评估'
+title: WMDP与双用能力评估
 description: "WMDP基准(ICML 2024)：4,157道多选题覆盖生物安全、网络安全和化学，问题处于'黄区'——邻近使能知识而非合成配方。RMU遗忘方法在保持通用能力的同时降低WMDP分数。2024-2025年提升叙事从'轻微提升'到'濒临阈值'再到'不足以排除ASL-3'。"
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['WMDP', '双用能力', 'RMU', '生物安全', '新手提升', 'ASL-3']
+difficulty: advanced
+tags:
+  - WMDP
+  - 双用能力
+  - RMU
+  - 生物安全
+  - 新手提升
+  - 'ASL-3'
+related:
+  - 'ai-ethics/Mesa优化与欺骗性对齐'
+  - 'ai-ethics/Sleeper-Agents与持久欺骗'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

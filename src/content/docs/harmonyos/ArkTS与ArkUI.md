@@ -1,12 +1,17 @@
 ---
 order: 2
-title: 'ArkTS与ArkUI'
-module: 'harmonyos'
-category: '鸿蒙开发'
-difficulty: 'beginner'
+title: ArkTS与ArkUI
+module: harmonyos
+category: 鸿蒙开发
+difficulty: beginner
 description: 'ArkTS 语言基础、ArkUI 方舟开发框架、声明式 UI 范式、组件化开发、装饰器与状态管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - harmonyos/概述与环境搭建
+  - harmonyos/UI组件与动画
+  - harmonyos/网络与数据持久化
+prerequisites: []
 ---
 
 ## 1. ArkTS 语言基础

@@ -1,9 +1,20 @@
 ---
 title: '工具Schema设计 — 命名、描述、参数约束'
 description: '掌握工具命名规则、描述模式和参数设计，提升工具选择准确率10-20个百分点'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['工具Schema', '命名规范', '描述设计', '工具选择准确率']
+module: agent
+difficulty: intermediate
+tags:
+  - 工具Schema
+  - 命名规范
+  - 描述设计
+  - 工具选择准确率
+related:
+  - agent/工具生态项目
+  - agent/工具使用与函数调用
+  - agent/共识与拜占庭容错
+  - agent/共享记忆与黑板
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 工具Schema设计 — 命名、描述、参数约束

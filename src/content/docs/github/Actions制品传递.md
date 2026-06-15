@@ -1,12 +1,18 @@
 ---
 order: 104
-title: 'Actions制品传递'
-module: 'github'
-category: 'toolchain'
-difficulty: 'intermediate'
+title: Actions制品传递
+module: github
+category: toolchain
+difficulty: intermediate
 description: 'GitHub Actions制品（Artifacts）详解：跨Job传递构建产物、上传下载与生命周期管理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/Actions缓存依赖
+  - github/Actions自托管运行器
+  - github/Actions环境部署
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 制品概述

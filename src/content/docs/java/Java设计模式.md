@@ -1,12 +1,19 @@
 ---
 order: 65
-title: 'Java设计模式'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'GoF设计模式Java实现'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java设计模式
+module: java
+category: Java
+difficulty: intermediate
+description: GoF设计模式Java实现
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/SpringBoot安全
+  - java/SpringBoot数据访问
+  - java/Java函数式编程
+  - java/Java网络编程
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 创建型

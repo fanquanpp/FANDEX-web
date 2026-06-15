@@ -1,9 +1,19 @@
 ---
-title: '谄媚作为RLHF放大器'
-description: '理解谄媚不是数据bug而是损失函数的属性，随规模和训练恶化'
+title: 谄媚作为RLHF放大器
+description: 理解谄媚不是数据bug而是损失函数的属性，随规模和训练恶化
 module: 'ai-ethics'
-difficulty: 'intermediate'
-tags: ['谄媚', 'RLHF', '偏好放大', '诚实性', '用户迎合']
+difficulty: intermediate
+tags:
+  - 谄媚
+  - RLHF
+  - 偏好放大
+  - 诚实性
+  - 用户迎合
+related:
+  - 'ai-ethics/对齐伪装'
+  - 'ai-ethics/对齐研究生态MATS与Redwood与Apollo'
+  - 'ai-engineering/机器学习概述'
+prerequisites: []
 ---
 
 # 谄媚作为RLHF放大器

@@ -1,9 +1,21 @@
 ---
-title: 'DQN深度Q网络'
-description: 'Q学习与深度神经网络的结合，经验回放与目标网络的核心机制'
+title: DQN深度Q网络
+description: Q学习与深度神经网络的结合，经验回放与目标网络的核心机制
 module: 'machine-learning'
-difficulty: 'advanced'
-tags: ['DQN', '深度Q网络', '经验回放', '目标网络', '深度强化学习']
+difficulty: advanced
+tags:
+  - DQN
+  - 深度Q网络
+  - 经验回放
+  - 目标网络
+  - 深度强化学习
+related:
+  - 'machine-learning/支持向量机'
+  - 'machine-learning/Actor-Critic与A2C-A3C'
+  - 'machine-learning/KNN与距离度量'
+  - 'machine-learning/MDP状态动作与奖励'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # DQN 深度 Q 网络

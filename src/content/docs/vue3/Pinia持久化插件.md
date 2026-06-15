@@ -1,12 +1,19 @@
 ---
 order: 106
-title: 'Pinia持久化插件'
-module: 'vue3'
+title: Pinia持久化插件
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Pinia持久化插件pinia-plugin-persistedstate配置与使用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/KeepAlive缓存与生命周期
+  - vue3/异步组件与Suspense
+  - 'vue3/Vue-Router导航守卫'
+  - vue3/Vue性能优化详解
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 安装与配置

@@ -1,12 +1,19 @@
 ---
 order: 58
-title: 'Lua与Neovim'
-module: 'lua'
-category: 'Lua'
-difficulty: 'intermediate'
+title: Lua与Neovim
+module: lua
+category: Lua
+difficulty: intermediate
 description: 'Neovim Lua配置'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/Lua即时编译器
+  - lua/Lua与Love2D
+  - lua/Lua与Redis脚本
+  - lua/Lua与Nginx
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. Neovim 配置

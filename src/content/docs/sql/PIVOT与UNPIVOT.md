@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'PIVOT与UNPIVOT'
-module: 'sql'
-category: 'SQL'
-difficulty: 'advanced'
+title: PIVOT与UNPIVOT
+module: sql
+category: SQL
+difficulty: advanced
 description: 'SQL PIVOT与UNPIVOT：行列转换的语法、条件聚合实现、跨数据库兼容方案与性能优化'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/公用表表达式
+  - sql/递归CTE
+  - sql/集合操作
+  - sql/数据控制语言
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 行列转换概述

@@ -2,6 +2,13 @@
 title: OpenAI准备性与DeepMind前沿安全框架
 description: 'OpenAI 准备性框架 v2 (2025 年 4 月) 引入研究类别——长时间范围自主性、沙袋行为、自主复制与适应、破坏保障措施——与追踪类别不同。追踪类别触发能力报告加保障措施报告，由安全咨询组审查。DeepMind 的 FSF v3 (2025 年 9 月，2026 年 4 月 17 日...'
 module: agent
+related:
+  - agent/METR时间范围与外部评估
+  - 'agent/OpenAI-Agents-SDK'
+  - 'agent/OpenTelemetry-GenAI语义约定'
+  - agent/OpenTelemetryGenAI
+prerequisites:
+  - agent/概述与架构
 ---
 
 # OpenAI 准备性框架与 DeepMind 前沿安全框架

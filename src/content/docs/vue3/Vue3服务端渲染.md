@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Vue3服务端渲染'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'advanced'
-description: 'SSR与Nuxt.js集成'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Vue3服务端渲染
+module: vue3
+category: Vue3
+difficulty: advanced
+description: SSR与Nuxt.js集成
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Transition与动画
+  - vue3/Vue3编译优化
+  - vue3/生命周期钩子
+  - vue3/Vue3测试策略
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. SSR 基础

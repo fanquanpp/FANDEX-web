@@ -1,12 +1,19 @@
 ---
 order: 105
 title: 'ASP-NET-Core中间件管道'
-module: 'csharp'
+module: csharp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'ASP.NET Core中间件管道详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/反射与特性应用
+  - 'csharp/Entity-Framework-Core迁移与优化'
+  - csharp/依赖注入生命周期
+  - csharp/GC代机制
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 管道模型

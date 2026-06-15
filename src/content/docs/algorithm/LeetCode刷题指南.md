@@ -1,14 +1,21 @@
 ---
 title: 'LeetCode 刷题指南'
-module: 'algorithm'
+module: algorithm
 category: 'Algorithm Practice'
-description: '系统化刷题方法论、题型分类与解题模板、时间管理与面试策略。'
-author: 'fanquanpp'
+description: 系统化刷题方法论、题型分类与解题模板、时间管理与面试策略。
+author: fanquanpp
 order: 100
 tags:
-  - 'algorithm'
+  - algorithm
   - 'algorithm-leetcode'
-difficulty: 'intermediate'
+difficulty: intermediate
+related:
+  - algorithm/堆与优先队列
+  - algorithm/查找算法
+  - algorithm/并查集
+  - algorithm/线段树
+prerequisites:
+  - algorithm/算法分析基础与学习路线
 ---
 
 ## 1. 刷题方法论

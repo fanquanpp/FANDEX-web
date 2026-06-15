@@ -1,12 +1,18 @@
 ---
 order: 8
 title: 'C# .NET平台与生态'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: '.NET Runtime、BCL、NuGet 包管理、依赖注入、配置系统、日志、中间件管道、ASP.NET Core、EF Core、MAUI'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/LINQ与函数式编程
+  - csharp/高级特性
+  - csharp/测试与工程化
+  - csharp/游戏开发与Unity
+prerequisites: []
 ---
 
 ## 1. .NET Runtime

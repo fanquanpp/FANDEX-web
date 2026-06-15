@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'JUnit5'
+title: JUnit5
 module: 'software-testing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'JUnit 5测试框架：注解、断言、参数化测试、扩展模型与最佳实践详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-testing/Web自动化测试'
+  - 'software-testing/Python测试框架'
+  - 'software-testing/API自动化测试'
+  - 'software-testing/性能测试工具'
+prerequisites:
+  - 'software-testing/测试基础与方法'
 ---
 
 ## 1. JUnit 5 概述

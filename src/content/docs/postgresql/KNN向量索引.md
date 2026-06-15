@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'KNN向量索引'
-module: 'postgresql'
-category: 'PostgreSQL'
-difficulty: 'advanced'
+title: KNN向量索引
+module: postgresql
+category: PostgreSQL
+difficulty: advanced
 description: 'PostgreSQL KNN向量索引：pgvector扩展、IVFFlat、HNSW索引与近似最近邻搜索'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - postgresql/索引类型
+  - postgresql/覆盖索引与部分索引
+  - postgresql/查询优化
+  - postgresql/分区表
+prerequisites:
+  - postgresql/概述与安装配置
 ---
 
 ## 1. pgvector 概述

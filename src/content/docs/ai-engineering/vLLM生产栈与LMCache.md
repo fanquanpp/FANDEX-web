@@ -1,9 +1,20 @@
 ---
 title: 'vLLM生产栈与LMCache KV卸载'
-description: '理解vLLM生产栈参考部署和LMCache跨引擎KV缓存复用'
+description: 理解vLLM生产栈参考部署和LMCache跨引擎KV缓存复用
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['vLLM生产栈', 'LMCache', 'KV卸载', 'CPU卸载', 'Kubernetes部署']
+difficulty: intermediate
+tags:
+  - vLLM生产栈
+  - LMCache
+  - KV卸载
+  - CPU卸载
+  - Kubernetes部署
+related:
+  - 'ai-engineering/TensorRT-LLM与Blackwell'
+  - 'ai-engineering/vLLM服务内部机制'
+  - 'ai-engineering/Whisper架构与微调'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # vLLM生产栈与LMCache KV卸载

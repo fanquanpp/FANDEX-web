@@ -1,9 +1,20 @@
 ---
 title: '技能与Agent SDK — 可复用Agent能力打包'
 description: '掌握技能打包规范和主流Agent SDK的技能模型，实现跨框架的Agent能力复用'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['技能打包', 'Agent SDK', '技能注册表', '跨框架复用']
+module: agent
+difficulty: intermediate
+tags:
+  - 技能打包
+  - 'Agent SDK'
+  - 技能注册表
+  - 跨框架复用
+related:
+  - agent/记忆虚拟上下文与MemGPT
+  - agent/技能库与终身学习
+  - agent/监督者模式
+  - agent/检查点与回滚
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 技能与Agent SDK — 可复用Agent能力打包

@@ -1,9 +1,21 @@
 ---
 title: 'Anthropic RSP v3.0 — 负责任扩展政策'
 description: '深入解读RSP v3.0的两层缓解机制、AI R&D-4阈值、前沿安全路线图，以及SaferAI降级评分的原因'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['RSP', '扩展政策', 'AI R&D-4', '暂停承诺', 'SaferAI']
+module: agent
+difficulty: advanced
+tags:
+  - RSP
+  - 扩展政策
+  - 'AI R&D-4'
+  - 暂停承诺
+  - SaferAI
+related:
+  - agent/AlphaEvolve进化编码
+  - agent/Anthropic工作流模式
+  - 'agent/AutoGen-Actor模型与Agent框架'
+  - 'agent/CAIS-CAISI与社会规模风险'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Anthropic RSP v3.0 — 负责任扩展政策

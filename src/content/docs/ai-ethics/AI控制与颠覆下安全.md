@@ -1,9 +1,21 @@
 ---
-title: 'AI控制与颠覆下安全'
+title: AI控制与颠覆下安全
 description: 'Greenblatt等人ICML 2024提出AI控制框架：给定可能对抗优化的不可信强模型U，什么协议可以在约束不可接受结果概率的同时提取有用工作？可信编辑在代码后门任务上帕累托优于不可信监控。控制是对齐的补充：对齐是模型属性，控制是部署协议属性。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['AI控制', '可信编辑', '不可信监控', '安全案例', '共谋抵抗']
+difficulty: advanced
+tags:
+  - AI控制
+  - 可信编辑
+  - 不可信监控
+  - 安全案例
+  - 共谋抵抗
+related:
+  - 'ai-ethics/直接偏好优化家族'
+  - 'ai-ethics/指令遵循作为对齐信号'
+  - 'ai-ethics/ASCII艺术与视觉越狱'
+  - 'ai-ethics/Constitutional-AI与RLAIF'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

@@ -1,12 +1,19 @@
 ---
 order: 54
-title: 'Context详解'
-module: 'go'
-category: 'Go'
-difficulty: 'intermediate'
-description: 'context.Context与取消传播'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Context详解
+module: go
+category: Go
+difficulty: intermediate
+description: context.Context与取消传播
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Channel原理
+  - go/Goroutine调度
+  - go/接口与类型断言
+  - go/错误处理进阶
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. 基本用法

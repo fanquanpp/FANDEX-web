@@ -1,10 +1,23 @@
 ---
-title: 'Python环境管理'
+title: Python环境管理
 description: '使用 uv、venv、conda 创建隔离虚拟环境，编写 pyproject.toml 和 lockfile，诊断依赖冲突，实施按阶段的环境策略'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['Python', '虚拟环境', 'uv', 'conda', '依赖管理', 'pyproject.toml']
-updated: 2026-06-15
+difficulty: beginner
+tags:
+  - Python
+  - 虚拟环境
+  - uv
+  - conda
+  - 依赖管理
+  - pyproject.toml
+updated: '2026-06-15'
+related:
+  - 'ai-engineering/ML流水线'
+  - 'ai-engineering/Prompt缓存与语义缓存'
+  - 'ai-engineering/PyTorch入门'
+  - 'ai-engineering/SGLang与RadixAttention'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Python 环境管理

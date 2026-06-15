@@ -1,9 +1,19 @@
 ---
-title: 'LLM评估框架'
+title: LLM评估框架
 description: '理解RAGAS、DeepEval、G-Eval等LLM评估框架的核心方法与校准'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['LLM评估', 'RAGAS', 'DeepEval', 'G-Eval', 'LLM-as-judge']
+module: nlp
+difficulty: intermediate
+tags:
+  - LLM评估
+  - RAGAS
+  - DeepEval
+  - 'G-Eval'
+  - 'LLM-as-judge'
+related:
+  - nlp/自然语言推理
+  - nlp/GloVe与子词嵌入
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # LLM评估 — RAGAS、DeepEval、G-Eval

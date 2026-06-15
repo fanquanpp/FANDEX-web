@@ -1,9 +1,21 @@
 ---
-title: 'MIO与任意到任意流式多模态模型'
-description: '理解MIO如何通过四种分词器和一个Transformer实现任意模态间的流式转换'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['MIO', '任意到任意', '流式解码', '多模态分词器', '残差VQ']
+title: MIO与任意到任意流式多模态模型
+description: 理解MIO如何通过四种分词器和一个Transformer实现任意模态间的流式转换
+module: multimodal
+difficulty: advanced
+tags:
+  - MIO
+  - 任意到任意
+  - 流式解码
+  - 多模态分词器
+  - 残差VQ
+related:
+  - 'multimodal/LLaVA-OneVision统一模型'
+  - multimodal/LLaVA与视觉指令微调
+  - 'multimodal/Qwen-VL家族与动态FPS'
+  - 'multimodal/Show-o离散扩散统一模型'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # MIO与任意到任意流式多模态模型

@@ -1,9 +1,22 @@
 ---
-title: 'CNN从LeNet到ResNet'
+title: CNN从LeNet到ResNet
 description: '过去三十年的每个主要CNN都是相同的卷积-非线性-下采样配方加上一个新想法。按顺序学习这些想法。'
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['CNN', 'LeNet', 'AlexNet', 'VGG', 'ResNet', '残差连接']
+difficulty: intermediate
+tags:
+  - CNN
+  - LeNet
+  - AlexNet
+  - VGG
+  - ResNet
+  - 残差连接
+related:
+  - 'computer-vision/语义分割UNet'
+  - 'computer-vision/自监督视觉'
+  - 'computer-vision/DiffusionTransformer'
+  - 'computer-vision/OCR与文档理解'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # CNN从LeNet到ResNet

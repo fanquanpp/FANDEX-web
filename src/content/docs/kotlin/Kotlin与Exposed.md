@@ -1,12 +1,19 @@
 ---
 order: 69
-title: 'Kotlin与Exposed'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+title: Kotlin与Exposed
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: 'Kotlin SQL框架Exposed'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与Arrow
+  - kotlin/Kotlin与Ktor
+  - kotlin/Kotlin与Koin
+  - 'kotlin/Kotlin与ktor-client'
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Exposed DSL

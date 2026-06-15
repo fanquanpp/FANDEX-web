@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Selenium'
+title: Selenium
 module: 'software-testing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Selenium Web自动化测试：WebDriver、定位策略、框架设计与最佳实践详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-testing/等价类划分'
+  - 'software-testing/边界值分析'
+  - 'software-testing/Python测试框架'
+  - 'software-testing/Java单元测试'
+prerequisites:
+  - 'software-testing/测试基础与方法'
 ---
 
 ## 1. Selenium 概述

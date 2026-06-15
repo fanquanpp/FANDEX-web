@@ -1,12 +1,19 @@
 ---
 order: 68
-title: 'Java日志系统'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'SLF4J、Logback与日志框架'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java日志系统
+module: java
+category: Java
+difficulty: intermediate
+description: SLF4J、Logback与日志框架
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java函数式编程
+  - java/Java网络编程
+  - java/Java单元测试
+  - java/Java构建工具
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. SLF4J + Logback

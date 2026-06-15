@@ -1,9 +1,22 @@
 ---
 title: 'Kubernetes上的GPU自动伸缩 — Karpenter、KAI调度器、Gang调度'
-description: '理解三层GPU自动伸缩架构：节点供给、Gang调度和应用层信号'
+description: 理解三层GPU自动伸缩架构：节点供给、Gang调度和应用层信号
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['Kubernetes', 'Karpenter', 'KAI调度器', 'Gang调度', 'GPU自动伸缩', 'HPA']
+difficulty: intermediate
+tags:
+  - Kubernetes
+  - Karpenter
+  - KAI调度器
+  - Gang调度
+  - GPU自动伸缩
+  - HPA
+related:
+  - 'ai-engineering/GitHub-Issue到PR自主代理'
+  - 'ai-engineering/GPU与云计算'
+  - 'ai-engineering/JAX入门'
+  - 'ai-engineering/Jupyter笔记本'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Kubernetes上的GPU自动伸缩 — Karpenter、KAI调度器、Gang调度

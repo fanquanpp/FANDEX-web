@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'Kotlin类型系统'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'advanced'
-description: '泛型、型变与星投影'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Kotlin类型系统
+module: kotlin
+category: Kotlin
+difficulty: advanced
+description: 泛型、型变与星投影
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin集合操作
+  - kotlin/Kotlin作用域函数
+  - kotlin/Kotlin与Compose
+  - kotlin/Kotlin与Gradle
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. 型变

@@ -1,12 +1,19 @@
 ---
 order: 70
-title: 'Java构建工具'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Maven与Gradle'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java构建工具
+module: java
+category: Java
+difficulty: intermediate
+description: Maven与Gradle
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java日志系统
+  - java/Java单元测试
+  - java/控制流
+  - java/Java与微服务
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Maven

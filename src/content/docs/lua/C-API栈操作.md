@@ -1,12 +1,19 @@
 ---
 order: 104
 title: 'C-API栈操作'
-module: 'lua'
+module: lua
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Lua C-API栈操作详解：lua_State、lua_push、lua_to。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/弱表
+  - lua/环境与全局变量管理
+  - lua/用户数据
+  - lua/模块加载
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. 虚拟栈

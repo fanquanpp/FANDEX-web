@@ -1,15 +1,22 @@
 ---
 order: 140
 tags:
-  - 'javascript'
-  - 'performance'
-difficulty: 'advanced'
+  - javascript
+  - performance
+difficulty: advanced
 title: 'Node.js 高级特性与性能优化'
-module: 'javascript'
+module: javascript
 category: 'JavaScript Basics'
 description: '异步编程模式、流处理、集群与 Worker、性能调优与安全实践。'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - javascript/调试与性能优化
+  - javascript/典型项目实战
+  - 'javascript/项目示例-待办事项应用'
+  - javascript/理论知识点
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Node.js 高级特性

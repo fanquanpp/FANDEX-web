@@ -1,10 +1,16 @@
 ---
+/**
+ * 首页
+ * 展示所有学习模块，按分类分组显示
+ * 包含 Hero 区域（统计信息）、分类模块网格、页脚
+ */
 import HomeLayout from '@/components/HomeLayout.astro'
 import SEO from '@/components/SEO.astro'
 import ModuleCard from '@/components/ModuleCard.astro'
 import { modules, categoryLabels, categoryColors, getModulesByCategory, categoryOrder } from '@/lib/modules'
 import { getCollection } from 'astro:content'
 
+// 获取所有文档，统计各模块文档数量
 const allDocs = await getCollection('docs')
 const base = import.meta.env.BASE_URL
 const docCountMap: Record<string, number> = {}
@@ -13,6 +19,7 @@ allDocs.forEach(doc => {
   docCountMap[m] = (docCountMap[m] || 0) + 1
 })
 
+// 按分类顺序分组模块
 const grouped = categoryOrder
   .map(cat => ({
     key: cat,
@@ -22,6 +29,7 @@ const grouped = categoryOrder
   }))
   .filter(g => g.modules.length > 0)
 
+// 统计所有标签数量
 const totalTags = new Set<string>()
 allDocs.forEach(doc => {
   if (doc.data.tags) doc.data.tags.forEach((t: string) => totalTags.add(t))
@@ -32,10 +40,12 @@ allDocs.forEach(doc => {
   <SEO slot="head" title="FANDEX" description="循序渐进的自学之旅，从第一行代码到理解整个世界。覆盖工具链、开发语言、数据库、计算机科学、工程基础设施与数据技术六大领域" type="website" />
 
   <div class="home-page">
+    <!-- Hero 区域：站点标题和统计信息 -->
     <section class="hero">
       <div class="hero-badge">Zero to Mastery</div>
       <h1 class="hero-title"><span class="hero-title-fan">FAN</span>DEX</h1>
       <p class="hero-desc">循序渐进，从第一行代码到理解整个世界</p>
+      <!-- 统计数据栏 -->
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num">{modules.length}</span>
@@ -64,14 +74,17 @@ allDocs.forEach(doc => {
       </div>
     </section>
 
+    <!-- 按分类展示模块卡片 -->
     {grouped.map(group => (
       <section class="category-section" data-category={group.key}>
         <div class="category-header" data-toggle>
           <span class="category-tag" style={`color:${group.color}`}>{group.label}</span>
+          <!-- 折叠/展开按钮 -->
           <button class="category-toggle" aria-label="折叠/展开" title="折叠/展开">
             <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </div>
+        <!-- 模块卡片网格 -->
         <div class="feature-grid">
           {group.modules.map(mod => (
             <ModuleCard mod={mod} color={group.color} />
@@ -80,6 +93,7 @@ allDocs.forEach(doc => {
       </section>
     ))}
 
+    <!-- 页脚 -->
     <footer class="home-footer">
       <div class="footer-links">
         <a href={`${base}getting-started/免责声明/`}>免责声明</a>
@@ -99,11 +113,15 @@ allDocs.forEach(doc => {
       <div class="footer-notice">
         内容由人工与 AI 共同编撰，可能存在遗漏或错误，请结合官方资料独立验证
       </div>
+      <div class="footer-notice">
+        更新后构建约需 12 分钟，已访问页面需手动刷新方可显示最新版本
+      </div>
     </footer>
   </div>
 </HomeLayout>
 
 <style>
+/* 首页容器 */
 .home-page {
   width: 100%;
   min-height: calc(100vh - var(--nav-height));
@@ -112,6 +130,7 @@ allDocs.forEach(doc => {
   padding: 0 var(--spacing-lg) var(--spacing-2xl);
 }
 
+/* Hero 区域：居中展示 */
 .hero {
   text-align: center;
   padding: var(--spacing-xl) 0 var(--spacing-xl);
@@ -119,6 +138,7 @@ allDocs.forEach(doc => {
   margin-bottom: var(--spacing-xl);
 }
 
+/* "Zero to Mastery" 徽章 */
 .hero-badge {
   display: inline-block;
   font-family: var(--font-display);
@@ -131,6 +151,7 @@ allDocs.forEach(doc => {
   margin-bottom: var(--spacing-md);
 }
 
+/* 站点标题：FAN 部分使用主题色 */
 .hero-title {
   font-family: var(--font-display);
   font-size: 3rem;
@@ -144,6 +165,7 @@ allDocs.forEach(doc => {
   color: var(--color-primary);
 }
 
+/* 站点描述 */
 .hero-desc {
   font-size: 0.9rem;
   color: var(--color-text-secondary);
@@ -152,6 +174,7 @@ allDocs.forEach(doc => {
   letter-spacing: 0.02em;
 }
 
+/* 统计数据栏 */
 .hero-stats {
   display: flex;
   align-items: center;
@@ -182,12 +205,14 @@ allDocs.forEach(doc => {
   letter-spacing: 0.04em;
 }
 
+/* 统计项之间的分隔线 */
 .stat-divider {
   width: 1px;
   height: 24px;
   background: var(--color-border-light);
 }
 
+/* 快捷链接（学习路线、标签索引） */
 .stat-link {
   display: inline-flex;
   align-items: center;
@@ -202,10 +227,12 @@ allDocs.forEach(doc => {
   opacity: 0.8;
 }
 
+/* 分类区域 */
 .category-section {
   margin-bottom: var(--spacing-lg);
 }
 
+/* 分类标题栏：可点击折叠 */
 .category-header {
   display: flex;
   align-items: center;
@@ -219,6 +246,7 @@ allDocs.forEach(doc => {
   user-select: none;
 }
 
+/* 分类标签文字 */
 .category-tag {
   font-family: var(--font-display);
   font-size: 0.85rem;
@@ -233,6 +261,7 @@ allDocs.forEach(doc => {
   color: var(--color-text-tertiary);
 }
 
+/* 模块卡片网格：1px 间距形成分割线效果 */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -246,6 +275,7 @@ allDocs.forEach(doc => {
   display: none;
 }
 
+/* 折叠/展开按钮 */
 .category-toggle {
   display: flex;
   align-items: center;
@@ -262,6 +292,7 @@ allDocs.forEach(doc => {
   color: var(--color-text-secondary);
 }
 
+/* 折叠箭头旋转动画 */
 .toggle-icon {
   transition: transform 0.2s ease;
 }
@@ -270,10 +301,12 @@ allDocs.forEach(doc => {
   transform: rotate(-90deg);
 }
 
+/* 折叠状态下隐藏网格 */
 .category-header.collapsed + .feature-grid {
   display: none;
 }
 
+/* 页脚 */
 .home-footer {
   margin-top: var(--spacing-2xl);
   padding: var(--spacing-lg) 0;
@@ -323,6 +356,7 @@ allDocs.forEach(doc => {
   opacity: 0.4;
 }
 
+/* 移动端适配（768px 以下） */
 @media (max-width: 768px) {
   .home-page {
     padding: 0 var(--spacing-md) var(--spacing-2xl);
@@ -373,6 +407,7 @@ allDocs.forEach(doc => {
   }
 }
 
+/* 小屏幕适配（480px 以下） */
 @media (max-width: 480px) {
   .feature-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -402,6 +437,7 @@ allDocs.forEach(doc => {
     overflow: hidden;
   }
 
+  /* 小屏幕隐藏统计分隔线 */
   .stat-divider {
     display: none;
   }
@@ -413,6 +449,7 @@ allDocs.forEach(doc => {
 </style>
 
 <script>
+// 分类区域折叠/展开
 document.querySelectorAll('.category-header[data-toggle]').forEach(header => {
   header.addEventListener('click', () => {
     header.classList.toggle('collapsed')

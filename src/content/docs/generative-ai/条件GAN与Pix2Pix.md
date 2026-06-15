@@ -1,9 +1,21 @@
 ---
-title: '条件GAN与Pix2Pix'
-description: '条件生成对抗网络与图像到图像翻译，从Pix2Pix到CycleGAN'
+title: 条件GAN与Pix2Pix
+description: 条件生成对抗网络与图像到图像翻译，从Pix2Pix到CycleGAN
 module: 'generative-ai'
-difficulty: 'intermediate'
-tags: ['条件GAN', 'Pix2Pix', 'CycleGAN', '图像翻译', 'U-Net']
+difficulty: intermediate
+tags:
+  - 条件GAN
+  - Pix2Pix
+  - CycleGAN
+  - 图像翻译
+  - 'U-Net'
+related:
+  - 'generative-ai/视觉自回归模型VAR'
+  - 'generative-ai/视频生成'
+  - 'generative-ai/图像修复扩展与编辑'
+  - 'generative-ai/音频生成'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 条件 GAN 与 Pix2Pix

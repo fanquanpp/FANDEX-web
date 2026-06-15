@@ -1,12 +1,19 @@
 ---
 order: 76
-title: 'CSS原生嵌套'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
-description: 'CSS原生嵌套'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: CSS原生嵌套
+module: css
+category: CSS
+difficulty: intermediate
+description: CSS原生嵌套
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/CSS模块化
+  - css/关键渲染路径优化
+  - css/Canvas绘图
+  - 'css/CSS-in-JS与高级布局技巧'
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. CSS 原生嵌套概述

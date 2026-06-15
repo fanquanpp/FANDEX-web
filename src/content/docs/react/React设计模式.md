@@ -1,12 +1,19 @@
 ---
 order: 66
-title: 'React设计模式'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React组件设计模式'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React设计模式
+module: react
+category: React
+difficulty: intermediate
+description: React组件设计模式
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React动画
+  - react/React服务端渲染
+  - react/React与WebAssembly
+  - react/React与WebSocket
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Compound Components

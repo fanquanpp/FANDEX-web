@@ -1,12 +1,19 @@
 ---
 order: 62
-title: 'React路由进阶'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
+title: React路由进阶
+module: react
+category: React
+difficulty: intermediate
 description: 'React Router高级用法'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与TypeScript
+  - react/React测试
+  - react/React国际化
+  - react/React动画
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 路由配置

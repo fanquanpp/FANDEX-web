@@ -1,12 +1,19 @@
 ---
 order: 74
-title: '嵌入式C编程'
-module: 'c'
-category: 'C'
-difficulty: 'advanced'
-description: '嵌入式系统C编程要点'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 嵌入式C编程
+module: c
+category: C
+difficulty: advanced
+description: 嵌入式系统C编程要点
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/静态分析与调试
+  - c/跨平台编程
+  - c/C与汇编交互
+  - c/数组详解
+prerequisites:
+  - c/概述
 ---
 
 ## 1. 寄存器操作

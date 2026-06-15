@@ -1,9 +1,19 @@
 ---
-title: 'Whisper架构与微调'
+title: Whisper架构与微调
 description: '深入理解Whisper的编码器-解码器架构、分块推理和LoRA微调'
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['Whisper', 'ASR', '微调', 'LoRA', 'Transformer']
+difficulty: intermediate
+tags:
+  - Whisper
+  - ASR
+  - 微调
+  - LoRA
+  - Transformer
+related:
+  - 'ai-engineering/vLLM服务内部机制'
+  - 'ai-engineering/vLLM生产栈与LMCache'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Whisper — 架构与微调

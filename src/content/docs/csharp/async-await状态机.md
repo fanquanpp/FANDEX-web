@@ -1,12 +1,19 @@
 ---
 order: 101
 title: 'async-await状态机'
-module: 'csharp'
+module: csharp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'C# async/await状态机生成原理详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'csharp/C#与反射'
+  - csharp/LINQ延迟与立即执行
+  - csharp/委托与事件底层原理
+  - csharp/反射与特性应用
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 编译器转换

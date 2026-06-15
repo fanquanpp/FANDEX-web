@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'Channel原理'
-module: 'go'
-category: 'Go'
-difficulty: 'advanced'
-description: 'Channel底层实现与调度'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Channel原理
+module: go
+category: Go
+difficulty: advanced
+description: Channel底层实现与调度
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/切片原理
+  - go/Map原理
+  - go/Goroutine调度
+  - go/Context详解
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. Channel 结构

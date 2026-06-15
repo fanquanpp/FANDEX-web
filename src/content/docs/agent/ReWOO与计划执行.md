@@ -2,6 +2,12 @@
 title: ReWOO与计划执行
 description: 'ReAct在一个流中交替思考和行动。ReWOO将它们分离：先做一个完整计划，然后执行。Token消耗减少5倍，HotpotQA准确率提升4%，而且你可以将规划器蒸馏到7B模型中。Plan-and-Execute将其泛化；Plan-and-Act将其扩展到Web导航。'
 module: agent
+related:
+  - agent/OpenTelemetryGenAI
+  - agent/Reflexion语言强化学习
+  - agent/STaR自教推理
+prerequisites:
+  - agent/概述与架构
 ---
 
 # ReWOO与计划执行：解耦规划

@@ -1,12 +1,19 @@
 ---
 order: 75
-title: 'React与Storybook'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React组件文档与开发'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与Storybook
+module: react
+category: React
+difficulty: intermediate
+description: React组件文档与开发
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与Canvas
+  - react/React与D3
+  - 'react/React与CI-CD'
+  - react/React与Monorepo
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Story 配置

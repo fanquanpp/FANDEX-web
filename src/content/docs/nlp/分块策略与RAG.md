@@ -1,9 +1,21 @@
 ---
-title: '分块策略与RAG'
-description: '理解固定大小、句子感知、语义和递归分块策略及其对RAG的影响'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['分块', 'RAG', '语义分块', '递归分块', '文档摄取']
+title: 分块策略与RAG
+description: 理解固定大小、句子感知、语义和递归分块策略及其对RAG的影响
+module: nlp
+difficulty: intermediate
+tags:
+  - 分块
+  - RAG
+  - 语义分块
+  - 递归分块
+  - 文档摄取
+related:
+  - nlp/对话状态跟踪
+  - nlp/多语言NLP
+  - nlp/共指消解
+  - nlp/关系抽取与知识图谱
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # 分块策略与RAG

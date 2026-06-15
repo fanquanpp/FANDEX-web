@@ -1,12 +1,18 @@
 ---
 order: 7
 title: 'Agent 评估与安全'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Agent 评估指标、基准测试、安全风险、对齐与可控性、红队测试与可解释性。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - agent/记忆与规划
+  - agent/多Agent系统
+  - agent/实战项目
+  - agent/Agent核心模块详解
+prerequisites: []
 ---
 
 ## 1. Agent 评估

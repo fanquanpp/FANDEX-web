@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'SSRF攻击'
-module: 'cybersecurity'
+title: SSRF攻击
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: '服务端请求伪造攻击原理、利用场景与防御策略详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 服务端请求伪造攻击原理、利用场景与防御策略详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/安全运营中心
+  - cybersecurity/文件上传漏洞
+  - cybersecurity/恶意代码分析
+  - cybersecurity/云安全
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. SSRF 攻击原理

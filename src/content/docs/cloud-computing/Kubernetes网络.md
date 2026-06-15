@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'Kubernetes网络'
+title: Kubernetes网络
 module: 'cloud-computing'
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Kubernetes网络模型：CNI、Pod网络、Service网络、Ingress 与网络策略详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cloud-computing/Kubernetes核心资源'
+  - 'cloud-computing/云存储服务'
+  - 'cloud-computing/云网络服务'
+  - 'cloud-computing/Kubernetes存储'
+prerequisites:
+  - 'cloud-computing/云计算基础'
 ---
 
 ## 1. Kubernetes 网络模型

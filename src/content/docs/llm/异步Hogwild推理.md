@@ -1,9 +1,20 @@
 ---
 title: 异步Hogwild推理
-description: 理解异步 Hogwild 推理策略，通过无锁并行提升 LLM 服务吞吐量
+description: '理解异步 Hogwild 推理策略，通过无锁并行提升 LLM 服务吞吐量'
 module: llm
 difficulty: advanced
-tags: [Hogwild, async inference, 并行推理, 吞吐量优化]
+tags:
+  - Hogwild
+  - 'async inference'
+  - 并行推理
+  - 吞吐量优化
+related:
+  - llm/推理优化
+  - llm/微调与LoRA
+  - 'llm/预训练Mini-GPT'
+  - llm/原生稀疏注意力
+prerequisites:
+  - llm/安全护栏
 ---
 
 # 异步Hogwild推理

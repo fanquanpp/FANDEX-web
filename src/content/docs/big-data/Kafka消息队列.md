@@ -1,12 +1,18 @@
 ---
 order: 17
-title: 'Kafka消息队列'
+title: Kafka消息队列
 module: 'big-data'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Kafka架构设计、Producer/Consumer模型、分区策略、Offset管理与Exactly-Once语义。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'big-data/Hive数据仓库'
+  - 'big-data/HBase列族数据库'
+  - 'big-data/Flink流处理'
+  - 'big-data/数据湖'
+prerequisites: []
 ---
 
 ## 1. Kafka架构设计

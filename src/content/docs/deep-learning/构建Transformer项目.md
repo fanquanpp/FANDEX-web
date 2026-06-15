@@ -1,10 +1,22 @@
 ---
-title: '构建Transformer项目'
+title: 构建Transformer项目
 description: '十三节课,一个模型,没有捷径——从零构建完整decoder-only transformer并训练'
 module: 'deep-learning'
-difficulty: 'advanced'
-tags: ['Transformer', '从零构建', 'nanoGPT', '训练', 'Shakespeare']
-updated: 2026-06-15
+difficulty: advanced
+tags:
+  - Transformer
+  - 从零构建
+  - nanoGPT
+  - 训练
+  - Shakespeare
+updated: '2026-06-15'
+related:
+  - 'deep-learning/反向传播'
+  - 'deep-learning/感知机'
+  - 'deep-learning/混合专家模型'
+  - 'deep-learning/激活函数'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # 从零构建Transformer — 毕业项目

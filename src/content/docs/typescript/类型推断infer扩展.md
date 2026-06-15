@@ -1,12 +1,19 @@
 ---
 order: 68
-title: '类型推断infer扩展'
-module: 'typescript'
-category: 'TypeScript'
-difficulty: 'advanced'
-description: 'infer在各类场景中的应用'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 类型推断infer扩展
+module: typescript
+category: TypeScript
+difficulty: advanced
+description: infer在各类场景中的应用
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - typescript/工具类型实现原理
+  - typescript/条件类型分发
+  - typescript/递归类型与深度操作
+  - typescript/条件类型与映射类型
+prerequisites:
+  - typescript/语法速查
 ---
 
 ## 1. 函数类型推断

@@ -1,9 +1,19 @@
 ---
-title: '词嵌入Word2Vec'
-description: '从零构建Word2Vec，理解词嵌入的几何与语义关系'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['词嵌入', 'Word2Vec', 'Skip-gram', '负采样']
+title: 词嵌入Word2Vec
+description: 从零构建Word2Vec，理解词嵌入的几何与语义关系
+module: nlp
+difficulty: intermediate
+tags:
+  - 词嵌入
+  - Word2Vec
+  - 'Skip-gram'
+  - 负采样
+related:
+  - 'nlp/词袋模型与TF-IDF'
+  - nlp/词性标注与句法解析
+  - nlp/对话状态跟踪
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # 词嵌入 — 从零构建Word2Vec

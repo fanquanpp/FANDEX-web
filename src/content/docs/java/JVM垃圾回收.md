@@ -1,12 +1,19 @@
 ---
 order: 55
-title: 'JVM垃圾回收'
-module: 'java'
-category: 'Java'
-difficulty: 'advanced'
-description: 'GC算法与垃圾回收器'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: JVM垃圾回收
+module: java
+category: Java
+difficulty: advanced
+description: GC算法与垃圾回收器
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/JUC并发包
+  - java/JVM类加载机制
+  - java/Java反射
+  - java/Java序列化
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. GC 算法

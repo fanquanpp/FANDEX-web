@@ -1,9 +1,21 @@
 ---
-title: '评估驱动Agent开发'
+title: 评估驱动Agent开发
 description: '掌握三层评估体系、评估器-优化器紧密循环，将评估作为驱动Agent开发每个选择的外循环'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['评估驱动', '基准测试', '评估器-优化器', 'CI门控', '回归检测']
+module: agent
+difficulty: intermediate
+tags:
+  - 评估驱动
+  - 基准测试
+  - '评估器-优化器'
+  - CI门控
+  - 回归检测
+related:
+  - agent/结构化输出
+  - agent/浏览器Agent与间接注入
+  - agent/评估与协调基准
+  - agent/群聊与发言者选择
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 评估驱动Agent开发

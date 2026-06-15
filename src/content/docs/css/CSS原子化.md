@@ -1,12 +1,19 @@
 ---
 order: 73
-title: 'CSS原子化'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
+title: CSS原子化
+module: css
+category: CSS
+difficulty: intermediate
 description: 'Tailwind CSS、UnoCSS'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/PostCSS与构建工具
+  - css/BEM命名方法论
+  - css/CSS模块化
+  - css/关键渲染路径优化
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. CSS 原子化概述

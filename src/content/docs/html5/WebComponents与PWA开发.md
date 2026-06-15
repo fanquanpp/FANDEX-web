@@ -1,14 +1,21 @@
 ---
 order: 60
 tags:
-  - 'html5'
-difficulty: 'intermediate'
+  - html5
+difficulty: intermediate
 title: 'Web Components 与 PWA 开发'
-module: 'html5'
+module: html5
 category: 'HTML5 Basics'
-description: 'Web组件与渐进式Web应用开发'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: Web组件与渐进式Web应用开发
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - html5/嵌入式内容
+  - html5/progress与meter
+  - html5/拖拽API
+  - html5/地理位置定位
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. Web Components 概述

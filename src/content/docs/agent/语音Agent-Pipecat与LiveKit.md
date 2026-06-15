@@ -1,7 +1,14 @@
 ---
-title: 语音Agent-Pipecat与LiveKit
+title: '语音Agent-Pipecat与LiveKit'
 description: '语音Agent是2026年的一等生产类别。Pipecat给你一个Python基于帧的管道（VAD → STT → LLM → TTS → 传输）。LiveKit Agents通过WebRTC将AI模型桥接到用户。高级栈的生产延迟目标落在450-600ms端到端。'
 module: agent
+related:
+  - agent/验证门
+  - agent/有界自改进设计
+  - agent/运行时反馈循环
+  - agent/长时间范围Agent
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 语音Agent：Pipecat与LiveKit

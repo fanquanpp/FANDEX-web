@@ -1,12 +1,19 @@
 ---
 order: 101
-title: 'Kubernetes核心资源详解'
-module: 'devops'
+title: Kubernetes核心资源详解
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Kubernetes 核心资源：Pod、Service、Deployment、Ingress、ConfigMap、Secret、HPA、StatefulSet。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/数据库运维
+  - devops/Dockerfile多阶段构建
+  - 'devops/Helm-Chart应用打包'
+  - devops/Terraform资源编排
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Pod 与 Deployment

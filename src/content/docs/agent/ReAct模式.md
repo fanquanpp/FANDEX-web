@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'ReAct模式'
-module: 'agent'
+title: ReAct模式
+module: agent
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'ReAct 模式：Reasoning + Acting 交错推理与行动的智能体范式。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - agent/MCP与A2A协议
+  - agent/Agent安全与沙盒
+  - agent/思维链与思维树
+  - agent/工具调用机制
+prerequisites:
+  - agent/概述与架构
 ---
 
 ## 1. ReAct 原理

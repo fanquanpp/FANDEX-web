@@ -1,12 +1,19 @@
 ---
 order: 100
 title: 'OWASP-Top-10详解'
-module: 'cybersecurity'
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'OWASP Top 10 详解：各漏洞原理、攻击方式与修复方案。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/输入验证
+  - cybersecurity/认证与授权
+  - cybersecurity/XXE攻击
+  - cybersecurity/反序列化漏洞
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. 注入与身份认证

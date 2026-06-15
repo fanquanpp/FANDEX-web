@@ -1,12 +1,19 @@
 ---
 order: 54
-title: 'Vue3编译优化'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'advanced'
-description: '编译时优化与运行时优化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Vue3编译优化
+module: vue3
+category: Vue3
+difficulty: advanced
+description: 编译时优化与运行时优化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/自定义指令进阶
+  - vue3/Transition与动画
+  - vue3/Vue3服务端渲染
+  - vue3/生命周期钩子
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 静态提升

@@ -1,12 +1,19 @@
 ---
 order: 66
 title: 'Git-Flow与GitHub-Flow'
-module: 'git'
+module: git
 category: 'Git Basics'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Git Flow与GitHub Flow分支模型对比：工作流程、适用场景与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - git/暂存工作区
+  - git/远程跟踪分支
+  - git/修改提交
+  - git/重置与回退
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. 分支模型概述

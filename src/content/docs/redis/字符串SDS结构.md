@@ -1,12 +1,19 @@
 ---
 order: 100
-title: '字符串SDS结构'
-module: 'redis'
-category: 'database'
-difficulty: 'intermediate'
+title: 字符串SDS结构
+module: redis
+category: database
+difficulty: intermediate
 description: 'Redis SDS（Simple Dynamic String）数据结构详解：预分配策略、惰性删除、与 C 字符串的差异及二进制安全。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - redis/无盘复制
+  - redis/模块系统
+  - redis/跳表与有序集合
+  - redis/主从复制缓冲区
+prerequisites:
+  - redis/概述与核心数据结构
 ---
 
 ## 1. SDS 数据结构

@@ -1,12 +1,17 @@
 ---
 order: 108
-title: 'Kotlin跨平台'
-module: 'kotlin'
+title: Kotlin跨平台
+module: kotlin
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'Kotlin跨平台详解：Kotlin/JS与Kotlin/Native。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: Kotlin跨平台详解：Kotlin/JS与Kotlin/Native。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/作用域函数区别
+  - kotlin/协程异常处理
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. Kotlin Multiplatform

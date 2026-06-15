@@ -1,12 +1,18 @@
 ---
 order: 15
-title: 'CAP理论与最终一致性'
+title: CAP理论与最终一致性
 module: 'software-architecture'
 category: 'eng-infra'
-difficulty: 'advanced'
-description: 'CAP定理、BASE理论、一致性模型与分布式系统权衡。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: CAP定理、BASE理论、一致性模型与分布式系统权衡。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-architecture/事件驱动架构'
+  - 'software-architecture/质量属性'
+  - 'software-architecture/领域驱动设计'
+  - 'software-architecture/架构评估'
+prerequisites: []
 ---
 
 ## 1. CAP定理

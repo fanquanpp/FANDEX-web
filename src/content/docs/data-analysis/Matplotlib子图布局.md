@@ -1,12 +1,19 @@
 ---
 order: 106
-title: 'Matplotlib子图布局'
+title: Matplotlib子图布局
 module: 'data-analysis'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Matplotlib 子图布局：subplots、GridSpec、嵌套子图与布局调整。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'data-analysis/Pandas时间序列'
+  - 'data-analysis/NumPy广播机制'
+  - 'data-analysis/Seaborn统计图表'
+  - 'data-analysis/假设检验详解'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. subplots

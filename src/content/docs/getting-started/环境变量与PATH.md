@@ -1,12 +1,19 @@
 ---
 order: 51
-title: '环境变量与PATH'
+title: 环境变量与PATH
 module: 'getting-started'
-category: '入门指南'
-difficulty: 'beginner'
-description: '环境变量概念、PATH机制、跨平台配置与常见问题排查。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: 入门指南
+difficulty: beginner
+description: 环境变量概念、PATH机制、跨平台配置与常见问题排查。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'getting-started/函数与模块化'
+  - 'getting-started/学习路线规划'
+  - 'getting-started/IDE与编辑器选型'
+  - 'getting-started/插件生态'
+prerequisites:
+  - 'getting-started/入门指南'
 ---
 
 ## 1. 环境变量基础

@@ -1,9 +1,20 @@
 ---
-title: '3D视觉与NeRF'
-description: 'NeRF用MLP将场景表示为连续的5D辐射场，通过体渲染从任意视角合成照片级真实图像。'
+title: 3D视觉与NeRF
+description: NeRF用MLP将场景表示为连续的5D辐射场，通过体渲染从任意视角合成照片级真实图像。
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['NeRF', '3D视觉', '体渲染', '辐射场', '神经渲染']
+difficulty: advanced
+tags:
+  - NeRF
+  - 3D视觉
+  - 体渲染
+  - 辐射场
+  - 神经渲染
+related:
+  - 'computer-vision/3D高斯泼溅'
+  - 'computer-vision/单目深度估计'
+  - 'computer-vision/多目标跟踪'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 3D视觉与NeRF

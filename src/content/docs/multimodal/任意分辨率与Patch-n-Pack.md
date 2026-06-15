@@ -1,9 +1,22 @@
 ---
 title: '任意分辨率视觉：Patch-n-Pack与NaFlex'
 description: '理解如何处理可变分辨率图像，从NaViT打包到AnyRes平铺和M-RoPE'
-module: 'multimodal'
-difficulty: 'intermediate'
-tags: ['NaViT', 'Patch-n-Pack', 'AnyRes', 'NaFlex', 'M-RoPE', '分辨率']
+module: multimodal
+difficulty: intermediate
+tags:
+  - NaViT
+  - 'Patch-n-Pack'
+  - AnyRes
+  - NaFlex
+  - 'M-RoPE'
+  - 分辨率
+related:
+  - multimodal/开源VLM方案
+  - 'multimodal/全能模型Thinker-Talker架构'
+  - multimodal/视频语言模型与时间定位
+  - multimodal/文档与图表理解
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # 任意分辨率视觉：Patch-n'-Pack和NaFlex

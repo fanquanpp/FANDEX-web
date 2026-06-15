@@ -1,12 +1,18 @@
 ---
 order: 103
-title: '主流IoT平台'
-module: 'iot'
+title: 主流IoT平台
+module: iot
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: '主流 IoT 平台：AWS IoT Core、Azure IoT Hub、阿里云 IoT 对比。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - iot/时序数据库
+  - iot/物联网安全
+  - iot/数字孪生
+prerequisites:
+  - iot/概述与架构
 ---
 
 ## 1. AWS IoT Core

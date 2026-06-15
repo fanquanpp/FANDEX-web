@@ -1,12 +1,18 @@
 ---
 order: 6
 title: 'C# LINQ与函数式编程'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'LINQ 查询语法与方法语法、延迟执行、标准查询运算符、PLINQ、表达式树、局部函数、模式匹配进阶'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/泛型与集合
+  - csharp/异步编程
+  - csharp/高级特性
+  - csharp/NET平台与生态
+prerequisites: []
 ---
 
 ## 1. LINQ 查询语法与方法语法

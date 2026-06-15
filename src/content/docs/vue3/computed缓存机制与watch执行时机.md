@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'computed缓存机制与watch执行时机'
-module: 'vue3'
+title: computed缓存机制与watch执行时机
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue 3 computed缓存机制与watch执行时机详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Pinia状态管理详解
+  - vue3/插件开发
+  - vue3/Router详解
+  - vue3/组合式API优势场景
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. computed 缓存机制

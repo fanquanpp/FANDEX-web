@@ -1,12 +1,19 @@
 ---
 order: 105
-title: 'Lambda捕获详解'
-module: 'cpp'
+title: Lambda捕获详解
+module: cpp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'C++ Lambda捕获详解：值捕获、引用捕获、初始化捕获、*this。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/虚函数表与多态内存布局
+  - cpp/智能指针循环引用
+  - cpp/类型萃取与SFINAE
+  - cpp/可变参数模板与折叠表达式
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 捕获方式

@@ -1,12 +1,19 @@
 ---
 order: 72
-title: 'C++工具链'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: 'CMake、vcpkg与包管理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++工具链
+module: cpp
+category: C++
+difficulty: intermediate
+description: CMake、vcpkg与包管理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/面向对象进阶
+  - cpp/C++内存模型
+  - cpp/C++测试框架
+  - cpp/C++与Python交互
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. CMake

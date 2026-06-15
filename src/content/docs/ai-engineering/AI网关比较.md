@@ -1,9 +1,23 @@
 ---
 title: 'AI网关 — LiteLLM、Portkey、Kong AI Gateway、Bifrost'
-description: '比较2026年四大AI网关的定位、性能和适用场景'
+description: 比较2026年四大AI网关的定位、性能和适用场景
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['AI网关', 'LiteLLM', 'Portkey', 'Kong AI Gateway', 'Bifrost', '路由', '回退']
+difficulty: beginner
+tags:
+  - AI网关
+  - LiteLLM
+  - Portkey
+  - 'Kong AI Gateway'
+  - Bifrost
+  - 路由
+  - 回退
+related:
+  - 'ai-engineering/自主研究代理AI-Scientist级'
+  - 'ai-engineering/AI的SRE事件响应'
+  - 'ai-engineering/API与密钥'
+  - 'ai-engineering/DevOps故障排查代理Kubernetes'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # AI网关 — LiteLLM、Portkey、Kong AI Gateway、Bifrost

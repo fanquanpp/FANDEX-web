@@ -1,13 +1,20 @@
 ---
 order: 100
 tags:
-  - 'cpp'
-difficulty: 'intermediate'
+  - cpp
+difficulty: intermediate
 title: 'C++ STL 算法与函数对象'
-module: 'cpp'
+module: cpp
 category: 'C++ Basics'
 description: '标准算法、lambda 表达式、函数对象与范围库。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - cpp/并发编程
+  - cpp/RAII资源管理
+  - cpp/移动语义详解
+  - cpp/完美转发与引用折叠
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 常用算法

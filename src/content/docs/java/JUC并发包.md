@@ -1,12 +1,19 @@
 ---
 order: 53
-title: 'JUC并发包'
-module: 'java'
-category: 'Java'
-difficulty: 'advanced'
-description: 'java.util.concurrent并发工具'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: JUC并发包
+module: java
+category: Java
+difficulty: advanced
+description: java.util.concurrent并发工具
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/泛型进阶
+  - java/并发编程基础
+  - java/JVM类加载机制
+  - java/JVM垃圾回收
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 线程池

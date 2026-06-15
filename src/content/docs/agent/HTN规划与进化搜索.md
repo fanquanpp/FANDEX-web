@@ -1,7 +1,14 @@
 ---
 title: HTN规划与进化搜索
-description: '符号规划处理计划可证明正确的情况。进化代码搜索处理适应度函数可机器检查的情况。ChatHTN（2025）和AlphaEvolve（2025）展示了与LLM配对时各自解锁了什么。'
+description: 符号规划处理计划可证明正确的情况。进化代码搜索处理适应度函数可机器检查的情况。ChatHTN（2025）和AlphaEvolve（2025）展示了与LLM配对时各自解锁了什么。
 module: agent
+related:
+  - 'agent/Darwin-Godel自修改Agent'
+  - 'agent/FIPA-ACL遗产'
+  - agent/LangGraph状态图与持久执行
+  - agent/LlamaGuard
+prerequisites:
+  - agent/概述与架构
 ---
 
 # HTN规划与进化搜索

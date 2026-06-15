@@ -1,12 +1,19 @@
 ---
 order: 68
-title: 'Records与Tuples'
-module: 'javascript'
-category: 'JavaScript'
-difficulty: 'advanced'
+title: Records与Tuples
+module: javascript
+category: JavaScript
+difficulty: advanced
 description: 'TC39 Record与Tuple不可变数据提案'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/迭代器帮助器
+  - javascript/Promise构造器
+  - javascript/对象与数组
+  - javascript/DOM操作与事件
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Record 与 Tuple 概述

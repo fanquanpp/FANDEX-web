@@ -1,9 +1,22 @@
 ---
-title: '目标检测YOLO'
-description: '检测是分类加定位。YOLO将两者统一为单次前向传播，用网格回归取代了区域提议。'
+title: 目标检测YOLO
+description: 检测是分类加定位。YOLO将两者统一为单次前向传播，用网格回归取代了区域提议。
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['目标检测', 'YOLO', '锚框', 'IoU', 'NMS', 'mAP']
+difficulty: advanced
+tags:
+  - 目标检测
+  - YOLO
+  - 锚框
+  - IoU
+  - NMS
+  - mAP
+related:
+  - 'computer-vision/卷积从零实现'
+  - 'computer-vision/开放词汇CLIP'
+  - 'computer-vision/迁移学习'
+  - 'computer-vision/实例分割MaskRCNN'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 目标检测YOLO

@@ -1,9 +1,23 @@
 ---
-title: '端到端微调管线从数据到SFT到DPO到服务'
+title: 端到端微调管线从数据到SFT到DPO到服务
 description: '8B模型用自有数据训练、DPO对齐自有偏好、量化、投机解码、以可测量的$/1M tokens服务。2026年开源栈：Axolotl v0.8、TRL 0.15、Unsloth迭代、GPTQ/AWQ/GGUF量化、vLLM 0.7 + EAGLE-3服务。YAML输入，服务端点输出，可重现全管线。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['微调管线', 'SFT', 'DPO', '量化', 'vLLM', 'EAGLE-3', 'Axolotl']
+difficulty: advanced
+tags:
+  - 微调管线
+  - SFT
+  - DPO
+  - 量化
+  - vLLM
+  - 'EAGLE-3'
+  - Axolotl
+related:
+  - 'ai-engineering/调试神经网络'
+  - 'ai-engineering/调试与性能分析'
+  - 'ai-engineering/多层网络'
+  - 'ai-engineering/多代理软件工程团队'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

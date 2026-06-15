@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'CommonMark规范'
-module: 'markdown'
+title: CommonMark规范
+module: markdown
 category: 'Markdown Basics'
-difficulty: 'intermediate'
-description: 'CommonMark规范详解：标准化Markdown的定义、解析规则与一致性测试。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: CommonMark规范详解：标准化Markdown的定义、解析规则与一致性测试。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - markdown/段落与换行
+  - markdown/基础文本格式
+  - markdown/列表语法
+  - markdown/GitHub风格扩展
+prerequisites:
+  - markdown/语法指南
 ---
 
 ## 1. CommonMark 概述

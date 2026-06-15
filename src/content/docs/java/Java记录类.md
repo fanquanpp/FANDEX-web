@@ -1,12 +1,19 @@
 ---
 order: 84
-title: 'Java记录类'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Record类与密封接口'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java记录类
+module: java
+category: Java
+difficulty: intermediate
+description: Record类与密封接口
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与GraalVM
+  - java/Java与Kubernetes
+  - java/Java文本块
+  - java/Java模块系统
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Record 类（Java 16+）

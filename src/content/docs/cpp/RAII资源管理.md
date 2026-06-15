@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'RAII资源管理'
-module: 'cpp'
+title: RAII资源管理
+module: cpp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'C++ RAII资源管理详解：智能指针、锁守卫与确定性析构。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/STL容器与迭代器
+  - cpp/并发编程
+  - cpp/STL算法与函数对象
+  - cpp/移动语义详解
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. RAII 原则

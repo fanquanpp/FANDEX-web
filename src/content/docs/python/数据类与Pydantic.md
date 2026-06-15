@@ -1,12 +1,19 @@
 ---
 order: 57
-title: '数据类与Pydantic'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'dataclass与Pydantic模型'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 数据类与Pydantic
+module: python
+category: Python
+difficulty: intermediate
+description: dataclass与Pydantic模型
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/协程与asyncio
+  - python/多进程与多线程
+  - python/Python与FastAPI
+  - python/Python与Django
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. dataclass

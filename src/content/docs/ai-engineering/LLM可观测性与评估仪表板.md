@@ -1,9 +1,22 @@
 ---
-title: 'LLM可观测性与评估仪表板'
+title: LLM可观测性与评估仪表板
 description: 'Langfuse开源核心、Arize Phoenix发布2026 GenAI semconv映射、Helicone和Braintrust加倍每用户成本归因、Traceloop的OpenLLMetry成为事实SDK插桩。生产形态：ClickHouse存储traces、Postgres元数据、Next.js UI、eval作业(DeepEval/RAGAS/LLM-judge)在采样traces上运行。自托管构建，从至少四个SDK家族摄取，五分钟内捕获注入回归。'
 module: 'ai-engineering'
-difficulty: 'advanced'
-tags: ['可观测性', 'OpenTelemetry', 'Langfuse', 'Phoenix', '成本归因', '漂移检测']
+difficulty: advanced
+tags:
+  - 可观测性
+  - OpenTelemetry
+  - Langfuse
+  - Phoenix
+  - 成本归因
+  - 漂移检测
+related:
+  - 'ai-engineering/LLM-FinOps单位经济学'
+  - 'ai-engineering/LLM功能AB测试'
+  - 'ai-engineering/LLM可观测性栈选择'
+  - 'ai-engineering/LLM生产混沌工程'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 ## 问题

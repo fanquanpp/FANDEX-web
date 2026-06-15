@@ -1,12 +1,19 @@
 ---
 order: 73
-title: 'Python与加密'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'cryptography与安全编程'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与加密
+module: python
+category: Python
+difficulty: intermediate
+description: cryptography与安全编程
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与测试
+  - python/Python与日志
+  - python/Python与CLI
+  - python/Python与配置管理
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. 加密

@@ -2,12 +2,17 @@
 order: 20
 tags:
   - 'data-analysis'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'NumPy 数组操作、线性代数与随机数'
 module: 'data-analysis'
 category: 'Data Science / NumPy'
 description: 'NumPy 核心用法：多维数组操作、广播机制、线性代数运算与随机数生成'
-author: 'fanquanpp'
+author: fanquanpp
+related:
+  - 'data-analysis/数据分析概述'
+  - 'data-analysis/Pandas-DataFrameSeries-数据清洗-合并重塑'
+  - 'data-analysis/Matplotlib-折线图-柱状图-散点图与子图'
+prerequisites: []
 ---
 
 ## 1. NumPy 简介

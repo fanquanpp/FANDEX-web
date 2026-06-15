@@ -1,9 +1,20 @@
 ---
 title: 'GAN -- 生成器与判别器'
-description: '对抗训练的核心机制，从Goodfellow的minimax博弈到StyleGAN的演进'
+description: 对抗训练的核心机制，从Goodfellow的minimax博弈到StyleGAN的演进
 module: 'generative-ai'
-difficulty: 'intermediate'
-tags: ['GAN', '对抗训练', '生成器', '判别器', '模式坍缩']
+difficulty: intermediate
+tags:
+  - GAN
+  - 对抗训练
+  - 生成器
+  - 判别器
+  - 模式坍缩
+related:
+  - 'generative-ai/自编码器与VAE'
+  - 'generative-ai/ControlNet与LoRA条件化'
+  - 'generative-ai/StyleGAN'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # GAN -- 生成器与判别器

@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'LwM2M设备管理'
-module: 'iot'
+title: LwM2M设备管理
+module: iot
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'LwM2M 设备管理协议：对象模型、引导启动、设备管理与固件更新。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'iot/RT-Thread实时系统'
+  - iot/边缘AI
+  - iot/时序数据库
+  - iot/物联网安全
+prerequisites:
+  - iot/概述与架构
 ---
 
 ## 1. LwM2M 概述

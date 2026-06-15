@@ -1,12 +1,19 @@
 ---
 order: 104
 title: 'Entity-Framework-Core迁移与优化'
-module: 'csharp'
+module: csharp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Entity Framework Core迁移与性能优化详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - csharp/委托与事件底层原理
+  - csharp/反射与特性应用
+  - 'csharp/ASP-NET-Core中间件管道'
+  - csharp/依赖注入生命周期
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 迁移命令

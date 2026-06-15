@@ -1,12 +1,19 @@
 ---
 order: 58
-title: 'Python与FastAPI'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'FastAPI框架开发'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与FastAPI
+module: python
+category: Python
+difficulty: intermediate
+description: FastAPI框架开发
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/多进程与多线程
+  - python/数据类与Pydantic
+  - python/Python与Django
+  - python/Python与SQLAlchemy
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. FastAPI 基础

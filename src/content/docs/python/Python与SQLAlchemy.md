@@ -1,12 +1,19 @@
 ---
 order: 60
-title: 'Python与SQLAlchemy'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
+title: Python与SQLAlchemy
+module: python
+category: Python
+difficulty: intermediate
 description: 'SQLAlchemy ORM'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与FastAPI
+  - python/Python与Django
+  - python/控制流
+  - python/Python与Celery
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. SQLAlchemy 2.0

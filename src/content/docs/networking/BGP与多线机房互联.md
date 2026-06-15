@@ -1,12 +1,18 @@
 ---
 order: 106
-title: 'BGP与多线机房互联'
-module: 'networking'
+title: BGP与多线机房互联
+module: networking
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'BGP 与多线机房互联：多线接入、Anycast、流量工程。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - networking/隧道技术
+  - networking/网络故障排查工具
+  - networking/软件定义网络
+prerequisites:
+  - networking/网络基础与协议
 ---
 
 ## 1. 多线接入

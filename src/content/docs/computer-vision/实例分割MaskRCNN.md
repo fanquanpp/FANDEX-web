@@ -1,9 +1,21 @@
 ---
-title: '实例分割MaskRCNN'
+title: 实例分割MaskRCNN
 description: '实例分割为每个像素分配类别标签和实例ID。Mask R-CNN在检测之上添加一个分割掩码头。'
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['实例分割', 'MaskRCNN', 'RoIAlign', '实例掩码', '检测+分割']
+difficulty: advanced
+tags:
+  - 实例分割
+  - MaskRCNN
+  - RoIAlign
+  - 实例掩码
+  - 检测+分割
+related:
+  - 'computer-vision/目标检测YOLO'
+  - 'computer-vision/迁移学习'
+  - 'computer-vision/实时边缘推理'
+  - 'computer-vision/世界模型与视频扩散'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 实例分割MaskRCNN

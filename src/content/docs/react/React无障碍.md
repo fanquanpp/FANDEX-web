@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'React无障碍'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React应用可访问性'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React无障碍
+module: react
+category: React
+difficulty: intermediate
+description: React应用可访问性
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与GraphQL
+  - react/React与微前端
+  - react/React与PWA
+  - react/React与Canvas
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. ARIA 属性

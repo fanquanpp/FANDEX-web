@@ -1,9 +1,21 @@
 ---
-title: '开放词汇CLIP'
-description: 'CLIP通过对比学习将图像和文本映射到共享嵌入空间，实现零样本分类和跨模态检索。'
+title: 开放词汇CLIP
+description: CLIP通过对比学习将图像和文本映射到共享嵌入空间，实现零样本分类和跨模态检索。
 module: 'computer-vision'
-difficulty: 'intermediate'
-tags: ['CLIP', '零样本分类', '对比学习', '跨模态', '文本-图像']
+difficulty: intermediate
+tags:
+  - CLIP
+  - 零样本分类
+  - 对比学习
+  - 跨模态
+  - '文本-图像'
+related:
+  - 'computer-vision/关键点与姿态'
+  - 'computer-vision/卷积从零实现'
+  - 'computer-vision/目标检测YOLO'
+  - 'computer-vision/迁移学习'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # 开放词汇CLIP

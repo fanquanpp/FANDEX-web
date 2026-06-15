@@ -1,9 +1,20 @@
 ---
-title: 'Git与协作'
+title: Git与协作
 description: '配置 Git 身份，掌握日常 add/commit/push 工作流，创建和合并分支，编写 .gitignore，浏览提交历史'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['Git', '版本控制', 'GitHub', '协作']
+difficulty: beginner
+tags:
+  - Git
+  - 版本控制
+  - GitHub
+  - 协作
+related:
+  - 'ai-engineering/Docker与AI'
+  - 'ai-engineering/EAGLE-3投机解码'
+  - 'ai-engineering/GitHub-Issue到PR自主代理'
+  - 'ai-engineering/GPU与云计算'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Git 与协作

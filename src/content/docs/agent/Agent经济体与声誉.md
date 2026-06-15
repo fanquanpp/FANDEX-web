@@ -2,6 +2,13 @@
 title: Agent经济体与声誉
 description: '长时间范围自主 Agent (METR 的 1 小时到 8 小时工作曲线) 需要经济主体能力。新兴的 5 层栈 是：DePIN (物理计算) → 身份 (W3C DID + 声誉资本) → 认知 (RAG + MCP) → 结算 (账户抽象) → 治理 (Agentic DAO)。生产 Age...'
 module: agent
+related:
+  - agent/Agent工作台为何模型失败
+  - agent/Agent工作台项目
+  - agent/Agent可观测性平台
+  - agent/Agent失败模式
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agent 经济体、Token 激励、声誉

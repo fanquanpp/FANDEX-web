@@ -1,12 +1,19 @@
 ---
 order: 61
-title: 'Spring基础'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Spring框架核心概念'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Spring基础
+module: java
+category: Java
+difficulty: intermediate
+description: Spring框架核心概念
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java新特性
+  - java/运算符与表达式
+  - java/SpringBoot进阶
+  - java/SpringBoot安全
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. IoC 容器

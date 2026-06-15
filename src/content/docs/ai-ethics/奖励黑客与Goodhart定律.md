@@ -1,9 +1,21 @@
 ---
-title: '奖励黑客与Goodhart定律'
-description: '理解代理奖励与真实奖励的差距以及缩放定律'
+title: 奖励黑客与Goodhart定律
+description: 理解代理奖励与真实奖励的差距以及缩放定律
 module: 'ai-ethics'
-difficulty: 'intermediate'
-tags: ['奖励黑客', 'Goodhart定律', '代理奖励', '谄媚', '冗长偏差']
+difficulty: intermediate
+tags:
+  - 奖励黑客
+  - Goodhart定律
+  - 代理奖励
+  - 谄媚
+  - 冗长偏差
+related:
+  - 'ai-ethics/间接提示注入与生产攻击面'
+  - 'ai-ethics/监管框架EU与US与UK与韩国'
+  - 'ai-ethics/可扩展监督与弱到强泛化'
+  - 'ai-ethics/模型福利研究'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 # 奖励黑客与Goodhart定律

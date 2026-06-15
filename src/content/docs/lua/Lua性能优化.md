@@ -1,12 +1,19 @@
 ---
 order: 64
-title: 'Lua性能优化'
-module: 'lua'
-category: 'Lua'
-difficulty: 'intermediate'
-description: 'Lua性能优化技巧'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Lua性能优化
+module: lua
+category: Lua
+difficulty: intermediate
+description: Lua性能优化技巧
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/Lua迭代器
+  - 'lua/Lua与World of Warcraft'
+  - lua/Lua调试技巧
+  - lua/协程与异步
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. 优化技巧

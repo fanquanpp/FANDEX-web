@@ -1,12 +1,19 @@
 ---
 order: 67
 title: '微数据与JSON-LD'
-module: 'html5'
-category: 'HTML5'
-difficulty: 'intermediate'
+module: html5
+category: HTML5
+difficulty: intermediate
 description: 'Microdata与JSON-LD'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - html5/全双工通信
+  - html5/实时通信
+  - html5/自定义数据属性
+  - html5/跨文档通信
+prerequisites:
+  - html5/概述与核心特性
 ---
 
 ## 1. 结构化数据概述

@@ -2,6 +2,13 @@
 title: 群体优化PSO与ACO
 description: '生物启发优化正在 LLM 领域回归。LMPSO (arXiv:2504.09247) 使用 PSO，其中每个粒子的速度是一个提示，LLM 生成下一个候选；在结构化序列输出（数学表达式、程序）上效果良好。Model Swarms (arXiv:2410.11163) 将每个 LLM 专家视为模型...'
 module: agent
+related:
+  - agent/评估与协调基准
+  - agent/群聊与发言者选择
+  - agent/审查Agent
+  - agent/生产扩展队列与检查点
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 群体优化 — PSO, ACO

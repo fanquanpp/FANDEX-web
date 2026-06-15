@@ -1,12 +1,19 @@
 ---
 order: 78
-title: 'Java与安全'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'Java安全编程'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java与安全
+module: java
+category: Java
+difficulty: intermediate
+description: Java安全编程
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java性能调优
+  - java/Java与AI
+  - java/Java与WebAssembly
+  - java/Java与响应式编程
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 加密

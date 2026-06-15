@@ -1,9 +1,22 @@
 ---
-title: 'vLLM服务内部：PagedAttention、连续批处理、分块预填充'
-description: '深入理解vLLM三大核心优化机制及其调度器工作原理'
+title: vLLM服务内部：PagedAttention、连续批处理、分块预填充
+description: 深入理解vLLM三大核心优化机制及其调度器工作原理
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['vLLM', 'PagedAttention', '连续批处理', '分块预填充', 'KV缓存', '调度器']
+difficulty: intermediate
+tags:
+  - vLLM
+  - PagedAttention
+  - 连续批处理
+  - 分块预填充
+  - KV缓存
+  - 调度器
+related:
+  - 'ai-engineering/SGLang与RadixAttention'
+  - 'ai-engineering/TensorRT-LLM与Blackwell'
+  - 'ai-engineering/vLLM生产栈与LMCache'
+  - 'ai-engineering/Whisper架构与微调'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # vLLM服务内部：PagedAttention、连续批处理、分块预填充

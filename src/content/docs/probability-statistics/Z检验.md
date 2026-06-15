@@ -1,12 +1,19 @@
 ---
 order: 81
-title: 'Z检验'
+title: Z检验
 module: 'probability-statistics'
 category: 'comp-sci'
-difficulty: 'intermediate'
-description: '单总体均值Z检验、双总体均值差Z检验的原理与应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: 单总体均值Z检验、双总体均值差Z检验的原理与应用。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'probability-statistics/参数估计典型例题'
+  - 'probability-statistics/假设检验基本概念'
+  - 'probability-statistics/t检验'
+  - 'probability-statistics/卡方检验'
+prerequisites:
+  - 'probability-statistics/样本空间与事件'
 ---
 
 ## 1. 单总体均值的 Z 检验

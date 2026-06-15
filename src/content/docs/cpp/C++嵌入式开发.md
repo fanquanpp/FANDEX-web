@@ -1,12 +1,19 @@
 ---
 order: 80
-title: 'C++嵌入式开发'
-module: 'cpp'
-category: 'C++'
-difficulty: 'advanced'
-description: '嵌入式C++开发要点'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++嵌入式开发
+module: cpp
+category: C++
+difficulty: advanced
+description: 嵌入式C++开发要点
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++图形编程
+  - cpp/C++游戏开发
+  - cpp/内存管理
+  - cpp/C++与Rust对比
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. 嵌入式 C++ 限制

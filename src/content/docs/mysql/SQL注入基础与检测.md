@@ -1,16 +1,23 @@
 ---
 order: 150
 tags:
-  - 'mysql'
-  - 'security'
-  - 'performance'
-  - 'database'
-difficulty: 'intermediate'
+  - mysql
+  - security
+  - performance
+  - database
+difficulty: intermediate
 title: 'SQL 注入基础与检测'
-module: 'mysql'
+module: mysql
 category: 'MySQL Advanced'
-description: '注入原理、检测方法与防御策略入门。'
-author: 'Anonymous'
+description: 注入原理、检测方法与防御策略入门。
+author: Anonymous
+related:
+  - mysql/快速查阅
+  - mysql/控制器与应用
+  - mysql/SQL注入攻击类型与实战
+  - mysql/SQL注入防御策略
+prerequisites:
+  - mysql/语法速查
 ---
 
 ---

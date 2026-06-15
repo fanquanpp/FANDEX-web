@@ -1,12 +1,19 @@
 ---
 order: 70
-title: 'LU分解'
+title: LU分解
 module: 'linear-algebra'
 category: 'comp-sci'
-difficulty: 'advanced'
-description: 'LU分解的定义与条件，Doolittle分解与Crout分解，LU分解的计算步骤与应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: LU分解的定义与条件，Doolittle分解与Crout分解，LU分解的计算步骤与应用。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'linear-algebra/正定二次型'
+  - 'linear-algebra/二次型典型例题'
+  - 'linear-algebra/QR分解'
+  - 'linear-algebra/奇异值分解SVD'
+prerequisites:
+  - 'linear-algebra/行列式定义与几何意义'
 ---
 
 ## 1. LU分解的定义

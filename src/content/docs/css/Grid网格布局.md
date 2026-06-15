@@ -1,14 +1,21 @@
 ---
 order: 60
 tags:
-  - 'css'
+  - css
   - 'css-layout'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'CSS3 Grid 网格布局'
-module: 'css'
+module: css
 category: 'CSS Basics'
-description: '网格容器与项目属性、区域命名与响应式网格。'
-author: 'Anonymous'
+description: 网格容器与项目属性、区域命名与响应式网格。
+author: Anonymous
+related:
+  - css/阴影
+  - css/背景增强
+  - css/动画与过渡
+  - css/边框圆角
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. 核心概念

@@ -1,12 +1,19 @@
 ---
 order: 107
 title: 'ELK-Stack日志分析'
-module: 'devops'
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'ELK Stack 日志分析：Elasticsearch 索引、Logstash 管道、Kibana 可视化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/Prometheus指标采集与告警
+  - devops/Grafana仪表盘配置
+  - devops/OpenTelemetry可观测性
+  - devops/GitOps与ArgoCD
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. Elasticsearch

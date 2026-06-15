@@ -1,12 +1,19 @@
 ---
 order: 57
-title: 'Helm包管理'
+title: Helm包管理
 module: 'cloud-computing'
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'Helm包管理：Chart结构、值管理、仓库操作与最佳实践详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Helm包管理：Chart结构、值管理、仓库操作与最佳实践详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cloud-computing/Kubernetes存储'
+  - 'cloud-computing/云安全服务'
+  - 'cloud-computing/云成本优化'
+  - 'cloud-computing/12要素应用'
+prerequisites:
+  - 'cloud-computing/云计算基础'
 ---
 
 ## 1. Helm 概述

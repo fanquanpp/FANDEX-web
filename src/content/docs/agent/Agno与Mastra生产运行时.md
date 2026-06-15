@@ -2,6 +2,13 @@
 title: Agno与Mastra生产运行时
 description: 'Agno（Python）和Mastra（TypeScript）是2026年的生产运行时配对。Agno瞄准微秒级Agent实例化和无状态FastAPI后端。Mastra在Vercel AI SDK基底上发布Agent、工具、工作流、统一模型路由和复合存储。'
 module: agent
+related:
+  - agent/Agent失败模式
+  - agent/Agent循环
+  - 'agent/AI-Scientist-v2自主研究'
+  - agent/AlphaEvolve进化编码
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agno与Mastra：生产运行时

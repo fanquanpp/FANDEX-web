@@ -1,9 +1,20 @@
 ---
 title: DPO直接偏好优化
-description: 理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型
+description: '理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型'
 module: llm
 difficulty: advanced
-tags: [DPO, preference optimization, 对齐, 偏好学习]
+tags:
+  - DPO
+  - 'preference optimization'
+  - 对齐
+  - 偏好学习
+related:
+  - 'llm/Constitutional-AI与自我改进'
+  - 'llm/DeepSeek-V3架构详解'
+  - llm/DualPipe并行
+  - 'llm/Jamba混合SSM-Transformer'
+prerequisites:
+  - llm/安全护栏
 ---
 
 # DPO直接偏好优化

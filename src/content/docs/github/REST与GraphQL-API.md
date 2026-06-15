@@ -1,12 +1,19 @@
 ---
 order: 63
 title: 'REST与GraphQL-API'
-module: 'github'
-category: 'GitHub'
-difficulty: 'advanced'
+module: github
+category: GitHub
+difficulty: advanced
 description: 'GitHub API详解：REST API与GraphQL API的使用、认证与速率限制。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/CodeQL代码扫描
+  - github/命令行工具
+  - github/Web钩子
+  - github/包管理服务
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. GitHub API 概述

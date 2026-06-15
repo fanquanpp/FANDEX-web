@@ -1,12 +1,19 @@
 ---
 order: 60
 title: 'C#与EF Core'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Entity Framework Core'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'csharp/C#与Blazor'
+  - 'csharp/C#与MAUI'
+  - 'csharp/C#与依赖注入'
+  - 'csharp/C#与最小API'
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. DbContext

@@ -1,9 +1,20 @@
 ---
 title: 'MCP根目录与诱导 — 作用域与飞行中用户输入'
-description: '掌握roots作用域限制和elicitation中途用户输入机制，解决路径假设和参数歧义问题'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['MCP根目录', 'elicitation', '作用域', '用户输入']
+description: 掌握roots作用域限制和elicitation中途用户输入机制，解决路径假设和参数歧义问题
+module: agent
+difficulty: intermediate
+tags:
+  - MCP根目录
+  - elicitation
+  - 作用域
+  - 用户输入
+related:
+  - agent/MCP采样
+  - agent/MCP传输
+  - agent/MCP基础
+  - agent/MCP生产认证
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP根目录与诱导 — 作用域与飞行中用户输入

@@ -1,12 +1,19 @@
 ---
 order: 76
-title: 'C++序列化'
-module: 'cpp'
-category: 'C++'
-difficulty: 'intermediate'
-description: '序列化与反序列化'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: C++序列化
+module: cpp
+category: C++
+difficulty: intermediate
+description: 序列化与反序列化
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cpp/C++与Python交互
+  - cpp/C++性能优化
+  - cpp/C++网络编程
+  - cpp/C++图形编程
+prerequisites:
+  - cpp/概述与现代标准
 ---
 
 ## 1. JSON 序列化

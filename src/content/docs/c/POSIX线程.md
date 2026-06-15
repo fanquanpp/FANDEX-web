@@ -1,12 +1,19 @@
 ---
 order: 65
-title: 'POSIX线程'
-module: 'c'
-category: 'C'
-difficulty: 'advanced'
-description: 'pthread多线程编程'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: POSIX线程
+module: c
+category: C
+difficulty: advanced
+description: pthread多线程编程
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - c/内联函数与宏
+  - c/复杂声明解析
+  - c/Socket网络编程
+  - c/进程与管道
+prerequisites:
+  - c/概述
 ---
 
 ## 1. 基本用法

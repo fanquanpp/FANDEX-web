@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'Promise静态方法'
-module: 'javascript'
+title: Promise静态方法
+module: javascript
 category: 'dev-lang'
-difficulty: 'intermediate'
-description: 'Promise静态方法详解：allSettled、any、withResolvers及传统方法对比。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: Promise静态方法详解：allSettled、any、withResolvers及传统方法对比。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/原型链继承与class本质
+  - javascript/事件循环详解
+  - javascript/异步并发控制
+  - javascript/ES6+新特性
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Promise.all — 全部成功

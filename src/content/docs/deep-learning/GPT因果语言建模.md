@@ -1,9 +1,21 @@
 ---
-title: 'GPT因果语言建模'
+title: GPT因果语言建模
 description: 'BERT看两侧,GPT只看过去,三角掩码是现代AI中影响最深远的单行代码'
 module: 'deep-learning'
-difficulty: 'intermediate'
-tags: ['GPT', '因果语言建模', '自回归', '采样策略', '解码器']
+difficulty: intermediate
+tags:
+  - GPT
+  - 因果语言建模
+  - 自回归
+  - 采样策略
+  - 解码器
+related:
+  - 'deep-learning/自注意力从零实现'
+  - 'deep-learning/BERT掩码语言建模'
+  - 'deep-learning/JAX入门'
+  - 'deep-learning/KV缓存与Flash注意力'
+prerequisites:
+  - 'deep-learning/深度学习概述'
 ---
 
 # GPT — 因果语言建模

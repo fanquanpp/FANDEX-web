@@ -1,12 +1,19 @@
 ---
 order: 69
-title: 'React与GraphQL'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: 'React中GraphQL数据获取'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与GraphQL
+module: react
+category: React
+difficulty: intermediate
+description: React中GraphQL数据获取
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与WebAssembly
+  - react/React与WebSocket
+  - react/React与微前端
+  - react/React无障碍
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Apollo Client

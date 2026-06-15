@@ -1,13 +1,17 @@
 ---
 order: 10
 tags:
-  - 'github'
-difficulty: 'beginner'
+  - github
+difficulty: beginner
 title: 'GitHub 概述'
-module: 'github'
-category: 'GitHub'
+module: github
+category: GitHub
 description: 'GitHub 平台核心功能与协作开发流程。'
-author: 'fanquanpp'
+author: fanquanpp
+related:
+  - github/账户注册与双因素认证(2FA)
+  - 'github/仓库创建-克隆-归档-删除'
+prerequisites: []
 ---
 
 ## 1. GitHub 概述 (Overview)

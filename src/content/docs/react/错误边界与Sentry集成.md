@@ -1,12 +1,18 @@
 ---
 order: 105
-title: '错误边界与Sentry集成'
-module: 'react'
+title: 错误边界与Sentry集成
+module: react
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'React错误边界与Sentry错误监控集成实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: React错误边界与Sentry错误监控集成实践。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'react/React-19新增API'
+  - react/并发渲染与可中断更新
+  - react/自定义Hooks复用逻辑
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Error Boundary

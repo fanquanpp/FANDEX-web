@@ -1,9 +1,22 @@
 ---
 title: 'MDP -- 状态、动作与奖励'
-description: '马尔可夫决策过程的形式化定义，状态、动作、奖励、转移函数与折扣因子'
+description: 马尔可夫决策过程的形式化定义，状态、动作、奖励、转移函数与折扣因子
 module: 'machine-learning'
-difficulty: 'beginner'
-tags: ['MDP', '马尔可夫决策过程', '状态', '动作', '奖励', '折扣因子']
+difficulty: beginner
+tags:
+  - MDP
+  - 马尔可夫决策过程
+  - 状态
+  - 动作
+  - 奖励
+  - 折扣因子
+related:
+  - 'machine-learning/DQN深度Q网络'
+  - 'machine-learning/KNN与距离度量'
+  - 'machine-learning/ML流水线'
+  - 'machine-learning/PPO近端策略优化'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # MDP -- 状态、动作与奖励

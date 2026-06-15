@@ -1,12 +1,19 @@
 ---
 order: 52
-title: 'SQL注入'
-module: 'cybersecurity'
+title: SQL注入
+module: cybersecurity
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'SQL注入攻击原理、分类、利用技术与防御策略详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: SQL注入攻击原理、分类、利用技术与防御策略详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - cybersecurity/CSRF攻击
+  - cybersecurity/密码学应用
+  - cybersecurity/Web安全深度
+  - cybersecurity/命令注入
+prerequisites:
+  - cybersecurity/安全基础与防御
 ---
 
 ## 1. SQL 注入原理

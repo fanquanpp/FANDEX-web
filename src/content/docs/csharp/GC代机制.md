@@ -1,12 +1,19 @@
 ---
 order: 107
-title: 'GC代机制'
-module: 'csharp'
+title: GC代机制
+module: csharp
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: '.NET GC代机制详解：Generation 0/1/2。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'csharp/ASP-NET-Core中间件管道'
+  - csharp/依赖注入生命周期
+  - csharp/值类型与引用类型
+  - csharp/记录类型与不可变性
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 三代模型

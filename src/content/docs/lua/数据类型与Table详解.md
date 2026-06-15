@@ -1,13 +1,19 @@
 ---
 order: 30
 tags:
-  - 'lua'
-difficulty: 'beginner'
+  - lua
+difficulty: beginner
 title: '数据类型与 Table 详解'
-module: 'lua'
+module: lua
 category: 'Lua Basics'
 description: '基本类型、Table 操作、元方法与面向对象实现。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - lua/概述与环境配置
+  - lua/程序结构与基本语法
+  - lua/函数与闭包
+  - lua/元表与面向对象编程
+prerequisites: []
 ---
 
 ## 1. 基础数据类型 (8 种)

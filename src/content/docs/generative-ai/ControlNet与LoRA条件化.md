@@ -1,9 +1,21 @@
 ---
-title: 'ControlNet与LoRA条件化'
-description: 'ControlNet的零卷积结构与LoRA的低秩适应，精细控制预训练扩散模型'
+title: ControlNet与LoRA条件化
+description: ControlNet的零卷积结构与LoRA的低秩适应，精细控制预训练扩散模型
 module: 'generative-ai'
-difficulty: 'advanced'
-tags: ['ControlNet', 'LoRA', '条件化', '微调', '零卷积']
+difficulty: advanced
+tags:
+  - ControlNet
+  - LoRA
+  - 条件化
+  - 微调
+  - 零卷积
+related:
+  - 'generative-ai/音频生成'
+  - 'generative-ai/自编码器与VAE'
+  - 'generative-ai/GAN生成器与判别器'
+  - 'generative-ai/StyleGAN'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # ControlNet 与 LoRA 条件化

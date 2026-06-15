@@ -1,14 +1,20 @@
 ---
 order: 10
 tags:
-  - 'react'
-difficulty: 'advanced'
-title: 'Next.js全栈开发'
-module: 'react'
-category: 'React'
+  - react
+difficulty: advanced
+title: Next.js全栈开发
+module: react
+category: React
 description: 'App Router、Server Components、Server Actions、中间件、API Routes、数据库集成、认证与部署。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/性能优化
+  - react/测试与工程化
+  - react/JSX深度解析
+  - react/Fiber架构
+prerequisites: []
 ---
 
 ## 1. App Router

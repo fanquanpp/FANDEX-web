@@ -1,9 +1,19 @@
 ---
-title: 'StableDiffusion'
+title: StableDiffusion
 description: 'Stable Diffusion在潜在空间而非像素空间中运行扩散，使高质量图像生成在消费级GPU上可行。'
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['StableDiffusion', '潜在扩散', 'VAE', '文本条件', '图像生成']
+difficulty: advanced
+tags:
+  - StableDiffusion
+  - 潜在扩散
+  - VAE
+  - 文本条件
+  - 图像生成
+related:
+  - 'computer-vision/OCR与文档理解'
+  - 'computer-vision/SAM开放词汇分割'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # StableDiffusion

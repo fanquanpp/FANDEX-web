@@ -1,12 +1,18 @@
 ---
 order: 10
 title: 'Go Web 开发与微服务'
-module: 'go'
-category: 'Go'
-difficulty: 'advanced'
+module: go
+category: Go
+difficulty: advanced
 description: 'net/http 标准库、Gin/Echo/Fiber 框架、中间件模式、RESTful API、gRPC、数据库操作、项目结构与容器化部署。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/泛型
+  - go/标准库与工具链
+  - go/切片原理
+  - go/Map原理
+prerequisites: []
 ---
 
 ## 1. net/http 标准库

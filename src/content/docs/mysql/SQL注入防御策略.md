@@ -1,15 +1,22 @@
 ---
 order: 170
 tags:
-  - 'mysql'
-  - 'security'
-  - 'database'
-difficulty: 'advanced'
+  - mysql
+  - security
+  - database
+difficulty: advanced
 title: 'SQL 注入防御策略'
-module: 'mysql'
+module: mysql
 category: 'MySQL Advanced'
 description: '参数化查询、ORM 防御、WAF 与安全编码实践。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - mysql/SQL注入基础与检测
+  - mysql/SQL注入攻击类型与实战
+  - 'mysql/项目示例-电商数据库设计'
+  - mysql/理论知识点
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. SQL 注入防御策略 (Defense Strategies)

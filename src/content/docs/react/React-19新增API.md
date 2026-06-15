@@ -1,12 +1,19 @@
 ---
 order: 103
 title: 'React-19新增API'
-module: 'react'
+module: react
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'React 19新增API详解：use、ref as prop、文档元数据、Actions。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'react/Server-Components与Client-Components'
+  - react/Next.js应用路由
+  - react/并发渲染与可中断更新
+  - react/错误边界与Sentry集成
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. use() API

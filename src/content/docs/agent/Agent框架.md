@@ -1,12 +1,18 @@
 ---
 order: 3
 title: 'Agent 框架'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'LangChain/LangGraph、CrewAI、AutoGen、Dify 等主流 Agent 框架对比与选型。'
-author: 'fanquanpp'
-updated: 2026-06-15
+author: fanquanpp
+updated: '2026-06-15'
+related:
+  - agent/概述与架构
+  - agent/LLM基础
+  - 'agent/工具使用与Function Calling'
+  - agent/记忆与规划
+prerequisites: []
 ---
 
 ## 1. Agent 框架概述

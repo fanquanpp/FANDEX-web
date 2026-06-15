@@ -1,14 +1,21 @@
 ---
 order: 190
 tags:
-  - 'java'
-difficulty: 'intermediate'
+  - java
+difficulty: intermediate
 title: 'Spring Cloud 微服务开发'
-module: 'java'
+module: java
 category: 'Java Basics'
 description: 'Spring Cloud微服务架构与开发'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - java/SpringBoot学习笔记
+  - java/网络编程
+  - java/Swing图形界面
+  - 'java/项目示例-图书管理系统'
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 微服务架构概述

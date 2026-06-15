@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'Stage模型与FA模型区别'
-module: 'harmonyos'
+title: Stage模型与FA模型区别
+module: harmonyos
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'HarmonyOS Stage模型与FA模型对比详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - harmonyos/测试与调试
+  - harmonyos/国际化与无障碍
+  - harmonyos/ArkTS与TypeScript差异
+  - harmonyos/ArkUI声明式语法
+prerequisites:
+  - harmonyos/概述与环境搭建
 ---
 
 ## 1. 两种模型对比

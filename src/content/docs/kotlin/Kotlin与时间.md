@@ -1,12 +1,19 @@
 ---
 order: 80
-title: 'Kotlin与时间'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'intermediate'
+title: Kotlin与时间
+module: kotlin
+category: Kotlin
+difficulty: intermediate
 description: 'kotlinx-datetime'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/Kotlin与IO
+  - kotlin/Kotlin与正则
+  - kotlin/Kotlin与并发安全
+  - kotlin/Kotlin与WebSocket
+prerequisites:
+  - kotlin/概述与环境配置
 ---
 
 ## 1. 日期时间

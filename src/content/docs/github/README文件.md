@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'README文件'
-module: 'github'
-category: 'GitHub'
-difficulty: 'beginner'
+title: README文件
+module: github
+category: GitHub
+difficulty: beginner
 description: 'GitHub README文件编写规范：结构设计、内容要素与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/SSH与HTTPS远程配置
+  - github/协作开发规范
+  - github/分支模型与分支保护规则
+  - github/Gitignore配置
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. README 概述

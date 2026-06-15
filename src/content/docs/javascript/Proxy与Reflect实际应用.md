@@ -1,12 +1,19 @@
 ---
 order: 108
-title: 'Proxy与Reflect实际应用'
-module: 'javascript'
+title: Proxy与Reflect实际应用
+module: javascript
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'JavaScript Proxy与Reflect实际应用场景：响应式系统、验证、缓存、日志。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - javascript/防抖与节流
+  - javascript/数组高阶方法
+  - javascript/模块动态导入与代码分割
+  - javascript/原型与继承
+prerequisites:
+  - javascript/语法速查
 ---
 
 ## 1. Proxy 基础

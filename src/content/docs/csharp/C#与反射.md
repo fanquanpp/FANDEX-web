@@ -1,12 +1,19 @@
 ---
 order: 64
 title: 'C#与反射'
-module: 'csharp'
+module: csharp
 category: 'C#'
-difficulty: 'advanced'
-description: '反射与表达式树'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: 反射与表达式树
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'csharp/C#与最小API'
+  - 'csharp/C#12与C#13新特性'
+  - csharp/LINQ延迟与立即执行
+  - 'csharp/async-await状态机'
+prerequisites:
+  - csharp/概述与环境配置
 ---
 
 ## 1. 反射

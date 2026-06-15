@@ -1,7 +1,14 @@
 ---
 title: LangGraph状态图与持久执行
-description: 'LangGraph是2026年低层有状态编排的参考。Agent是状态机；节点是函数；边是转换；状态是不可变的并在每步后检查点。从任何失败处精确恢复。'
+description: LangGraph是2026年低层有状态编排的参考。Agent是状态机；节点是函数；边是转换；状态是不可变的并在每步后检查点。从任何失败处精确恢复。
 module: agent
+related:
+  - 'agent/FIPA-ACL遗产'
+  - agent/HTN规划与进化搜索
+  - agent/LlamaGuard
+  - agent/LLM路由层
+prerequisites:
+  - agent/概述与架构
 ---
 
 # LangGraph：状态图与持久执行

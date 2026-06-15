@@ -1,12 +1,19 @@
 ---
 order: 69
-title: 'Sass'
-module: 'css'
-category: 'CSS'
-difficulty: 'intermediate'
-description: 'Sass（变量、嵌套、混合、继承、运算、模块化）'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Sass
+module: css
+category: CSS
+difficulty: intermediate
+description: Sass（变量、嵌套、混合、继承、运算、模块化）
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - css/逻辑属性
+  - css/滚动捕捉
+  - css/Less与Stylus
+  - css/响应式设计
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. Sass 概述

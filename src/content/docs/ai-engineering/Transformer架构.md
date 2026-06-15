@@ -1,12 +1,18 @@
 ---
 order: 15
-title: 'Transformer架构'
+title: Transformer架构
 module: 'ai-engineering'
-category: 'data'
-difficulty: 'advanced'
-description: '自注意力机制、多头注意力、位置编码与Transformer架构详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: advanced
+description: 自注意力机制、多头注意力、位置编码与Transformer架构详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'ai-engineering/卷积神经网络'
+  - 'ai-engineering/循环神经网络'
+  - 'ai-engineering/K近邻'
+  - 'ai-engineering/生成模型'
+prerequisites: []
 ---
 
 ## 1. 自注意力机制

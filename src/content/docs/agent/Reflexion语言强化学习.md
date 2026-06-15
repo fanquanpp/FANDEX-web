@@ -2,6 +2,13 @@
 title: Reflexion语言强化学习
 description: '基于梯度的RL需要数千次试验和GPU集群来修复一个失败模式。Reflexion（Shinn等人，NeurIPS 2023）用自然语言做到这一点：每次失败的试验后，Agent写一段反思，存储在情景记忆中，并在下一次试验中以此记忆为条件。这是Letta的睡眠时间计算、Claude Code的CLA...'
 module: agent
+related:
+  - 'agent/OpenTelemetry-GenAI语义约定'
+  - agent/OpenTelemetryGenAI
+  - agent/ReWOO与计划执行
+  - agent/STaR自教推理
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Reflexion：语言强化学习

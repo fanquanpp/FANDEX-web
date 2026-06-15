@@ -1,12 +1,19 @@
 ---
 order: 75
-title: 'Python与配置管理'
-module: 'python'
-category: 'Python'
-difficulty: 'beginner'
-description: '配置文件与环境变量'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与配置管理
+module: python
+category: Python
+difficulty: beginner
+description: 配置文件与环境变量
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与加密
+  - python/Python与CLI
+  - python/装饰器
+  - python/Python与消息队列
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. pydantic-settings

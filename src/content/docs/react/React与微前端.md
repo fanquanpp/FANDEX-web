@@ -1,12 +1,19 @@
 ---
 order: 70
-title: 'React与微前端'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
-description: 'React微前端架构'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与微前端
+module: react
+category: React
+difficulty: advanced
+description: React微前端架构
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React与WebSocket
+  - react/React与GraphQL
+  - react/React无障碍
+  - react/React与PWA
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. Module Federation

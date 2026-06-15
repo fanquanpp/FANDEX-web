@@ -1,12 +1,19 @@
 ---
 order: 81
-title: 'Java与虚拟线程'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
+title: Java与虚拟线程
+module: java
+category: Java
+difficulty: intermediate
 description: 'Project Loom虚拟线程'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与响应式编程
+  - java/方法详解
+  - java/Java与GraalVM
+  - java/Java与Kubernetes
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. 虚拟线程（Java 21）

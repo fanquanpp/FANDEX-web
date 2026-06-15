@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'Lua与Redis脚本'
-module: 'lua'
-category: 'Lua'
-difficulty: 'intermediate'
+title: Lua与Redis脚本
+module: lua
+category: Lua
+difficulty: intermediate
 description: 'Redis Lua脚本'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - lua/Lua与Love2D
+  - lua/Lua与Neovim
+  - lua/Lua与Nginx
+  - lua/模块与包
+prerequisites:
+  - lua/概述与环境配置
 ---
 
 ## 1. Redis Lua

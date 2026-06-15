@@ -1,9 +1,21 @@
 ---
-title: 'LLM生产混沌工程'
-description: '理解2026年LLM混沌工程的四平面架构和LLM特定实验'
+title: LLM生产混沌工程
+description: 理解2026年LLM混沌工程的四平面架构和LLM特定实验
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['混沌工程', 'SLI与SLO', '错误预算', '游戏日', 'KV缓存驱逐风暴']
+difficulty: intermediate
+tags:
+  - 混沌工程
+  - SLI与SLO
+  - 错误预算
+  - 游戏日
+  - KV缓存驱逐风暴
+related:
+  - 'ai-engineering/LLM可观测性与评估仪表板'
+  - 'ai-engineering/LLM可观测性栈选择'
+  - 'ai-engineering/MCP服务器与注册中心与治理'
+  - 'ai-engineering/ML流水线'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # LLM生产混沌工程

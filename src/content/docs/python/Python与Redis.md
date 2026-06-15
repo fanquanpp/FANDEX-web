@@ -1,12 +1,19 @@
 ---
 order: 63
-title: 'Python与Redis'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Redis缓存与消息'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Python与Redis
+module: python
+category: Python
+difficulty: intermediate
+description: Redis缓存与消息
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与Celery
+  - python/Python与Docker
+  - python/Python与GraphQL
+  - python/Python与机器学习
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Redis 操作

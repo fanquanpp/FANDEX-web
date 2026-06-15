@@ -1,9 +1,20 @@
 ---
 title: '构建MCP客户端 — 发现、调用、会话管理'
-description: '构建多服务器MCP客户端，实现进程生成、能力协商、工具列表合并、命名空间冲突处理和路由'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['MCP客户端', '多服务器', '命名空间', '会话管理']
+description: 构建多服务器MCP客户端，实现进程生成、能力协商、工具列表合并、命名空间冲突处理和路由
+module: agent
+difficulty: advanced
+tags:
+  - MCP客户端
+  - 多服务器
+  - 命名空间
+  - 会话管理
+related:
+  - agent/共享记忆与黑板
+  - agent/构建MCP服务器
+  - agent/函数调用深入
+  - agent/鎬濈淮鏍戜笌LATS
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 构建MCP客户端 — 发现、调用、会话管理

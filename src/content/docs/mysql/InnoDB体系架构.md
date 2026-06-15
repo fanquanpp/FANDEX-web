@@ -1,12 +1,19 @@
 ---
 order: 90
-title: 'InnoDB体系架构'
-module: 'mysql'
-category: 'MySQL'
-difficulty: 'advanced'
+title: InnoDB体系架构
+module: mysql
+category: MySQL
+difficulty: advanced
 description: 'InnoDB存储引擎架构：聚簇索引、自适应哈希、变更缓冲、双写缓冲、事务日志、MVCC与Buffer Pool深度解析'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'mysql/SSL-TLS加密'
+  - mysql/防火墙插件
+  - mysql/数据加密
+  - mysql/索引与执行计划
+prerequisites:
+  - mysql/语法速查
 ---
 
 ## 1. InnoDB 存储引擎概述

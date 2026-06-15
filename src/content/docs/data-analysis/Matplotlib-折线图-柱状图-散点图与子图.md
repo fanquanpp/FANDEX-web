@@ -2,12 +2,19 @@
 order: 40
 tags:
   - 'data-analysis'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'Matplotlib -- 折线图、柱状图、散点图与子图'
 module: 'data-analysis'
 category: 'Data Science / Matplotlib'
 description: 'Matplotlib 数据可视化核心：基础图表类型、样式定制、子图布局与 Jupyter 交互式绘图'
-author: 'fanquanpp'
+author: fanquanpp
+related:
+  - 'data-analysis/NumPy数组操作-线性代数与随机数'
+  - 'data-analysis/Pandas-DataFrameSeries-数据清洗-合并重塑'
+  - 'data-analysis/Seaborn-统计可视化-热力图与分布图'
+  - 'data-analysis/统计学-描述统计-推断统计与假设检验'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. Matplotlib 简介

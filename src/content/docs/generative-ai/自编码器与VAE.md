@@ -1,9 +1,21 @@
 ---
-title: '自编码器与VAE'
-description: '从普通自编码器到变分自编码器，理解重参数化技巧与ELBO损失'
+title: 自编码器与VAE
+description: 从普通自编码器到变分自编码器，理解重参数化技巧与ELBO损失
 module: 'generative-ai'
-difficulty: 'intermediate'
-tags: ['自编码器', 'VAE', 'ELBO', '重参数化', '潜变量']
+difficulty: intermediate
+tags:
+  - 自编码器
+  - VAE
+  - ELBO
+  - 重参数化
+  - 潜变量
+related:
+  - 'generative-ai/图像修复扩展与编辑'
+  - 'generative-ai/音频生成'
+  - 'generative-ai/ControlNet与LoRA条件化'
+  - 'generative-ai/GAN生成器与判别器'
+prerequisites:
+  - 'generative-ai/3D生成'
 ---
 
 # 自编码器与变分自编码器 (VAE)

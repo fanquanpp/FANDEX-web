@@ -1,12 +1,19 @@
 ---
 order: 105
-title: '垃圾回收与GC调优'
-module: 'go'
+title: 垃圾回收与GC调优
+module: go
 category: 'dev-lang'
-difficulty: 'advanced'
-description: 'Go垃圾回收与GC调优详解：并发标记清除。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: advanced
+description: Go垃圾回收与GC调优详解：并发标记清除。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/反射实现通用函数
+  - go/内存逃逸分析
+  - go/泛型详解
+  - go/单元测试与基准测试
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. GC 算法

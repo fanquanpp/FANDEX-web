@@ -1,12 +1,19 @@
 ---
 order: 102
-title: 'Actions缓存依赖'
-module: 'github'
-category: 'toolchain'
-difficulty: 'intermediate'
+title: Actions缓存依赖
+module: github
+category: toolchain
+difficulty: intermediate
 description: 'GitHub Actions缓存机制详解：actions/cache使用、缓存策略与依赖加速最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/常见问题排查
+  - github/Actions矩阵构建
+  - github/Actions自托管运行器
+  - github/Actions制品传递
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. 缓存机制原理

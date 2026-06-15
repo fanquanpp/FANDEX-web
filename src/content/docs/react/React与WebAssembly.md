@@ -1,12 +1,19 @@
 ---
 order: 67
-title: 'React与WebAssembly'
-module: 'react'
-category: 'React'
-difficulty: 'advanced'
-description: 'React中集成WebAssembly'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React与WebAssembly
+module: react
+category: React
+difficulty: advanced
+description: React中集成WebAssembly
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/React服务端渲染
+  - react/React设计模式
+  - react/React与WebSocket
+  - react/React与GraphQL
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 加载 WASM

@@ -1,12 +1,19 @@
 ---
 order: 80
-title: 'Java与响应式编程'
-module: 'java'
-category: 'Java'
-difficulty: 'advanced'
+title: Java与响应式编程
+module: java
+category: Java
+difficulty: advanced
 description: 'Project Reactor与WebFlux'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java与安全
+  - java/Java与WebAssembly
+  - java/方法详解
+  - java/Java与虚拟线程
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Mono & Flux

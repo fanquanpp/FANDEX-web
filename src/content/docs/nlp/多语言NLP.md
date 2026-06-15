@@ -1,9 +1,21 @@
 ---
-title: '多语言NLP'
-description: '理解多语言模型、跨语言迁移和多语言评估的完整技术栈'
-module: 'nlp'
-difficulty: 'intermediate'
-tags: ['多语言NLP', '跨语言迁移', 'XLM-R', 'NLLB', 'mBERT']
+title: 多语言NLP
+description: 理解多语言模型、跨语言迁移和多语言评估的完整技术栈
+module: nlp
+difficulty: intermediate
+tags:
+  - 多语言NLP
+  - 跨语言迁移
+  - 'XLM-R'
+  - NLLB
+  - mBERT
+related:
+  - nlp/词性标注与句法解析
+  - nlp/对话状态跟踪
+  - nlp/分块策略与RAG
+  - nlp/共指消解
+prerequisites:
+  - 'nlp/词袋模型与TF-IDF'
 ---
 
 # 多语言NLP

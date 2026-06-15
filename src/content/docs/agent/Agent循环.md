@@ -1,9 +1,21 @@
 ---
 title: 'Agent循环 — 观察、思考、行动'
-description: '掌握ReAct循环的五个要素，实现标准库Agent循环，理解2026年从提示思维token到原生推理的转变'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['Agent循环', 'ReAct', '推理token', '工具调用', '停止条件']
+description: 掌握ReAct循环的五个要素，实现标准库Agent循环，理解2026年从提示思维token到原生推理的转变
+module: agent
+difficulty: intermediate
+tags:
+  - Agent循环
+  - ReAct
+  - 推理token
+  - 工具调用
+  - 停止条件
+related:
+  - agent/Agent可观测性平台
+  - agent/Agent失败模式
+  - agent/Agno与Mastra生产运行时
+  - 'agent/AI-Scientist-v2自主研究'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Agent循环 — 观察、思考、行动

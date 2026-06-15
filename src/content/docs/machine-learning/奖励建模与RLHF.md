@@ -1,9 +1,21 @@
 ---
-title: '奖励建模与RLHF'
-description: '从人类偏好数据训练奖励模型，RLHF管线与对齐训练的核心技术'
+title: 奖励建模与RLHF
+description: 从人类偏好数据训练奖励模型，RLHF管线与对齐训练的核心技术
 module: 'machine-learning'
-difficulty: 'advanced'
-tags: ['RLHF', '奖励建模', '人类偏好', '对齐', 'Bradley-Terry模型']
+difficulty: advanced
+tags:
+  - RLHF
+  - 奖励建模
+  - 人类偏好
+  - 对齐
+  - 'Bradley-Terry模型'
+related:
+  - 'machine-learning/仿真到现实迁移'
+  - 'machine-learning/集成方法'
+  - 'machine-learning/决策树与随机森林'
+  - 'machine-learning/逻辑回归与分类'
+prerequisites:
+  - 'machine-learning/机器学习概述'
 ---
 
 # 奖励建模与 RLHF

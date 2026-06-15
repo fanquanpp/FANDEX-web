@@ -1,9 +1,19 @@
 ---
-title: '多模态Agent与计算机使用'
-description: '理解GUI接地、动作schema和多模态Agent循环的端到端计算机使用架构'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['多模态Agent', '计算机使用', 'GUI接地', '动作schema', 'SeeClick', 'AgentVista']
+title: 多模态Agent与计算机使用
+description: 理解GUI接地、动作schema和多模态Agent循环的端到端计算机使用架构
+module: multimodal
+difficulty: advanced
+tags:
+  - 多模态Agent
+  - 计算机使用
+  - GUI接地
+  - 动作schema
+  - SeeClick
+  - AgentVista
+related:
+  - multimodal/多模态RAG与跨模态检索
+  - multimodal/具身VLA机器人模型
+prerequisites: []
 ---
 
 # 多模态Agent与计算机使用(顶点课程)

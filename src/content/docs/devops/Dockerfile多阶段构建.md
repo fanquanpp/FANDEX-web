@@ -1,12 +1,19 @@
 ---
 order: 100
-title: 'Dockerfile多阶段构建'
-module: 'devops'
+title: Dockerfile多阶段构建
+module: devops
 category: 'eng-infra'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Dockerfile 多阶段构建：减小镜像体积、分离构建与运行环境。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/网络与安全进阶
+  - devops/数据库运维
+  - devops/Kubernetes核心资源详解
+  - 'devops/Helm-Chart应用打包'
+prerequisites:
+  - devops/概述与Linux基础
 ---
 
 ## 1. 多阶段构建原理

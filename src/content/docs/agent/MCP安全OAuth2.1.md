@@ -1,9 +1,21 @@
 ---
 title: 'MCP安全II — OAuth 2.1、资源指示器、增量作用域'
 description: '实现MCP的OAuth 2.1认证配置，掌握PKCE、RFC 8707资源指示器、RFC 9728受保护资源元数据和SEP-835步进授权'
-module: 'agent'
-difficulty: 'advanced'
-tags: ['OAuth 2.1', 'PKCE', '资源指示器', '步进授权', 'MCP认证']
+module: agent
+difficulty: advanced
+tags:
+  - 'OAuth 2.1'
+  - PKCE
+  - 资源指示器
+  - 步进授权
+  - MCP认证
+related:
+  - agent/MARL强化学习
+  - agent/MCP安全工具投毒
+  - agent/MCP采样
+  - agent/MCP传输
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP安全II — OAuth 2.1、资源指示器、增量作用域

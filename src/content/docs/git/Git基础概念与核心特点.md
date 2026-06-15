@@ -1,15 +1,20 @@
 ---
 order: 10
 tags:
-  - 'git'
+  - git
   - 'git-workflow'
-difficulty: 'beginner'
+difficulty: beginner
 title: 'Git 基础概念与核心特点'
-module: 'git'
+module: git
 category: 'Git Basics'
 description: 'Git 的核心概念、分布式版本控制原理与基本工作流。'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - git/语法速查
+  - git/Git环境配置与初始化
+  - git/Git基本操作
+prerequisites: []
 ---
 
 ## 2. Git 概述

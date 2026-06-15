@@ -1,9 +1,21 @@
 ---
-title: Jamba混合SSM-Transformer
-description: 理解 Jamba 模型如何结合 SSM（状态空间模型）和 Transformer 实现高效长序列处理
+title: 'Jamba混合SSM-Transformer'
+description: '理解 Jamba 模型如何结合 SSM（状态空间模型）和 Transformer 实现高效长序列处理'
 module: llm
 difficulty: advanced
-tags: [Jamba, SSM, Mamba, hybrid architecture, 状态空间模型]
+tags:
+  - Jamba
+  - SSM
+  - Mamba
+  - 'hybrid architecture'
+  - 状态空间模型
+related:
+  - llm/DPO直接偏好优化
+  - llm/DualPipe并行
+  - llm/LangGraph状态机
+  - llm/LLM工程评估
+prerequisites:
+  - llm/安全护栏
 ---
 
 # Jamba混合SSM-Transformer

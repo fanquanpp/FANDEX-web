@@ -1,12 +1,19 @@
 ---
 order: 87
-title: 'Java与数据库连接'
-module: 'java'
-category: 'Java'
-difficulty: 'intermediate'
-description: 'JDBC与连接池'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Java与数据库连接
+module: java
+category: Java
+difficulty: intermediate
+description: JDBC与连接池
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - java/Java文本块
+  - java/Java模块系统
+  - java/Java新特性与生态
+  - java/数组详解
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. JDBC

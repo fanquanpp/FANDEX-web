@@ -1,12 +1,19 @@
 ---
 order: 58
-title: 'React错误边界'
-module: 'react'
-category: 'React'
-difficulty: 'intermediate'
-description: '错误边界与异常处理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: React错误边界
+module: react
+category: React
+difficulty: intermediate
+description: 错误边界与异常处理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - react/状态管理方案对比
+  - react/React性能优化
+  - react/React表单处理
+  - react/React与TypeScript
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. 错误边界组件

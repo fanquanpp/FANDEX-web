@@ -1,12 +1,19 @@
 ---
 order: 63
-title: '递归CTE'
-module: 'sql'
-category: 'SQL'
-difficulty: 'advanced'
+title: 递归CTE
+module: sql
+category: SQL
+difficulty: advanced
 description: 'SQL递归公用表表达式：WITH RECURSIVE语法、层级遍历、图遍历、斐波那契数列与终止条件控制'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - sql/子查询
+  - sql/公用表表达式
+  - sql/PIVOT与UNPIVOT
+  - sql/集合操作
+prerequisites:
+  - sql/概述与标准
 ---
 
 ## 1. 递归 CTE 概述

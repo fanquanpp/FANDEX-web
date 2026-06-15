@@ -2,6 +2,13 @@
 title: 基准测试WebArena与OSWorld
 description: 'WebArena跨四个自托管应用测试Web Agent能力。OSWorld跨Ubuntu、Windows、macOS测试桌面Agent能力。在发布时（2023-2024）两者都显示了最佳Agent和人类之间的巨大差距。差距在缩小；失败模式没有改变。'
 module: agent
+related:
+  - agent/混合记忆向量图与KV
+  - 'agent/基准测试SWE-bench与GAIA'
+  - agent/计算机使用Agent
+  - agent/记忆块与睡眠时间计算
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 基准测试：WebArena与OSWorld

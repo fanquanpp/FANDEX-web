@@ -1,9 +1,22 @@
 ---
-title: 'LLM的差分隐私'
+title: LLM的差分隐私
 description: 'DP-SGD仍是标准——噪声注入梯度更新提供形式化(epsilon, delta)保证。LoRA+DP-SGD是2025年常见配置。金丝雀MIAvs训练数据提取给出不同图景：2025年3月解决方案揭示两者测量不同东西。PMixED提供推理时私有预测替代方案。DP逆转攻击通过置信度分数泄露隐私。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['差分隐私', 'DP-SGD', 'LoRA', '成员推理', '金丝雀', 'PMixED']
+difficulty: advanced
+tags:
+  - 差分隐私
+  - 'DP-SGD'
+  - LoRA
+  - 成员推理
+  - 金丝雀
+  - PMixED
+related:
+  - 'ai-ethics/Constitutional-AI与RLAIF'
+  - 'ai-ethics/EchoLeak与AI的CVE时代'
+  - 'ai-ethics/Mesa优化与欺骗性对齐'
+  - 'ai-ethics/Sleeper-Agents与持久欺骗'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义

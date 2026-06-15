@@ -1,12 +1,18 @@
 ---
 order: 6
 title: '多 Agent 系统'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Multi-Agent 协作模式、角色分配、通信机制、层级式/扁平式架构与实战。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'agent/工具使用与Function Calling'
+  - agent/记忆与规划
+  - agent/Agent评估与安全
+  - agent/实战项目
+prerequisites: []
 ---
 
 ## 1. 多 Agent 系统概述

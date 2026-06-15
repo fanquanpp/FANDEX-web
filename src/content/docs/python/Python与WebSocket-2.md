@@ -1,12 +1,19 @@
 ---
 order: 88
 title: 'Python与WebSocket-2'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
-description: 'Socket.IO与实时应用'
-author: 'fanquanpp'
-updated: 2026-06-14
+module: python
+category: Python
+difficulty: intermediate
+description: Socket.IO与实时应用
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/Python与数据库迁移
+  - python/Python与OAuth2
+  - python/Python与向量数据库
+  - python/Python进阶与最新特性
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Socket.IO

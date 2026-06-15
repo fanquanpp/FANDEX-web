@@ -1,9 +1,20 @@
 ---
-title: 'Transfusion：自回归文本+扩散图像统一Transformer'
-description: '理解Transfusion如何在单一Transformer中同时运行NTP和扩散两种损失'
-module: 'multimodal'
-difficulty: 'advanced'
-tags: ['Transfusion', '双损失训练', '流匹配', 'MMDiT', '连续表示']
+title: Transfusion：自回归文本+扩散图像统一Transformer
+description: 理解Transfusion如何在单一Transformer中同时运行NTP和扩散两种损失
+module: multimodal
+difficulty: advanced
+tags:
+  - Transfusion
+  - 双损失训练
+  - 流匹配
+  - MMDiT
+  - 连续表示
+related:
+  - 'multimodal/Qwen-VL家族与动态FPS'
+  - 'multimodal/Show-o离散扩散统一模型'
+  - 'multimodal/Vision-Transformer与Patch-Token原语'
+prerequisites:
+  - multimodal/多模态Agent与计算机使用
 ---
 
 # Transfusion：一个Transformer中的自回归文本 + 扩散图像

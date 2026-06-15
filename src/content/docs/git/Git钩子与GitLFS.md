@@ -1,15 +1,22 @@
 ---
 order: 60
 tags:
-  - 'git'
+  - git
   - 'git-workflow'
-difficulty: 'advanced'
+difficulty: advanced
 title: 'Git 钩子与 Git LFS'
-module: 'git'
+module: git
 category: 'Git Basics'
-description: 'Git钩子自动化与大文件管理'
-author: 'fanquanpp'
-updated: 2026-05-03
+description: Git钩子自动化与大文件管理
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - git/代码追溯
+  - git/HEAD指针与分支本质
+  - git/合并冲突解决
+  - git/合并工具
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. Git 钩子概述

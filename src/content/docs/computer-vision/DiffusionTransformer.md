@@ -1,9 +1,21 @@
 ---
-title: 'DiffusionTransformer'
+title: DiffusionTransformer
 description: 'U-Net不是扩散的秘密。用Transformer替换它，用直线路径替换噪声调度，你就有了SD3、FLUX和每个2026文本到图像模型。'
 module: 'computer-vision'
-difficulty: 'advanced'
-tags: ['DiT', '整流流', 'MMDiT', 'FLUX', 'AdaLN']
+difficulty: advanced
+tags:
+  - DiT
+  - 整流流
+  - MMDiT
+  - FLUX
+  - AdaLN
+related:
+  - 'computer-vision/自监督视觉'
+  - 'computer-vision/CNN从LeNet到ResNet'
+  - 'computer-vision/OCR与文档理解'
+  - 'computer-vision/SAM开放词汇分割'
+prerequisites:
+  - 'computer-vision/3D高斯泼溅'
 ---
 
 # DiffusionTransformer

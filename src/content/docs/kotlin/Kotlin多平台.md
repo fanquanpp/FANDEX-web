@@ -1,12 +1,18 @@
 ---
 order: 17
 title: 'Kotlin 多平台'
-module: 'kotlin'
-category: 'Kotlin'
-difficulty: 'advanced'
+module: kotlin
+category: Kotlin
+difficulty: advanced
 description: 'KMP 架构、expect/actual、共享代码策略、Compose Multiplatform 与 Gradle 配置。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - kotlin/集合与协程
+  - kotlin/协程进阶
+  - kotlin/DSL与领域特定语言
+  - kotlin/测试与最佳实践
+prerequisites: []
 ---
 
 ## 1. KMP 架构概述

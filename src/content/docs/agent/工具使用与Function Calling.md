@@ -1,12 +1,18 @@
 ---
 order: 4
 title: '工具使用与 Function Calling'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'Function Calling 原理、工具定义、MCP 协议、RAG 检索增强生成与知识库构建。'
-author: 'fanquanpp'
-updated: 2026-06-15
+author: fanquanpp
+updated: '2026-06-15'
+related:
+  - agent/LLM基础
+  - agent/Agent框架
+  - agent/记忆与规划
+  - agent/多Agent系统
+prerequisites: []
 ---
 
 ## 1. Function Calling 原理

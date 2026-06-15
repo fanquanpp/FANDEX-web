@@ -1,12 +1,19 @@
 ---
 order: 50
-title: 'Teleport与Suspense'
-module: 'vue3'
-category: 'Vue3'
-difficulty: 'intermediate'
-description: '传送门与异步组件'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: Teleport与Suspense
+module: vue3
+category: Vue3
+difficulty: intermediate
+description: 传送门与异步组件
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/模板语法
+  - vue3/指令系统
+  - vue3/组合式API
+  - vue3/Provide与Inject
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. Teleport

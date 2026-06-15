@@ -1,12 +1,19 @@
 ---
 order: 71
-title: 'QR分解'
+title: QR分解
 module: 'linear-algebra'
 category: 'comp-sci'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'QR分解的定义与存在性，Gram-Schmidt方法，Householder变换方法，Givens旋转方法，QR分解的应用。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'linear-algebra/二次型典型例题'
+  - 'linear-algebra/LU分解'
+  - 'linear-algebra/奇异值分解SVD'
+  - 'linear-algebra/矩阵分解应用'
+prerequisites:
+  - 'linear-algebra/行列式定义与几何意义'
 ---
 
 ## 1. QR分解的定义

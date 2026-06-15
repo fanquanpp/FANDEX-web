@@ -2,11 +2,17 @@
 order: 23
 title: 'Scikit-learn实战'
 module: 'ai-engineering'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Scikit-learn Pipeline、模型选择、超参调优与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'ai-engineering/特征工程详解'
+  - 'ai-engineering/强化学习基础'
+  - 'ai-engineering/安全密钥与审计'
+  - 'ai-engineering/贝叶斯定理'
+prerequisites: []
 ---
 
 ## 1. Scikit-learn核心API

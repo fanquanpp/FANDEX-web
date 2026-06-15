@@ -1,12 +1,19 @@
 ---
 order: 116
-title: 'QUIC协议'
+title: QUIC协议
 module: 'cs-fundamentals'
 category: 'comp-sci'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'QUIC 协议：0-RTT 连接、连接迁移、多路复用与拥塞控制。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'cs-fundamentals/CDN原理'
+  - 'cs-fundamentals/WebSocket帧格式'
+  - 'cs-fundamentals/ARP协议与ARP欺骗'
+  - 'cs-fundamentals/BGP路由协议'
+prerequisites:
+  - 'cs-fundamentals/计算机科学概述'
 ---
 
 ## 1. QUIC 设计动机

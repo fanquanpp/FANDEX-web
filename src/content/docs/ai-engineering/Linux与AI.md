@@ -1,9 +1,22 @@
 ---
-title: 'Linux与AI'
+title: Linux与AI
 description: 'Linux 文件系统导航，文件权限管理，apt 包管理，用户与 sudo，进程与 systemd，磁盘空间，网络传输，tmux 会话'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['Linux', 'Ubuntu', '命令行', '文件系统', '权限', 'WSL2']
+difficulty: beginner
+tags:
+  - Linux
+  - Ubuntu
+  - 命令行
+  - 文件系统
+  - 权限
+  - WSL2
+related:
+  - 'ai-engineering/Jupyter笔记本'
+  - 'ai-engineering/KNN与距离度量'
+  - 'ai-engineering/LLM-API负载测试'
+  - 'ai-engineering/LLM-FinOps单位经济学'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # Linux 与 AI

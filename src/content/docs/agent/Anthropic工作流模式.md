@@ -1,7 +1,14 @@
 ---
 title: Anthropic工作流模式
-description: 'Schluntz和Zhang（Anthropic，2024年12月）区分了工作流（预定义路径）和Agent（动态工具使用）。五种工作流模式覆盖了大多数情况。从直接API调用开始。只在步骤无法预测时才添加Agent。'
+description: Schluntz和Zhang（Anthropic，2024年12月）区分了工作流（预定义路径）和Agent（动态工具使用）。五种工作流模式覆盖了大多数情况。从直接API调用开始。只在步骤无法预测时才添加Agent。
 module: agent
+related:
+  - 'agent/AI-Scientist-v2自主研究'
+  - agent/AlphaEvolve进化编码
+  - agent/AnthropicRSP
+  - 'agent/AutoGen-Actor模型与Agent框架'
+prerequisites:
+  - agent/概述与架构
 ---
 
 # Anthropic工作流模式：简单胜于复杂

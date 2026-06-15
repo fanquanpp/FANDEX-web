@@ -1,12 +1,19 @@
 ---
 order: 100
 title: 'React-Compiler自动记忆化'
-module: 'react'
+module: react
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'React Compiler原理详解：自动记忆化、依赖分析与性能优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'react/React与CI-CD'
+  - react/React与Monorepo
+  - 'react/Server-Components与Client-Components'
+  - react/Next.js应用路由
+prerequisites:
+  - react/概述与环境配置
 ---
 
 ## 1. React Compiler 概述

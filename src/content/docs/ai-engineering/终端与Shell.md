@@ -1,9 +1,22 @@
 ---
-title: '终端与Shell'
+title: 终端与Shell
 description: '使用管道和 grep 过滤训练日志，创建 tmux 持久会话，监控系统与 GPU 资源，通过 SSH/scp/rsync 传输文件'
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['终端', 'Shell', 'tmux', 'SSH', 'GPU监控', '命令行']
+difficulty: beginner
+tags:
+  - 终端
+  - Shell
+  - tmux
+  - SSH
+  - GPU监控
+  - 命令行
+related:
+  - 'ai-engineering/正则化'
+  - 'ai-engineering/支持向量机'
+  - 'ai-engineering/终端原生编码代理'
+  - 'ai-engineering/自托管服务引擎选择'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 终端与 Shell

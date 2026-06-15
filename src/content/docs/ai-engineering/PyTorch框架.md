@@ -1,12 +1,18 @@
 ---
 order: 18
-title: 'PyTorch框架'
+title: PyTorch框架
 module: 'ai-engineering'
-category: 'data'
-difficulty: 'intermediate'
-description: 'PyTorch核心概念：Tensor、Autograd、nn.Module、训练循环与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+category: data
+difficulty: intermediate
+description: PyTorch核心概念：Tensor、Autograd、nn.Module、训练循环与最佳实践。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'ai-engineering/集成学习'
+  - 'ai-engineering/预训练模型'
+  - 'ai-engineering/聚类算法'
+  - 'ai-engineering/TensorFlow框架'
+prerequisites: []
 ---
 
 ## 1. Tensor张量

@@ -1,12 +1,19 @@
 ---
 order: 54
-title: 'Fork工作流'
-module: 'github'
-category: 'GitHub'
-difficulty: 'intermediate'
+title: Fork工作流
+module: github
+category: GitHub
+difficulty: intermediate
 description: 'GitHub Fork工作流详解：开源贡献流程、同步策略与最佳实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - github/开源许可证选择
+  - github/依赖安全选项
+  - github/Projects看板
+  - github/知识库
+prerequisites:
+  - github/GitHub概述
 ---
 
 ## 1. Fork 工作流概述

@@ -1,12 +1,19 @@
 ---
 order: 103
-title: 'Pandas分组聚合'
+title: Pandas分组聚合
 module: 'data-analysis'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Pandas 分组聚合：groupby、agg、pivot_table、transform 详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'data-analysis/数据清洗详解'
+  - 'data-analysis/特征工程'
+  - 'data-analysis/Pandas时间序列'
+  - 'data-analysis/NumPy广播机制'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. groupby 基础

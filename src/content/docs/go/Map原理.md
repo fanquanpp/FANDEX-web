@@ -1,12 +1,19 @@
 ---
 order: 51
-title: 'Map原理'
-module: 'go'
-category: 'Go'
-difficulty: 'advanced'
+title: Map原理
+module: go
+category: Go
+difficulty: advanced
 description: 'Go map底层实现'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - go/Web开发与微服务
+  - go/切片原理
+  - go/Channel原理
+  - go/Goroutine调度
+prerequisites:
+  - go/概述与环境配置
 ---
 
 ## 1. 哈希表结构

@@ -1,14 +1,21 @@
 ---
 order: 200
 tags:
-  - 'java'
-difficulty: 'intermediate'
+  - java
+difficulty: intermediate
 title: 'Java Swing 图形界面'
-module: 'java'
+module: java
 category: 'Java Basics'
 description: 'Swing 组件体系、事件驱动与 GUI 应用开发。'
-author: 'fanquanpp'
-updated: 2026-05-03
+author: fanquanpp
+updated: '2026-05-03'
+related:
+  - java/网络编程
+  - java/SpringCloud微服务开发
+  - 'java/项目示例-图书管理系统'
+  - java/理论知识点
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Swing 概述 | Swing Overview

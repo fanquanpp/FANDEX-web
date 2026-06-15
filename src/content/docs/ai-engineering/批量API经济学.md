@@ -1,9 +1,21 @@
 ---
 title: '批量API — 50%折扣成为行业标准'
-description: '理解批量API的经济学和三车道工作负载分类法'
+description: 理解批量API的经济学和三车道工作负载分类法
 module: 'ai-engineering'
-difficulty: 'beginner'
-tags: ['批量API', '异步推理', '成本优化', 'OpenAI Batch', 'Anthropic Batch']
+difficulty: beginner
+tags:
+  - 批量API
+  - 异步推理
+  - 成本优化
+  - 'OpenAI Batch'
+  - 'Anthropic Batch'
+related:
+  - 'ai-engineering/模型路由与成本降低'
+  - 'ai-engineering/模型评估'
+  - 'ai-engineering/偏差方差与学习曲线'
+  - 'ai-engineering/频谱图与Mel特征'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # 批量API — 50%折扣成为行业标准

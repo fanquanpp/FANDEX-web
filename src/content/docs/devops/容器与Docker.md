@@ -1,12 +1,18 @@
 ---
 order: 3
 title: '容器与 Docker'
-module: 'devops'
-category: '运维'
-difficulty: 'intermediate'
+module: devops
+category: 运维
+difficulty: intermediate
 description: '容器原理、Docker 架构、镜像构建、多阶段构建、Docker Compose 与镜像优化。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - devops/概述与Linux基础
+  - devops/网络与安全
+  - devops/Kubernetes容器编排
+  - 'devops/CI-CD流水线'
+prerequisites: []
 ---
 
 ## 1. 容器原理

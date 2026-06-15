@@ -2,6 +2,13 @@
 title: 失败模式MAST与群体思维
 description: '2026 年的参考分类法是 MAST (Cemri 等人, NeurIPS 2025, arXiv:2503.13657)，源自 7 个最先进开源 MAS 的 1642 条执行轨迹，显示 41-86.7% 失败率。三个根类别：规格问题 (41.77%) — 角色模糊、任务定义不清；协调失败 (...'
 module: agent
+related:
+  - agent/生产运行时
+  - agent/生成式Agent与涌现模拟
+  - agent/思维树与LATS
+  - agent/提示注入防御
+prerequisites:
+  - agent/概述与架构
 ---
 
 # 失败模式 — MAST, 群体思维, 单一文化, 级联错误

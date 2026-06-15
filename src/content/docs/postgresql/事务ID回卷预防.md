@@ -1,12 +1,19 @@
 ---
 order: 54
-title: '事务ID回卷预防'
-module: 'postgresql'
-category: 'PostgreSQL'
-difficulty: 'advanced'
-description: 'PostgreSQL事务ID回卷预防：XID机制、FREEZE、autovacuum_freeze_max_age与紧急处理'
-author: 'fanquanpp'
-updated: 2026-06-14
+title: 事务ID回卷预防
+module: postgresql
+category: PostgreSQL
+difficulty: advanced
+description: PostgreSQL事务ID回卷预防：XID机制、FREEZE、autovacuum_freeze_max_age与紧急处理
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - postgresql/死锁检测与处理
+  - postgresql/VACUUM机制
+  - postgresql/索引类型
+  - postgresql/覆盖索引与部分索引
+prerequisites:
+  - postgresql/概述与安装配置
 ---
 
 ## 1. 事务ID机制

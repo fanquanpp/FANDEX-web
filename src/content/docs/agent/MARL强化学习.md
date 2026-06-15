@@ -1,7 +1,14 @@
 ---
-title: 多Agent强化学习MADDPG-QMIX-MAPPO
+title: '多Agent强化学习MADDPG-QMIX-MAPPO'
 description: '多 Agent 协调的强化学习遗产，在 2026 年仍然指导 LLM Agent 系统。MADDPG (Lowe 等人, NeurIPS 2017, arXiv:1706.02275) 引入了集中训练分散执行 (CTDE)：每个评论家在训练期间看到所有 Agent 的状态和动作；测试时只有局部...'
 module: agent
+related:
+  - agent/LLM路由层
+  - agent/MARL寮哄寲瀛︿範
+  - agent/MCP安全工具投毒
+  - agent/MCP安全OAuth2.1
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MARL — MADDPG, QMIX, MAPPO

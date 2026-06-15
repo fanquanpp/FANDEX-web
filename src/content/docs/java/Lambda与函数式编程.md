@@ -1,16 +1,23 @@
 ---
 order: 170
 tags:
-  - 'java'
-  - 'lambda'
-  - 'functional'
-difficulty: 'intermediate'
-title: 'Lambda与函数式编程'
-module: 'java'
+  - java
+  - lambda
+  - functional
+difficulty: intermediate
+title: Lambda与函数式编程
+module: java
 category: 'Java Basics'
 description: 'Java 8 Lambda表达式、函数式接口、方法引用与函数式编程范式详解。'
-author: 'fanquanpp'
-updated: 2026-06-13
+author: fanquanpp
+updated: '2026-06-13'
+related:
+  - java/多线程基础
+  - java/JVM内存模型
+  - java/流式API
+  - java/SpringBoot学习笔记
+prerequisites:
+  - java/概述与开发环境
 ---
 
 ## 1. Lambda 表达式基础

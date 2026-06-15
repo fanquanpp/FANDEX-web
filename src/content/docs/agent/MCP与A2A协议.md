@@ -1,12 +1,19 @@
 ---
 order: 91
 title: 'MCP 与 A2A 协议'
-module: 'agent'
+module: agent
 category: 'AI Agent'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'MCP 协议标准化 Agent 与工具交互、A2A 协议实现 Agent 间通信、上下文工程与工具调用格式。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - agent/实战项目
+  - agent/Agent核心模块详解
+  - agent/Agent安全与沙盒
+  - agent/ReAct模式
+prerequisites:
+  - agent/概述与架构
 ---
 
 ## 1. 协议层概述

@@ -1,12 +1,18 @@
 ---
 order: 102
 title: 'git-revert与reset对比'
-module: 'git'
-category: 'toolchain'
-difficulty: 'intermediate'
+module: git
+category: toolchain
+difficulty: intermediate
 description: 'git revert与git reset的深度对比：原理、适用场景与安全实践。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'git/Git-Flow与GitHub-Flow对比'
+  - git/交互式rebase
+  - 'git/Code-Review流程与最佳实践'
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. 核心原理

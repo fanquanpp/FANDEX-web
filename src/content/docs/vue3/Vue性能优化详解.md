@@ -1,12 +1,19 @@
 ---
 order: 108
-title: 'Vue性能优化详解'
-module: 'vue3'
+title: Vue性能优化详解
+module: vue3
 category: 'dev-lang'
-difficulty: 'advanced'
+difficulty: advanced
 description: 'Vue 3性能优化详解：虚拟滚动、shallowRef、冻结数据、v-memo。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - vue3/Pinia持久化插件
+  - 'vue3/Vue-Router导航守卫'
+  - vue3/性能优化
+  - vue3/高级组件特性
+prerequisites:
+  - vue3/语法速查
 ---
 
 ## 1. 响应式优化

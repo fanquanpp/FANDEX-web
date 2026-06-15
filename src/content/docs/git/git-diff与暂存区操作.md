@@ -1,12 +1,19 @@
 ---
 order: 54
 title: 'git-diff与暂存区操作'
-module: 'git'
+module: git
 category: 'Git Basics'
-difficulty: 'intermediate'
+difficulty: intermediate
 description: 'git diff与diff --staged的详细用法：差异比较、输出格式与实用技巧。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'git/SHA-1哈希完整性校验'
+  - git/三棵树
+  - 'git/git-restore与文件操作'
+  - 'git/git-log详解'
+prerequisites:
+  - git/语法速查
 ---
 
 ## 1. git diff 概述

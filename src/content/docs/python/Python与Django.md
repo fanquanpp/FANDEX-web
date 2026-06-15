@@ -1,12 +1,19 @@
 ---
 order: 59
-title: 'Python与Django'
-module: 'python'
-category: 'Python'
-difficulty: 'intermediate'
+title: Python与Django
+module: python
+category: Python
+difficulty: intermediate
 description: 'Django Web框架'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - python/数据类与Pydantic
+  - python/Python与FastAPI
+  - python/Python与SQLAlchemy
+  - python/控制流
+prerequisites:
+  - python/语法速查
 ---
 
 ## 1. Django 基础

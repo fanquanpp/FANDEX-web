@@ -1,9 +1,21 @@
 ---
 title: 'MCP基础 — 原语、生命周期、JSON-RPC基础'
 description: '掌握MCP的六个原语、三阶段生命周期和JSON-RPC 2.0线路格式，理解能力协商机制'
-module: 'agent'
-difficulty: 'intermediate'
-tags: ['MCP', '原语', '生命周期', 'JSON-RPC', '能力协商']
+module: agent
+difficulty: intermediate
+tags:
+  - MCP
+  - 原语
+  - 生命周期
+  - 'JSON-RPC'
+  - 能力协商
+related:
+  - agent/MCP传输
+  - agent/MCP根目录与诱导
+  - agent/MCP生产认证
+  - agent/MCP网关与注册表
+prerequisites:
+  - agent/概述与架构
 ---
 
 # MCP基础 — 原语、生命周期、JSON-RPC基础

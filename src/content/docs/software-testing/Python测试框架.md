@@ -1,12 +1,19 @@
 ---
 order: 56
-title: 'pytest'
+title: pytest
 module: 'software-testing'
 category: 'eng-infra'
-difficulty: 'intermediate'
-description: 'pytest单元测试框架：fixture、参数化、插件、配置与最佳实践详解。'
-author: 'fanquanpp'
-updated: 2026-06-14
+difficulty: intermediate
+description: pytest单元测试框架：fixture、参数化、插件、配置与最佳实践详解。
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'software-testing/边界值分析'
+  - 'software-testing/Web自动化测试'
+  - 'software-testing/Java单元测试'
+  - 'software-testing/API自动化测试'
+prerequisites:
+  - 'software-testing/测试基础与方法'
 ---
 
 ## 1. pytest 基础

@@ -2,8 +2,21 @@
 title: 'AI的SRE — 多Agent事件响应、Runbook与预测检测'
 description: '理解2026年AI SRE的多Agent编排架构和预测检测前沿'
 module: 'ai-engineering'
-difficulty: 'intermediate'
-tags: ['SRE', '事件响应', '多Agent', 'Runbook', '预测检测', '自动修复']
+difficulty: intermediate
+tags:
+  - SRE
+  - 事件响应
+  - 多Agent
+  - Runbook
+  - 预测检测
+  - 自动修复
+related:
+  - 'ai-engineering/自托管服务引擎选择'
+  - 'ai-engineering/自主研究代理AI-Scientist级'
+  - 'ai-engineering/AI网关比较'
+  - 'ai-engineering/API与密钥'
+prerequisites:
+  - 'ai-engineering/机器学习概述'
 ---
 
 # AI的SRE — 多Agent事件响应、Runbook与预测检测

@@ -1,14 +1,21 @@
 ---
 order: 50
 tags:
-  - 'css'
+  - css
   - 'css-layout'
-difficulty: 'intermediate'
+difficulty: intermediate
 title: 'CSS3 Flexbox 弹性布局'
-module: 'css'
+module: css
 category: 'CSS Basics'
 description: 'flex 容器与项目属性、对齐方式与常见布局模式。'
-author: 'Anonymous'
+author: Anonymous
+related:
+  - css/选择器系统
+  - css/传统布局技术
+  - css/伪类与伪元素
+  - css/优先级计算
+prerequisites:
+  - css/概述与基本语法
 ---
 
 ## 1. 核心概念

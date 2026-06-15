@@ -1,12 +1,19 @@
 ---
 order: 104
-title: 'Pandas时间序列'
+title: Pandas时间序列
 module: 'data-analysis'
-category: 'data'
-difficulty: 'intermediate'
+category: data
+difficulty: intermediate
 description: 'Pandas 时间序列：resample、rolling、shift、diff 与时区处理。'
-author: 'fanquanpp'
-updated: 2026-06-14
+author: fanquanpp
+updated: '2026-06-14'
+related:
+  - 'data-analysis/特征工程'
+  - 'data-analysis/Pandas分组聚合'
+  - 'data-analysis/NumPy广播机制'
+  - 'data-analysis/Matplotlib子图布局'
+prerequisites:
+  - 'data-analysis/数据分析概述'
 ---
 
 ## 1. 时间索引

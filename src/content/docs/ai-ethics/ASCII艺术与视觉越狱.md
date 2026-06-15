@@ -1,9 +1,22 @@
 ---
-title: 'ASCII艺术与视觉越狱'
+title: ASCII艺术与视觉越狱
 description: 'ArtPrompt (ACL 2024)将安全相关token替换为ASCII艺术渲染，绕过PPL、释义和重token化防御。GPT-4、Gemini、Claude、Llama-2均无法鲁棒识别ASCII艺术token。StructuralSleight推广至任意罕见文本编码结构(UTES)攻击族。'
 module: 'ai-ethics'
-difficulty: 'advanced'
-tags: ['ArtPrompt', 'ASCII艺术越狱', 'UTES', 'ViTC', '编码攻击', 'StructuralSleight']
+difficulty: advanced
+tags:
+  - ArtPrompt
+  - ASCII艺术越狱
+  - UTES
+  - ViTC
+  - 编码攻击
+  - StructuralSleight
+related:
+  - 'ai-ethics/指令遵循作为对齐信号'
+  - 'ai-ethics/AI控制与颠覆下安全'
+  - 'ai-ethics/Constitutional-AI与RLAIF'
+  - 'ai-ethics/EchoLeak与AI的CVE时代'
+prerequisites:
+  - 'ai-ethics/谄媚作为RLHF放大器'
 ---
 
 ## 问题定义
