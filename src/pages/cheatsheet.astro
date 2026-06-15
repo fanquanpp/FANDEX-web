@@ -1,0 +1,123 @@
+---
+/**
+ * 语法速查独立页面
+ * 汇总所有模块的速查表，通过标签页切换
+ * 使用 HomeLayout 布局（无侧边栏），提供沉浸式查阅体验
+ */
+import HomeLayout from '@/components/HomeLayout.astro'
+import SEO from '@/components/SEO.astro'
+import CheatSheetPage from '@/islands/CheatSheetPage.vue'
+
+// 导入所有速查表 JSON 数据
+import gitData from '@/data/cheatsheets/git.json'
+import javascriptData from '@/data/cheatsheets/javascript.json'
+import typescriptData from '@/data/cheatsheets/typescript.json'
+import pythonData from '@/data/cheatsheets/python.json'
+import mysqlData from '@/data/cheatsheets/mysql.json'
+import postgresqlData from '@/data/cheatsheets/postgresql.json'
+import redisData from '@/data/cheatsheets/redis.json'
+import vue3Data from '@/data/cheatsheets/vue3.json'
+import linuxData from '@/data/cheatsheets/linux.json'
+
+// 模块分类颜色（与首页一致）
+const C = {
+  toolchain: '#4f5bd5',
+  'dev-lang': '#d63031',
+  database: '#00b894',
+  'comp-sci': '#8854d0',
+  'eng-infra': '#e05a2b',
+  data: '#f9a825',
+}
+
+// 所有速查数据，键为模块标识
+const allData = {
+  git: gitData,
+  javascript: javascriptData,
+  typescript: typescriptData,
+  python: pythonData,
+  mysql: mysqlData,
+  postgresql: postgresqlData,
+  redis: redisData,
+  vue3: vue3Data,
+  linux: linuxData,
+}
+
+// 模块元信息（标签名、图标、颜色、搜索占位符）
+const moduleInfo = [
+  { key: 'git', label: 'Git', icon: 'Git', color: C.toolchain, placeholder: '例如：clone、commit、branch...' },
+  { key: 'javascript', label: 'JavaScript', icon: 'JS', color: C['dev-lang'], placeholder: '例如：Array、Promise、async...' },
+  { key: 'typescript', label: 'TypeScript', icon: 'TS', color: C['dev-lang'], placeholder: '例如：interface、type、generic...' },
+  { key: 'python', label: 'Python', icon: 'Py', color: C['dev-lang'], placeholder: '例如：list、dict、class...' },
+  { key: 'mysql', label: 'MySQL', icon: 'My', color: C.database, placeholder: '例如：SELECT、JOIN、INDEX...' },
+  { key: 'postgresql', label: 'PostgreSQL', icon: 'PG', color: C.database, placeholder: '例如：SELECT、JSONB、CTE...' },
+  { key: 'redis', label: 'Redis', icon: 'Rd', color: C.database, placeholder: '例如：SET、GET、HSET...' },
+  { key: 'vue3', label: 'Vue 3', icon: 'V3', color: C['dev-lang'], placeholder: '例如：ref、computed、watch...' },
+  { key: 'linux', label: 'Linux', icon: 'Lx', color: C['eng-infra'], placeholder: '例如：ls、grep、chmod...' },
+]
+---
+
+<HomeLayout title="语法速查">
+  <SEO slot="head" title="语法速查 - FANDEX" description="常用命令与语法速查表，覆盖 Git、JavaScript、TypeScript、Python、MySQL、PostgreSQL、Redis、Vue 3、Linux 等模块" type="website" />
+
+  <div class="cheatsheet-page-wrapper">
+    <!-- 页面标题区域 -->
+    <header class="page-header">
+      <h1 class="page-title">语法速查</h1>
+      <p class="page-desc">常用命令与语法速查表，支持搜索过滤、代码复制、分组折叠</p>
+    </header>
+
+    <!-- 速查表组件：模块标签页 + 内容渲染 -->
+    <CheatSheetPage
+      所有数据={allData}
+      模块信息={moduleInfo}
+      client:load
+    />
+  </div>
+</HomeLayout>
+
+<style>
+/* 页面容器 */
+.cheatsheet-page-wrapper {
+  width: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100dvh - var(--nav-height));
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg) var(--spacing-2xl);
+  max-width: 860px;
+}
+
+/* 页面标题区域 */
+.page-header {
+  text-align: center;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 1.6em;
+  font-weight: 800;
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+}
+
+.page-desc {
+  font-size: 0.85em;
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .cheatsheet-page-wrapper {
+    padding: 0 var(--spacing-md) var(--spacing-2xl);
+  }
+
+  .page-title {
+    font-size: 1.3em;
+  }
+}
+</style>
