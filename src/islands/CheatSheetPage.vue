@@ -1,16 +1,11 @@
 <!--
   速查表独立页面组件
   根据 URL hash 切换显示不同模块的语法速查表
-  模块导航由页面侧边栏提供，本组件仅负责内容渲染
+  模块导航由页面侧边栏提供，标题由页面层提供
+  本组件仅负责速查内容渲染
 -->
 <template>
   <div class="cheatsheet-page">
-    <!-- 当前模块标题 -->
-    <header class="page-module-header" v-if="当前数据">
-      <h1 class="page-module-title">{{ 当前模块名 }}</h1>
-      <p class="page-module-desc">常用命令与语法速查，支持搜索、复制、折叠</p>
-    </header>
-
     <!-- 速查表内容区 -->
     <div class="cheatsheet-content" v-if="当前数据" :key="当前模块">
       <CheatSheet
@@ -30,7 +25,7 @@
 <script setup lang="ts">
 /**
  * 速查表独立页面组件
- * 根据 URL hash 切换模块，侧边栏导航由页面层提供
+ * 根据 URL hash 切换模块，侧边栏导航和页面标题由页面层提供
  * 监听 hashchange 事件实现模块切换
  */
 import { ref, computed, onMounted, onUnmounted } from 'vue';
@@ -116,29 +111,6 @@ onUnmounted(() => {
 .cheatsheet-page {
   max-width: 100%;
   margin: 0 auto;
-}
-
-/* 模块标题区域 */
-.page-module-header {
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--color-border-light);
-}
-
-.page-module-title {
-  font-family: var(--font-display);
-  font-size: 1.4em;
-  font-weight: 800;
-  margin: 0 0 var(--spacing-xs);
-  color: var(--color-text);
-  letter-spacing: 0.03em;
-}
-
-.page-module-desc {
-  font-size: 0.85em;
-  color: var(--color-text-secondary);
-  margin: 0;
-  font-weight: 400;
 }
 
 /* 速查表内容区：切换时淡入动画 */

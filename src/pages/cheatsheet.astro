@@ -1,11 +1,12 @@
 ---
 /**
  * 语法速查独立页面
- * 左侧模块导航侧边栏 + 右侧速查内容区
- * 使用 Layout 布局，与文档页风格一致
+ * 左侧模块导航侧边栏 + 右侧文档风格内容区
+ * 布局与文档页完全一致：面包屑、doc-page 容器、prose 正文区
  */
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
+import Breadcrumb from '@/components/Breadcrumb.astro'
 import CheatSheetPage from '@/islands/CheatSheetPage.vue'
 
 // 导入所有速查表 JSON 数据
@@ -56,6 +57,12 @@ const moduleInfo = [
 ]
 
 const base = import.meta.env.BASE_URL
+
+// 面包屑导航数据
+const breadcrumb = [
+  { label: '首页', href: `${base}` },
+  { label: '语法速查' },
+]
 ---
 
 <Layout title="语法速查">
@@ -100,13 +107,29 @@ const base = import.meta.env.BASE_URL
     </nav>
   </aside>
 
-  <!-- 右侧速查内容区 -->
-  <div class="cheatsheet-content-wrapper">
-    <CheatSheetPage
-      所有数据={allData}
-      模块信息={moduleInfo}
-      client:load
-    />
+  <!-- 右侧内容区：与文档页一致的 doc-page 布局 -->
+  <div class="doc-page">
+    <!-- 面包屑导航 -->
+    <Breadcrumb items={breadcrumb} hasSidebar />
+
+    <!-- 文章主体：使用 prose 样式 -->
+    <article class="prose" style="--module-color: var(--color-primary)">
+      <!-- 标题行：与文档页一致 -->
+      <div class="doc-title-row">
+        <h1 class="doc-title">语法速查</h1>
+      </div>
+      <!-- 文档头部元信息 -->
+      <header class="doc-header">
+        <p class="doc-description">常用命令与语法速查表，覆盖 9 个模块，支持搜索过滤、代码复制、分组折叠</p>
+      </header>
+
+      <!-- 速查表组件 -->
+      <CheatSheetPage
+        所有数据={allData}
+        模块信息={moduleInfo}
+        client:load
+      />
+    </article>
   </div>
 </Layout>
 
@@ -206,26 +229,10 @@ const base = import.meta.env.BASE_URL
   background: var(--color-bg-hover);
   font-weight: 600;
 }
-
-/* 右侧内容区 */
-.cheatsheet-content-wrapper {
-  padding: var(--spacing-lg) var(--spacing-md);
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-  .cheatsheet-content-wrapper {
-    padding: var(--spacing-md);
-  }
-}
 </style>
 
 <script>
   // ========== 速查页侧边栏模块导航 ==========
-  const sidebar = document.getElementById('cheatsheet-sidebar')
-
   /** 根据当前 hash 更新侧边栏激活状态 */
   function updateActiveModule() {
     const hash = window.location.hash.slice(1)
@@ -243,7 +250,6 @@ const base = import.meta.env.BASE_URL
   // 点击模块链接时更新激活状态
   document.querySelectorAll('.cheatsheet-module-link').forEach(link => {
     link.addEventListener('click', () => {
-      // 延迟一帧让 hash 更新完成
       requestAnimationFrame(updateActiveModule)
     })
   })
