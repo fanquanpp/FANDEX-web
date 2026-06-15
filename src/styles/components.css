@@ -76,27 +76,6 @@
   opacity: 0.75;
   margin-left: 1px;
 }
-/* 速查表导航链接 */
-.nav-cheatsheet-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-family: var(--font-display);
-  transition: color var(--transition-fast);
-}
-.nav-cheatsheet-link:hover {
-  color: var(--color-text);
-}
-
-@media (max-width: 768px) {
-  .nav-cheatsheet-text {
-    display: none;
-  }
-}
-
 .nav-right {
   display: flex;
   align-items: center;
