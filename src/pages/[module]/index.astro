@@ -44,7 +44,7 @@ const breadcrumb = [
     </div>
 
     <ul class="doc-list">
-      {sortedDocs.map(doc => (
+      {sortedDocs.map((doc, idx) => (
         <li class="doc-list-item">
           <a href={`${import.meta.env.BASE_URL}${module}/${slug(doc.id)}/`} class="doc-list-link">
             <span class="doc-list-icon" style={`background:${categoryColors[getPrimaryCategory(meta)]}`}>
@@ -55,10 +55,11 @@ const breadcrumb = [
                 <line x1="16" y1="17" x2="8" y2="17"></line>
               </svg>
             </span>
-            <span class="doc-list-title">{doc.data.title}</span>
+            <span class="doc-list-seq">{String(idx + 1).padStart(3, '0')}</span>
             <span class={`doc-list-difficulty diff-${doc.data.difficulty || 'intermediate'}`}>
               {doc.data.difficulty === 'beginner' ? '入门' : doc.data.difficulty === 'advanced' ? '进阶' : '中级'}
             </span>
+            <span class="doc-list-title">{doc.data.title}</span>
             {doc.data.description && (
               <span class="doc-list-desc">{doc.data.description}</span>
             )}
@@ -139,6 +140,14 @@ const breadcrumb = [
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.doc-list-seq {
+  font-family: var(--font-display);
+  font-size: 0.72em;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  min-width: 2em;
 }
 
 .doc-list-title {

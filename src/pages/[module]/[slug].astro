@@ -6,7 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb.astro'
 import DocNav from '@/components/DocNav.astro'
 import ProgressToggle from '@/islands/ProgressToggle.vue'
 import QuizBlock from '@/islands/QuizBlock.vue'
-import { getModule, modulePrerequisites, docSlug } from '@/lib/modules'
+import { getModule, modulePrerequisites, docSlug, categoryColors, getPrimaryCategory } from '@/lib/modules'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
@@ -78,6 +78,7 @@ const breadcrumb = [
     <article class="prose"
       data-pagefind-body
       data-pagefind-filter={`difficulty:${doc.data.difficulty || 'intermediate'}, module:${module}${doc.data.category ? ', category:' + doc.data.category : ''}`}
+      style={`--module-color:${categoryColors[getPrimaryCategory(meta)]}`}
     >
       <div class="doc-title-row">
         <h1 class="doc-title">{doc.data.title}</h1>
