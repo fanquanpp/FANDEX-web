@@ -19,6 +19,8 @@ const { mod, color } = Astro.props as { mod: { id: string; title: string; icon: 
   text-decoration: none;
   background: var(--color-bg);
   transition: transform var(--transition-fast), background var(--transition-fast);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .module-card:hover {
@@ -49,6 +51,9 @@ const { mod, color } = Astro.props as { mod: { id: string; title: string; icon: 
   font-size: 0.9rem;
   color: var(--color-text);
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-desc {
@@ -56,6 +61,11 @@ const { mod, color } = Astro.props as { mod: { id: string; title: string; icon: 
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 @media (max-width: 768px) {

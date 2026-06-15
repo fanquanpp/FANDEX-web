@@ -228,10 +228,10 @@ const hasHeadings = visibleHeadings.length > 0
 .sidebar-all-modules {
   display: none;
   padding: var(--spacing-md) 0;
-  flex-shrink: 0;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  max-height: 50vh;
 }
 
 .sidebar-component.is-modules-view .sidebar-nav {
