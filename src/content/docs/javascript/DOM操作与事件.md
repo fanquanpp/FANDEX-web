@@ -883,5 +883,5 @@ el.innerHTML = `<p>${escapeHtml(userInput)}</p>`;
 
 ### 更新日志 (Changelog)
 
-- 2026-05-27: v4.0.0 大幅扩充——新增节点类型与关系详解、属性操作(dataset/getAttribute)、样式操作(classList/getComputedStyle/getBoundingClientRect)、自定义事件、事件节流防抖、虚拟DOM概念、passive监听器、XSS防护与事件泄漏
+- 2026-05-27: v1.0.0 大幅扩充——新增节点类型与关系详解、属性操作(dataset/getAttribute)、样式操作(classList/getComputedStyle/getBoundingClientRect)、自定义事件、事件节流防抖、虚拟DOM概念、passive监听器、XSS防护与事件泄漏
 - 2026-04-06: 新增「DOM 操作与事件」知识点，补充事件委托、性能与安全实践
