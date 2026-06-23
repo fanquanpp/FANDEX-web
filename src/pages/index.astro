@@ -76,10 +76,6 @@ allDocs.forEach(doc => {
 
     <!-- FANDEX 生态区域：三项目联动入口 -->
     <section class="ecosystem-section">
-      <div class="ecosystem-header">
-        <span class="ecosystem-tag">FANDEX 生态</span>
-        <p class="ecosystem-desc">同一知识体系，三种使用形态。内容基准统一以本仓库为准，各仓库代码独立、内容关联</p>
-      </div>
       <div class="ecosystem-grid">
         <!-- FANDEX-Web 当前站点 -->
         <article class="eco-card eco-card-current">
@@ -189,7 +185,7 @@ allDocs.forEach(doc => {
         </a>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/fanquanpp/FANDEX-web#开源共享与免责声明" target="_blank" rel="noopener noreferrer">免责声明</a>
+        <a href="https://github.com/fanquanpp/FANDEX-web#免责声明" target="_blank" rel="noopener noreferrer">免责声明</a>
         <span class="footer-divider">|</span>
         <a href="https://github.com/fanquanpp/FANDEX-web" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
@@ -322,33 +318,9 @@ allDocs.forEach(doc => {
 
 /* ========== FANDEX 生态区域 ========== */
 .ecosystem-section {
-  margin-bottom: var(--spacing-xl);
-  padding: var(--spacing-lg) 0;
-  border-bottom: 1px solid var(--color-border-light);
-}
-
-.ecosystem-header {
-  text-align: center;
   margin-bottom: var(--spacing-lg);
-}
-
-.ecosystem-tag {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  padding: 3px 12px;
-  margin-bottom: var(--spacing-sm);
-}
-
-.ecosystem-desc {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  margin: 0;
-  font-weight: 400;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 /* 生态卡片网格 */
@@ -365,8 +337,8 @@ allDocs.forEach(doc => {
 .eco-card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-md);
+  gap: 4px;
+  padding: var(--spacing-sm) var(--spacing-md);
   background: var(--color-bg-card);
   transition: background var(--transition-fast);
 }
@@ -378,23 +350,23 @@ allDocs.forEach(doc => {
 /* 当前站点卡片高亮 */
 .eco-card-current {
   background: var(--color-bg-card);
-  border-left: 3px solid var(--color-primary);
+  border-left: 2px solid var(--color-primary);
 }
 
 .eco-card-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: 4px;
+  gap: var(--spacing-xs);
+  margin-bottom: 2px;
 }
 
 .eco-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
   color: var(--color-text-secondary);
   background: var(--color-bg-hover, rgba(128,128,128,0.08));
 }
@@ -406,13 +378,13 @@ allDocs.forEach(doc => {
 .eco-card-title-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .eco-card-title {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
@@ -420,12 +392,12 @@ allDocs.forEach(doc => {
 
 .eco-card-badge {
   font-family: var(--font-display);
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
 }
 
@@ -436,26 +408,26 @@ allDocs.forEach(doc => {
 
 .eco-card-positioning {
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--color-text-secondary);
   margin: 0;
 }
 
 .eco-card-detail {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--color-text-tertiary);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
   flex: 1;
 }
 
 .eco-card-tech {
   font-family: var(--font-display);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   color: var(--color-text-tertiary);
   opacity: 0.7;
-  padding: 4px 0;
+  padding: 2px 0;
   border-top: 1px dashed var(--color-border-light);
 }
 
@@ -463,17 +435,17 @@ allDocs.forEach(doc => {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--color-text-secondary);
   text-decoration: none;
-  padding: 6px 10px;
+  padding: 4px 8px;
   border: 1px solid var(--color-border);
   border-radius: 4px;
   transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .eco-card-link:hover {
@@ -685,11 +657,11 @@ allDocs.forEach(doc => {
   }
 
   .eco-card {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
 
   .eco-card-detail {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
   /* 页脚生态链接移动端：换行显示 */
