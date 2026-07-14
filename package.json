@@ -13,6 +13,9 @@
     "qa": "node scripts/qa-check.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "type-check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint:docs": "remark src/content/docs --ext .md,.mdx",
     "lint:docs:fix": "remark src/content/docs --ext .md,.mdx --output"
   },
@@ -33,11 +36,13 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "glob": "^13.0.6",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
     "pagefind": "^1.5.2",
     "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
     "remark-cli": "^12.0.1",
     "remark-preset-lint-consistent": "^6.0.1",
     "typescript": "^5.7.0",
@@ -46,6 +51,10 @@
   "lint-staged": {
     "*.{astro,ts,js,mjs,css,json,md}": [
       "prettier --write"
+    ],
+    "*.{ts,astro}": [
+      "bash -c 'tsc --noEmit'",
+      "bash -c 'astro check'"
     ]
   }
 }

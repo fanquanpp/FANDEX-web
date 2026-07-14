@@ -8,6 +8,7 @@ export default defineConfig({
     },
   },
   test: {
-    include: ['src/**/*.test.ts'],
+    // 包含 src 目录下的 TypeScript 测试与 scripts 目录下的构建脚本测试
+    include: ['src/**/*.test.ts', 'scripts/**/*.test.mjs'],
   },
 });

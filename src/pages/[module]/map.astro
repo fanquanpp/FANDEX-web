@@ -4,10 +4,12 @@ import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
-import { getCollection } from 'astro:content'
+// 通过 doc-service 获取文档数据，UI 层禁止直接调用 getCollection
+import { getAllDocs, getDocsByModule, getDocBySlug, docSlug } from '@/services'
 
 export async function getStaticPaths() {
-  const docs = await getCollection('docs')
+  // 通过 doc-service 获取全部文档，提取模块集合生成静态路径
+  const docs = await getAllDocs()
   const moduleSet = new Set<string>()
   docs.forEach(d => {
     if (d.data.module) moduleSet.add(d.data.module)
@@ -22,12 +24,11 @@ if (!meta) {
   return Astro.redirect(`${import.meta.env.BASE_URL}404`)
 }
 
-const overviewDoc = await getCollection('docs', ({ data, id }) =>
-  data.module === module && id.endsWith('/overview.md')
-).then(docs => docs[0] || null)
+// 通过 doc-service 获取模块的 overview 文档（slug 为 'overview'）
+const overviewDoc = await getDocBySlug(module, 'overview')
 
-const allDocs = await getCollection('docs', ({ data }) => data.module === module)
-const sortedDocs = allDocs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+// 通过 doc-service 获取模块文档列表（已按 order 升序排序）
+const sortedDocs = await getDocsByModule(module)
 
 let mermaidCode: string | null = null
 if (overviewDoc) {
@@ -81,7 +82,7 @@ const breadcrumb = [
       <h2 class="map-section-title">文档索引</h2>
       <div class="map-doc-grid">
         {sortedDocs.map(doc => {
-          const slug = (doc.id.split('/').pop() || doc.id).replace(/\.md$/, '')
+          const slug = docSlug(doc.id)
           const href = `${import.meta.env.BASE_URL}${module}/${slug}/`
           return (
             <a href={href} class="map-doc-card" style={`--doc-color:${categoryColors[getPrimaryCategory(meta)]}`}>
@@ -258,56 +259,18 @@ const breadcrumb = [
 </style>
 
 <script>
-  function initMapMermaid() {
-    const mermaidPres = document.querySelectorAll('pre.mermaid')
+  // 通过 external-loader 与 mermaid-renderer 统一加载与渲染 Mermaid 图表
+  async function initMapMermaid() {
+    const mermaidPres = document.querySelectorAll<HTMLElement>('pre.mermaid')
     if (mermaidPres.length === 0) return
-
-    if ((window as any).mermaid) {
-      renderMapMermaid(mermaidPres)
-      return
-    }
-
-    // Load DOMPurify first, then Mermaid
-    const loadPurify = new Promise<void>((resolve) => {
-      if ((window as any).DOMPurify) { resolve(); return }
-      const p = document.createElement('script')
-      p.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
-      p.onload = () => resolve()
-      p.onerror = () => resolve()
-      document.head.appendChild(p)
-    })
-    const script = document.createElement('script')
-    script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
-    script.onload = () => {
-      (window as any).mermaid.initialize({
-        startOnLoad: false,
-        theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
-        securityLevel: 'loose',
-      })
-      loadPurify.then(() => renderMapMermaid(mermaidPres))
-    }
-    document.head.appendChild(script)
-  }
-
-  async function renderMapMermaid(mermaidPres: NodeListOf<Element>) {
-    for (let i = 0; i < mermaidPres.length; i++) {
-      const pre = mermaidPres[i] as HTMLElement
-      const code = pre.textContent || ''
-      const id = `map-mermaid-${Date.now()}-${i}`
-      try {
-        const { svg } = await (window as any).mermaid.render(id, code)
-        const container = document.createElement('div')
-        container.className = 'mermaid-output'
-        const purify = (window as any).DOMPurify
-        container.innerHTML = purify ? purify.sanitize(svg) : svg
-        pre.replaceWith(container)
-      } catch {
-        const errDiv = document.createElement('div')
-        errDiv.className = 'mermaid-error'
-        errDiv.textContent = 'Mermaid 渲染失败'
-        pre.replaceWith(errDiv)
+    try {
+      const { initMermaid, renderMermaid } = await import('@/lib/mermaid-renderer')
+      await initMermaid()
+      for (let i = 0; i < mermaidPres.length; i++) {
+        const pre = mermaidPres[i]
+        await renderMermaid(pre, i)
       }
-    }
+    } catch { /* Mermaid 渲染失败时静默处理 */ }
   }
 
   initMapMermaid()

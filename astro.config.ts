@@ -34,12 +34,17 @@ export default defineConfig({
   build: {
     // 样式内联策略：auto 由 Astro 自动决定（小文件内联，大文件外部引用）
     inlineStylesheets: 'auto',
-    rollupOptions: {
-      output: {
-        // 静态资源文件名格式：包含 hash 以实现长期缓存
-        assetFileNames: 'assets/[name].[hash][extname]',
-        chunkFileNames: 'assets/[name].[hash].js',
-        entryFileNames: 'assets/[name].[hash].js',
+  },
+  // Vite 构建选项：控制 Rollup 输出文件名格式
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          // 静态资源文件名格式：包含 hash 以实现长期缓存
+          assetFileNames: 'assets/[name].[hash][extname]',
+          chunkFileNames: 'assets/[name].[hash].js',
+          entryFileNames: 'assets/[name].[hash].js',
+        },
       },
     },
   },

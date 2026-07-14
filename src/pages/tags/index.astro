@@ -1,20 +1,17 @@
 ---
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
-import { getCollection } from 'astro:content'
-import { modules, categoryColors, getPrimaryCategory } from '@/lib/modules'
+// 通过 tag-service 和 module-service 获取数据，UI 层禁止直接调用 getCollection
+import { getAllTags, getTagStats, getAllModules } from '@/services'
+import { categoryColors, getPrimaryCategory } from '@/lib/modules'
 
-const allDocs = await getCollection('docs')
-const tagMap = new Map<string, number>()
+// 通过 tag-service 获取所有标签（按文档数量降序排序）和标签统计信息
+const allTags = await getAllTags()
+const tagStats = await getTagStats()
 
-for (const doc of allDocs) {
-  for (const tag of doc.data.tags || []) {
-    tagMap.set(tag, (tagMap.get(tag) || 0) + 1)
-  }
-}
-
-const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1] - a[1])
-const maxCount = sortedTags.length > 0 ? sortedTags[0][1] : 1
+// 将 TagWithCount[] 转为 [tag, count] 元组数组，保持原有模板兼容
+const sortedTags = allTags.map(t => [t.tag, t.count] as [string, number])
+const maxCount = tagStats.maxCount || 1
 const hotThreshold = Math.max(2, Math.ceil(maxCount * 0.6))
 const normalThreshold = Math.max(1, Math.ceil(maxCount * 0.25))
 const hotTags = sortedTags.filter(([, c]) => c >= hotThreshold)
@@ -22,9 +19,11 @@ const normalTags = sortedTags.filter(([, c]) => c >= normalThreshold && c < hotT
 const otherTags = sortedTags.filter(([, c]) => c < normalThreshold)
 const base = import.meta.env.BASE_URL
 
-const moduleList = modules.map((m) => ({ id: m.id, title: m.title, color: categoryColors[getPrimaryCategory(m)] }))
+// 通过 module-service 获取全部模块，构建模块列表和映射表（供客户端搜索使用）
+const allModules = getAllModules()
+const moduleList = allModules.map((m) => ({ id: m.id, title: m.title, color: categoryColors[getPrimaryCategory(m)] }))
 const moduleMapJson = JSON.stringify(
-  Object.fromEntries(modules.map((m) => [m.id, { title: m.title, color: categoryColors[getPrimaryCategory(m)] }]))
+  Object.fromEntries(allModules.map((m) => [m.id, { title: m.title, color: categoryColors[getPrimaryCategory(m)] }]))
 )
 ---
 
@@ -40,8 +39,8 @@ const moduleMapJson = JSON.stringify(
           返回主页
         </a>
       </div>
-      <p class="tags-subtitle">跨模块知识检索 | {sortedTags.length} 个标签 | {allDocs.length} 篇文档</p>
-      <div class="search-section" id="search-section" data-modules={moduleMapJson}>
+      <p class="tags-subtitle">跨模块知识检索 | {sortedTags.length} 个标签 | {tagStats.totalDocs} 篇文档</p>
+      <div class="search-section" id="search-section" data-modules={moduleMapJson} data-fallback-color={categoryColors.toolchain}>
         <div class="search-controls">
           <input
             id="search-input"
@@ -483,23 +482,41 @@ const moduleMapJson = JSON.stringify(
 </style>
 
 <script>
-  // Load DOMPurify for safe innerHTML
-  if (!(window as any).DOMPurify) {
-    const s = document.createElement('script')
-    s.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
-    s.async = true
-    document.head.appendChild(s)
+  // 类型导入：Fuse 类作为类型注解使用，编译期擦除不影响运行时
+  import type Fuse from 'fuse.js';
+  // 通过 external-loader 异步加载 DOMPurify，避免重复 CDN 加载逻辑
+  import('@/lib/external-loader').then(({ loadDOMPurify }) => {
+    loadDOMPurify().catch(() => { /* DOMPurify 加载失败时回退到 escapeHtml 处理 */ })
+  })
+
+  /** 搜索索引条目类型（与 search-worker.ts 中的 SearchEntry 保持一致） */
+  interface SearchEntry {
+    slug: string;
+    title: string;
+    description?: string;
+    tags?: string[];
+    module: string;
+    difficulty?: string;
+    updated?: string;
   }
 
+  /** Fuse.js 搜索结果条目（含评分） */
+  interface ScoredEntry extends SearchEntry {
+    score: number;
+  }
+
+  const searchSection = document.getElementById('search-section')!;
   const MODULE_MAP: Record<string, { title: string; color: string }> = JSON.parse(
-    document.getElementById('search-section')!.dataset.modules || '{}'
+    searchSection.dataset.modules || '{}'
   );
+  /** 回退颜色：从 data 属性读取，避免在客户端脚本中引用服务端变量 */
+  const FALLBACK_COLOR = searchSection.dataset.fallbackColor || '#3b82f6';
 
   (() => {
-    let index: any[] | null = null;
+    let index: SearchEntry[] | null = null;
     let worker: Worker | null = null;
     let useWorker = false;
-    let fuse: any = null;
+    let fuse: Fuse<SearchEntry> | null = null;
 
     const input = document.getElementById('search-input') as HTMLInputElement;
     const moduleSelect = document.getElementById('filter-module') as HTMLSelectElement;
@@ -527,7 +544,7 @@ const moduleMapJson = JSON.stringify(
       if (index) return;
       try {
         const res = await fetch(`${base}data/search-index.json`);
-        index = await res.json();
+        index = await res.json() as SearchEntry[];
       } catch {
         statusEl.textContent = '搜索索引加载失败，请先运行 npm run build';
         index = [];
@@ -540,19 +557,19 @@ const moduleMapJson = JSON.stringify(
       if (!index) return;
       try {
         const FuseModule = await import('fuse.js');
-        const FuseClass = FuseModule.default || FuseModule;
+        const FuseClass: typeof Fuse = FuseModule.default || FuseModule;
 
         try {
           worker = new Worker(
             new URL('@/workers/search-worker.ts', import.meta.url),
             { type: 'module' }
           );
-          worker.onmessage = (e) => {
+          worker.onmessage = (e: MessageEvent) => {
             if (e.data.type === 'ready') {
               useWorker = true;
             }
             if (e.data.type === 'results') {
-              renderResults(e.data.payload.results, e.data.payload.query);
+              renderResults(e.data.payload.results as ScoredEntry[], e.data.payload.query);
             }
           };
           worker.onerror = () => {
@@ -575,7 +592,8 @@ const moduleMapJson = JSON.stringify(
       }
     }
 
-    function fallbackToFuse(FuseClass: any) {
+    function fallbackToFuse(FuseClass: typeof Fuse) {
+      if (!index) return;
       fuse = new FuseClass(index, {
         keys: [
           { name: 'title', weight: 0.4 },
@@ -614,9 +632,9 @@ const moduleMapJson = JSON.stringify(
       if (fuse && query) {
         let results = fuse.search(query);
         if (moduleFilter) {
-          results = results.filter((r: any) => r.item.module === moduleFilter);
+          results = results.filter((r) => r.item.module === moduleFilter);
         }
-        const items = results.map((r: any) => ({
+        const items: ScoredEntry[] = results.map((r) => ({
           ...r.item,
           score: r.score ? 1 - r.score : 1,
         }));
@@ -629,32 +647,32 @@ const moduleMapJson = JSON.stringify(
 
     function performBasicSearch(query: string, moduleFilter: string) {
       if (!index) return;
-      let results = index;
+      let results: ScoredEntry[] = index.map((d) => ({ ...d, score: 0 }));
 
       if (moduleFilter) {
-        results = results.filter((d: any) => d.module === moduleFilter);
+        results = results.filter((d) => d.module === moduleFilter);
       }
 
       if (query) {
         const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
         const scored = results
-          .map((d: any) => {
+          .map((d) => {
             let score = 0;
             const titleLower = d.title.toLowerCase();
             const descLower = (d.description || '').toLowerCase();
-            const tagsLower = (d.tags || []).map((t: string) => t.toLowerCase());
+            const tagsLower = (d.tags || []).map((t) => t.toLowerCase());
 
             for (const term of terms) {
               if (titleLower.includes(term)) score += 10;
-              if (tagsLower.some((t: string) => t.includes(term))) score += 5;
+              if (tagsLower.some((t) => t.includes(term))) score += 5;
               if (descLower.includes(term)) score += 2;
               if (d.slug.toLowerCase().includes(term)) score += 3;
             }
             return { ...d, score };
           })
-          .filter((d: any) => d.score > 0);
+          .filter((d) => d.score > 0);
 
-        scored.sort((a: any, b: any) => b.score - a.score);
+        scored.sort((a, b) => b.score - a.score);
         results = scored;
       }
 
@@ -665,7 +683,7 @@ const moduleMapJson = JSON.stringify(
       return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    function renderResults(docs: any[], query: string) {
+    function renderResults(docs: ScoredEntry[], query: string) {
       const hasActiveSearch = query || moduleSelect.value;
 
       tagGroups.forEach((g) => {
@@ -694,12 +712,12 @@ const moduleMapJson = JSON.stringify(
 
       const html = docs
         .slice(0, 50)
-        .map((d: any) => {
-          const mod = MODULE_MAP[d.module] || { title: d.module, color: categoryColors.toolchain };
+        .map((d) => {
+          const mod = MODULE_MAP[d.module] || { title: d.module, color: FALLBACK_COLOR };
           const diff = d.difficulty || '';
           const diffLabel = DIFFICULTY_LABELS[diff] || diff;
           const tags = (d.tags || [])
-            .map((t: string) => `<span class="result-tag-chip">${escapeHtml(t)}</span>`)
+            .map((t) => `<span class="result-tag-chip">${escapeHtml(t)}</span>`)
             .join('');
 
           return `<a href="${base}${escapeHtml(d.slug)}/" class="result-card">
@@ -715,7 +733,7 @@ const moduleMapJson = JSON.stringify(
         })
         .join('');
 
-      const purify = (window as any).DOMPurify
+      const purify = window.DOMPurify
       resultsEl.innerHTML = purify ? purify.sanitize(html) : html
     }
   })();

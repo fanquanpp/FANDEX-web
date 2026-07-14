@@ -10,7 +10,7 @@
 
 import { readdir, readFile, mkdir, writeFile, stat } from 'node:fs/promises';
 import { join, dirname, sep } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 /** 当前脚本所在目录 */
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -29,7 +29,7 @@ const MAX_SIZE = 100 * 1024;
  * @param {string} ext - 文件扩展名（如 '.md'）
  * @param {Function} fn - 对每个匹配文件执行的异步回调
  */
-async function walkDir(dir, ext, fn) {
+export async function walkDir(dir, ext, fn) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
     const full = join(dir, entry.name);
@@ -46,7 +46,7 @@ async function walkDir(dir, ext, fn) {
  * @param {string} content - Markdown 文件完整内容
  * @returns {Object} 解析后的 frontmatter 键值对对象
  */
-function parseFrontmatter(content) {
+export function parseFrontmatter(content) {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return {};
   const raw = match[1];
@@ -55,7 +55,9 @@ function parseFrontmatter(content) {
   let inArray = false; // 是否正在解析数组
   let arrayVals = []; // 数组值收集器
 
-  for (const line of raw.split('\n')) {
+  // 按 LF 或 CRLF 分行，确保 Windows 风格换行符不会在行尾残留 \r
+  // 否则后续正则 (.*)$ 会因 . 不匹配 \r 而失败
+  for (const line of raw.split(/\r?\n/)) {
     if (inArray) {
       // 尝试匹配数组项 "  - value"
       const itemMatch = line.match(/^\s+-\s+['"]?(.+?)['"]?\s*$/);
@@ -95,27 +97,36 @@ function parseFrontmatter(content) {
  * 将绝对路径转换为相对于文档目录的路径，并去除扩展名
  *
  * @param {string} filePath - 文件绝对路径
+ * @param {string} baseDir - 基准目录路径，用于计算相对路径（默认为 DOCS_DIR）
  * @returns {string} URL slug（如 "javascript/basics"）
  */
-function slugFromPath(filePath) {
-  const rel = filePath.replace(DOCS_DIR + sep, '').replace(/[/\\]/g, '/');
+export function slugFromPath(filePath, baseDir = DOCS_DIR) {
+  const rel = filePath.replace(baseDir + sep, '').replace(/[/\\]/g, '/');
   return rel.replace(/\.md$/, '');
 }
 
 /**
  * 主函数：构建搜索索引
+ * @param {Object} options - 可选配置，用于覆盖默认的输入输出路径（测试时使用）
+ * @param {string} options.docsDir - 文档源文件目录
+ * @param {string} options.outputDir - 索引输出目录
+ * @param {string} options.outputFile - 索引输出文件路径
  */
-async function main() {
+export async function main(options = {}) {
+  const docsDir = options.docsDir || DOCS_DIR;
+  const outputDir = options.outputDir || OUTPUT_DIR;
+  const outputFile = options.outputFile || OUTPUT_FILE;
+
   const entries = [];
 
   // 遍历所有 .md 文件，提取元数据
-  await walkDir(DOCS_DIR, '.md', async (filePath) => {
+  await walkDir(docsDir, '.md', async (filePath) => {
     const content = await readFile(filePath, 'utf-8');
     const fm = parseFrontmatter(content);
     if (!fm.title) return; // 跳过无标题的文件
 
     entries.push({
-      slug: slugFromPath(filePath),
+      slug: slugFromPath(filePath, docsDir),
       title: fm.title || '',
       description: fm.description || '',
       tags: Array.isArray(fm.tags) ? fm.tags : [],
@@ -130,7 +141,7 @@ async function main() {
   entries.sort((a, b) => a.module.localeCompare(b.module) || a.order - b.order);
 
   // 确保输出目录存在
-  await mkdir(OUTPUT_DIR, { recursive: true });
+  await mkdir(outputDir, { recursive: true });
 
   // 生成完整 JSON
   const json = JSON.stringify(entries);
@@ -151,19 +162,22 @@ async function main() {
     const compressed = JSON.stringify(trimmed);
     const cSize = Buffer.byteLength(compressed, 'utf-8');
     if (cSize <= MAX_SIZE) {
-      await writeFile(OUTPUT_FILE, compressed, 'utf-8');
+      await writeFile(outputFile, compressed, 'utf-8');
       console.log(
-        `Search index: ${entries.length} docs written (${(cSize / 1024).toFixed(1)}KB, compressed keys) to ${OUTPUT_FILE}`
+        `Search index: ${entries.length} docs written (${(cSize / 1024).toFixed(1)}KB, compressed keys) to ${outputFile}`
       );
       return;
     }
   }
 
   // 未超限或压缩后仍超限，写入完整 JSON
-  await writeFile(OUTPUT_FILE, json, 'utf-8');
+  await writeFile(outputFile, json, 'utf-8');
   console.log(
-    `Search index: ${entries.length} docs written (${(size / 1024).toFixed(1)}KB) to ${OUTPUT_FILE}`
+    `Search index: ${entries.length} docs written (${(size / 1024).toFixed(1)}KB) to ${outputFile}`
   );
 }
 
-main().catch(console.error);
+// 仅在直接运行时执行构建，被 import 时不自动执行（便于单元测试）
+if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
+  main().catch(console.error);
+}

@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# 仅支持手动触发部署；常规 push 到 main 的自动部署由 ci.yml 中的
+# build → deploy 流水线完成（test Job 作为前置依赖）
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -69,6 +69,9 @@ jobs:
 
       - name: 文档格式检查
         run: npm run lint:docs
+
+      - name: 安装 Pagefind Linux x64 二进制依赖
+        run: npm install --no-save @pagefind/linux-x64
 
       - name: Build
         run: npm run build

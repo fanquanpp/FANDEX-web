@@ -4,20 +4,23 @@
  * 文档页面的左侧导航面板，包含章节列表、大纲目录、术语表和知识地图入口
  * 支持章节/资料视图切换、全部模块切换、进度标记、大纲高亮跟踪等功能
  */
-import { getCollection } from 'astro:content'
-import { getModule, modules, docSlug, categoryColors, getPrimaryCategory } from '@/lib/modules'
+// categoryColors 和 getPrimaryCategory 为静态样式数据，保留从 @/lib/modules 导入
+import { categoryColors, getPrimaryCategory } from '@/lib/modules'
+// 通过 doc-service 和 module-service 获取数据，UI 层禁止直接调用 getCollection
+import { getModule, getAllModules, getDocsByModule, docSlug, type DocEntry } from '@/services'
 
 const { moduleId, currentSlug, headings, sortedDocs } = Astro.props as {
   moduleId: string
   currentSlug?: string
   headings?: { depth: number; slug: string; text: string }[]
-  sortedDocs?: any[]
+  sortedDocs?: DocEntry[]
 }
 
-// 获取当前模块的文档列表，支持外部传入已排序的列表以避免重复查询
-const docs = sortedDocs || await getCollection('docs', ({ data }) => data.module === moduleId)
-const sorted = sortedDocs ? docs : docs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+// 通过 doc-service 获取当前模块文档列表，支持外部传入已排序列表以避免重复查询
+const sorted = sortedDocs || await getDocsByModule(moduleId)
 const meta = getModule(moduleId)
+// 通过 module-service 获取全部模块，用于底部"全部模块"面板
+const allModules = getAllModules()
 
 const currentPath = Astro.url.pathname
 const base = import.meta.env.BASE_URL
@@ -125,7 +128,7 @@ const hasHeadings = visibleHeadings.length > 0
     </div>
     <div class="all-modules-section-title">全部模块</div>
     <ul class="all-modules-list">
-      {modules.map(m => (
+      {allModules.map(m => (
         <li>
           <a href={`${base}${m.id}/`} class={`all-module-link${m.id === moduleId ? ' current' : ''}`}>
             <!-- 模块分类颜色圆点 -->

@@ -24,11 +24,9 @@ jobs:
 
       - name: Run Prettier check
         run: npm run format:check
-        continue-on-error: true
 
       - name: Run remark lint
         run: npm run lint:docs
-        continue-on-error: true
 
   test:
     runs-on: ubuntu-latest
@@ -46,3 +44,102 @@ jobs:
 
       - name: Run Tests
         run: npm run test
+
+  # 类型检查 Job，作为部署前置依赖，确保类型安全后才能合并与部署
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run type check
+        run: npm run type-check
+
+  # 构建任务：依赖 lint、test、type-check 全部通过后执行
+  # 仅在 push 到 main 分支时运行（PR 不触发构建与部署）
+  build:
+    needs: [lint, test, type-check]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: 安装 Pagefind Linux x64 二进制依赖
+        run: npm install --no-save @pagefind/linux-x64
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: QA Check
+        run: npm run qa
+
+      - name: Preserve CNAME if exists
+        run: |
+          if [ -f public/CNAME ]; then
+            cp public/CNAME dist/CNAME
+            echo "CNAME file preserved in dist/"
+          else
+            echo "No CNAME file found, skipping"
+          fi
+
+      - name: Verify Pagefind index
+        run: |
+          if [ -d "dist/pagefind" ]; then
+            echo "Pagefind index found"
+            ls -la dist/pagefind/ | head -5
+          else
+            echo "::warning::Pagefind index not found - search will not work"
+          fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist
+          retention-days: 30
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # 部署任务：依赖构建完成，部署到 GitHub Pages
+  # test Job 通过 needs 链（test → build → deploy）成为 deploy 的前置依赖
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

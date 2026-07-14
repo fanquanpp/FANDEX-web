@@ -2,38 +2,31 @@
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
-import { getCollection } from 'astro:content'
+// 通过 tag-service 获取标签数据，UI 层禁止直接调用 getCollection
+import { getAllTags, getDocsByTag, docSlug, type DocEntry } from '@/services'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
 
 export async function getStaticPaths() {
-  const allDocs = await getCollection('docs')
-  const tagMap = new Map<string, typeof allDocs>()
-
-  for (const doc of allDocs) {
-    for (const tag of doc.data.tags || []) {
-      if (!tagMap.has(tag)) tagMap.set(tag, [])
-      tagMap.get(tag)!.push(doc)
-    }
-  }
-
-  return Array.from(tagMap.entries()).map(([tag, docs]) => ({
+  // 通过 tag-service 获取所有标签（含文档数量），生成静态路径
+  const allTags = await getAllTags()
+  return allTags.map(({ tag }) => ({
     params: { tag },
-    props: { tag, docs },
+    props: { tag },
   }))
 }
 
-const { tag, docs } = Astro.props
-const sortedDocs = docs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+const { tag } = Astro.props as { tag: string }
+// 通过 tag-service 获取包含该标签的文档（已按 order 升序排序）
+const sortedDocs: DocEntry[] = await getDocsByTag(tag)
 const base = import.meta.env.BASE_URL
 
-const moduleGroups = new Map<string, typeof sortedDocs>()
+// 按模块分组文档
+const moduleGroups = new Map<string, DocEntry[]>()
 for (const doc of sortedDocs) {
   const mod = doc.data.module
   if (!moduleGroups.has(mod)) moduleGroups.set(mod, [])
   moduleGroups.get(mod)!.push(doc)
 }
-
-function slug(id: string) { return (id.split('/').pop() || id).replace(/\.md$/, '') }
 
 const breadcrumb = [
   { label: '首页', href: `${base}` },
@@ -66,7 +59,7 @@ const breadcrumb = [
             <ul class="tag-doc-list">
               {modDocs.map(doc => (
                 <li>
-                  <a href={`${base}${mod}/${slug(doc.id)}/`} class="tag-doc-link">
+                  <a href={`${base}${mod}/${docSlug(doc.id)}/`} class="tag-doc-link">
                     {doc.data.title}
                   </a>
                 </li>

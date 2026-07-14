@@ -118,20 +118,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 /**
- * 进度管理工具库
- * - getProgress(slug)：获取指定文档的阅读状态
- * - toggleStatus(slug)：切换指定文档的阅读状态（未读→在读→已读→未读）
- * - exportProgress()：导出所有文档进度为 JSON 字符串
- * - importProgress(json)：从 JSON 字符串导入进度数据
- * - DocStatus：阅读状态类型（'unread' | 'reading' | 'done'）
+ * 进度管理：部分函数从 Service 层导入，部分保留从 lib 导入
+ * - getProgress(slug)：获取指定文档的阅读状态（来自 progress-service）
+ * - DocStatus：阅读状态类型（'unread' | 'reading' | 'done'）（来自 progress-service）
+ * - toggleStatus(slug)：切换阅读状态（未读→在读→已读→未读）（progress-service 未实现，保留从 lib 导入）
+ * - exportProgress()：导出所有文档进度为 JSON 字符串（progress-service 未实现，保留从 lib 导入）
+ * - importProgress(json)：从 JSON 字符串导入进度数据（progress-service 未实现，保留从 lib 导入）
  */
-import {
-  getProgress,
-  toggleStatus,
-  exportProgress,
-  importProgress,
-  type DocStatus,
-} from '@/lib/progress';
+import { toggleStatus, exportProgress, importProgress } from '@/lib/progress';
+import { getProgress, type DocStatus } from '@/services/progress-service';
 
 /**
  * 组件属性

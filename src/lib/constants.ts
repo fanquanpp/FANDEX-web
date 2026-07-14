@@ -1,7 +1,9 @@
+import { RUNTIME } from '@/config/runtime';
+
 export const SITE = {
   title: 'FANDEX',
   subtitle: '循序渐进',
-  url: 'https://fanquanpp.github.io/FANDEX-web',
+  url: RUNTIME.siteUrl,
   author: 'fanquanpp',
   lang: 'zh-CN',
 };

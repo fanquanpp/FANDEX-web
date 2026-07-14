@@ -379,7 +379,7 @@ export function getModule(id: string) {
 }
 
 export function getModulesByCategory(category: string) {
-  return modules.filter((m) => m.categories.includes(category));
+  return modules.filter((m) => (m.categories as readonly string[]).includes(category));
 }
 
 /** 获取模块的主分类（第一个分类） */

@@ -7,33 +7,25 @@
 import HomeLayout from '@/components/HomeLayout.astro'
 import SEO from '@/components/SEO.astro'
 import ModuleCard from '@/components/ModuleCard.astro'
-import { modules, categoryLabels, categoryColors, getModulesByCategory, categoryOrder } from '@/lib/modules'
-import { getCollection } from 'astro:content'
+// 通过 Service 层获取数据，UI 层禁止直接调用 getCollection
+import { getDocStats, getAllModules, getCategories, getModulesByCategory } from '@/services'
 
-// 获取所有文档，统计各模块文档数量
-const allDocs = await getCollection('docs')
+// 通过 doc-service 获取文档统计（总数、模块数、分类数、标签数）
+const stats = await getDocStats()
+// 通过 module-service 获取全部模块（只读数组），用于首页模块计数
+const allModules = getAllModules()
 const base = import.meta.env.BASE_URL
-const docCountMap: Record<string, number> = {}
-allDocs.forEach(doc => {
-  const m = doc.data.module
-  docCountMap[m] = (docCountMap[m] || 0) + 1
-})
 
-// 按分类顺序分组模块
-const grouped = categoryOrder
+// 通过 module-service 获取分类信息并按分类分组模块
+// getCategories() 已按 categoryOrder 顺序返回 { id, label, color }
+const grouped = getCategories()
   .map(cat => ({
-    key: cat,
-    label: categoryLabels[cat],
-    color: categoryColors[cat],
-    modules: getModulesByCategory(cat),
+    key: cat.id,
+    label: cat.label,
+    color: cat.color,
+    modules: getModulesByCategory(cat.id),
   }))
   .filter(g => g.modules.length > 0)
-
-// 统计所有标签数量
-const totalTags = new Set<string>()
-allDocs.forEach(doc => {
-  if (doc.data.tags) doc.data.tags.forEach((t: string) => totalTags.add(t))
-})
 ---
 
 <HomeLayout title="首页">
@@ -48,17 +40,17 @@ allDocs.forEach(doc => {
       <!-- 统计数据栏 -->
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-num">{modules.length}</span>
+          <span class="stat-num">{allModules.length}</span>
           <span class="stat-label">模块</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-num">{allDocs.length}</span>
+          <span class="stat-num">{stats.totalDocs}</span>
           <span class="stat-label">文档</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-num">{totalTags.size}</span>
+          <span class="stat-num">{stats.totalTags}</span>
           <span class="stat-label">标签</span>
         </div>
         <div class="stat-divider"></div>
@@ -190,11 +182,11 @@ allDocs.forEach(doc => {
         <a href="https://github.com/fanquanpp/FANDEX-web" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
       <div class="footer-stats">
-        <span>{allDocs.length} 篇文档</span>
+        <span>{stats.totalDocs} 篇文档</span>
         <span class="footer-divider">·</span>
-        <span>{modules.length} 个模块</span>
+        <span>{allModules.length} 个模块</span>
         <span class="footer-divider">·</span>
-        <span>{totalTags.size} 个标签</span>
+        <span>{stats.totalTags} 个标签</span>
       </div>
       <div class="footer-tech">
         Built with Astro 5 SSG · Hosted on GitHub Pages

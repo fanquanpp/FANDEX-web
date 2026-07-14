@@ -11,12 +11,22 @@ import Breadcrumb from '@/components/Breadcrumb.astro'
 import DocNav from '@/components/DocNav.astro'
 import ProgressToggle from '@/islands/ProgressToggle.vue'
 import QuizBlock from '@/islands/QuizBlock.vue'
-import { getModule, modulePrerequisites, docSlug, categoryColors, getPrimaryCategory } from '@/lib/modules'
-import { getCollection } from 'astro:content'
+import { getModule, modulePrerequisites, categoryColors, getPrimaryCategory } from '@/lib/modules'
+// 通过 doc-service 获取文档数据与导航信息，UI 层禁止直接调用 getCollection
+// docSlug/computeReadingTime/getDocNavigation 均由 Service 层统一提供
+import {
+  getAllDocs,
+  getDocsByModule,
+  getDocNavigation,
+  computeReadingTime,
+  docSlug,
+  type DocEntry,
+} from '@/services'
 
 /** 生成静态路径：为每篇文档创建一个页面 */
 export async function getStaticPaths() {
-  const docs = await getCollection('docs')
+  // 通过 doc-service 获取全部文档（已按模块和 order 排序）
+  const docs = await getAllDocs()
   return docs.map(doc => {
     const slug = docSlug(doc.id)
     return {
@@ -26,26 +36,20 @@ export async function getStaticPaths() {
   })
 }
 
-const { doc } = Astro.props as any
+const { doc } = Astro.props as { doc: DocEntry }
 const { module, slug } = Astro.params as { module: string; slug: string }
 // 渲染 Markdown 内容并获取标题列表
 const { Content, headings } = await doc.render()
 const meta = getModule(module || '')
 
-// 预获取排序后的文档列表，传递给 Sidebar 避免重复查询
-const allModuleDocs = await getCollection('docs', ({ data }) => data.module === module)
-const sortedDocs = allModuleDocs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+// 通过 doc-service 获取当前模块排序后的文档列表，传递给 Sidebar 避免重复查询
+const sortedDocs = await getDocsByModule(module)
 
-/** 计算预计阅读时间（分钟），优先使用 frontmatter 中的值 */
-function computeReadingTime(body: string, readingTime?: number): number {
-  if (readingTime && readingTime > 0) return readingTime
-  // 去除代码块和 Markdown 标记后，按每分钟 300 字估算
-  const stripped = body.replace(/```[\s\S]*?```/g, '').replace(/[#*`~\[\]()>_\-!|]/g, '')
-  const chars = stripped.replace(/\s/g, '').length
-  return Math.max(1, Math.ceil(chars / 300))
-}
-
+// 通过 doc-service 计算预计阅读时间（优先使用 frontmatter 中的值）
 const readingTime = computeReadingTime(doc.body || '', doc.data.readingTime)
+
+// 通过 doc-service 获取上下篇导航信息，预计算后传递给 DocNav 组件
+const navigation = await getDocNavigation(module, slug)
 
 // 面包屑导航数据
 const breadcrumb = [
@@ -91,7 +95,7 @@ const breadcrumb = [
     <article class="prose"
       data-pagefind-body
       data-pagefind-filter={`difficulty:${doc.data.difficulty || 'intermediate'}, module:${module}${doc.data.category ? ', category:' + doc.data.category : ''}`}
-      style={`--module-color:${categoryColors[getPrimaryCategory(meta)]}`}
+      style={`--module-color:${categoryColors[meta ? getPrimaryCategory(meta) : 'toolchain']}`}
     >
       <!-- 标题行：标题 + 进度追踪按钮 -->
       <div class="doc-title-row">
@@ -133,8 +137,8 @@ const breadcrumb = [
     </article>
     <!-- 知识检测组件：进入视口时加载 -->
     <QuizBlock client:visible quiz={doc.data.quiz || []} />
-    <!-- 上下篇导航 -->
-    <DocNav moduleId={module} currentSlug={slug} />
+    <!-- 上下篇导航：传递预计算的 prev/next，避免组件内部重复查询 -->
+    <DocNav prev={navigation.prev} next={navigation.next} />
   </div>
 </Layout>
 

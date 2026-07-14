@@ -4,7 +4,9 @@ import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
-import { getCollection } from 'astro:content'
+// 通过 doc-service 获取模块文档列表，UI 层禁止直接调用 getCollection
+// docSlug 由 modules.ts 唯一定义，通过 services 桶文件统一导出
+import { getDocsByModule, docSlug } from '@/services'
 
 export async function getStaticPaths() {
   const { modules } = await import('@/lib/modules')
@@ -18,9 +20,8 @@ if (!meta) {
   return Astro.redirect(`${import.meta.env.BASE_URL}404`)
 }
 
-const docs = await getCollection('docs', ({ data }) => data.module === module)
-const sortedDocs = docs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
-function slug(id: string) { return (id.split('/').pop() || id).replace(/\.md$/, '') }
+// 通过 doc-service 获取当前模块的文档列表（已按 order 升序排序）
+const sortedDocs = await getDocsByModule(module)
 
 const breadcrumb = [
   { label: '首页', href: `${import.meta.env.BASE_URL}` },
@@ -46,7 +47,7 @@ const breadcrumb = [
     <ul class="doc-list">
       {sortedDocs.map((doc, idx) => (
         <li class="doc-list-item">
-          <a href={`${import.meta.env.BASE_URL}${module}/${slug(doc.id)}/`} class="doc-list-link">
+          <a href={`${import.meta.env.BASE_URL}${module}/${docSlug(doc.id)}/`} class="doc-list-link">
             <span class="doc-list-icon" style={`background:${categoryColors[getPrimaryCategory(meta)]}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>

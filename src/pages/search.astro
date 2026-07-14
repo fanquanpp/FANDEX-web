@@ -95,11 +95,11 @@ import { modules } from '@/lib/modules'
     }
 
     try {
-      const pagefind = await import(/* @vite-ignore */ `${base}pagefind/pagefind.js`)
+      const pagefind = (await import(/* @vite-ignore */ `${base}pagefind/pagefind.js`)) as PagefindModule
       await pagefind.options({ baseUrl: base, basePath: `${base}pagefind/` })
       await pagefind.init()
 
-      const ui = new (pagefind as any).UI({
+      const ui = new pagefind.UI({
         element: '#search',
         showSubResults: true,
         showImages: false,

@@ -3,12 +3,9 @@
  * 文档页主布局组件
  * 提供文档页面的整体结构：顶部导航栏、侧边栏、主内容区、移动端底部导航
  * 支持暗色模式切换、全屏模式、侧边栏状态持久化、代码复制、Mermaid 图表渲染等功能
+ * 继承 BaseLayout 的共享 head 与样式引入，仅保留文档页特有的结构与脚本
  */
-import '@/styles/variables.css'
-import '@/styles/global.css'
-import '@/styles/typography.css'
-import '@/styles/code.css'
-import '@/styles/components.css'
+import BaseLayout from '@/components/BaseLayout.astro'
 import ThemeToggle from '@/islands/ThemeToggle.vue'
 import { SITE } from '@/lib/constants'
 
@@ -18,112 +15,80 @@ const base = import.meta.env.BASE_URL
 const hasSidebar = Astro.slots.has('sidebar')
 ---
 
-<html lang={SITE.lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 内容安全策略：限制脚本、样式、字体等资源的加载来源 -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data:; img-src 'self' data:; connect-src 'self'" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
+<BaseLayout title={title}>
+  <slot name="head" slot="head" />
 
-    <!-- 预连接 CDN 以加速资源加载 -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-
-    <!-- 字体资源预加载 -->
-    <link rel="stylesheet" href={`${base}fonts/fonts.css`} />
-    <link rel="preload" href={`${base}fonts/jetbrains-mono-400.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={`${base}fonts/jetbrains-mono-700.woff2`} as="font" type="font/woff2" crossorigin />
-    <!-- 暗色模式初始化脚本：在页面渲染前读取用户偏好，避免闪烁 -->
-    <script is:inline>
-      (function() {
-        var raw = localStorage.getItem('fandex-theme');
-        var isDark = false;
-        // 优先使用用户手动设置的主题，否则跟随系统偏好
-        if (raw === 'dark' || (!raw && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          isDark = true;
-        }
-        if (isDark) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.documentElement.style.colorScheme = 'dark';
-        }
-      })();
-    </script>
-    <slot name="head" />
-  </head>
-  <body>
-    <!-- 确保页面撑满视口高度，禁止 body 自身滚动（由内部容器控制滚动） -->
-    <style is:inline>
-      html { height: 100%; }
-      body { height: 100vh; height: 100dvh; overflow: hidden; }
-    </style>
-    <!-- 侧边栏遮罩层：移动端打开侧边栏时显示，点击关闭 -->
-    {hasSidebar && <div class="sidebar-backdrop" id="sidebar-backdrop"></div>}
-    <!-- 主布局容器：根据是否有侧边栏添加不同类名 -->
-    <div class="app-layout" class:list={{ 'no-sidebar': !hasSidebar }}>
-      <!-- 顶部导航栏 -->
-      <header class="app-nav">
-        <div class="nav-left">
-          <a href={base} class="nav-logo">
-            <span class="logo-mark"></span>
-            <span class="logo-text">{SITE.title}<span class="logo-home-suffix">-Index</span></span>
-          </a>
-        </div>
-        <div class="nav-right">
-          <!-- 返回顶部按钮 -->
-          <button class="nav-back-to-top" id="nav-back-to-top" aria-label="返回顶部" title="返回顶部">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="18 15 12 9 6 15" />
-            </svg>
-            <span class="nav-back-to-top-text">返回顶部</span>
-          </button>
-          <!-- 主题切换按钮（Vue 交互组件） -->
-          <ThemeToggle client:load />
-        </div>
-      </header>
-      <!-- 侧边栏插槽 -->
-      <slot name="sidebar" />
-      <!-- 主内容区域 -->
-      <main class="app-main" id="app-main">
-        <slot />
-      </main>
-    </div>
-    <!-- 移动端底部导航栏 -->
-    <nav class="mobile-nav">
-      <a href={base} class="mobile-nav-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
-        </svg>
-        <span>首页</span>
-      </a>
-      <a href={`${base}search/`} class="mobile-nav-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <span>搜索</span>
-      </a>
-      <!-- 模块切换按钮：仅在有侧边栏时显示 -->
-      {hasSidebar && (
-        <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+  <!-- 确保页面撑满视口高度，禁止 body 自身滚动（由内部容器控制滚动） -->
+  <style is:inline>
+    html { height: 100%; }
+    body { height: 100vh; height: 100dvh; overflow: hidden; }
+  </style>
+  <!-- 侧边栏遮罩层：移动端打开侧边栏时显示，点击关闭 -->
+  {hasSidebar && <div class="sidebar-backdrop" id="sidebar-backdrop"></div>}
+  <!-- 主布局容器：根据是否有侧边栏添加不同类名 -->
+  <div class="app-layout" class:list={{ 'no-sidebar': !hasSidebar }}>
+    <!-- 顶部导航栏 -->
+    <header class="app-nav">
+      <div class="nav-left">
+        <a href={base} class="nav-logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text">{SITE.title}<span class="logo-home-suffix">-Index</span></span>
+        </a>
+      </div>
+      <div class="nav-right">
+        <!-- 返回顶部按钮 -->
+        <button class="nav-back-to-top" id="nav-back-to-top" aria-label="返回顶部" title="返回顶部">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="18 15 12 9 6 15" />
           </svg>
-          <span>模块</span>
+          <span class="nav-back-to-top-text">返回顶部</span>
         </button>
-      )}
-      <!-- 全屏切换按钮 -->
-      <button class="mobile-nav-link" id="mobile-fullscreen-btn" aria-label="全屏">
+        <!-- 主题切换按钮（Vue 交互组件） -->
+        <ThemeToggle client:load />
+      </div>
+    </header>
+    <!-- 侧边栏插槽 -->
+    <slot name="sidebar" />
+    <!-- 主内容区域 -->
+    <main class="app-main" id="app-main">
+      <slot />
+    </main>
+  </div>
+  <!-- 移动端底部导航栏 -->
+  <nav class="mobile-nav">
+    <a href={base} class="mobile-nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+      <span>首页</span>
+    </a>
+    <a href={`${base}search/`} class="mobile-nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <span>搜索</span>
+    </a>
+    <!-- 模块切换按钮：仅在有侧边栏时显示 -->
+    {hasSidebar && (
+      <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
         </svg>
-        <span>全屏</span>
+        <span>模块</span>
       </button>
-    </nav>
-  </body>
-</html>
+    )}
+    <!-- 全屏切换按钮 -->
+    <button class="mobile-nav-link" id="mobile-fullscreen-btn" aria-label="全屏">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+      </svg>
+      <span>全屏</span>
+    </button>
+  </nav>
+</BaseLayout>
 
 <script>
   // ========== 侧边栏开关逻辑 ==========
@@ -280,78 +245,18 @@ const hasSidebar = Astro.slots.has('sidebar')
   initCopyButtons()
 
   // ========== Mermaid 图表渲染 ==========
-  function initMermaid() {
-    const mermaidBlocks = document.querySelectorAll('pre[data-language="mermaid"] code, code.language-mermaid')
+  async function initMermaid() {
+    const mermaidBlocks = document.querySelectorAll<HTMLElement>('pre[data-language="mermaid"] code, code.language-mermaid')
     if (mermaidBlocks.length === 0) return
-
-    /** 执行 Mermaid 渲染 */
-    const render = () => {
-      const mermaid = (window as any).mermaid
-      if (!mermaid) return
-      mermaid.initialize({
-        startOnLoad: false,
-        // 根据当前主题选择 Mermaid 配色
-        theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
-        securityLevel: 'strict',
-      })
+    try {
+      const { initMermaid: init, renderMermaid } = await import('@/lib/mermaid-renderer')
+      await init()
       mermaidBlocks.forEach(async (block, i) => {
         const pre = block.closest('pre')
         if (!pre) return
-        const code = block.textContent || ''
-        const id = `mermaid-svg-${i}`
-        try {
-          const { svg } = await mermaid.render(id, code)
-          const container = document.createElement('div')
-          container.className = 'mermaid-output'
-          // 使用 DOMPurify 防止 XSS
-          const purify = (window as any).DOMPurify
-          container.innerHTML = purify ? purify.sanitize(svg) : svg
-          pre.replaceWith(container)
-        } catch {
-          const errDiv = document.createElement('div')
-          errDiv.className = 'mermaid-error'
-          errDiv.textContent = 'Mermaid render failed'
-          pre.replaceWith(errDiv)
-        }
+        await renderMermaid(pre, i)
       })
-    }
-
-    // Mermaid 已加载则直接渲染
-    if ((window as any).mermaid) {
-      render()
-      return
-    }
-
-    // 动态加载 Mermaid 脚本
-    let script = document.getElementById('mermaid-script') as HTMLScriptElement | null
-    if (!script) {
-      // 先加载 DOMPurify，再加载 Mermaid
-      const loadPurify = new Promise<void>((resolve) => {
-        if ((window as any).DOMPurify) { resolve(); return }
-        const p = document.createElement('script')
-        p.src = 'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
-        p.onload = () => resolve()
-        p.onerror = () => resolve() // DOMPurify 加载失败时继续执行
-        document.head.appendChild(p)
-      })
-      script = document.createElement('script')
-      script.id = 'mermaid-script'
-      script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
-      script.onload = () => {
-        script!.dataset.loaded = '1'
-        loadPurify.then(() => render())
-      }
-      document.head.appendChild(script)
-      return
-    }
-
-    // 脚本已加载但尚未执行完毕
-    if (script.dataset.loaded === '1') {
-      render()
-      return
-    }
-
-    script.addEventListener('load', render, { once: true })
+    } catch { /* Mermaid 渲染失败时静默处理 */ }
   }
 
   document.addEventListener('astro:page-load', initMermaid)
@@ -370,8 +275,8 @@ const hasSidebar = Astro.slots.has('sidebar')
   // ========== 微交互动画 ==========
   async function initAnimations() {
     try {
-      const { setupMicroInteractions } = await import('@/lib/animations')
-      setupMicroInteractions()
+      const { initAnimations: init } = await import('@/lib/animations')
+      init()
     } catch { /* ignore */ }
   }
 
@@ -396,15 +301,6 @@ const hasSidebar = Astro.slots.has('sidebar')
     const base = import.meta.env.BASE_URL
     navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
   }
-
-  // 快捷键 Ctrl/Cmd + K 跳转到搜索页
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault()
-      const base = document.querySelector('a.nav-logo')?.getAttribute('href') || '/'
-      window.location.href = base + 'search/'
-    }
-  })
 </script>
 
 <style>

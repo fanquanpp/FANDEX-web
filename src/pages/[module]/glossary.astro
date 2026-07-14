@@ -4,10 +4,12 @@ import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
-import { getCollection } from 'astro:content'
+// 通过 glossary-service 获取术语表数据，UI 层禁止直接调用 getCollection
+import { getAllGlossaryTerms, getGlossaryByModule } from '@/services'
 
 export async function getStaticPaths() {
-  const allGlossary = await getCollection('glossary')
+  // 通过 glossary-service 获取全部术语条目，提取模块集合生成静态路径
+  const allGlossary = await getAllGlossaryTerms()
   const moduleSet = new Set<string>()
   allGlossary.forEach(g => {
     if (g.data.module) moduleSet.add(g.data.module)
@@ -22,8 +24,8 @@ if (!meta) {
   return Astro.redirect(`${import.meta.env.BASE_URL}404`)
 }
 
-const glossaryFiles = await getCollection('glossary', ({ data }) => data.module === module)
-const sortedGlossary = glossaryFiles.sort((a, b) => a.data.title.localeCompare(b.data.title))
+// 通过 glossary-service 获取当前模块的术语条目（已按标题 localeCompare 排序）
+const sortedGlossary = await getGlossaryByModule(module)
 
 const glossaryEntries = await Promise.all(sortedGlossary.map(async g => {
   const { Content } = await g.render()

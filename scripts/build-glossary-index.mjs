@@ -9,7 +9,7 @@
 
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 /** 当前脚本所在目录 */
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,7 +26,7 @@ const OUTPUT_FILE = join(OUTPUT_DIR, 'glossary-index.json');
  * @param {string} ext - 文件扩展名（如 '.md'）
  * @param {Function} fn - 对每个匹配文件执行的异步回调
  */
-async function walkDir(dir, ext, fn) {
+export async function walkDir(dir, ext, fn) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
     const full = join(dir, entry.name);
@@ -44,7 +44,7 @@ async function walkDir(dir, ext, fn) {
  * @param {string} moduleId - 所属模块标识
  * @returns {Object} 术语索引对象，键为术语名，值为 { module, def, slug }
  */
-function extractTerms(content, moduleId) {
+export function extractTerms(content, moduleId) {
   const terms = {};
   const lines = content.split('\n');
   let currentTerm = null; // 当前正在处理的术语名
@@ -121,17 +121,25 @@ function extractTerms(content, moduleId) {
 
 /**
  * 主函数：构建术语表索引
+ * @param {Object} options - 可选配置，用于覆盖默认的输入输出路径（测试时使用）
+ * @param {string} options.glossaryDir - 术语表源文件目录
+ * @param {string} options.outputDir - 索引输出目录
+ * @param {string} options.outputFile - 索引输出文件路径
  */
-async function main() {
+export async function main(options = {}) {
+  const glossaryDir = options.glossaryDir || GLOSSARY_DIR;
+  const outputDir = options.outputDir || OUTPUT_DIR;
+  const outputFile = options.outputFile || OUTPUT_FILE;
+
   const allTerms = {};
 
   // 遍历术语表目录下的各模块子目录
-  const dirs = await readdir(GLOSSARY_DIR, { withFileTypes: true });
+  const dirs = await readdir(glossaryDir, { withFileTypes: true });
 
   for (const entry of dirs) {
     if (!entry.isDirectory()) continue;
     const moduleId = entry.name; // 目录名即为模块标识
-    const moduleDir = join(GLOSSARY_DIR, moduleId);
+    const moduleDir = join(glossaryDir, moduleId);
 
     // 遍历模块目录下的所有 .md 文件
     await walkDir(moduleDir, '.md', async (filePath) => {
@@ -142,12 +150,15 @@ async function main() {
   }
 
   // 确保输出目录存在并写入索引文件
-  await mkdir(OUTPUT_DIR, { recursive: true });
+  await mkdir(outputDir, { recursive: true });
   const json = JSON.stringify(allTerms);
-  await writeFile(OUTPUT_FILE, json, 'utf-8');
+  await writeFile(outputFile, json, 'utf-8');
 
   const count = Object.keys(allTerms).length;
-  console.log(`Glossary index: ${count} terms written to ${OUTPUT_FILE}`);
+  console.log(`Glossary index: ${count} terms written to ${outputFile}`);
 }
 
-main().catch(console.error);
+// 仅在直接运行时执行构建，被 import 时不自动执行（便于单元测试）
+if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
+  main().catch(console.error);
+}
