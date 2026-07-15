@@ -1,6 +1,7 @@
 ---
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 import { modules, categoryColors, getPrimaryCategory } from '@/lib/modules'
 // 学习路线与职业路径数据已抽取至独立 JSON 文件，便于维护与复用
 import roadmapData from '../data/roadmap.json'
@@ -46,6 +47,8 @@ const careerPaths: CareerPath[] = roadmapData.careerPaths.map(p => ({
   <SEO slot="head" title="学习路线图" description="FANDEX 知识库推荐学习路线，从零基础到全栈开发者" />
 
   <div class="roadmap-page">
+    <!-- 几何背景装饰层 · docs 变体：文档级克制装饰 -->
+    <GeoBgDecor variant="docs" />
     <div class="roadmap-header">
       <h1 class="roadmap-title">学习路线图</h1>
       <a href={base} class="back-home-btn">
@@ -121,9 +124,16 @@ const careerPaths: CareerPath[] = roadmapData.careerPaths.map(p => ({
 
 <style>
 .roadmap-page {
+  position: relative;
   padding: var(--spacing-2xl) var(--spacing-2xl);
   max-width: 960px;
   margin: 0 auto;
+}
+
+/* 确保内容层在几何装饰层之上 */
+.roadmap-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .roadmap-header {

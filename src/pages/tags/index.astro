@@ -1,6 +1,7 @@
 ---
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 // 通过 tag-service 和 module-service 获取数据，UI 层禁止直接调用 getCollection
 import { getAllTags, getTagStats, getAllModules } from '@/services'
 import { categoryColors, getPrimaryCategory } from '@/lib/modules'
@@ -31,6 +32,8 @@ const moduleMapJson = JSON.stringify(
   <SEO slot="head" title="标签索引" description="按知识标签跨模块检索文档" />
 
   <div class="tags-page">
+    <!-- 几何背景装饰层 · list 变体：列表页装饰 -->
+    <GeoBgDecor variant="list" />
     <div class="tags-top-bar">
       <div class="tags-header">
         <h1 class="tags-title">标签索引</h1>
@@ -109,9 +112,16 @@ const moduleMapJson = JSON.stringify(
 
 <style>
 .tags-page {
+  position: relative;
   padding: var(--spacing-2xl) var(--spacing-2xl);
   max-width: 960px;
   margin: 0 auto;
+}
+
+/* 确保内容层在几何装饰层之上 */
+.tags-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .tags-top-bar {

@@ -2,6 +2,7 @@
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 // 通过 tag-service 获取标签数据，UI 层禁止直接调用 getCollection
 import { getAllTags, getDocsByTag, docSlug, type DocEntry } from '@/services'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
@@ -39,6 +40,8 @@ const breadcrumb = [
   <SEO slot="head" title={`标签: ${tag}`} description={`包含标签 "${tag}" 的所有文档`} />
 
   <div class="tag-page">
+    <!-- 几何背景装饰层 · list 变体：列表页装饰 -->
+    <GeoBgDecor variant="list" />
     <Breadcrumb items={breadcrumb} />
 
     <div class="tag-header">
@@ -74,9 +77,16 @@ const breadcrumb = [
 
 <style>
 .tag-page {
+  position: relative;
   padding: var(--spacing-lg) var(--spacing-xl);
   max-width: var(--content-width);
   margin: 0 auto;
+}
+
+/* 确保内容层在几何装饰层之上 */
+.tag-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .tag-header {

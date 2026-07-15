@@ -1,5 +1,38 @@
 # 更新日志
 
+## v1.1.0（2026-07-16）
+
+### 小更新（文本勘误与装饰层补全）
+
+本次为小更新，保持现有版本号 1.1.0。主要修正文本文件版权信息，扩展几何背景装饰组件变体，并为信息页统一应用装饰层。
+
+#### 文本勘误
+
+- 确认 `LICENSE` 版权年份为 2026（仓库新建于 2026 年）
+- 校对 `README.md`：文档数 1995、模块数 51、Pages 链接 https://fanquanpp.github.io/FANDEX-web/、关联项目描述（FANDEX-exe 桌面端、FANDEX-App 移动端）、参赛信息、创意展示 HTML 引用均确认正确
+- 校对 `DISCLAIMER.md`：最后更新日期 2026-07-16、GitHub 链接指向 fanquanpp/FANDEX-web 均确认正确
+- 校对 `CODE_OF_CONDUCT.md`、`CONTRIBUTING.md`、`SECURITY.md`：联系方式与生效日期均确认正确
+
+#### GeoBgDecor 组件变体扩展
+
+- 扩展 `GeoBgVariant` 类型，新增 `loading`、`error`、`info` 三种变体
+- `loading` 变体：网格底纹 + 小点阵，用于加载态页面
+- `error` 变体：网格底纹 + 大点阵，用于错误态页面
+- `info` 变体：类似 docs 但更克制，用于 about/disclaimer/privacy 等信息页
+- 保留原有 home/docs/list/minimal 四种变体配置不变
+- `geo-decor.css` 中 `geo-dots-lg`、`geo-arc-tr`、`geo-arc-tl`、`geo-square-br`、`geo-square-bl`、`geo-diag-line`、`geo-wave-lines` 等装饰类样式均已存在，无需补充
+
+#### 信息页装饰层应用补全
+
+- `404.astro` 应用 `minimal` 变体（手动引入 geo-decor.css，因页面未使用 BaseLayout）
+- `search.astro` 应用 `minimal` 变体
+- `tags/index.astro` 应用 `list` 变体
+- `tags/[tag].astro` 应用 `list` 变体
+- `roadmap.astro` 应用 `docs` 变体
+- `privacy.astro` 已应用 `docs` 变体，确认正确无需改动
+
+---
+
 ## v2.0.0（2026-07-14）
 
 ### 架构重构（跨项目统一重构）

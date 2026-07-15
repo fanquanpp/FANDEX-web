@@ -1,12 +1,15 @@
 ---
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 import { modules } from '@/lib/modules'
 ---
 
 <Layout title="搜索">
   <SEO slot="head" title="搜索 - FANDEX" description="全文搜索知识库" type="website" />
   <div class="search-page">
+    <!-- 几何背景装饰层 · minimal 变体：克制装饰 -->
+    <GeoBgDecor variant="minimal" />
     <h1 class="search-title">搜索</h1>
     <div class="search-filters">
       <select id="filter-module" class="search-filter-select">
@@ -29,9 +32,16 @@ import { modules } from '@/lib/modules'
 
 <style>
 .search-page {
+  position: relative;
   max-width: var(--content-width);
   margin: 0 auto;
   padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-2xl);
+}
+
+/* 确保内容层在几何装饰层之上 */
+.search-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .search-title {
