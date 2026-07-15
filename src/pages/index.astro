@@ -7,6 +7,7 @@
 import HomeLayout from '@/components/HomeLayout.astro'
 import SEO from '@/components/SEO.astro'
 import ModuleCard from '@/components/ModuleCard.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 // 通过 Service 层获取数据，UI 层禁止直接调用 getCollection
 import { getDocStats, getAllModules, getCategories, getModulesByCategory } from '@/services'
 
@@ -32,6 +33,8 @@ const grouped = getCategories()
   <SEO slot="head" title="FANDEX" description="循序渐进的自学之旅，从第一行代码到理解整个世界。覆盖工具链、开发语言、数据库、计算机科学、工程基础设施与数据技术六大领域" type="website" />
 
   <div class="home-page">
+    <!-- 几何背景装饰层 · home 变体：品牌光晕 + S 曲线 + 涟漪环 + 三角切片等 -->
+    <GeoBgDecor variant="home" />
     <!-- Hero 区域：站点标题和统计信息 -->
     <section class="hero">
       <div class="hero-badge">Zero to Mastery</div>
@@ -202,13 +205,22 @@ const grouped = getCategories()
 </HomeLayout>
 
 <style>
-/* 首页容器 */
+/* 首页容器：作为装饰层的定位上下文 */
 .home-page {
+  position: relative;
   width: 100%;
   min-height: calc(100vh - var(--nav-height));
   min-height: calc(100dvh - var(--nav-height));
   margin: 0 auto;
   padding: 0 var(--spacing-lg) var(--spacing-2xl);
+  overflow: hidden;
+}
+
+/* 确保首页内容层在几何装饰层之上 */
+.home-page > section,
+.home-page > footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero 区域：居中展示 */

@@ -9,6 +9,7 @@ import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
 import DocNav from '@/components/DocNav.astro'
+import GeoBgDecor from '@/components/GeoBgDecor.astro'
 import ProgressToggle from '@/islands/ProgressToggle.vue'
 import QuizBlock from '@/islands/QuizBlock.vue'
 import { getModule, modulePrerequisites, categoryColors, getPrimaryCategory } from '@/lib/modules'
@@ -69,6 +70,8 @@ const breadcrumb = [
   <Sidebar slot="sidebar" moduleId={module} currentSlug={slug} headings={headings} sortedDocs={sortedDocs} />
 
   <div class="doc-page">
+    <!-- 几何背景装饰层 · docs 变体：网格底纹 + 品牌光晕 + 几何线条（克制 8 项） -->
+    <GeoBgDecor variant="docs" />
     <!-- 面包屑导航 -->
     <Breadcrumb items={breadcrumb} hasSidebar />
     <!-- 前置知识提示 -->
@@ -143,11 +146,19 @@ const breadcrumb = [
 </Layout>
 
 <style>
-/* 文档页面容器 */
+/* 文档页面容器：作为装饰层的定位上下文
+   注：不设置 overflow:hidden，以保留 .doc-title-row 的 sticky 定位 */
 .doc-page {
+  position: relative;
   padding: var(--spacing-md) var(--spacing-lg) var(--spacing-2xl);
   width: 100%;
   min-height: 100%;
+}
+
+/* 确保文档内容层在几何装饰层之上 */
+.doc-page > :not(.geo-bg-decor) {
+  position: relative;
+  z-index: 1;
 }
 
 /* 前置知识提示条 */
