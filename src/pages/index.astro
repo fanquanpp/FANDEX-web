@@ -180,7 +180,11 @@ const grouped = getCategories()
         </a>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/fanquanpp/FANDEX-web#免责声明" target="_blank" rel="noopener noreferrer">免责声明</a>
+        <a href={`${base}about/`}>关于</a>
+        <span class="footer-divider">|</span>
+        <a href={`${base}disclaimer/`}>免责声明</a>
+        <span class="footer-divider">|</span>
+        <a href={`${base}privacy/`}>隐私政策</a>
         <span class="footer-divider">|</span>
         <a href="https://github.com/fanquanpp/FANDEX-web" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
@@ -199,6 +203,9 @@ const grouped = getCategories()
       </div>
       <div class="footer-notice">
         更新后构建约需 12 分钟，已访问页面需手动刷新方可显示最新版本
+      </div>
+      <div class="footer-copyright">
+        Copyright (c) 2024-{new Date().getFullYear()} fanquanpp · MIT License
       </div>
     </footer>
   </div>
@@ -623,6 +630,15 @@ const grouped = getCategories()
   color: var(--color-text-tertiary);
   opacity: 0.5;
   font-size: 0.9em;
+}
+
+.footer-copyright {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+  font-size: 0.78em;
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  margin-top: var(--spacing-xs);
 }
 
 .footer-divider {
