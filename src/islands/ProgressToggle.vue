@@ -104,7 +104,10 @@
         <line x1="12" y1="3" x2="12" y2="15" />
       </svg>
     </button>
-    <!-- 隐藏的文件输入，用于导入进度，仅接受 .json 文件 -->
+    <!-- 隐藏的文件输入，用于导入进度，仅接受 .json 文件
+         可访问性：display:none 使屏幕阅读器跳过此元素，无需 aria-label；
+         触发导入的按钮（上方 aria-label="导入进度"）已提供可访问名，
+         通过 triggerImport() 编程触发 click 事件实现文件选择。 -->
     <input
       ref="fileInput"
       type="file"

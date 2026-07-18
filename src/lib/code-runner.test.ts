@@ -375,7 +375,8 @@ describe('runCodeInSandbox 沙箱逃逸防护', () => {
     const result = await promise;
     expect(result.error).toBeNull();
     // cookie 应为空（沙箱无法访问父页面 cookie）
-    expect(result.logs[0].text).toBe('');
+    // noUncheckedIndexedAccess：result.logs[0] 类型可能为 undefined，使用 ?. 链式访问
+    expect(result.logs[0]?.text).toBe('');
   });
 
   it('沙箱逃逸尝试：localStorage 访问应被浏览器拒绝', async () => {

@@ -51,8 +51,9 @@ const moduleMapJson = JSON.stringify(
             class="search-input"
             placeholder="搜索文档标题、描述或标签..."
             autocomplete="off"
+            aria-label="搜索文档标题、描述或标签"
           />
-          <select id="filter-module" class="search-select">
+          <select id="filter-module" class="search-select" aria-label="按模块筛选">
             <option value="">全部模块</option>
             {moduleList.map((m) => (
               <option value={m.id}>{m.title}</option>
@@ -571,7 +572,7 @@ const moduleMapJson = JSON.stringify(
 
         try {
           worker = new Worker(
-            new URL('@/workers/search-worker.ts', import.meta.url),
+            new URL('../../workers/search-worker.ts', import.meta.url),
             { type: 'module' }
           );
           worker.onmessage = (e: MessageEvent) => {
@@ -743,6 +744,9 @@ const moduleMapJson = JSON.stringify(
         })
         .join('');
 
+      // 安全降级策略：所有动态内容（title/slug/description/tags 等）已在上游通过 escapeHtml() 转义，
+      // 即使 DOMPurify 未加载，html 字符串中的用户可控数据均已转义为安全文本，不会触发 XSS。
+      // DOMPurify 作为纵深防御层启用；escapeHtml 是首要防线（见第 499 行 loadDOMPurify 的 catch 注释）。
       const purify = window.DOMPurify
       resultsEl.innerHTML = purify ? purify.sanitize(html) : html
     }

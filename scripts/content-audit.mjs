@@ -15,6 +15,7 @@
  * - 长文档缺少前置知识/学习目标
  * - 内部链接格式（非 http/#/mailto 开头）
  * - Wiki 链接格式（[[...]]）
+ * - [Phase 1.5] schema 完整性：检测新增字段缺失并统计覆盖率
  */
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -24,6 +25,60 @@ import { join } from 'node:path';
 const DOCS = 'src/content/docs';
 /** 问题收集数组 */
 const issues = [];
+
+// ============================================================
+// Phase 1.5：schema 完整性审计
+// ============================================================
+
+/**
+ * Phase 1.5 新增字段列表
+ * 用于检测每篇文档是否已补全这些字段
+ */
+const SCHEMA_FIELDS = [
+  'learningObjectives',
+  'references',
+  'lastReviewed',
+  'reviewer',
+];
+
+/**
+ * schema 缺失问题收集数组
+ * 每条结构：{ file, slug, missing: string[] }
+ */
+const schemaIssues = [];
+
+/**
+ * schema 字段覆盖率统计
+ * key 为字段名，value 为已包含该字段的文档数
+ */
+const schemaCoverage = Object.fromEntries(SCHEMA_FIELDS.map((f) => [f, 0]));
+
+/** schema 审计维度扫描的文档总数 */
+let schemaTotalDocs = 0;
+
+/**
+ * 检测 frontmatter 文本块中是否存在指定字段
+ * 仅做行首存在性检测，不解析值
+ * @param {string} fm - frontmatter 文本块
+ * @param {string} key - 字段名
+ * @returns {boolean} 是否存在
+ */
+function hasSchemaField(fm, key) {
+  const re = new RegExp(`^${key}:`, 'm');
+  return re.test(fm);
+}
+
+/**
+ * 从文件路径推断文档 slug（相对 docs 目录且去扩展名）
+ * @param {string} full - 文件完整路径
+ * @returns {string} 文档 slug
+ */
+function pathToSlug(full) {
+  const norm = full.replace(/\\/g, '/');
+  const idx = norm.indexOf('/docs/');
+  if (idx === -1) return norm;
+  return norm.slice(idx + '/docs/'.length).replace(/\.md$/, '');
+}
 
 /**
  * 过时关键词配置
@@ -56,6 +111,24 @@ function walk(dir) {
 
       const fm = match[1];
       const body = raw.slice(match[0].length).trim(); // frontmatter 之后的正文
+
+      // ============================================================
+      // Phase 1.5：schema 完整性检测
+      // ============================================================
+      schemaTotalDocs++;
+      const missingFields = SCHEMA_FIELDS.filter((f) => !hasSchemaField(fm, f));
+      // 更新覆盖率（已包含该字段的文档计数 +1）
+      SCHEMA_FIELDS.forEach((f) => {
+        if (!missingFields.includes(f)) schemaCoverage[f]++;
+      });
+      // 记录缺失字段清单（仅当有缺失时）
+      if (missingFields.length > 0) {
+        schemaIssues.push({
+          file: full,
+          slug: pathToSlug(full),
+          missing: missingFields,
+        });
+      }
 
       // 提取 frontmatter 各字段
       const titleLine = fm.match(/title:\s*["']?(.*?)["']?\s*$/m);
@@ -154,6 +227,33 @@ for (const [type, items] of Object.entries(byType)) {
 }
 
 console.log(`\nTotal issues: ${issues.length}`);
+
+// ============================================================
+// Phase 1.5：schema 完整性审计报告
+// ============================================================
+console.log('\n=== Schema Integrity Audit (Phase 1.5) ===\n');
+console.log(`Scanned docs: ${schemaTotalDocs}`);
+console.log(`Docs missing schema fields: ${schemaIssues.length}`);
+
+// 各字段覆盖率
+console.log('\nField coverage:');
+SCHEMA_FIELDS.forEach((f) => {
+  const covered = schemaCoverage[f];
+  const total = schemaTotalDocs || 1;
+  const pct = ((covered / total) * 100).toFixed(2);
+  console.log(`  ${f.padEnd(22)} : ${covered}/${schemaTotalDocs} (${pct}%)`);
+});
+
+// 输出缺失字段清单（最多展示 20 条，避免日志过长）
+if (schemaIssues.length > 0) {
+  console.log('\nMissing field details (first 20):');
+  schemaIssues.slice(0, 20).forEach((s) => {
+    console.log(`  [SCHEMA] ${s.slug} missing: ${s.missing.join(', ')}`);
+  });
+  if (schemaIssues.length > 20) {
+    console.log(`  ... and ${schemaIssues.length - 20} more`);
+  }
+}
 
 // 存在 high 级别问题时以非零退出码退出，用于 CI/CD 流水线拦截
 if (highCount > 0) {

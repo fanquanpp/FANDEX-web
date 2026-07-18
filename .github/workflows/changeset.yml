@@ -1,0 +1,99 @@
+name: Add Changeset
+
+# 在 PR 打开时检测是否包含 changeset 文件
+# 若缺失，则在 PR 上自动留言提示贡献者补充 changeset 声明
+# 详细的 changeset 流程参见仓库根目录 .changeset/README.md
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check:
+    name: Check for changeset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect changeset files
+        id: detect
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 通过 GitHub API 获取本次 PR 相对 base 分支的所有变更文件
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              per_page: 100,
+            });
+
+            // changeset 文件位于 .changeset/ 目录下，文件名形如 random-words.md
+            // README.md 与 config.json 不计入有效 changeset
+            const changesetFiles = files.filter(
+              (f) =>
+                f.filename.startsWith('.changeset/') &&
+                f.filename.endsWith('.md') &&
+                f.filename !== '.changeset/README.md'
+            );
+
+            const hasChangeset = changesetFiles.length > 0;
+            core.setOutput('has_changeset', hasChangeset ? 'true' : 'false');
+            core.setOutput('count', String(changesetFiles.length));
+
+            if (!hasChangeset) {
+              core.notice('未检测到 changeset 文件，将在 PR 上留言提示');
+            } else {
+              core.info(`检测到 ${changesetFiles.length} 个 changeset 文件`);
+            }
+
+      - name: Comment on PR when changeset missing
+        if: steps.detect.outputs.has_changeset != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = [
+              '## Changeset 检测结果',
+              '',
+              '本次 PR 未检测到 changeset 文件。如本次变更属于以下任意情形，请补充 changeset 声明：',
+              '',
+              '- 新增功能或文档模块（minor）',
+              '- 错误修复或文档勘误（patch）',
+              '- 破坏性变更（major）',
+              '',
+              '### 补充方式',
+              '',
+              '在本地工作区执行：',
+              '',
+              '```bash',
+              'npm run changeset',
+              '```',
+              '',
+              'CLI 将交互式询问变更类型与摘要，生成 `.changeset/<random-words>.md` 文件后提交至本 PR 即可。',
+              '',
+              '详细流程参见 [.changeset/README.md](https://github.com/fanquanpp/FANDEX-web/blob/main/.changeset/README.md)。',
+              '',
+              '> 若本次变更仅为格式调整、CI 配置、依赖升级等不影响内容版本的改动，可忽略本提示。',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body,
+            });

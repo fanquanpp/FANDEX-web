@@ -1,0 +1,33 @@
+# FANDEX-web Code Owners
+#
+# 每条规则格式：<pattern> @username [@username2 ...]
+# GitHub 在 PR 中会根据规则自动请求对应 owner 的审阅
+# 详见 https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# 默认所有者：所有未匹配下方规则的文件均由 @fanquanpp 审阅
+* @fanquanpp
+
+# 文档内容源：所有 Markdown 文档与 frontmatter 变更须由内容维护者审阅
+/src/content/docs/ @fanquanpp
+
+# shadcn-vue 组件库：UI 组件变更须由前端维护者审阅
+/src/ui/ @fanquanpp
+
+# Service 层：业务逻辑变更须由后端维护者审阅
+/src/services/ @fanquanpp
+
+# 数据层：数据存储与访问变更须由后端维护者审阅
+/src/data/ @fanquanpp
+
+# 类型定义：共享类型变更须由架构维护者审阅
+/src/types/ @fanquanpp
+
+# CI/CD 配置：流水线与部署变更须由 DevOps 维护者审阅
+/.github/workflows/ @fanquanpp
+/.changeset/ @fanquanpp
+
+# 项目配置：构建工具与依赖变更须由架构维护者审阅
+/astro.config.ts @fanquanpp
+/package.json @fanquanpp
+/tsconfig.json @fanquanpp
+/components.json @fanquanpp

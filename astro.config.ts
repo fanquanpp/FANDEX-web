@@ -17,8 +17,14 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx'; // MDX 支持：在 Markdown 中使用 JSX 组件
 import sitemap from '@astrojs/sitemap'; // 站点地图：自动生成 sitemap.xml
 import vue from '@astrojs/vue'; // Vue 集成：在 Astro 中使用 Vue 组件
+import pagefind from 'astro-pagefind'; // Pagefind 静态站点搜索集成：构建期生成索引至 dist/pagefind/
+import tailwindcss from '@tailwindcss/vite'; // Tailwind CSS v4 Vite 插件（CSS-first 配置，无需 tailwind.config.js）
+import { visualizer } from 'rollup-plugin-visualizer'; // Bundle 体积可视化分析：构建后生成 reports/bundle-stats.html
 import { remarkAdmonition } from './src/lib/remark-admonition'; // 自定义提示块解析器
 import { rehypeLazyImages } from './src/lib/rehype-lazy-images'; // 图片懒加载处理器
+import { remarkCodeRunner } from './src/plugins/remark-code-runner'; // 代码运行器：识别 ```lang runnable 标记
+import { remarkTermTooltip } from './src/plugins/remark-term-tooltip'; // 术语悬浮：扫描文档中已知术语并包裹 data-term-tooltip 容器
+import { remarkExercise } from './src/plugins/remark-exercise'; // 习题与测验：识别 :::exercise / :::quiz 提示块并替换为 data-exercise / data-quiz 容器
 import remarkMath from 'remark-math'; // 数学公式语法解析（LaTeX 语法）
 import rehypeKatex from 'rehype-katex'; // KaTeX 数学公式渲染
 import remarkGfm from 'remark-gfm'; // GitHub Flavored Markdown 支持（表格、删除线等）
@@ -37,6 +43,20 @@ export default defineConfig({
   },
   // Vite 构建选项：控制 Rollup 输出文件名格式
   vite: {
+    plugins: [
+      // Tailwind CSS v4 Vite 插件：CSS-first 配置，自动扫描源码生成工具类
+      // 配置文件位于 src/styles/tailwind.css（通过 @import "tailwindcss" 引入）
+      tailwindcss(),
+      // Bundle 体积可视化分析：构建后在 reports/bundle-stats.html 生成可交互的 treemap
+      // 仅在 build 阶段触发，dev 阶段不运行（open: false 避免自动打开浏览器）
+      visualizer({
+        filename: 'reports/bundle-stats.html',
+        template: 'treemap',
+        gzipSize: true,
+        brotliSize: true,
+        open: false,
+      }),
+    ],
     build: {
       rollupOptions: {
         output: {
@@ -53,8 +73,11 @@ export default defineConfig({
     prefetchAll: false, // 不预取所有页面（节省带宽）
     defaultStrategy: 'hover', // 鼠标悬停时触发预取
   },
-  // 集成：MDX 支持、站点地图生成、Vue 组件支持
-  integrations: [mdx(), sitemap(), vue()],
+  // 集成：MDX 支持、站点地图生成、Vue 组件支持、Pagefind 静态搜索索引
+  // pagefind() 在 astro build 阶段自动扫描 dist/ 生成搜索索引至 dist/pagefind/，
+  // 替代原 build 脚本中手动 `pagefind --site dist` 步骤；同时在 astro dev 模式下
+  // 自动复用上次构建的索引，便于本地开发调试搜索功能。
+  integrations: [mdx(), sitemap(), vue(), pagefind()],
   markdown: {
     // Remark 插件（Markdown → MDAST 转换阶段）
     remarkPlugins: [
@@ -62,6 +85,9 @@ export default defineConfig({
       remarkEmoji, // Emoji 短代码转换
       remarkMath, // 数学公式语法解析（$...$ 和 $$...$$）
       remarkAdmonition, // 自定义提示块（:::note、:::tip 等）
+      remarkCodeRunner, // 代码运行器：识别 ```lang runnable 标记并替换为容器
+      remarkTermTooltip, // 术语悬浮：扫描文档中已知术语并包裹 data-term-tooltip 容器
+      remarkExercise, // 习题与测验：识别 :::exercise / :::quiz 提示块并替换为容器
     ],
     // Rehype 插件（MDAST → HAST → HTML 转换阶段）
     rehypePlugins: [

@@ -189,8 +189,12 @@ function processTextNode(
   const match = regex.exec(text);
   if (!match) return;
 
-  const term = match[1];
-  const termOffset = match[0].indexOf(match[1]);
+  // noUncheckedIndexedAccess：RegExpExecArray 索引访问返回 string | undefined
+  // 显式提取并兜底，避免后续 indexOf/get 报错
+  const fullMatch = match[0] || '';
+  const term = match[1] || '';
+  if (!term) return;
+  const termOffset = fullMatch.indexOf(term);
   const idx = match.index + termOffset;
   const data = termsData.get(term);
   if (!data) return;

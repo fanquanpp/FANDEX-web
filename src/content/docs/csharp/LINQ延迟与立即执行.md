@@ -8,8 +8,8 @@ description: 'C# LINQ延迟执行与立即执行详解。'
 author: fanquanpp
 updated: '2026-06-14'
 related:
-  - 'csharp/C#12与C#13新特性'
-  - 'csharp/C#与反射'
+  - 'csharp/CSharp12与CSharp13新特性'
+  - 'csharp/CSharp与反射'
   - 'csharp/async-await状态机'
   - csharp/委托与事件底层原理
 prerequisites:

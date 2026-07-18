@@ -63,14 +63,21 @@ export async function renderMermaid(pre: HTMLElement, index: number): Promise<vo
     const container = document.createElement('div');
     container.className = 'mermaid-output';
 
-    // 通过 DOMPurify 清洗 SVG，防止 XSS；加载失败时回退到原 SVG
+    // 安全降级策略：DOMPurify 是必需的消毒层，禁止回退至未消毒的原始 SVG。
+    // 即使 Mermaid securityLevel 已为 strict，仍坚持 DOMPurify 消毒以遵循纵深防御原则。
+    // DOMPurify 加载失败时显示错误占位符，不渲染未消毒 SVG。
     try {
       await loadDOMPurify();
       const purify = window.DOMPurify;
-      container.innerHTML = purify ? purify.sanitize(svg) : svg;
+      if (purify) {
+        container.innerHTML = purify.sanitize(svg);
+      } else {
+        // DOMPurify 加载但实例异常：显示错误，不渲染未消毒 SVG
+        container.textContent = 'Mermaid 渲染失败：DOMPurify 不可用';
+      }
     } catch {
-      // DOMPurify 加载失败时使用原 SVG（mermaid securityLevel 已为 strict）
-      container.innerHTML = svg;
+      // DOMPurify 加载失败：显示错误占位符，不回退至原始 SVG
+      container.textContent = 'Mermaid 渲染失败：DOMPurify 加载失败';
     }
 
     pre.replaceWith(container);

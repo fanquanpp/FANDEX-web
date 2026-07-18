@@ -42,10 +42,12 @@
 
         <!-- 填空题输入区：文本输入框 + 提交按钮 -->
         <div v-if="q.type === 'fill'" class="quiz-answer-area">
+          <!-- 填空题答案输入框：aria-label 动态包含题号，提供可访问名 -->
           <input
             v-model="answers[i]"
             class="quiz-input"
             placeholder="输入答案..."
+            :aria-label="`第 ${i + 1} 题填空答案输入`"
             :disabled="submitted[i]"
             @keyup.enter="submitAnswer(i)"
           />
@@ -79,10 +81,12 @@
         <div v-if="q.type === 'fix'" class="quiz-answer-area">
           <!-- 待修正的原始代码展示 -->
           <pre v-if="q.code" class="quiz-code">{{ q.code }}</pre>
+          <!-- 修正题答案文本域：aria-label 动态包含题号，提供可访问名 -->
           <textarea
             v-model="answers[i]"
             class="quiz-textarea"
             placeholder="输入修正后的代码或说明..."
+            :aria-label="`第 ${i + 1} 题代码修正输入`"
             :disabled="submitted[i]"
             rows="2"
           ></textarea>
@@ -124,8 +128,8 @@ interface FillQ {
   question: string;
   /** 正确答案 */
   answer: string;
-  /** 答错时显示的提示 */
-  hint?: string;
+  /** 答错时显示的提示（显式包含 undefined 以匹配 Zod optional 推导类型，适配 exactOptionalPropertyTypes） */
+  hint?: string | undefined;
 }
 
 /** 选择题：从多个选项中选择一个正确答案 */
@@ -138,8 +142,8 @@ interface ChoiceQ {
   options: string[];
   /** 正确答案的选项索引（从0开始） */
   answer: number;
-  /** 提交后显示的解析说明 */
-  explanation?: string;
+  /** 提交后显示的解析说明（显式包含 undefined 以匹配 Zod optional 推导类型） */
+  explanation?: string | undefined;
 }
 
 /** 代码修正题：展示有错误的代码，用户输入修正后的代码或说明 */
@@ -148,12 +152,12 @@ interface FixQ {
   type: 'fix';
   /** 题目文字 */
   question: string;
-  /** 待修正的原始代码 */
-  code?: string;
+  /** 待修正的原始代码（显式包含 undefined 以匹配 Zod optional 推导类型） */
+  code?: string | undefined;
   /** 参考答案（修正后的代码或说明） */
   answer: string;
-  /** 提交后显示的解析说明 */
-  explanation?: string;
+  /** 提交后显示的解析说明（显式包含 undefined 以匹配 Zod optional 推导类型） */
+  explanation?: string | undefined;
 }
 
 /** 题目联合类型：三种题型的联合 */

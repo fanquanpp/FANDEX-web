@@ -13,8 +13,10 @@ export function remarkAdmonition() {
     visit(tree, 'blockquote', (node: Blockquote) => {
       if (!node.children || node.children.length === 0) return;
 
+      // noUncheckedIndexedAccess：node.children[0] 类型为 Paragraph | undefined
+      // 显式 nullish 检查收窄类型，避免后续 .type 访问报错
       const firstChild = node.children[0];
-      if (firstChild.type !== 'paragraph') return;
+      if (!firstChild || firstChild.type !== 'paragraph') return;
 
       const firstTextChild = firstChild.children?.[0];
       if (!firstTextChild || firstTextChild.type !== 'text') return;
@@ -22,8 +24,9 @@ export function remarkAdmonition() {
       const match = firstTextChild.value.match(/^\[!(\w+)\]\s*/i);
       if (!match) return;
 
-      const admType = match[1].toLowerCase();
-      if (!types.includes(admType)) return;
+      // noUncheckedIndexedAccess：match[1] 类型为 string | undefined，提供兜底
+      const admType = (match[1] || '').toLowerCase();
+      if (!admType || !types.includes(admType)) return;
 
       // 移除 [!TYPE] 标记文本
       firstTextChild.value = firstTextChild.value.replace(/^\[!\w+\]\s*/, '');

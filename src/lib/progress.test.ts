@@ -86,7 +86,8 @@ describe('getAllProgress', () => {
     setProgress('b/2', 'done');
     const all = getAllProgress();
     expect(Object.keys(all)).toHaveLength(2);
-    expect(all['a/1'].status).toBe('reading');
-    expect(all['b/2'].status).toBe('done');
+    // noUncheckedIndexedAccess：索引访问返回 T | undefined，使用 ?. 链式访问
+    expect(all['a/1']?.status).toBe('reading');
+    expect(all['b/2']?.status).toBe('done');
   });
 });

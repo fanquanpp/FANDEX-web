@@ -3,6 +3,7 @@ import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
+import { render } from 'astro:content'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
 // 通过 glossary-service 获取术语表数据，UI 层禁止直接调用 getCollection
 import { getAllGlossaryTerms, getGlossaryByModule } from '@/services'
@@ -28,7 +29,7 @@ if (!meta) {
 const sortedGlossary = await getGlossaryByModule(module)
 
 const glossaryEntries = await Promise.all(sortedGlossary.map(async g => {
-  const { Content } = await g.render()
+  const { Content } = await render(g)
   return { title: g.data.title, Content }
 }))
 

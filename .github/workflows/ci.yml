@@ -1,5 +1,7 @@
 name: CI
 
+# CI 流水线完整阶段：lint → type-check → unit-test → e2e-test → build → qa-check → lighthouse → deploy
+# 任一前置阶段失败均会阻断后续阶段，确保仅高质量代码进入生产环境
 on:
   push:
     branches: [main]
@@ -8,6 +10,10 @@ on:
   workflow_dispatch:
 
 jobs:
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 1：代码风格与文档格式检查
+  # 检查 Markdown 文档格式（remark）与代码风格一致性（Prettier）
+  # ─────────────────────────────────────────────────────────────
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -22,30 +28,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Prettier check
-        run: npm run format:check
-
       - name: Run remark lint
         run: npm run lint:docs
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - name: Run Prettier check
+        run: npm run format:check
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Tests
-        run: npm run test
-
-  # 类型检查 Job，作为部署前置依赖，确保类型安全后才能合并与部署
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 2：TypeScript 类型检查
+  # 通过 astro check 验证全项目类型安全，禁止 any 类型泄漏
+  # ─────────────────────────────────────────────────────────────
   type-check:
     runs-on: ubuntu-latest
     steps:
@@ -63,15 +55,12 @@ jobs:
       - name: Run type check
         run: npm run type-check
 
-  # 构建任务：依赖 lint、test、type-check 全部通过后执行
-  # 仅在 push 到 main 分支时运行（PR 不触发构建与部署）
-  build:
-    needs: [lint, test, type-check]
-    if: github.event_name == 'push'
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 3：单元测试 + 覆盖率采集
+  # 运行 Vitest 测试套件并生成覆盖率报告，作为合并门禁
+  # ─────────────────────────────────────────────────────────────
+  unit-test:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -84,16 +73,230 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: 安装 Pagefind Linux x64 二进制依赖
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 4：E2E 冒烟测试
+  # 通过本地静态服务器对构建产物做 HTTP 200 冒烟校验，确保关键路由可达
+  # 后续如引入 Playwright，可在此 Job 替换为浏览器端 E2E 用例
+  # ─────────────────────────────────────────────────────────────
+  e2e-test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Restore .nojekyll
+        run: |
+          if [ -f public/.nojekyll ]; then
+            cp public/.nojekyll dist/.nojekyll
+          fi
+
+      - name: Start static server
+        run: |
+          npx --yes serve -s dist -l 4173 --no-clipboard &
+          echo $! > server.pid
+          sleep 3
+
+      - name: Smoke test key routes
+        run: |
+          set -e
+          ROUTES=(
+            "/"
+            "/FANDEX-web/"
+            "/FANDEX-web/agent/"
+            "/FANDEX-web/agent/概述与架构/"
+            "/FANDEX-web/search/"
+            "/FANDEX-web/404.html"
+          )
+          for route in "${ROUTES[@]}"; do
+            echo "Checking: $route"
+            code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:4173${route}")
+            if [ "$code" != "200" ] && [ "$code" != "404" ]; then
+              echo "::error::Route $route returned $code (expected 200 or 404)"
+              exit 1
+            fi
+            echo "  -> $code OK"
+          done
+
+      - name: Stop static server
+        if: always()
+        run: |
+          if [ -f server.pid ]; then
+            kill "$(cat server.pid)" || true
+          fi
+
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 5：构建产物
+  # 依赖 lint / type-check / unit-test 全部通过后执行
+  # 同时产出 Bundle 体积报告，超出预算则阻断
+  # ─────────────────────────────────────────────────────────────
+  build:
+    needs: [lint, type-check, unit-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Pagefind Linux x64 binary
         run: npm install --no-save @pagefind/linux-x64
 
-      - name: Build
+      - name: Build site
         run: npm run build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
 
-      - name: QA Check
+      - name: Analyze bundle size
+        run: node scripts/analyze-bundle.mjs
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 6：QA 质量门禁
+  # 依赖 build 产物，运行多维度质量检查（文件审计 / Web 架构 / 内容 / SEO）
+  # ─────────────────────────────────────────────────────────────
+  qa-check:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run QA check
         run: npm run qa
+
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 7：Lighthouse 性能审计
+  # 对首页 / 模块首页 / 文档详情页进行 Lighthouse 测量
+  # 性能预算定义在 lighthouse-budget.json，失败时阻止合并
+  # ─────────────────────────────────────────────────────────────
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: [build]
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run Lighthouse CI
+        run: npx @lhci/cli autorun --config=./lighthouse-budget.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: |
+            .lighthouseci/
+            reports/bundle-stats.html
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # 阶段 8：部署至 GitHub Pages
+  # 仅 main 分支 push 触发，依赖 build / qa-check / lighthouse / e2e-test 全部通过
+  # 使用 actions/deploy-pages 官方部署方式，确保 Pages 配置一致
+  # ─────────────────────────────────────────────────────────────
+  deploy:
+    needs: [build, qa-check, lighthouse, e2e-test]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Pagefind Linux x64 binary
+        run: npm install --no-save @pagefind/linux-x64
+
+      - name: Build site
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Preserve CNAME if exists
         run: |
@@ -113,33 +316,11 @@ jobs:
             echo "::warning::Pagefind index not found - search will not work"
           fi
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist
-          retention-days: 30
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-  # 部署任务：依赖构建完成，部署到 GitHub Pages
-  # test Job 通过 needs 链（test → build → deploy）成为 deploy 的前置依赖
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

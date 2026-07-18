@@ -1,4 +1,499 @@
 /**
+ * FANDEX 排版样式（Design Tokens 系统 + 现有 .prose 规则）
+ *
+ * 功能概述：
+ * 本文件包含两部分：
+ *   1. 【新增】基于 --fandex-* 设计令牌的全局元素排版规则（h1-h6、p、ul/ol、
+ *      blockquote、table、hr、img、code、数学公式等），适用于非 .prose 容器。
+ *   2. 【存量】.prose 容器作用域下的 Markdown 渲染排版规则，使用旧 --color-*
+ *      令牌，保持现有功能不变，将在后续阶段迁移至新令牌。
+ *
+ * 兼容策略：
+ * - 新规则使用元素选择器（h1、p 等），特异性较低（0,0,0,1）
+ * - .prose 规则使用 .prose 后代选择器，特异性较高（0,0,1,1），在 .prose 容器内优先
+ * - 因此新规则不会影响现有 .prose 内容的渲染，仅作用于 .prose 外部的元素
+ */
+
+/* ###################################################################
+   第一部分：Design Tokens 全局排版规则（新增）
+   ################################################################### */
+
+/* ========== 中英文混排优化 ==========
+   启用字距、连字、上下文替换；中文标点挤压（渐进增强）。 */
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1; /* 西文字距与连字 */
+  font-variant-east-asian: proportional-width; /* 中日韩字符等比例宽度 */
+  text-spacing-trim: space-all; /* 标点挤压（CSS Text 4，渐进增强） */
+  hanging-punctuation: first last; /* 首尾标点悬挂 */
+}
+
+/* ========== 标题样式 ==========
+   使用 display 字族、紧凑行高、负字距，营造层次感。 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fandex-font-display);
+  font-weight: var(--fandex-font-weight-bold);
+  line-height: var(--fandex-line-height-tight);
+  letter-spacing: var(--fandex-letter-spacing-tight);
+  color: var(--fandex-color-text-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  scroll-margin-top: 6rem; /* 锚点滚动偏移，避免被固定导航栏遮挡 */
+  text-wrap: balance; /* 标题文本平衡换行 */
+}
+
+h1 {
+  font-size: var(--fandex-font-size-4xl);
+  font-weight: var(--fandex-font-weight-extrabold);
+  letter-spacing: var(--fandex-letter-spacing-tighter);
+  margin-top: 0.8em;
+  margin-bottom: 0.6em;
+}
+
+h2 {
+  font-size: var(--fandex-font-size-3xl);
+  font-weight: var(--fandex-font-weight-bold);
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: var(--fandex-font-size-2xl);
+  margin-top: 1.3em;
+  margin-bottom: 0.4em;
+}
+
+h4 {
+  font-size: var(--fandex-font-size-xl);
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+h5 {
+  font-size: var(--fandex-font-size-lg);
+  color: var(--fandex-color-text-secondary);
+}
+
+h6 {
+  font-size: var(--fandex-font-size-base);
+  color: var(--fandex-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--fandex-letter-spacing-wider);
+}
+
+/* 首个标题去除顶部间距 */
+h1:first-child,
+h2:first-child,
+h3:first-child {
+  margin-top: 0;
+}
+
+/* ========== 段落样式 ========== */
+p {
+  margin: var(--fandex-paragraph-spacing-md) 0;
+  line-height: var(--fandex-line-height-relaxed);
+  color: var(--fandex-color-text-primary);
+  text-align: justify; /* 中文两端对齐 */
+  text-justify: inter-character; /* CJK 字符间距调整 */
+}
+
+/* ========== 列表样式 ========== */
+ul,
+ol {
+  margin: var(--fandex-paragraph-spacing-md) 0;
+  padding-left: var(--fandex-spacing-6);
+  color: var(--fandex-color-text-primary);
+}
+
+ul {
+  list-style: disc; /* 无序列表圆点 */
+}
+
+ol {
+  list-style: decimal; /* 有序列表数字 */
+}
+
+li {
+  margin: var(--fandex-spacing-1) 0;
+  padding-left: var(--fandex-spacing-1);
+}
+
+li::marker {
+  color: var(--fandex-color-primary-500); /* 列表标记使用主色 */
+}
+
+/* 嵌套列表缩小缩进 */
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin: var(--fandex-spacing-1) 0;
+}
+
+/* ========== 引用样式 ========== */
+blockquote {
+  margin: var(--fandex-spacing-6) 0;
+  padding: var(--fandex-spacing-3) var(--fandex-spacing-5);
+  border-left: 4px solid var(--fandex-color-primary-500);
+  background-color: var(--fandex-color-bg-surface);
+  border-radius: 0 var(--fandex-radius-md) var(--fandex-radius-md) 0;
+  color: var(--fandex-color-text-secondary);
+  font-style: italic; /* 引用斜体，区分正文 */
+  position: relative;
+}
+
+blockquote p {
+  margin: var(--fandex-spacing-2) 0;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 引用来源（cite 或 footer） */
+blockquote footer,
+blockquote cite {
+  display: block;
+  margin-top: var(--fandex-spacing-2);
+  font-size: var(--fandex-font-size-sm);
+  font-style: normal;
+  color: var(--fandex-color-text-tertiary);
+}
+
+blockquote footer::before,
+blockquote cite::before {
+  content: '— '; /* 引用来源前缀破折号 */
+}
+
+/* ========== 行内代码样式 ========== */
+code,
+kbd,
+samp {
+  font-family: var(--fandex-font-mono);
+  font-size: 0.875em; /* 相对于父元素略小 */
+}
+
+:not(pre) > code,
+:not(pre) > kbd,
+:not(pre) > samp {
+  padding: 0.15em 0.4em;
+  background-color: var(--fandex-color-bg-sunken);
+  color: var(--fandex-color-primary-700);
+  border: 1px solid var(--fandex-color-border-default);
+  border-radius: var(--fandex-radius-default);
+  word-break: break-word; /* 长代码标识符可断行 */
+}
+
+/* 暗色模式下行内代码文字色提亮 */
+[data-theme='dark'] :not(pre) > code,
+[data-theme='dark'] :not(pre) > kbd,
+[data-theme='dark'] :not(pre) > samp {
+  color: var(--fandex-color-primary-300);
+}
+
+/* ========== 代码块样式 ========== */
+pre {
+  margin: var(--fandex-spacing-6) 0;
+  padding: var(--fandex-spacing-4) var(--fandex-spacing-5);
+  background-color: var(--fandex-color-code-bg);
+  border: 1px solid var(--fandex-color-border-default);
+  border-radius: var(--fandex-radius-lg);
+  overflow-x: auto; /* 长代码横向滚动 */
+  font-family: var(--fandex-font-mono);
+  font-size: var(--fandex-font-size-sm);
+  line-height: var(--fandex-line-height-normal);
+  color: var(--fandex-color-code-text);
+}
+
+pre code {
+  background: none; /* pre 内的 code 不重复背景 */
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ========== 键盘按键样式（kbd） ========== */
+kbd {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  background-color: var(--fandex-color-bg-elevated);
+  border: 1px solid var(--fandex-color-border-strong);
+  border-bottom-width: 2px; /* 底部加粗，模拟物理按键立体感 */
+  border-radius: var(--fandex-radius-default);
+  font-family: var(--fandex-font-mono);
+  font-size: 0.85em;
+  color: var(--fandex-color-text-primary);
+  box-shadow: var(--fandex-shadow-xs);
+}
+
+/* ========== 表格样式 ========== */
+table {
+  width: 100%;
+  margin: var(--fandex-spacing-6) 0;
+  border-collapse: collapse;
+  border: 1px solid var(--fandex-color-border-default);
+  border-radius: var(--fandex-radius-md);
+  overflow: hidden;
+  font-size: var(--fandex-font-size-sm);
+  background-color: var(--fandex-color-bg-base);
+}
+
+th,
+td {
+  padding: var(--fandex-spacing-3) var(--fandex-spacing-4);
+  text-align: left;
+  border-bottom: 1px solid var(--fandex-color-border-default);
+  vertical-align: top;
+}
+
+/* 表头：主色背景 + 反色文字 */
+th {
+  background-color: var(--fandex-color-primary-600);
+  color: var(--fandex-color-text-inverse);
+  font-weight: var(--fandex-font-weight-semibold);
+  font-family: var(--fandex-font-display);
+  white-space: nowrap; /* 表头不换行 */
+}
+
+/* 暗色模式下表头使用稍浅的主色 */
+[data-theme='dark'] th {
+  background-color: var(--fandex-color-primary-700);
+}
+
+/* 斑马纹：偶数行使用 surface 背景 */
+tbody tr:nth-child(even) {
+  background-color: var(--fandex-color-bg-surface);
+}
+
+/* 行悬停高亮 */
+tbody tr:hover {
+  background-color: var(--fandex-color-bg-hover);
+  transition: background-color var(--fandex-duration-fast) var(--fandex-ease-out);
+}
+
+/* 表格底部边框去除（避免与容器边框重叠） */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========== 水平分割线 ========== */
+hr {
+  margin: var(--fandex-spacing-8) 0;
+  border: none;
+  border-top: 1px solid var(--fandex-color-border-default);
+  height: 0;
+}
+
+/* 分割线变体：装饰性虚线 */
+hr.dashed {
+  border-top-style: dashed;
+}
+
+/* 分割线变体：渐变（淡入淡出） */
+hr.gradient {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--fandex-color-border-default),
+    transparent
+  );
+}
+
+/* ========== 图片样式 ========== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--fandex-spacing-6) auto;
+  border-radius: var(--fandex-radius-lg);
+  box-shadow: var(--fandex-shadow-md);
+}
+
+figure {
+  margin: var(--fandex-spacing-8) 0;
+  text-align: center;
+}
+
+figure img {
+  margin: 0 auto;
+}
+
+/* 图片标题（figcaption） */
+figcaption {
+  margin-top: var(--fandex-spacing-2);
+  font-size: var(--fandex-font-size-sm);
+  color: var(--fandex-color-text-secondary);
+  font-style: italic;
+}
+
+/* ========== 强调与标记 ========== */
+strong,
+b {
+  font-weight: var(--fandex-font-weight-semibold);
+  color: var(--fandex-color-text-primary);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+mark {
+  padding: 0.1em 0.3em;
+  background-color: var(--fandex-color-accent-200);
+  color: var(--fandex-color-accent-900);
+  border-radius: var(--fandex-radius-sm);
+}
+
+[data-theme='dark'] mark {
+  background-color: var(--fandex-color-accent-500);
+  color: var(--fandex-color-text-inverse);
+}
+
+/* 删除线 */
+del {
+  color: var(--fandex-color-text-tertiary);
+  text-decoration: line-through;
+}
+
+/* 插入线 */
+ins {
+  color: var(--fandex-color-success);
+  text-decoration: underline;
+  text-decoration-color: var(--fandex-color-success);
+}
+
+/* 上标与下标 */
+sup,
+sub {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* ========== 缩写与定义 ========== */
+abbr[title] {
+  cursor: help; /* 鼠标悬停显示帮助光标 */
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+  text-decoration-color: var(--fandex-color-text-tertiary);
+}
+
+/* 定义术语 */
+dfn {
+  font-style: italic;
+  font-weight: var(--fandex-font-weight-medium);
+}
+
+/* ========== 数学公式样式（KaTeX） ========== */
+/* KaTeX 容器：行内与块级公式统一处理 */
+.katex {
+  font-size: 1.1em; /* 数学公式略大于正文，提升可读性 */
+}
+
+/* 块级公式：居中 + 横向滚动 */
+.katex-display {
+  margin: var(--fandex-spacing-6) 0;
+  overflow-x: auto; /* 长公式横向滚动 */
+  overflow-y: hidden;
+  padding: var(--fandex-spacing-2) 0;
+  text-align: center; /* 公式居中 */
+}
+
+/* 块级公式内的 KaTeX 容器 */
+.katex-display > .katex {
+  text-align: center;
+}
+
+/* 公式编号右对齐 */
+.katex-display > .katex > .katex-mathml {
+  display: none; /* MathML 隐藏，仅显示渲染后的公式 */
+}
+
+/* 暗色模式下公式文字色 */
+[data-theme='dark'] .katex {
+  color: var(--fandex-color-text-primary);
+}
+
+/* ========== 响应式排版 ========== */
+@media (max-width: 768px) {
+  /* 移动端标题字号递减 */
+  h1 {
+    font-size: var(--fandex-font-size-3xl);
+  }
+  h2 {
+    font-size: var(--fandex-font-size-2xl);
+  }
+  h3 {
+    font-size: var(--fandex-font-size-xl);
+  }
+  h4 {
+    font-size: var(--fandex-font-size-lg);
+  }
+
+  /* 移动端段落左对齐（两端对齐在窄屏下效果差） */
+  p {
+    text-align: left;
+  }
+
+  /* 移动端列表缩进减小 */
+  ul,
+  ol {
+    padding-left: var(--fandex-spacing-4);
+  }
+
+  /* 移动端引用块间距缩小 */
+  blockquote {
+    padding: var(--fandex-spacing-2) var(--fandex-spacing-4);
+    margin: var(--fandex-spacing-4) 0;
+  }
+
+  /* 移动端表格支持横向滚动 */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    padding: var(--fandex-spacing-2) var(--fandex-spacing-3);
+  }
+}
+
+/* ###################################################################
+   第二部分：.prose 容器排版规则（存量，待后续迁移）
+   --------------------------------------------------------------------
+   以下规则为现有 .prose 容器作用域下的 Markdown 渲染样式，
+   使用旧 --color-* 令牌，保持现有功能不变。
+   特异性高于上方全局规则（.prose h1 = 0,0,1,1 > h1 = 0,0,0,1），
+   因此 .prose 容器内的元素仍按以下规则渲染，不受新规则影响。
+   ################################################################### */
+
+/**
  * FANDEX 排版样式
  *
  * 功能概述：

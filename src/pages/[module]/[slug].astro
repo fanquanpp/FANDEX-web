@@ -12,6 +12,7 @@ import DocNav from '@/components/DocNav.astro'
 import GeoBgDecor from '@/components/GeoBgDecor.astro'
 import ProgressToggle from '@/islands/ProgressToggle.vue'
 import QuizBlock from '@/islands/QuizBlock.vue'
+import { render } from 'astro:content'
 import { getModule, modulePrerequisites, categoryColors, getPrimaryCategory } from '@/lib/modules'
 // 通过 doc-service 获取文档数据与导航信息，UI 层禁止直接调用 getCollection
 // docSlug/computeReadingTime/getDocNavigation 均由 Service 层统一提供
@@ -40,7 +41,7 @@ export async function getStaticPaths() {
 const { doc } = Astro.props as { doc: DocEntry }
 const { module, slug } = Astro.params as { module: string; slug: string }
 // 渲染 Markdown 内容并获取标题列表
-const { Content, headings } = await doc.render()
+const { Content, headings } = await render(doc)
 const meta = getModule(module || '')
 
 // 通过 doc-service 获取当前模块排序后的文档列表，传递给 Sidebar 避免重复查询
@@ -85,7 +86,7 @@ const breadcrumb = [
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <span>前置知识: {prereqs.map((p: string, i: number) => {
             const parts = p.split('/')
-            const modId = parts[0]
+            const modId = parts[0] || ''  // noUncheckedIndexedAccess：数组访问可能返回 undefined，提供兜底
             const modMeta = getModule(modId)
             const label = modMeta ? modMeta.title : p
             const href = parts.length > 1 ? `${import.meta.env.BASE_URL}${p}/` : `${import.meta.env.BASE_URL}${modId}/`

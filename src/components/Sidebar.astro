@@ -613,7 +613,9 @@ const hasHeadings = visibleHeadings.length > 0
           })
         },
         {
-          root: mainEl || undefined,
+          // exactOptionalPropertyTypes：IntersectionObserverInit.root 不接受 undefined
+          // 使用 ?? null 将 undefined 转为 null（root 字段类型为 Element | Document | null）
+          root: mainEl ?? null,
           rootMargin: '0px 0px -60% 0px',
           threshold: 0,
         }

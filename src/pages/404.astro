@@ -48,7 +48,8 @@ const topModules = modules.slice(0, 6)
         <p class="error-desc">您访问的页面不存在或已被移动。请尝试搜索或浏览以下模块。</p>
 
         <div class="error-search">
-          <input type="text" id="error-search-input" placeholder="搜索模块..." class="error-search-input" />
+          <!-- 404 页面搜索输入框：aria-label 提供可访问名，placeholder 不作为可访问名替代 -->
+          <input type="text" id="error-search-input" placeholder="搜索模块..." class="error-search-input" aria-label="搜索模块" />
         </div>
 
         <div class="error-modules" id="error-modules">

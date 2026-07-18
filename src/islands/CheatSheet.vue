@@ -41,7 +41,13 @@
 
     <!-- 搜索栏：输入搜索词实时过滤条目 -->
     <div class="search-bar">
-      <input v-model="搜索词" type="text" :placeholder="搜索框占位符" />
+      <!-- 搜索输入框：通过 aria-label 暴露可访问名，placeholder 不作为可访问名替代 -->
+      <input
+        v-model="搜索词"
+        type="text"
+        :placeholder="搜索框占位符"
+        aria-label="搜索速查表条目"
+      />
       <!-- 有搜索词时显示匹配条目总数 -->
       <span v-if="搜索词" class="result-count">{{ 匹配条目总数 }} 条结果</span>
     </div>
@@ -71,7 +77,9 @@
           <div v-for="(item, idx) in group.条目" :key="idx" class="item">
             <!-- 条目描述：说明该代码片段的用途 -->
             <p class="item-desc">{{ item.描述 }}</p>
-            <!-- 代码块：优先使用预渲染的高亮 HTML，否则回退到转义后的纯文本 -->
+            <!-- 代码块：优先使用预渲染的高亮 HTML，否则回退到转义后的纯文本。
+                 信任边界：高亮代码由构建时的高亮工具生成，代码源为静态 JSON，
+                 非用户输入；fallbackCode 对纯文本代码做 HTML 转义后输出，安全。 -->
             <div class="code-block">
               <div v-html="item.高亮代码 || fallbackCode(item.代码)"></div>
               <!-- 复制按钮：复制后短暂显示"已复制" -->

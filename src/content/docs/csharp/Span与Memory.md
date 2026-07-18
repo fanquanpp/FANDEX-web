@@ -11,7 +11,7 @@ related:
   - csharp/记录类型
   - csharp/泛型与协变逆变
   - csharp/源生成器
-  - 'csharp/C#与Unity游戏开发'
+  - 'csharp/CSharp与Unity游戏开发'
 prerequisites:
   - csharp/概述与环境配置
 ---

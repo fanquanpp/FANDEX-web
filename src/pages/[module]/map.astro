@@ -1,14 +1,28 @@
 ---
+/**
+ * 模块知识地图页
+ * 通过 knowledge-map-service 在服务端构建当前模块的 KnowledgeMap 数据，
+ * 传递给 KnowledgeMap Vue 岛屿组件，由客户端渲染 Mermaid 图
+ *
+ * 数据流：
+ * - getStaticPaths: 从 docs collection 提取全部模块 ID 生成静态路径
+ * - 服务端：getModuleMap(moduleId) → KnowledgeMap 数据
+ * - 客户端：KnowledgeMap.vue 接收 map 数据，渲染 Mermaid + 缩放/拖拽/点击跳转
+ */
 import Layout from '@/components/Layout.astro'
 import SEO from '@/components/SEO.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
+import KnowledgeMap from '@/islands/KnowledgeMap.vue'
 import { getModule, categoryColors, getPrimaryCategory } from '@/lib/modules'
-// 通过 doc-service 获取文档数据，UI 层禁止直接调用 getCollection
-import { getAllDocs, getDocsByModule, getDocBySlug, docSlug } from '@/services'
+// 通过 services 桶文件统一导入：UI 层禁止直接调用 services 内部模块
+import { getAllDocs, getDocsByModule, docSlug, getModuleMap, toMermaidGraph } from '@/services'
+import type { KnowledgeMap as KnowledgeMapData } from '@/services'
 
+/**
+ * 生成静态路径：扫描全部文档，提取出现的模块 ID 作为路由参数
+ */
 export async function getStaticPaths() {
-  // 通过 doc-service 获取全部文档，提取模块集合生成静态路径
   const docs = await getAllDocs()
   const moduleSet = new Set<string>()
   docs.forEach(d => {
@@ -24,24 +38,19 @@ if (!meta) {
   return Astro.redirect(`${import.meta.env.BASE_URL}404`)
 }
 
-// 通过 doc-service 获取模块的 overview 文档（slug 为 'overview'）
-const overviewDoc = await getDocBySlug(module, 'overview')
+// 通过 knowledge-map-service 在服务端构建模块知识地图数据
+const mapData: KnowledgeMapData = await getModuleMap(module)
+// 服务端预生成 Mermaid 语法字符串，避免客户端岛屿导入 astro:content
+const graphSource: string = toMermaidGraph(mapData)
 
-// 通过 doc-service 获取模块文档列表（已按 order 升序排序）
+// 通过 doc-service 获取模块文档列表（已按 order 升序排序），用于底部文档索引
 const sortedDocs = await getDocsByModule(module)
 
-let mermaidCode: string | null = null
-if (overviewDoc) {
-  const rawBody = overviewDoc.body || ''
-  const mermaidMatch = rawBody.match(/```mermaid\n([\s\S]*?)```/)
-  if (mermaidMatch) {
-    mermaidCode = mermaidMatch[1].trim()
-  }
-}
+const base = import.meta.env.BASE_URL
 
 const breadcrumb = [
-  { label: '首页', href: `${import.meta.env.BASE_URL}` },
-  { label: meta.title, href: `${import.meta.env.BASE_URL}${module}/` },
+  { label: '首页', href: `${base}` },
+  { label: meta.title, href: `${base}${module}/` },
   { label: '知识地图' },
 ]
 ---
@@ -57,33 +66,30 @@ const breadcrumb = [
       <span class="header-bar" style={`background:${categoryColors[getPrimaryCategory(meta)]}`}></span>
       <div class="header-body">
         <h1 class="map-title">{meta.title} 知识地图</h1>
-        <p class="map-subtitle">模块知识结构与学习路径 | {sortedDocs.length} 篇文档</p>
+        <p class="map-subtitle">模块知识结构与学习路径 | {sortedDocs.length} 篇文档 | {mapData.nodes.length} 个节点 | {mapData.edges.length} 条关系</p>
       </div>
     </div>
 
     <div class="map-nav">
-      <a href={`${import.meta.env.BASE_URL}${module}/`} class="map-back">
+      <a href={`${base}${module}/`} class="map-back">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 6 6 12 18 18"/></svg>
         <span>返回文档列表</span>
       </a>
+      <a href={`${base}map/`} class="map-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>全局知识地图</span>
+      </a>
     </div>
 
-    {mermaidCode ? (
-      <div class="map-diagram">
-        <pre class="mermaid">{mermaidCode}</pre>
-      </div>
-    ) : (
-      <div class="map-empty">
-        <p>该模块暂无知识地图</p>
-      </div>
-    )}
+    <!-- 知识地图渲染区：客户端水合 Mermaid 图，支持缩放/拖拽/节点点击跳转 -->
+    <KnowledgeMap client:load scope="module" map={mapData} graphSource={graphSource} baseUrl={base} />
 
     <div class="map-doc-list">
       <h2 class="map-section-title">文档索引</h2>
       <div class="map-doc-grid">
         {sortedDocs.map(doc => {
           const slug = docSlug(doc.id)
-          const href = `${import.meta.env.BASE_URL}${module}/${slug}/`
+          const href = `${base}${module}/${slug}/`
           return (
             <a href={href} class="map-doc-card" style={`--doc-color:${categoryColors[getPrimaryCategory(meta)]}`}>
               <span class="doc-card-bar"></span>
@@ -133,7 +139,10 @@ const breadcrumb = [
 }
 
 .map-nav {
+  display: flex;
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
 }
 
 .map-back {
@@ -146,35 +155,12 @@ const breadcrumb = [
   border: 1px solid var(--color-border-light);
   background: var(--color-bg-card);
   transition: color var(--transition-fast), border-color var(--transition-fast);
+  text-decoration: none;
 }
 
 .map-back:hover {
   color: var(--color-primary);
   border-color: var(--color-primary);
-}
-
-.map-diagram {
-  margin-bottom: var(--spacing-2xl);
-  padding: var(--spacing-xl);
-  border: 1px solid var(--color-border-light);
-  background: var(--color-bg);
-  overflow-x: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.map-diagram .mermaid {
-  background: transparent;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.map-empty {
-  text-align: center;
-  padding: var(--spacing-3xl);
-  color: var(--color-text-tertiary);
-  border: 1px dashed var(--color-border-light);
-  margin-bottom: var(--spacing-2xl);
 }
 
 .map-doc-list {
@@ -251,28 +237,5 @@ const breadcrumb = [
   .map-doc-grid {
     grid-template-columns: 1fr;
   }
-
-  .map-diagram {
-    padding: var(--spacing-md);
-  }
 }
 </style>
-
-<script>
-  // 通过 external-loader 与 mermaid-renderer 统一加载与渲染 Mermaid 图表
-  async function initMapMermaid() {
-    const mermaidPres = document.querySelectorAll<HTMLElement>('pre.mermaid')
-    if (mermaidPres.length === 0) return
-    try {
-      const { initMermaid, renderMermaid } = await import('@/lib/mermaid-renderer')
-      await initMermaid()
-      for (let i = 0; i < mermaidPres.length; i++) {
-        const pre = mermaidPres[i]
-        await renderMermaid(pre, i)
-      }
-    } catch { /* Mermaid 渲染失败时静默处理 */ }
-  }
-
-  initMapMermaid()
-  document.addEventListener('astro:page-load', initMapMermaid)
-</script>

@@ -96,8 +96,10 @@ export async function getDocNavigation(moduleId: string, slug: string): Promise<
     const docs = await getDocsByModule(moduleId);
     const currentIndex = docs.findIndex(doc => docSlug(doc.id) === slug);
     if (currentIndex < 0) return { prev: null, next: null };
-    const prev = currentIndex > 0 ? docs[currentIndex - 1] : null;
-    const next = currentIndex < docs.length - 1 ? docs[currentIndex + 1] : null;
+    // 使用 ?? null 将可能的 undefined（来自 noUncheckedIndexedAccess）收窄为 null
+    // 保证返回类型与 DocNavigation 接口（DocEntry | null）严格匹配
+    const prev = currentIndex > 0 ? (docs[currentIndex - 1] ?? null) : null;
+    const next = currentIndex < docs.length - 1 ? (docs[currentIndex + 1] ?? null) : null;
     return { prev, next };
   } catch {
     return { prev: null, next: null };

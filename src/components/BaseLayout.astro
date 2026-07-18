@@ -2,11 +2,12 @@
 /**
  * 基础布局组件
  * 抽取 HomeLayout 与 Layout 的共享代码：CSS 引入、CSP meta、CDN 预连接、
- * 字体预加载、暗色模式初始化脚本、主题切换组件
+ * 字体预加载、暗色模式初始化脚本、主题切换组件、Web Vitals 采集器
  *
  * 设计原则：
  * - 子布局通过 Astro.slots.has() 检测插槽来条件渲染差异化结构
  * - 共享的 head 内容统一通过 named slot "head" 透传
+ * - WebVitalsTracker 通过 client:load 在浏览器端水合后开始采集
  */
 import '@/styles/variables.css'
 import '@/styles/global.css'
@@ -14,7 +15,10 @@ import '@/styles/typography.css'
 import '@/styles/code.css'
 import '@/styles/components.css'
 import '@/styles/geo-decor.css'
+import '@/styles/tokens.css'
+import '@/styles/tailwind.css'
 import { SITE } from '@/lib/constants'
+import WebVitalsTracker from '@/islands/WebVitalsTracker.vue'
 
 const base = import.meta.env.BASE_URL
 ---
@@ -57,16 +61,36 @@ const base = import.meta.env.BASE_URL
   </head>
   <body>
     <slot />
+    <!-- Web Vitals 采集器：client:load 确保仅在浏览器端水合后采集，SSR 阶段不执行 -->
+    <WebVitalsTracker client:load />
   </body>
 </html>
 
 <script>
-  // 快捷键 Ctrl/Cmd + K 跳转到搜索页（首页与文档页共享）
+  // 快捷键 Ctrl/Cmd + K 由 SearchDialog Vue 组件接管（client:load 水合后生效）
+  // 在 SearchDialog 水合前的极短时间窗口内，Cmd+K 将无响应；
+  // 此处保留兜底：若 SearchDialog 未加载（如水合失败），回退到跳转 /search/ 页面
+  let searchDialogMounted = false
+  document.addEventListener('fandex-search-dialog-ready', () => {
+    searchDialogMounted = true
+  }, { once: true })
+
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault()
-      const base = document.querySelector('a.nav-logo')?.getAttribute('href') || '/'
-      window.location.href = base + 'search/'
+      // 若 SearchDialog 已就绪，由其处理；否则兜底跳转
+      if (!searchDialogMounted) {
+        e.preventDefault()
+        const base = document.querySelector('a.nav-logo')?.getAttribute('href') || '/'
+        window.location.href = base + 'search/'
+      }
+      // searchDialogMounted=true 时不阻止默认行为，让 SearchDialog 的事件监听器接管
     }
-  })
+  }, { capture: true })
+</script>
+
+<script>
+  // 代码运行器挂载入口：扫描页面中 div[data-code-runner] 容器并动态挂载 CodeRunner.vue
+  // 由 remark-code-runner 插件在 Markdown 渲染期生成容器，惰性加载 Vue 与 CodeRunner 组件
+  import { initCodeRunnerMounting } from '@/lib/code-runner-mount'
+  initCodeRunnerMounting()
 </script>
