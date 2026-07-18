@@ -12,6 +12,8 @@ related:
   - html5/音频与视频
   - html5/嵌入式内容
   - html5/progress与meter
+  - svg/概述与环境配置
+  - svg/坐标系与viewBox
 prerequisites:
   - html5/概述与核心特性
 ---

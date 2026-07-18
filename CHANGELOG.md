@@ -1,5 +1,49 @@
 # 更新日志
 
+## v1.2.0（2026-07-18）
+
+### 新增 SVG 模块
+
+新增"SVG"文档模块，归入 `dev-lang` 分类，前置依赖 `html5`。提供 17 篇系统化教学文档，覆盖从入门到实战的完整路径。
+
+#### 模块配置
+
+- 在 `src/lib/modules.ts` 新增 SVG 模块定义（id: `svg`，icon: `SVG`）
+- 在 `modulePrerequisites` 中声明 `svg: ['html5']`
+- 在 `src/data/roadmap.json` 的 Phase 2 Web 基础中插入 SVG（位于 css 与 javascript 之间）
+- 在 careerPaths 全栈入门路径中加入 SVG 步骤
+- 关联 `html5/SVG矢量图形.md` 的 `related` 字段，指向新的 svg 模块文档
+
+#### 文档清单（17 篇）
+
+基础篇：
+- `svg/概述与环境配置.md`：SVG 发展、特性对比、嵌入方式、开发环境
+- `svg/基础语法与文档结构.md`：根元素、命名空间、defs/symbol/use、嵌套规则
+- `svg/坐标系与viewBox.md`：视口、viewBox、preserveAspectRatio、坐标系变换
+- `svg/基本图形详解.md`：rect/circle/ellipse/line/polyline/polygon 与描边属性
+- `svg/路径path详解.md`：path 命令、贝塞尔曲线、弧线、fill-rule
+
+样式篇：
+- `svg/文本与排版.md`：text/tspan/textPath、文字锚点、可访问文本
+- `svg/颜色与填充.md`：fill/stroke、currentColor、paint-order、vector-effect
+- `svg/渐变与图案.md`：linearGradient/radialGradient/pattern 与组合应用
+- `svg/变换transform.md`：translate/rotate/scale/matrix 与 transform-origin
+- `svg/滤镜详解.md`：feGaussianBlur/feDropShadow/feColorMatrix/光照
+
+进阶篇：
+- `svg/裁剪与蒙版.md`：clipPath 硬裁剪、mask 软蒙版、组合应用
+- `svg/符号与复用.md`：defs/symbol/use、图标系统构建
+- `svg/动画基础.md`：SMIL/animateTransform/animateMotion 与 CSS 动画对比
+- `svg/CSS样式化.md`：优先级、CSS 变量、伪类、媒体查询、主题切换
+- `svg/JavaScript交互.md`：DOM 操作、事件、动态生成、数据驱动可视化
+
+应用篇：
+- `svg/响应式与性能.md`：响应式适配、性能瓶颈、优化策略、懒加载
+- `svg/图标与可访问性.md`：图标系统、aria 属性、WCAG 对比度
+- `svg/实战项目.md`：环形进度条、柱状图、动画 Logo、地图、加载动画、折线图、饼图
+
+---
+
 ## v1.1.0（2026-07-16）
 
 ### 小更新（文本勘误与装饰层补全）

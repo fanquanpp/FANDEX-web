@@ -60,6 +60,13 @@ export const modules = [
   },
   { id: 'css', title: 'CSS', icon: 'CSS', description: '样式与视觉布局', categories: ['dev-lang'] },
   {
+    id: 'svg',
+    title: 'SVG',
+    icon: 'SVG',
+    description: '可缩放矢量图形与可视化',
+    categories: ['dev-lang'],
+  },
+  {
     id: 'javascript',
     title: 'JavaScript',
     icon: 'JS',
@@ -398,6 +405,7 @@ export const modulePrerequisites: Record<string, string[]> = {
   github: ['git'],
   html5: ['markdown'],
   css: ['html5'],
+  svg: ['html5'],
   javascript: ['html5', 'css'],
   typescript: ['javascript'],
   vue3: ['javascript', 'html5', 'css'],

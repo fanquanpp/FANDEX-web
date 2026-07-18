@@ -23,11 +23,12 @@
     {
       "phase": "Phase 2",
       "label": "Web 基础",
-      "desc": "前端开发三大核心技术，按 HTML → CSS → JS 顺序学习",
+      "desc": "前端开发核心技术，按 HTML → CSS → SVG → JS 顺序学习",
       "color": "dev-lang",
       "items": [
         { "id": "html5", "arrow": "right" },
         { "id": "css", "arrow": "right" },
+        { "id": "svg", "arrow": "right" },
         { "id": "javascript", "arrow": null }
       ]
     },
@@ -135,6 +136,7 @@
         { "id": "github", "label": "GitHub" },
         { "id": "html5", "label": "HTML5" },
         { "id": "css", "label": "CSS" },
+        { "id": "svg", "label": "SVG" },
         { "id": "javascript", "label": "JavaScript" }
       ]
     },
