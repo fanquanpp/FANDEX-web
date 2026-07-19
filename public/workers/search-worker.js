@@ -174,8 +174,10 @@ function executeSearch(query, filter, limit) {
       const entry = fr.item;
       const score = typeof fr.score === 'number' ? 1 - fr.score : 0.5;
       // 构造 URL：基于 Astro base 路径的相对路径
+      // 索引中 slug 字段已包含 module 前缀（如 "agent/A2A协议"），
+      // 对应路由 /[module]/[slug]/，无需额外拼接 docs 前缀
       const base = self.location?.pathname?.replace(/\/workers\/.*$/, '/') || '/';
-      const url = `${base}docs/${entry.slug}/`.replace(/\/+/g, '/');
+      const url = `${base}${entry.slug}/`.replace(/\/+/g, '/');
       return {
         slug: entry.slug,
         title: entry.title || '',

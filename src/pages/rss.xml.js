@@ -12,7 +12,9 @@ export async function GET(context) {
       title: doc.data.title,
       description: doc.data.description,
       pubDate: doc.data.updated || doc.data.created,
-      link: `${import.meta.env.BASE_URL}${doc.data.module}/${doc.slug}`,
+      // Astro 7 glob loader 中 doc.id 已包含 module 前缀（形如 "agent/A2A协议"），
+      // 对应路由 /[module]/[slug]/，故直接拼接 id 并补尾斜杠（与 trailingSlash: 'always' 对齐）
+      link: `${import.meta.env.BASE_URL}${doc.id}/`,
     })),
   });
 }

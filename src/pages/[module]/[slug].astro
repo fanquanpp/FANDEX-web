@@ -67,6 +67,9 @@ const breadcrumb = [
     title={doc.data.title}
     description={doc.data.description}
     canonical={`${Astro.site}${Astro.url.pathname}`}
+    publishedDate={doc.data.updated || undefined}
+    modifiedDate={doc.data.updated || undefined}
+    breadcrumb={breadcrumb}
   />
   <Sidebar
     slot="sidebar"

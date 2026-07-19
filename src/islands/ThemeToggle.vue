@@ -5,7 +5,8 @@
   - 在亮色(light)和暗色(dark)模式之间切换
   - 主题状态持久化到 localStorage（键名: fandex-theme），刷新页面后保持用户选择
   - 首次访问时跟随系统偏好（prefers-color-scheme）
-  - 挂载前不渲染按钮，避免 SSR（服务端渲染）与客户端状态不一致导致的水合错误
+  - SSR 阶段渲染不可见占位按钮（保留布局空间避免 CLS），
+    客户端挂载后填充实际图标，避免水合后布局偏移
 
   数据流：
   - onMounted 时从 localStorage 读取已保存的主题，无保存值时检测系统偏好
@@ -30,21 +31,21 @@ const theme = ref<'light' | 'dark'>('light');
 
 /**
  * 是否已完成客户端挂载
- * 用于控制按钮的渲染时机：仅在客户端挂载后才渲染
- * 这避免了 SSR 时渲染默认主题、客户端实际主题不同导致的水合不匹配(hydration mismatch)
+ * 用于控制图标的可见性：
+ * - SSR 阶段渲染透明占位按钮（保留 32x32 布局空间，CLS=0）
+ * - 客户端挂载后通过 opacity 平滑显示图标
  */
 const mounted = ref(false);
 
 /**
  * 组件挂载后的初始化逻辑
- * 1. 标记已挂载，允许按钮渲染
+ * 1. 标记已挂载，触发图标淡入
  * 2. 从 localStorage 读取用户保存的主题偏好
  * 3. 如果没有保存值，则检测系统暗色模式偏好
  * 4. 根据结果设置 theme 值（注意：不在此处设置 data-theme 属性，
  *    因为全局初始化脚本通常在 HTML <head> 中已处理）
  */
 onMounted(() => {
-  mounted.value = true;
   // 读取用户保存的主题偏好，无保存值时跟随系统
   const saved = localStorage.getItem('fandex-theme');
   if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -52,6 +53,10 @@ onMounted(() => {
   } else {
     theme.value = 'light';
   }
+  // 下一帧标记挂载完成，触发 opacity 过渡（避免初始渲染闪烁）
+  requestAnimationFrame(() => {
+    mounted.value = true;
+  });
 });
 
 /**
@@ -69,17 +74,23 @@ function toggle() {
 </script>
 
 <template>
-  <!-- 仅在客户端挂载后渲染，避免 SSR/CSR 水合不匹配 -->
+  <!--
+    始终渲染按钮以保留布局空间（避免水合后 CLS）：
+    - SSR 阶段：按钮透明不可点击（mounted=false）
+    - 客户端挂载后：opacity 过渡到 1，pointer-events 启用
+  -->
   <button
-    v-if="mounted"
     class="theme-toggle"
-    @click="toggle"
+    :class="{ 'theme-toggle--ready': mounted }"
+    @click="mounted ? toggle() : undefined"
     :title="theme === 'dark' ? '亮色模式' : '暗色模式'"
     :aria-label="theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
+    :tabindex="mounted ? 0 : -1"
+    aria-hidden="!mounted"
   >
     <!-- 暗色模式下显示太阳图标（提示用户可切换到亮色） -->
     <svg
-      v-if="theme === 'dark'"
+      v-show="mounted && theme === 'dark'"
       width="16"
       height="16"
       viewBox="0 0 24 24"
@@ -99,7 +110,7 @@ function toggle() {
     </svg>
     <!-- 亮色模式下显示月亮图标（提示用户可切换到暗色） -->
     <svg
-      v-else
+      v-show="mounted && theme === 'light'"
       width="16"
       height="16"
       viewBox="0 0 24 24"
@@ -124,6 +135,19 @@ function toggle() {
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
   cursor: pointer;
+  /* SSR 阶段透明占位，避免水合后图标突然出现造成 CLS */
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    background 150ms ease,
+    color 150ms ease;
+}
+
+/* 客户端挂载完成：淡入并启用交互 */
+.theme-toggle--ready {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* 悬停效果：背景变浅，图标变为主题色 */

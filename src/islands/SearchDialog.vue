@@ -154,8 +154,9 @@ onMounted(() => {
   window.addEventListener('fandex-open-search', handleExternalOpen);
   // 通知 BaseLayout 兜底脚本与 Layout 搜索按钮：SearchDialog 已就绪
   // 通过自定义事件 + window 全局标志双通道通知，确保兜底逻辑可靠判定
+  // window.__fandexSearchDialogReady 类型由 src/types/global.d.ts 统一声明
   window.dispatchEvent(new CustomEvent('fandex-search-dialog-ready'));
-  (window as Window & { __fandexSearchDialogReady?: boolean }).__fandexSearchDialogReady = true;
+  window.__fandexSearchDialogReady = true;
 });
 
 /**

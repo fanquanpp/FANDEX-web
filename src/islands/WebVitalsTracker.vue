@@ -101,7 +101,8 @@ onMounted(() => {
       }
     };
     // 暴露全局导出 API，供开发者工具或外部脚本调用
-    (window as Window & { __fandexExportVitals?: () => string }).__fandexExportVitals = () => {
+    // window.__fandexExportVitals 类型由 src/types/global.d.ts 统一声明
+    window.__fandexExportVitals = () => {
       try {
         return exportVitalsJSON();
       } catch {

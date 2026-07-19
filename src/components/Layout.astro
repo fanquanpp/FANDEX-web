@@ -239,7 +239,8 @@ const hasSidebar = Astro.slots.has('sidebar');
   // 顶部搜索按钮与移动端搜索链接均派发 fandex-open-search 事件
   // SearchDialog 已就绪时拦截默认跳转行为，由弹窗接管；否则保留跳转 /search/ 兜底
   function openSearchDialog(e: Event) {
-    if ((window as Window & { __fandexSearchDialogReady?: boolean }).__fandexSearchDialogReady) {
+    // window.__fandexSearchDialogReady 类型由 src/types/global.d.ts 统一声明
+    if (window.__fandexSearchDialogReady) {
       e.preventDefault();
       window.dispatchEvent(new CustomEvent('fandex-open-search'));
     }
