@@ -15,10 +15,10 @@ jobs:
   audit-content:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -39,9 +39,9 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add public/data/search-index.json
-          git add public/data/glossary-index.json
-          git diff --cached --quiet || git commit -m "chore: update search and glossary indexes [skip ci]"
+          git add public/data/search-index.json 2>/dev/null || true
+          git add public/data/glossary-index.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore(content): regenerate search and glossary indexes [skip ci]"
           git push origin main || echo "Push failed, likely no changes"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -324,3 +324,116 @@
   - 136 个 hints 中包含预存在的 Astro 6+ 迁移遗留问题（`src/pages/[module]/[slug].astro` 与 `src/pages/[module]/glossary.astro` 的 `Property 'render' does not exist` 提示），非本次删除任务引入
 
 ---
+
+## 2026-07-19 CodeQL 自动配置关闭操作指引
+
+- **时间戳**: 2026-07-19 (Asia/Shanghai)
+- **步骤**: Task 2 - 修复 CodeQL C++ autobuild 失败
+- **原 Skill / 规范要求**: github-actions-hardening Skill 要求通过 YAML 工作流统一管理 CodeQL 配置
+- **实际调整方案**: YAML 工作流已配置仅分析 javascript-typescript，但 GitHub UI 的 "Automatic" CodeQL 配置仍会并行运行并尝试 C++ autobuild，需用户在 GitHub UI 手动关闭
+- **依据原因**: GitHub UI 的 Automatic CodeQL 配置无法通过代码变更关闭，必须由仓库管理员在 Settings → Security → Code security 中手动禁用
+- **用户操作步骤**:
+  1. 访问 https://github.com/fanquanpp/FANDEX-web/settings/code_scanning
+  2. 找到 "CodeQL analysis" 区域下的 "Automatic" 配置
+  3. 点击 "Disable" 关闭自动配置
+  4. 保留 "YAML workflow" 配置（由 .github/workflows/codeql.yml 驱动）
+
+---
+
+## 2026-07-19 GitHub Actions 版本升级 — Node.js 24 兼容性升级（Task 5）
+
+- **时间戳**: 2026-07-19 (Asia/Shanghai)
+- **步骤**: Task 5 - 升级所有 GitHub Actions 至 Node.js 24 兼容版本
+- **原 Skill 要求**: `github-actions-runtime-upgrade-conventions` Skill 要求"Prefer immutable pins: resolve the target release to a full commit SHA and use that SHA in `uses:`"，即推荐使用完整 40 字符 commit SHA 替代 major 版本引用
+- **实际方案**: 全部采用 major 版本引用（`@v5` / `@v8` / `@v4`），未使用 commit SHA pinning
+- **依据原因**:
+  - 任务明确要求升级至 `@v5` / `@v8` / `@v4` major 版本引用，禁止使用 `@main` 或 `@master` 但允许 major 版本
+  - `github-actions-creator` Skill 同样推荐"Pin actions to major version: Use `@v4` not `@main` or full SHA for readability"，与 runtime-upgrade-conventions Skill 指引存在冲突
+  - 两个 Skill 指引冲突时按任务要求执行，采用 major 版本引用方案
+  - 项目历史工作流均采用 major 版本引用风格，保持一致性
+- **版本验证**: 所有目标版本均已通过 WebFetch 访问 GitHub Releases 页面验证已发布且稳定：
+  - `actions/checkout@v5` - 已发布（v5.0.1，最新 v7.0.0）
+  - `actions/setup-node@v5` - 已发布（v5.0.0，最新 v6.4.0）
+  - `actions/upload-artifact@v5` - 已发布（v5.0.0，Node.js 24 运行时，最新 v7.0.1）
+  - `actions/download-artifact@v5` - 已发布（v5.0.0，Node.js 24 运行时，最新 v8.0.1）
+  - `actions/upload-pages-artifact@v4` - 已发布（v4.0.0，最新 v5.0.0）
+  - `actions/deploy-pages@v5` - 已发布（v5.0.0，Node.js 24 运行时）
+  - `actions/cache@v5` - 已发布（v5.0.0，Node.js 24 运行时）
+  - `actions/github-script@v8` - 已发布（v8.0.0，最新 v9.0.0）
+  - `github/codeql-action/init@v4` - 已发布（v4.37.0）
+  - `github/codeql-action/analyze@v4` - 已发布（v4.37.0）
+- **破坏性变更评估**:
+  - `actions/download-artifact@v5` 存在破坏性变更（单 artifact by ID 下载路径行为变化），本项目使用 by name 方式（`name: dist` / `name: build` / `name: coverage-report` / `name: lighthouse-report`），不受影响
+  - `actions/upload-artifact@v5` 升级至 Node.js 24 运行时，行为与 v4 一致
+  - 其他 actions v5/v8/v4 升级均为运行时升级，行为兼容
+
+---
+
+## 2026-07-19 ThemeToggle 水合错误恢复 — astro:hydrate-error 事件名偏差（Task 6）
+
+- **时间戳**: 2026-07-19T12:00:00.000Z (Asia/Shanghai)
+- **步骤**: SubTask 6.4 - 在 BaseLayout.astro 添加 ThemeToggle 水合失败错误恢复逻辑
+- **原 Skill 要求**: 任务 Spec 方案 A 明确给出代码示例 `document.addEventListener('astro:hydrate-error', function(e) {...})`，使用 `astro:hydrate-error` 事件名监听 Astro 岛屿水合错误
+- **实际方案**: 改用三重捕获通道，主选 `astro:hydration-error` 事件（注意：与 Spec 中的 `astro:hydrate-error` 相比多一个 "d"），辅以 `window.error` 与 `unhandledrejection` 兜底
+  1. `document.addEventListener('astro:hydration-error', ...)`：Astro 7 官方事件，由 astro-island 自定义元素的 `handleHydrationError` 方法派发，CustomEvent 携带 `detail.componentUrl` 字段，`bubbles=true` 冒泡至 document
+  2. `window.addEventListener('error', ..., true)`：捕获阶段监听同步错误，覆盖 `astro:hydration-error` 未冒泡或被拦截的场景
+  3. `window.addEventListener('unhandledrejection', ...)`：捕获 Promise 拒绝形式的动态 import 失败
+  4. 5 秒超时兜底：若上述通道均未触发，主动检测 `<astro-island>` 内是否已渲染 `button.theme-toggle`，若无则注入原生回退按钮
+- **依据原因**:
+  - WebSearch 检索 "Astro 7 astro-island hydration error event name" 未返回官方文档命中（搜索结果主要为 React Hydration failed 与 Nuxt/Vue 动态 import 失败相关内容）
+  - 通过 `npm run build` 构建后，读取 `dist/index.html` 中内嵌的 astro-island 自定义元素源码，发现 `handleHydrationError(e)` 方法的实现：
+    ```js
+    handleHydrationError(e){
+      let r=this.getAttribute("component-url"),
+      n=new CustomEvent("astro:hydration-error",{
+        cancelable:!0,bubbles:!0,composed:!0,
+        detail:{error:e,componentUrl:r}
+      });
+      this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)
+    }
+    ```
+  - 证实 Astro 7 实际事件名为 `astro:hydration-error`（含 "d"），而非任务 Spec 中的 `astro:hydrate-error`（缺 "d"）
+  - 错误日志 `[astro-island] Error hydrating /FANDEX-web/_astro/ThemeToggle.Cmga7-a7.js` 与 `console.error('[astro-island] Error hydrating ${r}', e)` 输出格式一致，证实 `handleHydrationError` 被调用、`astro:hydration-error` 事件已派发
+- **三重捕获必要性评估**:
+  - `astro:hydration-error` 是首选通道，响应最快（错误发生时立即派发）
+  - `window.error` + `unhandledrejection` 作为兜底，覆盖 Astro 版本升级导致事件名变更、事件被其他监听器拦截等极端场景
+  - 5 秒超时兜底覆盖所有通道失效场景，确保用户在最坏情况下也能在 5 秒内获得可用的主题切换按钮
+- **chunk 哈希策略分析**:
+  - `astro.config.ts` 中 `vite.build.rollupOptions.output` 配置为 `assets/[name].[hash][extname]`，但实际构建产物位于 `_astro/` 目录（如 `dist/_astro/ThemeToggle.HtN8MS2T.js`）
+  - 推测 Astro 7 内部对岛屿组件 chunk 强制使用 `_astro/` 前缀，覆盖了 Vite rollupOptions 配置
+  - 哈希策略为 Vite 默认的 8 位内容哈希（基于文件内容生成），源码不变则哈希稳定
+  - 根因并非哈希不稳定，而是 GitHub Pages 静态部署后旧 HTML 缓存引用的旧哈希 JS 文件已被新部署覆盖删除
+- **验证结果**:
+  - `npm run build` 构建成功（exit code 0，3865 页面，6m29s）
+  - `dist/_astro/ThemeToggle.HtN8MS2T.js` 文件存在，文件名包含 8 位内容哈希
+  - `dist/index.html` 包含完整的回退脚本（`injectFallbackButton` 函数定义 + 三处事件监听器调用 + 5 秒超时兜底）
+  - `dist/index.html` 中 `<astro-island uid="Z1C1xfs" component-url="/FANDEX-web/_astro/ThemeToggle.HtN8MS2T.js" ...>` 元素属性正确，选择器 `astro-island[component-url*="ThemeToggle"]` 能精准匹配
+  - 日志中的 `markdown.remarkPlugins deprecated` 警告为 Astro 7 弃用提示，不影响构建成功（exit code 0）
+
+---
+
+## 2026-07-19 tmp 包路径遍历漏洞风险接受记录（Task 4）
+
+- **时间戳**: 2026-07-19 (Asia/Shanghai)
+- **步骤**: Task 4 - 修复 tmp 路径遍历漏洞
+- **原 Skill / 规范要求**: security-best-practices Skill 要求消除所有高危依赖漏洞，spec.md Requirement "npm 依赖漏洞修复" 要求通过移除 `@lhci/cli` 或记录风险接受依据的方式处置 tmp 漏洞
+- **实际调整方案**: 保留 `@lhci/cli@0.15.1`（传递依赖 `tmp@0.1.0`），通过 `package.json` 的 `overrides` 字段强制 `tmp` 至 `^0.2.4`（最新版本），实际解析至 `tmp@0.2.7`
+- **依据原因**:
+  1. `tmp` 漏洞（路径遍历，CWE-22）在主代理决策时被认为无补丁版本，所有已发布版本均受影响
+  2. `@lhci/cli` 是 Lighthouse CI 专用工具，仅在 GitHub Actions 中运行（`.github/workflows/ci.yml` 第 249 行 `npx @lhci/cli autorun --config=./lighthouse-budget.json` 与 `.github/workflows/lighthouse-ci.yml` 第 40 行 `npx lhci autorun --config=./lighthouse-budget.json`），不暴露给外部用户输入
+  3. `tmp` 的漏洞触发条件需要攻击者控制 `tmp.file()` / `tmp.dir()` 的 `prefix`/`postfix`/`dir` 选项，LHCI 内部使用固定字面量调用 tmp，不接受用户输入
+  4. 替换 `@lhci/cli` 需要重写 `.github/workflows/ci.yml` 与 `.github/workflows/lighthouse-ci.yml` 的 Lighthouse 阶段，并将 LHCI 专用配置格式 `lighthouse-budget.json`（含 `ci.collect`/`ci.assert`/`ci.upload` 三段）转换为 Lighthouse CLI 原生格式，复杂度过高
+  5. CVSS v3.1 评分 8.1（高），但实际利用条件需要外部输入流入 tmp 选项，本项目场景下不可利用
+- **实际执行结果（工具验证）**:
+  - `npm ls tmp` 输出：两条依赖路径（`@lhci/cli→tmp` 与 `@lhci/cli→inquirer→external-editor→tmp`）均 deduped 至 `tmp@0.2.7`，满足 `^0.2.4` override 约束
+  - `npm audit` 输出：**tmp 告警已消除**（升级至 0.2.7 后，npm audit 不再标记 tmp 为漏洞）。这与主代理决策时的预期（"tmp 告警仍存在但已记录风险接受"）不一致——实际结果表明 `tmp@0.2.7` 已修复路径遍历漏洞，或 npm 漏洞数据库已更新对 0.2.x 系列的判定
+  - `npm audit` 当前唯一剩余告警为 `js-yaml@4.0.0-4.1.1` moderate 漏洞（Quadratic-complexity DoS in merge key handling），不在 Task 3/4 范围内
+- **风险等级**: 理论高风险，实际低风险（dev-only 工具，无外部输入路径）；经工具验证升级至 0.2.7 后实际风险已消除
+- **缓解措施**:
+  1. 通过 `overrides` 强制 `tmp` 至最新版本 `^0.2.4`（实际解析至 0.2.7）
+  2. 监控 `tmp` 上游补丁发布，一旦有新版本立即升级
+  3. 监控 `@lhci/cli` 新版本是否移除 `tmp` 依赖
+- **审查周期**: 每 30 天复查一次，或在 `@lhci/cli` 发布新版本时复查
+- **偏差说明**: 本记录与任务描述中"tmp 告警仍存在但已记录风险接受"的预期不一致。实际执行结果为 tmp 告警已消除（升级至 0.2.7 后）。本记录保留作为审计追溯，并继续监控 tmp 上游变更
+
+---

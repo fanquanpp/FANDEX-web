@@ -72,6 +72,188 @@ const base = import.meta.env.BASE_URL;
         }
       })();
     </script>
+    <!--
+      ThemeToggle 水合失败回退逻辑
+      ===========================
+      背景：GitHub Pages 静态部署后，浏览器缓存的旧 HTML 引用的旧哈希 JS 文件
+      （如 _astro/ThemeToggle.Cmga7-a7.js）已被新部署覆盖删除，导致 astro-island
+      自定义元素在执行动态 import() 时抛出
+      "TypeError: Failed to fetch dynamically imported module" 错误。
+
+      方案：监听全局 error 与 unhandledrejection 事件，捕获 ThemeToggle 模块加载
+      失败后，向 astro-island 容器注入原生回退按钮（与 ThemeToggle.vue 结构一致），
+      保证用户在 ThemeToggle 水合失败时仍可切换主题。5 秒兜底确保即使错误事件
+      未触发也能恢复交互。
+
+      Skill 偏差报备：任务 Spec 方案 A 使用 astro:hydrate-error 事件，经 WebSearch
+      验证 Astro 7 官方文档中不存在该事件名，改用 window error + unhandledrejection
+      双通道捕获（详见 docs/skill-deviations.log.md）。
+    -->
+    <script is:inline>
+      (function () {
+        var STORAGE_KEY = 'fandex-theme';
+        var root = document.documentElement;
+        // 标记回退按钮是否已注入，避免重复绑定
+        var fallbackInjected = false;
+
+        /**
+         * 应用主题到根元素
+         * @param {string} theme - 目标主题值：'light' 或 'dark'
+         */
+        function applyTheme(theme) {
+          root.setAttribute('data-theme', theme);
+          root.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+        }
+
+        /**
+         * 持久化主题到 localStorage
+         * @param {string} theme - 目标主题值
+         */
+        function persistTheme(theme) {
+          try {
+            localStorage.setItem(STORAGE_KEY, theme);
+          } catch (e) {
+            // localStorage 不可用时静默降级（如隐私模式或文件协议）
+          }
+        }
+
+        /**
+         * 构造主题切换按钮的 SVG 图标 HTML
+         * 与 ThemeToggle.vue 模板中的 SVG 结构保持一致
+         * @param {string} theme - 当前主题值
+         * @returns {string} SVG 图标的 HTML 字符串
+         */
+        function buildIconHTML(theme) {
+          // 暗色模式下显示太阳图标（提示可切换到亮色）
+          if (theme === 'dark') {
+            return (
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
+              '<circle cx="12" cy="12" r="5" />' +
+              '<line x1="12" y1="1" x2="12" y2="3" />' +
+              '<line x1="12" y1="21" x2="12" y2="23" />' +
+              '<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />' +
+              '<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />' +
+              '<line x1="1" y1="12" x2="3" y2="12" />' +
+              '<line x1="21" y1="12" x2="23" y2="12" />' +
+              '<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />' +
+              '<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />' +
+              '</svg>'
+            );
+          }
+          // 亮色模式下显示月亮图标（提示可切换到暗色）
+          return (
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
+            '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />' +
+            '</svg>'
+          );
+        }
+
+        /**
+         * 向 ThemeToggle astro-island 容器注入原生回退按钮
+         * 仅在 ThemeToggle 水合失败（无 button.theme-toggle 子元素）时触发
+         */
+        function injectFallbackButton() {
+          if (fallbackInjected) return;
+          var island = document.querySelector('astro-island[component-url*="ThemeToggle"]');
+          if (!island) return;
+          // 水合成功则跳过（Vue 已渲染 button.theme-toggle）
+          if (island.querySelector('button.theme-toggle')) return;
+          fallbackInjected = true;
+
+          // 创建回退按钮（结构与 ThemeToggle.vue 一致，确保样式复用）
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'theme-toggle';
+          var currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+          btn.setAttribute('title', currentTheme === 'dark' ? '亮色模式' : '暗色模式');
+          btn.setAttribute(
+            'aria-label',
+            currentTheme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'
+          );
+          btn.innerHTML = buildIconHTML(currentTheme);
+
+          // 绑定原生点击事件：切换主题并同步更新图标
+          btn.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            persistTheme(next);
+            btn.innerHTML = buildIconHTML(next);
+            btn.setAttribute('title', next === 'dark' ? '亮色模式' : '暗色模式');
+            btn.setAttribute('aria-label', next === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+          });
+
+          // 注入到 astro-island 容器内（继承原有布局位置与样式上下文）
+          island.appendChild(btn);
+          if (window.console && console.warn) {
+            console.warn('[FANDEX] ThemeToggle hydration failed, injected native fallback button');
+          }
+        }
+
+        /**
+         * 判断错误事件是否与 ThemeToggle 模块加载相关
+         * @param {string} message - 错误消息文本
+         * @param {string} sourceUrl - 错误关联的资源 URL
+         * @returns {boolean} 是否为 ThemeToggle 模块加载失败
+         */
+        function isThemeToggleLoadError(message, sourceUrl) {
+          var msg = message || '';
+          var url = sourceUrl || '';
+          if (msg.indexOf('Failed to fetch dynamically imported module') === -1) return false;
+          return msg.indexOf('ThemeToggle') !== -1 || url.indexOf('ThemeToggle') !== -1;
+        }
+
+        // 监听 Astro 7 官方 astro:hydration-error 事件（首选通道，响应最快）
+        // 该事件由 astro-island 自定义元素的 handleHydrationError 方法派发，
+        // 通过 CustomEvent 携带 detail.componentUrl 字段，bubbles=true 可冒泡至 document
+        // Skill 偏差报备：任务 Spec 方案 A 使用 astro:hydrate-error 事件名（缺 d），
+        // 经 dist/index.html 内嵌的 astro-island 源码验证，Astro 7 实际事件名为
+        // astro:hydration-error（详见 docs/skill-deviations.log.md）
+        document.addEventListener('astro:hydration-error', function (event) {
+          var detail = (event && event.detail) || {};
+          var componentUrl = detail.componentUrl || '';
+          var errorMsg = (detail.error && detail.error.message) || '';
+          if (
+            componentUrl.indexOf('ThemeToggle') !== -1 ||
+            isThemeToggleLoadError(errorMsg, componentUrl)
+          ) {
+            injectFallbackButton();
+          }
+        });
+
+        // 监听全局 error 事件（捕获阶段），捕获动态 import 抛出的同步错误
+        // 作为 astro:hydration-error 的兜底通道，覆盖事件未冒泡或被拦截的场景
+        window.addEventListener(
+          'error',
+          function (event) {
+            var message = (event && event.message) || '';
+            var target = (event && event.target && event.target.src) || '';
+            if (isThemeToggleLoadError(message, target)) {
+              injectFallbackButton();
+            }
+          },
+          true
+        );
+
+        // 监听 unhandledrejection 事件，捕获动态 import 抛出的 Promise 拒绝
+        // Astro 岛屿的动态 import 失败可能以 Promise rejection 形式抛出
+        window.addEventListener('unhandledrejection', function (event) {
+          var reason = event && event.reason;
+          var message = '';
+          if (reason) {
+            message = reason.message || String(reason);
+          }
+          if (isThemeToggleLoadError(message, '')) {
+            injectFallbackButton();
+          }
+        });
+
+        // 5 秒兜底：若 ThemeToggle 未水合（astro-island 内无 button），主动注入回退按钮
+        // 该延迟兼顾 client:load 水合时间与慢速网络场景，避免误判
+        setTimeout(function () {
+          injectFallbackButton();
+        }, 5000);
+      })();
+    </script>
     <slot name="head" />
   </head>
   <body>

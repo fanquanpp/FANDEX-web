@@ -17,9 +17,7 @@ coverage/
 .uploads/
 .cache/
 
-# 构建生成的数据文件
-public/data/glossary-index.json
-public/data/search-index.json
+# 构建生成的数据文件（纳入版本控制以保证 content-update.yml 工作流可用）
 
 # IDE / 编辑器
 .vscode/

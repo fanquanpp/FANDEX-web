@@ -74,11 +74,21 @@ export default defineConfig({
     },
   ],
   // Web Server 自动启动配置
+  // 偏差报备：
+  // 1. 原方案使用 `npm run dev` 启动 dev server，但 Astro 7 dev 模式首次启动需同步
+  //    2013 篇 Markdown 文档内容，V8 堆内存（即使提升到 8GB）仍耗尽（FATAL ERROR:
+  //    Ineffective mark-compacts near heap limit）。
+  // 2. 改为 `npm run preview` 启动静态服务器，复用已构建的 dist/ 目录，启动速度极快
+  //    且内存占用低。要求执行 E2E 前先完成 `npm run build`（CI 流水线已包含 build 步骤）。
+  // 3. preview 默认端口为 4321，需通过 --port 参数显式指定为 3000 以与 baseURL 对齐。
+  // 4. timeout 调整为 60 秒（preview 启动通常 <5 秒）。
   webServer: {
-    command: 'npm run dev',
-    url: `http://localhost:${DEV_PORT}`,
+    command: 'npm run preview -- --port 3000 --host',
+    url: `http://localhost:${DEV_PORT}${BASE_PATH}`,
     reuseExistingServer: !process.env.CI,
     timeout: 60 * 1000,
     cwd: process.cwd(),
+    stdout: 'pipe',
+    stderr: 'pipe',
   },
 });

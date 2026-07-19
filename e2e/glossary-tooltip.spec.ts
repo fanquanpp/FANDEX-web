@@ -9,21 +9,24 @@
  */
 import { test, expect } from '@playwright/test';
 
+// 偏差报备：baseURL 含 base path（/FANDEX-web/），page.goto('/path') 会被解析为
+// http://localhost:3000/path（根路径，返回 404）。改为 page.goto('./path') 相对路径解析，
+// 会拼接 baseURL 的 path 部分，得到 http://localhost:3000/FANDEX-web/path（正确路径）。
 test.describe('术语提示与词汇表', () => {
   test('应加载模块词汇表页', async ({ page }) => {
-    await page.goto('/cpp/glossary/');
+    await page.goto('./cpp/glossary/');
     await expect(page).toHaveTitle(/.+/);
   });
 
   test('词汇表页应渲染条目', async ({ page }) => {
-    await page.goto('/cpp/glossary/');
+    await page.goto('./cpp/glossary/');
     const body = await page.textContent('body');
     expect(body?.length).toBeGreaterThan(0);
   });
 
   test('文档页应支持术语 tooltip 悬停', async ({ page }) => {
     // 进入一个 cpp 文档页验证 tooltip
-    await page.goto('/cpp/');
+    await page.goto('./cpp/');
     const link = page.locator('a[href*="/cpp/"]').first();
     const href = await link.getAttribute('href');
     if (!href) return;
@@ -38,7 +41,7 @@ test.describe('术语提示与词汇表', () => {
   });
 
   test('应支持不同模块的词汇表', async ({ page }) => {
-    await page.goto('/algorithm/glossary/');
+    await page.goto('./algorithm/glossary/');
     await expect(page).toHaveTitle(/.+/);
   });
 });

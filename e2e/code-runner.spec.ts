@@ -9,9 +9,11 @@
  */
 import { test, expect } from '@playwright/test';
 
+// 偏差报备：baseURL 含 base path（/FANDEX-web/），page.goto('/path') 会被解析为
+// http://localhost:3000/path（根路径，返回 404）。改为 page.goto('./path') 相对路径解析。
 test.describe('代码运行器', () => {
   test('应加载文档页并渲染代码块', async ({ page }) => {
-    await page.goto('/javascript/');
+    await page.goto('./javascript/');
     const link = page.locator('a[href*="/javascript/"]').first();
     const href = await link.getAttribute('href');
     if (!href) return;
@@ -22,7 +24,7 @@ test.describe('代码运行器', () => {
   });
 
   test('代码运行器容器应可识别', async ({ page }) => {
-    await page.goto('/javascript/');
+    await page.goto('./javascript/');
     const link = page.locator('a[href*="/javascript/"]').first();
     const href = await link.getAttribute('href');
     if (!href) return;
@@ -34,7 +36,7 @@ test.describe('代码运行器', () => {
   });
 
   test('运行按钮存在时点击应触发运行', async ({ page }) => {
-    await page.goto('/javascript/');
+    await page.goto('./javascript/');
     const link = page.locator('a[href*="/javascript/"]').first();
     const href = await link.getAttribute('href');
     if (!href) return;
@@ -50,7 +52,7 @@ test.describe('代码运行器', () => {
   });
 
   test('应支持代码块复制功能', async ({ page }) => {
-    await page.goto('/javascript/');
+    await page.goto('./javascript/');
     const link = page.locator('a[href*="/javascript/"]').first();
     const href = await link.getAttribute('href');
     if (!href) return;

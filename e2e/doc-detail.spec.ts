@@ -9,9 +9,11 @@
  */
 import { test, expect } from '@playwright/test';
 
+// 偏差报备：baseURL 含 base path（/FANDEX-web/），page.goto('/path') 会被解析为
+// http://localhost:3000/path（根路径，返回 404）。改为 page.goto('./path') 相对路径解析。
 test.describe('文档详情页', () => {
   test('应加载文档详情页并显示标题', async ({ page }) => {
-    await page.goto('/git/');
+    await page.goto('./git/');
     // 先获取第一个文档链接
     const firstLink = page.locator('a[href*="/git/"]').first();
     const href = await firstLink.getAttribute('href');
@@ -21,7 +23,7 @@ test.describe('文档详情页', () => {
   });
 
   test('应渲染文档正文', async ({ page }) => {
-    await page.goto('/git/');
+    await page.goto('./git/');
     const firstLink = page.locator('a[href*="/git/"]').first();
     const href = await firstLink.getAttribute('href');
     if (!href) return;
@@ -31,7 +33,7 @@ test.describe('文档详情页', () => {
   });
 
   test('应显示文档元信息（阅读时长或更新日期）', async ({ page }) => {
-    await page.goto('/git/');
+    await page.goto('./git/');
     const firstLink = page.locator('a[href*="/git/"]').first();
     const href = await firstLink.getAttribute('href');
     if (!href) return;
@@ -42,7 +44,7 @@ test.describe('文档详情页', () => {
   });
 
   test('应渲染代码块语法高亮', async ({ page }) => {
-    await page.goto('/git/');
+    await page.goto('./git/');
     const firstLink = page.locator('a[href*="/git/"]').first();
     const href = await firstLink.getAttribute('href');
     if (!href) return;
