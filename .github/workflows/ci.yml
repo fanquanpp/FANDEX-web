@@ -24,7 +24,7 @@ concurrency:
 jobs:
   # ─────────────────────────────────────────────────────────────
   # 阶段 0：变更范围检测
-  # 使用 dorny/paths-filter 检测本次推送的文件变更范围
+  # 用 git diff 原生命令检测本次推送的文件变更范围（不依赖第三方 action）
   # 输出三个布尔值：docs / code / ci_config
   # 后续 job 根据这三个值决定是否执行实际工作
   # ─────────────────────────────────────────────────────────────
@@ -33,58 +33,75 @@ jobs:
     permissions:
       contents: read
     outputs:
-      docs: ${{ steps.filter.outputs.docs }}
-      code: ${{ steps.filter.outputs.code }}
-      ci_config: ${{ steps.filter.outputs.ci_config }}
+      docs: ${{ steps.detect.outputs.docs }}
+      code: ${{ steps.detect.outputs.code }}
+      ci_config: ${{ steps.detect.outputs.ci_config }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          # pull_request 事件需要获取 base 和 head 之间的差异
+          # fetch-depth: 0 获取完整历史，确保 git diff 能正确比较
+          fetch-depth: 0
 
       - name: Detect change scope
-        uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          # 路径过滤规则：
-          # - docs: 仅匹配 src/content/docs/ 下的文档文件
-          # - code: 匹配所有代码/配置/资源文件（精确列出，避免 src/** 误匹配 docs）
-          # - ci_config: 匹配 CI/CD 配置变更（强制全量检查）
-          filters: |
-            docs:
-              - 'src/content/docs/**'
-            code:
-              - 'src/components/**'
-              - 'src/config/**'
-              - 'src/islands/**'
-              - 'src/layouts/**'
-              - 'src/lib/**'
-              - 'src/pages/**'
-              - 'src/services/**'
-              - 'src/styles/**'
-              - 'src/types/**'
-              - 'src/ui/**'
-              - 'src/workers/**'
-              - 'src/content.config.ts'
-              - 'src/env.d.ts'
-              - 'scripts/**'
-              - 'public/**'
-              - 'astro.config.ts'
-              - 'tsconfig.json'
-              - 'package*.json'
-              - 'playwright.config.*'
-              - 'vitest.config.*'
-              - 'lighthouse-budget.json'
-              - 'remark.config.*'
-              - '.prettierrc*'
-              - '.remarkrc*'
-            ci_config:
-              - '.github/**'
-              - '.husky/**'
-
-      - name: Summary
+        id: detect
         run: |
+          # 确定比较基准
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            # push 事件：与上一个 commit 比较（首次推送时 fallback 到自身）
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.event.after }}"
+            # before 为 0000... 表示新分支，此时与 HEAD~1 比较
+            if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+              BASE="HEAD~1"
+            fi
+          fi
+
+          echo "Comparing $BASE..$HEAD"
+
+          # 获取变更文件列表（ Added, Copied, Modified, Renamed 类型，排除 Deleted）
+          if git rev-parse --verify "$BASE^{commit}" >/dev/null 2>&1; then
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" || echo "")
+          else
+            # base 不存在时（孤儿分支等极端情况），列出所有文件
+            FILES=$(git ls-files)
+          fi
+
+          # 默认设置为 false
+          DOCS="false"
+          CODE="false"
+          CI_CONFIG="false"
+
+          # 逐文件匹配
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            # docs: src/content/docs/ 下的文档
+            case "$file" in
+              src/content/docs/*)
+                DOCS="true"
+                ;;
+              .github/*|.husky/*)
+                CI_CONFIG="true"
+                ;;
+              src/components/*|src/config/*|src/islands/*|src/layouts/*|src/lib/*|src/pages/*|src/services/*|src/styles/*|src/types/*|src/ui/*|src/workers/*|src/content.config.ts|src/env.d.ts|scripts/*|public/*|astro.config.ts|tsconfig.json|package.json|package-lock.json|playwright.config.*|vitest.config.*|lighthouse-budget.json|remark.config.*|.prettierrc*|.remarkrc*)
+                CODE="true"
+                ;;
+            esac
+          done <<< "$FILES"
+
+          echo "docs=$DOCS" >> "$GITHUB_OUTPUT"
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          echo "ci_config=$CI_CONFIG" >> "$GITHUB_OUTPUT"
+
           echo "Change scope detection:"
-          echo "  docs      = ${{ steps.filter.outputs.docs }}"
-          echo "  code      = ${{ steps.filter.outputs.code }}"
-          echo "  ci_config = ${{ steps.filter.outputs.ci_config }}"
+          echo "  docs      = $DOCS"
+          echo "  code      = $CODE"
+          echo "  ci_config = $CI_CONFIG"
+          echo "  files changed:"
+          echo "$FILES" | sed 's/^/    /'
 
   # ─────────────────────────────────────────────────────────────
   # 阶段 1：代码风格与文档格式检查
