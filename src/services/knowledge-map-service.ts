@@ -11,11 +11,11 @@
  * 数据来源：
  * - 模块节点：module-service.getAllModules()
  * - 模块前置依赖：module-service.getModulePrerequisites()
- * - 文档节点：doc-service.getAllDocs() / getDocsByModule()
+ * - 文档节点：doc-service.getAllDocs()（按 module 字段过滤得到模块文档）
  * - 文档前置与关联：文档 frontmatter 的 prerequisites 与 related 字段
  */
 import { getAllModules, getModulePrerequisites } from './module-service';
-import { getAllDocs, getDocsByModule, docSlug } from './doc-service';
+import { getAllDocs, docSlug } from './doc-service';
 import type { Module } from './module-service';
 import type { DocEntry } from './doc-service';
 
@@ -231,8 +231,10 @@ export async function getModuleMap(moduleId: string): Promise<KnowledgeMap> {
     const mod = allModules.find((m) => m.id === moduleId);
     if (!mod) return EMPTY_MAP;
 
-    const moduleDocs = await getDocsByModule(moduleId);
+    // 单次拉取全部文档，从中过滤当前模块文档，避免同时调用
+    // getDocsByModule + getAllDocs 导致 Astro collection 被扫描两次
     const allDocs = await getAllDocs();
+    const moduleDocs = allDocs.filter((d) => d.data.module === moduleId);
 
     // 节点：当前模块节点 + 本模块文档节点
     const moduleNode = buildModuleNode(mod);

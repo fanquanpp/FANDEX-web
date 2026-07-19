@@ -144,7 +144,7 @@
  * 这是因为速查表数据来源于 Markdown 文件的前端解析结果，
  * 字段名与 Markdown 中的中文标题保持一致，便于维护。
  */
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, onBeforeUnmount } from 'vue';
 
 // ========== 类型定义 ==========
 
@@ -307,14 +307,28 @@ function matchesSearch(item: CheatSheetItem): boolean {
  * @param item - 要复制的速查条目（取 item.代码 字段）
  * @param idx - 条目索引，用于定位复制状态
  */
+// 复制定时器映射：key 为条目索引，value 为 setTimeout 返回的 timer id
+// 用于在组件卸载时统一清理，避免定时器在组件销毁后仍执行导致的状态更新警告
+const copyTimers = new Map<number, ReturnType<typeof setTimeout>>();
 function copyCode(item: CheatSheetItem, idx: number) {
   navigator.clipboard.writeText(item.代码).then(() => {
     复制状态[idx] = true;
-    setTimeout(() => {
+    // 清理同索引的旧定时器，避免连续点击产生多个定时器竞态
+    const oldTimer = copyTimers.get(idx);
+    if (oldTimer) clearTimeout(oldTimer);
+    const timer = setTimeout(() => {
       复制状态[idx] = false;
+      copyTimers.delete(idx);
     }, 1500);
+    copyTimers.set(idx, timer);
   });
 }
+
+// 组件卸载时清理所有未完成的定制定时器，防止 Vue 报 "state update on unmounted component" 警告
+onBeforeUnmount(() => {
+  copyTimers.forEach((timer) => clearTimeout(timer));
+  copyTimers.clear();
+});
 
 /**
  * HTML 转义，防止 XSS 攻击

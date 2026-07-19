@@ -145,7 +145,19 @@ export async function main(options = {}) {
     await walkDir(moduleDir, '.md', async (filePath) => {
       const content = await readFile(filePath, 'utf-8');
       const terms = extractTerms(content, moduleId);
-      Object.assign(allTerms, terms); // 合并到全局索引
+      // 逐项合并到全局索引，检测术语跨模块重复定义
+      // 冲突策略：保留首次定义，记录警告日志便于后续核对
+      for (const [termName, entry] of Object.entries(terms)) {
+        const existing = allTerms[termName];
+        if (existing) {
+          console.warn(
+            `[glossary] 术语 "${termName}" 重复定义：` +
+              `已保留 ${existing.module} 模块的定义，忽略 ${moduleId} 模块的同名术语`
+          );
+          continue;
+        }
+        allTerms[termName] = entry;
+      }
     });
   }
 

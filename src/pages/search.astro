@@ -94,14 +94,22 @@ import { modules } from '@/lib/modules';
 </style>
 
 <script>
+  // Pagefind 初始化守卫：避免 astro:page-load 与直接调用导致重复实例化
+  // astro:page-load 在首次加载和每次 SPA 切换后均会触发，无需再额外直接调用
+  let pagefindInitialized = false;
+  // 保存当前 filter change 监听器引用，便于 astro:before-swap 时移除
+  let filterCleanups: Array<() => void> = [];
+
   async function initPagefind() {
+    // 已初始化则跳过，防止重复实例化造成 UI 重叠与内存泄漏
+    if (pagefindInitialized) return;
     const base = import.meta.env.BASE_URL;
     const searchEl = document.getElementById('search');
     if (!searchEl) return;
 
     if (import.meta.env.DEV) {
       searchEl.innerHTML =
-        '<p style="color:var(--color-text-tertiary);text-align:center;padding:2em;">开发模式下未生成搜索索引，请运行 npm.cmd run build 后使用。</p>';
+        '<p style="color:var(--color-text-tertiary);text-align:center;padding:2em;">开发模式下未生成搜索索引，请运行 npm run build 后使用。</p>';
       return;
     }
 
@@ -134,12 +142,19 @@ import { modules } from '@/lib/modules';
 
       filterModule?.addEventListener('change', applyFilters);
       filterDifficulty?.addEventListener('change', applyFilters);
+      // 记录清理函数：before-swap 时调用，移除 change 监听器避免孤立引用
+      filterCleanups = [
+        () => filterModule?.removeEventListener('change', applyFilters),
+        () => filterDifficulty?.removeEventListener('change', applyFilters),
+      ];
 
       const params = new URLSearchParams(window.location.search);
       const q = params.get('q');
       if (q) {
         ui.triggerSearch(q);
       }
+      // 标记已初始化，防止 astro:page-load 二次触发重复构建 UI
+      pagefindInitialized = true;
     } catch (e) {
       searchEl.innerHTML =
         '<p style="color:var(--color-text-tertiary);text-align:center;padding:2em;">搜索索引尚未构建，请先运行 npm run build</p>';
@@ -147,5 +162,15 @@ import { modules } from '@/lib/modules';
   }
 
   document.addEventListener('astro:page-load', initPagefind);
-  initPagefind();
+  // 页面切换前清理：移除 filter 监听器与 pagefind 初始化标记，允许新页面重新初始化
+  document.addEventListener(
+    'astro:before-swap',
+    () => {
+      filterCleanups.forEach((cleanup) => cleanup());
+      filterCleanups = [];
+      pagefindInitialized = false;
+      document.removeEventListener('astro:page-load', initPagefind);
+    },
+    { once: true }
+  );
 </script>

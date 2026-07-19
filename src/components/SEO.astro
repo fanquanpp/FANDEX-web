@@ -65,8 +65,18 @@ const ogImageUrl = new URL(`${base}favicon.svg`, SITE.url).href;
 
 // 文章日期：优先使用传入的 modifiedDate，回退到 publishedDate，再回退到当前时间
 // 统一将 string | Date 转换为 ISO 字符串以兼容 JSON-LD 规范
-const toIso = (d: string | Date | undefined): string | undefined =>
-  d === undefined ? undefined : new Date(d).toISOString();
+// 注：对无效日期字符串（如 frontmatter 错误输入）需捕获 RangeError，避免 SSG 构建中断
+const toIso = (d: string | Date | undefined): string | undefined => {
+  if (d === undefined) return undefined;
+  try {
+    const date = new Date(d);
+    // 校验日期有效性：Invalid Date 调用 getTime() 返回 NaN
+    if (Number.isNaN(date.getTime())) return undefined;
+    return date.toISOString();
+  } catch {
+    return undefined;
+  }
+};
 const datePublished = toIso(publishedDate) || new Date().toISOString();
 const dateModified = toIso(modifiedDate) || toIso(publishedDate) || new Date().toISOString();
 

@@ -342,7 +342,6 @@ const LOCAL_SKILLS = [
 
   // 文档与内容创作型
   { name: 'doc-coauthoring', category: 'doc', type: 'strong', description: '文档协作流程' },
-  { name: 'doc-coauthoring', category: 'doc', type: 'strong', description: '文档协作流程' },
   { name: 'copy-edit', category: 'doc', type: 'strong', description: '文案编辑' },
   { name: 'copywriting', category: 'doc', type: 'strong', description: '营销文案' },
   { name: 'creative-writing', category: 'doc', type: 'strong', description: '创意写作' },

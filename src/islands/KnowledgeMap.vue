@@ -628,15 +628,18 @@ watch(
   margin-left: var(--spacing-xs, 4px);
 }
 
-/* 渲染容器：固定高度，溢出隐藏 */
+/* 渲染容器：响应式高度 + 布局隔离，避免固定高度导致移动端 CLS 与可视区浪费
+   - clamp() 根据视口高度自适应：小屏 380px / 中屏跟随 60vh / 上限 600px
+   - contain 隔离子树布局/绘制/样式，防止 SVG 缩放引起父级 reflow 造成 CLS */
 .kmap-container {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: clamp(380px, 60vh, 600px);
   overflow: hidden;
   background: var(--color-bg);
   cursor: grab;
   user-select: none;
+  contain: layout style paint;
 }
 
 .kmap-container.is-dragging {

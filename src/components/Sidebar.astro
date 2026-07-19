@@ -620,6 +620,20 @@ const hasHeadings = visibleHeadings.length > 0
         }
       )
       headingElements.forEach(el => observer.observe(el))
+
+      // ========== 监听器与 Observer 清理 ==========
+      // View Transitions 切换页面时，旧 Sidebar 实例的 observer 与监听器不会被自动清除，
+      // 导致 observer 累积、heading 元素无法被 GC 回收、回调重复执行。
+      // 在 astro:before-swap 时统一 disconnect 并移除所有监听器。
+      document.addEventListener('astro:before-swap', () => {
+        observer.disconnect()
+        document.removeEventListener('fandex-switch-modules', showModulesView)
+        document.removeEventListener('fandex-switch-chapters', showChapterView)
+        document.removeEventListener('fandex-progress-change', updateSidebarProgress)
+        document.removeEventListener('astro:page-load', updateSidebarProgress)
+        document.removeEventListener('astro:page-load', restoreSidebarScroll)
+        sidebarFileLinks.forEach(link => link.removeEventListener('click', saveSidebarScroll))
+      }, { once: true })
     }
   }
 </script>

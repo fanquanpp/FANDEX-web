@@ -226,7 +226,8 @@ const breadcrumb = [
     padding: var(--spacing-md) var(--spacing-lg) var(--spacing-2xl);
     width: 100%;
     /* 限制内容最大宽度并居中，避免宽屏下行宽过长影响阅读体验 */
-    max-width: var(--content-width, 820px);
+    /* fallback 与 --content-width 保持一致，防止变量未加载时回退到较窄值 */
+    max-width: var(--content-width, 1080px);
     margin-inline: auto;
     min-height: 100%;
   }

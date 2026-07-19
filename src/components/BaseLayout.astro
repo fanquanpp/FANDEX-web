@@ -39,8 +39,15 @@ const base = import.meta.env.BASE_URL;
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-    <!-- 字体资源预加载 -->
-    <link rel="stylesheet" href={`${base}fonts/fonts.css`} />
+    <!-- 字体 CSS 异步加载：使用 media=print 技巧避免阻塞首屏渲染
+         浏览器会以低优先级加载该样式表，加载完成后切换为 all 媒体应用样式
+         配合下方 preload 提前获取字体文件，整体减少 FCP/LCP 阻塞 -->
+    <link
+      rel="stylesheet"
+      href={`${base}fonts/fonts.css`}
+      media="print"
+      onload="this.media='all'"
+    />
     <link
       rel="preload"
       href={`${base}fonts/jetbrains-mono-400.woff2`}
@@ -81,8 +88,9 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <slot />
-    <!-- Web Vitals 采集器：client:load 确保仅在浏览器端水合后采集，SSR 阶段不执行 -->
-    <WebVitalsTracker client:load />
+    <!-- Web Vitals 采集器：client:idle 推迟到浏览器空闲时段水合
+         采集是观测性任务，不应抢占首屏交互资源；改为 idle 可降低 INP/TBT 开销 -->
+    <WebVitalsTracker client:idle />
   </body>
 </html>
 

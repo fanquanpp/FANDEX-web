@@ -22,10 +22,34 @@ const JSON_DATA_PATTERN = /\/data\/[^/]+\.json$/;
 
 /**
  * Service Worker 安装事件：预缓存关键资源，跳过等待立即激活
+ * 容错策略：逐项 put 替代 cache.addAll，避免单个资源失败导致整体 install reject
+ *   - addAll 是原子操作：任一资源 fetch 失败即整体回滚，SW 无法激活
+ *   - 逐项 put 允许非关键资源（如 glossary-index.json）单独失败时仍完成安装
+ *   - 失败资源仅记录 warn，不阻断 SW 激活流程
  * @param {ExtendableEvent} event
  */
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS)));
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await Promise.all(
+        PRECACHE_URLS.map(async (url) => {
+          try {
+            // 用单独的 fetch + put 替代 addAll 的原子性
+            const response = await fetch(url);
+            if (response.ok) {
+              await cache.put(url, response);
+            } else {
+              console.warn(`[sw] 预缓存资源 ${url} 返回非 2xx：${response.status}`);
+            }
+          } catch (e) {
+            // 单个资源失败不阻断安装，记录 warn 便于运维定位
+            console.warn(`[sw] 预缓存资源 ${url} 失败：`, e?.message || e);
+          }
+        })
+      );
+    })()
+  );
   self.skipWaiting();
 });
 

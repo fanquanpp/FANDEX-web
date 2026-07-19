@@ -6,7 +6,7 @@ import '@/styles/code.css';
 import '@/styles/components.css';
 import '@/styles/geo-decor.css';
 import GeoBgDecor from '@/components/GeoBgDecor.astro';
-import { modules, categoryColors } from '@/lib/modules';
+import { modules, categoryColors, getPrimaryCategory } from '@/lib/modules';
 import { SITE } from '@/lib/constants';
 import { MINIMAL_CSP } from '@/lib/csp';
 
@@ -77,7 +77,7 @@ const topModules = modules.slice(0, 6);
               <a href={`${base}${m.id}/`} class="error-module-card">
                 <span
                   class="error-module-bar"
-                  style={`background:${categoryColors[m.categories[0]]}`}
+                  style={`background:${categoryColors[getPrimaryCategory(m)] || categoryColors.toolchain}`}
                 />
                 <span class="error-module-name">{m.title}</span>
                 <span class="error-module-desc">{m.description}</span>
