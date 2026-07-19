@@ -495,17 +495,26 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
 
 <template>
   <!-- Dialog 根：通过 v-model:open 双向绑定控制开关 -->
+  <!--
+    视觉策略：
+    - size="xl" 提供更宽的搜索画布（max-w-4xl / 896px），避免结果标题与摘要被挤压
+    - 通过 class 覆盖默认 padding/gap/shadow，让弹窗更柔和、留白更舒展
+    - cn() 会自动让后传入的 shadow-xl 覆盖基础类中的 shadow-2xl
+  -->
   <Dialog v-model:open="isOpen">
-    <DialogContent size="lg" class="search-dialog-content p-0 gap-0 w-[calc(100vw-2rem)] sm:w-full">
+    <DialogContent
+      size="xl"
+      class="search-dialog-content p-0 gap-0 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] shadow-xl"
+    >
       <!-- 标题（sr-only：视觉隐藏，仅供屏幕阅读器使用） -->
       <DialogTitle class="sr-only">全局搜索</DialogTitle>
       <DialogDescription class="sr-only">
         通过关键词搜索 FANDEX 文档，支持模块、难度、标签过滤
       </DialogDescription>
 
-      <!-- 搜索输入区：固定在顶部 -->
+      <!-- 搜索输入区：固定在顶部，左右留白 px-5 让输入框更舒展 -->
       <div class="search-input-section border-b border-border">
-        <div class="flex items-center gap-3 px-4 py-3">
+        <div class="flex items-center gap-3 px-5 py-4">
           <!-- 搜索图标或加载 spinner -->
           <Loader2 v-if="isLoading" class="size-5 text-primary-500 animate-spin shrink-0" />
           <Search v-else class="size-5 text-text-tertiary shrink-0" />
@@ -532,9 +541,9 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
       <!-- 过滤器区：仅在有查询词或结果时显示 -->
       <div
         v-if="query.trim().length > 0 || hasFilter"
-        class="filter-section border-b border-border px-4 py-2 flex flex-wrap items-center gap-2 text-xs"
+        class="filter-section border-b border-border px-5 py-2.5 flex flex-wrap items-center gap-1.5 text-xs"
       >
-        <span class="text-text-tertiary shrink-0">过滤：</span>
+        <span class="text-text-tertiary shrink-0 mr-1">过滤</span>
         <!-- 模块过滤器（下拉选择样式简化为按钮组） -->
         <button
           v-for="opt in MODULE_OPTIONS"
@@ -546,7 +555,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         >
           {{ opt.label }}
         </button>
-        <span class="mx-1 text-border-strong">|</span>
+        <span class="mx-1.5 text-border-strong select-none">|</span>
         <!-- 难度过滤器 -->
         <button
           v-for="opt in DIFFICULTY_OPTIONS"
@@ -562,36 +571,36 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         <button
           v-if="hasFilter"
           type="button"
-          class="filter-clear ml-auto text-text-tertiary hover:text-text-primary"
+          class="filter-clear ml-auto text-text-tertiary hover:text-text-primary transition-colors"
           @click="clearFilter"
         >
           清空过滤
         </button>
       </div>
 
-      <!-- 结果区：滚动容器 -->
+      <!-- 结果区：滚动容器，max-h 适配视口高度避免溢出 -->
       <div ref="resultsEl" class="search-results-section max-h-[60vh] overflow-y-auto">
         <!-- 加载状态 -->
-        <div v-if="isLoading" class="search-state px-4 py-8 text-center text-text-secondary">
+        <div v-if="isLoading" class="search-state px-5 py-10 text-center text-text-secondary">
           <Loader2 class="size-6 mx-auto mb-2 text-primary-500 animate-spin" />
           <p class="text-sm">正在搜索…</p>
         </div>
 
         <!-- 错误状态 -->
-        <div v-else-if="errorMsg" class="search-state px-4 py-8 text-center text-error">
+        <div v-else-if="errorMsg" class="search-state px-5 py-10 text-center text-error">
           <p class="text-sm">{{ errorMsg }}</p>
         </div>
 
         <!-- 历史记录：无查询词时显示 -->
-        <div v-else-if="showHistory" class="history-section px-2 py-2">
-          <div class="flex items-center justify-between px-2 py-1">
-            <span class="text-xs text-text-tertiary flex items-center gap-1">
+        <div v-else-if="showHistory" class="history-section px-3 py-2">
+          <div class="flex items-center justify-between px-2 py-1.5">
+            <span class="text-xs text-text-tertiary flex items-center gap-1.5">
               <Clock class="size-3" />
               最近搜索
             </span>
             <button
               type="button"
-              class="text-xs text-text-tertiary hover:text-text-primary"
+              class="text-xs text-text-tertiary hover:text-text-primary transition-colors"
               @click="clearHistory"
             >
               清空
@@ -601,7 +610,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
             <li v-for="(term, i) in history" :key="`h-${i}`">
               <button
                 type="button"
-                class="history-item w-full text-left px-3 py-2 flex items-center gap-2 hover:bg-hover rounded-md text-sm text-text-primary"
+                class="history-item w-full text-left px-3 py-2 flex items-center gap-2.5 hover:bg-hover rounded-md text-sm text-text-primary transition-colors"
                 @click="clickHistory(term)"
               >
                 <Clock class="size-3.5 text-text-tertiary shrink-0" />
@@ -612,8 +621,8 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         </div>
 
         <!-- 空状态：有查询词但无结果 -->
-        <div v-else-if="showEmpty" class="search-state px-4 py-10 text-center">
-          <Search class="size-8 mx-auto mb-3 text-text-tertiary" />
+        <div v-else-if="showEmpty" class="search-state px-5 py-12 text-center">
+          <Search class="size-9 mx-auto mb-3 text-text-tertiary opacity-60" />
           <p class="text-sm text-text-secondary mb-1">未找到与 "{{ query }}" 相关的文档</p>
           <p class="text-xs text-text-tertiary">建议尝试更短的关键词，或清除过滤器</p>
         </div>
@@ -623,13 +632,13 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
           <li v-for="(result, i) in results" :key="`r-${i}-${result.slug}`" :data-result-item="i">
             <button
               type="button"
-              class="result-item w-full text-left px-4 py-2.5 flex flex-col gap-1 transition-colors"
+              class="result-item w-full text-left px-5 py-3 flex flex-col gap-1.5 transition-colors"
               :class="{ 'result-item-active': i === activeIndex }"
               @click="selectResult(result)"
               @mouseenter="activeIndex = i"
             >
               <!-- 结果头部：标题 + 模块标签 -->
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2.5">
                 <span class="result-title text-sm font-medium text-text-primary truncate flex-1">
                   {{ result.title }}
                 </span>
@@ -643,7 +652,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
               <!-- 摘要（含 <mark> 高亮） -->
               <p
                 v-if="result.excerpt"
-                class="result-excerpt text-xs text-text-secondary line-clamp-2"
+                class="result-excerpt text-xs text-text-secondary leading-relaxed line-clamp-2"
                 v-html="sanitizeExcerpt(result.excerpt)"
               ></p>
             </button>
@@ -651,8 +660,8 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         </ul>
 
         <!-- 初始状态：无查询词且无历史记录 -->
-        <div v-else class="search-state px-4 py-10 text-center text-text-tertiary">
-          <Search class="size-8 mx-auto mb-3 opacity-50" />
+        <div v-else class="search-state px-5 py-12 text-center text-text-tertiary">
+          <Search class="size-9 mx-auto mb-3 opacity-50" />
           <p class="text-sm">输入关键词开始搜索 FANDEX 文档</p>
         </div>
       </div>
@@ -660,7 +669,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
       <!-- 底部状态栏：结果统计、引擎标识、键盘提示 -->
       <div
         v-if="!isLoading && searchResponse"
-        class="search-footer border-t border-border px-4 py-2 flex items-center justify-between text-xs text-text-tertiary"
+        class="search-footer border-t border-border px-5 py-2.5 flex items-center justify-between text-xs text-text-tertiary"
       >
         <span>
           共 {{ total }} 条结果
@@ -810,7 +819,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
     left: 0 !important;
     top: 0 !important;
   }
-  /* 移动端结果区填满剩余空间 */
+  /* 移动端结果区填满剩余空间（输入框约 56px + 底部状态栏约 40px） */
   .search-results-section {
     max-height: calc(100vh - 120px) !important;
   }
