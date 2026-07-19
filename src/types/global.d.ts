@@ -6,7 +6,7 @@
  * 避免各组件在使用时重复通过 `window as Window & { ... }` 形式做类型断言。
  *
  * 使用方式：
- * 在组件中直接访问 `window.__fandexSearchDialogReady` 等字段即可，
+ * 在组件中直接访问 `window.__fandexExportVitals` 等字段即可，
  * 无需导入此文件（TypeScript 会自动加载所有 *.d.ts 文件）。
  *
  * 设计原则：
@@ -17,13 +17,6 @@
 
 declare global {
   interface Window {
-    /**
-     * SearchDialog 组件已就绪标志
-     * SearchDialog.vue 在 onMounted 中置为 true，
-     * Layout.astro 的搜索按钮点击事件据此决定是否拦截默认跳转行为
-     */
-    __fandexSearchDialogReady?: boolean;
-
     /**
      * 导出 Web Vitals 数据的全局 API
      * WebVitalsTracker.vue 在 onMounted 中挂载，

@@ -194,67 +194,6 @@
   }
 }
 
-/* 全局搜索按钮：与 .nav-back-to-top 风格一致，方框极简风格 */
-.nav-search-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 0; /* 直角边框，保持极简风格 */
-  background: transparent;
-  color: var(--color-text-secondary);
-  font-size: 0.8em;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.nav-search-btn:hover:not(:focus) {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
-}
-
-/* 键盘焦点可见状态（无障碍） */
-.nav-search-btn:focus-visible {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.nav-search-btn svg {
-  flex-shrink: 0; /* 图标不收缩 */
-}
-
-/* 快捷键提示 kbd：与按钮边框对齐，弱化视觉权重 */
-.nav-search-kbd {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 5px;
-  margin-left: 2px;
-  border: 1px solid var(--color-border);
-  border-radius: 3px;
-  background: var(--color-bg-surface, rgba(128, 128, 128, 0.06));
-  color: var(--color-text-tertiary, var(--color-text-secondary));
-  font-family: var(--font-mono, monospace);
-  font-size: 0.7em;
-  line-height: 1.4;
-}
-
-/* 移动端搜索按钮适配：仅显示图标，隐藏文字与 kbd */
-@media (max-width: 768px) {
-  .nav-search-text,
-  .nav-search-kbd {
-    display: none;
-  }
-  .nav-search-btn {
-    padding: 6px 10px;
-  }
-}
-
 /* ========== 侧边栏 ========== */
 .app-sidebar {
   grid-row: 2;

@@ -11,4 +11,3 @@ export * from './exercise';
 export * from './reference';
 export * from './glossary';
 export * from './progress';
-export * from './search';

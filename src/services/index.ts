@@ -77,11 +77,6 @@ export type {
   ModulePriority,
 } from './learning-path-service';
 
-// ── 搜索服务 ──
-// 优先使用 Pagefind（构建期索引），降级至 Fuse.js + Web Worker（离线兜底）
-export { search, preloadSearch, disposeSearch } from './search-service';
-export type { SearchRequest, SearchResponse, SearchResult, SearchFilter } from './search-service';
-
 // ── 代码运行服务 ──
 // 多语言代码沙箱（JS/TS/Python/C/C++），Web Worker 隔离 + 5 秒超时保护
 export { runCode, disposeCodeRunner } from './code-runner-service';

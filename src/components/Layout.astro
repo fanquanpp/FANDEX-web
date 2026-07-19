@@ -7,7 +7,6 @@
  */
 import BaseLayout from '@/components/BaseLayout.astro';
 import ThemeToggle from '@/islands/ThemeToggle.vue';
-import SearchDialog from '@/islands/SearchDialog.vue';
 import PerformanceMonitor from '@/components/PerformanceMonitor.astro';
 import { SITE } from '@/lib/constants';
 
@@ -58,27 +57,6 @@ const hasSidebar = Astro.slots.has('sidebar');
           </svg>
           <span class="nav-back-to-top-text">返回顶部</span>
         </button>
-        <!-- 全局搜索按钮：点击唤起 SearchDialog 弹窗 -->
-        <button
-          class="nav-search-btn"
-          id="nav-search-btn"
-          aria-label="搜索文档"
-          title="搜索文档 (Ctrl+K)"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <span class="nav-search-text">搜索</span>
-          <kbd class="nav-search-kbd">⌘K</kbd>
-        </button>
         <!-- 主题切换按钮（Vue 交互组件） -->
         <ThemeToggle client:load />
       </div>
@@ -105,20 +83,6 @@ const hasSidebar = Astro.slots.has('sidebar');
         <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
       <span>首页</span>
-    </a>
-    <a href={`${base}search/`} class="mobile-nav-link" id="mobile-search-link">
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <span>搜索</span>
     </a>
     <!-- 模块切换按钮：仅在有侧边栏时显示 -->
     {
@@ -156,8 +120,6 @@ const hasSidebar = Astro.slots.has('sidebar');
       <span>全屏</span>
     </button>
   </nav>
-  <!-- 全局搜索弹窗：通过 Cmd/Ctrl+K 或顶部搜索按钮唤起，client:load 立即水合 -->
-  <SearchDialog client:load />
   <!-- 性能监控面板：仅开发环境渲染（组件内部通过 import.meta.env.DEV 控制） -->
   <PerformanceMonitor />
 </BaseLayout>
@@ -234,22 +196,6 @@ const hasSidebar = Astro.slots.has('sidebar');
       mainEl.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  // ========== 搜索按钮：唤起 SearchDialog 弹窗 ==========
-  // 顶部搜索按钮与移动端搜索链接均派发 fandex-open-search 事件
-  // SearchDialog 已就绪时拦截默认跳转行为，由弹窗接管；否则保留跳转 /search/ 兜底
-  function openSearchDialog(e: Event) {
-    // window.__fandexSearchDialogReady 类型由 src/types/global.d.ts 统一声明
-    if (window.__fandexSearchDialogReady) {
-      e.preventDefault();
-      window.dispatchEvent(new CustomEvent('fandex-open-search'));
-    }
-    // 否则保留默认行为（跳转到 /search/）
-  }
-  const navSearchBtn = document.getElementById('nav-search-btn');
-  if (navSearchBtn) navSearchBtn.addEventListener('click', openSearchDialog);
-  const mobileSearchLink = document.getElementById('mobile-search-link');
-  if (mobileSearchLink) mobileSearchLink.addEventListener('click', openSearchDialog);
 
   // 页面切换时自动关闭侧边栏
   document.addEventListener('astro:page-load', closeSidebar);
