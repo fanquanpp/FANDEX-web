@@ -1,16 +1,18 @@
 ---
 /**
- * 全局知识地图页
- * 通过 knowledge-map-service 在服务端构建全局 KnowledgeMap 数据，
+ * 全局知识地图页（模块级）
+ * 通过 knowledge-map-service 在服务端构建模块级 KnowledgeMap 数据，
  * 传递给 KnowledgeMap Vue 岛屿组件，由客户端渲染 Mermaid 图
  *
  * 数据流：
- * - 服务端：getGlobalMap() → 包含所有模块节点、模块间前置依赖、文档节点与文档间关联
+ * - 服务端：getGlobalMap() → 仅包含模块节点与模块间前置依赖关系
+ *   （文档级关系纳入模块知识地图页 /[module]/map/，避免节点数过多导致 Mermaid 渲染失败）
  * - 客户端：KnowledgeMap.vue 接收 map 数据，渲染 Mermaid + 缩放/拖拽/节点点击跳转
  *
  * 使用场景：
- * - 站点级知识结构概览
+ * - 站点级模块依赖结构概览
  * - 跨模块学习路径探索
+ * - 通过"模块快速跳转"区进入各模块文档级知识地图
  */
 import HomeLayout from '@/components/HomeLayout.astro';
 import SEO from '@/components/SEO.astro';
@@ -34,7 +36,7 @@ const base = import.meta.env.BASE_URL;
   <SEO
     slot="head"
     title="全局知识地图"
-    description="FANDEX 全站知识结构与学习路径地图，覆盖所有模块与文档的前置依赖与关联关系"
+    description="FANDEX 全站模块依赖结构地图，可视化模块间前置学习路径；各模块文档级关系请在模块知识地图页查看"
     type="website"
   />
 
@@ -42,7 +44,7 @@ const base = import.meta.env.BASE_URL;
     <section class="map-hero">
       <div class="map-hero-badge">Knowledge Map</div>
       <h1 class="map-hero-title">全局知识地图</h1>
-      <p class="map-hero-desc">从模块依赖到文档关联，一张图看清 FANDEX 的知识结构</p>
+      <p class="map-hero-desc">模块级依赖结构一览，下方可进入各模块的文档级详细地图</p>
       <div class="map-hero-stats">
         <div class="map-stat">
           <span class="map-stat-num">{allModules.length}</span>
@@ -50,13 +52,8 @@ const base = import.meta.env.BASE_URL;
         </div>
         <div class="map-stat-divider"></div>
         <div class="map-stat">
-          <span class="map-stat-num">{mapData.nodes.length}</span>
-          <span class="map-stat-label">节点</span>
-        </div>
-        <div class="map-stat-divider"></div>
-        <div class="map-stat">
           <span class="map-stat-num">{mapData.edges.length}</span>
-          <span class="map-stat-label">关系</span>
+          <span class="map-stat-label">依赖关系</span>
         </div>
       </div>
     </section>
