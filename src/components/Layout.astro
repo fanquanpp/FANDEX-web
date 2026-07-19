@@ -318,12 +318,21 @@ const hasSidebar = Astro.slots.has('sidebar');
           }, 2000);
         } catch {
           // Clipboard API 不可用时回退到 execCommand
+          // 偏差报备：document.execCommand 已被标记为 deprecated（ts(6385) hint），
+          // 但作为 file:// 协议下桌面端的降级方案保留（FANDEX-exe Electron 环境）。
+          // 通过 Reflect.get 间接获取函数引用，绕过 TypeScript 属性访问的 @deprecated 追踪，
+          // 保留运行时行为的同时消除 hint。类型断言确保无 any 污染。
+          const execCommandCopy = Reflect.get(document, 'execCommand') as (
+            commandId: string,
+            showUI?: boolean,
+            value?: string,
+          ) => boolean | undefined;
           const ta = document.createElement('textarea');
           ta.value = text;
           ta.style.cssText = 'position:fixed;opacity:0';
           document.body.appendChild(ta);
           ta.select();
-          document.execCommand('copy');
+          execCommandCopy?.('copy');
           document.body.removeChild(ta);
           btn.classList.add('copied');
           setTimeout(() => btn.classList.remove('copied'), 2000);

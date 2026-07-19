@@ -49,5 +49,5 @@ const ldJson =
 <meta name="twitter:card" content="summary_large_image" />
 <!-- 规范链接 -->
 <link rel="canonical" href={pageUrl} />
-<!-- 结构化数据（JSON-LD） -->
-<script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+<!-- 结构化数据（JSON-LD）：is:inline 声明，避免 Astro 误判为需处理的脚本 -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(ldJson)} />

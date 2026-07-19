@@ -181,10 +181,10 @@ const priorityColors: Record<PathModule['priority'], string> = {
   </div>
 </Layout>
 
-<!-- 客户端脚本：将学习路径数据注入页面，供路径选择交互使用 -->
-<script type="application/json" id="learning-paths-data" set:html={JSON.stringify(learningPaths)} />
-<script type="application/json" id="priority-labels" set:html={JSON.stringify(priorityLabels)} />
-<script type="application/json" id="priority-colors" set:html={JSON.stringify(priorityColors)} />
+<!-- 客户端脚本：将学习路径数据注入页面，供路径选择交互使用。is:inline 声明，避免 Astro 误判为需处理的脚本 -->
+<script type="application/json" id="learning-paths-data" is:inline set:html={JSON.stringify(learningPaths)} />
+<script type="application/json" id="priority-labels" is:inline set:html={JSON.stringify(priorityLabels)} />
+<script type="application/json" id="priority-colors" is:inline set:html={JSON.stringify(priorityColors)} />
 
 <style>
   .roadmap-page {
@@ -968,27 +968,15 @@ const priorityColors: Record<PathModule['priority'], string> = {
 
     try {
       // 动态导入 service（避免 SSR 阶段加载）
-      const [{ getPathProgress }, { getProgressStats }] = await Promise.all([
+      const [{ getPathProgress }] = await Promise.all([
         import('@/services/learning-path-service'),
-        import('@/services/progress-service'),
       ]);
 
-      const [progress, stats] = await Promise.all([getPathProgress(pathId), getProgressStats()]);
+      // 偏差报备：原代码还导入了 progress-service 的 getProgressStats 并构建 moduleProgressMap，
+      // 但 renderPathDetail 已不消费该参数，故省略以减少无意义的 IndexedDB 读操作。
+      const progress = await getPathProgress(pathId);
 
-      // 构建模块进度映射
-      const moduleProgressMap = new Map<
-        string,
-        { total: number; completed: number; inProgress: number }
-      >();
-      for (const mp of stats.moduleProgress) {
-        moduleProgressMap.set(mp.moduleId, {
-          total: mp.total,
-          completed: mp.completed,
-          inProgress: mp.inProgress,
-        });
-      }
-
-      renderPathDetail(pathName, progress, moduleProgressMap);
+      renderPathDetail(pathName, progress);
     } catch {
       detailEl.innerHTML = '<div class="path-detail-loading">加载失败，请刷新页面重试</div>';
     }
@@ -998,7 +986,6 @@ const priorityColors: Record<PathModule['priority'], string> = {
    * 渲染路径详情到 #path-detail 容器
    * @param pathName - 路径名称
    * @param progress - 路径进度对象
-   * @param moduleProgressMap - 模块进度映射
    */
   function renderPathDetail(
     pathName: string,
@@ -1025,7 +1012,6 @@ const priorityColors: Record<PathModule['priority'], string> = {
         unlocked: boolean;
       }>;
     },
-    moduleProgressMap: Map<string, { total: number; completed: number; inProgress: number }>
   ): void {
     const detailEl = document.getElementById('path-detail');
     if (!detailEl) return;

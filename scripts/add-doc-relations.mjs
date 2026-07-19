@@ -13,8 +13,8 @@
  * 3. 跨模块关联：每个模块首篇文档，related 包含前置模块的首篇文档
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative, sep } from 'node:path';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { join, relative } from 'node:path';
 
 /** 文档根目录 */
 const DOCS_DIR = join(import.meta.dirname, '..', 'src', 'content', 'docs');
@@ -85,7 +85,6 @@ function parseFrontmatter(content) {
   const lines = yaml.split(/\r?\n/);
   let currentKey = null; // 当前正在解析的键名
   let inArray = false; // 是否正在解析数组值
-  let arrayIndent = 0; // 数组缩进级别
 
   for (const line of lines) {
     // 数组项: "  - value" 或 "- value"
@@ -106,7 +105,6 @@ function parseFrontmatter(content) {
         // 空值或空数组，标记为数组模式
         fm[key] = [];
         inArray = true;
-        arrayIndent = 0;
         currentKey = key;
       } else {
         // 有值，尝试类型推断

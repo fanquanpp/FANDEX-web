@@ -8,7 +8,7 @@
  * 当索引文件超过 100KB 时，自动压缩字段名以减小体积。
  */
 
-import { readdir, readFile, mkdir, writeFile, stat } from 'node:fs/promises';
+import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises';
 import { join, dirname, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 

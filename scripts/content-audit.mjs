@@ -18,7 +18,7 @@
  * - [Phase 1.5] schema 完整性：检测新增字段缺失并统计覆盖率
  */
 
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /** 文档根目录 */

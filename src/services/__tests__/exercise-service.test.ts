@@ -151,8 +151,8 @@ describe('exercise-service', () => {
       const ex = makeFillBlank();
       await submitAnswer(ex, 'pointer');
       await submitAnswer(ex, 'pointer');
-      const progress = await getExerciseProgress();
-      const rec = await storage.get('fb-1')!;
+      // storage.get 返回同步值，无需 await；移除未使用的 progress 变量
+      const rec = storage.get('fb-1');
       expect(rec).toBeDefined();
       expect(rec!.attempts).toBe(2);
     });

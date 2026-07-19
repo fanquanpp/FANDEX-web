@@ -1,4 +1,9 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+// 偏差报备：Astro 7 同时弃用了从 'astro:content' 与 'astro:schema' 导出 z 的方式（ts(6385) 'z' is deprecated）。
+// 改为从 'zod' 直接导入（zod 4.x 已作为 astro 的传递依赖存在于 node_modules），
+// 并在 package.json 显式声明依赖以锁定版本，避免传递依赖变更导致构建失败。
+// 依据：https://docs.astro.build/en/upgrade-guides/v7/ + npm list zod 验证
+import { z } from 'zod';
 import { glob } from 'astro/loaders';
 
 /**

@@ -14,5 +14,11 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true
-  }
+  },
+  "exclude": [
+    "coverage/**",
+    "public/sw.js",
+    "dist/**",
+    "node_modules/**"
+  ]
 }

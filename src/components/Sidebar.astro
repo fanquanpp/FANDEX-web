@@ -22,7 +22,6 @@ const meta = getModule(moduleId)
 // 通过 module-service 获取全部模块，用于底部"全部模块"面板
 const allModules = getAllModules()
 
-const currentPath = Astro.url.pathname
 const base = import.meta.env.BASE_URL
 // 过滤出 h2-h3 级别的标题用于大纲显示
 const visibleHeadings = (headings || []).filter((h) => h.depth >= 2 && h.depth <= 3)

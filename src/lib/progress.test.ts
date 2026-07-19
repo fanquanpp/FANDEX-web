@@ -1,7 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-const STORAGE_KEY = 'fandex-progress';
-
 const mockStore: Record<string, string> = {};
 const mockLocalStorage = {
   getItem: (key: string) => mockStore[key] ?? null,

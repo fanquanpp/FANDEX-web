@@ -36,8 +36,6 @@ const ROOT = join(__dirname, '..');
 const CACHE_DIR = join(ROOT, 'docs', 'skills-cache');
 /** 偏差日志：记录实际执行与 Skill 指引不一致的情况 */
 const DEVIATION_LOG = join(ROOT, 'docs', 'skill-deviations.log.md');
-/** 本地 Skill 元数据缓存文件 */
-const LOCAL_CACHE_FILE = join(CACHE_DIR, 'local-skills.json');
 /** 远程 Skill 检索缓存文件（按 query 哈希命名） */
 const REMOTE_CACHE_PREFIX = 'remote-';
 
@@ -51,7 +49,7 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 /**
  * 加载 .env.local 文件中的环境变量
  * 简易实现，避免引入 dotenv 依赖
- * @returns {Record<string, string>} 环境变量键值对
+ * @returns {Promise<Record<string, string>>} 环境变量键值对（async 以兼容 fs.promises API 调用约定）
  */
 async function loadEnv() {
   const envPath = join(ROOT, '.env.local');
@@ -111,7 +109,7 @@ function hashString(str) {
 /**
  * 读取缓存
  * @param {string} cacheFile - 缓存文件路径
- * @returns {Object|null} 缓存数据（过期返回 null）
+ * @returns {Promise<Object|null>} 缓存数据（过期返回 null）
  */
 async function readCache(cacheFile) {
   if (!existsSync(cacheFile)) return null;
