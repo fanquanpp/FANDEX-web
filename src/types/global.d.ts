@@ -16,10 +16,11 @@
  */
 
 /**
- * AntV G6 v5 全局类型声明
+ * 3D Force Graph 全局类型声明
  *
- * G6 通过 CDN script 标签加载，挂载到 window.G6
- * 此处使用 any 类型简化声明，避免引入 G6 完整类型依赖
+ * vasturiano/3d-force-graph 通过 CDN script 标签加载，UMD 模式挂载到 window.ForceGraph3D
+ * （注意：是 ForceGraph3D 而非 ForceGraph，与 npm 包 default export 名一致）
+ * 此处使用 any 类型简化声明，避免引入完整类型依赖
  * 实际类型检查由组件内部通过最小接口契约保证
  */
 declare global {
@@ -34,12 +35,12 @@ declare global {
     __fandexExportVitals?: () => string;
 
     /**
-     * AntV G6 v5 图可视化引擎
+     * 3D Force Graph 构造函数（vasturiano/3d-force-graph）
      * 通过 external-loader 从 CDN 动态加载
-     * 主要使用 Graph 构造函数、内置主题、内置行为
+     * 调用方式：const graph = new window.ForceGraph3D(element, options)
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    G6?: any;
+    ForceGraph3D?: any;
   }
 }
 

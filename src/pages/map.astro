@@ -1,28 +1,27 @@
 ---
 /**
- * 全局知识地图页（Combo 展开/收起模式）
+ * 全局知识地图页（3D 力导向图）
  * 通过 knowledge-map-service 在服务端构建完整 KnowledgeMap 数据
- * （52 模块 + 2065 文档 + 4583 关系），传递给 KnowledgeGraphG6 Vue 岛屿组件
+ * （52 模块 + 2065 文档 + 4583 关系），传递给 KnowledgeGraph3D Vue 岛屿组件
  *
  * 数据流：
  * - 服务端：getGlobalMap() → 返回完整知识地图（模块节点 + 文档节点 + 全部边）
- * - 客户端：KnowledgeGraphG6.vue 基于 AntV G6 v5 渲染
- *   - 每个模块作为一个 Combo，默认收起（仅显示 52 个模块节点）
- *   - 用户点击 Combo 展开查看其文档子节点
- *   - 支持滚轮缩放、拖拽平移、节点点击跳转
+ * - 客户端：KnowledgeGraph3D.vue 基于 vasturiano/3d-force-graph（ThreeJS/WebGL）渲染
+ *   - 3D 力导向布局，节点自然散布于 3D 空间
+ *   - 支持左键旋转、滚轮缩放、右键平移、节点点击跳转
  *
  * 为什么不用 Mermaid：
  * - Mermaid 在节点数超过数百时 render 会失败回退到 fill:#faa 错误占位节点
- * - G6 v5 的 Combo 展开/收起模式天然适合大规模分层图可视化
+ * - 3d-force-graph 基于 ThreeJS/WebGL，单图可渲染 10000+ 节点，性能与体验远超 Mermaid
  *
  * 使用场景：
  * - 站点级全量知识图谱概览（模块 + 文档 + 关系）
- * - 跨模块学习路径探索
+ * - 3D 空间中跨模块学习路径探索
  * - 通过"模块快速跳转"区进入各模块文档级 Mermaid 地图
  */
 import HomeLayout from '@/components/HomeLayout.astro';
 import SEO from '@/components/SEO.astro';
-import KnowledgeGraphG6 from '@/islands/KnowledgeGraphG6.vue';
+import KnowledgeGraph3D from '@/islands/KnowledgeGraph3D.vue';
 // 通过 services 桶文件统一导入：UI 层禁止直接调用 services 内部模块
 import { getGlobalMap, getAllModules } from '@/services';
 import type { KnowledgeMap as KnowledgeMapData } from '@/services';
@@ -43,16 +42,16 @@ const base = import.meta.env.BASE_URL;
   <SEO
     slot="head"
     title="全局知识地图"
-    description="FANDEX 全站知识图谱：52 个模块 + 2000+ 篇文档 + 依赖关系可视化，支持 Combo 展开/收起、缩放、拖拽与节点跳转"
+    description="FANDEX 全站 3D 知识图谱：52 个模块 + 2000+ 篇文档 + 依赖关系可视化，支持 3D 旋转、缩放、平移与节点跳转"
     type="website"
   />
 
   <div class="global-map-page">
     <section class="map-hero">
-      <div class="map-hero-badge">Knowledge Graph</div>
+      <div class="map-hero-badge">3D Knowledge Graph</div>
       <h1 class="map-hero-title">全局知识地图</h1>
       <p class="map-hero-desc">
-        基于 AntV G6 的全站知识图谱，模块 Combo 默认收起，点击展开查看文档子节点
+        基于 ThreeJS/WebGL 的 3D 力导向图，左键旋转 · 滚轮缩放 · 右键平移 · 点击节点跳转
       </p>
       <div class="map-hero-stats">
         <div class="map-stat">
@@ -72,9 +71,9 @@ const base = import.meta.env.BASE_URL;
       </div>
     </section>
 
-    <!-- 知识图谱渲染区：客户端水合 G6 图，支持 Combo 展开/收起、缩放、拖拽、节点点击跳转 -->
+    <!-- 3D 知识图谱渲染区：客户端水合 3d-force-graph，支持旋转/缩放/平移/节点点击跳转 -->
     <div class="map-render-area">
-      <KnowledgeGraphG6 client:load scope="global" map={mapData} baseUrl={base} />
+      <KnowledgeGraph3D client:load scope="global" map={mapData} baseUrl={base} />
     </div>
 
     <!-- 模块快速跳转：作为图视图的可访问性补充，便于键盘/屏幕阅读器用户跳转 -->

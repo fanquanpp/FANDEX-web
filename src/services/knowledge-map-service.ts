@@ -184,10 +184,9 @@ function dedupeEdges(edges: readonly MapEdge[]): MapEdge[] {
  *
  * 渲染策略说明：
  * - FANDEX 当前有 52 个模块 + 2065 篇文档 + 4583 条文档间关系
- * - Mermaid 无法直接渲染此规模，需切换到 AntV G6 的 Combo 展开/收起模式
- * - 全局知识地图页（/map/）改用 KnowledgeGraphG6.vue 渲染：
- *   默认所有模块 Combo 收起（仅显示 52 个模块节点），
- *   用户点击 Combo 展开查看其文档子节点
+ * - Mermaid 无法直接渲染此规模，全局知识地图改用 3D Force Graph 渲染
+ * - 全局知识地图页（/map/）由 KnowledgeGraph3D.vue 基于 ThreeJS/WebGL 渲染：
+ *   3D 力导向布局，单图可承载 10000+ 节点，支持旋转/缩放/平移/节点跳转
  * - 模块知识地图页（/[module]/map/）仍用 Mermaid 渲染单模块范围内的文档关系
  *
  * @returns 完整知识地图；异常时返回空图

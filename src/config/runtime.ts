@@ -44,9 +44,14 @@ export const RUNTIME = {
     'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
   ),
 
-  /** AntV G6 图可视化引擎 CDN 地址（v5）
-   * 用于全局知识地图的模块级 Combo 展开/收起渲染，替代 Mermaid 在大规模图场景下的渲染失败问题 */
-  g6Cdn: envString('PUBLIC_G6_CDN', 'https://cdn.jsdelivr.net/npm/@antv/g6@5/dist/g6.min.js'),
+  /** 3D Force Graph CDN 地址（vasturiano/3d-force-graph）
+   * 基于 ThreeJS/WebGL 的 3D 力导向图组件，单图可渲染 10000+ 节点
+   * 用于全局知识地图的大规模图渲染，替代 Mermaid 在大规模图场景下的渲染失败问题
+   * 版本锁定 1.80.0（UMD 全局名 ForceGraph3D，与 npm 包 default export 一致） */
+  forceGraphCdn: envString(
+    'PUBLIC_FORCE_GRAPH_CDN',
+    'https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.0/dist/3d-force-graph.min.js'
+  ),
 
   /** 代码运行器默认超时时间（毫秒），防止用户代码死循环 */
   codeRunnerTimeoutMs: envNumber('PUBLIC_CODE_RUNNER_TIMEOUT', 5000),

@@ -122,16 +122,19 @@ export async function loadDOMPurify(): Promise<void> {
 }
 
 /**
- * 加载 AntV G6 图可视化引擎（v5）
- * 用于全局知识地图的 Combo 展开/收起渲染，替代 Mermaid 在大规模图场景下的渲染失败问题
- * CDN 地址从 `RUNTIME.g6Cdn` 读取，可通过环境变量 PUBLIC_G6_CDN 覆盖
- * 加载成功后挂载到 window.G6，组件直接读取使用
+ * 加载 3D Force Graph（ThreeJS/WebGL 力导向图）
+ * 用于全局知识地图的大规模图渲染（52 模块 + 2065 文档 + 4583 关系）
+ * 替代 Mermaid 在大规模图场景下的渲染失败问题
+ *
+ * CDN 地址从 `RUNTIME.forceGraphCdn` 读取，可通过环境变量 PUBLIC_FORCE_GRAPH_CDN 覆盖
+ * 加载成功后挂载到 window.ForceGraph3D（注意：UMD 全局名为 ForceGraph3D，与 npm 包 default export 一致）
+ *
  * @returns Promise<void>，加载完成 resolve，失败 reject
  */
-export async function loadG6(): Promise<void> {
+export async function loadForceGraph(): Promise<void> {
   try {
-    await loadExternalScript(RUNTIME.g6Cdn);
+    await loadExternalScript(RUNTIME.forceGraphCdn);
   } catch (err) {
-    throw new Error(`G6 加载失败: ${err instanceof Error ? err.message : String(err)}`);
+    throw new Error(`3D Force Graph 加载失败: ${err instanceof Error ? err.message : String(err)}`);
   }
 }
