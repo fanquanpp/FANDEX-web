@@ -14,7 +14,7 @@ interface CardTitleProps {
 const props = defineProps<CardTitleProps>();
 
 const classes = computed(() =>
-  cn('text-2xl font-semibold leading-tight tracking-tight', props.class),
+  cn('text-2xl font-semibold leading-tight tracking-tight', props.class)
 );
 </script>
 

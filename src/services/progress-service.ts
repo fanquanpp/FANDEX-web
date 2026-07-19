@@ -339,7 +339,7 @@ export async function exportProgress(): Promise<string> {
         legacyProgress: legacyMap,
       },
       null,
-      2,
+      2
     );
   } catch {
     return JSON.stringify(
@@ -350,7 +350,7 @@ export async function exportProgress(): Promise<string> {
         legacyProgress: {},
       },
       null,
-      2,
+      2
     );
   }
 }
@@ -417,9 +417,7 @@ export async function getRecommendedNext(limit = 5): Promise<RecommendedDoc[]> {
       }
     }
     for (const r of notStarted.slice(0, 2)) {
-      const reason = completedModuleIds.has(r.moduleId)
-        ? '前置依赖已完成'
-        : '推荐进阶';
+      const reason = completedModuleIds.has(r.moduleId) ? '前置依赖已完成' : '推荐进阶';
       recommendations.push({
         docSlug: r.docSlug,
         moduleId: r.moduleId,

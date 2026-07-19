@@ -42,13 +42,8 @@ beforeEach(() => {
   vi.stubGlobal('localStorage', mockLocalStorage);
 });
 
-const {
-  recordVital,
-  getVitals,
-  getVitalsSummary,
-  clearVitals,
-  exportVitalsJSON,
-} = await import('@/services/observability-service');
+const { recordVital, getVitals, getVitalsSummary, clearVitals, exportVitalsJSON } =
+  await import('@/services/observability-service');
 
 /** 构造合法 VitalRecord */
 function makeVital(overrides: Partial<VitalRecord> = {}): VitalRecord {
@@ -219,7 +214,7 @@ describe('observability-service', () => {
           rating: 'needs-improvement',
           timestamp: 1234567890,
           url: 'https://example.com/test',
-        }),
+        })
       );
       const parsed = JSON.parse(exportVitalsJSON()) as VitalRecord[];
       expect(parsed[0]!.name).toBe('LCP');

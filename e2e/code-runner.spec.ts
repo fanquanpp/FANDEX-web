@@ -39,7 +39,9 @@ test.describe('代码运行器', () => {
     const href = await link.getAttribute('href');
     if (!href) return;
     await page.goto(href);
-    const runBtn = page.locator('button:has-text("运行"), button:has-text("Run"), .run-btn').first();
+    const runBtn = page
+      .locator('button:has-text("运行"), button:has-text("Run"), .run-btn')
+      .first();
     const count = await runBtn.count();
     if (count > 0) {
       await runBtn.click({ timeout: 5000 }).catch(() => undefined);
@@ -54,7 +56,9 @@ test.describe('代码运行器', () => {
     if (!href) return;
     await page.goto(href);
     // 查找复制按钮
-    const copyBtn = page.locator('button:has-text("复制"), button:has-text("Copy"), .copy-btn').first();
+    const copyBtn = page
+      .locator('button:has-text("复制"), button:has-text("Copy"), .copy-btn')
+      .first();
     const count = await copyBtn.count();
     expect(count).toBeGreaterThanOrEqual(0);
   });

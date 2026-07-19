@@ -15,10 +15,7 @@
  * 在内存中模拟真实 IndexedDB 行为。
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import {
-  ExerciseRepository,
-  type ExerciseRecord,
-} from '@/data/storage/exercise-repository';
+import { ExerciseRepository, type ExerciseRecord } from '@/data/storage/exercise-repository';
 
 /** 内存中的记录存储 */
 let memoryStore: Map<string, ExerciseRecord>;
@@ -308,10 +305,7 @@ describe('ExerciseRepository', () => {
       const importData = {
         version: '1.0.0',
         exportedAt: new Date().toISOString(),
-        records: [
-          makeRecord({ id: 'imported-1' }),
-          makeRecord({ id: 'imported-2' }),
-        ],
+        records: [makeRecord({ id: 'imported-1' }), makeRecord({ id: 'imported-2' })],
       };
       await repo.importJSON(JSON.stringify(importData));
       const all = await repo.getAll();

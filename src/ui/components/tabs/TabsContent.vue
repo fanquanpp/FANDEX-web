@@ -18,8 +18,8 @@ const props = defineProps<TabsContentPropsExtended>();
 const classes = computed(() =>
   cn(
     'mt-2 data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:zoom-in-95',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

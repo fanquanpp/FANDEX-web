@@ -10,11 +10,7 @@
 
 import { computed } from 'vue';
 import { cn } from '@/lib/utils';
-import {
-  AccordionHeader,
-  AccordionTrigger,
-  type AccordionTriggerProps,
-} from 'radix-vue';
+import { AccordionHeader, AccordionTrigger, type AccordionTriggerProps } from 'radix-vue';
 import { ChevronDown } from '@lucide/vue';
 
 interface AccordionTriggerPropsExtended extends AccordionTriggerProps {
@@ -26,8 +22,8 @@ const props = defineProps<AccordionTriggerPropsExtended>();
 const classes = computed(() =>
   cn(
     'flex flex-1 items-center justify-between py-4 text-base font-medium transition-all duration-fast ease-out hover:underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring [&[data-state=open]>svg]:rotate-180',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

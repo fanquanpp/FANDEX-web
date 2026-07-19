@@ -180,8 +180,7 @@ export class ProgressRepository {
       if (!db) return undefined;
       const tx = db.transaction(STORE_NAME, 'readonly');
       const result = (await wrapRequest(tx.objectStore(STORE_NAME).get(docSlug))) as
-        | ProgressRecord
-        | undefined;
+        ProgressRecord | undefined;
       db.close();
       return result ?? undefined;
     } catch {
@@ -300,7 +299,7 @@ export class ProgressRepository {
         records: all,
       },
       null,
-      2,
+      2
     );
   }
 

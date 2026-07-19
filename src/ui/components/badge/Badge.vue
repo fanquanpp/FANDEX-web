@@ -26,9 +26,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   variant: 'default',
 });
 
-const classes = computed(() =>
-  cn(badgeVariants({ variant: props.variant }), props.class),
-);
+const classes = computed(() => cn(badgeVariants({ variant: props.variant }), props.class));
 </script>
 
 <template>

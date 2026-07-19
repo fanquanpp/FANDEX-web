@@ -42,12 +42,7 @@
     <!-- 搜索栏：输入搜索词实时过滤条目 -->
     <div class="search-bar">
       <!-- 搜索输入框：通过 aria-label 暴露可访问名，placeholder 不作为可访问名替代 -->
-      <input
-        v-model="搜索词"
-        type="text"
-        :placeholder="搜索框占位符"
-        aria-label="搜索速查表条目"
-      />
+      <input v-model="搜索词" type="text" :placeholder="搜索框占位符" aria-label="搜索速查表条目" />
       <!-- 有搜索词时显示匹配条目总数 -->
       <span v-if="搜索词" class="result-count">{{ 匹配条目总数 }} 条结果</span>
     </div>

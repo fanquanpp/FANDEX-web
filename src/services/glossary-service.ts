@@ -19,7 +19,7 @@ import glossaryData from '@/data/glossary.json';
 
 /** 已加载的术语条目数组（来自 src/data/glossary.json，模块初始化时即就绪） */
 const entries: readonly GlossaryEntry[] = Object.freeze(
-  glossaryData.map((item) => ({ ...item }) as GlossaryEntry),
+  glossaryData.map((item) => ({ ...item }) as GlossaryEntry)
 );
 
 /** 术语 -> 条目 的快速查找映射（仅取首个匹配，避免重复术语导致歧义） */
@@ -125,9 +125,7 @@ type GlossaryCollectionEntry = CollectionEntry<'glossary'>;
  * @param moduleId - 模块 ID
  * @returns 按标题 localeCompare 排序后的术语条目数组；异常时返回空数组
  */
-export async function getGlossaryByModule(
-  moduleId: string,
-): Promise<GlossaryCollectionEntry[]> {
+export async function getGlossaryByModule(moduleId: string): Promise<GlossaryCollectionEntry[]> {
   try {
     const glossary = await getCollection('glossary', ({ data }) => data.module === moduleId);
     return glossary.sort((a, b) => a.data.title.localeCompare(b.data.title));
@@ -154,9 +152,7 @@ export async function getAllGlossaryTerms(): Promise<GlossaryCollectionEntry[]> 
  * @param query - 搜索关键词
  * @returns 标题包含关键词的术语条目数组（按标题排序）；异常时返回空数组
  */
-export async function searchGlossary(
-  query: string,
-): Promise<GlossaryCollectionEntry[]> {
+export async function searchGlossary(query: string): Promise<GlossaryCollectionEntry[]> {
   try {
     const glossary = await getCollection('glossary');
     const lowerQuery = query.toLowerCase();

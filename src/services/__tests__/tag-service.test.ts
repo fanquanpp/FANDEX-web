@@ -67,9 +67,7 @@ describe('tag-service', () => {
     });
 
     it('应处理文档无 tags 字段的场景', async () => {
-      fakeDocs = [
-        { id: 'a/1.md', data: { title: 'A1', module: 'a', order: 1, tags: [] } },
-      ];
+      fakeDocs = [{ id: 'a/1.md', data: { title: 'A1', module: 'a', order: 1, tags: [] } }];
       const tags = await getAllTags();
       expect(tags).toEqual([]);
     });
@@ -107,9 +105,7 @@ describe('tag-service', () => {
     });
 
     it('未匹配标签应返回空数组', async () => {
-      fakeDocs = [
-        { id: 'a/1.md', data: { title: 'A1', module: 'a', order: 1, tags: ['x'] } },
-      ];
+      fakeDocs = [{ id: 'a/1.md', data: { title: 'A1', module: 'a', order: 1, tags: ['x'] } }];
       const result = await getDocsByTag('unknown');
       expect(result).toEqual([]);
     });

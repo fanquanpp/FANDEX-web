@@ -28,18 +28,18 @@ rect.addEventListener('click', () => console.log('clicked'));
 
 ### 1.1 与 HTML 元素的差异
 
-| 维度 | HTML | SVG |
-|------|------|-----|
-| 尺寸 | `element.style.width` | `element.setAttribute('width', ...)` |
-| 颜色 | `element.style.color` | `element.setAttribute('fill', ...)` 或 CSS |
-| 类名 | `element.className = '...'` | `element.classList.add('...')`（SVG className 是 SVGAnimatedString） |
-| 自定义属性 | `data-*` | 同 HTML，可用 dataset |
+| 维度       | HTML                        | SVG                                                                  |
+| ---------- | --------------------------- | -------------------------------------------------------------------- |
+| 尺寸       | `element.style.width`       | `element.setAttribute('width', ...)`                                 |
+| 颜色       | `element.style.color`       | `element.setAttribute('fill', ...)` 或 CSS                           |
+| 类名       | `element.className = '...'` | `element.classList.add('...')`（SVG className 是 SVGAnimatedString） |
+| 自定义属性 | `data-*`                    | 同 HTML，可用 dataset                                                |
 
 ### 1.2 className 注意
 
 ```javascript
 // 错误：SVG 元素 className 是 SVGAnimatedString
-rect.className = 'active';  // 无效
+rect.className = 'active'; // 无效
 
 // 正确
 rect.classList.add('active');
@@ -58,7 +58,7 @@ circle.setAttribute('cy', 50);
 circle.setAttribute('r', 30);
 
 const r = parseFloat(circle.getAttribute('r'));
-console.log(r);  // 30
+console.log(r); // 30
 ```
 
 ### 2.2 命名空间属性
@@ -117,11 +117,11 @@ const data = [
   { label: 'Q1', value: 120 },
   { label: 'Q2', value: 165 },
   { label: 'Q3', value: 210 },
-  { label: 'Q4', value: 180 }
+  { label: 'Q4', value: 180 },
 ];
 
 const svg = document.querySelector('svg');
-const max = Math.max(...data.map(d => d.value));
+const max = Math.max(...data.map((d) => d.value));
 const barWidth = 40;
 const gap = 20;
 
@@ -131,8 +131,11 @@ data.forEach((d, i) => {
   const y = 180 - h;
 
   const bar = createSVG('rect', {
-    x, y, width: barWidth, height: h,
-    fill: '#4f5bd5'
+    x,
+    y,
+    width: barWidth,
+    height: h,
+    fill: '#4f5bd5',
   });
   svg.appendChild(bar);
 
@@ -140,7 +143,7 @@ data.forEach((d, i) => {
     x: x + barWidth / 2,
     y: 195,
     'text-anchor': 'middle',
-    'font-size': 12
+    'font-size': 12,
   });
   label.textContent = d.label;
   svg.appendChild(label);
@@ -217,7 +220,7 @@ console.log('中点坐标：', point.x, point.y);
 // 用于绘制动画
 path.style.strokeDasharray = length;
 path.style.strokeDashoffset = length;
-path.getBoundingClientRect();  // 触发重排
+path.getBoundingClientRect(); // 触发重排
 path.style.transition = 'stroke-dashoffset 2s';
 path.style.strokeDashoffset = 0;
 ```
@@ -271,7 +274,7 @@ function renderBars(data) {
       y: 180 - h,
       width: barWidth,
       height: h,
-      fill: '#4f5bd5'
+      fill: '#4f5bd5',
     });
     svg.appendChild(bar);
   }
@@ -336,10 +339,10 @@ animate();
 
 ```javascript
 const easings = {
-  linear: t => t,
-  easeInQuad: t => t * t,
-  easeOutQuad: t => t * (2 - t),
-  easeInOutQuad: t => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t)
+  linear: (t) => t,
+  easeInQuad: (t) => t * t,
+  easeOutQuad: (t) => t * (2 - t),
+  easeInOutQuad: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
 };
 
 function animate(duration, easing, callback) {
@@ -363,14 +366,11 @@ animate(1000, easings.easeOutQuad, (value) => {
 ```javascript
 // 关键帧动画
 const animation = rect.animate(
-  [
-    { transform: 'translateX(0)' },
-    { transform: 'translateX(200px)' }
-  ],
+  [{ transform: 'translateX(0)' }, { transform: 'translateX(200px)' }],
   {
     duration: 1000,
     fill: 'forwards',
-    easing: 'ease-out'
+    easing: 'ease-out',
   }
 );
 
@@ -396,11 +396,11 @@ animation.onfinish = () => console.log('动画结束');
     { label: 'Q1', value: 120 },
     { label: 'Q2', value: 165 },
     { label: 'Q3', value: 210 },
-    { label: 'Q4', value: 180 }
+    { label: 'Q4', value: 180 },
   ];
 
   const svg = document.querySelector('.chart');
-  const max = Math.max(...data.map(d => d.value));
+  const max = Math.max(...data.map((d) => d.value));
   const barWidth = 60;
   const gap = 20;
 
@@ -410,9 +410,12 @@ animation.onfinish = () => console.log('动画结束');
     const y = 180 - h;
 
     const bar = createSVG('rect', {
-      x, y, width: barWidth, height: h,
+      x,
+      y,
+      width: barWidth,
+      height: h,
       fill: '#4f5bd5',
-      'data-value': d.value
+      'data-value': d.value,
     });
     bar.style.transition = 'fill 0.2s';
     bar.style.cursor = 'pointer';
@@ -422,15 +425,20 @@ animation.onfinish = () => console.log('动画结束');
     svg.appendChild(bar);
 
     const label = createSVG('text', {
-      x: x + barWidth / 2, y: 195,
-      'text-anchor': 'middle', 'font-size': 12
+      x: x + barWidth / 2,
+      y: 195,
+      'text-anchor': 'middle',
+      'font-size': 12,
     });
     label.textContent = d.label;
     svg.appendChild(label);
 
     const value = createSVG('text', {
-      x: x + barWidth / 2, y: y - 5,
-      'text-anchor': 'middle', 'font-size': 12, fill: '#666'
+      x: x + barWidth / 2,
+      y: y - 5,
+      'text-anchor': 'middle',
+      'font-size': 12,
+      fill: '#666',
     });
     value.textContent = d.value;
     svg.appendChild(value);
@@ -446,26 +454,26 @@ animation.onfinish = () => console.log('动画结束');
 
 ## 11. 性能优化
 
-| 技巧 | 说明 |
-|------|------|
-| 批量更新 | 用 DocumentFragment 或先隐藏再批量操作 |
-| 减少 reflow | 修改 transform 而非 x/y，避免触发重排 |
-| 使用 CSS 类 | 频繁切换用 class 而非直接改 style |
-| 离屏操作 | 复杂图形先在内存中构建再插入 DOM |
-| will-change | 标记即将动画的元素 |
-| 虚拟化 | 大量数据只渲染可见区域 |
+| 技巧        | 说明                                   |
+| ----------- | -------------------------------------- |
+| 批量更新    | 用 DocumentFragment 或先隐藏再批量操作 |
+| 减少 reflow | 修改 transform 而非 x/y，避免触发重排  |
+| 使用 CSS 类 | 频繁切换用 class 而非直接改 style      |
+| 离屏操作    | 复杂图形先在内存中构建再插入 DOM       |
+| will-change | 标记即将动画的元素                     |
+| 虚拟化      | 大量数据只渲染可见区域                 |
 
 ## 12. 调试技巧
 
 ```javascript
 // 控制台快速检查 SVG
-console.log(svg.getBBox());  // 元素边界框
-console.log(svg.getCTM());   // 当前变换矩阵
-console.log(svg.getScreenCTM());  // 屏幕坐标变换矩阵
+console.log(svg.getBBox()); // 元素边界框
+console.log(svg.getCTM()); // 当前变换矩阵
+console.log(svg.getScreenCTM()); // 屏幕坐标变换矩阵
 
 // 监听所有 SVG 事件
-document.querySelectorAll('svg *').forEach(el => {
-  el.addEventListener('click', e => console.log(e.target.tagName, e));
+document.querySelectorAll('svg *').forEach((el) => {
+  el.addEventListener('click', (e) => console.log(e.target.tagName, e));
 });
 ```
 

@@ -29,9 +29,7 @@ interface ScrollAreaProps extends ScrollAreaRootProps {
 
 const props = defineProps<ScrollAreaProps>();
 
-const classes = computed(() =>
-  cn('relative overflow-hidden', props.class),
-);
+const classes = computed(() => cn('relative overflow-hidden', props.class));
 </script>
 
 <template>

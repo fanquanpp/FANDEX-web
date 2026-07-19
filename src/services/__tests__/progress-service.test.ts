@@ -62,7 +62,11 @@ beforeEach(() => {
   }
   // 注入全局对象
   vi.stubGlobal('localStorage', mockLocalStorage);
-  vi.stubGlobal('window', { dispatchEvent: vi.fn(), addEventListener: vi.fn(), removeEventListener: vi.fn() });
+  vi.stubGlobal('window', {
+    dispatchEvent: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  });
   vi.stubGlobal('document', {
     dispatchEvent: vi.fn(),
     addEventListener: (event: string, handler: (e: Event) => void) => {
@@ -75,11 +79,14 @@ beforeEach(() => {
       }
     },
   });
-  vi.stubGlobal('BroadcastChannel', class {
-    onmessage: ((e: MessageEvent) => void) | null = null;
-    postMessage() {}
-    close() {}
-  });
+  vi.stubGlobal(
+    'BroadcastChannel',
+    class {
+      onmessage: ((e: MessageEvent) => void) | null = null;
+      postMessage() {}
+      close() {}
+    }
+  );
   vi.stubGlobal('indexedDB', undefined);
   vi.stubGlobal('performance', { now: () => Date.now() });
 });

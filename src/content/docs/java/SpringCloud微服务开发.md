@@ -226,22 +226,22 @@ spring:
 **配置**
 
 ```yaml
- spring:
+spring:
   cloud:
   gateway:
   routes:
-  - id: product_route
+    - id: product_route
   uri: lb://product-service
   predicates:
-  - Path=/api/product/**
+    - Path=/api/product/**
   filters:
-  - StripPrefix=2
-  - id: order_route
+    - StripPrefix=2
+    - id: order_route
   uri: lb://order-service
   predicates:
-  - Path=/api/order/**
+    - Path=/api/order/**
   filters:
-  - StripPrefix=2
+    - StripPrefix=2
 ```
 
 ## 7. 断路器
@@ -351,11 +351,11 @@ spring:
 **Deployment**
 
 ```yaml
- apiVersion: apps/v1
- kind: Deployment
- metadata:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: order-service
- spec:
+spec:
   replicas: 3
   selector:
   matchLabels:
@@ -366,10 +366,10 @@ spring:
   app: order-service
   spec:
   containers:
-  - name: order-service
+    - name: order-service
   image: order-service:latest
   ports:
-  - containerPort: 8080
+    - containerPort: 8080
 ```
 
 ### 10.3 监控

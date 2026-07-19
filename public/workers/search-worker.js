@@ -90,7 +90,15 @@ function buildExcerpt(entry, query) {
     const end = Math.min(desc.length, idx + query.length + 60);
     const prefix = start > 0 ? '…' : '';
     const suffix = end < desc.length ? '…' : '';
-    return prefix + before.slice(start) + '<mark>' + match + '</mark>' + after.slice(0, end - (idx + query.length)) + suffix;
+    return (
+      prefix +
+      before.slice(start) +
+      '<mark>' +
+      match +
+      '</mark>' +
+      after.slice(0, end - (idx + query.length)) +
+      suffix
+    );
   }
   // 未匹配则返回截断的 description
   return desc.slice(0, 120) + (desc.length > 120 ? '…' : '');
@@ -114,7 +122,7 @@ function applyFilter(entries, filter) {
   }
   if (Array.isArray(filter.tags) && filter.tags.length > 0) {
     result = result.filter(
-      (e) => Array.isArray(e.tags) && e.tags.some((t) => filter.tags.includes(t)),
+      (e) => Array.isArray(e.tags) && e.tags.some((t) => filter.tags.includes(t))
     );
   }
   return result;
@@ -139,11 +147,12 @@ function executeSearch(query, filter, limit) {
     // 若存在过滤器，重新构造一个临时 Fuse 实例（基于过滤后的子集）
     let fuseToUse = fuseInstance;
     let entriesToUse = indexEntries;
-    if (filter && (
-      (filter.modules && filter.modules.length > 0) ||
-      (filter.difficulties && filter.difficulties.length > 0) ||
-      (filter.tags && filter.tags.length > 0)
-    )) {
+    if (
+      filter &&
+      ((filter.modules && filter.modules.length > 0) ||
+        (filter.difficulties && filter.difficulties.length > 0) ||
+        (filter.tags && filter.tags.length > 0))
+    ) {
       entriesToUse = applyFilter(indexEntries, filter);
       fuseToUse = new Fuse(entriesToUse, {
         keys: [

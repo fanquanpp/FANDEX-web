@@ -51,8 +51,8 @@ learningObjectives:
 
 ```yaml
 learningObjectives:
-  - 了解智能指针  # 过于模糊，无法验证
-  - 学习 C++      # 范围过大，超出文档主题
+  - 了解智能指针 # 过于模糊，无法验证
+  - 学习 C++ # 范围过大，超出文档主题
 ```
 
 ### 2.2 历史动机（Historical Motivation）
@@ -145,13 +145,13 @@ int main() {
 
 **示例**：
 
-| 特性        | C++ 指针 | Rust 引用       | Java 引用类型 |
-| ----------- | -------- | ---------------- | -------------- |
-| 所有权      | 手动     | 借用检查器       | GC 管理        |
-| 空值        | 支持     | `Option<&T>`     | 支持 `null`    |
-| 算术运算    | 支持     | 不支持           | 不支持         |
-| 内存安全    | 不保证   | 编译期保证       | 运行期保证     |
-| 适用场景    | 系统编程 | 安全系统编程     | 业务应用       |
+| 特性     | C++ 指针 | Rust 引用    | Java 引用类型 |
+| -------- | -------- | ------------ | ------------- |
+| 所有权   | 手动     | 借用检查器   | GC 管理       |
+| 空值     | 支持     | `Option<&T>` | 支持 `null`   |
+| 算术运算 | 支持     | 不支持       | 不支持        |
+| 内存安全 | 不保证   | 编译期保证   | 运行期保证    |
+| 适用场景 | 系统编程 | 安全系统编程 | 业务应用      |
 
 ### 2.7 常见陷阱（Common Pitfalls）
 
@@ -200,7 +200,7 @@ int main() {
 
 **frontmatter 示例**：
 
-```yaml
+````yaml
 exercises:
   - type: choice
     question: |
@@ -224,7 +224,7 @@ exercises:
       std::cout << *p;
       ```
     difficulty: medium
-```
+````
 
 ### 2.11 参考文献（References）
 
@@ -242,12 +242,12 @@ exercises:
 ```yaml
 references:
   - type: iso
-    citation: "ISO/IEC 14882:2023. Information technology — Programming languages — C++. Geneva: ISO. §7.2.2."
+    citation: 'ISO/IEC 14882:2023. Information technology — Programming languages — C++. Geneva: ISO. §7.2.2.'
   - type: book
-    citation: "Stroustrup, B. 2013. The C++ Programming Language (4th ed.). Addison-Wesley. ISBN 978-0321563842. Chapter 5."
+    citation: 'Stroustrup, B. 2013. The C++ Programming Language (4th ed.). Addison-Wesley. ISBN 978-0321563842. Chapter 5.'
     url: https://www.stroustrup.com/4th.html
   - type: paper
-    citation: "Sutter, H. and Alexandrescu, A. 2004. C++ Coding Standards. Addison-Wesley. Item 13."
+    citation: 'Sutter, H. and Alexandrescu, A. 2004. C++ Coding Standards. Addison-Wesley. Item 13.'
 ```
 
 ### 2.12 延伸阅读（Further Reading）
@@ -264,15 +264,15 @@ references:
 
 完整字段定义见 `src/content/config.ts`，关键字段：
 
-| 字段                  | 类型     | 必填 | 说明                                  |
-| --------------------- | -------- | ---- | ------------------------------------- |
-| `learningObjectives`  | string[] | 是   | 3-7 条 Bloom 分类法学习目标           |
-| `exercises`           | Exercise[] | 否 | 习题数组（升级时补全）                |
-| `references`          | Reference[] | 是 | 参考文献数组（至少 1 条）             |
-| `etymology`           | string   | 否   | 文档主题术语的词源                    |
-| `estimatedReadingTime`| number   | 否   | 预计阅读时长（分钟）                  |
-| `lastReviewed`        | string   | 否   | 最后审阅时间（ISO 8601）              |
-| `reviewer`            | string   | 否   | 审阅者（默认 Anonymous）              |
+| 字段                   | 类型        | 必填 | 说明                        |
+| ---------------------- | ----------- | ---- | --------------------------- |
+| `learningObjectives`   | string[]    | 是   | 3-7 条 Bloom 分类法学习目标 |
+| `exercises`            | Exercise[]  | 否   | 习题数组（升级时补全）      |
+| `references`           | Reference[] | 是   | 参考文献数组（至少 1 条）   |
+| `etymology`            | string      | 否   | 文档主题术语的词源          |
+| `estimatedReadingTime` | number      | 否   | 预计阅读时长（分钟）        |
+| `lastReviewed`         | string      | 否   | 最后审阅时间（ISO 8601）    |
+| `reviewer`             | string      | 否   | 审阅者（默认 Anonymous）    |
 
 ## 4. 参考文献格式（ACM Reference Format）
 

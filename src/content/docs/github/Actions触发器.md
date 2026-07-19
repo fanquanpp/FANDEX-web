@@ -71,7 +71,7 @@ on:
 on:
   push:
     paths: ['src/**']
-    paths-ignore: ['docs/**']  # 语法错误
+    paths-ignore: ['docs/**'] # 语法错误
 ```
 
 ## 3. pull_request 触发器

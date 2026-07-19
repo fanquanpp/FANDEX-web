@@ -30,12 +30,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, nextTick, computed } from 'vue';
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-} from '@/ui/components/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/ui/components/dialog';
 import { lookup } from '@/services/glossary-service';
 import type { GlossaryEntry } from '@/types/glossary';
 import { ExternalLink } from '@lucide/vue';
@@ -318,7 +313,10 @@ function positionTooltip(triggerEl: HTMLElement): void {
   let placement: 'bottom' | 'top';
   const spaceBelow = viewportH - triggerRect.bottom;
   const spaceAbove = triggerRect.top;
-  if (spaceBelow >= tooltipRect.height + TOOLTIP_GAP + TOOLTIP_VIEWPORT_MARGIN || spaceBelow >= spaceAbove) {
+  if (
+    spaceBelow >= tooltipRect.height + TOOLTIP_GAP + TOOLTIP_VIEWPORT_MARGIN ||
+    spaceBelow >= spaceAbove
+  ) {
     top = triggerRect.bottom + TOOLTIP_GAP;
     placement = 'bottom';
   } else {
@@ -401,7 +399,11 @@ function registerMutationObserver(): void {
       :class="`term-tooltip-placement-${tooltipPlacement}`"
       :style="tooltipStyle"
       role="tooltip"
-      @mouseenter="/* 鼠标进入浮层时保持显示 */ (() => { /* no-op */ })()"
+      @mouseenter="
+        /* 鼠标进入浮层时保持显示 */ (() => {
+          /* no-op */
+        })()
+      "
       @mouseleave="scheduleHoverHide(currentTriggerEl ?? document.body)"
     >
       <div class="term-tooltip-body">
@@ -468,12 +470,7 @@ function registerMutationObserver(): void {
           <h4 class="term-dialog-section-title">参考</h4>
           <ul class="term-dialog-ref-list">
             <li v-for="(ref, i) in dialogEntry.references" :key="i">
-              <a
-                :href="ref"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="term-dialog-ref-link"
-              >
+              <a :href="ref" target="_blank" rel="noopener noreferrer" class="term-dialog-ref-link">
                 <ExternalLink class="size-3.5" />
                 <span>{{ ref }}</span>
               </a>
@@ -502,7 +499,9 @@ function registerMutationObserver(): void {
   color: var(--color-text-inverse, #ffffff);
   border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.12));
   border-radius: var(--radius-md, 6px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18), 0 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.18),
+    0 1px 4px rgba(0, 0, 0, 0.12);
   padding: 0;
   overflow: visible;
   pointer-events: auto;

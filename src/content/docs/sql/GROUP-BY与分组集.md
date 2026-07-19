@@ -111,12 +111,12 @@ GROUP BY ROLLUP (dept_id, job_title);
 
 | dept_id | job_title | emp_count | total_salary |
 | ------- | --------- | --------- | ------------ | ---------- |
-| 1       | Engineer  | 10        | 1000000      |
-| 1       | Manager   | 3         | 450000       |
-| 1       | NULL      | 13        | 1450000      | ← 部门小计 |
-| 2       | Engineer  | 8         | 800000       |
-| 2       | NULL      | 8         | 800000       | ← 部门小计 |
-| NULL    | NULL      | 21        | 2250000      | ← 总计     |
+| 1 | Engineer | 10 | 1000000 |
+| 1 | Manager | 3 | 450000 |
+| 1 | NULL | 13 | 1450000 | ← 部门小计 |
+| 2 | Engineer | 8 | 800000 |
+| 2 | NULL | 8 | 800000 | ← 部门小计 |
+| NULL | NULL | 21 | 2250000 | ← 总计 |
 
 ### 3.2 三级 ROLLUP
 
@@ -197,9 +197,9 @@ GROUP BY ROLLUP (dept_id, job_title);
 
 | dept_id | job_title | emp_count | is_dept_subtotal | is_job_subtotal |
 | ------- | --------- | --------- | ---------------- | --------------- | ---------- |
-| 1       | Engineer  | 10        | 0                | 0               |
-| 1       | NULL      | 13        | 0                | 1               | ← 部门小计 |
-| NULL    | NULL      | 21        | 1                | 1               | ← 总计     |
+| 1 | Engineer | 10 | 0 | 0 |
+| 1 | NULL | 13 | 0 | 1 | ← 部门小计 |
+| NULL | NULL | 21 | 1 | 1 | ← 总计 |
 
 ### 5.2 使用 GROUPING ID
 

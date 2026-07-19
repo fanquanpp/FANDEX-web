@@ -14,9 +14,7 @@ interface DialogDescriptionPropsExtended extends DialogDescriptionProps {
 
 const props = defineProps<DialogDescriptionPropsExtended>();
 
-const classes = computed(() =>
-  cn('text-sm text-text-secondary leading-relaxed', props.class),
-);
+const classes = computed(() => cn('text-sm text-text-secondary leading-relaxed', props.class));
 </script>
 
 <template>

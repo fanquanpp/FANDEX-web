@@ -18,8 +18,8 @@ const props = defineProps<AccordionContentPropsExtended>();
 const classes = computed(() =>
   cn(
     'overflow-hidden text-sm text-text-secondary data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

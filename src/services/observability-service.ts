@@ -99,15 +99,16 @@ function isValidVitalRecord(value: unknown): value is VitalRecord {
   if (typeof value !== 'object' || value === null) return false;
   const rec = value as Record<string, unknown>;
   return (
-    rec.name === 'LCP' ||
-    rec.name === 'INP' ||
-    rec.name === 'CLS' ||
-    rec.name === 'TTFB' ||
-    rec.name === 'FCP'
-  ) && typeof rec.value === 'number' &&
+    (rec.name === 'LCP' ||
+      rec.name === 'INP' ||
+      rec.name === 'CLS' ||
+      rec.name === 'TTFB' ||
+      rec.name === 'FCP') &&
+    typeof rec.value === 'number' &&
     (rec.rating === 'good' || rec.rating === 'needs-improvement' || rec.rating === 'poor') &&
     typeof rec.timestamp === 'number' &&
-    typeof rec.url === 'string';
+    typeof rec.url === 'string'
+  );
 }
 
 /**

@@ -141,12 +141,20 @@ export function runCodeInSandbox(
     const iframe = document.createElement('iframe');
     iframe.setAttribute('sandbox', 'allow-scripts');
     iframe.setAttribute('aria-hidden', 'true');
-    iframe.style.cssText = 'position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;';
+    iframe.style.cssText =
+      'position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;';
     iframe.srcdoc = SANDBOX_HTML;
 
     // 监听沙箱消息
     messageHandler = (event: MessageEvent) => {
-      const data = event.data as { source?: string; type?: string; level?: LogLevel; text?: string; error?: string; result?: string };
+      const data = event.data as {
+        source?: string;
+        type?: string;
+        level?: LogLevel;
+        text?: string;
+        error?: string;
+        result?: string;
+      };
       if (!data || data.source !== CHANNEL) return;
 
       if (data.type === 'log' && data.level && typeof data.text === 'string') {

@@ -20,7 +20,12 @@
 import { ref, computed, watch, onUnmounted } from 'vue';
 import { Play, Square, RotateCcw, Copy, Check, Loader2 } from '@lucide/vue';
 import { Button } from '@/ui/components';
-import { runCode, disposeCodeRunner, type RunResult, type CodeLanguage } from '@/services/code-runner-service';
+import {
+  runCode,
+  disposeCodeRunner,
+  type RunResult,
+  type CodeLanguage,
+} from '@/services/code-runner-service';
 
 /**
  * Props 类型定义
@@ -50,9 +55,11 @@ const LANG_LABELS: Record<CodeLanguage, string> = {
 
 /** 语言徽章颜色类映射（与语言主色调呼应） */
 const LANG_BADGE_CLASSES: Record<CodeLanguage, string> = {
-  javascript: 'bg-warning-bg text-warning-dark border-warning-border dark:bg-warning-bg dark:text-warning-light',
+  javascript:
+    'bg-warning-bg text-warning-dark border-warning-border dark:bg-warning-bg dark:text-warning-light',
   typescript: 'bg-info-bg text-info-dark border-info-border dark:bg-info-bg dark:text-info-light',
-  python: 'bg-secondary-100 text-secondary-800 border-secondary-300 dark:bg-secondary-900 dark:text-secondary-200',
+  python:
+    'bg-secondary-100 text-secondary-800 border-secondary-300 dark:bg-secondary-900 dark:text-secondary-200',
   cpp: 'bg-primary-100 text-primary-800 border-primary-300 dark:bg-primary-900 dark:text-primary-200',
   c: 'bg-primary-100 text-primary-800 border-primary-300 dark:bg-primary-900 dark:text-primary-200',
   go: 'bg-accent-100 text-accent-800 border-accent-300 dark:bg-accent-900 dark:text-accent-200',
@@ -89,7 +96,9 @@ const copiedTimer = ref<number | undefined>(undefined);
 const langLabel = computed(() => LANG_LABELS[props.lang] ?? props.lang);
 
 /** 当前语言徽章类名 */
-const langBadgeClass = computed(() => LANG_BADGE_CLASSES[props.lang] ?? LANG_BADGE_CLASSES.javascript);
+const langBadgeClass = computed(
+  () => LANG_BADGE_CLASSES[props.lang] ?? LANG_BADGE_CLASSES.javascript
+);
 
 /** 状态栏文本：耗时 + 退出码 */
 const statusText = computed(() => {
@@ -122,7 +131,7 @@ watch(
     if (!isRunning.value) {
       editorCode.value = newCode;
     }
-  },
+  }
 );
 
 /**
@@ -273,13 +282,7 @@ onUnmounted(() => {
         </Button>
 
         <!-- 运行按钮 -->
-        <Button
-          v-else
-          variant="default"
-          size="sm"
-          aria-label="运行代码"
-          @click="handleRun"
-        >
+        <Button v-else variant="default" size="sm" aria-label="运行代码" @click="handleRun">
           <Play class="size-4" />
           <span>运行</span>
         </Button>
@@ -308,21 +311,18 @@ onUnmounted(() => {
     </div>
 
     <!-- 输出区 -->
-    <div
-      v-if="result"
-      class="border-t border-border dark:border-border"
-    >
+    <div v-if="result" class="border-t border-border dark:border-border">
       <!-- 输出区标题 -->
       <div
         class="flex items-center justify-between border-b border-border bg-elevated px-4 py-2 dark:border-border dark:bg-elevated"
       >
-        <span class="text-xs font-medium uppercase tracking-wider text-text-tertiary">
-          输出
-        </span>
+        <span class="text-xs font-medium uppercase tracking-wider text-text-tertiary"> 输出 </span>
         <span
           :class="[
             'text-xs font-medium',
-            isSuccess ? 'text-success-dark dark:text-success-light' : 'text-error-dark dark:text-error-light',
+            isSuccess
+              ? 'text-success-dark dark:text-success-light'
+              : 'text-error-dark dark:text-error-light',
           ]"
         >
           {{ statusText }}

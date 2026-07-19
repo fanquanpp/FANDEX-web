@@ -5,16 +5,16 @@
  * 支持暗色模式切换、全屏模式、侧边栏状态持久化、代码复制、Mermaid 图表渲染等功能
  * 继承 BaseLayout 的共享 head 与样式引入，仅保留文档页特有的结构与脚本
  */
-import BaseLayout from '@/components/BaseLayout.astro'
-import ThemeToggle from '@/islands/ThemeToggle.vue'
-import SearchDialog from '@/islands/SearchDialog.vue'
-import PerformanceMonitor from '@/components/PerformanceMonitor.astro'
-import { SITE } from '@/lib/constants'
+import BaseLayout from '@/components/BaseLayout.astro';
+import ThemeToggle from '@/islands/ThemeToggle.vue';
+import SearchDialog from '@/islands/SearchDialog.vue';
+import PerformanceMonitor from '@/components/PerformanceMonitor.astro';
+import { SITE } from '@/lib/constants';
 
-const { title } = Astro.props
-const base = import.meta.env.BASE_URL
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
 // 检测是否包含侧边栏插槽，用于条件渲染遮罩层和移动端导航按钮
-const hasSidebar = Astro.slots.has('sidebar')
+const hasSidebar = Astro.slots.has('sidebar');
 ---
 
 <BaseLayout title={title}>
@@ -22,11 +22,17 @@ const hasSidebar = Astro.slots.has('sidebar')
 
   <!-- 确保页面撑满视口高度，禁止 body 自身滚动（由内部容器控制滚动） -->
   <style is:inline>
-    html { height: 100%; }
-    body { height: 100vh; height: 100dvh; overflow: hidden; }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
   </style>
   <!-- 侧边栏遮罩层：移动端打开侧边栏时显示，点击关闭 -->
-  {hasSidebar && <div class="sidebar-backdrop" id="sidebar-backdrop"></div>}
+  {hasSidebar && <div class="sidebar-backdrop" id="sidebar-backdrop" />}
   <!-- 主布局容器：根据是否有侧边栏添加不同类名 -->
   <div class="app-layout" class:list={{ 'no-sidebar': !hasSidebar }}>
     <!-- 顶部导航栏 -->
@@ -40,8 +46,15 @@ const hasSidebar = Astro.slots.has('sidebar')
       <div class="nav-right">
         <!-- 返回顶部按钮 -->
         <button class="nav-back-to-top" id="nav-back-to-top" aria-label="返回顶部" title="返回顶部">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="18 15 12 9 6 15" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="18 15 12 9 6 15"></polyline>
           </svg>
           <span class="nav-back-to-top-text">返回顶部</span>
         </button>
@@ -52,9 +65,16 @@ const hasSidebar = Astro.slots.has('sidebar')
           aria-label="搜索文档"
           title="搜索文档 (Ctrl+K)"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <span class="nav-search-text">搜索</span>
           <kbd class="nav-search-kbd">⌘K</kbd>
@@ -73,33 +93,65 @@ const hasSidebar = Astro.slots.has('sidebar')
   <!-- 移动端底部导航栏 -->
   <nav class="mobile-nav">
     <a href={base} class="mobile-nav-link">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
       <span>首页</span>
     </a>
     <a href={`${base}search/`} class="mobile-nav-link" id="mobile-search-link">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
       <span>搜索</span>
     </a>
     <!-- 模块切换按钮：仅在有侧边栏时显示 -->
-    {hasSidebar && (
-      <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-        </svg>
-        <span>模块</span>
-      </button>
-    )}
+    {
+      hasSidebar && (
+        <button class="mobile-nav-link" id="mobile-sidebar-btn" aria-label="模块">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          <span>模块</span>
+        </button>
+      )
+    }
     <!-- 全屏切换按钮 -->
     <button class="mobile-nav-link" id="mobile-fullscreen-btn" aria-label="全屏">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+        ></path>
       </svg>
       <span>全屏</span>
     </button>
@@ -112,73 +164,75 @@ const hasSidebar = Astro.slots.has('sidebar')
 
 <script>
   // ========== 侧边栏开关逻辑 ==========
-  const backdrop = document.getElementById('sidebar-backdrop')
-  const toggle = document.getElementById('nav-toggle')
-  const mobileBtn = document.getElementById('mobile-sidebar-btn')
+  const backdrop = document.getElementById('sidebar-backdrop');
+  const toggle = document.getElementById('nav-toggle');
+  const mobileBtn = document.getElementById('mobile-sidebar-btn');
 
   /** 打开侧边栏并同步 URL 参数 */
   function openSidebar() {
-    document.body.classList.add('sidebar-open')
-    syncSidebarUrl()
+    document.body.classList.add('sidebar-open');
+    syncSidebarUrl();
   }
 
   /** 关闭侧边栏并同步 URL 参数 */
   function closeSidebar() {
-    document.body.classList.remove('sidebar-open')
-    syncSidebarUrl()
+    document.body.classList.remove('sidebar-open');
+    syncSidebarUrl();
   }
 
   /** 将侧边栏开关状态同步到 URL 查询参数，便于刷新后恢复 */
   function syncSidebarUrl() {
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams(window.location.search);
     if (document.body.classList.contains('sidebar-open')) {
-      params.set('sidebar', '1')
+      params.set('sidebar', '1');
     } else {
-      params.delete('sidebar')
+      params.delete('sidebar');
     }
-    const newSearch = params.toString()
+    const newSearch = params.toString();
     const newUrl = newSearch
       ? window.location.pathname + '?' + newSearch + window.location.hash
-      : window.location.pathname + window.location.hash
-    history.replaceState(null, '', newUrl)
+      : window.location.pathname + window.location.hash;
+    history.replaceState(null, '', newUrl);
   }
 
   /** 从 URL 查询参数恢复侧边栏状态 */
   function restoreSidebarFromUrl() {
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams(window.location.search);
     if (params.get('sidebar') === '1') {
-      document.body.classList.add('sidebar-open')
+      document.body.classList.add('sidebar-open');
     }
   }
 
-  restoreSidebarFromUrl()
+  restoreSidebarFromUrl();
 
   // 顶部菜单按钮：切换章节视图并打开侧边栏
-  if (toggle) toggle.addEventListener('click', () => {
-    if (document.body.classList.contains('sidebar-open')) {
-      closeSidebar()
-    } else {
-      document.dispatchEvent(new CustomEvent('fandex-switch-chapters'))
-      openSidebar()
-    }
-  })
+  if (toggle)
+    toggle.addEventListener('click', () => {
+      if (document.body.classList.contains('sidebar-open')) {
+        closeSidebar();
+      } else {
+        document.dispatchEvent(new CustomEvent('fandex-switch-chapters'));
+        openSidebar();
+      }
+    });
 
   // 移动端模块按钮：切换模块视图并打开侧边栏
-  if (mobileBtn) mobileBtn.addEventListener('click', () => {
-    document.dispatchEvent(new CustomEvent('fandex-switch-modules'))
-    openSidebar()
-  })
+  if (mobileBtn)
+    mobileBtn.addEventListener('click', () => {
+      document.dispatchEvent(new CustomEvent('fandex-switch-modules'));
+      openSidebar();
+    });
 
   // 点击遮罩层关闭侧边栏
-  if (backdrop) backdrop.addEventListener('click', closeSidebar)
+  if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
   // ========== 返回顶部按钮 ==========
-  const backToTopBtn = document.getElementById('nav-back-to-top')
-  const mainEl = document.getElementById('app-main')
+  const backToTopBtn = document.getElementById('nav-back-to-top');
+  const mainEl = document.getElementById('app-main');
   if (backToTopBtn && mainEl) {
     backToTopBtn.addEventListener('click', () => {
-      mainEl.scrollTo({ top: 0, behavior: 'smooth' })
-    })
+      mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
   // ========== 搜索按钮：唤起 SearchDialog 弹窗 ==========
@@ -186,174 +240,197 @@ const hasSidebar = Astro.slots.has('sidebar')
   // SearchDialog 已就绪时拦截默认跳转行为，由弹窗接管；否则保留跳转 /search/ 兜底
   function openSearchDialog(e: Event) {
     if ((window as Window & { __fandexSearchDialogReady?: boolean }).__fandexSearchDialogReady) {
-      e.preventDefault()
-      window.dispatchEvent(new CustomEvent('fandex-open-search'))
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent('fandex-open-search'));
     }
     // 否则保留默认行为（跳转到 /search/）
   }
-  const navSearchBtn = document.getElementById('nav-search-btn')
-  if (navSearchBtn) navSearchBtn.addEventListener('click', openSearchDialog)
-  const mobileSearchLink = document.getElementById('mobile-search-link')
-  if (mobileSearchLink) mobileSearchLink.addEventListener('click', openSearchDialog)
+  const navSearchBtn = document.getElementById('nav-search-btn');
+  if (navSearchBtn) navSearchBtn.addEventListener('click', openSearchDialog);
+  const mobileSearchLink = document.getElementById('mobile-search-link');
+  if (mobileSearchLink) mobileSearchLink.addEventListener('click', openSearchDialog);
 
   // 页面切换时自动关闭侧边栏
-  document.addEventListener('astro:page-load', closeSidebar)
+  document.addEventListener('astro:page-load', closeSidebar);
 
   // ========== 全屏模式切换 ==========
-  const fullscreenBtn = document.getElementById('mobile-fullscreen-btn')
+  const fullscreenBtn = document.getElementById('mobile-fullscreen-btn');
   if (fullscreenBtn) {
     fullscreenBtn.addEventListener('click', () => {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {})
+        document.documentElement.requestFullscreen().catch(() => {});
       } else {
-        document.exitFullscreen().catch(() => {})
+        document.exitFullscreen().catch(() => {});
       }
-    })
+    });
     // 监听全屏状态变化，更新按钮文字和持久化状态
     document.addEventListener('fullscreenchange', () => {
-      const span = fullscreenBtn.querySelector('span')
+      const span = fullscreenBtn.querySelector('span');
       if (document.fullscreenElement) {
-        span && (span.textContent = '退出')
-        try { localStorage.setItem('fandex-fullscreen', 'true') } catch {}
+        span && (span.textContent = '退出');
+        try {
+          localStorage.setItem('fandex-fullscreen', 'true');
+        } catch {}
       } else {
-        span && (span.textContent = '全屏')
-        try { localStorage.removeItem('fandex-fullscreen') } catch {}
+        span && (span.textContent = '全屏');
+        try {
+          localStorage.removeItem('fandex-fullscreen');
+        } catch {}
       }
-    })
+    });
     // 恢复全屏状态
     if (localStorage.getItem('fandex-fullscreen') === 'true' && !document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {})
+      document.documentElement.requestFullscreen().catch(() => {});
     }
   }
 
   // ========== 代码块复制按钮 ==========
   function initCopyButtons() {
-    document.querySelectorAll('pre > code').forEach(codeEl => {
-      const pre = codeEl.parentElement
-      if (!pre || pre.querySelector('.copy-btn')) return
+    document.querySelectorAll('pre > code').forEach((codeEl) => {
+      const pre = codeEl.parentElement;
+      if (!pre || pre.querySelector('.copy-btn')) return;
 
-      const wrapper = document.createElement('div')
-      wrapper.className = 'code-block'
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block';
 
       // 提取代码语言标识
-      const lang = (codeEl.className.match(/language-(\S+)/) || [])[1] || ''
-      if (lang) wrapper.setAttribute('data-lang', lang)
+      const lang = (codeEl.className.match(/language-(\S+)/) || [])[1] || '';
+      if (lang) wrapper.setAttribute('data-lang', lang);
 
-      const btn = document.createElement('button')
-      btn.className = 'copy-btn'
-      btn.setAttribute('aria-label', 'Copy code')
-      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.setAttribute('aria-label', 'Copy code');
+      btn.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
 
       btn.addEventListener('click', async () => {
-        const text = codeEl.textContent || ''
+        const text = codeEl.textContent || '';
         try {
           // 优先使用 Clipboard API 复制
-          await navigator.clipboard.writeText(text)
-          btn.classList.add('copied')
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>'
+          await navigator.clipboard.writeText(text);
+          btn.classList.add('copied');
+          btn.innerHTML =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
           setTimeout(() => {
-            btn.classList.remove('copied')
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
-          }, 2000)
+            btn.classList.remove('copied');
+            btn.innerHTML =
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+          }, 2000);
         } catch {
           // Clipboard API 不可用时回退到 execCommand
-          const ta = document.createElement('textarea')
-          ta.value = text
-          ta.style.cssText = 'position:fixed;opacity:0'
-          document.body.appendChild(ta)
-          ta.select()
-          document.execCommand('copy')
-          document.body.removeChild(ta)
-          btn.classList.add('copied')
-          setTimeout(() => btn.classList.remove('copied'), 2000)
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.cssText = 'position:fixed;opacity:0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.classList.add('copied');
+          setTimeout(() => btn.classList.remove('copied'), 2000);
         }
-      })
+      });
 
       // 将代码块包裹在容器中，并添加复制按钮
-      pre.parentNode!.insertBefore(wrapper, pre)
-      wrapper.appendChild(pre)
-      wrapper.appendChild(btn)
-    })
+      pre.parentNode!.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+      wrapper.appendChild(btn);
+    });
   }
 
-  document.addEventListener('astro:page-load', initCopyButtons)
-  initCopyButtons()
+  document.addEventListener('astro:page-load', initCopyButtons);
+  initCopyButtons();
 
   // ========== Mermaid 图表渲染 ==========
   async function initMermaid() {
-    const mermaidBlocks = document.querySelectorAll<HTMLElement>('pre[data-language="mermaid"] code, code.language-mermaid')
-    if (mermaidBlocks.length === 0) return
+    const mermaidBlocks = document.querySelectorAll<HTMLElement>(
+      'pre[data-language="mermaid"] code, code.language-mermaid'
+    );
+    if (mermaidBlocks.length === 0) return;
     try {
-      const { initMermaid: init, renderMermaid } = await import('@/lib/mermaid-renderer')
-      await init()
+      const { initMermaid: init, renderMermaid } = await import('@/lib/mermaid-renderer');
+      await init();
       mermaidBlocks.forEach(async (block, i) => {
-        const pre = block.closest('pre')
-        if (!pre) return
-        await renderMermaid(pre, i)
-      })
-    } catch { /* Mermaid 渲染失败时静默处理 */ }
+        const pre = block.closest('pre');
+        if (!pre) return;
+        await renderMermaid(pre, i);
+      });
+    } catch {
+      /* Mermaid 渲染失败时静默处理 */
+    }
   }
 
-  document.addEventListener('astro:page-load', initMermaid)
-  initMermaid()
+  document.addEventListener('astro:page-load', initMermaid);
+  initMermaid();
 
   // ========== 术语提示气泡 ==========
   async function initTermTooltip() {
-    const article = document.querySelector('article.prose')
-    if (!article) return
+    const article = document.querySelector('article.prose');
+    if (!article) return;
     try {
-      const { initTermTooltip: init } = await import('@/lib/term-tooltip')
-      await init()
-    } catch { /* ignore */ }
+      const { initTermTooltip: init } = await import('@/lib/term-tooltip');
+      await init();
+    } catch {
+      /* ignore */
+    }
   }
 
   // ========== 微交互动画 ==========
   async function initAnimations() {
     try {
-      const { initAnimations: init } = await import('@/lib/animations')
-      init()
-    } catch { /* ignore */ }
+      const { initAnimations: init } = await import('@/lib/animations');
+      init();
+    } catch {
+      /* ignore */
+    }
   }
 
   // ========== 代码运行器 ==========
   async function initCodeRunners() {
     try {
-      const { initCodeRunners: init } = await import('@/lib/code-runner')
-      init()
-    } catch { /* ignore */ }
+      const { initCodeRunners: init } = await import('@/lib/code-runner');
+      init();
+    } catch {
+      /* ignore */
+    }
   }
 
   // 注册各功能模块的页面加载回调
-  document.addEventListener('astro:page-load', initTermTooltip)
-  document.addEventListener('astro:page-load', initAnimations)
-  document.addEventListener('astro:page-load', initCodeRunners)
-  initTermTooltip()
-  initAnimations()
-  initCodeRunners()
+  document.addEventListener('astro:page-load', initTermTooltip);
+  document.addEventListener('astro:page-load', initAnimations);
+  document.addEventListener('astro:page-load', initCodeRunners);
+  initTermTooltip();
+  initAnimations();
+  initCodeRunners();
 
   // 注册 Service Worker 以支持离线访问
   if ('serviceWorker' in navigator) {
-    const base = import.meta.env.BASE_URL
-    navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
+    const base = import.meta.env.BASE_URL;
+    navigator.serviceWorker.register(base + 'sw.js').catch(() => {});
   }
 </script>
 
 <style>
-/* 侧边栏遮罩层：移动端打开侧边栏时显示半透明背景 */
-.sidebar-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  top: var(--nav-height);
-  background: rgba(0,0,0,0.3);
-  z-index: 150;
-}
-body.sidebar-open .sidebar-backdrop { display: block; }
+  /* 侧边栏遮罩层：移动端打开侧边栏时显示半透明背景 */
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: var(--nav-height);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 150;
+  }
+  body.sidebar-open .sidebar-backdrop {
+    display: block;
+  }
 
-/* 菜单切换按钮：默认隐藏，移动端显示 */
-.nav-toggle { display: none; }
+  /* 菜单切换按钮：默认隐藏，移动端显示 */
+  .nav-toggle {
+    display: none;
+  }
 
-@media (max-width: 768px) {
-  .nav-toggle { display: flex; }
-}
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+  }
 </style>

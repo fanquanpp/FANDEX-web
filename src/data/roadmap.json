@@ -5,9 +5,7 @@
       "label": "编程准备",
       "desc": "零基础入门：环境搭建、工具配置与学习路线规划",
       "color": "toolchain",
-      "items": [
-        { "id": "getting-started", "arrow": null }
-      ]
+      "items": [{ "id": "getting-started", "arrow": null }]
     },
     {
       "phase": "Phase 1",

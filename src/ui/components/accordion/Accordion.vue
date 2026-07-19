@@ -15,11 +15,7 @@
  *   </Accordion>
  */
 
-import {
-  AccordionRoot,
-  type AccordionRootProps,
-  type AccordionRootEmits,
-} from 'radix-vue';
+import { AccordionRoot, type AccordionRootProps, type AccordionRootEmits } from 'radix-vue';
 
 interface AccordionProps extends AccordionRootProps {
   class?: string;
@@ -30,10 +26,7 @@ const emits = defineEmits<AccordionRootEmits>();
 </script>
 
 <template>
-  <AccordionRoot
-    v-bind="props"
-    @update:model-value="emits('update:modelValue', $event)"
-  >
+  <AccordionRoot v-bind="props" @update:model-value="emits('update:modelValue', $event)">
     <slot />
   </AccordionRoot>
 </template>

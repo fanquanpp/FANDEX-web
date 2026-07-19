@@ -21,7 +21,10 @@
 /* ========== 中英文混排优化 ==========
    启用字距、连字、上下文替换；中文标点挤压（渐进增强）。 */
 body {
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1; /* 西文字距与连字 */
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'calt' 1; /* 西文字距与连字 */
   font-variant-east-asian: proportional-width; /* 中日韩字符等比例宽度 */
   text-spacing-trim: space-all; /* 标点挤压（CSS Text 4，渐进增强） */
   hanging-punctuation: first last; /* 首尾标点悬挂 */

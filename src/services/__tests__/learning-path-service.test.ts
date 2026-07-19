@@ -35,9 +35,8 @@ vi.mock('@/services/progress-service', () => ({
   getProgressStats: vi.fn(async () => fakeStats),
 }));
 
-const { getAllPaths, getPath, getPathProgress, getRecommendedPath } = await import(
-  '@/services/learning-path-service'
-);
+const { getAllPaths, getPath, getPathProgress, getRecommendedPath } =
+  await import('@/services/learning-path-service');
 
 beforeEach(() => {
   fakeStats = {

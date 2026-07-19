@@ -43,7 +43,7 @@ function makeFakeElement(
     selector?: string;
     href?: string | null;
     asAnchor?: boolean;
-  } = {},
+  } = {}
 ): FakeElement {
   const listeners: Record<string, Array<(e: unknown) => void>> = {};
   const classSet = new Set<string>();
@@ -227,9 +227,7 @@ describe('initAnimations', () => {
 
     anchor.click();
     expect(main.scrollTo).toHaveBeenCalledTimes(1);
-    expect(main.scrollTo).toHaveBeenCalledWith(
-      expect.objectContaining({ behavior: 'smooth' }),
-    );
+    expect(main.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'smooth' }));
   });
 
   it('应为 #module-sidebar 元素添加 sidebar-animated 类', async () => {

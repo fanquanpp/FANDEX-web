@@ -15,10 +15,7 @@
  * vi.stubGlobal 同时注入伪造的 indexedDB 与 localStorage，验证数据流。
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import {
-  ProgressRepository,
-  type ProgressRecord,
-} from '@/data/storage/progress-repository';
+import { ProgressRepository, type ProgressRecord } from '@/data/storage/progress-repository';
 
 /** 内存中的记录存储 */
 let memoryStore: Map<string, ProgressRecord>;
@@ -167,9 +164,7 @@ describe('ProgressRepository', () => {
     it('upsert 相同 docSlug 应覆盖原值', async () => {
       const repo = new ProgressRepository();
       await repo.upsert(makeRecord({ docSlug: 'overwrite', status: 'reading' }));
-      await repo.upsert(
-        makeRecord({ docSlug: 'overwrite', status: 'completed', progress: 100 }),
-      );
+      await repo.upsert(makeRecord({ docSlug: 'overwrite', status: 'completed', progress: 100 }));
       const got = await repo.get('overwrite');
       expect(got?.status).toBe('completed');
       expect(got?.progress).toBe(100);
@@ -279,10 +274,7 @@ describe('ProgressRepository', () => {
       const importData = {
         version: '1.0.0',
         exportedAt: new Date().toISOString(),
-        records: [
-          makeRecord({ docSlug: 'imported-1' }),
-          makeRecord({ docSlug: 'imported-2' }),
-        ],
+        records: [makeRecord({ docSlug: 'imported-1' }), makeRecord({ docSlug: 'imported-2' })],
       };
       await repo.importJSON(JSON.stringify(importData));
       // 清空缓存后从 IndexedDB 读取

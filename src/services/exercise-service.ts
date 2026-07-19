@@ -184,12 +184,10 @@ function judge(exercise: ExerciseMetadata, userAnswer: string): boolean | null {
 export async function submitAnswer(
   exercise: ExerciseMetadata,
   userAnswer: string,
-  isCorrectOverride?: boolean,
+  isCorrectOverride?: boolean
 ): Promise<SubmitResult> {
   const isCorrect =
-    exercise.type === 'open-ended'
-      ? (isCorrectOverride ?? null)
-      : judge(exercise, userAnswer);
+    exercise.type === 'open-ended' ? (isCorrectOverride ?? null) : judge(exercise, userAnswer);
 
   const result: SubmitResult = {
     isCorrect,

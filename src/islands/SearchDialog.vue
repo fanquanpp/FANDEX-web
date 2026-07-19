@@ -22,27 +22,10 @@
 -->
 
 <script setup lang="ts">
-import {
-  ref,
-  computed,
-  watch,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
-} from 'vue';
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-} from '@/ui/components/dialog';
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/ui/components/dialog';
 import { search as searchService, disposeSearch } from '@/services/search-service';
-import type {
-  SearchRequest,
-  SearchResponse,
-  SearchResult,
-  SearchFilter,
-} from '@/types/search';
+import type { SearchRequest, SearchResponse, SearchResult, SearchFilter } from '@/types/search';
 import { Search, Loader2, Clock, ArrowUp, ArrowDown, CornerDownLeft } from '@lucide/vue';
 
 // ============================================================================
@@ -203,7 +186,7 @@ watch(
   () => props.open,
   (val) => {
     isOpen.value = val;
-  },
+  }
 );
 
 /**
@@ -443,9 +426,7 @@ function clearFilter(): void {
 function toggleFilter(key: 'modules' | 'difficulties' | 'tags', value: string): void {
   const current = filter.value[key] ?? [];
   const exists = current.includes(value);
-  const next = exists
-    ? current.filter((v) => v !== value)
-    : [...current, value];
+  const next = exists ? current.filter((v) => v !== value) : [...current, value];
   filter.value = {
     ...filter.value,
     [key]: next,
@@ -514,9 +495,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
 <template>
   <!-- Dialog 根：通过 v-model:open 双向绑定控制开关 -->
   <Dialog v-model:open="isOpen">
-    <DialogContent
-      class="search-dialog-content p-0 gap-0 max-w-2xl w-[calc(100vw-2rem)] sm:w-full"
-    >
+    <DialogContent class="search-dialog-content p-0 gap-0 max-w-2xl w-[calc(100vw-2rem)] sm:w-full">
       <!-- 标题（sr-only：视觉隐藏，仅供屏幕阅读器使用） -->
       <DialogTitle class="sr-only">全局搜索</DialogTitle>
       <DialogDescription class="sr-only">
@@ -527,14 +506,8 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
       <div class="search-input-section border-b border-border">
         <div class="flex items-center gap-3 px-4 py-3">
           <!-- 搜索图标或加载 spinner -->
-          <Loader2
-            v-if="isLoading"
-            class="size-5 text-primary-500 animate-spin shrink-0"
-          />
-          <Search
-            v-else
-            class="size-5 text-text-tertiary shrink-0"
-          />
+          <Loader2 v-if="isLoading" class="size-5 text-primary-500 animate-spin shrink-0" />
+          <Search v-else class="size-5 text-text-tertiary shrink-0" />
           <!-- 搜索输入框 -->
           <input
             ref="inputEl"
@@ -596,10 +569,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
       </div>
 
       <!-- 结果区：滚动容器 -->
-      <div
-        ref="resultsEl"
-        class="search-results-section max-h-[60vh] overflow-y-auto"
-      >
+      <div ref="resultsEl" class="search-results-section max-h-[60vh] overflow-y-auto">
         <!-- 加载状态 -->
         <div v-if="isLoading" class="search-state px-4 py-8 text-center text-text-secondary">
           <Loader2 class="size-6 mx-auto mb-2 text-primary-500 animate-spin" />
@@ -627,10 +597,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
             </button>
           </div>
           <ul class="history-list">
-            <li
-              v-for="(term, i) in history"
-              :key="`h-${i}`"
-            >
+            <li v-for="(term, i) in history" :key="`h-${i}`">
               <button
                 type="button"
                 class="history-item w-full text-left px-3 py-2 flex items-center gap-2 hover:bg-hover rounded-md text-sm text-text-primary"
@@ -647,21 +614,12 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         <div v-else-if="showEmpty" class="search-state px-4 py-10 text-center">
           <Search class="size-8 mx-auto mb-3 text-text-tertiary" />
           <p class="text-sm text-text-secondary mb-1">未找到与 "{{ query }}" 相关的文档</p>
-          <p class="text-xs text-text-tertiary">
-            建议尝试更短的关键词，或清除过滤器
-          </p>
+          <p class="text-xs text-text-tertiary">建议尝试更短的关键词，或清除过滤器</p>
         </div>
 
         <!-- 结果列表 -->
-        <ul
-          v-else-if="results.length > 0"
-          class="result-list py-2"
-        >
-          <li
-            v-for="(result, i) in results"
-            :key="`r-${i}-${result.slug}`"
-            :data-result-item="i"
-          >
+        <ul v-else-if="results.length > 0" class="result-list py-2">
+          <li v-for="(result, i) in results" :key="`r-${i}-${result.slug}`" :data-result-item="i">
             <button
               type="button"
               class="result-item w-full text-left px-4 py-2.5 flex flex-col gap-1 transition-colors"
@@ -692,10 +650,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
         </ul>
 
         <!-- 初始状态：无查询词且无历史记录 -->
-        <div
-          v-else
-          class="search-state px-4 py-10 text-center text-text-tertiary"
-        >
+        <div v-else class="search-state px-4 py-10 text-center text-text-tertiary">
           <Search class="size-8 mx-auto mb-3 opacity-50" />
           <p class="text-sm">输入关键词开始搜索 FANDEX 文档</p>
         </div>
@@ -765,7 +720,9 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
   color: var(--color-text-secondary);
   font-size: 11px;
   line-height: 1.4;
-  transition: background var(--duration-fast), color var(--duration-fast),
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast),
     border-color var(--duration-fast);
 }
 .filter-chip:hover {

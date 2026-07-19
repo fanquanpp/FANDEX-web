@@ -45,7 +45,7 @@ export function getViewportWidth(): number {
 
 // 错误：包含业务逻辑
 export function calculateModuleCompletion(module): number {
-  return module.completedDocs / module.totalDocs * 100; // 禁止：业务逻辑属于 Service 层
+  return (module.completedDocs / module.totalDocs) * 100; // 禁止：业务逻辑属于 Service 层
 }
 ```
 

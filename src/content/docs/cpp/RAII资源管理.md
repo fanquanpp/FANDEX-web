@@ -63,7 +63,7 @@ references:
       - 'Meyers, Scott'
     year: 2014
     title: 'Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14'
-    venue: 'O''Reilly Media'
+    venue: "O'Reilly Media"
   - type: book
     authors:
       - 'Sutter, Herb'
@@ -498,7 +498,7 @@ int process_file(const char* path) {
 
 > "对象的生命周期与对象所管理的资源的生命周期存在自然的同构关系。构造函数获取资源，析构函数释放资源，这一对称性可以将资源管理从'程序员的纪律'转化为'语言的保证'。"
 
-——Stroustrup, B. *The Design and Evolution of C++*. 1994, §15.4
+——Stroustrup, B. _The Design and Evolution of C++_. 1994, §15.4
 
 这一观察被形式化为 RAII 范式：
 
@@ -545,12 +545,12 @@ timeline
 
 C++98 标准库提供 `std::auto_ptr`，但其破坏性复制语义（复制构造隐式转移所有权）违反值语义直觉，且不满足 STL 容器的 `CopyConstructible` 要求。C++11 引入右值引用与移动语义后，标准委员会重新设计了智能指针体系：
 
-| 智能指针 | 引入版本 | 所有权语义 | 替代物 |
-| :--- | :--- | :--- | :--- |
-| `std::unique_ptr<T>` | C++11 | 独占所有权，move-only | `auto_ptr`（C++17 移除） |
-| `std::shared_ptr<T>` | C++11 | 共享所有权，原子引用计数 | Boost `shared_ptr` |
-| `std::weak_ptr<T>` | C++11 | 弱引用，打破循环 | 无标准方案 |
-| `std::make_unique<T>` | C++14 | 异常安全的 `unique_ptr` 构造 | 裸 `new` |
+| 智能指针              | 引入版本 | 所有权语义                   | 替代物                   |
+| :-------------------- | :------- | :--------------------------- | :----------------------- |
+| `std::unique_ptr<T>`  | C++11    | 独占所有权，move-only        | `auto_ptr`（C++17 移除） |
+| `std::shared_ptr<T>`  | C++11    | 共享所有权，原子引用计数     | Boost `shared_ptr`       |
+| `std::weak_ptr<T>`    | C++11    | 弱引用，打破循环             | 无标准方案               |
+| `std::make_unique<T>` | C++14    | 异常安全的 `unique_ptr` 构造 | 裸 `new`                 |
 
 C++11 同时引入 `std::lock_guard`、`std::unique_lock`、`std::scoped_allocator` 等 RAII 工具，使 RAII 成为现代 C++ 的"默认编程范式"。
 
@@ -780,13 +780,13 @@ public:
 
 设 $n$ 为对象数量，$R$ 为资源数量，$H$ 为堆大小。
 
-| 维度 | RAII | Mark-Sweep GC | 分代 GC |
-| :--- | :--- | :--- | :--- |
-| 单次释放复杂度 | $O(1)$（析构直接调用） | $O(H)$（全堆扫描） | $O(H_{gen})$（分代扫描） |
-| 暂停时间 | $O(1)$（无暂停） | $O(H)$（STW 暂停） | $O(H_{young})$（年轻代暂停） |
-| 内存峰值 | 低（即时释放） | 高（等待 GC） | 中（分代触发） |
-| 总吞吐（无异常） | $O(n)$ | $O(n) + O(H \cdot \text{GC 次数})$ | $O(n) + O(H_{gen} \cdot \text{GC 次数})$ |
-| 资源类型 | 任意（内存、文件、锁、套接字） | 仅内存（其他需手动） | 仅内存 |
+| 维度             | RAII                           | Mark-Sweep GC                      | 分代 GC                                  |
+| :--------------- | :----------------------------- | :--------------------------------- | :--------------------------------------- |
+| 单次释放复杂度   | $O(1)$（析构直接调用）         | $O(H)$（全堆扫描）                 | $O(H_{gen})$（分代扫描）                 |
+| 暂停时间         | $O(1)$（无暂停）               | $O(H)$（STW 暂停）                 | $O(H_{young})$（年轻代暂停）             |
+| 内存峰值         | 低（即时释放）                 | 高（等待 GC）                      | 中（分代触发）                           |
+| 总吞吐（无异常） | $O(n)$                         | $O(n) + O(H \cdot \text{GC 次数})$ | $O(n) + O(H_{gen} \cdot \text{GC 次数})$ |
+| 资源类型         | 任意（内存、文件、锁、套接字） | 仅内存（其他需手动）               | 仅内存                                   |
 
 **推导**：RAII 的释放复杂度为 $O(1)$，因为析构函数直接调用 `free`/`fclose`/`unlock` 等，无扫描开销。GC 的单次回收复杂度为 $O(H)$（Mark-Sweep）或 $O(H_{gen})$（分代），因为需遍历对象图判断可达性。
 
@@ -2214,13 +2214,13 @@ auto p = std::make_unique<int[]>(100);
 // 作用域结束自动 delete[]
 ```
 
-| 维度 | C malloc/free | C++ RAII |
-| :--- | :--- | :--- |
-| 异常安全 | 不保证（需手动 goto cleanup） | 保证（栈展开自动析构） |
-| 错误路径处理 | 程序员手动配对 | 编译器保证 |
-| 代码量 | 多（每个错误路径都需清理） | 少（声明即获取） |
-| 所有权表达 | 无（裸指针无所有权语义） | 明确（unique_ptr/shared_ptr） |
-| 类型安全 | 无（void* 转换无检查） | 强（模板类型推导） |
+| 维度         | C malloc/free                 | C++ RAII                      |
+| :----------- | :---------------------------- | :---------------------------- |
+| 异常安全     | 不保证（需手动 goto cleanup） | 保证（栈展开自动析构）        |
+| 错误路径处理 | 程序员手动配对                | 编译器保证                    |
+| 代码量       | 多（每个错误路径都需清理）    | 少（声明即获取）              |
+| 所有权表达   | 无（裸指针无所有权语义）      | 明确（unique_ptr/shared_ptr） |
+| 类型安全     | 无（void* 转换无检查）        | 强（模板类型推导）            |
 
 ### 14.2 RAII vs Java try-finally / try-with-resources
 
@@ -2231,14 +2231,14 @@ try (FileInputStream fis = new FileInputStream("x.txt")) {
 } // 自动 close，但需实现 AutoCloseable 接口
 ```
 
-| 维度 | C++ RAII | Java try-with-resources |
-| :--- | :--- | :--- |
-| 资源类型 | 任意（内存、文件、锁、套接字、GPU） | 仅 AutoCloseable 实现 |
-| 语法负担 | 零（声明即获取） | 显式 try 块包裹 |
-| 异常路径 | 自动处理 | 自动处理 |
-| 内存管理 | RAII 同样管理 | GC 管理内存（不确定性） |
-| 终结器 | 无（析构确定性） | finalize() 不确定性，JDK 9 弃用 |
-| 性能 | 零开销 | try 块 + AutoCloseable 调用开销 |
+| 维度     | C++ RAII                            | Java try-with-resources         |
+| :------- | :---------------------------------- | :------------------------------ |
+| 资源类型 | 任意（内存、文件、锁、套接字、GPU） | 仅 AutoCloseable 实现           |
+| 语法负担 | 零（声明即获取）                    | 显式 try 块包裹                 |
+| 异常路径 | 自动处理                            | 自动处理                        |
+| 内存管理 | RAII 同样管理                       | GC 管理内存（不确定性）         |
+| 终结器   | 无（析构确定性）                    | finalize() 不确定性，JDK 9 弃用 |
+| 性能     | 零开销                              | try 块 + AutoCloseable 调用开销 |
 
 ### 14.3 RAII vs Python with
 
@@ -2249,14 +2249,14 @@ with open("x.txt") as f:
 # 自动 __exit__，但仅限 with 块内
 ```
 
-| 维度 | C++ RAII | Python with |
-| :--- | :--- | :--- |
-| 资源类型 | 任意 | 任意（实现 __enter__/__exit__） |
-| 语法 | 零开销 | 显式 with 块 |
-| 作用域绑定 | 整个对象生命周期 | 仅 with 块内 |
-| 性能 | 编译期内联 | 运行时方法查找 |
-| 异常处理 | 析构 noexcept | __exit__ 可处理异常 |
-| 引用计数 | shared_ptr 原子计数 | CPython 引用计数 + 分代 GC |
+| 维度       | C++ RAII            | Python with                     |
+| :--------- | :------------------ | :------------------------------ |
+| 资源类型   | 任意                | 任意（实现 **enter**/**exit**） |
+| 语法       | 零开销              | 显式 with 块                    |
+| 作用域绑定 | 整个对象生命周期    | 仅 with 块内                    |
+| 性能       | 编译期内联          | 运行时方法查找                  |
+| 异常处理   | 析构 noexcept       | **exit** 可处理异常             |
+| 引用计数   | shared_ptr 原子计数 | CPython 引用计数 + 分代 GC      |
 
 ### 14.4 RAII vs Go defer
 
@@ -2270,14 +2270,14 @@ func process() error {
 }
 ```
 
-| 维度 | C++ RAII | Go defer |
-| :--- | :--- | :--- |
-| 触发时机 | 作用域结束 | 函数返回前 |
-| 顺序 | LIFO（析构逆序） | LIFO（defer 栈） |
-| 异常安全 | 栈展开保证 | panic/recover 模拟 |
-| 参数求值 | 构造时 | defer 语句时（参数预求值） |
-| 性能 | 零开销 | 函数返回时调用，有开销 |
-| 内存管理 | RAII | GC（defer 仅处理非内存资源） |
+| 维度     | C++ RAII         | Go defer                     |
+| :------- | :--------------- | :--------------------------- |
+| 触发时机 | 作用域结束       | 函数返回前                   |
+| 顺序     | LIFO（析构逆序） | LIFO（defer 栈）             |
+| 异常安全 | 栈展开保证       | panic/recover 模拟           |
+| 参数求值 | 构造时           | defer 语句时（参数预求值）   |
+| 性能     | 零开销           | 函数返回时调用，有开销       |
+| 内存管理 | RAII             | GC（defer 仅处理非内存资源） |
 
 ### 14.5 RAII vs Rust Drop trait
 
@@ -2295,32 +2295,33 @@ impl Drop for File {
 }   // 编译器保证调用
 ```
 
-| 维度 | C++ RAII | Rust Drop |
-| :--- | :--- | :--- |
-| 析构时机 | 确定性（作用域结束） | 确定性（作用域结束） |
-| 析构顺序 | LIFO | LIFO |
-| 异常安全 | 栈展开（析构不抛） | panic unwind（析构不抛） |
-| 所有权系统 | 程序员保证（unique_ptr） | 编译器借用检查器 |
-| 内存安全 | 程序员保证（悬空指针风险） | 编译期保证（无悬空指针） |
-| 数据竞争 | 运行期 UB | 编译期拒绝（Send/Sync） |
-| Drop 抛异常 | UB（terminate） | 编译期错误（Drop 不返回 Result） |
+| 维度        | C++ RAII                   | Rust Drop                        |
+| :---------- | :------------------------- | :------------------------------- |
+| 析构时机    | 确定性（作用域结束）       | 确定性（作用域结束）             |
+| 析构顺序    | LIFO                       | LIFO                             |
+| 异常安全    | 栈展开（析构不抛）         | panic unwind（析构不抛）         |
+| 所有权系统  | 程序员保证（unique_ptr）   | 编译器借用检查器                 |
+| 内存安全    | 程序员保证（悬空指针风险） | 编译期保证（无悬空指针）         |
+| 数据竞争    | 运行期 UB                  | 编译期拒绝（Send/Sync）          |
+| Drop 抛异常 | UB（terminate）            | 编译期错误（Drop 不返回 Result） |
 
 ### 14.6 综合对比表
 
-| 特性 | C++ RAII | C | Java try-with | Python with | Go defer | Rust Drop |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 确定性析构 | 是 | 否 | 是 | 是（with 内） | 是（函数返回） | 是 |
-| 异常安全 | 是 | 否 | 是 | 是 | 部分 | 是 |
-| 内存管理 | 是 | 否 | GC | GC+引用计数 | GC | 是 |
-| 非内存资源 | 是 | 手动 | 是 | 是 | 是 | 是 |
-| 零开销 | 是 | N/A | 否 | 否 | 否 | 是 |
-| 编译期所有权 | 否 | 否 | 否 | 否 | 否 | 是 |
+| 特性         | C++ RAII | C    | Java try-with | Python with   | Go defer       | Rust Drop |
+| :----------- | :------- | :--- | :------------ | :------------ | :------------- | :-------- |
+| 确定性析构   | 是       | 否   | 是            | 是（with 内） | 是（函数返回） | 是        |
+| 异常安全     | 是       | 否   | 是            | 是            | 部分           | 是        |
+| 内存管理     | 是       | 否   | GC            | GC+引用计数   | GC             | 是        |
+| 非内存资源   | 是       | 手动 | 是            | 是            | 是             | 是        |
+| 零开销       | 是       | N/A  | 否            | 否            | 否             | 是        |
+| 编译期所有权 | 否       | 否   | 否            | 否            | 否             | 是        |
 
 ## 第 15 章 常见陷阱
 
 ### 15.1 忘记 virtual 析构
 
 :::danger 错误示例
+
 ```cpp
 #include <iostream>
 struct Base { /* 无 virtual 析构 */ ~Base() { std::cout << "~Base\n"; } };
@@ -2332,6 +2333,7 @@ int main() {
     return 0;
 }
 ```
+
 **原因**：通过基类指针 delete 派生类对象时，若析构非 virtual，仅调用基类析构，派生部分资源泄漏。
 :::
 
@@ -2346,6 +2348,7 @@ struct Derived : Base { ~Derived() override { std::cout << "~Derived\n"; } };
 ### 15.2 移动后状态
 
 :::danger 错误示例
+
 ```cpp
 class Buffer {
     int* data_;
@@ -2359,6 +2362,7 @@ public:
 };
 // 移动后 o.data_ 仍指向已转移的内存，o 析构时 double free
 ```
+
 **原因**：移动构造未将源对象置空，源析构时重复释放同一资源。
 :::
 
@@ -2374,6 +2378,7 @@ Buffer(Buffer&& o) noexcept : data_(o.data_), size_(o.size_) {
 ### 15.3 异常析构抛出
 
 :::danger 错误示例
+
 ```cpp
 struct Conn {
     ~Conn() {
@@ -2382,6 +2387,7 @@ struct Conn {
     bool close();
 };
 ```
+
 **原因**：C++11 起析构默认 noexcept，抛异常触发 std::terminate；栈展开期间析构抛异常同样 terminate。
 :::
 
@@ -2403,6 +2409,7 @@ struct Conn {
 ### 15.4 资源所有权混乱
 
 :::danger 错误示例
+
 ```cpp
 void process() {
     auto p = std::make_shared<Widget>();
@@ -2411,6 +2418,7 @@ void process() {
     raw->use();  // UB：悬空指针
 }
 ```
+
 **原因**：从 shared_ptr 取出裸指针后 reset 智能指针，裸指针立即悬空。
 :::
 
@@ -2427,6 +2435,7 @@ void process() {
 ### 15.5 循环引用
 
 :::danger 错误示例
+
 ```cpp
 struct Node {
     std::shared_ptr<Node> next;
@@ -2442,6 +2451,7 @@ int main() {
     return 0;
 }
 ```
+
 **原因**：循环引用使引用计数永远 ≥1，shared_ptr 无法释放。
 :::
 
@@ -2458,12 +2468,14 @@ struct Node {
 ### 15.6 双重释放
 
 :::danger 错误示例
+
 ```cpp
 int* p = new int(42);
 int* q = p;
 delete p;
 delete q;   // UB：双重释放
 ```
+
 **原因**：两个指针指向同一资源，分别 delete 导致分配器状态破坏。
 :::
 
@@ -2477,6 +2489,7 @@ auto p = std::make_unique<int>(42);
 ### 15.7 构造函数异常导致部分构造
 
 :::danger 错误示例
+
 ```cpp
 class Multi {
     int* a_;
@@ -2489,6 +2502,7 @@ public:
     ~Multi() { delete[] a_; delete[] b_; }
 };
 ```
+
 **原因**：构造函数中先分配 a_ 后分配 b_，若 b_ 抛异常，析构函数不调用（对象未构造完成），a_ 泄漏。
 :::
 
@@ -2507,6 +2521,7 @@ public:
 ### 15.8 误用 shared_ptr this 指针
 
 :::danger 错误示例
+
 ```cpp
 class Worker {
 public:
@@ -2515,6 +2530,7 @@ public:
     }
 };
 ```
+
 **原因**：直接用 this 构造 shared_ptr 创建独立控制块，多个 shared_ptr 各自计数，析构时 double free。
 :::
 
@@ -2532,11 +2548,13 @@ public:
 ### 15.9 shared_ptr 控制块重复创建
 
 :::danger 错误示例
+
 ```cpp
 auto raw = new int(42);
 std::shared_ptr<int> sp1(raw);
 std::shared_ptr<int> sp2(raw);   // UB：两个独立控制块，double free
 ```
+
 **原因**：同一裸指针构造多个 shared_ptr，各自创建控制块，析构时重复 delete。
 :::
 
@@ -2550,6 +2568,7 @@ auto sp2 = sp1;   // 共享控制块
 ### 15.10 析构顺序依赖
 
 :::danger 错误示例
+
 ```cpp
 class A { public: ~A() { std::cout << "A destruct\n"; } };
 class B {
@@ -2567,6 +2586,7 @@ int main() {
     return 0;
 }
 ```
+
 **原因**：堆对象析构顺序由 delete 顺序决定，若 B 依赖 A，A 先析构则 UB。
 :::
 
@@ -2585,6 +2605,7 @@ public:
 ### 15.11 静态对象初始化顺序
 
 :::danger 错误示例
+
 ```cpp
 // file1.cpp
 extern Logger logger;
@@ -2594,6 +2615,7 @@ public:
 };
 Service s;   // 静态初始化，logger 可能未初始化（UB）
 ```
+
 **原因**：跨翻译单元的静态对象初始化顺序未定义。
 :::
 
@@ -3314,25 +3336,25 @@ ScopeGuard 是 RAII 的泛化形式，由 Alexandrescu 在 2000 年发表于 Gen
 
 本章参考文献遵循 ACM Reference Format，同时在 frontmatter `references` 字段中以结构化形式存储。
 
-1. ISO/IEC. 2023. *ISO/IEC 14882:2023. Information technology — Programming languages — C++* (8th ed.). Geneva: ISO. §11.9 (Class destructor), §14.4 (Exception handling), §7.6.10 (Memory management).
+1. ISO/IEC. 2023. _ISO/IEC 14882:2023. Information technology — Programming languages — C++_ (8th ed.). Geneva: ISO. §11.9 (Class destructor), §14.4 (Exception handling), §7.6.10 (Memory management).
 
-2. Stroustrup, B. 2013. *The C++ Programming Language* (4th ed.). Addison-Wesley Professional. ISBN 978-0321563842. Chapter 5 (Pointers, Arrays, References), Chapter 13 (Exception Handling), Chapter 17 (Construction, Cleanup, Copying, and Moving).
+2. Stroustrup, B. 2013. _The C++ Programming Language_ (4th ed.). Addison-Wesley Professional. ISBN 978-0321563842. Chapter 5 (Pointers, Arrays, References), Chapter 13 (Exception Handling), Chapter 17 (Construction, Cleanup, Copying, and Moving).
 
-3. Stroustrup, B. 1994. *The Design and Evolution of C++*. Addison-Wesley Professional. ISBN 978-0201543308. §15.4 (Resource Management), §16 (Exception Handling).
+3. Stroustrup, B. 1994. _The Design and Evolution of C++_. Addison-Wesley Professional. ISBN 978-0201543308. §15.4 (Resource Management), §16 (Exception Handling).
 
-4. Meyers, S. 2014. *Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14*. O'Reilly Media. ISBN 978-1491903995. Items 17-22 (Smart pointers), Items 18 (unique_ptr), Items 19-21 (shared_ptr/weak_ptr).
+4. Meyers, S. 2014. _Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14_. O'Reilly Media. ISBN 978-1491903995. Items 17-22 (Smart pointers), Items 18 (unique_ptr), Items 19-21 (shared_ptr/weak_ptr).
 
-5. Sutter, H. and Alexandrescu, A. 2004. *C++ Coding Standards: 101 Rules, Guidelines, and Best Practices*. Addison-Wesley Professional. ISBN 978-0321113580. Items 13 (Resource ownership), 49-55 (Resource management).
+5. Sutter, H. and Alexandrescu, A. 2004. _C++ Coding Standards: 101 Rules, Guidelines, and Best Practices_. Addison-Wesley Professional. ISBN 978-0321113580. Items 13 (Resource ownership), 49-55 (Resource management).
 
-6. Alexandrescu, A. 2001. *Modern C++ Design: Generic Programming and Design Patterns Applied*. Addison-Wesley Professional. ISBN 978-0201704310. Chapter 3 (ScopeGuard), Chapter 5 (Generalized Functors).
+6. Alexandrescu, A. 2001. _Modern C++ Design: Generic Programming and Design Patterns Applied_. Addison-Wesley Professional. ISBN 978-0201704310. Chapter 3 (ScopeGuard), Chapter 5 (Generalized Functors).
 
-7. Williams, A. 2019. *C++ Concurrency in Action* (2nd ed.). Manning Publications. ISBN 978-1617294693. Chapter 3 (Sharing data between threads), Chapter 4 (Synchronizing concurrent operations).
+7. Williams, A. 2019. _C++ Concurrency in Action_ (2nd ed.). Manning Publications. ISBN 978-1617294693. Chapter 3 (Sharing data between threads), Chapter 4 (Synchronizing concurrent operations).
 
-8. Sutter, H. 2013. *GotW #89 Solution: Smart Pointers*. https://herbsutter.com/2013/05/29/gotw-89-solution-smart-pointers/ (accessed July 18, 2026).
+8. Sutter, H. 2013. _GotW #89 Solution: Smart Pointers_. https://herbsutter.com/2013/05/29/gotw-89-solution-smart-pointers/ (accessed July 18, 2026).
 
-9. cppreference.com. 2024. *RAII — cppreference.com*. https://en.cppreference.com/w/cpp/language/raii (accessed July 18, 2026).
+9. cppreference.com. 2024. _RAII — cppreference.com_. https://en.cppreference.com/w/cpp/language/raii (accessed July 18, 2026).
 
-10. C++ Core Guidelines. 2024. *C++ Core Guidelines: Resource Management*. isocpp. https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines (accessed July 18, 2026). R.1-R.32 (Resource management rules).
+10. C++ Core Guidelines. 2024. _C++ Core Guidelines: Resource Management_. isocpp. https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines (accessed July 18, 2026). R.1-R.32 (Resource management rules).
 
 ## 第 20 章 延伸阅读
 
@@ -3488,13 +3510,13 @@ RAII 类通常需要重载 `operator*`、`operator->`、`operator[]`、`operator
 
 ## 更新日志
 
-| 版本 | 日期 | 修订者 | 变更说明 |
-| --- | --- | --- | --- |
-| v1.0 | 2026-06-14 | fanquanpp | 初始版本，367 行，覆盖 RAII 基础概念、`FileHandle`/`Transaction`/`ScopeGuard`/GDI 资源管理示例与基本注意事项 |
+| 版本 | 日期       | 修订者                     | 变更说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---- | ---------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| v1.0 | 2026-06-14 | fanquanpp                  | 初始版本，367 行，覆盖 RAII 基础概念、`FileHandle`/`Transaction`/`ScopeGuard`/GDI 资源管理示例与基本注意事项                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | v2.0 | 2026-07-18 | FANDEX Content Engineering | 工程级重写至 3300+ 行：新增 12 项质量基准全覆盖；补充形式化定义（RAII 对象数学定义、不变量数学表述、确定性析构定理）；新增理论推导章节（Stack Unwinding 正确性证明、basic/strong/nothrow 异常安全形式化、与 GC 复杂度对比）；扩展代码示例至 60+ 个，覆盖文件句柄、内存、锁、网络套接字、数据库事务、OpenGL、CUDA、自定义 RAII 模板；新增对比分析章节（vs C/Java/Python/Go/Rust）；新增常见陷阱 11 项、工程实践 5 小节、案例研究 5 例（LLVM/Chromium/Qt/Boost/folly）；新增习题 10 题（4 类题型）与参考文献 10 条（ACM 格式）；新增词源条目 7 条与延伸阅读章节；按 Bloom 分类法补充 7 条学习目标；新增 `learningObjectives`、`exercises`、`references`、`etymology`、`estimatedReadingTime`、`lastReviewed`、`reviewer` frontmatter 字段 |
 
 ---
 
-*本文档遵循 FANDEX 内容工程规范 v2.0 编写，已通过 12 项质量基准全覆盖校验。如发现内容错误或建议改进，请在 FANDEX 仓库提交 Issue 或 Pull Request。*
+_本文档遵循 FANDEX 内容工程规范 v2.0 编写，已通过 12 项质量基准全覆盖校验。如发现内容错误或建议改进，请在 FANDEX 仓库提交 Issue 或 Pull Request。_
 
-*最后审阅日期：2026-07-18，审阅人：FANDEX Content Engineering。下次计划审阅：2027-07-18（年度审阅周期）。*
+_最后审阅日期：2026-07-18，审阅人：FANDEX Content Engineering。下次计划审阅：2027-07-18（年度审阅周期）。_

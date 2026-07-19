@@ -93,8 +93,7 @@ describe('analyzeBundle', () => {
   it('应忽略非 JS/CSS 文件', () => {
     writeFileSync(join(tmpAssets, 'app.js'), 'console.log(1);', 'utf-8');
     writeFileSync(join(tmpAssets, 'data.json'), '{"a":1}', 'utf-8');
-    writeFileSync(join(tmpAssets, 'index.html'), '<html></html>', 'utf-8')
-    ;
+    writeFileSync(join(tmpAssets, 'index.html'), '<html></html>', 'utf-8');
     writeFileSync(join(tmpAssets, 'logo.png'), 'binary-data', 'utf-8');
 
     const report = analyzeBundle(tmpAssets);
@@ -116,7 +115,7 @@ describe('analyzeBundle', () => {
   it('应正确标记超预算的 JS 文件（gzipped > 150KB）', () => {
     // 构造不可压缩内容使其 gzip 后 > 150KB
     const randomLike = Array.from({ length: 200 * 1024 }, (_, i) =>
-      String.fromCharCode((i % 26) + 97),
+      String.fromCharCode((i % 26) + 97)
     ).join('');
     writeFileSync(join(tmpAssets, 'large.js'), randomLike, 'utf-8');
 
@@ -162,12 +161,8 @@ describe('analyzeBundle', () => {
     const report = analyzeBundle(tmpAssets);
     expect(report.summary.jsRawTotal).toBe(report.files.find((f) => f.type === 'js')!.rawSize);
     expect(report.summary.cssRawTotal).toBe(report.files.find((f) => f.type === 'css')!.rawSize);
-    expect(report.summary.jsGzipTotal).toBe(
-      report.files.find((f) => f.type === 'js')!.gzipSize,
-    );
-    expect(report.summary.cssGzipTotal).toBe(
-      report.files.find((f) => f.type === 'css')!.gzipSize,
-    );
+    expect(report.summary.jsGzipTotal).toBe(report.files.find((f) => f.type === 'js')!.gzipSize);
+    expect(report.summary.cssGzipTotal).toBe(report.files.find((f) => f.type === 'css')!.gzipSize);
   });
 });
 

@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
  * cn() 会智能处理 Tailwind 类冲突，外部 class 优先级更高
  */
 const classes = computed(() =>
-  cn(buttonVariants({ variant: props.variant, size: props.size }), props.class),
+  cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)
 );
 </script>
 

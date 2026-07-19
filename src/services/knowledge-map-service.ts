@@ -117,7 +117,7 @@ function buildDocPrerequisiteEdges(doc: DocEntry, allDocs: readonly DocEntry[]):
   const fromId = docNodeId(doc);
   for (const ref of doc.data.prerequisites) {
     // 在全部文档中查找匹配的引用（支持纯 slug 与完整路径两种格式）
-    const matched = allDocs.find(d => {
+    const matched = allDocs.find((d) => {
       const slug = docSlug(d.id);
       return ref === slug || ref === `${d.data.module}/${slug}`;
     });
@@ -142,7 +142,7 @@ function buildDocRelatedEdges(doc: DocEntry, allDocs: readonly DocEntry[]): MapE
   const edges: MapEdge[] = [];
   const fromId = docNodeId(doc);
   for (const ref of doc.data.related) {
-    const matched = allDocs.find(d => {
+    const matched = allDocs.find((d) => {
       const slug = docSlug(d.id);
       return ref === slug || ref === `${d.data.module}/${slug}`;
     });
@@ -196,7 +196,7 @@ export async function getGlobalMap(): Promise<KnowledgeMap> {
       const prereqs = getModulePrerequisites(mod.id);
       for (const dep of prereqs) {
         // 仅当依赖目标确实存在时才添加边，避免悬空引用
-        if (allModules.some(m => m.id === dep)) {
+        if (allModules.some((m) => m.id === dep)) {
           moduleEdges.push({ from: dep, to: mod.id, type: 'prerequisite' });
         }
       }
@@ -228,7 +228,7 @@ export async function getGlobalMap(): Promise<KnowledgeMap> {
 export async function getModuleMap(moduleId: string): Promise<KnowledgeMap> {
   try {
     const allModules = getAllModules();
-    const mod = allModules.find(m => m.id === moduleId);
+    const mod = allModules.find((m) => m.id === moduleId);
     if (!mod) return EMPTY_MAP;
 
     const moduleDocs = await getDocsByModule(moduleId);
@@ -242,7 +242,7 @@ export async function getModuleMap(moduleId: string): Promise<KnowledgeMap> {
     const moduleEdges: MapEdge[] = [];
     const prereqs = getModulePrerequisites(moduleId);
     for (const dep of prereqs) {
-      if (allModules.some(m => m.id === dep)) {
+      if (allModules.some((m) => m.id === dep)) {
         moduleEdges.push({ from: dep, to: moduleId, type: 'prerequisite' });
       }
     }
@@ -284,7 +284,7 @@ export async function getModuleMap(moduleId: string): Promise<KnowledgeMap> {
 export async function getDocMap(moduleId: string, slug: string): Promise<KnowledgeMap> {
   try {
     const allDocs = await getAllDocs();
-    const current = allDocs.find(d => d.data.module === moduleId && docSlug(d.id) === slug);
+    const current = allDocs.find((d) => d.data.module === moduleId && docSlug(d.id) === slug);
     if (!current) return EMPTY_MAP;
 
     const currentId = docNodeId(current);
@@ -295,7 +295,7 @@ export async function getDocMap(moduleId: string, slug: string): Promise<Knowled
 
     // 前置依赖边：纳入前置文档节点
     for (const edge of buildDocPrerequisiteEdges(current, allDocs)) {
-      const matched = allDocs.find(d => docNodeId(d) === edge.from);
+      const matched = allDocs.find((d) => docNodeId(d) === edge.from);
       if (matched) {
         nodeMap.set(edge.from, buildDocNode(matched));
         edges.push(edge);
@@ -304,8 +304,8 @@ export async function getDocMap(moduleId: string, slug: string): Promise<Knowled
 
     // 关联边：纳入关联文档节点（buildDocRelatedEdges 已过滤自环，可直接使用）
     for (const edge of buildDocRelatedEdges(current, allDocs)) {
-      const matched = allDocs.find(d => docNodeId(d) === edge.from);
-      const matchedTo = allDocs.find(d => docNodeId(d) === edge.to);
+      const matched = allDocs.find((d) => docNodeId(d) === edge.from);
+      const matchedTo = allDocs.find((d) => docNodeId(d) === edge.to);
       if (matched) nodeMap.set(edge.from, buildDocNode(matched));
       if (matchedTo) nodeMap.set(edge.to, buildDocNode(matchedTo));
       edges.push(edge);

@@ -86,7 +86,8 @@ interface WorkerReadyMessage {
 }
 
 /** Worker 发往主线程的所有消息类型联合 */
-type WorkerOutgoingMessage = WorkerLogChunk | WorkerLoadingMessage | WorkerDoneMessage | WorkerReadyMessage;
+type WorkerOutgoingMessage =
+  WorkerLogChunk | WorkerLoadingMessage | WorkerDoneMessage | WorkerReadyMessage;
 
 /** 主线程发往 Worker 的运行请求消息（内部使用） */
 interface WorkerRunMessage {

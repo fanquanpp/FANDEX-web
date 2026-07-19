@@ -22,10 +22,7 @@ interface CardProps {
 const props = defineProps<CardProps>();
 
 const classes = computed(() =>
-  cn(
-    'rounded-xl border border-border bg-surface text-text-primary shadow-sm',
-    props.class,
-  ),
+  cn('rounded-xl border border-border bg-surface text-text-primary shadow-sm', props.class)
 );
 </script>
 

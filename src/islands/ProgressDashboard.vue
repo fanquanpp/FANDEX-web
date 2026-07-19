@@ -33,7 +33,14 @@
       <section class="kpi-grid">
         <div class="kpi-card kpi-total">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
             </svg>
@@ -44,7 +51,14 @@
 
         <div class="kpi-card kpi-completed">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
@@ -54,7 +68,14 @@
 
         <div class="kpi-card kpi-in-progress">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
             </svg>
           </div>
@@ -64,7 +85,14 @@
 
         <div class="kpi-card kpi-bookmarked">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
             </svg>
           </div>
@@ -74,7 +102,14 @@
 
         <div class="kpi-card kpi-time">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
@@ -85,8 +120,17 @@
 
         <div class="kpi-card kpi-streak">
           <div class="kpi-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+              />
             </svg>
           </div>
           <div class="kpi-value">{{ readingStats.streakDays }}</div>
@@ -110,11 +154,15 @@
             <span class="exercise-stat-label">已作答</span>
           </div>
           <div class="exercise-stat">
-            <span class="exercise-stat-value exercise-stat-correct">{{ exerciseStats.correctExercises }}</span>
+            <span class="exercise-stat-value exercise-stat-correct">{{
+              exerciseStats.correctExercises
+            }}</span>
             <span class="exercise-stat-label">答对数</span>
           </div>
           <div class="exercise-stat">
-            <span class="exercise-stat-value exercise-stat-accuracy">{{ exerciseStats.accuracy }}%</span>
+            <span class="exercise-stat-value exercise-stat-accuracy"
+              >{{ exerciseStats.accuracy }}%</span
+            >
             <span class="exercise-stat-label">正确率</span>
           </div>
         </div>
@@ -124,11 +172,7 @@
       <section class="dashboard-section" v-if="moduleProgressList.length > 0">
         <h3 class="section-title">各模块阅读进度</h3>
         <div class="module-chart">
-          <div
-            v-for="mod in moduleProgressList"
-            :key="mod.moduleId"
-            class="module-bar-item"
-          >
+          <div v-for="mod in moduleProgressList" :key="mod.moduleId" class="module-bar-item">
             <div class="module-bar-label" :title="getModuleLabel(mod.moduleId)">
               {{ getModuleLabel(mod.moduleId) }}
             </div>
@@ -160,14 +204,25 @@
             class="recent-item"
           >
             <div class="recent-info">
-              <div class="recent-title">{{ getModuleLabel(item.moduleId) }} · {{ extractSlug(item.docSlug) }}</div>
+              <div class="recent-title">
+                {{ getModuleLabel(item.moduleId) }} · {{ extractSlug(item.docSlug) }}
+              </div>
               <div class="recent-meta">
-                <span class="recent-status" :class="`status-${item.status}`">{{ statusLabel(item.status) }}</span>
+                <span class="recent-status" :class="`status-${item.status}`">{{
+                  statusLabel(item.status)
+                }}</span>
                 <span class="recent-time">{{ formatRelativeTime(item.lastReadAt) }}</span>
               </div>
             </div>
             <div class="recent-arrow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </div>
@@ -178,7 +233,9 @@
       <!-- 错题集快速访问 -->
       <section class="dashboard-section" v-if="incorrectExercises.length > 0">
         <div class="section-header">
-          <h3 class="section-title">错题集（最近 {{ Math.min(incorrectExercises.length, 5) }} 题）</h3>
+          <h3 class="section-title">
+            错题集（最近 {{ Math.min(incorrectExercises.length, 5) }} 题）
+          </h3>
           <a :href="`${base}dashboard/exercises/`" class="section-link">查看全部</a>
         </div>
         <div class="incorrect-list">
@@ -222,7 +279,14 @@
             class="recommendation-card"
           >
             <div class="rec-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
@@ -240,7 +304,14 @@
         <h3 class="section-title">数据管理</h3>
         <div class="actions-buttons">
           <button class="action-btn action-export" @click="handleExport">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
@@ -248,7 +319,14 @@
             导出全部进度
           </button>
           <button class="action-btn action-import" @click="triggerImport">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="17 8 12 3 7 8" />
               <line x1="12" y1="3" x2="12" y2="15" />
@@ -256,7 +334,14 @@
             导入进度
           </button>
           <button class="action-btn action-reset" @click="handleReset">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <polyline points="3 6 5 6 21 6" />
               <path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6" />
             </svg>
@@ -402,7 +487,7 @@ function getProgressClass(mod: ModuleProgressItem): string {
 function typeLabel(type: string): string {
   const map: Record<string, string> = {
     'fill-blank': '填空',
-    'choice': '选择',
+    choice: '选择',
     'code-fix': '代码修正',
     'open-ended': '开放性',
   };
@@ -416,8 +501,8 @@ function typeLabel(type: string): string {
  */
 function statusLabel(status: string): string {
   const map: Record<string, string> = {
-    'completed': '已完成',
-    'reading': '阅读中',
+    completed: '已完成',
+    reading: '阅读中',
     'not-started': '未开始',
   };
   return map[status] ?? status;
@@ -562,7 +647,7 @@ async function handleExport(): Promise<void> {
         exerciseProgress: JSON.parse(exerciseJson),
       },
       null,
-      2,
+      2
     );
     const blob = new Blob([combined], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -692,7 +777,9 @@ onUnmounted(() => {
 }
 
 @keyframes dashboard-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* KPI 卡片网格 */
@@ -727,12 +814,30 @@ onUnmounted(() => {
   background: rgba(99, 102, 241, 0.08);
 }
 
-.kpi-total .kpi-icon { color: #3b82f6; background: rgba(59, 130, 246, 0.08); }
-.kpi-completed .kpi-icon { color: #10b981; background: rgba(16, 185, 129, 0.08); }
-.kpi-in-progress .kpi-icon { color: #f59e0b; background: rgba(245, 158, 11, 0.08); }
-.kpi-bookmarked .kpi-icon { color: #8b5cf6; background: rgba(139, 92, 246, 0.08); }
-.kpi-time .kpi-icon { color: #06b6d4; background: rgba(6, 182, 212, 0.08); }
-.kpi-streak .kpi-icon { color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+.kpi-total .kpi-icon {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.08);
+}
+.kpi-completed .kpi-icon {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+.kpi-in-progress .kpi-icon {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+.kpi-bookmarked .kpi-icon {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.08);
+}
+.kpi-time .kpi-icon {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.08);
+}
+.kpi-streak .kpi-icon {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
 
 .kpi-value {
   font-family: var(--font-display);

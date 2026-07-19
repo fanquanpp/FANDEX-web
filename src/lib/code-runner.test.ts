@@ -167,7 +167,9 @@ describe('runCodeInSandbox', () => {
       emitSandboxMessage({ source: CHANNEL, type: 'done', result: '' });
     };
 
-    const promise = runCodeInSandbox('console.log("first"); console.warn("second"); console.error("third")');
+    const promise = runCodeInSandbox(
+      'console.log("first"); console.warn("second"); console.error("third")'
+    );
     triggerIframeLoad();
 
     const result = await promise;
@@ -196,7 +198,11 @@ describe('runCodeInSandbox', () => {
 
   it('错误捕获：沙箱发送 error 消息时应返回错误文本', async () => {
     postMessageStub = () => {
-      emitSandboxMessage({ source: CHANNEL, type: 'error', error: 'ReferenceError: x is not defined' });
+      emitSandboxMessage({
+        source: CHANNEL,
+        type: 'error',
+        error: 'ReferenceError: x is not defined',
+      });
     };
 
     const promise = runCodeInSandbox('x.y');
@@ -387,7 +393,8 @@ describe('runCodeInSandbox 沙箱逃逸防护', () => {
       emitSandboxMessage({
         source: CHANNEL,
         type: 'error',
-        error: "Failed to read the 'localStorage' property from 'Window': Access is denied for this document",
+        error:
+          "Failed to read the 'localStorage' property from 'Window': Access is denied for this document",
       });
     };
 

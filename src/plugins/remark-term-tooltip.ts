@@ -158,10 +158,7 @@ interface TextSegment {
  * @param pattern - 术语匹配正则（带 g 标志）
  * @returns 拆分后的子片段数组；无匹配返回 null
  */
-function splitTextByTerms(
-  value: string,
-  pattern: RegExp,
-): TextSegment[] | null {
+function splitTextByTerms(value: string, pattern: RegExp): TextSegment[] | null {
   const segments: TextSegment[] = [];
   let lastIndex = 0;
   let matchFound = false;
@@ -251,11 +248,10 @@ export function remarkTermTooltip() {
       if (segments === null) return;
 
       // 将子片段转换为 mdast 节点（Text | Html 交替）
-      const newNodes: Array<Text | Html> = segments.map(
-        (seg): Text | Html =>
-          seg.type === 'text'
-            ? { type: 'text', value: seg.value }
-            : { type: 'html', value: seg.value },
+      const newNodes: Array<Text | Html> = segments.map((seg): Text | Html =>
+        seg.type === 'text'
+          ? { type: 'text', value: seg.value }
+          : { type: 'html', value: seg.value }
       );
 
       // 用多个新节点替换原 text 节点（splice 展开）

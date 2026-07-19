@@ -18,11 +18,7 @@
  *   </Dialog>
  */
 
-import {
-  DialogRoot,
-  type DialogRootProps,
-  type DialogRootEmits,
-} from 'radix-vue';
+import { DialogRoot, type DialogRootProps, type DialogRootEmits } from 'radix-vue';
 
 interface DialogProps extends DialogRootProps {
   class?: string;

@@ -31,7 +31,9 @@ SVG 元素的样式可通过多种方式声明，优先级从低到高：
 
 <svg viewBox="0 0 200 100">
   <style>
-    .box { fill: #4f5bd5; }  /* 内部样式 */
+    .box {
+      fill: #4f5bd5;
+    } /* 内部样式 */
   </style>
   <rect class="box" width="100" height="50" fill="#d63031" />
   <!-- 元素 fill 属性优先于 class，但低于 style 属性 -->
@@ -59,9 +61,17 @@ SVG 元素的样式可通过多种方式声明，优先级从低到高：
 ```html
 <svg viewBox="0 0 200 100">
   <style>
-    .primary { fill: #4f5bd5; stroke: #fff; stroke-width: 2; }
-    .danger { fill: #d63031; }
-    text { font-family: sans-serif; }
+    .primary {
+      fill: #4f5bd5;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+    .danger {
+      fill: #d63031;
+    }
+    text {
+      font-family: sans-serif;
+    }
   </style>
   <rect class="primary" x="10" y="10" width="80" height="50" />
   <rect class="danger" x="110" y="10" width="80" height="50" />
@@ -72,8 +82,7 @@ SVG 元素的样式可通过多种方式声明，优先级从低到高：
 
 ```html
 <!-- svg.css -->
-.rect-primary { fill: #4f5bd5; }
-.rect-danger { fill: #d63031; }
+.rect-primary { fill: #4f5bd5; } .rect-danger { fill: #d63031; }
 ```
 
 ```html
@@ -87,15 +96,15 @@ SVG 元素的样式可通过多种方式声明，优先级从低到高：
 
 ## 3. CSS 可控制的 SVG 属性
 
-| 类别 | 属性 |
-|------|------|
-| 填充 | `fill`、`fill-opacity`、`fill-rule` |
-| 描边 | `stroke`、`stroke-width`、`stroke-opacity`、`stroke-linecap`、`stroke-linejoin`、`stroke-dasharray`、`stroke-dashoffset` |
-| 几何（部分） | `cx`、`cy`、`r`、`x`、`y`、`width`、`height` |
-| 文本 | `font-family`、`font-size`、`font-weight`、`text-anchor`、`letter-spacing` |
-| 视觉 | `opacity`、`visibility`、`display`、`filter`、`clip-path`、`mask` |
-| 变换 | `transform`、`transform-origin`、`transform-box` |
-| 其他 | `color`、`cursor`、`pointer-events` |
+| 类别         | 属性                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| 填充         | `fill`、`fill-opacity`、`fill-rule`                                                                                      |
+| 描边         | `stroke`、`stroke-width`、`stroke-opacity`、`stroke-linecap`、`stroke-linejoin`、`stroke-dasharray`、`stroke-dashoffset` |
+| 几何（部分） | `cx`、`cy`、`r`、`x`、`y`、`width`、`height`                                                                             |
+| 文本         | `font-family`、`font-size`、`font-weight`、`text-anchor`、`letter-spacing`                                               |
+| 视觉         | `opacity`、`visibility`、`display`、`filter`、`clip-path`、`mask`                                                        |
+| 变换         | `transform`、`transform-origin`、`transform-box`                                                                         |
+| 其他         | `color`、`cursor`、`pointer-events`                                                                                      |
 
 ### 3.1 示例
 
@@ -108,9 +117,16 @@ SVG 元素的样式可通过多种方式声明，优先级从低到高：
   stroke-linejoin: round;
 }
 
-.icon-primary { color: #4f5bd5; }
-.icon-danger { color: #d63031; }
-.icon-lg { width: 48px; height: 48px; }
+.icon-primary {
+  color: #4f5bd5;
+}
+.icon-danger {
+  color: #d63031;
+}
+.icon-lg {
+  width: 48px;
+  height: 48px;
+}
 ```
 
 ```html
@@ -130,8 +146,12 @@ SVG 完全支持 CSS 自定义属性，实现主题化。
     --brand-secondary: #00b894;
     --brand-danger: #d63031;
   }
-  .logo { fill: var(--brand-primary); }
-  .accent { fill: var(--brand-secondary); }
+  .logo {
+    fill: var(--brand-primary);
+  }
+  .accent {
+    fill: var(--brand-secondary);
+  }
 
   .dark-theme {
     --brand-primary: #8b92e8;
@@ -194,16 +214,20 @@ SVG 元素支持 CSS 伪类，实现交互效果。
 ### 5.1 pointer-events
 
 ```css
-.label { pointer-events: none; }  /* 让点击穿透到下层 */
-.btn { pointer-events: all; }     /* 显式响应事件 */
+.label {
+  pointer-events: none;
+} /* 让点击穿透到下层 */
+.btn {
+  pointer-events: all;
+} /* 显式响应事件 */
 ```
 
-| 值 | 说明 |
-|----|------|
-| `none` | 不响应事件（穿透） |
-| `all`（默认） | 响应所有事件 |
-| `fill` | 仅填充区域响应 |
-| `stroke` | 仅描边区域响应 |
+| 值               | 说明                    |
+| ---------------- | ----------------------- |
+| `none`           | 不响应事件（穿透）      |
+| `all`（默认）    | 响应所有事件            |
+| `fill`           | 仅填充区域响应          |
+| `stroke`         | 仅描边区域响应          |
 | `visiblePainted` | 可见且填充/描边区域响应 |
 
 ## 6. 媒体查询
@@ -213,17 +237,29 @@ SVG 内部支持响应式样式。
 ```html
 <svg viewBox="0 0 400 200">
   <style>
-    .title { font-size: 32px; }
-    .subtitle { display: block; }
+    .title {
+      font-size: 32px;
+    }
+    .subtitle {
+      display: block;
+    }
 
     @media (max-width: 600px) {
-      .title { font-size: 20px; }
-      .subtitle { display: none; }
+      .title {
+        font-size: 20px;
+      }
+      .subtitle {
+        display: none;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
-      .bg { fill: #1a1a1a; }
-      .text { fill: #fff; }
+      .bg {
+        fill: #1a1a1a;
+      }
+      .text {
+        fill: #fff;
+      }
     }
   </style>
   <rect class="bg" width="400" height="200" fill="#fff" />
@@ -253,7 +289,9 @@ SVG 内部支持响应式样式。
 ```css
 rect {
   fill: #4f5bd5;
-  transition: fill 0.3s ease, transform 0.3s ease;
+  transition:
+    fill 0.3s ease,
+    transform 0.3s ease;
 }
 rect:hover {
   fill: #00b894;
@@ -270,38 +308,45 @@ rect:hover {
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    :root {
-      --bg: #fff;
-      --text: #333;
-      --card-bg: #f5f5f5;
-      --brand: #4f5bd5;
-    }
-    [data-theme="dark"] {
-      --bg: #1a1a1a;
-      --text: #eee;
-      --card-bg: #2a2a2a;
-      --brand: #8b92e8;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-    }
-    .chart-bar { fill: var(--brand); transition: fill 0.3s; }
-  </style>
-</head>
-<body data-theme="light">
-  <svg viewBox="0 0 400 200">
-    <rect class="chart-bar" x="20" y="50" width="40" height="150" />
-    <rect class="chart-bar" x="80" y="80" width="40" height="120" />
-    <rect class="chart-bar" x="140" y="20" width="40" height="180" />
-  </svg>
-  <button onclick="document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light'">
-    切换主题
-  </button>
-</body>
+  <head>
+    <style>
+      :root {
+        --bg: #fff;
+        --text: #333;
+        --card-bg: #f5f5f5;
+        --brand: #4f5bd5;
+      }
+      [data-theme='dark'] {
+        --bg: #1a1a1a;
+        --text: #eee;
+        --card-bg: #2a2a2a;
+        --brand: #8b92e8;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+      .chart-bar {
+        fill: var(--brand);
+        transition: fill 0.3s;
+      }
+    </style>
+  </head>
+  <body data-theme="light">
+    <svg viewBox="0 0 400 200">
+      <rect class="chart-bar" x="20" y="50" width="40" height="150" />
+      <rect class="chart-bar" x="80" y="80" width="40" height="120" />
+      <rect class="chart-bar" x="140" y="20" width="40" height="180" />
+    </svg>
+    <button
+      onclick="document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light'"
+    >
+      切换主题
+    </button>
+  </body>
 </html>
 ```
 
@@ -309,12 +354,12 @@ rect:hover {
 
 ## 9. 嵌入方式对 CSS 的影响
 
-| 嵌入方式 | 外部 CSS | 内部 style | 表现属性 |
-|---------|---------|-----------|---------|
-| inline SVG | ✓ | ✓ | ✓ |
-| `<object>` | ✗ | ✓ | ✓ |
-| `<img>` | ✗ | ✓ | ✓ |
-| CSS background | ✗ | ✓ | ✓ |
+| 嵌入方式       | 外部 CSS | 内部 style | 表现属性 |
+| -------------- | -------- | ---------- | -------- |
+| inline SVG     | ✓        | ✓          | ✓        |
+| `<object>`     | ✗        | ✓          | ✓        |
+| `<img>`        | ✗        | ✓          | ✓        |
+| CSS background | ✗        | ✓          | ✓        |
 
 > 仅 inline SVG 可被外部 CSS 完全控制，其他方式需要 SVG 文件内部自带样式。
 
@@ -325,16 +370,29 @@ rect:hover {
   <style>
     .bar {
       fill: var(--bar-color, #4f5bd5);
-      transition: fill 0.3s, height 0.5s;
+      transition:
+        fill 0.3s,
+        height 0.5s;
     }
-    .bar:hover { fill: var(--bar-hover, #00b894); }
+    .bar:hover {
+      fill: var(--bar-hover, #00b894);
+    }
 
     @media (prefers-color-scheme: dark) {
-      .axis { stroke: #666; }
-      .label { fill: #ccc; }
+      .axis {
+        stroke: #666;
+      }
+      .label {
+        fill: #ccc;
+      }
     }
-    .axis { stroke: #333; }
-    .label { fill: #666; font-size: 12px; }
+    .axis {
+      stroke: #333;
+    }
+    .label {
+      fill: #666;
+      font-size: 12px;
+    }
   </style>
 
   <line class="axis" x1="40" y1="180" x2="380" y2="180" />
@@ -352,13 +410,17 @@ rect:hover {
 ## 11. 调试技巧
 
 Chrome 开发者工具中：
+
 - Elements 面板可直接编辑 SVG 属性
 - Computed 标签可查看最终计算的 fill/stroke 值
 - Animations 面板可调试 SVG 动画
 
 ```css
 /* 调试时高亮所有 path */
-path { stroke: red !important; stroke-width: 1 !important; }
+path {
+  stroke: red !important;
+  stroke-width: 1 !important;
+}
 ```
 
 下一篇介绍 JavaScript 与 SVG 交互。

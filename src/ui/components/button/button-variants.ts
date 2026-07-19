@@ -45,10 +45,8 @@ export const buttonVariants = cva(
           'border border-border bg-background text-text-primary shadow-sm hover:bg-hover hover:text-text-primary dark:border-border dark:bg-background dark:hover:bg-hover',
         secondary:
           'bg-secondary-500 text-text-inverse shadow-sm hover:bg-secondary-600 dark:bg-secondary-400 dark:hover:bg-secondary-500',
-        ghost:
-          'text-text-primary hover:bg-hover hover:text-text-primary dark:hover:bg-hover',
-        link:
-          'text-primary-600 underline-offset-4 hover:underline dark:text-primary-400',
+        ghost: 'text-text-primary hover:bg-hover hover:text-text-primary dark:hover:bg-hover',
+        link: 'text-primary-600 underline-offset-4 hover:underline dark:text-primary-400',
       },
       /**
        * size：尺寸
@@ -69,7 +67,7 @@ export const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  },
+  }
 );
 
 /**

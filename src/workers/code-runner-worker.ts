@@ -114,7 +114,9 @@ async function loadPyodide(): Promise<PyodideInstance> {
   await loadExternalScript(`${PYODIDE_BASE}pyodide.js`);
 
   // self.loadPyodide 由引导脚本注入，类型未知需断言
-  const loader = (self as unknown as { loadPyodide?: (opts: { indexURL: string }) => Promise<PyodideInstance> }).loadPyodide;
+  const loader = (
+    self as unknown as { loadPyodide?: (opts: { indexURL: string }) => Promise<PyodideInstance> }
+  ).loadPyodide;
   if (!loader) {
     throw new Error('Pyodide 引导脚本加载失败：self.loadPyodide 未定义');
   }

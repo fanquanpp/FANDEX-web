@@ -34,8 +34,8 @@ const props = defineProps<DialogContentProps>();
 const classes = computed(() =>
   cn(
     'fixed left-1/2 top-1/2 z-modal grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border border-border bg-elevated p-6 shadow-2xl rounded-2xl data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

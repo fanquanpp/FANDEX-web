@@ -80,7 +80,7 @@ export function getModulePrerequisites(moduleId: string): string[] {
  * @returns 分类信息数组，每项包含 id、label、color
  */
 export function getCategories(): CategoryInfo[] {
-  return categoryOrder.map(id => ({
+  return categoryOrder.map((id) => ({
     id,
     label: categoryLabels[id] || id,
     color: categoryColors[id] || '#666666',

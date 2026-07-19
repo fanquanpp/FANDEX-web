@@ -71,9 +71,8 @@ vi.mock('@/lib/modules', () => ({
   docSlug: (id: string) => (id.split('/').pop() || id).replace(/\.(md|mdx)$/, ''),
 }));
 
-const { getGlobalMap, getModuleMap, getDocMap, toMermaidGraph } = await import(
-  '@/services/knowledge-map-service'
-);
+const { getGlobalMap, getModuleMap, getDocMap, toMermaidGraph } =
+  await import('@/services/knowledge-map-service');
 
 beforeEach(() => {
   fakeDocs = [];
@@ -100,8 +99,28 @@ describe('knowledge-map-service', () => {
 
     it('应包含所有模块节点与文档节点', async () => {
       fakeDocs = [
-        { id: 'cpp/pointer.md', data: { title: '指针', module: 'cpp', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'git/branch.md', data: { title: '分支', module: 'git', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'cpp/pointer.md',
+          data: {
+            title: '指针',
+            module: 'cpp',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'git/branch.md',
+          data: {
+            title: '分支',
+            module: 'git',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const map = await getGlobalMap();
       // 节点：3 模块 + 2 文档
@@ -114,21 +133,40 @@ describe('knowledge-map-service', () => {
 
     it('应构建模块级前置依赖边（cpp 依赖 c）', async () => {
       const map = await getGlobalMap();
-      const prereqEdge = map.edges.find((e) => e.type === 'prerequisite' && e.from === 'c' && e.to === 'cpp');
+      const prereqEdge = map.edges.find(
+        (e) => e.type === 'prerequisite' && e.from === 'c' && e.to === 'cpp'
+      );
       expect(prereqEdge).toBeDefined();
     });
 
     it('应构建文档级前置依赖边', async () => {
       fakeDocs = [
-        { id: 'cpp/basic.md', data: { title: '基础', module: 'cpp', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'cpp/basic.md',
+          data: {
+            title: '基础',
+            module: 'cpp',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
         {
           id: 'cpp/advanced.md',
-          data: { title: '进阶', module: 'cpp', order: 2, tags: [], related: [], prerequisites: ['basic'] },
+          data: {
+            title: '进阶',
+            module: 'cpp',
+            order: 2,
+            tags: [],
+            related: [],
+            prerequisites: ['basic'],
+          },
         },
       ];
       const map = await getGlobalMap();
       const docEdge = map.edges.find(
-        (e) => e.type === 'prerequisite' && e.from === 'cpp/basic' && e.to === 'cpp/advanced',
+        (e) => e.type === 'prerequisite' && e.from === 'cpp/basic' && e.to === 'cpp/advanced'
       );
       expect(docEdge).toBeDefined();
     });
@@ -137,11 +175,25 @@ describe('knowledge-map-service', () => {
       fakeDocs = [
         {
           id: 'cpp/a.md',
-          data: { title: 'A', module: 'cpp', order: 1, tags: [], related: ['b'], prerequisites: [] },
+          data: {
+            title: 'A',
+            module: 'cpp',
+            order: 1,
+            tags: [],
+            related: ['b'],
+            prerequisites: [],
+          },
         },
         {
           id: 'cpp/b.md',
-          data: { title: 'B', module: 'cpp', order: 2, tags: [], related: ['a'], prerequisites: [] },
+          data: {
+            title: 'B',
+            module: 'cpp',
+            order: 2,
+            tags: [],
+            related: ['a'],
+            prerequisites: [],
+          },
         },
       ];
       const map = await getGlobalMap();
@@ -160,9 +212,18 @@ describe('knowledge-map-service', () => {
 
     it('应包含模块节点与该模块下所有文档节点', async () => {
       fakeDocs = [
-        { id: 'cpp/1.md', data: { title: '1', module: 'cpp', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'cpp/2.md', data: { title: '2', module: 'cpp', order: 2, tags: [], related: [], prerequisites: [] } },
-        { id: 'git/1.md', data: { title: 'G1', module: 'git', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'cpp/1.md',
+          data: { title: '1', module: 'cpp', order: 1, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'cpp/2.md',
+          data: { title: '2', module: 'cpp', order: 2, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'git/1.md',
+          data: { title: 'G1', module: 'git', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const map = await getModuleMap('cpp');
       // 模块节点 + 2 个文档节点
@@ -180,7 +241,14 @@ describe('knowledge-map-service', () => {
       fakeDocs = [
         {
           id: 'cpp/a.md',
-          data: { title: 'A', module: 'cpp', order: 1, tags: [], related: ['b'], prerequisites: [] },
+          data: {
+            title: 'A',
+            module: 'cpp',
+            order: 1,
+            tags: [],
+            related: ['b'],
+            prerequisites: [],
+          },
         },
         {
           id: 'cpp/b.md',
@@ -213,15 +281,36 @@ describe('knowledge-map-service', () => {
       fakeDocs = [
         {
           id: 'cpp/current.md',
-          data: { title: '当前', module: 'cpp', order: 2, tags: [], related: ['related'], prerequisites: ['prereq'] },
+          data: {
+            title: '当前',
+            module: 'cpp',
+            order: 2,
+            tags: [],
+            related: ['related'],
+            prerequisites: ['prereq'],
+          },
         },
         {
           id: 'cpp/prereq.md',
-          data: { title: '前置', module: 'cpp', order: 1, tags: [], related: [], prerequisites: [] },
+          data: {
+            title: '前置',
+            module: 'cpp',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
         },
         {
           id: 'cpp/related.md',
-          data: { title: '关联', module: 'cpp', order: 3, tags: [], related: [], prerequisites: [] },
+          data: {
+            title: '关联',
+            module: 'cpp',
+            order: 3,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
         },
       ];
       const map = await getDocMap('cpp', 'current');
@@ -297,7 +386,15 @@ describe('knowledge-map-service', () => {
 
     it('应包含难度样式 classDef 定义', () => {
       const map = {
-        nodes: [{ id: 'd1', label: 'D', type: 'doc' as const, module: 'm', difficulty: 'beginner' as const }],
+        nodes: [
+          {
+            id: 'd1',
+            label: 'D',
+            type: 'doc' as const,
+            module: 'm',
+            difficulty: 'beginner' as const,
+          },
+        ],
         edges: [],
       };
       const result = toMermaidGraph(map);

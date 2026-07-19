@@ -41,13 +41,7 @@
  */
 
 import { visit, SKIP } from 'unist-util-visit';
-import type {
-  Root,
-  RootContent,
-  Paragraph,
-  PhrasingContent,
-  Html,
-} from 'mdast';
+import type { Root, RootContent, Paragraph, PhrasingContent, Html } from 'mdast';
 
 /** 提示块类型：exercise 为独立练习，quiz 为测验容器 */
 type FenceKind = 'exercise' | 'quiz';
@@ -294,10 +288,7 @@ function isFenceClose(paragraph: Paragraph): boolean {
  * @param startIdx - 起始搜索索引（不含）
  * @returns 关闭标记索引；未找到返回 -1
  */
-function findCloseFenceIndex(
-  children: readonly RootContent[],
-  startIdx: number,
-): number {
+function findCloseFenceIndex(children: readonly RootContent[], startIdx: number): number {
   let depth = 0;
   for (let i = startIdx; i < children.length; i++) {
     // noUncheckedIndexedAccess：children[i] 类型为 RootContent | undefined
@@ -336,7 +327,7 @@ function findCloseFenceIndex(
 function collectRangeText(
   children: readonly RootContent[],
   startIdx: number,
-  endIdx: number,
+  endIdx: number
 ): string {
   const parts: string[] = [];
   for (let i = startIdx; i < endIdx; i++) {
@@ -380,11 +371,7 @@ function extractRootContentText(node: RootContent): string {
     case 'table':
       // 表格简化处理：按行提取单元格文本
       return node.children
-        .map((row) =>
-          row.children
-            .map((cell) => extractInlineText(cell.children))
-            .join(' | '),
-        )
+        .map((row) => row.children.map((cell) => extractInlineText(cell.children)).join(' | '))
         .join('\n');
     case 'list':
       return extractBlockChildrenText(node.children);
@@ -485,9 +472,7 @@ function buildExerciseData(attrs: AttributeMap, bodyText: string): ExerciseData 
  * @param children - quiz 提示块内部的子节点数组
  * @returns exercise 数据对象数组
  */
-function extractExercisesFromChildren(
-  children: readonly RootContent[],
-): ExerciseData[] {
+function extractExercisesFromChildren(children: readonly RootContent[]): ExerciseData[] {
   const result: ExerciseData[] = [];
   let i = 0;
 
@@ -589,11 +574,7 @@ function buildQuizHtml(attrs: AttributeMap, exercises: ExerciseData[]): string {
  * @param key - 属性名（如 type、id）
  * @param value - 属性值（undefined 时跳过）
  */
-function appendAttrPart(
-  parts: string[],
-  key: string,
-  value: string | undefined,
-): void {
+function appendAttrPart(parts: string[], key: string, value: string | undefined): void {
   if (value === undefined) return;
   parts.push(` data-${key}="${escapeHtml(value)}"`);
 }

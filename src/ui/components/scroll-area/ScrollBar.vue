@@ -9,10 +9,7 @@
 
 import { computed } from 'vue';
 import { cn } from '@/lib/utils';
-import {
-  ScrollAreaScrollbar,
-  type ScrollAreaScrollbarProps,
-} from 'radix-vue';
+import { ScrollAreaScrollbar, type ScrollAreaScrollbarProps } from 'radix-vue';
 
 interface ScrollBarProps extends ScrollAreaScrollbarProps {
   class?: string;
@@ -26,8 +23,8 @@ const classes = computed(() =>
     props.orientation === 'vertical'
       ? 'w-2.5 border-l border-l-transparent p-px'
       : 'h-2.5 flex-col border-t border-t-transparent p-px',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

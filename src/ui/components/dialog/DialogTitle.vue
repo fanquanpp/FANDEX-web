@@ -15,7 +15,7 @@ interface DialogTitlePropsExtended extends DialogTitleProps {
 const props = defineProps<DialogTitlePropsExtended>();
 
 const classes = computed(() =>
-  cn('text-2xl font-semibold leading-tight tracking-tight', props.class),
+  cn('text-2xl font-semibold leading-tight tracking-tight', props.class)
 );
 </script>
 

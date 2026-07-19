@@ -19,19 +19,20 @@ prerequisites: []
 ## 1. 基础数据类型 (8 种)
 
 Lua 是动态类型语言，变量的类型在运行时确定。Lua 有 8 种基础数据类型：
-| 类型 | 描述 | 示例 |
-| :--- | :--- | :--- |
-| **`nil`** | 无效值，表示"不存在" | `local x = nil` |
-| **`boolean`** | 布尔值，只有 ``和`false`|`local flag = ` |
-| **`number`** | 数值，默认是双精度浮点数 (Lua 5.3+ 引入整型子类型) | `local num = 10`, `local int = 42`, `local float = 3.14` |
-| **`string`** | 字符串，支持单引号、双引号和多行字符串 | `local str = "Hello"`, `local multiline = [Line 1
-Line 2](Line 1
-Line 2)` |
-| **`function`** | 函数，是一等公民 | `local add = function(a, b) return a + b end` |
-|---|---|---|
-| **`table`** | 表，Lua 唯一的容器类型 | `local t = {1, 2, 3}` |
-| **`thread`** | 线程，主要用于协程 | `local co = coroutine.create(function() end)` |
-| **`userdata`** | 用户数据，用于 C 语言扩展 | `local ud = ffi.new("int[10]")` |
+
+| 类型           | 描述                                               | 示例                                                     |
+| :------------- | :------------------------------------------------- | :------------------------------------------------------- |
+| **`nil`**      | 无效值，表示"不存在"                               | `local x = nil`                                          |
+| **`boolean`**  | 布尔值，只有 ``和`false`                           | `local flag = `                                          |
+| **`number`**   | 数值，默认是双精度浮点数 (Lua 5.3+ 引入整型子类型) | `local num = 10`, `local int = 42`, `local float = 3.14` |
+| **`string`**   | 字符串，支持单引号、双引号和多行字符串             | `local str = "Hello"`, `local multiline = [Line 1        |
+| Line 2](Line 1 |
+| Line 2)`       |
+| **`function`** | 函数，是一等公民                                   | `local add = function(a, b) return a + b end`            |
+| ---            | ---                                                | ---                                                      |
+| **`table`**    | 表，Lua 唯一的容器类型                             | `local t = {1, 2, 3}`                                    |
+| **`thread`**   | 线程，主要用于协程                                 | `local co = coroutine.create(function() end)`            |
+| **`userdata`** | 用户数据，用于 C 语言扩展                          | `local ud = ffi.new("int[10]")`                          |
 
 ### 1.1 类型判断
 

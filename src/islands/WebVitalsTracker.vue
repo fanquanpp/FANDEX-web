@@ -23,7 +23,12 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
 import { onLCP, onINP, onCLS, onTTFB, onFCP, type Metric } from 'web-vitals';
-import { recordVital, exportVitalsJSON, type VitalName, type VitalRating } from '@services/observability-service';
+import {
+  recordVital,
+  exportVitalsJSON,
+  type VitalName,
+  type VitalRating,
+} from '@services/observability-service';
 
 /**
  * web-vitals 库的 Metric 对象中 name 字段类型为 string
@@ -69,7 +74,7 @@ function handleMetric(metric: Metric): void {
     // eslint-disable-next-line no-console
     console.log(
       `[WebVitals] ${metric.name} = ${metric.value.toFixed(2)} (${metric.rating})`,
-      metric,
+      metric
     );
   }
 }

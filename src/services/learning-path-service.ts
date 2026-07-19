@@ -186,7 +186,10 @@ export async function getPathProgress(pathId: string): Promise<PathProgress> {
   try {
     const stats = await getProgressStats();
     // 构建模块进度映射，便于查询
-    const moduleProgressMap = new Map<string, { total: number; completed: number; inProgress: number }>();
+    const moduleProgressMap = new Map<
+      string,
+      { total: number; completed: number; inProgress: number }
+    >();
     for (const mp of stats.moduleProgress) {
       moduleProgressMap.set(mp.moduleId, {
         total: mp.total,
@@ -232,14 +235,14 @@ export async function getPathProgress(pathId: string): Promise<PathProgress> {
     // 统计必学模块完成情况
     const requiredModules = moduleProgressList.filter((m) => m.priority === 'required');
     const requiredCompleted = requiredModules.filter(
-      (m) => m.completionRate === 100 || completedModuleIds.has(m.moduleId),
+      (m) => m.completionRate === 100 || completedModuleIds.has(m.moduleId)
     ).length;
 
     const completedModules = moduleProgressList.filter(
-      (m) => m.completionRate === 100 || completedModuleIds.has(m.moduleId),
+      (m) => m.completionRate === 100 || completedModuleIds.has(m.moduleId)
     ).length;
     const inProgressModules = moduleProgressList.filter(
-      (m) => m.completionRate > 0 && m.completionRate < 100,
+      (m) => m.completionRate > 0 && m.completionRate < 100
     ).length;
     const totalEstimatedHours = path.modules.reduce((sum, m) => sum + m.estimatedHours, 0);
 
@@ -316,12 +319,12 @@ export async function getRecommendedPath(): Promise<LearningPath | undefined> {
       allPaths.map(async (p) => ({
         path: p,
         progress: await getPathProgress(p.id),
-      })),
+      }))
     );
 
     // 过滤掉完全没有进度的路径
     const candidates = progressList.filter(
-      (item) => item.progress.completedModules > 0 || item.progress.inProgressModules > 0,
+      (item) => item.progress.completedModules > 0 || item.progress.inProgressModules > 0
     );
 
     if (candidates.length === 0) return undefined;

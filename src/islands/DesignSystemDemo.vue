@@ -52,14 +52,7 @@ const dialogOpen = ref(false);
 /**
  * Button 变体矩阵数据
  */
-const buttonVariants = [
-  'default',
-  'destructive',
-  'outline',
-  'secondary',
-  'ghost',
-  'link',
-] as const;
+const buttonVariants = ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'] as const;
 
 const buttonSizes = ['sm', 'default', 'lg'] as const;
 
@@ -78,9 +71,7 @@ const scrollItems = Array.from({ length: 20 }, (_, i) => `第 ${i + 1} 项内容
   <div class="flex flex-col gap-12 p-8 max-w-6xl mx-auto">
     <!-- 页面标题 -->
     <header class="flex flex-col gap-2 border-b border-border pb-6">
-      <h1 class="text-5xl font-bold tracking-tight text-text-primary">
-        Design System
-      </h1>
+      <h1 class="text-5xl font-bold tracking-tight text-text-primary">Design System</h1>
       <p class="text-base text-text-secondary">
         FANDEX 设计系统 · 8 个基础组件 · Tailwind v4 + shadcn-vue + radix-vue
       </p>
@@ -115,9 +106,7 @@ const scrollItems = Array.from({ length: 20 }, (_, i) => `第 ${i + 1} 项内容
           </div>
           <!-- icon size 单独展示 -->
           <div class="flex flex-col gap-2">
-            <span class="text-xs text-text-tertiary uppercase tracking-wider">
-              size: icon
-            </span>
+            <span class="text-xs text-text-tertiary uppercase tracking-wider"> size: icon </span>
             <div class="flex flex-wrap items-center gap-3">
               <Button variant="default" size="icon"><Plus class="size-4" /></Button>
               <Button variant="destructive" size="icon"><Trash2 class="size-4" /></Button>
@@ -165,8 +154,14 @@ const scrollItems = Array.from({ length: 20 }, (_, i) => `第 ${i + 1} 项内容
           </CardHeader>
           <CardContent>
             <div class="flex flex-col gap-2 text-sm">
-              <div class="flex justify-between"><span class="text-text-secondary">总访问</span><span class="font-medium">12,345</span></div>
-              <div class="flex justify-between"><span class="text-text-secondary">活跃用户</span><span class="font-medium">1,029</span></div>
+              <div class="flex justify-between">
+                <span class="text-text-secondary">总访问</span
+                ><span class="font-medium">12,345</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-text-secondary">活跃用户</span
+                ><span class="font-medium">1,029</span>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -295,8 +290,8 @@ const scrollItems = Array.from({ length: 20 }, (_, i) => `第 ${i + 1} 项内容
             <AccordionItem value="item-1">
               <AccordionTrigger>什么是 FANDEX？</AccordionTrigger>
               <AccordionContent>
-                FANDEX 是协助零基础学习者迈出计算机科学学习第一步的完整自学平台，
-                涵盖 51 个模块、1995 篇文档。
+                FANDEX 是协助零基础学习者迈出计算机科学学习第一步的完整自学平台， 涵盖 51
+                个模块、1995 篇文档。
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -308,9 +303,7 @@ const scrollItems = Array.from({ length: 20 }, (_, i) => `第 ${i + 1} 项内容
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>开源协议？</AccordionTrigger>
-              <AccordionContent>
-                MIT 协议，可自由获取、使用、修改和分发。
-              </AccordionContent>
+              <AccordionContent> MIT 协议，可自由获取、使用、修改和分发。 </AccordionContent>
             </AccordionItem>
           </Accordion>
         </CardContent>

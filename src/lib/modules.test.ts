@@ -13,12 +13,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import {
-  getModule,
-  getModulesByCategory,
-  getPrimaryCategory,
-  docSlug,
-} from '@/lib/modules';
+import { getModule, getModulesByCategory, getPrimaryCategory, docSlug } from '@/lib/modules';
 
 describe('getModule', () => {
   it('应根据 id 返回对应模块对象', () => {

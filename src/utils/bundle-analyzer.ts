@@ -110,7 +110,7 @@ function detectBundleType(ext: string): BundleType | null {
  */
 export function analyzeBundle(
   assetsDir: string,
-  options?: { jsBudget?: number; cssBudget?: number },
+  options?: { jsBudget?: number; cssBudget?: number }
 ): BundleAnalysisReport {
   const jsBudget = options?.jsBudget ?? JS_BUDGET_BYTES;
   const cssBudget = options?.cssBudget ?? CSS_BUDGET_BYTES;
@@ -177,7 +177,7 @@ function collectBundleFiles(
   currentDir: string,
   rootDir: string,
   jsBudget: number,
-  cssBudget: number,
+  cssBudget: number
 ): BundleFileReport[] {
   const results: BundleFileReport[] = [];
   let entries: string[];
@@ -237,10 +237,10 @@ export function formatBundleReport(report: BundleAnalysisReport): string {
   lines.push(`Total files: ${report.summary.totalFiles}`);
   lines.push(`Over budget: ${report.summary.overBudgetCount}`);
   lines.push(
-    `JS total: ${formatBytes(report.summary.jsRawTotal)} raw / ${formatBytes(report.summary.jsGzipTotal)} gzip`,
+    `JS total: ${formatBytes(report.summary.jsRawTotal)} raw / ${formatBytes(report.summary.jsGzipTotal)} gzip`
   );
   lines.push(
-    `CSS total: ${formatBytes(report.summary.cssRawTotal)} raw / ${formatBytes(report.summary.cssGzipTotal)} gzip`,
+    `CSS total: ${formatBytes(report.summary.cssRawTotal)} raw / ${formatBytes(report.summary.cssGzipTotal)} gzip`
   );
   lines.push(`Status: ${report.passed ? 'PASSED' : 'FAILED'}`);
   if (report.summary.overBudgetCount > 0) {
@@ -249,7 +249,7 @@ export function formatBundleReport(report: BundleAnalysisReport): string {
     for (const f of report.files) {
       if (!f.overBudget) continue;
       lines.push(
-        `  [${f.type.toUpperCase()}] ${f.file} — ${formatBytes(f.gzipSize)} gzip > ${formatBytes(f.budget)} budget`,
+        `  [${f.type.toUpperCase()}] ${f.file} — ${formatBytes(f.gzipSize)} gzip > ${formatBytes(f.budget)} budget`
       );
     }
   }

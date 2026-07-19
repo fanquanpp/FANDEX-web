@@ -72,7 +72,9 @@ describe('module-service', () => {
       expect(modules.length).toBeGreaterThan(0);
       // modules 数组使用 `as const` 推断，categories 字段为各字面量元组的联合
       // 此处需 cast 为 readonly string[] 才能使用 includes 查询（与 lib/modules.ts 中做法一致）
-      expect(modules.every((m) => (m.categories as readonly string[]).includes('toolchain'))).toBe(true);
+      expect(modules.every((m) => (m.categories as readonly string[]).includes('toolchain'))).toBe(
+        true
+      );
     });
 
     it('未匹配分类应返回空数组', () => {

@@ -328,7 +328,7 @@ describe('exercise-service', () => {
           correctAnswer: 'a',
         },
         'ans',
-        undefined,
+        undefined
       );
       const stats = await getExerciseProgress();
       expect(stats.totalExercises).toBe(3);
@@ -342,7 +342,7 @@ describe('exercise-service', () => {
       await submitAnswer(makeFillBlank({ id: 'fb-1', moduleId: 'cpp' }), 'pointer');
       await submitAnswer(
         makeFillBlank({ id: 'fb-2', moduleId: 'git', answers: ['commit'] }),
-        'commit',
+        'commit'
       );
       const stats = await getExerciseProgress('cpp');
       expect(stats.totalExercises).toBe(1);
@@ -352,7 +352,10 @@ describe('exercise-service', () => {
 
   describe('getIncorrectExercises', () => {
     it('应仅返回 isCorrect=false 的记录', async () => {
-      await submitAnswer(makeFillBlank({ id: 'fb-1', answers: ['only'] }), 'correct-value-but-no-match');
+      await submitAnswer(
+        makeFillBlank({ id: 'fb-1', answers: ['only'] }),
+        'correct-value-but-no-match'
+      );
       await submitAnswer(makeFillBlank({ id: 'fb-2', answers: ['ok'] }), 'ok');
       const incorrect = await getIncorrectExercises();
       expect(incorrect).toHaveLength(1);

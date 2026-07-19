@@ -34,12 +34,7 @@ const issues = [];
  * Phase 1.5 新增字段列表
  * 用于检测每篇文档是否已补全这些字段
  */
-const SCHEMA_FIELDS = [
-  'learningObjectives',
-  'references',
-  'lastReviewed',
-  'reviewer',
-];
+const SCHEMA_FIELDS = ['learningObjectives', 'references', 'lastReviewed', 'reviewer'];
 
 /**
  * schema 缺失问题收集数组

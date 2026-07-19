@@ -213,13 +213,13 @@ updated: '2026-05-29'
 
 ### U
 
-| 术语         | 英文               | 释义                          |
+| 术语 | 英文 | 释义 |
 | ------------ | ------------------ | ----------------------------- | --- |
-| 并集类型     | Union Type         | 多种类型之一，`T              | U`  |
-| 唯一成员枚举 | Unique Enum Member | 枚举中唯一的成员              |
-| 唯一符号     | Unique Symbol      | 唯一的符号类型                |
-| 未知类型     | Unknown Type       | 顶级类型，必须先检查才能使用  |
-| 非空类型     | Non-null Type      | 排除 null 和 undefined 的类型 |
+| 并集类型 | Union Type | 多种类型之一，`T              | U` |
+| 唯一成员枚举 | Unique Enum Member | 枚举中唯一的成员 |
+| 唯一符号 | Unique Symbol | 唯一的符号类型 |
+| 未知类型 | Unknown Type | 顶级类型，必须先检查才能使用 |
+| 非空类型 | Non-null Type | 排除 null 和 undefined 的类型 |
 
 ### V
 

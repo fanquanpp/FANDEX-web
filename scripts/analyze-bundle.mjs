@@ -177,15 +177,21 @@ function formatBundleReport(report) {
   lines.push('========== Bundle Size Analysis ==========');
   lines.push(`Total files: ${report.summary.totalFiles}`);
   lines.push(`Over budget: ${report.summary.overBudgetCount}`);
-  lines.push(`JS total: ${formatBytes(report.summary.jsRawTotal)} raw / ${formatBytes(report.summary.jsGzipTotal)} gzip`);
-  lines.push(`CSS total: ${formatBytes(report.summary.cssRawTotal)} raw / ${formatBytes(report.summary.cssGzipTotal)} gzip`);
+  lines.push(
+    `JS total: ${formatBytes(report.summary.jsRawTotal)} raw / ${formatBytes(report.summary.jsGzipTotal)} gzip`
+  );
+  lines.push(
+    `CSS total: ${formatBytes(report.summary.cssRawTotal)} raw / ${formatBytes(report.summary.cssGzipTotal)} gzip`
+  );
   lines.push(`Status: ${report.passed ? 'PASSED' : 'FAILED'}`);
   if (report.summary.overBudgetCount > 0) {
     lines.push('');
     lines.push('Over-budget files:');
     for (const f of report.files) {
       if (!f.overBudget) continue;
-      lines.push(`  [${f.type.toUpperCase()}] ${f.file} — ${formatBytes(f.gzipSize)} gzip > ${formatBytes(f.budget)} budget`);
+      lines.push(
+        `  [${f.type.toUpperCase()}] ${f.file} — ${formatBytes(f.gzipSize)} gzip > ${formatBytes(f.budget)} budget`
+      );
     }
   }
   lines.push('==========================================');

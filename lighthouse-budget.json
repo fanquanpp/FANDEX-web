@@ -2,11 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "urls": [
-        "/",
-        "/agent/",
-        "/agent/概述与架构/"
-      ],
+      "urls": ["/", "/agent/", "/agent/概述与架构/"],
       "numberOfRuns": 3,
       "settings": {
         "preset": "desktop",

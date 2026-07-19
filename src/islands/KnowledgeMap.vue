@@ -181,7 +181,7 @@ function buildNodeUrl(node: MapNode): string {
  * 主题切换时重新渲染 Mermaid 以应用对应配色
  */
 function setupThemeObserver(): void {
-  themeObserver = new MutationObserver(mutations => {
+  themeObserver = new MutationObserver((mutations) => {
     for (const m of mutations) {
       if (m.type === 'attributes' && m.attributeName === 'data-theme') {
         const newTheme =
@@ -290,7 +290,7 @@ function bindNodeClickHandlers(): void {
 
   // Mermaid 生成的节点 <g> 通常带 class="node"，id 形如 "flowchart-<NodeID>-N"
   const nodeGroups = svg.querySelectorAll<SVGGElement>('g.node');
-  nodeGroups.forEach(g => {
+  nodeGroups.forEach((g) => {
     const rawId = g.getAttribute('id') || '';
     // 从 "flowchart-<NodeID>-N" 中提取 <NodeID>
     const match = rawId.match(/^flowchart-(.+)-\d+$/);
@@ -429,19 +429,45 @@ watch(
     <!-- 工具栏：缩放控制 + 重新渲染 -->
     <div class="kmap-toolbar" v-if="status === 'rendered' && nodeCount > 0">
       <button class="kmap-btn" @click="zoomOut" aria-label="缩小" title="缩小">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
           <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
       </button>
       <span class="kmap-scale">{{ Math.round(scale * 100) }}%</span>
       <button class="kmap-btn" @click="zoomIn" aria-label="放大" title="放大">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
           <line x1="12" y1="5" x2="12" y2="19" />
           <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
       </button>
-      <button class="kmap-btn kmap-reset-btn" @click="zoomReset" aria-label="重置视图" title="重置视图">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button
+        class="kmap-btn kmap-reset-btn"
+        @click="zoomReset"
+        aria-label="重置视图"
+        title="重置视图"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="1 4 1 10 7 10" />
           <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
         </svg>
@@ -467,7 +493,14 @@ watch(
 
       <!-- 错误状态 -->
       <div v-else-if="status === 'error'" class="kmap-error">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <circle cx="12" cy="12" r="10" />
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -479,7 +512,14 @@ watch(
 
       <!-- 空状态 -->
       <div v-else-if="nodeCount === 0" class="kmap-empty">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
           <circle cx="12" cy="12" r="10" />
           <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
         </svg>
@@ -559,7 +599,9 @@ watch(
   background: var(--color-bg-card);
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: color var(--transition-fast, 0.15s), border-color var(--transition-fast, 0.15s);
+  transition:
+    color var(--transition-fast, 0.15s),
+    border-color var(--transition-fast, 0.15s);
 }
 
 .kmap-btn:hover {
@@ -692,7 +734,9 @@ watch(
   color: var(--color-text);
   font-size: 0.88em;
   cursor: pointer;
-  transition: color var(--transition-fast, 0.15s), border-color var(--transition-fast, 0.15s);
+  transition:
+    color var(--transition-fast, 0.15s),
+    border-color var(--transition-fast, 0.15s);
 }
 
 .kmap-retry-btn:hover {

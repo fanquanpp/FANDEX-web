@@ -260,10 +260,10 @@ key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
 ```yaml
 # 问题：缓存了不必要的文件
-path: node_modules  # 包含平台相关的二进制文件
+path: node_modules # 包含平台相关的二进制文件
 
 # 解决：只缓存包管理器缓存目录
-path: ~/.npm        # 只缓存下载缓存
+path: ~/.npm # 只缓存下载缓存
 ```
 
 ### 6.3 跨分支缓存

@@ -140,8 +140,7 @@ export class ExerciseRepository {
       if (!db) return undefined;
       const tx = db.transaction(STORE_NAME, 'readonly');
       const result = (await wrapRequest(tx.objectStore(STORE_NAME).get(id))) as
-        | ExerciseRecord
-        | undefined;
+        ExerciseRecord | undefined;
       db.close();
       return result ?? undefined;
     } catch {
@@ -254,7 +253,7 @@ export class ExerciseRepository {
         records: all,
       },
       null,
-      2,
+      2
     );
   }
 

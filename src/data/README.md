@@ -40,7 +40,7 @@ export const storage = {
 // 错误：Data 层包含业务逻辑
 export async function calculateProgress(slug: string): Promise<number> {
   const progress = await storage.read(`doc:${slug}`);
-  return progress.completedDocs / progress.totalDocs * 100; // 禁止：业务计算
+  return (progress.completedDocs / progress.totalDocs) * 100; // 禁止：业务计算
 }
 ```
 

@@ -57,8 +57,15 @@ vi.mock('astro:content', () => ({
   }),
 }));
 
-const { getAllDocs, getDocsByModule, getDocBySlug, getDocNavigation, getDocStats, getDocsByCategory, getRelatedDocs } =
-  await import('@/services/doc-service');
+const {
+  getAllDocs,
+  getDocsByModule,
+  getDocBySlug,
+  getDocNavigation,
+  getDocStats,
+  getDocsByCategory,
+  getRelatedDocs,
+} = await import('@/services/doc-service');
 
 beforeEach(() => {
   fakeDocs = [];
@@ -68,10 +75,26 @@ describe('doc-service', () => {
   describe('getAllDocs', () => {
     it('应按 module 字母序与 order 升序排序文档', async () => {
       fakeDocs = [
-        { id: 'b/doc2.md', body: '', data: { title: 'B2', module: 'b', order: 2, tags: [], related: [], prerequisites: [] } },
-        { id: 'a/doc2.md', body: '', data: { title: 'A2', module: 'a', order: 2, tags: [], related: [], prerequisites: [] } },
-        { id: 'a/doc1.md', body: '', data: { title: 'A1', module: 'a', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'b/doc1.md', body: '', data: { title: 'B1', module: 'b', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'b/doc2.md',
+          body: '',
+          data: { title: 'B2', module: 'b', order: 2, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'a/doc2.md',
+          body: '',
+          data: { title: 'A2', module: 'a', order: 2, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'a/doc1.md',
+          body: '',
+          data: { title: 'A1', module: 'a', order: 1, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'b/doc1.md',
+          body: '',
+          data: { title: 'B1', module: 'b', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getAllDocs();
       expect(result).toHaveLength(4);
@@ -83,8 +106,16 @@ describe('doc-service', () => {
 
     it('无 order 字段时应按 0 处理排序', async () => {
       fakeDocs = [
-        { id: 'm/a.md', body: '', data: { title: 'A', module: 'm', tags: [], related: [], prerequisites: [] } },
-        { id: 'm/b.md', body: '', data: { title: 'B', module: 'm', order: 5, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/a.md',
+          body: '',
+          data: { title: 'A', module: 'm', tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'm/b.md',
+          body: '',
+          data: { title: 'B', module: 'm', order: 5, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getAllDocs();
       // 无 order 视为 0，应排在 order=5 之前
@@ -101,9 +132,21 @@ describe('doc-service', () => {
   describe('getDocsByModule', () => {
     it('应仅返回指定模块的文档并按 order 升序', async () => {
       fakeDocs = [
-        { id: 'a/2.md', body: '', data: { title: 'A2', module: 'a', order: 2, tags: [], related: [], prerequisites: [] } },
-        { id: 'b/1.md', body: '', data: { title: 'B1', module: 'b', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'a/1.md', body: '', data: { title: 'A1', module: 'a', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'a/2.md',
+          body: '',
+          data: { title: 'A2', module: 'a', order: 2, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'b/1.md',
+          body: '',
+          data: { title: 'B1', module: 'b', order: 1, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'a/1.md',
+          body: '',
+          data: { title: 'A1', module: 'a', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getDocsByModule('a');
       expect(result).toHaveLength(2);
@@ -113,7 +156,11 @@ describe('doc-service', () => {
 
     it('未匹配模块应返回空数组', async () => {
       fakeDocs = [
-        { id: 'a/1.md', body: '', data: { title: 'A1', module: 'a', tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'a/1.md',
+          body: '',
+          data: { title: 'A1', module: 'a', tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getDocsByModule('unknown');
       expect(result).toEqual([]);
@@ -123,7 +170,11 @@ describe('doc-service', () => {
   describe('getDocBySlug', () => {
     it('应通过 slug 精确匹配文档', async () => {
       fakeDocs = [
-        { id: 'a/hello-world.md', body: '', data: { title: 'Hello', module: 'a', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'a/hello-world.md',
+          body: '',
+          data: { title: 'Hello', module: 'a', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getDocBySlug('a', 'hello-world');
       expect(result).not.toBeNull();
@@ -132,7 +183,11 @@ describe('doc-service', () => {
 
     it('未找到 slug 应返回 null', async () => {
       fakeDocs = [
-        { id: 'a/exists.md', body: '', data: { title: 'E', module: 'a', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'a/exists.md',
+          body: '',
+          data: { title: 'E', module: 'a', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const result = await getDocBySlug('a', 'missing');
       expect(result).toBeNull();
@@ -142,8 +197,16 @@ describe('doc-service', () => {
   describe('getDocNavigation', () => {
     it('应正确计算首篇文档的导航（prev=null, next=下一篇）', async () => {
       fakeDocs = [
-        { id: 'm/first.md', body: '', data: { title: 'F', module: 'm', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'm/second.md', body: '', data: { title: 'S', module: 'm', order: 2, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/first.md',
+          body: '',
+          data: { title: 'F', module: 'm', order: 1, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'm/second.md',
+          body: '',
+          data: { title: 'S', module: 'm', order: 2, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const nav = await getDocNavigation('m', 'first');
       expect(nav.prev).toBeNull();
@@ -153,7 +216,11 @@ describe('doc-service', () => {
 
     it('未找到当前文档应返回 { prev: null, next: null }', async () => {
       fakeDocs = [
-        { id: 'm/a.md', body: '', data: { title: 'A', module: 'm', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/a.md',
+          body: '',
+          data: { title: 'A', module: 'm', order: 1, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const nav = await getDocNavigation('m', 'missing');
       expect(nav).toEqual({ prev: null, next: null });
@@ -161,8 +228,16 @@ describe('doc-service', () => {
 
     it('应正确计算末篇文档的导航（next=null, prev=上一篇）', async () => {
       fakeDocs = [
-        { id: 'm/first.md', body: '', data: { title: 'F', module: 'm', order: 1, tags: [], related: [], prerequisites: [] } },
-        { id: 'm/last.md', body: '', data: { title: 'L', module: 'm', order: 2, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/first.md',
+          body: '',
+          data: { title: 'F', module: 'm', order: 1, tags: [], related: [], prerequisites: [] },
+        },
+        {
+          id: 'm/last.md',
+          body: '',
+          data: { title: 'L', module: 'm', order: 2, tags: [], related: [], prerequisites: [] },
+        },
       ];
       const nav = await getDocNavigation('m', 'last');
       expect(nav.next).toBeNull();
@@ -174,9 +249,44 @@ describe('doc-service', () => {
   describe('getDocStats', () => {
     it('应聚合统计文档总数、模块数、分类数与标签数', async () => {
       fakeDocs = [
-        { id: 'a/1.md', body: '', data: { title: 'A1', module: 'a', order: 1, category: 'intro', tags: ['t1', 't2'], related: [], prerequisites: [] } },
-        { id: 'a/2.md', body: '', data: { title: 'A2', module: 'a', order: 2, category: 'intro', tags: ['t1'], related: [], prerequisites: [] } },
-        { id: 'b/1.md', body: '', data: { title: 'B1', module: 'b', order: 1, tags: ['t3'], related: [], prerequisites: [] } },
+        {
+          id: 'a/1.md',
+          body: '',
+          data: {
+            title: 'A1',
+            module: 'a',
+            order: 1,
+            category: 'intro',
+            tags: ['t1', 't2'],
+            related: [],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'a/2.md',
+          body: '',
+          data: {
+            title: 'A2',
+            module: 'a',
+            order: 2,
+            category: 'intro',
+            tags: ['t1'],
+            related: [],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'b/1.md',
+          body: '',
+          data: {
+            title: 'B1',
+            module: 'b',
+            order: 1,
+            tags: ['t3'],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const stats = await getDocStats();
       expect(stats.totalDocs).toBe(3);
@@ -194,21 +304,79 @@ describe('doc-service', () => {
   describe('getDocsByCategory', () => {
     it('应返回匹配分类的文档', async () => {
       fakeDocs = [
-        { id: 'a/1.md', body: '', data: { title: 'A1', module: 'a', order: 1, category: 'intro', tags: [], related: [], prerequisites: [] } },
-        { id: 'b/1.md', body: '', data: { title: 'B1', module: 'b', order: 1, category: 'advanced', tags: [], related: [], prerequisites: [] } },
-        { id: 'c/1.md', body: '', data: { title: 'C1', module: 'c', order: 1, category: 'intro', tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'a/1.md',
+          body: '',
+          data: {
+            title: 'A1',
+            module: 'a',
+            order: 1,
+            category: 'intro',
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'b/1.md',
+          body: '',
+          data: {
+            title: 'B1',
+            module: 'b',
+            order: 1,
+            category: 'advanced',
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'c/1.md',
+          body: '',
+          data: {
+            title: 'C1',
+            module: 'c',
+            order: 1,
+            category: 'intro',
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const result = await getDocsByCategory('intro');
       expect(result).toHaveLength(2);
-      expect(result.every(d => d.data.category === 'intro')).toBe(true);
+      expect(result.every((d) => d.data.category === 'intro')).toBe(true);
     });
   });
 
   describe('getRelatedDocs', () => {
     it('应基于 slug 字符串引用返回关联文档', async () => {
       fakeDocs = [
-        { id: 'm/current.md', body: '', data: { title: 'Current', module: 'm', order: 1, tags: [], related: ['related-doc'], prerequisites: [] } },
-        { id: 'm/related-doc.md', body: '', data: { title: 'Related', module: 'm', order: 2, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/current.md',
+          body: '',
+          data: {
+            title: 'Current',
+            module: 'm',
+            order: 1,
+            tags: [],
+            related: ['related-doc'],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'm/related-doc.md',
+          body: '',
+          data: {
+            title: 'Related',
+            module: 'm',
+            order: 2,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const result = await getRelatedDocs('m', 'current');
       expect(result).toHaveLength(1);
@@ -217,8 +385,30 @@ describe('doc-service', () => {
 
     it('应基于完整路径引用返回关联文档', async () => {
       fakeDocs = [
-        { id: 'm/current.md', body: '', data: { title: 'Current', module: 'm', order: 1, tags: [], related: ['other/cross'], prerequisites: [] } },
-        { id: 'other/cross.md', body: '', data: { title: 'Cross', module: 'other', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/current.md',
+          body: '',
+          data: {
+            title: 'Current',
+            module: 'm',
+            order: 1,
+            tags: [],
+            related: ['other/cross'],
+            prerequisites: [],
+          },
+        },
+        {
+          id: 'other/cross.md',
+          body: '',
+          data: {
+            title: 'Cross',
+            module: 'other',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const result = await getRelatedDocs('m', 'current');
       expect(result).toHaveLength(1);
@@ -227,7 +417,18 @@ describe('doc-service', () => {
 
     it('无关联字段时应返回空数组', async () => {
       fakeDocs = [
-        { id: 'm/lonely.md', body: '', data: { title: 'Lonely', module: 'm', order: 1, tags: [], related: [], prerequisites: [] } },
+        {
+          id: 'm/lonely.md',
+          body: '',
+          data: {
+            title: 'Lonely',
+            module: 'm',
+            order: 1,
+            tags: [],
+            related: [],
+            prerequisites: [],
+          },
+        },
       ];
       const result = await getRelatedDocs('m', 'lonely');
       expect(result).toEqual([]);

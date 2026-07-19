@@ -19,8 +19,8 @@ const props = defineProps<TabsListPropsExtended>();
 const classes = computed(() =>
   cn(
     'inline-flex h-10 items-center justify-center rounded-lg bg-sunken p-1 text-text-secondary',
-    props.class,
-  ),
+    props.class
+  )
 );
 </script>
 

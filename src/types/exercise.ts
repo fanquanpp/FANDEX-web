@@ -10,12 +10,7 @@ export type ExerciseType = 'fill-blank' | 'choice' | 'code-fix' | 'open-ended';
 
 /** 习题难度（Bloom 分类法） */
 export type CognitiveLevel =
-  | 'remember'
-  | 'understand'
-  | 'apply'
-  | 'analyze'
-  | 'evaluate'
-  | 'create';
+  'remember' | 'understand' | 'apply' | 'analyze' | 'evaluate' | 'create';
 
 /** 习题基础接口 */
 export interface Exercise {

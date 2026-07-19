@@ -41,8 +41,8 @@ export async function getAllTags(): Promise<TagWithCount[]> {
   try {
     const docs = await getCollection('docs');
     const tagMap = new Map<string, number>();
-    docs.forEach(doc => {
-      doc.data.tags.forEach(tag => {
+    docs.forEach((doc) => {
+      doc.data.tags.forEach((tag) => {
         tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
       });
     });
@@ -76,8 +76,8 @@ export async function getTagStats(): Promise<TagStats> {
   try {
     const docs = await getCollection('docs');
     const tagMap = new Map<string, number>();
-    docs.forEach(doc => {
-      doc.data.tags.forEach(tag => {
+    docs.forEach((doc) => {
+      doc.data.tags.forEach((tag) => {
         tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
       });
     });

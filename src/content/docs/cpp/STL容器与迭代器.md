@@ -20,13 +20,14 @@ prerequisites:
 ## 1. 序列容器
 
 序列容器按顺序存储元素，支持随机访问或顺序访问。
-| 容器 | 描述 | 特点 | 示例 |
-| :--- | :--- | :--- | :--- |
-| `std::vector` | 动态数组 | 随机访问快，尾部插入/删除快 | `std::vector<int> v = {1, 2, 3};` |
-| `std::list` | 双向链表 | 任意位置插入/删除快，不支持随机访问 | `std::list<int> l = {1, 2, 3};` |
-| `std::deque` | 双端队列 | 两端插入/删除快，随机访问快 | `std::deque<int> d = {1, 2, 3};` |
-| `std::array` | 固定大小数组 (C++11) | 栈上分配，随机访问快 | `std::array<int, 3> a = {1, 2, 3};` |
-| `std::forward_list` | 单向链表 (C++11) | 空间开销小，仅支持前向遍历 | `std::forward_list<int> fl = {1, 2, 3};` |
+
+| 容器                | 描述                 | 特点                                | 示例                                     |
+| :------------------ | :------------------- | :---------------------------------- | :--------------------------------------- |
+| `std::vector`       | 动态数组             | 随机访问快，尾部插入/删除快         | `std::vector<int> v = {1, 2, 3};`        |
+| `std::list`         | 双向链表             | 任意位置插入/删除快，不支持随机访问 | `std::list<int> l = {1, 2, 3};`          |
+| `std::deque`        | 双端队列             | 两端插入/删除快，随机访问快         | `std::deque<int> d = {1, 2, 3};`         |
+| `std::array`        | 固定大小数组 (C++11) | 栈上分配，随机访问快                | `std::array<int, 3> a = {1, 2, 3};`      |
+| `std::forward_list` | 单向链表 (C++11)     | 空间开销小，仅支持前向遍历          | `std::forward_list<int> fl = {1, 2, 3};` |
 
 ### 1.1 std::vector
 
@@ -149,11 +150,12 @@ prerequisites:
 ## 2. 关联容器
 
 关联容器按键值对存储元素，自动排序。
-| 容器 | 描述 | 特点 | 示例 |
-| :--- | :--- | :--- | :--- |
-| `std::set` | 有序集合 | 自动排序，无重复元素 | `std::set<int> s = {3, 1, 2};` |
-| `std::map` | 有序键值对 | 自动按键排序 | `std::map<std::string, int> m = {{"a", 1}, {"b", 2}};` |
-| `std::multiset` | 有序多重集合 | 自动排序，允许重复元素 | `std::multiset<int> ms = {1, 2, 1, 3};` |
+
+| 容器            | 描述         | 特点                     | 示例                                                         |
+| :-------------- | :----------- | :----------------------- | :----------------------------------------------------------- |
+| `std::set`      | 有序集合     | 自动排序，无重复元素     | `std::set<int> s = {3, 1, 2};`                               |
+| `std::map`      | 有序键值对   | 自动按键排序             | `std::map<std::string, int> m = {{"a", 1}, {"b", 2}};`       |
+| `std::multiset` | 有序多重集合 | 自动排序，允许重复元素   | `std::multiset<int> ms = {1, 2, 1, 3};`                      |
 | `std::multimap` | 有序多重映射 | 自动按键排序，允许重复键 | `std::multimap<std::string, int> mm = {{"a", 1}, {"a", 2}};` |
 
 ### 2.1 std::map
@@ -232,12 +234,13 @@ prerequisites:
 ## 3. 无序容器 (C++11)
 
 无序容器使用哈希表实现，提供平均常数时间的查找、插入和删除操作。
-| 容器 | 描述 | 特点 | 示例 |
-| :--- | :--- | :--- | :--- |
-| `std::unordered_set` | 无序集合 | 哈希表实现，无序 | `std::unordered_set<int> us = {3, 1, 2};` |
-| `std::unordered_map` | 无序键值对 | 哈希表实现，无序 | `std::unordered_map<std::string, int> um = {{"a", 1}, {"b", 2}};` |
-| `std::unordered_multiset` | 无序多重集合 | 哈希表实现，允许重复元素 | `std::unordered_multiset<int> ums = {1, 2, 1, 3};` |
-| `std::unordered_multimap` | 无序多重映射 | 哈希表实现，允许重复键 | `std::unordered_multimap<std::string, int> umm = {{"a", 1}, {"a", 2}};` |
+
+| 容器                      | 描述         | 特点                     | 示例                                                                    |
+| :------------------------ | :----------- | :----------------------- | :---------------------------------------------------------------------- |
+| `std::unordered_set`      | 无序集合     | 哈希表实现，无序         | `std::unordered_set<int> us = {3, 1, 2};`                               |
+| `std::unordered_map`      | 无序键值对   | 哈希表实现，无序         | `std::unordered_map<std::string, int> um = {{"a", 1}, {"b", 2}};`       |
+| `std::unordered_multiset` | 无序多重集合 | 哈希表实现，允许重复元素 | `std::unordered_multiset<int> ums = {1, 2, 1, 3};`                      |
+| `std::unordered_multimap` | 无序多重映射 | 哈希表实现，允许重复键   | `std::unordered_multimap<std::string, int> umm = {{"a", 1}, {"a", 2}};` |
 
 ### 3.1 std::unordered_map
 
@@ -276,10 +279,11 @@ prerequisites:
 ## 4. 容器适配器
 
 容器适配器是对现有容器的封装，提供特定的接口。
-| 容器 | 描述 | 底层容器 | 示例 |
-| :--- | :--- | :--- | :--- |
-| `std::stack` | 栈（后进先出） | `deque` (默认) | `std::stack<int> st; st.push(1);` |
-| `std::queue` | 队列（先进先出） | `deque` (默认) | `std::queue<int> q; q.push(1);` |
+
+| 容器                  | 描述               | 底层容器        | 示例                                       |
+| :-------------------- | :----------------- | :-------------- | :----------------------------------------- |
+| `std::stack`          | 栈（后进先出）     | `deque` (默认)  | `std::stack<int> st; st.push(1);`          |
+| `std::queue`          | 队列（先进先出）   | `deque` (默认)  | `std::queue<int> q; q.push(1);`            |
 | `std::priority_queue` | 优先队列（最大堆） | `vector` (默认) | `std::priority_queue<int> pq; pq.push(1);` |
 
 ### 4.1 std::stack

@@ -83,10 +83,11 @@ GitHub Flavored Markdown（GFM）是 GitHub 在 CommonMark 基础上扩展的 Ma
 
 ```markdown
 > 简化写法
-> 名称 | 类型
-> --- | ---
-> id | integer
-> name | string
+>
+> | 名称 | 类型    |
+> | ---- | ------- |
+> | id   | integer |
+> | name | string  |
 ```
 
 ## 3. 任务列表

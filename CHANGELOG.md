@@ -17,6 +17,7 @@
 #### 文档清单（17 篇）
 
 基础篇：
+
 - `svg/概述与环境配置.md`：SVG 发展、特性对比、嵌入方式、开发环境
 - `svg/基础语法与文档结构.md`：根元素、命名空间、defs/symbol/use、嵌套规则
 - `svg/坐标系与viewBox.md`：视口、viewBox、preserveAspectRatio、坐标系变换
@@ -24,6 +25,7 @@
 - `svg/路径path详解.md`：path 命令、贝塞尔曲线、弧线、fill-rule
 
 样式篇：
+
 - `svg/文本与排版.md`：text/tspan/textPath、文字锚点、可访问文本
 - `svg/颜色与填充.md`：fill/stroke、currentColor、paint-order、vector-effect
 - `svg/渐变与图案.md`：linearGradient/radialGradient/pattern 与组合应用
@@ -31,6 +33,7 @@
 - `svg/滤镜详解.md`：feGaussianBlur/feDropShadow/feColorMatrix/光照
 
 进阶篇：
+
 - `svg/裁剪与蒙版.md`：clipPath 硬裁剪、mask 软蒙版、组合应用
 - `svg/符号与复用.md`：defs/symbol/use、图标系统构建
 - `svg/动画基础.md`：SMIL/animateTransform/animateMotion 与 CSS 动画对比
@@ -38,6 +41,7 @@
 - `svg/JavaScript交互.md`：DOM 操作、事件、动态生成、数据驱动可视化
 
 应用篇：
+
 - `svg/响应式与性能.md`：响应式适配、性能瓶颈、优化策略、懒加载
 - `svg/图标与可访问性.md`：图标系统、aria 属性、WCAG 对比度
 - `svg/实战项目.md`：环形进度条、柱状图、动画 Logo、地图、加载动画、折线图、饼图

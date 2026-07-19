@@ -37,7 +37,10 @@
     "etymology": "Bjarne Stroustrup 于 1980s 提出，\"资源获取即初始化\"，将资源生命周期绑定到对象生命周期",
     "definition": "C++ 资源管理范式：将资源获取绑定到对象构造、资源释放绑定到对象析构，借助栈展开保证异常安全。",
     "module": "cpp",
-    "references": ["https://en.cppreference.com/w/cpp/raii", "Stroustrup, The C++ Programming Language"]
+    "references": [
+      "https://en.cppreference.com/w/cpp/raii",
+      "Stroustrup, The C++ Programming Language"
+    ]
   },
   {
     "term": "引用",
@@ -493,7 +496,9 @@
     "etymology": "拉丁语 \"classis\"（分组、类别），面向对象的基本构造",
     "definition": "C# 中定义对象结构与行为的引用类型，支持封装、继承、多态，通过 class 关键字声明。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs"
+    ]
   },
   {
     "term": "委托",
@@ -541,7 +546,9 @@
     "etymology": "拉丁语 \"reflectere\"（折回），指程序运行时观察自身结构",
     "definition": "运行时获取类型元数据、创建实例、调用方法、访问字段的机制，通过 System.Reflection 命名空间提供。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/reflection"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/reflection"
+    ]
   },
   {
     "term": "特性",
@@ -549,7 +556,9 @@
     "etymology": "拉丁语 \"attribuere\"（赋予），指附加在程序元素上的元数据",
     "definition": "C# 中通过方括号语法为程序元素附加元数据的机制，运行时通过反射读取，广泛用于序列化、验证、代码生成。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/attributes"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/attributes"
+    ]
   },
   {
     "term": "记录类型",
@@ -573,7 +582,9 @@
     "etymology": "拉丁语 \"co-\"（一起）+ \"variare\"（变化），类型变换方向一致",
     "definition": "泛型类型参数的子类型关系保持方向一致：若 A 是 B 的子类型，则 IEnumerable<A> 是 IEnumerable<B> 的子类型。C# 用 out 修饰。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/covariance-contravariance"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/covariance-contravariance"
+    ]
   },
   {
     "term": "逆变",
@@ -581,7 +592,9 @@
     "etymology": "\"contra-\"（相反）+ \"variare\"，类型变换方向相反",
     "definition": "泛型类型参数的子类型关系反向：若 A 是 B 的子类型，则 Action<B> 是 Action<A> 的子类型。C# 用 in 修饰。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/covariance-contravariance"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/concepts/covariance-contravariance"
+    ]
   },
   {
     "term": "装饰器",
@@ -613,7 +626,9 @@
     "etymology": "\"context\" 指资源使用的上下文环境",
     "definition": "实现 __enter__ 与 __exit__ 方法的对象，通过 with 语句保证资源获取与释放成对执行，常用于文件、锁、事务管理。",
     "module": "python",
-    "references": ["https://docs.python.org/3/reference/datamodel.html#with-statement-context-managers"]
+    "references": [
+      "https://docs.python.org/3/reference/datamodel.html#with-statement-context-managers"
+    ]
   },
   {
     "term": "GIL",
@@ -661,7 +676,9 @@
     "etymology": "\"prototype\" 源自希腊语 \"prototypon\"（原始模型）",
     "definition": "JavaScript 对象通过 __proto__ 链接形成的继承关系链，属性查找沿链向上直至 Object.prototype。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+    ]
   },
   {
     "term": "Promise",
@@ -669,7 +686,9 @@
     "etymology": "\"承诺\" 未来某时会产出结果的异步抽象",
     "definition": "JavaScript 中表示异步操作最终完成（或失败）及其结果值的对象，有 pending、fulfilled、rejected 三种状态。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+    ]
   },
   {
     "term": "async/await",
@@ -677,7 +696,9 @@
     "etymology": "ES2017 引入，基于 Promise 的语法糖",
     "definition": "JavaScript 中以同步风格书写异步代码的语法：async 函数返回 Promise，await 等待 Promise 完成并取其值。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function"
+    ]
   },
   {
     "term": "事件循环",
@@ -693,7 +714,9 @@
     "etymology": "\"destructure\" 拆解结构，从数组/对象中提取值",
     "definition": "JavaScript ES6 语法，通过模式匹配从数组或对象中提取值到变量，例如 const { a, b } = obj。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+    ]
   },
   {
     "term": "展开运算符",
@@ -701,7 +724,9 @@
     "etymology": "\"spread\" 意为\"展开\"可迭代对象",
     "definition": "JavaScript ES6 中通过 ... 语法将可迭代对象展开为元素列表，常用于函数参数、数组拼接、对象合并。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Spread_syntax"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+    ]
   },
   {
     "term": "箭头函数",
@@ -709,7 +734,9 @@
     "etymology": "ES6 引入，使用 => 箭头定义函数",
     "definition": "JavaScript 中通过 => 语法定义的匿名函数，不绑定自己的 this、arguments、super、new.target，适合短回调与函数式编程。",
     "module": "javascript",
-    "references": ["https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions"]
+    "references": [
+      "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+    ]
   },
   {
     "term": "模块",
@@ -861,7 +888,9 @@
     "etymology": "\"overloading\"（重载）+ \"operator\"（运算符）",
     "definition": "C# 中通过 operator 关键字为内置运算符提供自定义类型的实现，可重载 +、-、*、==、[] 等运算符。",
     "module": "csharp",
-    "references": ["https://learn.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/operators"]
+    "references": [
+      "https://learn.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/operators"
+    ]
   },
   {
     "term": "动态规划状态压缩",

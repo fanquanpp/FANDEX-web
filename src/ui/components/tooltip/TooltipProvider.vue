@@ -12,7 +12,10 @@
  *   </TooltipProvider>
  */
 
-import { TooltipProvider as TooltipProviderPrimitive, type TooltipProviderProps as TooltipProviderPrimitiveProps } from 'radix-vue';
+import {
+  TooltipProvider as TooltipProviderPrimitive,
+  type TooltipProviderProps as TooltipProviderPrimitiveProps,
+} from 'radix-vue';
 
 interface TooltipProviderProps extends TooltipProviderPrimitiveProps {
   class?: string;

@@ -30,19 +30,11 @@ export {
 export type { Module, CategoryInfo } from './module-service';
 
 // ── 标签服务 ──
-export {
-  getAllTags,
-  getDocsByTag,
-  getTagStats,
-} from './tag-service';
+export { getAllTags, getDocsByTag, getTagStats } from './tag-service';
 export type { TagWithCount, TagStats } from './tag-service';
 
 // ── 术语表服务 ──
-export {
-  getGlossaryByModule,
-  getAllGlossaryTerms,
-  searchGlossary,
-} from './glossary-service';
+export { getGlossaryByModule, getAllGlossaryTerms, searchGlossary } from './glossary-service';
 export type { GlossaryEntry } from './glossary-service';
 
 // ── 进度服务 ──
@@ -76,12 +68,7 @@ export type {
 
 // ── 学习路径服务 ──
 // 基于静态 learning-paths.json 提供职业学习路径查询、进度聚合与推荐
-export {
-  getAllPaths,
-  getPath,
-  getPathProgress,
-  getRecommendedPath,
-} from './learning-path-service';
+export { getAllPaths, getPath, getPathProgress, getRecommendedPath } from './learning-path-service';
 export type {
   LearningPath,
   PathModule,
@@ -92,38 +79,17 @@ export type {
 
 // ── 搜索服务 ──
 // 优先使用 Pagefind（构建期索引），降级至 Fuse.js + Web Worker（离线兜底）
-export {
-  search,
-  preloadSearch,
-  disposeSearch,
-} from './search-service';
-export type {
-  SearchRequest,
-  SearchResponse,
-  SearchResult,
-  SearchFilter,
-} from './search-service';
+export { search, preloadSearch, disposeSearch } from './search-service';
+export type { SearchRequest, SearchResponse, SearchResult, SearchFilter } from './search-service';
 
 // ── 代码运行服务 ──
 // 多语言代码沙箱（JS/TS/Python/C/C++），Web Worker 隔离 + 5 秒超时保护
-export {
-  runCode,
-  disposeCodeRunner,
-} from './code-runner-service';
-export type {
-  RunRequest,
-  RunResult,
-  CodeLanguage,
-} from './code-runner-service';
+export { runCode, disposeCodeRunner } from './code-runner-service';
+export type { RunRequest, RunResult, CodeLanguage } from './code-runner-service';
 
 // ── 知识地图服务 ──
 // 构建 module/doc/global 三种范围的知识地图数据，输出 Mermaid 可渲染的结构化数据
-export {
-  getGlobalMap,
-  getModuleMap,
-  getDocMap,
-  toMermaidGraph,
-} from './knowledge-map-service';
+export { getGlobalMap, getModuleMap, getDocMap, toMermaidGraph } from './knowledge-map-service';
 export type {
   MapNode,
   MapEdge,

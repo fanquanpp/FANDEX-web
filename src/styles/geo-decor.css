@@ -260,9 +260,27 @@
   height: 100%;
   pointer-events: none;
   background-image:
-    linear-gradient(to bottom left, transparent 49.7%, var(--geo-curve) 49.7%, var(--geo-curve) 50.3%, transparent 50.3%),
-    linear-gradient(to bottom left, transparent 39.7%, var(--geo-curve) 39.7%, var(--geo-curve) 40.3%, transparent 40.3%),
-    linear-gradient(to bottom left, transparent 29.7%, var(--geo-curve) 29.7%, var(--geo-curve) 30.3%, transparent 30.3%);
+    linear-gradient(
+      to bottom left,
+      transparent 49.7%,
+      var(--geo-curve) 49.7%,
+      var(--geo-curve) 50.3%,
+      transparent 50.3%
+    ),
+    linear-gradient(
+      to bottom left,
+      transparent 39.7%,
+      var(--geo-curve) 39.7%,
+      var(--geo-curve) 40.3%,
+      transparent 40.3%
+    ),
+    linear-gradient(
+      to bottom left,
+      transparent 29.7%,
+      var(--geo-curve) 29.7%,
+      var(--geo-curve) 30.3%,
+      transparent 30.3%
+    );
   background-size: 100% 100%;
   background-repeat: no-repeat;
   opacity: 0.6;
@@ -471,8 +489,12 @@
   border-width: 1.5px;
 }
 @keyframes geo-spiral-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 /* 贝塞尔曲线流 · 双弧线交错 */
@@ -507,8 +529,14 @@
   animation-direction: alternate-reverse;
 }
 @keyframes geo-bezier-flow {
-  0% { transform: scaleX(0.6) translateX(-20px); opacity: 0.4; }
-  100% { transform: scaleX(1) translateX(20px); opacity: 0.8; }
+  0% {
+    transform: scaleX(0.6) translateX(-20px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scaleX(1) translateX(20px);
+    opacity: 0.8;
+  }
 }
 
 /* 十字网格 · 工程坐标锚点矩阵 */
@@ -525,8 +553,14 @@
     radial-gradient(circle at 1px 1px, var(--geo-cross) 1px, transparent 1px),
     linear-gradient(var(--geo-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--geo-grid) 1px, transparent 1px);
-  background-size: 24px 24px, 48px 48px, 48px 48px;
-  background-position: 0 0, 0 0, 0 0;
+  background-size:
+    24px 24px,
+    48px 48px,
+    48px 48px;
+  background-position:
+    0 0,
+    0 0,
+    0 0;
   -webkit-mask-image: radial-gradient(circle at center, #000 30%, transparent 75%);
   mask-image: radial-gradient(circle at center, #000 30%, transparent 75%);
 }
@@ -570,14 +604,15 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
-  background:
-    conic-gradient(from 45deg at 50% 50%,
-      transparent 0deg,
-      var(--geo-curve) 90deg,
-      transparent 90deg,
-      transparent 180deg,
-      var(--geo-wave) 270deg,
-      transparent 270deg);
+  background: conic-gradient(
+    from 45deg at 50% 50%,
+    transparent 0deg,
+    var(--geo-curve) 90deg,
+    transparent 90deg,
+    transparent 180deg,
+    var(--geo-wave) 270deg,
+    transparent 270deg
+  );
   -webkit-mask-image: radial-gradient(circle at center, #000 40%, transparent 80%);
   mask-image: radial-gradient(circle at center, #000 40%, transparent 80%);
 }
@@ -607,8 +642,14 @@
   border-color: var(--geo-wave);
 }
 @keyframes geo-pulse-expand {
-  0% { transform: scale(0.5); opacity: 0.8; }
-  100% { transform: scale(1.4); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
 }
 
 /* 漂浮方块 · 垂直微浮动 */
@@ -641,8 +682,13 @@
   border-radius: 2px;
 }
 @keyframes geo-float-y {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
 }
 
 /* ===================================================================

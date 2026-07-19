@@ -36,7 +36,6 @@
 
 ---
 
-
 ## 2026-07-18T00:00:00.000Z | Skills 检索（智能指针详解升级任务前置）
 
 - **原 Skill 要求**：执行 `node scripts/skills-search.mjs --query "C++ smart pointer RAII"` 与 `node scripts/skills-search.mjs --query "technical writing academic"` 检索可用 Skills，将检索结果摘要写入工作日志
@@ -167,7 +166,7 @@
 - **实际方案**：
   1. 通过 Skill 工具直接 invoke `pagefind-search` Skill（本地强匹配），获取 Pagefind 静态搜索集成规范：搜索应位于 /search、Pagefind CSS/JS 仅在搜索页加载、Header 搜索图标为锚点非按钮、排除重复布局 UI、索引有意义内容、构建产物验证 dist/pagefind
   2. 通过 Skill 工具直接 invoke `astro-framework` Skill（本地强匹配），获取 Astro Islands 架构指引：client:load 立即水合、client:idle 空闲水合、client:visible 可视水合、server:defer 服务端岛屿、Content Layer API、SSR 适配器
-  3. 通过 Skill 工具直接 invoke `shadcn` Skill（本地强匹配），获取 shadcn-vue 组件库使用规范：Dialog 必须含 DialogTitle（sr-only 可）、className 用于布局非样式、size-* 替代 w-* h-*、gap-* 替代 space-x/y-*、semantic colors 替代 raw colors
+  3. 通过 Skill 工具直接 invoke `shadcn` Skill（本地强匹配），获取 shadcn-vue 组件库使用规范：Dialog 必须含 DialogTitle（sr-only 可）、className 用于布局非样式、size-* 替代 w-* h-_、gap-_ 替代 space-x/y-*、semantic colors 替代 raw colors
   4. 通过 Grep 检阅本地 `docs/skills-retrieval.md`、`docs/content-engineering-spec.md`、`docs/content-upgrade-playbook.md`、`src/content/config.ts`、`astro.config.ts`、`package.json` 获取项目实际架构与依赖状态
 - **依据原因**：`scripts/skills-search.mjs` 仍存在已知 `logDeviation` 重复导出 Bug（参见前序记录），脚本无法执行；改为直接 invoke Skill 工具进行本地全量 Skills 语义匹配
 - **Skills 适用性评估**：
@@ -203,7 +202,7 @@
   7. 空状态、加载状态、错误状态、初始状态四态切换
   8. 响应式：移动端 `@media (max-width: 640px)` 全屏弹窗（width/height 100vw/100vh），桌面端居中模态（max-w-2xl）
   9. debounce 200ms（DEBOUNCE_MS 常量）
-- **依据原因**：`shadcn` Skill 属流程规范型（强遵循类），其 Dialog 必须含 DialogTitle、className 用于布局非样式、size-* 替代 w-* h-*、gap-* 替代 space-x/y-*、semantic colors 替代 raw colors 等规则严格执行；`pagefind-search` Skill 的"Header 搜索图标为锚点非按钮"规则偏离——本项目采用 SearchDialog 弹窗模式，button 元素更符合 ARIA 按钮语义，且通过 `aria-label="搜索文档"` 提供可访问名称
+- **依据原因**：`shadcn` Skill 属流程规范型（强遵循类），其 Dialog 必须含 DialogTitle、className 用于布局非样式、size-* 替代 w-* h-_、gap-_ 替代 space-x/y-*、semantic colors 替代 raw colors 等规则严格执行；`pagefind-search` Skill 的"Header 搜索图标为锚点非按钮"规则偏离——本项目采用 SearchDialog 弹窗模式，button 元素更符合 ARIA 按钮语义，且通过 `aria-label="搜索文档"` 提供可访问名称
 - **TypeScript 严格模式合规**：
   - 无 `any` / `unknown` 类型：`JSON.parse` 返回 any 通过类型守卫 `filter((item): item is string => typeof item === 'string')` 安全转换
   - Window 全局标志类型扩展：`(window as Window & { __fandexSearchDialogReady?: boolean }).__fandexSearchDialogReady = true` 避免直接扩展 Window 接口
@@ -325,5 +324,3 @@
   - 136 个 hints 中包含预存在的 Astro 6+ 迁移遗留问题（`src/pages/[module]/[slug].astro` 与 `src/pages/[module]/glossary.astro` 的 `Property 'render' does not exist` 提示），非本次删除任务引入
 
 ---
-
-

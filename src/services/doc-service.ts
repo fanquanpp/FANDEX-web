@@ -78,7 +78,7 @@ export async function getDocsByModule(moduleId: string): Promise<DocEntry[]> {
 export async function getDocBySlug(moduleId: string, slug: string): Promise<DocEntry | null> {
   try {
     const docs = await getDocsByModule(moduleId);
-    return docs.find(doc => docSlug(doc.id) === slug) || null;
+    return docs.find((doc) => docSlug(doc.id) === slug) || null;
   } catch {
     return null;
   }
@@ -94,7 +94,7 @@ export async function getDocBySlug(moduleId: string, slug: string): Promise<DocE
 export async function getDocNavigation(moduleId: string, slug: string): Promise<DocNavigation> {
   try {
     const docs = await getDocsByModule(moduleId);
-    const currentIndex = docs.findIndex(doc => docSlug(doc.id) === slug);
+    const currentIndex = docs.findIndex((doc) => docSlug(doc.id) === slug);
     if (currentIndex < 0) return { prev: null, next: null };
     // 使用 ?? null 将可能的 undefined（来自 noUncheckedIndexedAccess）收窄为 null
     // 保证返回类型与 DocNavigation 接口（DocEntry | null）严格匹配
@@ -117,10 +117,10 @@ export async function getDocStats(): Promise<DocStats> {
     const moduleSet = new Set<string>();
     const categorySet = new Set<string>();
     const tagSet = new Set<string>();
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       moduleSet.add(doc.data.module);
       if (doc.data.category) categorySet.add(doc.data.category);
-      doc.data.tags.forEach(tag => tagSet.add(tag));
+      doc.data.tags.forEach((tag) => tagSet.add(tag));
     });
     return {
       totalDocs: docs.length,
@@ -161,7 +161,7 @@ export async function getRelatedDocs(moduleId: string, slug: string): Promise<Do
     if (!current || current.data.related.length === 0) return [];
     const allDocs = await getAllDocs();
     const relatedRefs = new Set(current.data.related);
-    return allDocs.filter(doc => {
+    return allDocs.filter((doc) => {
       const docSlugStr = docSlug(doc.id);
       const fullRef = `${doc.data.module}/${docSlugStr}`;
       return relatedRefs.has(docSlugStr) || relatedRefs.has(fullRef);

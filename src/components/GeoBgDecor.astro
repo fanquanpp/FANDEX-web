@@ -21,10 +21,10 @@
  */
 
 /** 支持的视图变体类型 */
-export type GeoBgVariant = 'home' | 'docs' | 'list' | 'minimal' | 'loading' | 'error' | 'info'
+export type GeoBgVariant = 'home' | 'docs' | 'list' | 'minimal' | 'loading' | 'error' | 'info';
 
 /** 装饰层单项：可仅为类名字符串，或携带内联 style 的对象（适配带定位的装饰元素） */
-type GeoDecorItem = string | { readonly className: string; readonly style?: string }
+type GeoDecorItem = string | { readonly className: string; readonly style?: string };
 
 /**
  * 各变体对应的装饰层 div 配置
@@ -42,7 +42,7 @@ const GEO_DECOR_CONFIG: Record<GeoBgVariant, GeoDecorItem[]> = {
     'geo-spiral-ccw',
     'geo-pulse-ring',
     'geo-float-block',
-    'geo-glow-info-bl'
+    'geo-glow-info-bl',
   ],
   /** 文档详情页：网格底纹 + 品牌光晕 + 几何线条 + 动态元素
    *  克制使用 8 项装饰，营造专注但不单调的阅读氛围
@@ -55,7 +55,7 @@ const GEO_DECOR_CONFIG: Record<GeoBgVariant, GeoDecorItem[]> = {
     'geo-dots-radial',
     'geo-bezier-flow',
     'geo-pulse-ring',
-    'geo-float-block'
+    'geo-float-block',
   ],
   /** 列表页：网格底纹 + 平行斜线 + 十字坐标点 + 多位置动态元素 */
   list: [
@@ -65,7 +65,7 @@ const GEO_DECOR_CONFIG: Record<GeoBgVariant, GeoDecorItem[]> = {
     { className: 'geo-hatch-block', style: 'top:12%;right:4%' },
     'geo-dots-radial',
     'geo-chevron-stack',
-    'geo-bezier-flow'
+    'geo-bezier-flow',
   ],
   /** 轻量变体：仅网格底纹 + 小点阵（搜索/404 等辅助页） */
   minimal: ['geo-bg-grid', 'geo-dots-sm'],
@@ -82,26 +82,26 @@ const GEO_DECOR_CONFIG: Record<GeoBgVariant, GeoDecorItem[]> = {
     'geo-cross-marks',
     'geo-dots-radial',
     'geo-pulse-ring',
-    'geo-float-block'
-  ]
-}
+    'geo-float-block',
+  ],
+};
 
 interface Props {
   /** 视图变体，决定渲染哪些装饰层 */
-  variant?: GeoBgVariant
+  variant?: GeoBgVariant;
 }
 
 /** 从 Props 解构 variant，默认 minimal 以保证未指定时的安全回退 */
-const { variant = 'minimal' } = Astro.props
-const items = GEO_DECOR_CONFIG[variant]
+const { variant = 'minimal' } = Astro.props;
+const items = GEO_DECOR_CONFIG[variant];
 ---
 
 <div class="geo-bg-decor" aria-hidden="true">
   {
     items.map((item) => {
-      const className = typeof item === 'string' ? item : item.className
-      const style = typeof item === 'string' ? undefined : item.style
-      return <div class={className} style={style} />
+      const className = typeof item === 'string' ? item : item.className;
+      const style = typeof item === 'string' ? undefined : item.style;
+      return <div class={className} style={style} />;
     })
   }
 </div>

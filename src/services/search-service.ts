@@ -20,12 +20,7 @@
  * - Web Worker 通过 Blob URL 创建，兼容 GitHub Pages 子路径部署
  */
 
-import type {
-  SearchRequest,
-  SearchResponse,
-  SearchResult,
-  SearchFilter,
-} from '@/types/search';
+import type { SearchRequest, SearchResponse, SearchResult, SearchFilter } from '@/types/search';
 
 // ============================================================================
 // 类型定义：Pagefind 运行时 API 类型声明
@@ -118,7 +113,7 @@ interface PagefindRuntime {
       filters?: Record<string, string[]>;
       sort?: Record<string, 'asc' | 'desc'>;
       limit?: number;
-    },
+    }
   ) => Promise<PagefindSearchResponse>;
   /** 预加载查询（提前拉取索引分片以加速后续搜索） */
   preload: (query: string, options?: Record<string, unknown>) => Promise<void>;
@@ -266,7 +261,7 @@ async function loadPagefind(): Promise<PagefindRuntime | null> {
  */
 async function transformPagefindResult(
   entry: PagefindSearchResultEntry,
-  pagefindScore: number,
+  pagefindScore: number
 ): Promise<SearchResult> {
   const data = await entry.data();
   // 从 URL 中提取 slug：去除 base 路径前缀、.html 后缀、尾随斜杠
@@ -611,9 +606,4 @@ export function disposeSearch(): void {
 // 兼容性导出：类型重导出，便于 UI 层引用
 // ============================================================================
 
-export type {
-  SearchRequest,
-  SearchResponse,
-  SearchResult,
-  SearchFilter,
-} from '@/types/search';
+export type { SearchRequest, SearchResponse, SearchResult, SearchFilter } from '@/types/search';

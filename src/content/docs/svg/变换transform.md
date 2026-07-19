@@ -36,9 +36,9 @@ prerequisites:
 <rect transform="translate(50, 0)" />
 ```
 
-| 参数 | 说明 |
-|------|------|
-| `tx` | X 方向偏移 |
+| 参数 | 说明                         |
+| ---- | ---------------------------- |
+| `tx` | X 方向偏移                   |
 | `ty` | Y 方向偏移（可省略，默认 0） |
 
 ### 2.2 rotate 旋转
@@ -49,9 +49,9 @@ prerequisites:
 <rect transform="rotate(45 100 100)" />
 ```
 
-| 参数 | 说明 |
-|------|------|
-| `angle` | 旋转角度（度） |
+| 参数     | 说明                         |
+| -------- | ---------------------------- |
+| `angle`  | 旋转角度（度）               |
 | `cx, cy` | 旋转中心（可省略，默认 0,0） |
 
 > 单参数 `rotate(45)` 围绕原点 (0,0) 旋转，通常不是想要的效果。**常用 `rotate(angle cx cy)` 围绕元素中心旋转**。
@@ -64,9 +64,9 @@ prerequisites:
 <rect transform="scale(1.5, 0.5)" />
 ```
 
-| 参数 | 说明 |
-|------|------|
-| `sx` | X 方向缩放比 |
+| 参数 | 说明                                |
+| ---- | ----------------------------------- |
+| `sx` | X 方向缩放比                        |
 | `sy` | Y 方向缩放比（可省略，默认等于 sx） |
 
 > scale 会同时缩放 stroke-width。若需保持描边不变，使用 `vector-effect="non-scaling-stroke"`。
@@ -74,12 +74,11 @@ prerequisites:
 ### 2.4 skew 倾斜
 
 ```html
-<rect transform="skewX(30)" />
-<rect transform="skewY(15)" />
+<rect transform="skewX(30)" /> <rect transform="skewY(15)" />
 ```
 
-| 函数 | 说明 |
-|------|------|
+| 函数           | 说明        |
+| -------------- | ----------- |
 | `skewX(angle)` | 沿 X 轴倾斜 |
 | `skewY(angle)` | 沐 Y 轴倾斜 |
 
@@ -94,17 +93,18 @@ prerequisites:
 ```
 
 变换公式：
+
 - `x' = a*x + c*y + e`
 - `y' = b*x + d*y + f`
 
 ### 3.1 各变换对应的矩阵
 
-| 变换 | matrix 参数 |
-|------|------------|
-| `translate(tx, ty)` | `matrix(1 0 0 1 tx ty)` |
-| `rotate(θ)` | `matrix(cosθ sinθ -sinθ cosθ 0 0)` |
-| `scale(s)` | `matrix(s 0 0 s 0 0)` |
-| `skewX(θ)` | `matrix(1 0 tanθ 1 0 0)` |
+| 变换                | matrix 参数                        |
+| ------------------- | ---------------------------------- |
+| `translate(tx, ty)` | `matrix(1 0 0 1 tx ty)`            |
+| `rotate(θ)`         | `matrix(cosθ sinθ -sinθ cosθ 0 0)` |
+| `scale(s)`          | `matrix(s 0 0 s 0 0)`              |
+| `skewX(θ)`          | `matrix(1 0 tanθ 1 0 0)`           |
 
 ### 3.2 示例
 
@@ -136,12 +136,24 @@ prerequisites:
   <rect x="0" y="0" width="50" height="50" fill="#4f5bd5" />
 
   <!-- 先平移到 (100,100) 再绕原点旋转 45°：矩形被甩到远处 -->
-  <rect x="0" y="0" width="50" height="50" fill="#d63031"
-        transform="rotate(45) translate(100,100)" />
+  <rect
+    x="0"
+    y="0"
+    width="50"
+    height="50"
+    fill="#d63031"
+    transform="rotate(45) translate(100,100)"
+  />
 
   <!-- 先绕原点旋转 45° 再平移到 (100,100)：矩形在 (100,100) 处旋转 -->
-  <rect x="0" y="0" width="50" height="50" fill="#00b894"
-        transform="translate(100,100) rotate(45)" />
+  <rect
+    x="0"
+    y="0"
+    width="50"
+    height="50"
+    fill="#00b894"
+    transform="translate(100,100) rotate(45)"
+  />
 </svg>
 ```
 
@@ -152,18 +164,23 @@ prerequisites:
 SVG 2 引入 `transform-origin`，类似 CSS 的同名属性。
 
 ```html
-<rect x="50" y="50" width="50" height="50"
-      transform="rotate(45)"
-      transform-origin="75px 75px"
-      style="transform-box: fill-box" />
+<rect
+  x="50"
+  y="50"
+  width="50"
+  height="50"
+  transform="rotate(45)"
+  transform-origin="75px 75px"
+  style="transform-box: fill-box"
+/>
 ```
 
 ### 5.1 transform-box
 
-| 值 | 含义 |
-|----|------|
+| 值         | 含义                          |
+| ---------- | ----------------------------- |
 | `view-box` | 以 SVG viewBox 为参考（默认） |
-| `fill-box` | 以元素边界框为参考 |
+| `fill-box` | 以元素边界框为参考            |
 
 ```html
 <style>
@@ -173,7 +190,9 @@ SVG 2 引入 `transform-origin`，类似 CSS 的同名属性。
     animation: spin 2s linear infinite;
   }
   @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 </style>
 <rect class="spin" x="50" y="50" width="100" height="100" fill="#4f5bd5" />
@@ -203,13 +222,13 @@ CSS transform 也可作用于 SVG 元素，但需注意坐标系差异。
 
 ### 6.2 两者区别
 
-| 维度 | SVG transform 属性 | CSS transform |
-|------|-------------------|---------------|
-| 语法 | `rotate(45 100 100)` | `rotate(45deg)` + `transform-origin` |
-| 单位 | 无单位（默认度/像素） | 需 `deg`、`px` |
-| 动画 | SMIL `<animateTransform>` | CSS `@keyframes` |
-| 性能 | 略优（直接矩阵） | 现代浏览器已优化 |
-| 浏览器支持 | 全部 | SVG 2 后完整支持 |
+| 维度       | SVG transform 属性        | CSS transform                        |
+| ---------- | ------------------------- | ------------------------------------ |
+| 语法       | `rotate(45 100 100)`      | `rotate(45deg)` + `transform-origin` |
+| 单位       | 无单位（默认度/像素）     | 需 `deg`、`px`                       |
+| 动画       | SMIL `<animateTransform>` | CSS `@keyframes`                     |
+| 性能       | 略优（直接矩阵）          | 现代浏览器已优化                     |
+| 浏览器支持 | 全部                      | SVG 2 后完整支持                     |
 
 ## 7. animateTransform 变换动画
 
@@ -234,11 +253,21 @@ SMIL 提供 `<animateTransform>` 专门用于变换动画。
 
 ```html
 <g>
-  <animateTransform attributeName="transform" type="translate"
-                    values="0 0; 100 0; 0 0" dur="4s" repeatCount="indefinite" />
-  <animateTransform attributeName="transform" type="rotate"
-                    values="0; 360" dur="2s" repeatCount="indefinite"
-                    additive="sum" />
+  <animateTransform
+    attributeName="transform"
+    type="translate"
+    values="0 0; 100 0; 0 0"
+    dur="4s"
+    repeatCount="indefinite"
+  />
+  <animateTransform
+    attributeName="transform"
+    type="rotate"
+    values="0; 360"
+    dur="2s"
+    repeatCount="indefinite"
+    additive="sum"
+  />
   <rect x="-25" y="-25" width="50" height="50" fill="#4f5bd5" />
 </g>
 ```
@@ -300,6 +329,7 @@ SMIL 提供 `<animateTransform>` 专门用于变换动画。
 ```
 
 **结构**：
+
 - 外层 `<g>` 绕太阳中心旋转 → 实现公转
 - 内层 `<g>` translate 到轨道位置 → 地球位置
 - 地球 circle 自身 animateTransform → 自转
