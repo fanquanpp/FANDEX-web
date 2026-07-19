@@ -49,14 +49,18 @@ export default defineConfig({
       // 配置文件位于 src/styles/tailwind.css（通过 @import "tailwindcss" 引入）
       tailwindcss(),
       // Bundle 体积可视化分析：构建后在 reports/bundle-stats.html 生成可交互的 treemap
-      // 仅在 build 阶段触发，dev 阶段不运行（open: false 避免自动打开浏览器）
-      visualizer({
-        filename: 'reports/bundle-stats.html',
-        template: 'treemap',
-        gzipSize: true,
-        brotliSize: true,
-        open: false,
-      }),
+      // 仅在 ANALYZE_BUNDLE=true 时启用，避免 dev/常规 CI 构建增加开销
+      ...(process.env.ANALYZE_BUNDLE === 'true'
+        ? [
+            visualizer({
+              filename: 'reports/bundle-stats.html',
+              template: 'treemap',
+              gzipSize: true,
+              brotliSize: true,
+              open: false,
+            }),
+          ]
+        : []),
     ],
     build: {
       rollupOptions: {

@@ -376,8 +376,10 @@ async function createFuseWorker(): Promise<Worker | null> {
       if (!Array.isArray(entries) || entries.length === 0) return null;
 
       // 创建 Worker：使用相对 base 路径，兼容 GitHub Pages 子路径部署
+      // 注意：search-worker.js 内部使用 self.importScripts 加载 Fuse.js（classic Worker API），
+      // 因此必须以 classic 模式创建（不指定 type: 'module'），否则 importScripts 在 Module Worker 中不可用
       const workerUrl = `${base}workers/search-worker.js`.replace(/\/+/g, '/');
-      const worker = new Worker(workerUrl, { type: 'module' });
+      const worker = new Worker(workerUrl);
 
       // 监听 Worker 消息
       worker.addEventListener('message', (event: MessageEvent<WorkerResponse>) => {

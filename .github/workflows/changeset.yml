@@ -19,7 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0
+          # PR 文件列表通过 github.rest.pulls.listFiles API 获取，无需完整 git 历史
+          fetch-depth: 1
 
       - name: Setup Node.js
         uses: actions/setup-node@v5

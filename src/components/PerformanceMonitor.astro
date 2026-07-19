@@ -367,9 +367,26 @@ const isDev = import.meta.env.DEV;
   // 仅在开发环境执行；生产环境组件未渲染，此脚本不注入
   // 引入类型定义：避免使用 mod.VitalRecord 等命名空间形式（mod 为运行时变量，不可作为类型）
   import type { VitalRecord, VitalName, VitalPercentiles } from '@services/observability-service';
+
+  /**
+   * 清除 panel 上挂载的定时器
+   * 用于页面切换、面板关闭、面板重新初始化前清理 setInterval，避免内存泄漏
+   */
+  function clearMonitorInterval(panel: HTMLElement): void {
+    const existing = panel.dataset.intervalId;
+    if (existing) {
+      const id = Number(existing);
+      if (!Number.isNaN(id)) window.clearInterval(id);
+      delete panel.dataset.intervalId;
+    }
+  }
+
   function initPerformanceMonitor(): void {
     const panel = document.getElementById('fandex-perf-monitor');
     if (!panel) return;
+
+    // 先清除可能存在的旧定时器（Astro View Transitions 切换页面后再次初始化时清理）
+    clearMonitorInterval(panel);
 
     const toggleBtn = document.getElementById('perf-monitor-toggle');
     const closeBtn = document.getElementById('perf-monitor-close');
@@ -386,10 +403,11 @@ const isDev = import.meta.env.DEV;
       });
     }
 
-    // 关闭面板
+    // 关闭面板：同时清理定时器避免后台空跑
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
         panel.style.display = 'none';
+        clearMonitorInterval(panel);
       });
     }
 
@@ -572,15 +590,21 @@ const isDev = import.meta.env.DEV;
     renderSummary();
     renderWaterfall();
 
-    // 定时刷新（每 2 秒）
-    setInterval(() => {
+    // 定时刷新（每 2 秒）：将 intervalId 存入 dataset 便于页面切换/面板关闭时清理
+    const intervalId = window.setInterval(() => {
       renderVitals();
       renderSummary();
       renderWaterfall();
     }, 2000);
+    panel.dataset.intervalId = String(intervalId);
   }
 
-  // Astro View Transitions 兼容：页面切换后重新初始化
+  // Astro View Transitions 兼容：页面切换前清理旧定时器，避免累积内存泄漏
+  document.addEventListener('astro:before-swap', () => {
+    const panel = document.getElementById('fandex-perf-monitor');
+    if (panel) clearMonitorInterval(panel);
+  });
+  // 页面切换后重新初始化
   document.addEventListener('astro:page-load', initPerformanceMonitor);
   initPerformanceMonitor();
 </script>
