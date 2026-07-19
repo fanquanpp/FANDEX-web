@@ -44,6 +44,10 @@ export const RUNTIME = {
     'https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js'
   ),
 
+  /** AntV G6 图可视化引擎 CDN 地址（v5）
+   * 用于全局知识地图的模块级 Combo 展开/收起渲染，替代 Mermaid 在大规模图场景下的渲染失败问题 */
+  g6Cdn: envString('PUBLIC_G6_CDN', 'https://cdn.jsdelivr.net/npm/@antv/g6@5/dist/g6.min.js'),
+
   /** 代码运行器默认超时时间（毫秒），防止用户代码死循环 */
   codeRunnerTimeoutMs: envNumber('PUBLIC_CODE_RUNNER_TIMEOUT', 5000),
 

@@ -15,7 +15,15 @@
  * - 仅声明必要的最小字段集，新增字段时在此处补充
  */
 
+/**
+ * AntV G6 v5 全局类型声明
+ *
+ * G6 通过 CDN script 标签加载，挂载到 window.G6
+ * 此处使用 any 类型简化声明，避免引入 G6 完整类型依赖
+ * 实际类型检查由组件内部通过最小接口契约保证
+ */
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Window {
     /**
      * 导出 Web Vitals 数据的全局 API
@@ -24,6 +32,14 @@ declare global {
      * @returns JSON 格式的 Web Vitals 数据字符串
      */
     __fandexExportVitals?: () => string;
+
+    /**
+     * AntV G6 v5 图可视化引擎
+     * 通过 external-loader 从 CDN 动态加载
+     * 主要使用 Graph 构造函数、内置主题、内置行为
+     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    G6?: any;
   }
 }
 

@@ -178,23 +178,27 @@ function dedupeEdges(edges: readonly MapEdge[]): MapEdge[] {
 }
 
 /**
- * 获取全局知识地图（模块级）
+ * 获取全局知识地图（完整数据）
  *
- * 设计决策：
- * - 全局图仅展示模块节点与模块间前置依赖关系，不纳入文档节点
- * - 原因：FANDEX 当前有 52 个模块 + 2065 篇文档 + 4583 条文档间关系，
- *   若全部渲染，节点数远超 Mermaid 的渲染能力，会触发 mermaid.render 异常，
- *   回退为粉红色错误占位节点（fill:#faa），导致页面看似空白
- * - 模块级节点数量可控（约 52 节点 + 模块依赖边），Mermaid 可稳定渲染
- * - 文档级关系保留在模块知识地图页（/[module]/map/）展示
+ * 包含所有模块节点、模块间前置依赖边，以及全部文档节点、文档间前置与关联边
  *
- * @returns 模块级知识地图；异常时返回空图
+ * 渲染策略说明：
+ * - FANDEX 当前有 52 个模块 + 2065 篇文档 + 4583 条文档间关系
+ * - Mermaid 无法直接渲染此规模，需切换到 AntV G6 的 Combo 展开/收起模式
+ * - 全局知识地图页（/map/）改用 KnowledgeGraphG6.vue 渲染：
+ *   默认所有模块 Combo 收起（仅显示 52 个模块节点），
+ *   用户点击 Combo 展开查看其文档子节点
+ * - 模块知识地图页（/[module]/map/）仍用 Mermaid 渲染单模块范围内的文档关系
+ *
+ * @returns 完整知识地图；异常时返回空图
  */
 export async function getGlobalMap(): Promise<KnowledgeMap> {
   try {
     const allModules = getAllModules();
+    const allDocs = await getAllDocs();
 
     const moduleNodes: MapNode[] = allModules.map(buildModuleNode);
+    const docNodes: MapNode[] = allDocs.map(buildDocNode);
 
     // 模块级前置依赖边
     const moduleEdges: MapEdge[] = [];
@@ -208,9 +212,16 @@ export async function getGlobalMap(): Promise<KnowledgeMap> {
       }
     }
 
+    // 文档级前置与关联边
+    const docEdges: MapEdge[] = [];
+    for (const doc of allDocs) {
+      docEdges.push(...buildDocPrerequisiteEdges(doc, allDocs));
+      docEdges.push(...buildDocRelatedEdges(doc, allDocs));
+    }
+
     return {
-      nodes: moduleNodes,
-      edges: dedupeEdges(moduleEdges),
+      nodes: [...moduleNodes, ...docNodes],
+      edges: dedupeEdges([...moduleEdges, ...docEdges]),
     };
   } catch {
     return EMPTY_MAP;

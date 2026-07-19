@@ -120,3 +120,18 @@ export async function loadDOMPurify(): Promise<void> {
     throw new Error(`DOMPurify 加载失败: ${err instanceof Error ? err.message : String(err)}`);
   }
 }
+
+/**
+ * 加载 AntV G6 图可视化引擎（v5）
+ * 用于全局知识地图的 Combo 展开/收起渲染，替代 Mermaid 在大规模图场景下的渲染失败问题
+ * CDN 地址从 `RUNTIME.g6Cdn` 读取，可通过环境变量 PUBLIC_G6_CDN 覆盖
+ * 加载成功后挂载到 window.G6，组件直接读取使用
+ * @returns Promise<void>，加载完成 resolve，失败 reject
+ */
+export async function loadG6(): Promise<void> {
+  try {
+    await loadExternalScript(RUNTIME.g6Cdn);
+  } catch (err) {
+    throw new Error(`G6 加载失败: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
