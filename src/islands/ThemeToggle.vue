@@ -86,7 +86,7 @@ function toggle() {
     :title="theme === 'dark' ? '亮色模式' : '暗色模式'"
     :aria-label="theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
     :tabindex="mounted ? 0 : -1"
-    aria-hidden="!mounted"
+    :aria-hidden="!mounted"
   >
     <!-- 暗色模式下显示太阳图标（提示用户可切换到亮色） -->
     <svg
