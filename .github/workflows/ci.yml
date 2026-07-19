@@ -1,7 +1,14 @@
 name: CI
 
-# CI 流水线完整阶段：lint → type-check → unit-test → e2e-test → build → qa-check → lighthouse → deploy
-# 任一前置阶段失败均会阻断后续阶段，确保仅高质量代码进入生产环境
+# CI 流水线分层触发策略：
+# - changes job 检测变更范围（docs / code / ci_config）
+# - 各 job 根据变更类型条件执行步骤，避免无意义的全量检查
+# - 纯文档 PR：跳过 type-check / unit-test / lighthouse
+# - 纯代码 PR：跳过 lint:docs
+# - CI 配置变更：全量检查（防止 CI 本身回归）
+# - 8 个 job 名称保持不变，与分支保护 required status checks 对齐
+#
+# 阶段顺序：changes → lint / type-check / unit-test → build → e2e-test / qa-check / lighthouse → deploy
 on:
   push:
     branches: [main]
@@ -16,79 +23,178 @@ concurrency:
 
 jobs:
   # ─────────────────────────────────────────────────────────────
+  # 阶段 0：变更范围检测
+  # 使用 dorny/paths-filter 检测本次推送的文件变更范围
+  # 输出三个布尔值：docs / code / ci_config
+  # 后续 job 根据这三个值决定是否执行实际工作
+  # ─────────────────────────────────────────────────────────────
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+      code: ${{ steps.filter.outputs.code }}
+      ci_config: ${{ steps.filter.outputs.ci_config }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Detect change scope
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          # 路径过滤规则：
+          # - docs: 仅匹配 src/content/docs/ 下的文档文件
+          # - code: 匹配所有代码/配置/资源文件（精确列出，避免 src/** 误匹配 docs）
+          # - ci_config: 匹配 CI/CD 配置变更（强制全量检查）
+          filters: |
+            docs:
+              - 'src/content/docs/**'
+            code:
+              - 'src/components/**'
+              - 'src/config/**'
+              - 'src/islands/**'
+              - 'src/layouts/**'
+              - 'src/lib/**'
+              - 'src/pages/**'
+              - 'src/services/**'
+              - 'src/styles/**'
+              - 'src/types/**'
+              - 'src/ui/**'
+              - 'src/workers/**'
+              - 'src/content.config.ts'
+              - 'src/env.d.ts'
+              - 'scripts/**'
+              - 'public/**'
+              - 'astro.config.ts'
+              - 'tsconfig.json'
+              - 'package*.json'
+              - 'playwright.config.*'
+              - 'vitest.config.*'
+              - 'lighthouse-budget.json'
+              - 'remark.config.*'
+              - '.prettierrc*'
+              - '.remarkrc*'
+            ci_config:
+              - '.github/**'
+              - '.husky/**'
+
+      - name: Summary
+        run: |
+          echo "Change scope detection:"
+          echo "  docs      = ${{ steps.filter.outputs.docs }}"
+          echo "  code      = ${{ steps.filter.outputs.code }}"
+          echo "  ci_config = ${{ steps.filter.outputs.ci_config }}"
+
+  # ─────────────────────────────────────────────────────────────
   # 阶段 1：代码风格与文档格式检查
-  # 检查 Markdown 文档格式（remark）与代码风格一致性（Prettier）
+  # - docs 变更：跑 remark lint（markdown 格式）
+  # - code 变更：跑 Prettier check（代码风格）
+  # - ci_config 变更：两者都跑
+  # - 都不变更：跳过实际工作，job 状态 success（满足分支保护）
   # ─────────────────────────────────────────────────────────────
   lint:
+    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      # 无相关变更时仅运行此步骤，job 状态 success
+      - name: Skip (no relevant changes)
+        if: ${{ needs.changes.outputs.docs != 'true' && needs.changes.outputs.code != 'true' && needs.changes.outputs.ci_config != 'true' }}
+        run: echo "No docs/code/ci_config changes, skipping lint"
+
+      - name: Checkout
+        if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
+        if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
+        if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm ci
 
-      - name: Run remark lint
+      - name: Run remark lint (docs changes)
+        if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm run lint:docs
 
-      - name: Run Prettier check
+      - name: Run Prettier check (code changes)
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm run format:check
 
   # ─────────────────────────────────────────────────────────────
   # 阶段 2：TypeScript 类型检查
-  # 通过 astro check 验证全项目类型安全，禁止 any 类型泄漏
+  # 仅 code 或 ci_config 变更时执行；纯文档 PR 跳过实际工作
   # ─────────────────────────────────────────────────────────────
   type-check:
+    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - name: Skip (no code changes)
+        if: ${{ needs.changes.outputs.code != 'true' && needs.changes.outputs.ci_config != 'true' }}
+        run: echo "No code changes, skipping type-check"
+
+      - name: Checkout
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm ci
 
       - name: Run type check
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm run type-check
 
   # ─────────────────────────────────────────────────────────────
   # 阶段 3：单元测试 + 覆盖率采集
-  # 运行 Vitest 测试套件并生成覆盖率报告，作为合并门禁
+  # 仅 code 或 ci_config 变更时执行；纯文档 PR 跳过实际工作
   # ─────────────────────────────────────────────────────────────
   unit-test:
+    needs: changes
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - name: Skip (no code changes)
+        if: ${{ needs.changes.outputs.code != 'true' && needs.changes.outputs.ci_config != 'true' }}
+        run: echo "No code changes, skipping unit-test"
+
+      - name: Checkout
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm ci
 
       - name: Run unit tests with coverage
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm run test:coverage
 
       - name: Upload coverage report
-        if: always()
+        if: ${{ (needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true') && always() }}
         uses: actions/upload-artifact@v5
         with:
           name: coverage-report
@@ -98,11 +204,11 @@ jobs:
   # ─────────────────────────────────────────────────────────────
   # 阶段 4：E2E 冒烟测试
   # 通过本地静态服务器对构建产物做 HTTP 200 冒烟校验，确保关键路由可达
-  # 后续如引入 Playwright，可在此 Job 替换为浏览器端 E2E 用例
+  # 总是执行（文档变更也可能影响路由），但仅 main 分支 push 时需要
   # ─────────────────────────────────────────────────────────────
   e2e-test:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build, changes]
     permissions:
       contents: read
     steps:
@@ -169,8 +275,8 @@ jobs:
 
   # ─────────────────────────────────────────────────────────────
   # 阶段 5：构建产物
-  # 依赖 lint / type-check / unit-test 全部通过后执行
-  # 同时产出 Bundle 体积报告，超出预算则阻断
+  # 依赖 lint / type-check / unit-test 通过（其中部分可能为 skipped 步骤的 success）
+  # 文档变更也需要 build（生成新的静态页面）
   # ─────────────────────────────────────────────────────────────
   build:
     needs: [lint, type-check, unit-test]
@@ -226,10 +332,11 @@ jobs:
   # ─────────────────────────────────────────────────────────────
   # 阶段 6：QA 质量门禁
   # 依赖 build 产物，运行多维度质量检查（文件审计 / Web 架构 / 内容 / SEO）
+  # 总是执行（文档变更也需要内容审计）
   # ─────────────────────────────────────────────────────────────
   qa-check:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build, changes]
     permissions:
       contents: read
     steps:
@@ -266,34 +373,44 @@ jobs:
 
   # ─────────────────────────────────────────────────────────────
   # 阶段 7：Lighthouse 性能审计
-  # 对首页 / 模块首页 / 文档详情页进行 Lighthouse 测量
-  # 性能预算定义在 lighthouse-budget.json，失败时阻止合并
+  # 仅 code 或 ci_config 变更时执行实际审计
+  # 纯文档变更对性能预算影响极小，跳过节省 3-5 分钟
   # ─────────────────────────────────────────────────────────────
   lighthouse:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build, changes]
     permissions:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - name: Skip (no code changes)
+        if: ${{ needs.changes.outputs.code != 'true' && needs.changes.outputs.ci_config != 'true' }}
+        run: echo "No code changes, skipping Lighthouse audit"
+
+      - name: Checkout
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npm ci
 
       - name: Download build artifact
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         uses: actions/download-artifact@v5
         with:
           name: dist
           path: dist/
 
       - name: Verify LHCI token
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         run: |
@@ -302,12 +419,13 @@ jobs:
           fi
 
       - name: Run Lighthouse CI
+        if: ${{ needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true' }}
         run: npx @lhci/cli autorun --config=./lighthouse-budget.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Upload Lighthouse report
-        if: always()
+        if: ${{ (needs.changes.outputs.code == 'true' || needs.changes.outputs.ci_config == 'true') && always() }}
         uses: actions/upload-artifact@v5
         with:
           name: lighthouse-report
