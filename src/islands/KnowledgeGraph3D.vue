@@ -6,22 +6,32 @@
   - 支持单图渲染 10000+ 节点，远超 Mermaid 的承载能力
   - 3D 力导向布局：节点自然散布于 3D 空间，可旋转/缩放/平移查看
   - 节点按类型与难度着色，边按类型区分实线/虚线效果（颜色区分）
-  - 节点点击跳转到对应模块或文档页面
+  - 节点点击立即跳转到对应模块或文档页面（无中间动画）
   - 响应暗色模式切换（重建图实例应用对应配色）
   - 加载中显示 spinner，错误时显示友好提示
+
+  性能优化策略（针对 52 模块 + 2065 文档 + 4583 关系的大规模图）：
+  - 关闭 WebGL 抗锯齿（antialias: false）：降低 GPU 片元着色负担
+  - 限制 devicePixelRatio 上限 1.5：避免 Retina 屏渲染像素翻 4-9 倍
+  - 快速冷却物理引擎（cooldownTicks=80, cooldownTime=1500ms）：
+    节点 1.5 秒后稳定，便于精准点击
+  - 边直线渲染（linkCurvature=0）：省去曲线几何计算
+  - 降低节点几何细分（nodeResolution=6）：减少球体顶点数
+  - 禁用节点拖拽（enableNodeDrag=false）：避免误触发力重计算导致图重新震荡
+  - 移除边方向粒子动画：降低每帧 GPU 绘制负担
 
   数据流：
   - 父级 Astro 页面在服务端调用 knowledge-map-service 获取完整 KnowledgeMap
   - 通过 props 传入 map 数据与 baseUrl
   - 组件内部将 KnowledgeMap 转换为 3d-force-graph 数据结构（nodes/links）
   - 通过 external-loader 动态加载 3d-force-graph 后渲染
-  - 用户交互（旋转/缩放/点击/拖拽）由 3d-force-graph 内置 control 处理
+  - 用户交互（旋转/缩放/点击）由 3d-force-graph 内置 control 处理
 
   交互方式：
   - 左键拖拽：旋转 3D 视角
   - 鼠标滚轮：缩放
   - 右键拖拽：平移
-  - 节点点击：跳转到对应 URL
+  - 节点点击：立即跳转到对应 URL（无 focus/zoom 过渡）
   - 节点悬停：显示 label tooltip
 
   使用场景：
@@ -66,6 +76,7 @@ interface ForceGraphInstance {
   graphData(data: { nodes: unknown[]; links: unknown[] }): ForceGraphInstance;
   backgroundColor(color: string): ForceGraphInstance;
   nodeRelSize(size: number): ForceGraphInstance;
+  nodeResolution(resolution: number): ForceGraphInstance;
   nodeVal(
     fn: (node: { id: string; type?: string; difficulty?: string }) => number
   ): ForceGraphInstance;
@@ -81,7 +92,6 @@ interface ForceGraphInstance {
   linkWidth(width: number): ForceGraphInstance;
   linkDirectionalArrowLength(length: number): ForceGraphInstance;
   linkDirectionalArrowRelPos(pos: number): ForceGraphInstance;
-  linkDirectionalParticles(size: number): ForceGraphInstance;
   linkCurvature(curvature: number): ForceGraphInstance;
   onNodeClick(handler: (node: { id?: string }, event: unknown) => void): ForceGraphInstance;
   width(w: number): ForceGraphInstance;
@@ -329,11 +339,14 @@ async function renderGraph(): Promise<void> {
     const isDark = currentTheme.value === 'dark';
 
     // 创建 3D 力导向图实例
+    // 性能优化配置：
+    // - rendererConfig.antialias: false 关闭抗锯齿，降低 GPU 片元着色负担
+    //   （大规模图场景下，抗锯齿带来的视觉收益低于性能损失）
     graphInstance = new ForceGraphCtor(containerRef.value, {
       // controlType: 'trackball' 为默认，支持任意方向旋转
       controlType: 'trackball',
       rendererConfig: {
-        antialias: true,
+        antialias: false,
         alpha: true,
       },
     });
@@ -342,18 +355,22 @@ async function renderGraph(): Promise<void> {
     const rect = containerRef.value.getBoundingClientRect();
     const canvasWidth = rect.width > 0 ? rect.width : 800;
     const canvasHeight = rect.height > 0 ? rect.height : 600;
+    // 限制 devicePixelRatio 上限为 1.5，平衡 Retina 屏清晰度与 GPU 像素填充负担
+    // （默认值 window.devicePixelRatio 在 Retina 屏为 2-3，渲染像素数翻 4-9 倍）
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     graphInstance
       .width(canvasWidth)
       .height(canvasHeight)
       .backgroundColor(isDark ? '#0f172a' : '#f8fafc')
       .graphData(data)
       // 节点配置：模块节点更大更显眼，文档节点较小
-      .nodeRelSize(4)
+      .nodeRelSize(3)
+      .nodeResolution(6)
       .nodeVal((node) => (node.type === 'module' ? 3 : 1))
       .nodeColor((node) => getNodeColor({ type: node.type, difficulty: node.difficulty }))
       .nodeOpacity(0.9)
       .nodeLabel((node) => `<b>${node.label || node.id}</b><br/>type: ${node.type || 'unknown'}`)
-      // 边配置
+      // 边配置：直线渲染（curvature=0）省去曲线几何计算
       .linkColor((link) => {
         if (link.type === 'related') {
           return isDark ? '#64748b' : '#94a3b8';
@@ -362,29 +379,42 @@ async function renderGraph(): Promise<void> {
       })
       .linkOpacity(0.4)
       .linkWidth(0.5)
-      .linkDirectionalArrowLength(3.5)
+      .linkDirectionalArrowLength(3)
       .linkDirectionalArrowRelPos(1)
-      .linkCurvature(0.1)
-      // 节点点击跳转
+      .linkCurvature(0)
+      // 节点点击立即跳转（无任何中间动画）
       .onNodeClick((node) => {
         const nodeId = node.id;
         if (!nodeId) return;
         const url = nodeUrlMap.value.get(nodeId);
         if (url) {
+          // 直接修改 location 触发导航，无 focus/zoom 过渡
           window.location.href = url;
         }
       })
       // 引擎停止后自适应视图
       .onEngineStop(() => {
         try {
-          graphInstance?.zoomToFit(500, 60);
+          graphInstance?.zoomToFit(400, 60);
         } catch {
           // zoomToFit 失败不影响主流程
         }
       })
-      // 控制力导向布局收敛速度，避免长时间运行
-      .cooldownTicks(300)
-      .cooldownTime(8000);
+      // 性能优化：快速冷却物理引擎
+      // - cooldownTicks(80) 限制最大迭代轮数
+      // - cooldownTime(1500) 1.5 秒后强制停止，节点快速稳定便于点击
+      .cooldownTicks(80)
+      .cooldownTime(1500);
+
+    // 限制 DPR，降低 Retina 屏渲染像素数（必须在 graphData 后调用）
+    if (typeof graphInstance.dpr === 'function') {
+      graphInstance.dpr(dpr);
+    }
+
+    // 禁用节点拖拽，避免误触发力重计算导致整个图重新震荡
+    if (typeof graphInstance.enableNodeDrag === 'function') {
+      graphInstance.enableNodeDrag(false);
+    }
 
     status.value = 'rendered';
   } catch (err) {
