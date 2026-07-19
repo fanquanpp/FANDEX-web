@@ -87,36 +87,6 @@ const base = import.meta.env.BASE_URL;
 </html>
 
 <script>
-  // 快捷键 Ctrl/Cmd + K 由 SearchDialog Vue 组件接管（client:load 水合后生效）
-  // 在 SearchDialog 水合前的极短时间窗口内，Cmd+K 将无响应；
-  // 此处保留兜底：若 SearchDialog 未加载（如水合失败），回退到跳转 /search/ 页面
-  let searchDialogMounted = false;
-  document.addEventListener(
-    'fandex-search-dialog-ready',
-    () => {
-      searchDialogMounted = true;
-    },
-    { once: true }
-  );
-
-  document.addEventListener(
-    'keydown',
-    (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        // 若 SearchDialog 已就绪，由其处理；否则兜底跳转
-        if (!searchDialogMounted) {
-          e.preventDefault();
-          const base = document.querySelector('a.nav-logo')?.getAttribute('href') || '/';
-          window.location.href = base + 'search/';
-        }
-        // searchDialogMounted=true 时不阻止默认行为，让 SearchDialog 的事件监听器接管
-      }
-    },
-    { capture: true }
-  );
-</script>
-
-<script>
   // 代码运行器挂载入口：扫描页面中 div[data-code-runner] 容器并动态挂载 CodeRunner.vue
   // 由 remark-code-runner 插件在 Markdown 渲染期生成容器，惰性加载 Vue 与 CodeRunner 组件
   import { initCodeRunnerMounting } from '@/lib/code-runner-mount';

@@ -7,7 +7,6 @@
  */
 import BaseLayout from '@/components/BaseLayout.astro';
 import ThemeToggle from '@/islands/ThemeToggle.vue';
-import SearchDialog from '@/islands/SearchDialog.vue';
 import { SITE } from '@/lib/constants';
 
 const { title } = Astro.props;
@@ -119,27 +118,6 @@ const base = import.meta.env.BASE_URL;
         </svg>
         <span class="nav-action-text">知识地图</span>
       </a>
-      <!-- 全局搜索按钮：点击唤起 SearchDialog 弹窗（Cmd/Ctrl+K 快捷键亦可） -->
-      <button
-        class="nav-search-btn"
-        id="home-nav-search-btn"
-        aria-label="搜索文档"
-        title="搜索文档 (Ctrl+K)"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <span class="nav-search-text">搜索</span>
-        <kbd class="nav-search-kbd">⌘K</kbd>
-      </button>
       <!-- GitHub 仓库链接 -->
       <a
         href="https://github.com/fanquanpp/FANDEX-web"
@@ -174,8 +152,6 @@ const base = import.meta.env.BASE_URL;
       <ThemeToggle client:load />
     </div>
   </header>
-  <!-- 全局搜索弹窗：通过 Cmd/Ctrl+K 或顶部搜索按钮唤起，client:load 立即水合 -->
-  <SearchDialog client:load />
   <!-- 首页主内容区 -->
   <main class="home-main">
     <slot />
@@ -292,14 +268,6 @@ const base = import.meta.env.BASE_URL;
   }
 
   // ========== 搜索按钮：唤起 SearchDialog 弹窗 ==========
-  // 首页顶部搜索按钮派发 fandex-open-search 事件
-  // SearchDialog 已就绪时拦截默认行为，由弹窗接管；
-  // 否则保留默认行为（button 无 href，无副作用）
-  function openSearchDialog() {
-    if ((window as Window & { __fandexSearchDialogReady?: boolean }).__fandexSearchDialogReady) {
-      window.dispatchEvent(new CustomEvent('fandex-open-search'));
-    }
-  }
-  const homeSearchBtn = document.getElementById('home-nav-search-btn');
-  if (homeSearchBtn) homeSearchBtn.addEventListener('click', openSearchDialog);
+  // 首页已移除搜索功能（搜索能力收敛至 /tags/ 页面），此处不再注册搜索按钮事件
+  // 保留空函数占位，避免影响后续脚本执行
 </script>

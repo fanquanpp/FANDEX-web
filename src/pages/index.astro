@@ -273,6 +273,10 @@ const grouped = getCategories()
   margin: 0 0 var(--spacing-md);
   font-weight: 400;
   letter-spacing: 0.02em;
+  /* 显式声明水平居中，避免被任何父级或继承样式覆盖，确保桌面端与移动端均居中显示 */
+  text-align: center;
+  margin-inline: auto;
+  max-width: 600px;
 }
 
 /* 统计数据栏 */
