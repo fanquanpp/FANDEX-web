@@ -520,9 +520,16 @@ function handleResizeDebounced(): void {
       </button>
     </div>
 
-    <!-- 主渲染容器 -->
-    <div class="kg3d-container" ref="containerRef">
-      <!-- 加载中 spinner -->
+    <!-- 渲染区包裹层：作为定位上下文，隔离 3d-force-graph 直接 DOM 操作与 Vue patch
+         关键：.kg3d-container 内部由 3d-force-graph 直接管理 canvas，
+              Vue 不再在其内部渲染 v-if 节点，避免 patch 冲突
+              （此前 v-if="loading" 与 canvas 共存于 .kg3d-container 内，
+              导致 "Cannot read properties of null (reading 'insertBefore')" 错误） -->
+    <div class="kg3d-canvas-wrap">
+      <!-- 3d-force-graph 渲染容器：Vue 视为空，子节点完全由库管理 -->
+      <div class="kg3d-container" ref="containerRef"></div>
+
+      <!-- 加载/错误覆盖层：与 .kg3d-container 平级，通过 position:absolute 覆盖其上 -->
       <div v-if="status === 'loading'" class="kg3d-loading">
         <div class="kg3d-spinner" aria-hidden="true"></div>
         <p class="kg3d-loading-text">
@@ -531,7 +538,6 @@ function handleResizeDebounced(): void {
         </p>
       </div>
 
-      <!-- 错误状态 -->
       <div v-else-if="status === 'error'" class="kg3d-error">
         <svg
           width="32"
@@ -634,24 +640,31 @@ function handleResizeDebounced(): void {
   border-color: var(--color-primary);
 }
 
-/* 渲染容器：响应式高度 + 布局隔离
+/* 渲染区包裹层：作为定位上下文，承载 canvas 容器与 loading/error 覆盖层
+   - position: relative 让 absolute 子元素锚定于此
    - clamp() 根据视口高度自适应：小屏 480px / 中屏跟随 75vh / 上限 800px
    - contain 隔离子树布局/绘制/样式，防止 ThreeJS canvas 缩放引起父级 reflow */
-.kg3d-container {
+.kg3d-canvas-wrap {
   position: relative;
   width: 100%;
   height: clamp(480px, 75vh, 800px);
   overflow: hidden;
   background: #0f172a;
-  cursor: grab;
   contain: layout style paint;
+}
+
+/* 3d-force-graph 渲染容器：子节点完全由库管理，Vue 永远不 patch 其内部 */
+.kg3d-container {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
 }
 
 .kg3d-container:active {
   cursor: grabbing;
 }
 
-/* 加载状态 */
+/* 加载状态：覆盖在 canvas 之上（与 .kg3d-container 平级） */
 .kg3d-loading {
   position: absolute;
   inset: 0;
@@ -832,7 +845,7 @@ function handleResizeDebounced(): void {
 
 /* 移动端适配：缩小容器高度，简化图例 */
 @media (max-width: 768px) {
-  .kg3d-container {
+  .kg3d-canvas-wrap {
     height: 520px;
   }
 
