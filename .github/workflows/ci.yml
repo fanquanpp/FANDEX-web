@@ -123,6 +123,10 @@ jobs:
           sleep 3
 
       - name: Smoke test key routes
+        # 允许 200/404/301 三种状态码：
+        #   200 - 正常可达
+        #   404 - 路径不存在但服务正常响应
+        #   301 - serve 工具对 .html 后缀的 SPA 重定向（如 /404.html → /404）
         run: |
           set -e
           ROUTES=(
@@ -136,8 +140,8 @@ jobs:
           for route in "${ROUTES[@]}"; do
             echo "Checking: $route"
             code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:4173${route}")
-            if [ "$code" != "200" ] && [ "$code" != "404" ]; then
-              echo "::error::Route $route returned $code (expected 200 or 404)"
+            if [ "$code" != "200" ] && [ "$code" != "404" ] && [ "$code" != "301" ]; then
+              echo "::error::Route $route returned $code (expected 200, 404 or 301)"
               exit 1
             fi
             echo "  -> $code OK"
@@ -212,6 +216,17 @@ jobs:
         with:
           name: dist
           path: dist/
+
+      - name: Restore .nojekyll
+        # upload-artifact 默认不上传以点开头的隐藏文件，需在下载后从 public/ 恢复
+        # 否则 qa-check 会报 [FAIL] .nojekyll missing，GitHub Pages 也会忽略下划线开头的资源
+        run: |
+          if [ -f public/.nojekyll ]; then
+            cp public/.nojekyll dist/.nojekyll
+            echo "Restored .nojekyll from public/"
+          else
+            echo "::warning::public/.nojekyll not found"
+          fi
 
       - name: Run QA check
         run: npm run qa
