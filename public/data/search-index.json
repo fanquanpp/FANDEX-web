@@ -20,6 +20,16 @@
     "updated": "2026-06-15"
   },
   {
+    "slug": "agent/AI-Scientist-v2自主研究",
+    "title": "AI-Scientist-v2自主研究",
+    "description": "Sakana 的 AI Scientist v2 (Yamada 等人, arXiv:2504.08066) 运行完整研究循环：假设、代码、实验、图表、论文、提交。它是第一个有生成论文通过 ICLR 2025 workshop 同行评审的系统。独立评估 (Beel 等人) 发现 42% 的实验...",
+    "tags": [],
+    "module": "agent",
+    "order": 0,
+    "difficulty": "",
+    "updated": ""
+  },
+  {
     "slug": "agent/Agent可观测性平台",
     "title": "Agent可观测性平台",
     "description": "三个开源Agent可观测性平台主导2026年。Langfuse（MIT）— 6M+安装/月，追踪 + 提示管理 + 评估 + 会话回放。Arize Phoenix（Elastic 2.0）— 深度Agent特定评估，RAG相关性，OpenInference自动仪器化。Comet Opik（Ap...",
@@ -83,16 +93,6 @@
     "slug": "agent/Agno与Mastra生产运行时",
     "title": "Agno与Mastra生产运行时",
     "description": "Agno（Python）和Mastra（TypeScript）是2026年的生产运行时配对。Agno瞄准微秒级Agent实例化和无状态FastAPI后端。Mastra在Vercel AI SDK基底上发布Agent、工具、工作流、统一模型路由和复合存储。",
-    "tags": [],
-    "module": "agent",
-    "order": 0,
-    "difficulty": "",
-    "updated": ""
-  },
-  {
-    "slug": "agent/AI-Scientist-v2自主研究",
-    "title": "AI-Scientist-v2自主研究",
-    "description": "Sakana 的 AI Scientist v2 (Yamada 等人, arXiv:2504.08066) 运行完整研究循环：假设、代码、实验、图表、论文、提交。它是第一个有生成论文通过 ICLR 2025 workshop 同行评审的系统。独立评估 (Beel 等人) 发现 42% 的实验...",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -210,6 +210,16 @@
     "updated": ""
   },
   {
+    "slug": "agent/LLM路由层",
+    "title": "LLM路由层 — 模型选择、回退、成本优化",
+    "description": "构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试",
+    "tags": ["LLM路由", "模型选择", "回退链", "成本优化", "AB测试"],
+    "module": "agent",
+    "order": 0,
+    "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
     "slug": "agent/LangGraph状态图与持久执行",
     "title": "LangGraph状态图与持久执行",
     "description": "LangGraph是2026年低层有状态编排的参考。Agent是状态机；节点是函数；边是转换；状态是不可变的并在每步后检查点。从任何失败处精确恢复。",
@@ -224,16 +234,6 @@
     "title": "LlamaGuard与输入输出分类",
     "description": "掌握Llama Guard 3/4分类器、NeMo Guardrails防护栏和MLCommons危害分类法，理解分类器层的优势与局限",
     "tags": ["LlamaGuard", "分类器", "NeMo Guardrails", "MLCommons", "Emoji走私攻击"],
-    "module": "agent",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
-    "slug": "agent/LLM路由层",
-    "title": "LLM路由层 — 模型选择、回退、成本优化",
-    "description": "构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试",
-    "tags": ["LLM路由", "模型选择", "回退链", "成本优化", "AB测试"],
     "module": "agent",
     "order": 0,
     "difficulty": "intermediate",
@@ -410,9 +410,9 @@
     "updated": ""
   },
   {
-    "slug": "agent/Reflexion语言强化学习",
-    "title": "Reflexion语言强化学习",
-    "description": "基于梯度的RL需要数千次试验和GPU集群来修复一个失败模式。Reflexion（Shinn等人，NeurIPS 2023）用自然语言做到这一点：每次失败的试验后，Agent写一段反思，存储在情景记忆中，并在下一次试验中以此记忆为条件。这是Letta的睡眠时间计算、Claude Code的CLA...",
+    "slug": "agent/ReWOO与计划执行",
+    "title": "ReWOO与计划执行",
+    "description": "ReAct在一个流中交替思考和行动。ReWOO将它们分离：先做一个完整计划，然后执行。Token消耗减少5倍，HotpotQA准确率提升4%，而且你可以将规划器蒸馏到7B模型中。Plan-and-Execute将其泛化；Plan-and-Act将其扩展到Web导航。",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -420,9 +420,9 @@
     "updated": ""
   },
   {
-    "slug": "agent/ReWOO与计划执行",
-    "title": "ReWOO与计划执行",
-    "description": "ReAct在一个流中交替思考和行动。ReWOO将它们分离：先做一个完整计划，然后执行。Token消耗减少5倍，HotpotQA准确率提升4%，而且你可以将规划器蒸馏到7B模型中。Plan-and-Execute将其泛化；Plan-and-Act将其扩展到Web导航。",
+    "slug": "agent/Reflexion语言强化学习",
+    "title": "Reflexion语言强化学习",
+    "description": "基于梯度的RL需要数千次试验和GPU集群来修复一个失败模式。Reflexion（Shinn等人，NeurIPS 2023）用自然语言做到这一点：每次失败的试验后，Agent写一段反思，存储在情景记忆中，并在下一次试验中以此记忆为条件。这是Letta的睡眠时间计算、Claude Code的CLA...",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -1400,26 +1400,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/GitHub-Issue到PR自主代理",
-    "title": "GitHub Issue到PR自主代理",
-    "description": "AWS Remote SWE Agents、Cursor Background Agents、OpenAI Codex cloud和Google Jules都发布2026年相同产品形态：标记issue，获得PR。在云沙盒中运行代理，验证测试通过，发布带理由的review-ready PR。难点在于自动复现仓库构建环境、防止凭证泄露、强制每仓库预算、确保代理不能force-push。构建自托管版本并在成本和通过率上与托管替代比较。",
-    "tags": ["Issue到PR", "云沙盒", "GitHub App", "异步代理", "凭证范围", "预算强制"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "advanced",
-    "updated": ""
-  },
-  {
-    "slug": "ai-engineering/Git与协作",
-    "title": "Git与协作",
-    "description": "配置 Git 身份，掌握日常 add/commit/push 工作流，创建和合并分支，编写 .gitignore，浏览提交历史",
-    "tags": ["Git", "版本控制", "GitHub", "协作"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": ""
-  },
-  {
     "slug": "ai-engineering/GPU与云计算",
     "title": "GPU与云计算",
     "description": "验证本地 GPU 可用性，配置 Google Colab T4 GPU，基准测试 CPU vs GPU 矩阵乘法，估算 VRAM 可容纳的最大模型",
@@ -1437,6 +1417,26 @@
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/GitHub-Issue到PR自主代理",
+    "title": "GitHub Issue到PR自主代理",
+    "description": "AWS Remote SWE Agents、Cursor Background Agents、OpenAI Codex cloud和Google Jules都发布2026年相同产品形态：标记issue，获得PR。在云沙盒中运行代理，验证测试通过，发布带理由的review-ready PR。难点在于自动复现仓库构建环境、防止凭证泄露、强制每仓库预算、确保代理不能force-push。构建自托管版本并在成本和通过率上与托管替代比较。",
+    "tags": ["Issue到PR", "云沙盒", "GitHub App", "异步代理", "凭证范围", "预算强制"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "advanced",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/Git与协作",
+    "title": "Git与协作",
+    "description": "配置 Git 身份，掌握日常 add/commit/push 工作流，创建和合并分支，编写 .gitignore，浏览提交历史",
+    "tags": ["Git", "版本控制", "GitHub", "协作"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
     "updated": ""
   },
   {
@@ -1464,16 +1464,6 @@
     "title": "KNN与距离度量",
     "description": "K近邻算法通过找最近的邻居来分类，距离度量的选择决定了什么是\"近\"",
     "tags": ["KNN", "距离度量", "分类", "回归", "懒惰学习"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": ""
-  },
-  {
-    "slug": "ai-engineering/Linux与AI",
-    "title": "Linux与AI",
-    "description": "Linux 文件系统导航，文件权限管理，apt 包管理，用户与 sudo，进程与 systemd，磁盘空间，网络传输，tmux 会话",
-    "tags": ["Linux", "Ubuntu", "命令行", "文件系统", "权限", "WSL2"],
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "beginner",
@@ -1540,6 +1530,16 @@
     "updated": ""
   },
   {
+    "slug": "ai-engineering/Linux与AI",
+    "title": "Linux与AI",
+    "description": "Linux 文件系统导航，文件权限管理，apt 包管理，用户与 sudo，进程与 systemd，磁盘空间，网络传输，tmux 会话",
+    "tags": ["Linux", "Ubuntu", "命令行", "文件系统", "权限", "WSL2"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
+    "updated": ""
+  },
+  {
     "slug": "ai-engineering/MCP服务器与注册中心与治理",
     "title": "MCP服务器与注册中心与治理",
     "description": "Model Context Protocol在2026年从未来变成默认工具使用规范。Anthropic、OpenAI、Google和每个主要IDE都发布MCP客户端。Pinterest发布内部MCP服务器生态。AAIF Registry在.well-known正式化能力元数据。2026年生产形态：StreamableHTTP传输、OAuth 2.1范围、OPA策略门控、注册中心让平台团队发现验证启用服务器。端到端构建。",
@@ -1570,16 +1570,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/Python环境管理",
-    "title": "Python环境管理",
-    "description": "使用 uv、venv、conda 创建隔离虚拟环境，编写 pyproject.toml 和 lockfile，诊断依赖冲突，实施按阶段的环境策略",
-    "tags": ["Python", "虚拟环境", "uv", "conda", "依赖管理", "pyproject.toml"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": "2026-06-15"
-  },
-  {
     "slug": "ai-engineering/PyTorch入门",
     "title": "PyTorch入门",
     "description": "PyTorch是深度学习的工业标准框架，动态计算图让调试和实验更直观",
@@ -1588,6 +1578,16 @@
     "order": 0,
     "difficulty": "beginner",
     "updated": ""
+  },
+  {
+    "slug": "ai-engineering/Python环境管理",
+    "title": "Python环境管理",
+    "description": "使用 uv、venv、conda 创建隔离虚拟环境，编写 pyproject.toml 和 lockfile，诊断依赖冲突，实施按阶段的环境策略",
+    "tags": ["Python", "虚拟环境", "uv", "conda", "依赖管理", "pyproject.toml"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
+    "updated": "2026-06-15"
   },
   {
     "slug": "ai-engineering/SGLang与RadixAttention",
@@ -1610,6 +1610,16 @@
     "updated": ""
   },
   {
+    "slug": "ai-engineering/Whisper架构与微调",
+    "title": "Whisper架构与微调",
+    "description": "深入理解Whisper的编码器-解码器架构、分块推理和LoRA微调",
+    "tags": ["Whisper", "ASR", "微调", "LoRA", "Transformer"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
     "slug": "ai-engineering/vLLM服务内部机制",
     "title": "vLLM服务内部：PagedAttention、连续批处理、分块预填充",
     "description": "深入理解vLLM三大核心优化机制及其调度器工作原理",
@@ -1624,16 +1634,6 @@
     "title": "vLLM生产栈与LMCache KV卸载",
     "description": "理解vLLM生产栈参考部署和LMCache跨引擎KV缓存复用",
     "tags": ["vLLM生产栈", "LMCache", "KV卸载", "CPU卸载", "Kubernetes部署"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
-    "slug": "ai-engineering/Whisper架构与微调",
-    "title": "Whisper架构与微调",
-    "description": "深入理解Whisper的编码器-解码器架构、分块推理和LoRA微调",
-    "tags": ["Whisper", "ASR", "微调", "LoRA", "Transformer"],
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "intermediate",
@@ -13172,20 +13172,20 @@
     "updated": ""
   },
   {
-    "slug": "llm/DeepSeek-V3架构详解",
-    "title": "DeepSeek-V3架构详解",
-    "description": "深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe",
-    "tags": ["DeepSeek", "MoE", "MLA", "MTP", "架构创新"],
+    "slug": "llm/DPO直接偏好优化",
+    "title": "DPO直接偏好优化",
+    "description": "理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型",
+    "tags": ["DPO", "preference optimization", "对齐", "偏好学习"],
     "module": "llm",
     "order": 0,
     "difficulty": "advanced",
     "updated": ""
   },
   {
-    "slug": "llm/DPO直接偏好优化",
-    "title": "DPO直接偏好优化",
-    "description": "理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型",
-    "tags": ["DPO", "preference optimization", "对齐", "偏好学习"],
+    "slug": "llm/DeepSeek-V3架构详解",
+    "title": "DeepSeek-V3架构详解",
+    "description": "深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe",
+    "tags": ["DeepSeek", "MoE", "MLA", "MTP", "架构创新"],
     "module": "llm",
     "order": 0,
     "difficulty": "advanced",
@@ -13212,16 +13212,6 @@
     "updated": ""
   },
   {
-    "slug": "llm/LangGraph状态机",
-    "title": "LangGraph状态机",
-    "description": "理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流",
-    "tags": ["LangGraph", "state machine", "工作流", "Agent", "状态机"],
-    "module": "llm",
-    "order": 0,
-    "difficulty": "advanced",
-    "updated": ""
-  },
-  {
     "slug": "llm/LLM工程评估",
     "title": "LLM工程评估",
     "description": "理解 LLM 应用的评估框架，包括 LLM-as-Judge、评估流水线和回归测试",
@@ -13239,6 +13229,16 @@
     "module": "llm",
     "order": 0,
     "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
+    "slug": "llm/LangGraph状态机",
+    "title": "LangGraph状态机",
+    "description": "理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流",
+    "tags": ["LangGraph", "state machine", "工作流", "Agent", "状态机"],
+    "module": "llm",
+    "order": 0,
+    "difficulty": "advanced",
     "updated": ""
   },
   {
@@ -14562,16 +14562,6 @@
     "updated": ""
   },
   {
-    "slug": "multimodal/Chameleon与早期融合",
-    "title": "Chameleon与早期融合Token统一模型",
-    "description": "理解VQ-VAE图像分词器和共享词表的早期融合多模态架构",
-    "tags": ["Chameleon", "早期融合", "VQ-VAE", "共享词表", "混合模态生成"],
-    "module": "multimodal",
-    "order": 0,
-    "difficulty": "advanced",
-    "updated": ""
-  },
-  {
     "slug": "multimodal/CLIP与对比预训练",
     "title": "CLIP与对比视觉语言预训练",
     "description": "从InfoNCE到Sigmoid损失，深入理解CLIP和SigLIP的对比学习机制",
@@ -14579,6 +14569,16 @@
     "module": "multimodal",
     "order": 0,
     "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
+    "slug": "multimodal/Chameleon与早期融合",
+    "title": "Chameleon与早期融合Token统一模型",
+    "description": "理解VQ-VAE图像分词器和共享词表的早期融合多模态架构",
+    "tags": ["Chameleon", "早期融合", "VQ-VAE", "共享词表", "混合模态生成"],
+    "module": "multimodal",
+    "order": 0,
+    "difficulty": "advanced",
     "updated": ""
   },
   {
@@ -20002,16 +20002,6 @@
     "updated": "2026-06-13"
   },
   {
-    "slug": "vue3/computed缓存机制与watch执行时机",
-    "title": "computed缓存机制与watch执行时机",
-    "description": "Vue 3 computed缓存机制与watch执行时机详解。",
-    "tags": [],
-    "module": "vue3",
-    "order": 100,
-    "difficulty": "advanced",
-    "updated": "2026-06-14"
-  },
-  {
     "slug": "vue3/Router详解",
     "title": "Vue Router 详解",
     "description": "路由配置、导航守卫、懒加载与路由元信息。",
@@ -20020,6 +20010,16 @@
     "order": 100,
     "difficulty": "intermediate",
     "updated": "2026-05-03"
+  },
+  {
+    "slug": "vue3/computed缓存机制与watch执行时机",
+    "title": "computed缓存机制与watch执行时机",
+    "description": "Vue 3 computed缓存机制与watch执行时机详解。",
+    "tags": [],
+    "module": "vue3",
+    "order": 100,
+    "difficulty": "advanced",
+    "updated": "2026-06-14"
   },
   {
     "slug": "vue3/组合式API优势场景",
