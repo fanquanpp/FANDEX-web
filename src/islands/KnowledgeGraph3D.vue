@@ -10,6 +10,17 @@
   - 响应暗色模式切换（重建图实例应用对应配色）
   - 加载中显示 spinner，错误时显示友好提示
 
+  健壮性策略：
+  - 渲染锁（isRendering + pendingRender）：串行化 renderGraph 调用
+    防止主题切换、resize、retry 等并发场景下旧实例未销毁就创建新实例
+    导致 canvas 重叠、WebGL context 冲突
+  - 主题切换防抖（200ms）：避免动画期间多次触发重建
+    配合渲染锁双重保证并发安全
+  - destroy 后 RAF 让出主线程：确保 ThreeJS/WebGL 资源回收完成
+    避免立即 new ForceGraph3D 复用同一 DOM 导致 WebGL context 冲突
+  - currentTheme 在 setup 阶段同步读取初始值
+    避免首次渲染前有一帧主题错误（原 onMounted 才读取）
+
   性能优化策略（针对 52 模块 + 2065 文档 + 4583 关系的大规模图）：
   - linkWidth=0：用 THREE.Line 替代 CylinderGeometry，避免 4583 个圆柱 mesh
     这是最大性能杀手，改为 Line 性能提升 5-10 倍
@@ -160,8 +171,14 @@ const status = ref<'loading' | 'rendered' | 'error'>('loading');
 /** 错误信息（status === 'error' 时展示） */
 const errorMsg = ref<string>('');
 
-/** 当前主题（用于配色切换） */
-const currentTheme = ref<'light' | 'dark'>('light');
+/** 当前主题（用于配色切换）
+ * 初始值在 setup 阶段同步读取，避免首次渲染前有一帧主题错误
+ * 若 DOM 未就绪则回退 'light'（SSR 安全） */
+const initialTheme =
+  typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark'
+    ? 'dark'
+    : 'light';
+const currentTheme = ref<'light' | 'dark'>(initialTheme);
 
 /** 主题变化 observer */
 let themeObserver: MutationObserver | null = null;
@@ -177,6 +194,18 @@ let resizeTimer: number | null = null;
 
 /** 当前 hover 节点 ID（用于 cursor 切换） */
 const hoveredNodeId = ref<string | null>(null);
+
+/** 渲染锁：防止并发 renderGraph 调用导致图实例重叠
+ * 主题切换、resize、retry 等场景可能短时间内触发多次渲染，
+ * 通过 isRendering 标志串行化，避免旧实例未销毁就创建新实例 */
+let isRendering = false;
+
+/** 主题切换防抖计时器句柄 */
+let themeDebounceTimer: number | null = null;
+
+/** 待渲染标记：渲染锁释放后如果有 pending 请求，则再次执行渲染
+ * 保证最后一次主题切换最终生效，避免快速切换时停留在中间态 */
+let pendingRender = false;
 
 // ========== 计算属性 ==========
 
@@ -201,9 +230,7 @@ const nodeUrlMap = computed<Map<string, string>>(() => {
 // ========== 生命周期 ==========
 
 onMounted(async () => {
-  // 读取初始主题
-  currentTheme.value =
-    document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  // currentTheme 已在 setup 阶段同步初始化，此处无需再读
 
   // 监听 data-theme 变化以支持暗色模式切换时重新渲染
   setupThemeObserver();
@@ -221,11 +248,18 @@ onBeforeUnmount(() => {
     themeObserver.disconnect();
     themeObserver = null;
   }
+  if (themeDebounceTimer !== null) {
+    window.clearTimeout(themeDebounceTimer);
+    themeDebounceTimer = null;
+  }
   window.removeEventListener('resize', handleResizeDebounced);
   if (resizeTimer !== null) {
     window.clearTimeout(resizeTimer);
     resizeTimer = null;
   }
+  // 重置渲染状态，避免组件卸载后 pending render 误触发
+  isRendering = false;
+  pendingRender = false;
 });
 
 // ========== 方法 ==========
@@ -295,7 +329,7 @@ function buildGraphData(): { nodes: unknown[]; links: unknown[] } {
   const links: unknown[] = [];
   const seenPair = new Set<string>();
 
-  // 第一轮：收集 prerequisite 边
+  // 第一轮：收集 prerequisite 边（有向：A->B 与 B->A 是不同关系，保留方向）
   for (const edge of props.map.edges) {
     if (edge.type !== 'prerequisite') continue;
     const key = `${edge.from}|${edge.to}`;
@@ -307,10 +341,12 @@ function buildGraphData(): { nodes: unknown[]; links: unknown[] } {
       type: edge.type,
     });
   }
-  // 第二轮：补充 related 边（仅当同对节点没有 prerequisite 边时才加入）
+  // 第二轮：补充 related 边（无向：A-B 与 B-A 是同一关系，按字典序归一化去重）
   for (const edge of props.map.edges) {
     if (edge.type !== 'related') continue;
-    const key = `${edge.from}|${edge.to}`;
+    // related 是无向关系，按字典序归一化节点对，避免 A-B 与 B-A 视为不同边导致重复
+    const [a, b] = edge.from < edge.to ? [edge.from, edge.to] : [edge.to, edge.from];
+    const key = `${a}|${b}`;
     if (seenPair.has(key)) continue;
     seenPair.add(key);
     links.push({
@@ -326,15 +362,18 @@ function buildGraphData(): { nodes: unknown[]; links: unknown[] } {
 /**
  * 渲染知识图谱
  * 核心执行流程：
- *   1. status='loading' + nextTick + RAF：让出主线程，spinner 先渲染
+ *   1. 渲染锁检查：若正在渲染则标记 pending，本次调用直接返回
+ *      保证最后一次渲染请求最终生效，避免并发重建导致 canvas 重叠
+ *   2. status='loading' + nextTick + RAF：让出主线程，spinner 先渲染
  *      （避免 ThreeJS 初始化同步阻塞导致 spinner 卡顿）
- *   2. 加载 3d-force-graph 库（已缓存则跳过实际加载）
- *   3. 销毁旧图实例（避免重复挂载导致内存泄漏）
- *   4. 构建 graph data
- *   5. 创建 ForceGraph3D 实例并配置样式
- *   6. 绑定节点点击跳转 + hover 高亮事件
- *   7. 引擎停止后自动 zoomToFit
+ *   3. 加载 3d-force-graph 库（已缓存则跳过实际加载）
+ *   4. 销毁旧图实例（destroy 后 RAF 让出主线程，确保 WebGL 资源回收）
+ *   5. 构建 graph data
+ *   6. 创建 ForceGraph3D 实例并配置样式
+ *   7. 绑定节点点击跳转 + hover 高亮事件
+ *   8. 引擎停止后自动 zoomToFit
  * 异常时设置错误状态，展示友好提示
+ * 无论如何最后释放渲染锁，并处理 pending 请求
  */
 async function renderGraph(): Promise<void> {
   if (props.map.nodes.length === 0) {
@@ -342,6 +381,14 @@ async function renderGraph(): Promise<void> {
     return;
   }
   if (!containerRef.value) return;
+
+  // 渲染锁：若正在渲染，标记 pending 并返回
+  // 渲染完成后会检查 pending，确保最后一次请求最终生效
+  if (isRendering) {
+    pendingRender = true;
+    return;
+  }
+  isRendering = true;
 
   status.value = 'loading';
   errorMsg.value = '';
@@ -361,6 +408,9 @@ async function renderGraph(): Promise<void> {
 
     // 销毁旧实例，避免重复挂载
     destroyGraph();
+    // 关键：destroy 后让出主线程一帧，确保 ThreeJS/WebGL 资源回收完成
+    // 否则立即在同一个 DOM 上 new ForceGraph3D 可能导致 WebGL context 冲突
+    await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()));
 
     const data = buildGraphData();
     const isDark = currentTheme.value === 'dark';
@@ -488,6 +538,14 @@ async function renderGraph(): Promise<void> {
   } catch (err) {
     status.value = 'error';
     errorMsg.value = err instanceof Error ? err.message : String(err);
+  } finally {
+    // 释放渲染锁
+    isRendering = false;
+    // 检查 pending：若渲染期间有新请求，再次执行（最后一次请求最终生效）
+    if (pendingRender) {
+      pendingRender = false;
+      void renderGraph();
+    }
   }
 }
 
@@ -509,20 +567,29 @@ function destroyGraph(): void {
 /**
  * 设置主题变化监听
  * 通过 MutationObserver 监听 <html> 的 data-theme 属性变化
- * 主题切换时重建 3D 图实例以应用对应配色
+ * 主题切换时通过防抖触发重建 3D 图实例以应用对应配色
+ *
+ * 防抖说明：
+ * - 主题切换动画期间可能连续触发多次 data-theme 变化
+ * - 防抖 200ms 确保只在切换完成后重建一次，避免短时间内多次重建导致 canvas 重叠
+ * - 配合 renderGraph 内部的渲染锁，双重保证并发安全
  */
 function setupThemeObserver(): void {
-  themeObserver = new MutationObserver((mutations) => {
-    for (const m of mutations) {
-      if (m.type === 'attributes' && m.attributeName === 'data-theme') {
-        const newTheme =
-          document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-        if (newTheme !== currentTheme.value) {
-          currentTheme.value = newTheme;
-          void renderGraph();
-        }
-      }
+  themeObserver = new MutationObserver(() => {
+    const newTheme =
+      document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    if (newTheme === currentTheme.value) return;
+    currentTheme.value = newTheme;
+
+    // 防抖：清除旧计时器，重设新计时器
+    // 只有最后一次 theme 变化后 200ms 内无新变化才真正触发重建
+    if (themeDebounceTimer !== null) {
+      window.clearTimeout(themeDebounceTimer);
     }
+    themeDebounceTimer = window.setTimeout(() => {
+      themeDebounceTimer = null;
+      void renderGraph();
+    }, 200);
   });
   themeObserver.observe(document.documentElement, {
     attributes: true,
