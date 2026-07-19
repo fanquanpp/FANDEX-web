@@ -748,10 +748,10 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* 仪表盘容器 */
+/* 仪表盘容器：宽度与全站 --content-width 基准对齐，避免 dashboard 页面看起来比其他页面窄 */
 .dashboard {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--content-width, 1280px);
   margin: 0 auto;
   padding: var(--spacing-lg) var(--spacing-md);
 }

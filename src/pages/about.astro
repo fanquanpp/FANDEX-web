@@ -313,7 +313,7 @@ const currentYear = new Date().getFullYear();
   .info-page {
     position: relative;
     width: 100%;
-    max-width: 1080px;
+    max-width: var(--content-width, 1280px);
     margin: 0 auto;
     padding: 0 var(--spacing-lg) var(--spacing-2xl);
     min-height: calc(100vh - var(--nav-height));
