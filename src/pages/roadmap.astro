@@ -182,9 +182,24 @@ const priorityColors: Record<PathModule['priority'], string> = {
 </Layout>
 
 <!-- 客户端脚本：将学习路径数据注入页面，供路径选择交互使用。is:inline 声明，避免 Astro 误判为需处理的脚本 -->
-<script type="application/json" id="learning-paths-data" is:inline set:html={JSON.stringify(learningPaths)} />
-<script type="application/json" id="priority-labels" is:inline set:html={JSON.stringify(priorityLabels)} />
-<script type="application/json" id="priority-colors" is:inline set:html={JSON.stringify(priorityColors)} />
+<script
+  type="application/json"
+  id="learning-paths-data"
+  is:inline
+  set:html={JSON.stringify(learningPaths)}
+/>
+<script
+  type="application/json"
+  id="priority-labels"
+  is:inline
+  set:html={JSON.stringify(priorityLabels)}
+/>
+<script
+  type="application/json"
+  id="priority-colors"
+  is:inline
+  set:html={JSON.stringify(priorityColors)}
+/>
 
 <style>
   .roadmap-page {
@@ -968,9 +983,7 @@ const priorityColors: Record<PathModule['priority'], string> = {
 
     try {
       // 动态导入 service（避免 SSR 阶段加载）
-      const [{ getPathProgress }] = await Promise.all([
-        import('@/services/learning-path-service'),
-      ]);
+      const [{ getPathProgress }] = await Promise.all([import('@/services/learning-path-service')]);
 
       // 偏差报备：原代码还导入了 progress-service 的 getProgressStats 并构建 moduleProgressMap，
       // 但 renderPathDetail 已不消费该参数，故省略以减少无意义的 IndexedDB 读操作。
@@ -1011,7 +1024,7 @@ const priorityColors: Record<PathModule['priority'], string> = {
         completionRate: number;
         unlocked: boolean;
       }>;
-    },
+    }
   ): void {
     const detailEl = document.getElementById('path-detail');
     if (!detailEl) return;

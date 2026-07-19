@@ -325,7 +325,7 @@ const hasSidebar = Astro.slots.has('sidebar');
           const execCommandCopy = Reflect.get(document, 'execCommand') as (
             commandId: string,
             showUI?: boolean,
-            value?: string,
+            value?: string
           ) => boolean | undefined;
           const ta = document.createElement('textarea');
           ta.value = text;
