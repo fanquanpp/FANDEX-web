@@ -1,7 +1,7 @@
 name: 🐛 Bug 报告
 description: 报告一个可复现的问题，帮助改进项目
-title: "[Bug]: "
-labels: ["bug", "triage"]
+title: '[Bug]: '
+labels: ['bug', 'triage']
 body:
   - type: markdown
     attributes:
@@ -38,7 +38,7 @@ body:
     attributes:
       label: 环境信息
       description: 操作系统 / 浏览器或运行时 / 项目版本号等关键信息。
-      placeholder: "Windows 11 / Chrome 120 / v1.2.3"
+      placeholder: 'Windows 11 / Chrome 120 / v1.2.3'
     validations:
       required: true
   - type: textarea

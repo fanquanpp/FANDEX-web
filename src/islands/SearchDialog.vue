@@ -495,7 +495,7 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
 <template>
   <!-- Dialog 根：通过 v-model:open 双向绑定控制开关 -->
   <Dialog v-model:open="isOpen">
-    <DialogContent class="search-dialog-content p-0 gap-0 max-w-2xl w-[calc(100vw-2rem)] sm:w-full">
+    <DialogContent size="lg" class="search-dialog-content p-0 gap-0 w-[calc(100vw-2rem)] sm:w-full">
       <!-- 标题（sr-only：视觉隐藏，仅供屏幕阅读器使用） -->
       <DialogTitle class="sr-only">全局搜索</DialogTitle>
       <DialogDescription class="sr-only">
@@ -788,9 +788,17 @@ const MODULE_OPTIONS: ReadonlyArray<{ label: string; value: string }> = [
 
 /* ============================================================================
    响应式：移动端全屏弹窗
+   ----------------------------------------------------------------------------
+   修复 [H3]：原 `.search-dialog-content :deep(.DialogContent)` 为后代选择器,
+   期望匹配 .search-dialog-content 内部的 .DialogContent 元素。但实际上
+   .search-dialog-content 类通过 props.class 传入 DialogContent,被 cn() 合并
+   到 DialogContentPrimitive 根元素上,与 .search-dialog-content 是同一元素
+   (且 radix-vue 不会渲染 .DialogContent 类)。后代选择器永远不匹配。
+   修复:改用 `:deep(.search-dialog-content)` 直接选中根元素本身,穿透 scoped
+   样式的 data-v 属性约束(DialogPortal Teleport 后属性可能不在同一元素上)。
    ============================================================================ */
 @media (max-width: 640px) {
-  .search-dialog-content :deep(.DialogContent) {
+  :deep(.search-dialog-content) {
     width: 100vw !important;
     max-width: 100vw !important;
     height: 100vh !important;

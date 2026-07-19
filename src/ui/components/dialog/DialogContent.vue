@@ -12,6 +12,7 @@
  * - 居中定位：fixed + grid place-items-center
  * - 进入动画：fade + zoom，退出反向
  * - 内置右上角关闭按钮（X 图标）
+ * - 宽度通过 size prop 显式控制（sm/md/lg/xl），避免依赖 tailwind-merge 覆盖
  */
 
 import { computed } from 'vue';
@@ -25,15 +26,32 @@ import {
 } from 'radix-vue';
 import { X } from '@lucide/vue';
 
+/** 对话框尺寸类型：sm 窄 / md 中 / lg 宽 / xl 超宽 */
+type DialogSize = 'sm' | 'md' | 'lg' | 'xl';
+
+/** size prop 到 max-width 工具类的映射 */
+const sizeClasses: Record<DialogSize, string> = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-2xl',
+  xl: 'max-w-4xl',
+};
+
 interface DialogContentProps extends DialogContentPrimitiveProps {
+  /** 自定义附加类（tailwind-merge 处理冲突） */
   class?: string;
+  /** 对话框宽度尺寸，默认 md（max-w-md / 28rem） */
+  size?: DialogSize;
 }
 
-const props = defineProps<DialogContentProps>();
+const props = withDefaults(defineProps<DialogContentProps>(), {
+  size: 'md',
+});
 
 const classes = computed(() =>
   cn(
-    'fixed left-1/2 top-1/2 z-modal grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border border-border bg-elevated p-6 shadow-2xl rounded-2xl data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+    'fixed left-1/2 top-1/2 z-modal grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 border border-border bg-elevated p-6 shadow-2xl rounded-2xl data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+    sizeClasses[props.size],
     props.class
   )
 );

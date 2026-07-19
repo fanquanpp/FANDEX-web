@@ -709,6 +709,18 @@ dfn {
 }
 
 /* ========== 表格 ========== */
+/* 表格包裹层：承担横向滚动能力，规避 display:table 与 overflow-x:auto 同元素冲突 */
+.prose .table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* iOS 惯性滚动 */
+  margin: var(--spacing-lg) 0;
+}
+
+/* 包裹层内的表格取消自身外边距，避免与包裹层双重留白 */
+.prose .table-wrap table {
+  margin: 0;
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
@@ -1002,11 +1014,12 @@ dfn {
     font-size: 0.9em;
   }
 
-  /* 移动端表格支持横向滚动 */
+  /* 移动端表格基础样式（横向滚动由 .table-wrap 包裹层承担，避免 display:table 与 overflow-x:auto 冲突） */
   .prose table {
     display: table;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* iOS 惯性滚动 */
+    border-collapse: collapse;
+    margin: var(--spacing-lg) 0;
+    font-size: 0.9em;
   }
 }

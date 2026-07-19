@@ -120,6 +120,10 @@ const base = import.meta.env.BASE_URL;
     font-size: 0.95em;
     color: var(--color-text-secondary);
     margin: 0 0 var(--spacing-lg);
+    /* 显式声明水平居中，避免被任何父级或继承样式覆盖，确保桌面端与移动端均居中显示 */
+    text-align: center;
+    margin-inline: auto;
+    max-width: 600px;
   }
 
   .map-hero-stats {

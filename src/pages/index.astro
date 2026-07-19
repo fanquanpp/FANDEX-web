@@ -212,7 +212,9 @@ const grouped = getCategories()
 </HomeLayout>
 
 <style>
-/* 首页容器：作为装饰层的定位上下文 */
+/* 首页容器：作为装饰层的定位上下文
+   注：不设置 overflow:hidden，避免破坏内部子元素的 sticky 定位行为；
+   装饰层的溢出裁切由 .geo-bg-decor 自身的 overflow:hidden 负责 */
 .home-page {
   position: relative;
   width: 100%;
@@ -220,7 +222,6 @@ const grouped = getCategories()
   min-height: calc(100dvh - var(--nav-height));
   margin: 0 auto;
   padding: 0 var(--spacing-lg) var(--spacing-2xl);
-  overflow: hidden;
 }
 
 /* 确保首页内容层在几何装饰层之上 */
@@ -722,7 +723,7 @@ const grouped = getCategories()
 /* 小屏幕适配（480px 以下） */
 @media (max-width: 480px) {
   .feature-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
   }
 
@@ -756,6 +757,22 @@ const grouped = getCategories()
 
   .hero-stats {
     gap: var(--spacing-md);
+  }
+}
+
+/* 480px 以下超小屏：hero-stats 改为纵向堆叠，分隔线隐藏，避免统计项挤压错位 */
+@media (max-width: 480px) {
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+}
+
+/* 超小屏幕回退（360px 以下）：单列布局，避免卡片过度挤压 */
+@media (max-width: 360px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

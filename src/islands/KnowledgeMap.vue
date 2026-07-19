@@ -282,6 +282,10 @@ async function renderMap(): Promise<void> {
  * 由于 Mermaid 生成的 SVG 节点 ID 可能含特殊字符，这里采用通用策略：
  * 遍历所有 g.node 元素，读取其 id（Mermaid 会以 "flowchart-<NodeID>-N" 命名），
  * 反查 nodeUrlMap，命中则绑定 click 跳转
+ *
+ * 节点 ID 反转义：toMermaidGraph 在 service 端将原始节点 ID 中的 `/` 转义为 `__`
+ * （因 Mermaid 不允许 `/` 出现在节点 ID 中），此处需将 `__` 还原为 `/`，
+ * 才能与 props.map.nodes 中的原始 ID 匹配，进而查到跳转 URL
  */
 function bindNodeClickHandlers(): void {
   if (!svgWrapperRef.value) return;
@@ -295,9 +299,11 @@ function bindNodeClickHandlers(): void {
     // 从 "flowchart-<NodeID>-N" 中提取 <NodeID>
     const match = rawId.match(/^flowchart-(.+)-\d+$/);
     if (!match) return;
-    const nodeId = match[1];
     // noUncheckedIndexedAccess：match[1] 类型为 string | undefined，已通过 !match 排除
-    const url = nodeUrlMap.value.get(nodeId || '');
+    // 将 Mermaid 安全 ID 中的 `__` 还原为 `/`，对应 toMermaidGraph 中的转义
+    const mermaidId = match[1] || '';
+    const nodeId = mermaidId.replace(/__/g, '/');
+    const url = nodeUrlMap.value.get(nodeId);
     if (!url) return;
 
     // 设置 cursor 与 role，提示可点击

@@ -1,7 +1,7 @@
 name: 💬 问题咨询
 description: 一般性使用问题请优先前往 Discussions 讨论区
-title: "[Question]: "
-labels: ["question"]
+title: '[Question]: '
+labels: ['question']
 body:
   - type: markdown
     attributes:

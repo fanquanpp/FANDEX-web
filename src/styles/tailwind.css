@@ -221,15 +221,32 @@
 
   /* ============================================================
      13. z-index 层级
+     ------------------------------------------------------------
+     Tailwind v4 z-index 工具类命名空间必须为 --z-index-* 才能生成
+     对应的 .z-* 工具类（z-modal / z-tooltip 等）。此前误用 --z-*
+     仅注册 CSS 变量但不生成工具类，导致 DialogContent/DialogOverlay
+     的 z-modal 类失效（无 z-index 值），被 .home-nav(z-index:100)
+     等元素遮挡。修复方式：改用 --z-index-* 命名空间，保留 --z-*
+     作为 CSS 变量别名以向后兼容文档示例中的 var(--z-*) 引用。
      ============================================================ */
-  --z-base: var(--fandex-z-base);
-  --z-dropdown: var(--fandex-z-dropdown);
-  --z-sticky: var(--fandex-z-sticky);
-  --z-overlay: var(--fandex-z-overlay);
-  --z-modal: var(--fandex-z-modal);
-  --z-popover: var(--fandex-z-popover);
-  --z-tooltip: var(--fandex-z-tooltip);
-  --z-notification: var(--fandex-z-notification);
+  --z-index-base: var(--fandex-z-base);
+  --z-index-dropdown: var(--fandex-z-dropdown);
+  --z-index-sticky: var(--fandex-z-sticky);
+  --z-index-overlay: var(--fandex-z-overlay);
+  --z-index-modal: var(--fandex-z-modal);
+  --z-index-popover: var(--fandex-z-popover);
+  --z-index-tooltip: var(--fandex-z-tooltip);
+  --z-index-notification: var(--fandex-z-notification);
+
+  /* 向后兼容别名：保留 --z-* 作为 CSS 变量引用（不生成工具类） */
+  --z-base: var(--z-index-base);
+  --z-dropdown: var(--z-index-dropdown);
+  --z-sticky: var(--z-index-sticky);
+  --z-overlay: var(--z-index-overlay);
+  --z-modal: var(--z-index-modal);
+  --z-popover: var(--z-index-popover);
+  --z-tooltip: var(--z-index-tooltip);
+  --z-notification: var(--z-index-notification);
 }
 
 /* ====================================================================

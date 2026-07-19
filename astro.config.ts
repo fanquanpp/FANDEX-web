@@ -22,6 +22,7 @@ import tailwindcss from '@tailwindcss/vite'; // Tailwind CSS v4 Vite 插件（CS
 import { visualizer } from 'rollup-plugin-visualizer'; // Bundle 体积可视化分析：构建后生成 reports/bundle-stats.html
 import { remarkAdmonition } from './src/lib/remark-admonition'; // 自定义提示块解析器
 import { rehypeLazyImages } from './src/lib/rehype-lazy-images'; // 图片懒加载处理器
+import { rehypeWrapTables } from './src/lib/rehype-wrap-tables'; // 表格包裹处理器：将 table 包入 <div class="table-wrap"> 以承担横向滚动
 import { remarkCodeRunner } from './src/plugins/remark-code-runner'; // 代码运行器：识别 ```lang runnable 标记
 import { remarkTermTooltip } from './src/plugins/remark-term-tooltip'; // 术语悬浮：扫描文档中已知术语并包裹 data-term-tooltip 容器
 import { remarkExercise } from './src/plugins/remark-exercise'; // 习题与测验：识别 :::exercise / :::quiz 提示块并替换为 data-exercise / data-quiz 容器
@@ -95,6 +96,7 @@ export default defineConfig({
       [rehypeAutolinkHeadings, { behavior: 'wrap' }], // 标题锚点链接（包裹整个标题）
       rehypeKatex, // KaTeX 数学公式渲染为 HTML
       rehypeLazyImages, // 图片懒加载（添加 loading="lazy"）
+      rehypeWrapTables, // 表格包裹：将 table 包入 <div class="table-wrap"> 以承担横向滚动，规避 display:table 与 overflow-x:auto 冲突
     ],
     // 代码高亮配置：Shiki 双主题支持亮色/暗色模式切换
     shikiConfig: {

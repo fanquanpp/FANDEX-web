@@ -41,6 +41,14 @@ ehthumbs.db
 test-results/
 reports/bundle-stats.html
 
+# 任务临时工作区（已完成任务的中间产物，不纳入版本控制）
+.task8-workspace/
+.tmp-task11/
+task9-release-drafter/
+docs/governance-templates/
+scripts/classify-starred.cjs
+scripts/print-report.cjs
+
 # Code Wiki (generated)
 CODE_WIKI.md
 Code-Wiki.md

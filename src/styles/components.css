@@ -275,7 +275,10 @@
     height: 100vh;
     height: 100dvh;
     width: var(--sidebar-width);
-    max-width: 80vw; /* 最大不超过 80% 视口宽度 */
+    max-width: min(80vw, 320px); /* 不超过 80% 视口或 320px，避免覆盖大部分视口 */
+    min-width: 280px; /* 保证最小可用宽度 */
+    overflow-x: auto; /* 允许横向滚动超长内容 */
+    word-break: break-word; /* 允许长单词换行 */
     transform: translateX(-100%); /* 默认隐藏在左侧 */
     transition: transform 0.25s ease;
     z-index: 200; /* 高于导航栏 */

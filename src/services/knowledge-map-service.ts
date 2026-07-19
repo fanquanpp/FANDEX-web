@@ -321,6 +321,27 @@ export async function getDocMap(moduleId: string, slug: string): Promise<Knowled
 }
 
 /**
+ * 将原始节点 ID 转换为 Mermaid 安全的节点 ID
+ * Mermaid 流程图节点 ID 不允许包含 `/`、空格等特殊字符，
+ * 而文档节点 ID 形如 `moduleId/slug`，必须先转义再写入 Mermaid 语法
+ *
+ * 转义规则：`/` → `__`（双下划线）
+ * 选择 `__` 的依据：
+ * - 模块 ID 仅含字母与连字符，slug 为文档文件名，均不含 `__`
+ * - Mermaid 节点 ID 允许下划线，`__` 不会触发语法错误
+ *
+ * 与 KnowledgeMap.vue 的 bindNodeClickHandlers 配套：
+ * 客户端从 Mermaid 生成的 g.node id 中提取 NodeID 后，
+ * 需通过 `replace(/__/g, '/')` 反向还原为原始节点 ID 再查 nodeUrlMap
+ *
+ * @param nodeId - 原始节点 ID（可能含 `/`）
+ * @returns Mermaid 安全的节点 ID（`/` 已替换为 `__`）
+ */
+function toMermaidNodeId(nodeId: string): string {
+  return nodeId.replace(/\//g, '__');
+}
+
+/**
  * 将 KnowledgeMap 数据序列化为 Mermaid graph LR 语法字符串
  * 用于客户端 Mermaid 渲染
  *
@@ -333,33 +354,40 @@ export async function getDocMap(moduleId: string, slug: string): Promise<Knowled
  * - prerequisite：实线箭头，语义为"必须先学"
  * - related：虚线箭头，语义为"相关延伸"
  *
+ * 节点 ID 转义：文档节点 ID 形如 `moduleId/slug`，含 `/` 会导致 Mermaid 解析失败，
+ * 渲染出粉红色错误占位节点（fill:#faa）。通过 toMermaidNodeId 统一转义为 `__`，
+ * 客户端 bindNodeClickHandlers 反向还原
+ *
  * @param map - 知识地图数据
  * @returns Mermaid 语法字符串
  */
 export function toMermaidGraph(map: KnowledgeMap): string {
   const lines: string[] = ['graph LR', ''];
 
-  // 节点定义
+  // 节点定义（ID 经 toMermaidNodeId 转义，避免 Mermaid 解析 `/` 失败）
   for (const node of map.nodes) {
     const safeLabel = sanitizeMermaidLabel(node.label);
+    const mermaidId = toMermaidNodeId(node.id);
     if (node.type === 'module') {
       // 模块节点：圆角矩形 + 加粗
-      lines.push(`  ${node.id}(("${safeLabel}"))`);
+      lines.push(`  ${mermaidId}(("${safeLabel}"))`);
     } else {
       // 文档节点：矩形
-      lines.push(`  ${node.id}["${safeLabel}"]`);
+      lines.push(`  ${mermaidId}["${safeLabel}"]`);
     }
   }
   lines.push('');
 
-  // 边定义
+  // 边定义（from/to 同样需要转义）
   for (const edge of map.edges) {
+    const fromId = toMermaidNodeId(edge.from);
+    const toId = toMermaidNodeId(edge.to);
     if (edge.type === 'prerequisite') {
       // 实线箭头，标注"前置"
-      lines.push(`  ${edge.from} --> ${edge.to}`);
+      lines.push(`  ${fromId} --> ${toId}`);
     } else {
       // 虚线箭头，标注"关联"
-      lines.push(`  ${edge.from} -.-> ${edge.to}`);
+      lines.push(`  ${fromId} -.-> ${toId}`);
     }
   }
   lines.push('');
@@ -370,13 +398,14 @@ export function toMermaidGraph(map: KnowledgeMap): string {
   lines.push('  classDef diffAdvanced fill:#fee2e2,stroke:#dc2626,stroke-width:1px');
   lines.push('  classDef moduleNode fill:#dbeafe,stroke:#2563eb,stroke-width:2px,font-weight:bold');
 
-  // 为节点分配难度 class
+  // 为节点分配难度 class（class 引用也需使用转义后的 ID）
   for (const node of map.nodes) {
+    const mermaidId = toMermaidNodeId(node.id);
     if (node.type === 'module') {
-      lines.push(`  class ${node.id} moduleNode`);
+      lines.push(`  class ${mermaidId} moduleNode`);
     } else if (node.difficulty) {
       const cls = difficultyClass(node.difficulty);
-      if (cls) lines.push(`  class ${node.id} ${cls}`);
+      if (cls) lines.push(`  class ${mermaidId} ${cls}`);
     }
   }
 

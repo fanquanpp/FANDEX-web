@@ -139,11 +139,12 @@ const { items, hasSidebar = false } = Astro.props as {
   }
 
   /* 移动端适配：粘性定位，折叠中间层级 */
+  /* 修复 z-index 冲突：面包屑粘在导航栏下方，层级低于导航栏(100)避免覆盖 */
   @media (max-width: 768px) {
     .breadcrumb {
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top: var(--nav-height, 56px);
+      z-index: 90;
       background: var(--color-bg);
       padding: var(--spacing-sm) var(--spacing-md);
       margin-bottom: 0;

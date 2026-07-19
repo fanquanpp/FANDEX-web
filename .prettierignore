@@ -10,6 +10,14 @@ coverage/
 reports/
 .pagefind/
 
+# ----- 任务临时工作区（不纳入 Prettier 检查） -----
+.task8-workspace/
+.tmp-task11/
+task9-release-drafter/
+docs/governance-templates/
+scripts/classify-starred.cjs
+scripts/print-report.cjs
+
 # ----- 锁文件与自动生成产物 -----
 package-lock.json
 pnpm-lock.yaml

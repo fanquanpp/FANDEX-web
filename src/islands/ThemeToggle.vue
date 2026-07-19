@@ -33,7 +33,7 @@ const theme = ref<'light' | 'dark'>('light');
  * 用于控制按钮的渲染时机：仅在客户端挂载后才渲染
  * 这避免了 SSR 时渲染默认主题、客户端实际主题不同导致的水合不匹配(hydration mismatch)
  */
-let mounted = ref(false);
+const mounted = ref(false);
 
 /**
  * 组件挂载后的初始化逻辑

@@ -401,5 +401,75 @@ describe('knowledge-map-service', () => {
       expect(result).toContain('classDef diffBeginner');
       expect(result).toContain('class d1 diffBeginner');
     });
+
+    it('文档节点 ID 中的 `/` 应被转义为 `__`，避免 Mermaid 解析失败', () => {
+      // 文档节点 ID 形如 `moduleId/slug`，Mermaid 节点 ID 不允许 `/`，
+      // 必须转义为 `__` 才能正常渲染
+      const map = {
+        nodes: [
+          { id: 'cpp', label: 'C++', type: 'module' as const, module: 'cpp' },
+          {
+            id: 'cpp/pointer',
+            label: '指针',
+            type: 'doc' as const,
+            module: 'cpp',
+          },
+        ],
+        edges: [],
+      };
+      const result = toMermaidGraph(map);
+      // 转义后的 Mermaid 节点 ID 应出现
+      expect(result).toContain('cpp__pointer["指针"]');
+      // 原始含 `/` 的 ID 不应直接出现在节点定义中
+      expect(result).not.toMatch(/cpp\/pointer\[/);
+    });
+
+    it('文档级边的 from/to 中的 `/` 也应被转义', () => {
+      const map = {
+        nodes: [
+          {
+            id: 'cpp/basic',
+            label: '基础',
+            type: 'doc' as const,
+            module: 'cpp',
+          },
+          {
+            id: 'cpp/advanced',
+            label: '进阶',
+            type: 'doc' as const,
+            module: 'cpp',
+          },
+        ],
+        edges: [
+          {
+            from: 'cpp/basic',
+            to: 'cpp/advanced',
+            type: 'prerequisite' as const,
+          },
+        ],
+      };
+      const result = toMermaidGraph(map);
+      // 边定义应使用转义后的 ID
+      expect(result).toContain('cpp__basic --> cpp__advanced');
+      // 不应出现原始含 `/` 的边
+      expect(result).not.toMatch(/cpp\/basic --> cpp\/advanced/);
+    });
+
+    it('模块节点 ID 不含 `/` 时应保持原样', () => {
+      const map = {
+        nodes: [
+          {
+            id: 'getting-started',
+            label: '入门',
+            type: 'module' as const,
+            module: 'getting-started',
+          },
+        ],
+        edges: [],
+      };
+      const result = toMermaidGraph(map);
+      expect(result).toContain('getting-started(("入门"))');
+      expect(result).toContain('class getting-started moduleNode');
+    });
   });
 });

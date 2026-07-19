@@ -20,15 +20,15 @@ const hasSidebar = Astro.slots.has('sidebar');
 <BaseLayout title={title}>
   <slot name="head" slot="head" />
 
-  <!-- 确保页面撑满视口高度，禁止 body 自身滚动（由内部容器控制滚动） -->
+  <!-- 确保页面撑满视口高度，body 使用 min-height 避免内容截断；滚动由 .app-main 内部容器控制 -->
   <style is:inline>
     html {
       height: 100%;
     }
     body {
-      height: 100vh;
-      height: 100dvh;
-      overflow: hidden;
+      /* 渐进增强：iOS <15 不支持 100dvh 时回退到 100vh；min-height 允许内容超出时 body 自然扩展 */
+      min-height: 100vh;
+      min-height: 100dvh;
     }
   </style>
   <!-- 侧边栏遮罩层：移动端打开侧边栏时显示，点击关闭 -->
