@@ -3148,32 +3148,87 @@
   {
     "slug": "algorithm/算法分析基础与学习路线",
     "title": "算法分析基础与学习路线",
-    "description": "算法分析核心概念、渐进复杂度符号体系、时空权衡策略与系统化学习路线图。",
-    "tags": ["algorithm", "performance"],
+    "description": "算法分析（Algorithm Analysis）的形式化定义、五类渐近记号（Bachmann 1894《Analytische Zahlentheorie》大 O 符号、Landau 1909《Handbuch》推广、Knuth 1976《Big Omicron and Big Omega and Big Theta》SIGACT News 12(3):36-44 系统化）、计算复杂性类（Hartmanis-Stearns 1965《On the Computational Complexity of Algorithms》Trans. AMS 117:285-306、Cobham 1964/Edmonds 1965 P 类、Cook 1971《The Complexity of Theorem-Proving Procedures》STOC、Karp 1972《Reducibility Among Combinatorial Problems》STOC 197-206）、主定理（Bentley-Haken-Saxe 1980 SIGACT News 12(3):36-44）、摊还分析（Sleator-Tarjan 1985《Amortized Efficiency of List Update and Paging Rules》CACM 28(2):202-208）、随机化分析（Rabin 1976）、时空权衡策略与系统化学习路线图，涵盖 Turing 1936《On Computable Numbers》Proc. LMS 42:230-265、Knuth 1968 TAOCP Vol.1、Cormen-Leiserson-Rivest 1990《Introduction to Algorithms》第 1 版的历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 1-4 章、Kleinberg-Tardos 第 2-5 章、Sedgewick 第 1 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-analysis",
+      "algorithm-asymptotic",
+      "algorithm-complexity",
+      "algorithm-master-theorem",
+      "algorithm-amortized",
+      "algorithm-np",
+      "algorithm-turing",
+      "algorithm-bigo",
+      "algorithm-recurrence",
+      "algorithm-learning-path",
+      "performance"
+    ],
     "module": "algorithm",
     "order": 10,
     "difficulty": "beginner",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/排序算法",
     "title": "排序算法",
-    "description": "六大经典排序算法的原理、复杂度分析、可视化过程与 Python / C++ 多语言实现。",
-    "tags": ["algorithm"],
+    "description": "排序（Sorting）算法的形式化定义、比较排序下界 $\\Omega(n \\log n)$ 的决策树证明、冒泡/选择/插入/希尔/归并/堆排/快排七大经典排序、计数/基数/桶排序三种线性时间非比较排序、内省排序（Musser 1997）与 Timsort（Peters 2002）的工业级混合方案，涵盖 von Neumann 1945 归并、Shell 1959 希尔、Hoare 1961 快排、Williams 1964 堆排、Musser 1997 内省、Peters 2002 Timsort 的历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 2/6/8 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-sorting",
+      "algorithm-quicksort",
+      "algorithm-mergesort",
+      "algorithm-heapsort",
+      "algorithm-introsort",
+      "algorithm-timsort",
+      "algorithm-comparison-sort",
+      "algorithm-non-comparison-sort",
+      "algorithm-stable-sort"
+    ],
     "module": "algorithm",
     "order": 20,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
+  },
+  {
+    "slug": "algorithm/栈与队列",
+    "title": "栈与队列",
+    "description": "栈（Stack）与队列（Queue）的形式化定义、LIFO/FIFO 原理、顺序栈/链式栈/循环队列/链式队列/双端队列/单调栈/单调队列的实现与复杂度分析，涵盖 Bauer-Samelson 1955 叠加原理、Dijkstra 1965 信号量、Hoare 1978 CSP 等历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 10 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-stack",
+      "algorithm-queue",
+      "algorithm-datastructure",
+      "algorithm-lifo-fifo",
+      "algorithm-monotonic",
+      "algorithm-deque"
+    ],
+    "module": "algorithm",
+    "order": 20,
+    "difficulty": "beginner",
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/搜索算法",
     "title": "搜索算法",
-    "description": "线性搜索、二分搜索、哈希查找、广度优先搜索与深度优先搜索的原理、复杂度分析与多语言实现。",
-    "tags": ["algorithm"],
+    "description": "搜索（Search）算法的形式化定义、状态空间图模型、完备性与最优性证明、线性搜索 $O(n)$、二分搜索 $O(\\log n)$、哈希查找 $O(1)$、BFS/DFS 图搜索 $O(V+E)$、双向 BFS、迭代深化 DFS（IDDFS）、A* 启发式搜索（Hart-Nilsson-Raphael 1968）、IDA* 内存受限搜索（Korf 1985）、Minimax + Alpha-Beta 剪枝博弈树搜索（Shannon 1950、Knuth-Moore 1975）的原理、实现与对比分析，涵盖 Shannon 1950 国际象棋程序、Dijkstra 1959 最短路径、Hart-Nilsson-Raphael 1968 A*、Korf 1985 IDA* 等历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 22 章、Russell-Norvig 第 3 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-search",
+      "algorithm-binary-search",
+      "algorithm-hash",
+      "algorithm-bfs",
+      "algorithm-dfs",
+      "algorithm-a-star",
+      "algorithm-ida-star",
+      "algorithm-iddfs",
+      "algorithm-minimax",
+      "algorithm-alpha-beta",
+      "algorithm-heuristic-search"
+    ],
     "module": "algorithm",
     "order": 30,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/链表",
@@ -3188,22 +3243,36 @@
   {
     "slug": "algorithm/哈希表",
     "title": "哈希表",
-    "description": "哈希函数设计、冲突处理策略、扩容机制与经典应用（LRU/LFU缓存），附复杂度分析与多语言实现。",
-    "tags": ["algorithm", "data-structure"],
+    "description": "哈希表（Hash Table）的形式化定义、哈希函数设计（除法/乘法/全域/多项式滚动）、冲突处理（链地址法/开放寻址法/布谷鸟哈希）、扩容与再哈希、一致性哈希、Bloom Filter 与 LRU/LFU 缓存的工程实现，附 Python/C++/Java 多语言实现与 CLRS 第 11 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-hash-table",
+      "algorithm-datastructure",
+      "algorithm-hash-function",
+      "algorithm-lru-cache"
+    ],
     "module": "algorithm",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/树",
     "title": "树",
-    "description": "二叉树遍历、BST操作、堆与优先队列、Trie字典树的原理、复杂度分析与多语言实现。",
-    "tags": ["algorithm", "data-structure"],
+    "description": "树（Tree）的形式化定义、二叉树遍历、二叉搜索树（BST）、AVL 树、红黑树、B 树/B+ 树、Splay 伸展树、Treap 树堆、Trie 字典树、LSM 树的原理、复杂度分析与多语言实现，附 Python/C++/Java 实现与 CLRS 第 12-13 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-tree",
+      "algorithm-datastructure",
+      "algorithm-binary-tree",
+      "algorithm-bst",
+      "algorithm-red-black-tree",
+      "algorithm-b-tree"
+    ],
     "module": "algorithm",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/图算法",
@@ -3218,32 +3287,69 @@
   {
     "slug": "algorithm/分治算法",
     "title": "分治算法",
-    "description": "分治思想、递推关系与主定理、经典分治算法（归并排序、快速排序、最近点对、大整数乘法）详解。",
-    "tags": ["algorithm", "algorithm-divideconquer"],
+    "description": "分治（Divide and Conquer）算法的形式化定义、三步范式（分解-解决-合并）、递推关系 $T(n) = aT(n/b) + f(n)$ 与主定理（Master Theorem, Bentley-Haken-Saxe 1980）三种情况的完整证明、分治与递归的关系、归并排序（von Neumann 1945 EDVAC）、快速排序（Hoare 1961）、Karatsuba 大整数乘法（Karatsuba-Ofman 1963 Soviet Physics-Doklady 7:595-596）、Strassen 矩阵乘法（Strassen 1969 Numerische Mathematik 13(4):354-356）、快速傅里叶变换 FFT（Cooley-Tukey 1965 Mathematics of Computation 19:297-301）、最近点对（Bentley-Shamos 1976）的原理、实现与对比分析，涵盖 von Neumann 1945 EDVAC、Karatsuba 1960 莫斯科大学研讨会、Cooley-Tukey 1965 IBM Watson、Strassen 1969 突破 $O(n^3)$、Bentley-Haken-Saxe 1980 主定理的历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 2/4/7 章、Kleinberg-Tardos 第 5 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-divideconquer",
+      "algorithm-master-theorem",
+      "algorithm-merge-sort",
+      "algorithm-quick-sort",
+      "algorithm-karatsuba",
+      "algorithm-strassen",
+      "algorithm-fft",
+      "algorithm-closest-pair",
+      "algorithm-recurrence"
+    ],
     "module": "algorithm",
     "order": 75,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/贪心算法",
     "title": "贪心算法",
-    "description": "贪心算法核心思想与正确性证明，涵盖活动选择、哈夫曼编码、最小生成树等经典问题，附复杂度分析与多语言实现。",
-    "tags": ["algorithm", "performance"],
+    "description": "贪心（Greedy）算法的形式化定义、贪心选择性质与最优子结构、拟阵理论（Edmonds 1971）统一框架、交换论证/保持领先/势能下降三大正确性证明方法、活动选择、哈夫曼编码（Huffman 1952）、Kruskal 最小生成树（Kruskal 1956）、Prim 最小生成树（Prim 1957）、Dijkstra 单源最短路（Dijkstra 1959）、分数背包、任务调度、区间调度的原理、实现与对比分析，涵盖 Huffman 1952 MIT、Kruskal 1956 Proc. AMS、Prim 1957 BSTJ、Dijkstra 1959 Numerische Mathematik、Rado 1957、Edmonds 1971 Mathematical Programming 的历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 16/23/24 章、Kleinberg-Tardos 第 4 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-greedy",
+      "algorithm-huffman",
+      "algorithm-mst",
+      "algorithm-kruskal",
+      "algorithm-prim",
+      "algorithm-dijkstra",
+      "algorithm-matroid",
+      "algorithm-exchange-argument",
+      "algorithm-fractional-knapsack"
+    ],
     "module": "algorithm",
     "order": 80,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/递归与回溯",
     "title": "递归与回溯",
-    "description": "递归思想、回溯算法框架、经典回溯问题（子集、排列、组合、N皇后）与剪枝优化。",
-    "tags": ["algorithm", "algorithm-recursion"],
+    "description": "递归（Recursion）的形式化定义、递归三要素（基线条件/递归条件/状态收缩）、递归树模型与主定理回顾、尾递归优化（TCO）、记忆化递归（Memoization）、回溯算法（Backtracking, Golomb-Baumert 1965 JACM 12(4):516-524）的系统化模板（选择-递归-撤销）、子集/排列/组合/N 皇后（Bezzel 1848）/数独/分割/括号生成/单词搜索的原理、实现与剪枝优化（排序剪枝/边界剪枝/条件剪枝/记忆化剪枝/位运算剪枝）、分支限界法（Land-Doig 1960）与 Dancing Links（Knuth 2000）的原理、对比分析与工程实践，涵盖 McCarthy 1960 LISP 递归系统化、Golomb-Baumert 1965 回溯法、Tarjan 1972 DFS、Bezzel 1848 N 皇后、Land-Doig 1960 分支限界、Knuth 2000 Dancing Links 的历史脉络，附 Python/C++/Java 多语言实现与 CLRS第4/22章、Kleinberg-Tardos第5章、Sedgewick第2章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-recursion",
+      "algorithm-backtracking",
+      "algorithm-dfs",
+      "algorithm-n-queens",
+      "algorithm-sudoku",
+      "algorithm-permutation",
+      "algorithm-subset",
+      "algorithm-combination",
+      "algorithm-pruning",
+      "algorithm-branch-and-bound",
+      "algorithm-dancing-links",
+      "algorithm-memoization",
+      "algorithm-tail-recursion"
+    ],
     "module": "algorithm",
     "order": 80,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/字符串算法",
@@ -3268,72 +3374,126 @@
   {
     "slug": "algorithm/数组与动态数组",
     "title": "数组与动态数组",
-    "description": "数组的连续内存模型、随机访问与插入删除复杂度分析，动态数组的扩容机制与均摊复杂度。",
-    "tags": [],
+    "description": "数组（Array）与动态数组（Dynamic Array）的连续内存模型、随机访问 $O(1)$ 原理、倍增扩容均摊 $O(1)$ 分析、行优先/列优先多维布局、稀疏数组 CSR/CSC、双指针/滑动窗口/前缀和/差分等核心技巧，涵盖 Von Neumann 1945 EDVAC、Iverson 1962 APL、Stepanov 1994 STL 等历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 10 章、Sedgewick 第 1 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-array",
+      "algorithm-datastructure",
+      "algorithm-dynamic-array",
+      "algorithm-amortized-analysis",
+      "algorithm-prefix-sum",
+      "algorithm-sliding-window",
+      "algorithm-cache-locality"
+    ],
     "module": "algorithm",
     "order": 90,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
-  },
-  {
-    "slug": "algorithm/栈与队列",
-    "title": "栈与队列",
-    "description": "栈的LIFO原理与顺序栈、链式栈实现，队列的FIFO原理与循环队列、链式队列实现，双端队列及应用场景。",
-    "tags": [],
-    "module": "algorithm",
-    "order": 91,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/平衡树与高级树",
     "title": "平衡树与高级树",
-    "description": "二叉搜索树、AVL树、红黑树、B树与B+树的原理、旋转操作与工程应用，涵盖数据库索引核心数据结构。",
-    "tags": [],
+    "description": "二叉搜索树（BST）、AVL 树（Adelson-Velsky-Landis 1962《An algorithm for the organization of information》Dokl. Akad. Nauk SSSR 146:263-266）、2-3 树（Hopcroft 1970）、红黑树（Bayer 1972 原始版对称二叉 B 树；Guibas-Sedgewick 1978《A Dichromatic Framework for Balanced Trees》FOCS 19th Annual Symposium 现代版；Sedgewick 2008 Left-Leaning Red-Black BST）、B 树（Bayer-McCreight 1972《Organization and Maintenance of Large Ordered Indexes》Acta Informatica 1(3):173-189）、B+ 树（Knuth 1973 TAOCP Vol.3 系统化；Comer 1979《The Ubiquitous B-Tree》Computing Surveys 11(2):121-137）、Splay 树（Sleator-Tarjan 1985《Self-Adjusting Binary Search Trees》JACM 32(3):652-686 DOI:10.1145/3828.3835）、Treap（Seidel-Aragon 1996）、AA 树（Andersson 1993）的形式化定义、旋转操作、平衡不变式与摊还分析、复杂度证明，覆盖 MySQL InnoDB B+ 树聚簇索引 / Linux CFS 红黑树 / Java TreeMap / C++ std::map / PostgreSQL B-tree 等工业案例，附 Python / C++ / Java 多语言实现与 CLRS / Sedgewick 风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-balanced-tree",
+      "algorithm-avl-tree",
+      "algorithm-red-black-tree",
+      "algorithm-b-tree",
+      "algorithm-bplus-tree",
+      "algorithm-splay-tree",
+      "algorithm-treap",
+      "algorithm-datastructure",
+      "algorithm-rotation",
+      "algorithm-database-index",
+      "performance"
+    ],
     "module": "algorithm",
     "order": 92,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/堆与优先队列",
     "title": "堆与优先队列",
-    "description": "堆的完全二叉树性质、最大堆与最小堆、上浮与下沉操作、建堆O(n)证明，优先队列应用与Top-K问题。",
-    "tags": [],
+    "description": "堆（Heap）与优先队列（Priority Queue）的完全二叉树数组表示、最大堆/最小堆的堆序性质、上浮与下沉操作、Floyd 建堆 $O(n)$ 证明、堆排序、Top-K 问题、索引堆、二项堆、Fibonacci 堆、配对堆的对比分析，涵盖 Williams 1964 Algorithm 232 Heapsort、Floyd 1964 Algorithm 245 Treesort、Vuillemin 1978 二项堆、Fredman-Tarjan 1984 Fibonacci 堆等历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 6 章、第 19 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-heap",
+      "algorithm-priority-queue",
+      "algorithm-datastructure",
+      "algorithm-binary-heap",
+      "algorithm-heapsort",
+      "algorithm-topk",
+      "algorithm-fibonacci-heap",
+      "algorithm-amortized-analysis"
+    ],
     "module": "algorithm",
     "order": 93,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/查找算法",
     "title": "查找算法",
-    "description": "顺序查找、二分查找及其变体、插值查找与斐波那契查找的原理、实现与适用场景分析。",
-    "tags": [],
+    "description": "查找（Search）算法的形式化定义、顺序查找 $O(n)$、二分查找 $O(\\log n)$、插值查找 $O(\\log \\log n)$、斐波那契查找、哈希查找 $O(1)$、BST/AVL/红黑树查找、B 树查找、跳表查找（Pugh 1990）、字符串查找（KMP 1977、Boyer-Moore 1977、Rabin-Karp）、布隆过滤器（Bloom 1970）的原理、实现与对比分析，涵盖 Mauchly 1946 二分查找、Luhn 1953 哈希表、Bayer-McCreight 1972 B 树、Guibas-Sedgewick 1978 红黑树、Bloom 1970 布隆过滤器、Knuth-Morris-Pratt 1977 KMP、Boyer-Moore 1977 字符串匹配等历史脉络，附 Python/C++/Java 多语言实现与 CLRS 第 11/12/13 章、Sedgewick 第 3 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-search",
+      "algorithm-binary-search",
+      "algorithm-hash",
+      "algorithm-bst",
+      "algorithm-skip-list",
+      "algorithm-bloom-filter",
+      "algorithm-kmp",
+      "algorithm-interpolation-search"
+    ],
     "module": "algorithm",
     "order": 94,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/LeetCode刷题指南",
-    "title": "LeetCode 刷题指南",
-    "description": "系统化刷题方法论、题型分类与解题模板、时间管理与面试策略。",
-    "tags": ["algorithm", "algorithm-leetcode"],
+    "title": "LeetCode 刷题指南：从题型分类到面试策略的系统化路径",
+    "description": "LeetCode 刷题指南系统化阐述在线算法评测平台的发展脉络（ACM ICPC 1970、Google Code Jam 2003-2023、Topcoder Open 2001、Meta Hacker Cup 2011、Codeforces 2009、AtCoder 2012、LeetCode 2015 by Winston Tang、LeetCode China 2018）、十大题型分类体系（数组/双指针、链表、树、图、二分查找、回溯、动态规划、贪心、滑动窗口、单调栈）、三遍刷题法与四步解题法、时间复杂度反推（$n \\leq 20 \\to O(2^n)$、$n \\leq 100 \\to O(n^3)$、$n \\leq 10^4 \\to O(n^2)$、$n \\leq 10^6 \\to O(n \\log n)$、$n \\leq 10^9 \\to O(\\log n)$）、高频题解模板（Python/C++/Java 三语言实现）、LeetCode Hot 100/Top Interview 150/Grind 75/NeetCode 150 学习路径对比、FAANG 与字节跳动/腾讯/阿里巴巴面试风格分析、LeetCode 题目到工业应用的映射（LRU Cache → Redis 淘汰策略、并查集 → Kubernetes 网络、单调栈 → Prometheus 监控）、LeetCode/LintCode/HackerRank/CodeSignal/牛客网五大平台对比。覆盖 100+ 经典题目索引（LC-1/11/15/42/72/200/300/1143 等），含 Bloom 分类法学习目标、ACM 格式参考文献（含 DOI）、四类习题与参考答案。",
+    "tags": [
+      "algorithm",
+      "algorithm-leetcode",
+      "algorithm-practice",
+      "algorithm-interview",
+      "algorithm-competitive-programming",
+      "algorithm-template",
+      "algorithm-two-pointer",
+      "algorithm-sliding-window",
+      "algorithm-binary-search",
+      "algorithm-backtracking",
+      "algorithm-dynamic-programming",
+      "algorithm-monotonic-stack",
+      "algorithm-prefix-sum",
+      "algorithm-bit-manipulation",
+      "faang-interview"
+    ],
     "module": "algorithm",
     "order": 100,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/并查集",
     "title": "并查集",
-    "description": "并查集（Union-Find）数据结构：路径压缩与按秩合并优化、连通性判断、Kruskal 最小生成树应用。",
-    "tags": [],
+    "description": "并查集（Disjoint Set Union, DSU / Union-Find）数据结构的形式化定义、路径压缩与按秩合并的均摊复杂度分析（反 Ackermann 函数 α(n)）、Kruskal 最小生成树/连通分量/冗余连接等典型应用，附 Python/C++/Java 多语言实现与 CLRS 第 21 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-disjoint-set",
+      "algorithm-union-find",
+      "algorithm-datastructure",
+      "algorithm-amortized-analysis"
+    ],
     "module": "algorithm",
     "order": 100,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/线段树",
@@ -3348,92 +3508,200 @@
   {
     "slug": "algorithm/树状数组",
     "title": "树状数组",
-    "description": "树状数组（Fenwick Tree）原理：lowbit 运算、单点更新与区间查询、差分数组扩展与逆序对应用。",
-    "tags": [],
+    "description": "树状数组（Fenwick Tree / Binary Indexed Tree, BIT）的形式化定义（基于二进制分解的前缀和索引结构）、lowbit 位运算原理、单点更新 + 区间查询 $O(\\log n)$、区间更新 + 单点查询（差分树状数组）、区间更新 + 区间查询（双树状数组）三种模式的形式化推导与复杂度证明，覆盖 Peter M. Fenwick 1994《A New Data Structure for Cumulative Frequency Tables》Software: Practice and Experience 24(3):327-336 DOI:10.1002/spe.4380240306 的历史脉络、lowbit 不变式证明、与线段树 / 平方分解 / 前缀和的对比、Lucene 倒排索引 / Redis Sorted Set / PostgreSQL 统计信息等工业案例，附 Python / C++ / Java 多语言实现与 CLRS / Sedgewick 风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-fenwick-tree",
+      "algorithm-bit",
+      "algorithm-binary-indexed-tree",
+      "algorithm-datastructure",
+      "algorithm-prefix-sum",
+      "algorithm-lowbit",
+      "algorithm-range-query",
+      "algorithm-inversion-count",
+      "performance"
+    ],
     "module": "algorithm",
     "order": 102,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/跳跃表",
     "title": "跳跃表",
-    "description": "跳跃表（Skip List）数据结构：概率平衡、层级结构、查找插入删除操作与 Redis 中的应用。",
-    "tags": [],
+    "description": "跳跃表（Skip List）数据结构的形式化定义（多层索引概率结构）、期望 O(log n) 查找/插入/删除的随机化分析、与平衡树的对比、Redis Sorted Set / LevelDB MemTable / Apache Lucene 倒排索引等工程实现，附多语言实现与 CLRS 风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-skiplist",
+      "algorithm-datastructure",
+      "algorithm-probabilistic"
+    ],
     "module": "algorithm",
     "order": 103,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-18"
   },
   {
     "slug": "algorithm/布隆过滤器",
     "title": "布隆过滤器",
-    "description": "布隆过滤器（Bloom Filter）原理：哈希函数组合、误判率分析、最优参数计算与工程应用。",
-    "tags": [],
+    "description": "布隆过滤器（Bloom Filter）：一种空间高效的概率数据结构，由 Burton H. Bloom 1970《Space/Time Trade-offs in Hash Coding with Allowable Errors》Communications of the ACM 13(7):422-426 DOI:10.1145/362686.362692 提出。利用 k 个独立哈希函数将元素映射到 m 位的位数组，实现 O(k) 时间复杂度的成员查询，无假阴性但允许可控假阳性。本章涵盖 Bloom 原始动机、假阳性率 $P = (1 - e^{-kn/m})^k$ 的完整推导、最优哈希函数个数 $k_{\\text{opt}} = (m/n)\\ln 2$ 的极值分析、Counting Bloom Filter（Fan et al. 1998 USENIX Summary Cache）、Compressed Bloom Filter（Mitzenmacher 2002）、Cuckoo Filter（Fan et al. 2014 ACM TOCT）、Spectral Bloom Filter、Stable Bloom Filter 等变种；对比 Hash Set、Skip List、HyperLogLog、Cuckoo Filter 的空间/时间/精度权衡；附 Python/C++/Java 三语言实现、工业级应用（Cassandra、HBase、PostgreSQL、Chrome、Bitcoin SPV、Squid Proxy、Bigtable）、12 道习题含完整答案与 20 条 ACM 格式参考文献。",
+    "tags": [
+      "algorithm",
+      "algorithm-probabilistic",
+      "algorithm-bloom-filter",
+      "algorithm-hashing",
+      "algorithm-data-structure",
+      "algorithm-space-efficient",
+      "algorithm-false-positive",
+      "algorithm-cpp",
+      "algorithm-python",
+      "algorithm-java"
+    ],
     "module": "algorithm",
     "order": 104,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/KMP字符串匹配",
     "title": "KMP字符串匹配",
-    "description": "KMP 字符串匹配算法：部分匹配表（PMT/next数组）构建、匹配过程、时间复杂度证明与优化。",
-    "tags": [],
+    "description": "Knuth-Morris-Pratt（KMP）字符串匹配算法：基于模式串自身结构构建部分匹配表（PMT/next 数组），实现 O(n+m) 线性时间匹配。涵盖 Morris 1970、Pratt 1970 独立发现与 Knuth 1970 复杂度证明的演进脉络，Knuth-Morris-Pratt 1977《Fast Pattern Matching in Strings》SIAM J. Comp. 6(2):323-350 DOI:10.1137/0206024 系统化发表；Cook 1971 字符串匹配下界、Aho-Corasick 1975 多模式扩展、Boyer-Moore 1977、Rabin-Karp 1987、Sunday 1990 变种对比；KMP 在 GNU grep、ESLint、IDE 语法检查、生物信息学 read 比对、Linux 内核字符串搜索中的应用；附 Python/C++/Java 多语言实现与 KMP 自动机、AC 自动机扩展。",
+    "tags": [
+      "algorithm",
+      "algorithm-string",
+      "algorithm-pattern-matching",
+      "algorithm-kmp",
+      "algorithm-finite-automaton",
+      "algorithm-prefix-function",
+      "algorithm-amortized",
+      "algorithm-linear-time",
+      "algorithm-cpp",
+      "algorithm-python"
+    ],
     "module": "algorithm",
     "order": 105,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/动态规划状态压缩",
     "title": "动态规划状态压缩",
-    "description": "状态压缩动态规划：位运算表示集合状态、旅行商问题（TSP）、棋盘覆盖与排列型 DP。",
-    "tags": [],
+    "description": "状态压缩动态规划（Bitmask Dynamic Programming）：以二进制位编码子集状态，将指数级状态空间压缩至 $O(2^n \\cdot n)$ 的可处理范围。系统化梳理 Bellman 1957《Dynamic Programming》Princeton University Press 开山之作、Held-Karp 1962《A Dynamic Programming Approach to Sequencing Problems》J. SIAM 10(1):196-210 DOI:10.1137/0110015 旅行商问题（TSP）$O(n^2 2^n)$ 算法、bitmask DP 系统化方法，覆盖 TSP、N 皇后、数独、划分等和子集、棋盘覆盖、排列型 DP 五大经典问题，含位运算技巧（`& | ^ ~`、`<< >>`、`__builtin_popcount`、低比特 `x & (-x)`、子集枚举 `(sub - 1) & S`）、与记忆化递归、自底向上 DP、滚动数组的对比，附 Python/C++/Java 多语言实现与 LeetCode 1879/1655/1494/1125/1931 经典题解，及在 Google OR-Tools、CP-SAT 求解器、Concorde TSP 求解器中的工业级应用。",
+    "tags": [
+      "algorithm",
+      "dynamic-programming",
+      "bitmask-dp",
+      "state-compression",
+      "traveling-salesman",
+      "tsp",
+      "held-karp",
+      "bellman",
+      "subset-enumeration",
+      "bit-manipulation",
+      "np-hard",
+      "exponential-algorithm"
+    ],
     "module": "algorithm",
     "order": 106,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/Floyd-Warshall算法",
-    "title": "Floyd-Warshall",
-    "description": "Floyd-Warshall 多源最短路径算法：动态规划推导、路径重建、负环检测与传递闭包。",
-    "tags": [],
+    "title": "Floyd-Warshall 算法",
+    "description": "Floyd-Warshall 多源最短路径算法：Robert W. Floyd 1962《Algorithm 97: Shortest Path》CACM 5(6):345 DOI:10.1145/367766.368168 与 Stephen Warshall 1962《A Theorem on Boolean Matrices》JACM 9(1):11-12 DOI:10.1145/321105.321107 独立提出的动态规划算法，Bernard Roy 1959 更早发现传递闭包版本。算法以 $O(n^3)$ 时间、$O(n^2)$ 空间求解所有顶点对最短路径，支持负权边（无负环），可用于负环检测与传递闭包计算。本文涵盖 DP 状态设计、最优子结构证明、路径重建、位运算优化、与 Dijkstra/Bellman-Ford/Johnson 算法的对比、在 OSPF 路由协议与 NetworkX 工业级库中的应用，附 Python/C++/Java 多语言实现与 CLRS 第 25 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-graph",
+      "algorithm-shortest-path",
+      "algorithm-dynamic-programming",
+      "algorithm-all-pairs-shortest-path",
+      "algorithm-transitive-closure",
+      "algorithm-negative-cycle",
+      "algorithm-floyd",
+      "algorithm-warshall",
+      "algorithm-roy"
+    ],
     "module": "algorithm",
     "order": 107,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/Kruskal算法",
-    "title": "Kruskal算法",
-    "description": "Kruskal 最小生成树算法：贪心策略、并查集优化、边排序与实际应用。",
-    "tags": [],
+    "title": "Kruskal 算法",
+    "description": "Kruskal 最小生成树算法：Joseph B. Kruskal 1956《On the Shortest Spanning Subtree of a Graph》Proceedings of the American Mathematical Society 7(1):48-50 DOI:10.1090/S0002-9939-1956-0078686-7 提出的贪心加边算法，与 Prim 1957、Jarník 1930、Borůvka 1926 共同构成 MST 算法家族。算法以 $O(E \\log E)$ 时间、$O(V)$ 空间求解连通无向加权图的最小生成树，借助并查集（Tarjan 1975 路径压缩+按秩合并）实现高效的环检测。本文涵盖贪心选择性质证明、切割性质与回路性质、与 Prim/Borůvka 算法的对比、最小生成森林/次小生成树/TSP 2-近似应用、NetworkX 与 Boost Graph Library 工业级实现，附 Python/C++/Java 多语言实现与 CLRS 第 23 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-graph",
+      "algorithm-minimum-spanning-tree",
+      "algorithm-greedy",
+      "algorithm-union-find",
+      "algorithm-disjoint-set",
+      "algorithm-mst",
+      "algorithm-kruskal",
+      "algorithm-prim",
+      "algorithm-boruvka",
+      "algorithm-jarnik"
+    ],
     "module": "algorithm",
     "order": 108,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/拓扑排序",
     "title": "拓扑排序",
-    "description": "拓扑排序算法：Kahn 算法（BFS）与 DFS 后序逆序、环检测与关键路径。",
-    "tags": [],
+    "description": "拓扑排序（Topological Sort）算法：Arthur B. Kahn 1962《Topological Sorting of Large Networks》Communications of the ACM 5(11):558-562 DOI:10.1145/368996.369025 提出的入度法（Kahn 算法/BFS），与 Robert Endre Tarjan 1972《Depth-First Search and Linear Graph Algorithms》SIAM Journal on Computing 1(2):146-160 DOI:10.1137/0201010 给出的 DFS 后序逆序线性时间算法共同构成两大主流方案。Donald E. Knuth 在《The Art of Computer Programming, Volume 1: Fundamental Algorithms》§2.2.3 系统化讨论拓扑排序与计算机科学中的等价问题。本文涵盖 DAG（有向无环图）的形式化定义、Kahn 与 DFS 算法的正确性证明、与强连通分量（Tarjan 1972）及关键路径法（CPM, Kelly-Walker 1957；PERT, Malcolm-Roseboom-Clark-Fazar 1959）的关系、编译器依赖分析、Make/Build 系统、课程先修关系、并行任务调度等工业级应用，附 Python/C++/Java 多语言实现与 CLRS 第 22 章风格习题。",
+    "tags": [
+      "algorithm",
+      "algorithm-graph",
+      "algorithm-topological-sort",
+      "algorithm-dag",
+      "algorithm-bfs",
+      "algorithm-dfs",
+      "algorithm-cycle-detection",
+      "algorithm-critical-path",
+      "algorithm-parallel-scheduling",
+      "algorithm-kahn",
+      "algorithm-tarjan",
+      "algorithm-knuth"
+    ],
     "module": "algorithm",
     "order": 109,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/算法理论知识点",
     "title": "算法理论知识点",
-    "description": "算法复杂度理论、NP 问题与近似算法。",
-    "tags": ["algorithm", "theory"],
+    "description": "计算复杂性理论的核心体系：以 Turing 1936《On Computable Numbers, with an Application to the Entscheidungsproblem》Proc. LMS 42:230-265 图灵机模型与 Church 1936《An Unsolvable Problem of Elementary Number Theory》Amer. J. Math. 58(2):345-363 λ-演算为根基，梳理 Gödel 1931 不完备性定理、Rice 1953《Classes of Recursively Enumerable Sets and Their Decision Problems》Trans. AMS 74:358-366、Hartmanis-Stearns 1965《On the Computational Complexity of Algorithms》Trans. AMS 117:285-306 复杂性类奠基、Cook 1971《The Complexity of Theorem-Proving Procedures》STOC 151-158 Cook-Levin 定理、Karp 1972《Reducibility Among Combinatorial Problems》21 个 NP 完全问题、Levin 1973《Universal Search Problems》Probl. Peredachi Inf. 9(3):115-116 独立发现、Savitch 1970《Relationships Between Nondeterministic and Deterministic Tape Complexities》JCSS 4(2):177-192、Baker-Gill-Solovay 1975《Relativizations of the P=?NP Question》SICOMP 4(4):431-442 相对化屏障、Ladner 1975《On the Structure of Polynomial Time Reducibility》JACM 22(1):155-171 NP-intermediate、PCP 定理（Arora-Safra 1998《Probabilistic Checking of Proofs》JACM 45(1):70-122；Arora-Lund-Motwani-Sudan-Szegedy 1998 JACM 45(3):501-555；Dinur 2007 组合证明）的完整脉络，覆盖 P/NP/NP-Hard/NP-Complete 形式化定义、多项式归约、摊还分析三方法（Sleator-Tarjan 1985 CACM 28(2):202-208）、竞争分析（Sleator-Tarjan 1985）、在线算法、数据流模型、P vs NP 千禧年大奖问题，附 Python/C++/Java 多语言实现与经典归约链（SAT → 3-SAT → CLIQUE → VERTEX-COVER → HAMILTONIAN-CYCLE → TSP）及 LeetCode 经典题解。",
+    "tags": [
+      "algorithm",
+      "algorithm-theory",
+      "computational-complexity",
+      "np-completeness",
+      "p-vs-np",
+      "turing-machine",
+      "cook-levin",
+      "karp-reduction",
+      "pcp-theorem",
+      "amortized-analysis",
+      "competitive-analysis",
+      "online-algorithm",
+      "data-stream",
+      "savitch-theorem",
+      "ladner-theorem",
+      "baker-gill-solovay",
+      "rice-theorem",
+      "godel-incompleteness",
+      "church-turing-thesis",
+      "millennium-prize"
+    ],
     "module": "algorithm",
     "order": 110,
-    "difficulty": "intermediate",
-    "updated": ""
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "algorithm/网络流",
