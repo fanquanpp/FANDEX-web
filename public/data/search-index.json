@@ -6719,7 +6719,7 @@
   {
     "slug": "csharp/委托与事件底层原理",
     "title": "委托与事件底层原理",
-    "description": "C#委托与事件底层原理详解。",
+    "description": "C#委托与事件底层原理详解：从ECMA-334类型系统到闭包与多播实现的完整指南。",
     "tags": [],
     "module": "csharp",
     "order": 102,
@@ -6729,7 +6729,7 @@
   {
     "slug": "csharp/反射与特性应用",
     "title": "反射与特性应用",
-    "description": "C#反射与特性（Attribute）应用详解。",
+    "description": "C#反射与特性（Attribute）应用详解：从ECMA-335元数据到Source Generator的完整指南。",
     "tags": [],
     "module": "csharp",
     "order": 103,
@@ -6739,7 +6739,7 @@
   {
     "slug": "csharp/Entity-Framework-Core迁移与优化",
     "title": "Entity-Framework-Core迁移与优化",
-    "description": "Entity Framework Core迁移与性能优化详解。",
+    "description": "Entity Framework Core迁移与性能优化详解：从Code First建模到跨数据库Provider的完整指南。",
     "tags": [],
     "module": "csharp",
     "order": 104,
@@ -6749,7 +6749,7 @@
   {
     "slug": "csharp/ASP-NET-Core中间件管道",
     "title": "ASP-NET-Core中间件管道",
-    "description": "ASP.NET Core中间件管道详解。",
+    "description": "ASP.NET Core中间件管道详解：从IApplicationBuilder到HttpContext的完整指南，涵盖管道构建、依赖注入、性能优化与生产级实践。",
     "tags": [],
     "module": "csharp",
     "order": 105,
@@ -6789,7 +6789,7 @@
   {
     "slug": "csharp/记录类型与不可变性",
     "title": "记录类型与不可变性",
-    "description": "C#记录类型（record）与不可变性详解。",
+    "description": "C#记录类型（record）与不可变性详解：从ECMA-334标准到函数式编程实践的完整指南。",
     "tags": [],
     "module": "csharp",
     "order": 109,
@@ -10049,7 +10049,7 @@
   {
     "slug": "go/Map原理",
     "title": "Map原理",
-    "description": "Go map底层实现",
+    "description": "Go map底层实现：hmap结构、bucket、hash函数、扩容机制、并发安全与Go 1.24 Swiss Table",
     "tags": [],
     "module": "go",
     "order": 51,
@@ -10069,7 +10069,7 @@
   {
     "slug": "go/Channel原理",
     "title": "Channel原理",
-    "description": "Channel底层实现与调度",
+    "description": "Channel底层实现：hchan结构、send/recv状态机、select实现、close语义与CSP模型",
     "tags": [],
     "module": "go",
     "order": 52,
@@ -10099,7 +10099,7 @@
   {
     "slug": "go/Context详解",
     "title": "Context详解",
-    "description": "context.Context与取消传播",
+    "description": "context.Context接口、cancel传播、超时控制、值传递、最佳实践与陷阱",
     "tags": [],
     "module": "go",
     "order": 54,
@@ -10129,7 +10129,7 @@
   {
     "slug": "go/错误处理进阶",
     "title": "错误处理进阶",
-    "description": "错误包装、检查与自定义错误",
+    "description": "error接口、errors.Is/As、%w包装、panic/recover、Go 1.13+错误语义、错误链与生产级实践",
     "tags": [],
     "module": "go",
     "order": 56,
@@ -10489,7 +10489,7 @@
   {
     "slug": "go/泛型详解",
     "title": "泛型详解",
-    "description": "Go泛型详解：类型参数、约束、comparable。",
+    "description": "Go 1.18+泛型：类型参数、约束、类型推断、GC shape stenciling实现、泛型算法与生产级实践",
     "tags": [],
     "module": "go",
     "order": 106,
