@@ -3906,12 +3906,21 @@
   {
     "slug": "c/多文件编译",
     "title": "多文件编译",
-    "description": "多文件项目与头文件组织",
-    "tags": [],
+    "description": "C 语言多文件编译的完整知识体系，涵盖翻译单元、链接性、ODR、头文件、预处理器、Makefile/CMake/Ninja、静态/动态库、ABI、链接器原理与工业级工程实践。",
+    "tags": [
+      "c",
+      "translation-unit",
+      "linkage",
+      "linker",
+      "build-system",
+      "abi",
+      "makefile",
+      "cmake"
+    ],
     "module": "c",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "c/动态内存管理",
@@ -4036,12 +4045,12 @@
   {
     "slug": "c/复杂声明解析",
     "title": "复杂声明解析",
-    "description": "C语言复杂声明与解析",
-    "tags": [],
+    "description": "C 语言复杂声明的形式语法、右左法则、函数指针与数组指针的解析方法,涵盖 cdecl 工具、ABI 规范与真实项目案例。",
+    "tags": ["c", "declaration", "syntax", "function-pointer", "type-system", "cdecl"],
     "module": "c",
     "order": 64,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "c/线程与并发",
@@ -4126,12 +4135,12 @@
   {
     "slug": "c/国际化与本地化",
     "title": "国际化与本地化",
-    "description": "C语言国际化支持",
-    "tags": [],
+    "description": "C 语言国际化与本地化机制,涵盖 setlocale、宽字符、多字节编码、Unicode 与 C23 char8_t 的形式语义、工程实践与真实项目案例。",
+    "tags": ["c", "i18n", "l10n", "locale", "wchar", "unicode", "encoding"],
     "module": "c",
     "order": 70,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "c/构建系统",
@@ -4276,12 +4285,21 @@
   {
     "slug": "c/二级指针与指针数组",
     "title": "二级指针与指针数组",
-    "description": "C语言二级指针与指针数组详解及应用场景。",
-    "tags": [],
+    "description": "C 语言二级指针与指针数组的完整知识体系，涵盖多级间接寻址的形式化定义、内存布局、指针数组与数组指针的本质区别、函数指针数组、链表与树的二级指针实践、跨语言对比与工业级工程应用。",
+    "tags": [
+      "c",
+      "pointer",
+      "double-pointer",
+      "pointer-array",
+      "array-pointer",
+      "memory-layout",
+      "function-pointer",
+      "multi-level-indirection"
+    ],
     "module": "c",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "c/函数指针回调与跳转表",
@@ -4296,12 +4314,21 @@
   {
     "slug": "c/volatile关键字",
     "title": "volatile关键字",
-    "description": "C语言volatile关键字作用与使用场景。",
-    "tags": [],
+    "description": "C 语言 volatile 关键字的完整知识体系，涵盖标准语义、编译器优化抑制、内存映射 I/O、信号处理、setjmp/longjmp、C11 原子操作对比、C++20 volatile 弃用、Linux 内核实践与多线程陷阱。",
+    "tags": [
+      "c",
+      "volatile",
+      "memory-model",
+      "compiler-optimization",
+      "atomic",
+      "mmio",
+      "signal-handler",
+      "embedded"
+    ],
     "module": "c",
     "order": 106,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "c/文件IO操作",
@@ -11372,22 +11399,43 @@
   {
     "slug": "java/枚举与注解",
     "title": "枚举与注解",
-    "description": "Java枚举类型与注解系统",
-    "tags": [],
+    "description": "Java 枚举类型与注解系统的形式化定义、源码生成机制、注解处理器工作原理、与 C#/Kotlin/Scala 对比及工程实践",
+    "tags": [
+      "java",
+      "enum",
+      "annotation",
+      "typesafe-enum",
+      "jsr-175",
+      "jsr-201",
+      "annotation-processor",
+      "reflection",
+      "metadata"
+    ],
     "module": "java",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/泛型进阶",
     "title": "泛型进阶",
-    "description": "泛型擦除、通配符与边界",
-    "tags": [],
+    "description": "Java 泛型进阶——类型擦除机制、通配符语义、边界约束、桥接方法与 Project Valhalla 演进的形式化定义、理论推导与工程实践",
+    "tags": [
+      "java",
+      "generics",
+      "type-erasure",
+      "wildcards",
+      "pecs",
+      "type-inference",
+      "project-valhalla",
+      "bounded-type-parameters",
+      "bridge-methods",
+      "heap-pollution"
+    ],
     "module": "java",
     "order": 51,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/并发编程基础",
@@ -11562,12 +11610,26 @@
   {
     "slug": "java/Java单元测试",
     "title": "Java单元测试",
-    "description": "JUnit 5与Mockito",
-    "tags": [],
+    "description": "JUnit 5 Jupiter API、Mockito 桩件框架、AssertJ 流式断言、Spring Boot Test 测试切片、Testcontainers 集成测试、JMH 微基准测试与 TDD/BDD 工程实践",
+    "tags": [
+      "java",
+      "junit",
+      "jupiter",
+      "mockito",
+      "testng",
+      "assertj",
+      "tdd",
+      "bdd",
+      "spring-boot-test",
+      "testcontainers",
+      "jmh",
+      "parameterized-test",
+      "extension-model"
+    ],
     "module": "java",
     "order": 69,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/Java构建工具",
@@ -11822,22 +11884,46 @@
   {
     "slug": "java/CompletableFuture异步编排",
     "title": "CompletableFuture异步编排",
-    "description": "Java CompletableFuture异步编排详解。",
-    "tags": [],
+    "description": "Java CompletableFuture 异步编排的形式语义、CompletionStage 接口代数、Completion 栈内部结构、Java 9 API 增强、Project Loom 与虚拟线程场景下的演进路径",
+    "tags": [
+      "java",
+      "completable-future",
+      "completion-stage",
+      "async-programming",
+      "fork-join-pool",
+      "reactor",
+      "rxjava",
+      "virtual-threads",
+      "structured-concurrency",
+      "jep-444",
+      "jep-453",
+      "concurrency"
+    ],
     "module": "java",
     "order": 102,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/ThreadLocal内存泄漏",
     "title": "ThreadLocal内存泄漏",
-    "description": "Java ThreadLocal内存泄漏原因与解决方案。",
-    "tags": [],
+    "description": "Java ThreadLocal 内存泄漏的可达性分析、弱引用 Key 设计、线程池复用场景、Scoped Values（JEP 446）演进与生产级防御方案",
+    "tags": [
+      "java",
+      "threadlocal",
+      "memory-leak",
+      "weak-reference",
+      "garbage-collection",
+      "thread-pool",
+      "scoped-values",
+      "jep-446",
+      "concurrency",
+      "jvm"
+    ],
     "module": "java",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/反射与动态代理",
@@ -12082,72 +12168,106 @@
   {
     "slug": "javascript/递归与尾调用优化",
     "title": "递归与尾调用优化",
-    "description": "递归原理、尾调用与TCO实践",
-    "tags": [],
+    "description": "深入解析递归的形式化定义、调用栈模型、尾调用与 TCO 规范、trampoline 技术、CPS 续延传递、栈溢出防护等高级主题,涵盖 MIT 6.001 / Stanford CS107 / SICP 级别的工程教学",
+    "tags": [
+      "JavaScript",
+      "Recursion",
+      "TailCall",
+      "TCO",
+      "Trampoline",
+      "CPS",
+      "函数式编程",
+      "算法"
+    ],
     "module": "javascript",
     "order": 51,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/柯里化与偏函数",
     "title": "柯里化与偏函数",
-    "description": "函数柯里化与偏函数应用",
-    "tags": [],
+    "description": "函数柯里化与偏函数应用的数学基础、形式语义、工程实现与生产级应用",
+    "tags": ["JavaScript", "函数式编程", "柯里化", "偏函数", "高阶函数", "闭包"],
     "module": "javascript",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/生成器函数",
     "title": "生成器函数",
-    "description": "Generator函数与迭代协议",
-    "tags": [],
+    "description": "深入解析 ES6 生成器函数的协程语义、迭代器协议、异步生成器、与 async/await 的关系,以及无限流处理、co 库原理等高级主题",
+    "tags": [
+      "JavaScript",
+      "Generator",
+      "Iterator",
+      "Coroutine",
+      "AsyncIterator",
+      "ES6",
+      "异步编程"
+    ],
     "module": "javascript",
     "order": 53,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/Proxy与Reflect",
     "title": "Proxy与Reflect",
-    "description": "元编程：代理与反射API",
-    "tags": [],
+    "description": "深入解析 ES6 Proxy 与 Reflect 的元编程理论、代理不变量、Vue 3 响应式实现、MobX 代理模式等高级主题",
+    "tags": ["JavaScript", "Proxy", "Reflect", "Metaprogramming", "Vue3", "Reactive", "ES6"],
     "module": "javascript",
     "order": 54,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/Object扩展",
     "title": "Object扩展",
-    "description": "ES6+ Object新方法与特性",
-    "tags": [],
+    "description": "ES6+ Object 静态方法体系、属性描述符、对象不可变性、TC39 演进时间线与工程实践",
+    "tags": [
+      "Object",
+      "ES6",
+      "PropertyDescriptor",
+      "Immutability",
+      "TC39",
+      "structuredClone",
+      "Reflection"
+    ],
     "module": "javascript",
     "order": 55,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/事件循环",
     "title": "事件循环",
-    "description": "JavaScript事件循环机制详解",
-    "tags": [],
+    "description": "JavaScript 事件循环模型——HTML 规范、Node.js 实现、微任务/宏任务、渲染调度",
+    "tags": [
+      "EventLoop",
+      "Microtask",
+      "Macrotask",
+      "Node.js",
+      "libuv",
+      "HTML-Spec",
+      "requestAnimationFrame",
+      "Promise"
+    ],
     "module": "javascript",
     "order": 56,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/具名捕获组",
     "title": "具名捕获组",
-    "description": "正则表达式具名捕获组",
-    "tags": [],
+    "description": "正则表达式具名捕获组的形式语义、工程实践与生产级应用",
+    "tags": ["JavaScript", "正则表达式", "ES2018", "模式匹配", "代码可读性"],
     "module": "javascript",
     "order": 57,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/断言",
@@ -12162,12 +12282,12 @@
   {
     "slug": "javascript/Unicode属性转义",
     "title": "Unicode属性转义",
-    "description": "正则表达式Unicode属性转义",
-    "tags": [],
+    "description": "正则表达式 Unicode 属性转义机制、形式语义、性能调优与生产实践",
+    "tags": ["JavaScript", "正则表达式", "Unicode", "国际化", "ES2018"],
     "module": "javascript",
     "order": 59,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/函数-作用域与闭包",
@@ -12182,62 +12302,98 @@
   {
     "slug": "javascript/自定义Error",
     "title": "自定义Error",
-    "description": "创建自定义错误类型与错误链",
-    "tags": [],
+    "description": "JavaScript 自定义错误类型体系——Error 子类化、Error Cause、AggregateError、堆栈追踪与生产级错误监控",
+    "tags": [
+      "Error",
+      "CustomError",
+      "ErrorCause",
+      "AggregateError",
+      "StackTrace",
+      "TC39",
+      "Sentry",
+      "ExceptionHandling"
+    ],
     "module": "javascript",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/浏览器对象模型",
     "title": "BOM",
-    "description": "浏览器对象模型详解",
-    "tags": [],
+    "description": "浏览器对象模型（BOM）原理、API 体系、工程实践与规范演进",
+    "tags": ["BOM", "window", "location", "navigator", "history", "WHATWG", "HTML-Living-Standard"],
     "module": "javascript",
     "order": 61,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/网络请求API",
-    "title": "Fetch-API",
-    "description": "现代网络请求API详解",
-    "tags": [],
+    "title": "网络请求API",
+    "description": "深入解析 WHATWG Fetch 标准、AbortController 取消语义、Web Streams API、Service Worker 缓存策略、GraphQL 客户端实现等高级主题,涵盖 MIT 6.S081 / Stanford CS107 级别的工程实践",
+    "tags": [
+      "JavaScript",
+      "Fetch",
+      "AbortController",
+      "Streams",
+      "ServiceWorker",
+      "GraphQL",
+      "HTTP",
+      "异步编程"
+    ],
     "module": "javascript",
     "order": 62,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/Web存储API",
     "title": "Web存储API",
-    "description": "localStorage、sessionStorage与Cookie",
-    "tags": [],
+    "description": "浏览器端存储机制的形式语义、安全模型、工程实践与生产级应用",
+    "tags": [
+      "JavaScript",
+      "Web存储",
+      "localStorage",
+      "sessionStorage",
+      "Cookie",
+      "IndexedDB",
+      "浏览器存储"
+    ],
     "module": "javascript",
     "order": 63,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/索引数据库",
-    "title": "IndexedDB",
-    "description": "浏览器端结构化存储数据库",
-    "tags": [],
+    "title": "索引数据库",
+    "description": "浏览器端事务型 NoSQL 数据库的形式语义、事务模型、索引机制与生产级工程实践",
+    "tags": ["JavaScript", "IndexedDB", "NoSQL", "浏览器存储", "事务", "索引", "离线优先"],
     "module": "javascript",
     "order": 64,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/时间API",
     "title": "Temporal",
-    "description": "TC39 Temporal日期时间API提案",
-    "tags": [],
+    "description": "TC39 Temporal 现代日期时间 API——类型体系、时区算法、历法支持、Duration 运算与工程实践",
+    "tags": [
+      "Temporal",
+      "Date",
+      "ISO8601",
+      "TimeZone",
+      "IANA",
+      "Duration",
+      "TC39",
+      "Calendar",
+      "iCalendar"
+    ],
     "module": "javascript",
     "order": 65,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/迭代器帮助器",
@@ -12251,13 +12407,22 @@
   },
   {
     "slug": "javascript/Promise构造器",
-    "title": "Promise-withResolvers",
-    "description": "Promise.withResolvers()详解",
-    "tags": [],
+    "title": "Promise构造器",
+    "description": "深入解析 Promise 构造器的形式化语义、Promise A+ 规范、状态机模型、thenable 鸭子类型、微任务调度、并发原语(all/race/allSettled/any)、Promise.withResolvers 等高级主题,涵盖 MIT 6.S081 / Stanford CS107 级别的工程实践",
+    "tags": [
+      "JavaScript",
+      "Promise",
+      "Async",
+      "PromiseA+",
+      "Microtask",
+      "ES2024",
+      "异步编程",
+      "状态机"
+    ],
     "module": "javascript",
     "order": 67,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/Records与Tuples",
@@ -12522,8 +12687,16 @@
   {
     "slug": "javascript/理论知识点",
     "title": "JavaScript 理论知识点",
-    "description": "执行上下文、作用域链、事件循环与内存管理。",
-    "tags": ["javascript", "theory", "performance"],
+    "description": "执行上下文、作用域链、事件循环、原型继承与内存管理的形式语义与工程实践。",
+    "tags": [
+      "javascript",
+      "theory",
+      "performance",
+      "ecmascript",
+      "event-loop",
+      "prototype",
+      "closure"
+    ],
     "module": "javascript",
     "order": 170,
     "difficulty": "intermediate",
@@ -17442,12 +17615,12 @@
   {
     "slug": "python/Python与NLP",
     "title": "Python与NLP",
-    "description": "自然语言处理",
-    "tags": [],
+    "description": "自然语言处理核心理论、spaCy/Transformers/NLTK 工程实践与 Transformer 注意力机制形式化推导",
+    "tags": ["python", "nlp", "spacy", "transformers", "llm", "tokenizer", "attention"],
     "module": "python",
     "order": 67,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "python/Python与计算机视觉",
@@ -17462,22 +17635,32 @@
   {
     "slug": "python/Python与Web爬虫",
     "title": "Python与Web爬虫",
-    "description": "Scrapy与BeautifulSoup",
-    "tags": [],
+    "description": "HTTP 客户端、HTML 解析、Scrapy 框架、动态渲染、反爬对抗、分布式爬虫与合规伦理的工程实践，覆盖 requests、httpx、BeautifulSoup、lxml、parsel、Scrapy、Playwright、Selenium、aiohttp 等核心工具链。",
+    "tags": [
+      "python",
+      "web-scraping",
+      "crawler",
+      "scrapy",
+      "beautifulsoup",
+      "playwright",
+      "httpx",
+      "async",
+      "data-engineering"
+    ],
     "module": "python",
     "order": 69,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "python/Python与自动化",
     "title": "Python与自动化",
-    "description": "脚本自动化与任务调度",
-    "tags": [],
+    "description": "文件、任务调度、Web 与 DevOps 自动化的工程实践，覆盖 pathlib、APScheduler、Celery、Airflow、Playwright、Fabric、subprocess 等核心工具链。",
+    "tags": ["python", "automation", "scheduling", "devops", "scripting", "etl", "rpa"],
     "module": "python",
     "order": 70,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "python/函数详解",
@@ -17502,12 +17685,12 @@
   {
     "slug": "python/Python与加密",
     "title": "Python与加密",
-    "description": "cryptography与安全编程",
-    "tags": [],
+    "description": "对称加密、非对称加密、哈希函数、数字签名、密码哈希与密钥管理的工程实践，覆盖 cryptography、hashlib、bcrypt、argon2 等核心库。",
+    "tags": ["python", "cryptography", "security", "encryption", "hashing", "tls", "pki"],
     "module": "python",
     "order": 73,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "python/Python与测试",
@@ -17632,12 +17815,24 @@
   {
     "slug": "python/Python与打包发布",
     "title": "Python与打包发布",
-    "description": "PyPI与包发布",
-    "tags": [],
+    "description": "Python 打包演进史、PEP 517/518/621 标准化、pyproject.toml 配置、wheel 与 sdist 构建、PyPI 发布流水线",
+    "tags": [
+      "python",
+      "packaging",
+      "pypi",
+      "pep517",
+      "pep518",
+      "pep621",
+      "build",
+      "twine",
+      "wheel",
+      "hatch",
+      "poetry"
+    ],
     "module": "python",
     "order": 82,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "python/Python与Jupyter",
@@ -19592,12 +19787,22 @@
   {
     "slug": "typescript/字面量类型与联合类型",
     "title": "字面量类型与联合类型",
-    "description": "字面量类型、联合类型与类型缩窄",
-    "tags": [],
+    "description": "字面量类型、联合类型、可辨识联合的形式语义、类型论基础与穷尽性检查的工程实践",
+    "tags": [
+      "typescript",
+      "literal-types",
+      "union-types",
+      "discriminated-union",
+      "exhaustiveness-checking",
+      "type-narrowing",
+      "pattern-matching",
+      "singleton-types",
+      "type-theory"
+    ],
     "module": "typescript",
     "order": 50,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/类与装饰器",
@@ -19672,22 +19877,42 @@
   {
     "slug": "typescript/声明文件编写",
     "title": "声明文件编写",
-    "description": "编写与发布TypeScript声明文件",
-    "tags": [],
+    "description": "TypeScript 声明文件（.d.ts）的语法结构、模块声明、全局类型增强、UMD 声明、声明合并规则、三斜线指令、DefinitelyTyped 生态与发布实践的形式化定义与工程指南",
+    "tags": [
+      "typescript",
+      "declaration-files",
+      "d-ts",
+      "module-declaration",
+      "global-augmentation",
+      "umd",
+      "declaration-merging",
+      "definitely-typed"
+    ],
     "module": "typescript",
     "order": 59,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": ""
   },
   {
     "slug": "typescript/模块解析策略",
     "title": "模块解析策略",
-    "description": "TypeScript模块解析与路径映射",
-    "tags": [],
+    "description": "TypeScript 模块解析策略的形式语义、Node.js 包解析算法、exports 字段、路径映射与生产级配置",
+    "tags": [
+      "typescript",
+      "module-resolution",
+      "node16",
+      "nodenext",
+      "bundler",
+      "exports",
+      "path-mapping",
+      "commonjs",
+      "esm",
+      "tsconfig"
+    ],
     "module": "typescript",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/高级类型与类型演算",
@@ -19702,22 +19927,37 @@
   {
     "slug": "typescript/类型体操实用模式",
     "title": "类型体操实用模式",
-    "description": "常见类型编程模式与技巧",
-    "tags": [],
+    "description": "TypeScript 类型系统的高级编程模式、形式语义与生产级类型体操实战",
+    "tags": [
+      "typescript",
+      "type-gymnastics",
+      "type-theory",
+      "conditional-types",
+      "mapped-types",
+      "recursive-types",
+      "type-level-programming"
+    ],
     "module": "typescript",
     "order": 61,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/协变与逆变",
     "title": "协变与逆变",
-    "description": "TypeScript中的型变关系",
-    "tags": [],
+    "description": "TypeScript 中协变、逆变、双变与不变的型变关系，涵盖函数子类型理论、Liskov 替换原则、严格函数类型检查、数组协变陷阱与 React props 逆变等核心议题",
+    "tags": [
+      "typescript",
+      "type-theory",
+      "subtyping",
+      "covariance",
+      "contravariance",
+      "liskov-substitution"
+    ],
     "module": "typescript",
     "order": 62,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "typescript/this类型与多态",
@@ -19732,12 +19972,21 @@
   {
     "slug": "typescript/符号与唯一类型",
     "title": "符号与唯一类型",
-    "description": "Symbol与unique symbol",
-    "tags": [],
+    "description": "Symbol、unique symbol 与品牌类型的类型论基础、形式语义与生产级模式",
+    "tags": [
+      "typescript",
+      "symbol",
+      "unique-symbol",
+      "branded-type",
+      "nominal-typing",
+      "well-known-symbols",
+      "metaprogramming",
+      "type-theory"
+    ],
     "module": "typescript",
     "order": 64,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/命名空间与模块",
@@ -19782,22 +20031,39 @@
   {
     "slug": "typescript/类型推断infer扩展",
     "title": "类型推断infer扩展",
-    "description": "infer在各类场景中的应用",
-    "tags": [],
+    "description": "TypeScript 中 infer 关键字的形式语义、推导规则与生产级应用——从函数返回值到模板字面量、从 Promise 解包到 AST 元编程",
+    "tags": [
+      "typescript",
+      "infer",
+      "conditional-types",
+      "type-inference",
+      "type-level-programming",
+      "template-literal-types",
+      "type-theory"
+    ],
     "module": "typescript",
     "order": 68,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/递归类型与深度操作",
     "title": "递归类型与深度操作",
-    "description": "递归条件类型与深度类型操作",
-    "tags": [],
+    "description": "TypeScript 递归条件类型与深度类型操作的形式化定义、尾递归优化机制、DeepReadonly/DeepPartial/DeepRequired 实现原理、JSON 类型推导、循环引用处理与编译性能优化",
+    "tags": [
+      "typescript",
+      "recursive-types",
+      "deep-types",
+      "tail-recursion",
+      "type-level-programming",
+      "deep-readonly",
+      "json-types",
+      "circular-references"
+    ],
     "module": "typescript",
     "order": 69,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "typescript/条件类型与映射类型",
@@ -19812,8 +20078,8 @@
   {
     "slug": "typescript/类型声明与模块解析",
     "title": "TypeScript 类型声明与模块解析",
-    "description": ".d.ts 文件、声明合并、模块解析策略与路径映射。",
-    "tags": ["typescript"],
+    "description": "TypeScript 声明文件（.d.ts）结构、模块解析策略（Node/NodeNext/Bundler）、ESM/CJS 互操作、路径映射与包导出的全面工程指南",
+    "tags": ["typescript", "module-resolution", "declaration-files", "esm", "cjs", "bundler"],
     "module": "typescript",
     "order": 70,
     "difficulty": "intermediate",
@@ -19822,12 +20088,21 @@
   {
     "slug": "typescript/类型安全的事件系统",
     "title": "类型安全的事件系统",
-    "description": "构建类型安全的事件发射器",
-    "tags": [],
+    "description": "类型安全事件系统的形式语义、构建器模式、异步事件、反应式扩展与生产级实现",
+    "tags": [
+      "typescript",
+      "event-emitter",
+      "type-safety",
+      "pub-sub",
+      "reactive",
+      "conditional-types",
+      "mapped-types",
+      "async"
+    ],
     "module": "typescript",
     "order": 70,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/类型安全的API客户端",
@@ -19892,42 +20167,78 @@
   {
     "slug": "typescript/类型安全的配置系统",
     "title": "类型安全的配置系统",
-    "description": "构建类型安全的应用配置",
-    "tags": [],
+    "description": "类型安全配置系统的形式语义、深度类型操作、运行时校验与生产级 ConfigManager 工程实践",
+    "tags": [
+      "typescript",
+      "configuration",
+      "type-safety",
+      "zod",
+      "recursive-types",
+      "env-variables",
+      "schema-validation",
+      "type-gymnastics"
+    ],
     "module": "typescript",
     "order": 76,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/类型安全的数据库查询",
     "title": "类型安全的数据库查询",
-    "description": "构建类型安全的查询构建器",
-    "tags": [],
+    "description": "TypeScript 类型安全数据库访问的形式语义、Row 类型推导原理与 Kysely/Drizzle/Prisma 三大 ORM 的工程对比",
+    "tags": [
+      "typescript",
+      "database",
+      "orm",
+      "sql",
+      "kysely",
+      "drizzle",
+      "prisma",
+      "type-inference",
+      "row-types"
+    ],
     "module": "typescript",
     "order": 77,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/类型安全的发布订阅",
     "title": "类型安全的发布订阅",
-    "description": "构建类型安全的发布订阅模式",
-    "tags": [],
+    "description": "发布订阅模式的形式语义、TypeScript 类型级实现、与主流事件库对比及生产级工程实践",
+    "tags": [
+      "typescript",
+      "publish-subscribe",
+      "observer-pattern",
+      "event-driven",
+      "type-safety",
+      "covariance",
+      "contravariance"
+    ],
     "module": "typescript",
     "order": 78,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/TypeScript5新特性",
     "title": "TypeScript5新特性",
-    "description": "TypeScript 5.x新特性详解",
-    "tags": [],
+    "description": "TypeScript 5.x 全版本新特性、形式语义与生产环境迁移指南",
+    "tags": [
+      "typescript",
+      "typescript-5",
+      "decorators",
+      "satisfies",
+      "const-type-parameters",
+      "module-resolution",
+      "enums",
+      "ecmascript"
+    ],
     "module": "typescript",
     "order": 80,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/工程化配置",
@@ -19992,12 +20303,20 @@
   {
     "slug": "typescript/模板字面量类型",
     "title": "模板字面量类型",
-    "description": "TypeScript模板字面量类型详解：Template Literal Types与字符串模式匹配。",
-    "tags": [],
+    "description": "TypeScript 模板字面量类型（Template Literal Types）的形式化定义、字符串模式匹配规则、内置字符串操作类型、CSS 属性类型、路由参数类型推导、SQL 类型安全与运行时模板字符串的对比",
+    "tags": [
+      "typescript",
+      "template-literal-types",
+      "string-pattern-matching",
+      "type-level-programming",
+      "css-typesafety",
+      "router-typesafety",
+      "sql-typesafety"
+    ],
     "module": "typescript",
     "order": 102,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": ""
   },
   {
     "slug": "typescript/类型体操",
@@ -20052,8 +20371,8 @@
   {
     "slug": "typescript/理论知识点",
     "title": "TypeScript 理论知识点",
-    "description": "类型系统原理、编译流程与结构化类型机制。",
-    "tags": ["typescript", "theory"],
+    "description": "类型论基础、结构化类型、子类型理论、类型推导、泛型多态与类型级计算的形式语义与工程实践。",
+    "tags": ["typescript", "theory", "type-system", "type-theory", "generics", "conditional-types"],
     "module": "typescript",
     "order": 130,
     "difficulty": "intermediate",
