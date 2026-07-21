@@ -40,14 +40,16 @@ const topModules = modules.slice(0, 6);
     <script is:inline>
       (function () {
         var raw = localStorage.getItem('fandex-theme');
-        var isDark = false;
-        if (raw === 'dark' || (!raw && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          isDark = true;
+        var theme;
+        if (raw === 'dark' || raw === 'light') {
+          theme = raw;
+        } else {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-        if (isDark) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.documentElement.style.colorScheme = 'dark';
-        }
+        // 始终显式设置 data-theme，避免 tokens.css 的 :root:not([data-theme])
+        // 兜底逻辑在 prefers-color-scheme:dark 下覆盖用户已选择的 light
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
       })();
     </script>
   </head>

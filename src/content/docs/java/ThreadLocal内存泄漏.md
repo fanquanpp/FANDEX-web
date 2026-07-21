@@ -4,320 +4,287 @@ title: ThreadLocal内存泄漏
 module: java
 category: dev-lang
 difficulty: advanced
-description: 'Java ThreadLocal 内存泄漏的可达性分析、弱引用 Key 设计、线程池复用场景、Scoped Values（JEP 446）演进与生产级防御方案'
+description: Java ThreadLocal 内存泄漏的可达性分析、弱引用 Key 设计、线程池复用场景、Scoped Values（JEP 446）演进与生产级防御方案
 author: fanquanpp
 updated: '2026-07-20'
 lastReviewed: 2026-07-20
 reviewer: FANDEX Content Engineering Team
 related:
-  - java/并发编程详解
-  - java/CompletableFuture异步编排
-  - java/反射与动态代理
-  - java/注解处理器
-  - java/JVM内存模型
+- java/并发编程详解
+- java/CompletableFuture异步编排
+- java/反射与动态代理
+- java/注解处理器
+- java/JVM内存模型
 prerequisites:
-  - java/概述与开发环境
-  - java/并发编程详解
-  - java/JVM内存模型
+- java/概述与开发环境
+- java/并发编程详解
+- java/JVM内存模型
 tags:
-  - java
-  - threadlocal
-  - memory-leak
-  - weak-reference
-  - garbage-collection
-  - thread-pool
-  - scoped-values
-  - jep-446
-  - concurrency
-  - jvm
+- java
+- threadlocal
+- memory-leak
+- weak-reference
+- garbage-collection
+- thread-pool
+- scoped-values
+- jep-446
+- concurrency
+- jvm
 learningObjectives:
-  - bloom: remember
-    objective: 复述 ThreadLocal 的内部数据结构（Thread → ThreadLocalMap → Entry[WeakReference<ThreadLocal>, value]）与 JDK 1.2 引入历史
-  - bloom: understand
-    objective: 解释 ThreadLocalMap Entry 为何使用 WeakReference 作 key、为何 value 仍为强引用，以及这一不对称设计导致的可达性差异
-  - bloom: apply
-    objective: 运用 try-finally + remove() 模式管理 ThreadLocal 生命周期，结合 try-with-resources 封装为 AutoCloseable 资源
-  - bloom: analyze
-    objective: 分析线程池复用场景下 ThreadLocal 跨任务泄漏的根因，通过堆转储（Heap Dump）与 MAT/JFR 定位泄漏路径
-  - bloom: evaluate
-    objective: 评估 ThreadLocal 与 Scoped Values（JEP 446）、InheritableThreadLocal、TransmittableThreadLocal 在不同场景下的适用性
-  - bloom: create
-    objective: 设计一个线程池友好的请求上下文传递框架，避免内存泄漏、支持父子线程传递、兼容虚拟线程（JEP 444）
+- 复述 ThreadLocal 的内部数据结构（Thread → ThreadLocalMap → Entry[WeakReference<ThreadLocal>, value]）与 JDK 1.2 引入历史
+- 解释 ThreadLocalMap Entry 为何使用 WeakReference 作 key、为何 value 仍为强引用，以及这一不对称设计导致的可达性差异
+- 运用 try-finally + remove() 模式管理 ThreadLocal 生命周期，结合 try-with-resources 封装为 AutoCloseable 资源
+- 分析线程池复用场景下 ThreadLocal 跨任务泄漏的根因，通过堆转储（Heap Dump）与 MAT/JFR 定位泄漏路径
+- 评估 ThreadLocal 与 Scoped Values（JEP 446）、InheritableThreadLocal、TransmittableThreadLocal 在不同场景下的适用性
+- 设计一个线程池友好的请求上下文传递框架，避免内存泄漏、支持父子线程传递、兼容虚拟线程（JEP 444）
 exercises:
-  - id: ex-tl-01
-    type: fill-blank
-    cognitiveLevel: remember
-    question: "ThreadLocal 的数据并非存储在 ThreadLocal 对象本身，而是存储在每个线程私有的 ThreadLocal____ 中，其 Entry 类继承自 WeakReference。"
-    hint: "回顾 2.1 节内部数据结构"
-    answer: "Map"
-    blankCount: 1
-    answers:
-      - "Map"
-    caseSensitive: false
-    difficulty: 1
-    explanation: "ThreadLocalMap 是 Thread 类的实例字段，每个线程持有自己的 ThreadLocalMap；其 Entry 继承自 WeakReference<ThreadLocal<?>>，以 ThreadLocal 对象作为弱引用 key，value 为强引用。"
-    estimatedTime: 1
-  - id: ex-tl-02
-    type: fill-blank
-    cognitiveLevel: understand
-    question: "ThreadLocal 内存泄漏的根因是：当 ThreadLocal 对象被回收后，Entry 的 key 变为 null，但 value 仍被 ThreadLocalMap 强引用，且 ThreadLocalMap 被 ____ 强引用，形成不可回收的引用链。"
-    hint: "回顾 3.2 节可达性分析"
-    answer: "Thread"
-    blankCount: 1
-    answers:
-      - "Thread"
-    caseSensitive: false
-    difficulty: 2
-    explanation: "Thread 持有 threadLocals 字段（ThreadLocalMap），ThreadLocalMap 持有 Entry[]，Entry 持有 value（强引用）。线程存活期间 Thread 是 GC Root，整个引用链不可回收。在线程池场景下线程长期存活，导致 value 持续累积。"
-    estimatedTime: 2
-  - id: ex-tl-03
-    type: choice
-    cognitiveLevel: apply
-    question: "下列哪种写法能最安全地在线程池任务中使用 ThreadLocal？"
-    options:
-      - "在任务开头 set()，依赖线程池销毁时清理"
-      - "在任务开头 set()，使用 try-finally 在 finally 中 remove()"
-      - "声明为实例字段（非 static），让 GC 自动回收"
-      - "使用 InheritableThreadLocal 替代 ThreadLocal"
-    correctIndex: 1
-    multiple: false
-    difficulty: 2
-    explanation: "线程池线程长期存活，必须显式 remove()；try-finally 保证异常路径下也能清理；声明为实例字段反而加速 ThreadLocal 本身回收（key 变 null）但 value 仍泄漏；InheritableThreadLocal 仅在线程创建时传递，不解决清理问题。"
-    estimatedTime: 2
-  - id: ex-tl-04
-    type: choice
-    cognitiveLevel: analyze
-    question: "关于 ThreadLocalMap 的 Entry 设计，下列哪项描述最准确？"
-    options:
-      - "Entry 继承 WeakReference 是为了让 ThreadLocalMap 自动清理 key 与 value"
-      - "Entry 的 key 与 value 都是弱引用，因此不会发生内存泄漏"
-      - "Entry 的 key 是弱引用、value 是强引用，泄漏发生在 key 被回收但 value 未被回收时"
-      - "Entry 继承 WeakReference 仅为节省内存，与泄漏无关"
-    correctIndex: 2
-    multiple: false
-    difficulty: 4
-    explanation: "Entry extends WeakReference<ThreadLocal<?>> 仅 key 为弱引用，value 是普通强引用字段；当 ThreadLocal 对象本身被回收（无外部强引用），key 自动变 null，但 value 仍被 Entry 引用、Entry 被 ThreadLocalMap 引用、ThreadLocalMap 被 Thread 引用，形成泄漏。设计目的是避免 ThreadLocal 对象本身泄漏，但不能避免 value 泄漏。"
-    estimatedTime: 3
-  - id: ex-tl-05
-    type: code-fix
-    cognitiveLevel: apply
-    question: "下列代码在线程池中存在 ThreadLocal 泄漏风险。请修复："
-    buggyCode: |
-      private static final ThreadLocal<UserContext> CTX = new ThreadLocal<>();
-
-      @Override
-      public void handle(Request req, Response resp) {
-          CTX.set(new UserContext(req.getUserId()));
-          doBusiness(resp);
-          // 缺少清理
-      }
-    language: java
-    fixedCode: |
-      private static final ThreadLocal<UserContext> CTX = new ThreadLocal<>();
-
-      @Override
-      public void handle(Request req, Response resp) {
-          CTX.set(new UserContext(req.getUserId()));
-          try {
-              doBusiness(resp);
-          } finally {
-              CTX.remove();  // 确保异常路径下也清理
-          }
-      }
-    errorDescription: "Web 容器使用线程池处理请求，线程被复用；缺少 remove() 会导致 UserContext 跨请求泄漏，且 value 强引用阻止 GC，长期累积导致 OOM。"
-    difficulty: 3
-    explanation: "在线程池场景下，线程生命周期远长于单个任务；ThreadLocal 必须在 try-finally 的 finally 块中 remove()，保证无论正常返回还是抛异常都清理。这是 Bloch 《Effective Java》Item 9 与 JSR 133 的明确建议。"
-    estimatedTime: 5
-  - id: ex-tl-06
-    type: code-fix
-    cognitiveLevel: analyze
-    question: "下列代码尝试通过 set(null) 清理 ThreadLocal，但仍存在泄漏。请修复："
-    buggyCode: |
-      ThreadLocal<byte[]> buffer = ThreadLocal.withInitial(() -> new byte[1024 * 1024]);
-
-      void process() {
-          buffer.get()[0] = 1;
-          // ...
-          buffer.set(null);  // 尝试清理
-      }
-    language: java
-    fixedCode: |
-      ThreadLocal<byte[]> buffer = ThreadLocal.withInitial(() -> new byte[1024 * 1024]);
-
-      void process() {
-          buffer.get()[0] = 1;
-          // ...
-          buffer.remove();  // remove 同时清理 key 与 value
-      }
-    errorDescription: "set(null) 仅将 value 置为 null，但 Entry 仍存在于 ThreadLocalMap 中（key 仍指向 ThreadLocal），既不节省内存也无法阻止后续 get() 触发 initialValue 重新分配；remove() 才会真正从 map 中删除 Entry。"
-    difficulty: 4
-    explanation: "ThreadLocalMap.set(null) 不会删除 Entry，仅在 Entry 内将 value 置 null（且会触发 replaceStaleEntry 探测）；remove() 通过 expungeStaleEntry 彻底清除 Entry 并清理相邻 stale entry。set(null) 是常见误解，应严格使用 remove()。"
-    estimatedTime: 6
-  - id: ex-tl-07
-    type: open-ended
-    cognitiveLevel: create
-    question: "请设计一个请求上下文框架，要求：(1) 在线程池与虚拟线程（JEP 444）下都安全；(2) 支持父子线程传递；(3) 自动清理无泄漏；(4) 兼容 Reactor/WebFlux 反应式栈。讨论：是否应直接采用 JEP 446 Scoped Values？给出关键代码与权衡分析。"
-    keyPoints:
-      - "基础层：ThreadLocal + try-finally + remove()，封装为 RequestContext.close() 实现 AutoCloseable"
-      - "父子传递：InheritableThreadLocal 在 new Thread() 时复制，但不支持线程池；需用 TransmittableThreadLocal（阿里 TTL）"
-      - "虚拟线程：JEP 444 下 ThreadLocal 仍可用但不推荐，Scoped Values 是替代品"
-      - "反应式：Reactor Context 或 Micrometer ContextPropagation，避免 ThreadLocal 在线程切换时丢失"
-      - "JEP 446 Scoped Values：不可变、有界作用域、JVM 原生支持，但仍在 Preview（JDK 21+）"
-      - "权衡：Scoped Values 优于 ThreadLocal（不可变、自动清理），但生态未成熟；过渡期用 TTL + ContextPropagation"
-      - "代码：ScopedValue.where(NAME, value).run(() -> business())"
-    difficulty: 5
-    minWords: 300
-    estimatedTime: 25
-  - id: ex-tl-08
-    type: open-ended
-    cognitiveLevel: evaluate
-    question: "JEP 446（Scoped Values）的官方说明指出 'It is unsafe to use thread-local variables in a large virtual-thread-intensive program'。请评估：(1) 为何 ThreadLocal 在虚拟线程场景下不安全？(2) Scoped Values 如何解决该问题？(3) 在 JDK 21 LTS 中，迁移策略应如何规划？"
-    keyPoints:
-      - "虚拟线程极轻量（KB 级栈），单 JVM 可达数百万；每个虚拟线程都有 ThreadLocalMap，导致内存爆炸"
-      - "虚拟线程在 carrier thread 上挂起/恢复，ThreadLocal 的继承与清理语义复杂"
-      - "ThreadLocal 的可变性导致跨任务泄漏风险随虚拟线程数量线性放大"
-      - "Scoped Values 不可变、有界（bound to call scope）、自动清理（run 结束即销毁），无泄漏风险"
-      - "Scoped Values 通过 JVM 内部 ScopedValueContainer 实现，不持有 ThreadLocalMap"
-      - "迁移策略：JDK 21 用 ScopedValue.preview()（需 --enable-preview）；JDK 24+ GA 后逐步替换；过渡期保留 ThreadLocal 但限定于平台线程"
-      - "评估：虚拟线程 + ThreadLocal 不是不能用，而是规模放大后内存与泄漏风险指数上升"
-    difficulty: 5
-    minWords: 250
-    estimatedTime: 20
+- id: ex-tl-01
+  type: fill-blank
+  cognitiveLevel: remember
+  question: ThreadLocal 的数据并非存储在 ThreadLocal 对象本身，而是存储在每个线程私有的 ThreadLocal____ 中，其 Entry 类继承自 WeakReference。
+  hint: 回顾 2.1 节内部数据结构
+  answer: Map
+  blankCount: 1
+  answers:
+  - Map
+  caseSensitive: false
+  difficulty: 1
+  explanation: ThreadLocalMap 是 Thread 类的实例字段，每个线程持有自己的 ThreadLocalMap；其 Entry 继承自 WeakReference<ThreadLocal<?>>，以 ThreadLocal 对象作为弱引用 key，value 为强引用。
+  estimatedTime: 1
+- id: ex-tl-02
+  type: fill-blank
+  cognitiveLevel: understand
+  question: ThreadLocal 内存泄漏的根因是：当 ThreadLocal 对象被回收后，Entry 的 key 变为 null，但 value 仍被 ThreadLocalMap 强引用，且 ThreadLocalMap 被 ____ 强引用，形成不可回收的引用链。
+  hint: 回顾 3.2 节可达性分析
+  answer: Thread
+  blankCount: 1
+  answers:
+  - Thread
+  caseSensitive: false
+  difficulty: 2
+  explanation: Thread 持有 threadLocals 字段（ThreadLocalMap），ThreadLocalMap 持有 Entry[]，Entry 持有 value（强引用）。线程存活期间 Thread 是 GC Root，整个引用链不可回收。在线程池场景下线程长期存活，导致 value 持续累积。
+  estimatedTime: 2
+- id: ex-tl-03
+  type: choice
+  cognitiveLevel: apply
+  question: 下列哪种写法能最安全地在线程池任务中使用 ThreadLocal？
+  options:
+  - 在任务开头 set()，依赖线程池销毁时清理
+  - 在任务开头 set()，使用 try-finally 在 finally 中 remove()
+  - 声明为实例字段（非 static），让 GC 自动回收
+  - 使用 InheritableThreadLocal 替代 ThreadLocal
+  correctIndex: 1
+  multiple: false
+  difficulty: 2
+  explanation: 线程池线程长期存活，必须显式 remove()；try-finally 保证异常路径下也能清理；声明为实例字段反而加速 ThreadLocal 本身回收（key 变 null）但 value 仍泄漏；InheritableThreadLocal 仅在线程创建时传递，不解决清理问题。
+  estimatedTime: 2
+  answer: B. 线程池线程长期存活，必须显式 remove()；try-finally 保证异常路径下也能清理；声明为实例字段反而加速 ThreadLocal 本身回收（key 变 null）但 value 仍泄漏；InheritableThreadLocal 仅在线程创建时传递，不解决清理问题。
+- id: ex-tl-04
+  type: choice
+  cognitiveLevel: analyze
+  question: 关于 ThreadLocalMap 的 Entry 设计，下列哪项描述最准确？
+  options:
+  - Entry 继承 WeakReference 是为了让 ThreadLocalMap 自动清理 key 与 value
+  - Entry 的 key 与 value 都是弱引用，因此不会发生内存泄漏
+  - Entry 的 key 是弱引用、value 是强引用，泄漏发生在 key 被回收但 value 未被回收时
+  - Entry 继承 WeakReference 仅为节省内存，与泄漏无关
+  correctIndex: 2
+  multiple: false
+  difficulty: 4
+  explanation: Entry extends WeakReference<ThreadLocal<?>> 仅 key 为弱引用，value 是普通强引用字段；当 ThreadLocal 对象本身被回收（无外部强引用），key 自动变 null，但 value 仍被 Entry 引用、Entry 被 ThreadLocalMap 引用、ThreadLocalMap 被 Thread 引用，形成泄漏。设计目的是避免 ThreadLocal 对象本身泄漏，但不能避免 value 泄漏。
+  estimatedTime: 3
+  answer: C. Entry extends WeakReference<ThreadLocal<?>> 仅 key 为弱引用，value 是普通强引用字段；当 ThreadLocal 对象本身被回收（无外部强引用），key 自动变 null，但 value 仍被 Entry 引用、Entry 被 ThreadLoc...
+- id: ex-tl-05
+  type: code-fix
+  cognitiveLevel: apply
+  question: 下列代码在线程池中存在 ThreadLocal 泄漏风险。请修复：
+  buggyCode: "private static final ThreadLocal<UserContext> CTX = new ThreadLocal<>();\n\n@Override\npublic void handle(Request req, Response resp) {\n    CTX.set(new UserContext(req.getUserId()));\n    doBusiness(resp);\n    // 缺少清理\n}\n"
+  language: java
+  fixedCode: "private static final ThreadLocal<UserContext> CTX = new ThreadLocal<>();\n\n@Override\npublic void handle(Request req, Response resp) {\n    CTX.set(new UserContext(req.getUserId()));\n    try {\n        doBusiness(resp);\n    } finally {\n        CTX.remove();  // 确保异常路径下也清理\n    }\n}\n"
+  errorDescription: Web 容器使用线程池处理请求，线程被复用；缺少 remove() 会导致 UserContext 跨请求泄漏，且 value 强引用阻止 GC，长期累积导致 OOM。
+  difficulty: 3
+  explanation: 在线程池场景下，线程生命周期远长于单个任务；ThreadLocal 必须在 try-finally 的 finally 块中 remove()，保证无论正常返回还是抛异常都清理。这是 Bloch 《Effective Java》Item 9 与 JSR 133 的明确建议。
+  estimatedTime: 5
+  answer: Web 容器使用线程池处理请求，线程被复用；缺少 remove() 会导致 UserContext 跨请求泄漏，且 value 强引用阻止 GC，长期累积导致 OOM。 在线程池场景下，线程生命周期远长于单个任务；ThreadLocal 必须在 try-finally 的 finally 块中 remove()，保证无论正常返回还是抛异常都清理。这是 Bloch 《Effective Java》Item 9 与 JSR 133 的明确建议。
+- id: ex-tl-06
+  type: code-fix
+  cognitiveLevel: analyze
+  question: 下列代码尝试通过 set(null) 清理 ThreadLocal，但仍存在泄漏。请修复：
+  buggyCode: "ThreadLocal<byte[]> buffer = ThreadLocal.withInitial(() -> new byte[1024 * 1024]);\n\nvoid process() {\n    buffer.get()[0] = 1;\n    // ...\n    buffer.set(null);  // 尝试清理\n}\n"
+  language: java
+  fixedCode: "ThreadLocal<byte[]> buffer = ThreadLocal.withInitial(() -> new byte[1024 * 1024]);\n\nvoid process() {\n    buffer.get()[0] = 1;\n    // ...\n    buffer.remove();  // remove 同时清理 key 与 value\n}\n"
+  errorDescription: set(null) 仅将 value 置为 null，但 Entry 仍存在于 ThreadLocalMap 中（key 仍指向 ThreadLocal），既不节省内存也无法阻止后续 get() 触发 initialValue 重新分配；remove() 才会真正从 map 中删除 Entry。
+  difficulty: 4
+  explanation: ThreadLocalMap.set(null) 不会删除 Entry，仅在 Entry 内将 value 置 null（且会触发 replaceStaleEntry 探测）；remove() 通过 expungeStaleEntry 彻底清除 Entry 并清理相邻 stale entry。set(null) 是常见误解，应严格使用 remove()。
+  estimatedTime: 6
+  answer: set(null) 仅将 value 置为 null，但 Entry 仍存在于 ThreadLocalMap 中（key 仍指向 ThreadLocal），既不节省内存也无法阻止后续 get() 触发 initialValue 重新分配；remove() 才会真正从 map 中删除 Entry。 关键修复：// ...
+- id: ex-tl-07
+  type: open-ended
+  cognitiveLevel: create
+  question: 请设计一个请求上下文框架，要求：(1) 在线程池与虚拟线程（JEP 444）下都安全；(2) 支持父子线程传递；(3) 自动清理无泄漏；(4) 兼容 Reactor/WebFlux 反应式栈。讨论：是否应直接采用 JEP 446 Scoped Values？给出关键代码与权衡分析。
+  keyPoints:
+  - 基础层：ThreadLocal + try-finally + remove()，封装为 RequestContext.close() 实现 AutoCloseable
+  - 父子传递：InheritableThreadLocal 在 new Thread() 时复制，但不支持线程池；需用 TransmittableThreadLocal（阿里 TTL）
+  - 虚拟线程：JEP 444 下 ThreadLocal 仍可用但不推荐，Scoped Values 是替代品
+  - 反应式：Reactor Context 或 Micrometer ContextPropagation，避免 ThreadLocal 在线程切换时丢失
+  - JEP 446 Scoped Values：不可变、有界作用域、JVM 原生支持，但仍在 Preview（JDK 21+）
+  - 权衡：Scoped Values 优于 ThreadLocal（不可变、自动清理），但生态未成熟；过渡期用 TTL + ContextPropagation
+  - 代码：ScopedValue.where(NAME, value).run(() -> business())
+  difficulty: 5
+  minWords: 300
+  estimatedTime: 25
+  answer: 基础层：ThreadLocal + try-finally + remove()，封装为 RequestContext.close() 实现 AutoCloseable；父子传递：InheritableThreadLocal 在 new Thread() 时复制，但不支持线程池；需用 TransmittableThreadLocal（阿里 TTL）；虚拟线程：JEP 444 下 ThreadLocal 仍可用但不推荐，Scoped Values 是替代品；反应式：Reactor Context 或 Micrometer ContextPropagation，避免 ThreadLocal 在线程切换时丢失；JEP 446 Scoped Values：不可变、有界作用域、JVM 原生支持，但仍在 Preview（JDK 21+）；权衡：Scoped Values 优于 ThreadLocal（不可变、自动清理），但生态未成熟；过渡期用 TTL + ContextPropagation；代码：ScopedValue.where(NAME, value).run(() -> business())
+- id: ex-tl-08
+  type: open-ended
+  cognitiveLevel: evaluate
+  question: JEP 446（Scoped Values）的官方说明指出 'It is unsafe to use thread-local variables in a large virtual-thread-intensive program'。请评估：(1) 为何 ThreadLocal 在虚拟线程场景下不安全？(2) Scoped Values 如何解决该问题？(3) 在 JDK 21 LTS 中，迁移策略应如何规划？
+  keyPoints:
+  - 虚拟线程极轻量（KB 级栈），单 JVM 可达数百万；每个虚拟线程都有 ThreadLocalMap，导致内存爆炸
+  - 虚拟线程在 carrier thread 上挂起/恢复，ThreadLocal 的继承与清理语义复杂
+  - ThreadLocal 的可变性导致跨任务泄漏风险随虚拟线程数量线性放大
+  - Scoped Values 不可变、有界（bound to call scope）、自动清理（run 结束即销毁），无泄漏风险
+  - Scoped Values 通过 JVM 内部 ScopedValueContainer 实现，不持有 ThreadLocalMap
+  - 迁移策略：JDK 21 用 ScopedValue.preview()（需 --enable-preview）；JDK 24+ GA 后逐步替换；过渡期保留 ThreadLocal 但限定于平台线程
+  - 评估：虚拟线程 + ThreadLocal 不是不能用，而是规模放大后内存与泄漏风险指数上升
+  difficulty: 5
+  minWords: 250
+  estimatedTime: 20
+  answer: 虚拟线程极轻量（KB 级栈），单 JVM 可达数百万；每个虚拟线程都有 ThreadLocalMap，导致内存爆炸；虚拟线程在 carrier thread 上挂起/恢复，ThreadLocal 的继承与清理语义复杂；ThreadLocal 的可变性导致跨任务泄漏风险随虚拟线程数量线性放大；Scoped Values 不可变、有界（bound to call scope）、自动清理（run 结束即销毁），无泄漏风险；Scoped Values 通过 JVM 内部 ScopedValueContainer 实现，不持有 ThreadLocalMap；迁移策略：JDK 21 用 ScopedValue.preview()（需 --enable-preview）；JDK 24+ GA 后逐步替换；过渡期保留 ThreadLocal 但限定于平台线程；评估：虚拟线程 + ThreadLocal 不是不能用，而是规模放大后内存与泄漏风险指数上升
 references:
-  - type: book
-    authors:
-      - Bloch, Joshua
-    year: 2018
-    title: "Effective Java (3rd ed.)"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0134685991"
-  - type: book
-    authors:
-      - Goetz, Brian
-      - Peierls, Tim
-      - Bloch, Joshua
-      - Bowbeer, Joseph
-      - Holmes, David
-      - Lea, Doug
-    year: 2006
-    title: "Java Concurrency in Practice"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0321349601"
-  - type: standard
-    authors:
-      - Manson, Jeremy
-      - Pugh, Bill
-      - Adve, Sarita V.
-    year: 2005
-    title: "JSR 133: Java Memory Model and Thread Specification"
-    venue: "Java Community Process"
-    url: "https://jcp.org/en/jsr/detail?id=133"
-  - type: inproceedings
-    authors:
-      - Agesen, Ole
-      - Detlefs, David
-      - Garthwaite, Alex
-      - Knippel, Ross
-      - Ramakrishna, Y. S.
-      - White, Daniel
-    year: 1999
-    title: "An Efficient Meta-lock for Implementing Ubiquitous Synchronization"
-    venue: "OOPSLA '99 Proceedings of the 14th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications"
-    pages: "207-222"
-    doi: "10.1145/320384.320405"
-  - type: documentation
-    authors:
-      - OpenJDK Team
-    year: 2024
-    title: "JEP 446: Scoped Values (Preview)"
-    venue: "OpenJDK Official Project"
-    url: "https://openjdk.org/jeps/446"
-  - type: documentation
-    authors:
-      - OpenJDK Team
-    year: 2024
-    title: "JEP 444: Virtual Threads"
-    venue: "OpenJDK Official Project"
-    url: "https://openjdk.org/jeps/444"
-  - type: documentation
-    authors:
-      - Oracle Corporation
-    year: 2024
-    title: "Java SE 21 API Specification: ThreadLocal"
-    venue: "Oracle Official Documentation"
-    url: "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ThreadLocal.html"
-  - type: article
-    authors:
-      - Pugh, Bill
-    year: 1999
-    title: "The Java Memory Model is Causally Correct"
-    venue: "ACM SIGPLAN Notices"
-    volume: 34
-    issue: 10
-    pages: "1-12"
-    doi: "10.1145/320385.320386"
-  - type: article
-    authors:
-      - Click, Cliff
-    year: 2005
-    title: "Performance Myths Exposed"
-    venue: "JavaOne Conference Talk"
-  - type: documentation
-    authors:
-      - Alibaba Group
-    year: 2024
-    title: "TransmittableThreadLocal (TTL)"
-    venue: "GitHub Project Documentation"
-    url: "https://github.com/alibaba/transmittable-thread-local"
-  - type: inproceedings
-    authors:
-      - Li, Long
-      - Yang, Bo
-      - Chen, Hao
-    year: 2018
-    title: "Practical Thread-Local Context Propagation in Reactive Programming"
-    venue: "IEEE International Conference on Software Quality, Reliability and Security (QRS)"
-    pages: "45-52"
-    doi: "10.1109/QRS.2018.00017"
-  - type: book
-    authors:
-      - Lea, Doug
-    year: 2000
-    title: "Concurrent Programming in Java: Design Principles and Patterns (2nd ed.)"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0201310092"
-  - type: documentation
-    authors:
-      - Spring Team
-    year: 2024
-    title: "Spring Framework Reference: Context Propagation"
-    venue: "Spring Official Documentation"
-    url: "https://docs.spring.io/spring-framework/reference/"
-  - type: standard
-    authors:
-      - ISO/IEC
-    year: 2023
-    title: "ISO/IEC 14882:2023 Information technology — Programming languages — C++"
-    venue: "International Organization for Standardization"
+- type: book
+  authors:
+  - Bloch, Joshua
+  year: 2018
+  title: Effective Java (3rd ed.)
+  venue: Addison-Wesley Professional
+  isbn: 978-0134685991
+- type: book
+  authors:
+  - Goetz, Brian
+  - Peierls, Tim
+  - Bloch, Joshua
+  - Bowbeer, Joseph
+  - Holmes, David
+  - Lea, Doug
+  year: 2006
+  title: Java Concurrency in Practice
+  venue: Addison-Wesley Professional
+  isbn: 978-0321349601
+- type: standard
+  authors:
+  - Manson, Jeremy
+  - Pugh, Bill
+  - Adve, Sarita V.
+  year: 2005
+  title: 'JSR 133: Java Memory Model and Thread Specification'
+  venue: Java Community Process
+  url: https://jcp.org/en/jsr/detail?id=133
+- type: conference
+  authors:
+  - Agesen, Ole
+  - Detlefs, David
+  - Garthwaite, Alex
+  - Knippel, Ross
+  - Ramakrishna, Y. S.
+  - White, Daniel
+  year: 1999
+  title: An Efficient Meta-lock for Implementing Ubiquitous Synchronization
+  venue: OOPSLA '99 Proceedings of the 14th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications
+  pages: 207-222
+  doi: 10.1145/320384.320405
+- type: documentation
+  authors:
+  - OpenJDK Team
+  year: 2024
+  title: 'JEP 446: Scoped Values (Preview)'
+  venue: OpenJDK Official Project
+  url: https://openjdk.org/jeps/446
+- type: documentation
+  authors:
+  - OpenJDK Team
+  year: 2024
+  title: 'JEP 444: Virtual Threads'
+  venue: OpenJDK Official Project
+  url: https://openjdk.org/jeps/444
+- type: documentation
+  authors:
+  - Oracle Corporation
+  year: 2024
+  title: 'Java SE 21 API Specification: ThreadLocal'
+  venue: Oracle Official Documentation
+  url: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ThreadLocal.html
+- type: journal
+  authors:
+  - Pugh, Bill
+  year: 1999
+  title: The Java Memory Model is Causally Correct
+  venue: ACM SIGPLAN Notices
+  volume: 34
+  issue: 10
+  pages: 1-12
+  doi: 10.1145/320385.320386
+- type: journal
+  authors:
+  - Click, Cliff
+  year: 2005
+  title: Performance Myths Exposed
+  venue: JavaOne Conference Talk
+- type: documentation
+  authors:
+  - Alibaba Group
+  year: 2024
+  title: TransmittableThreadLocal (TTL)
+  venue: GitHub Project Documentation
+  url: https://github.com/alibaba/transmittable-thread-local
+- type: conference
+  authors:
+  - Li, Long
+  - Yang, Bo
+  - Chen, Hao
+  year: 2018
+  title: Practical Thread-Local Context Propagation in Reactive Programming
+  venue: IEEE International Conference on Software Quality, Reliability and Security (QRS)
+  pages: 45-52
+  doi: 10.1109/QRS.2018.00017
+- type: book
+  authors:
+  - Lea, Doug
+  year: 2000
+  title: 'Concurrent Programming in Java: Design Principles and Patterns (2nd ed.)'
+  venue: Addison-Wesley Professional
+  isbn: 978-0201310092
+- type: documentation
+  authors:
+  - Spring Team
+  year: 2024
+  title: 'Spring Framework Reference: Context Propagation'
+  venue: Spring Official Documentation
+  url: https://docs.spring.io/spring-framework/reference/
+- type: standard
+  authors:
+  - ISO/IEC
+  year: 2023
+  title: ISO/IEC 14882:2023 Information technology — Programming languages — C++
+  venue: International Organization for Standardization
 etymology:
-  - term: "线程本地存储（Thread-Local Storage, TLS）"
-    english: "Thread-Local Storage"
-    origin: "源自操作系统线程库（POSIX pthread_key_create，Windows TlsAlloc），用于为每个线程维护独立副本；Java 在 JDK 1.2（1998）由 Joshua Bloch 引入 ThreadLocal 类，将其语言层化。"
-  - term: "弱引用（Weak Reference）"
-    english: "Weak Reference"
-    origin: "由 Henry Baker 在 1978 年论文《List Processing in Real Time on a Serial Computer》中提出，Java 在 JDK 1.2 引入 WeakReference 类；其语义是不影响 GC，对象仅剩弱引用时即被回收。"
-  - term: "可达性分析（Reachability Analysis）"
-    english: "Reachability Analysis"
-    origin: "源自 Lisp 的 mark-and-sweep 算法（McCarthy 1960）；Java GC 从 GC Roots（线程、静态字段、本地方法栈）出发，沿强引用链搜索，不可达对象即被回收。WeakReference 不构成可达路径。"
-  - term: "内存泄漏（Memory Leak）"
-    english: "Memory Leak"
-    origin: "首次系统化于 C 语言 malloc/free 不匹配场景；Java 中由于 GC 存在，泄漏语义变为 '对象不再使用但仍被引用'，称为 'loiterer'（W. H. Press 语）；ThreadLocal 泄漏是典型 'unintended object retention'（Bloch 语）。"
-  - term: "虚拟线程（Virtual Thread）"
-    english: "Virtual Thread"
-    origin: "由 JEP 444（JDK 21，2023）正式发布，原型可追溯至 Project Loom（2018）；本质是 JVM 调度的轻量级线程，挂起在 carrier thread 上；与 Go goroutine、Kotlin coroutine 类似但语言层 API 完整。"
-  - term: "Scoped Values"
-    english: "Scoped Values"
-    origin: "由 JEP 446（JDK 21 Preview）提出，借鉴 Haskell的 implicit parameters、Rust 的 scoped threads；本质是不可变、有界作用域的线程本地变量，由 JVM 内部 ScopedValueContainer 管理，自动随 run() 结束而销毁。"
+- term: 线程本地存储（Thread-Local Storage, TLS）
+  english: Thread-Local Storage
+  origin: 源自操作系统线程库（POSIX pthread_key_create，Windows TlsAlloc），用于为每个线程维护独立副本；Java 在 JDK 1.2（1998）由 Joshua Bloch 引入 ThreadLocal 类，将其语言层化。
+- term: 弱引用（Weak Reference）
+  english: Weak Reference
+  origin: 由 Henry Baker 在 1978 年论文《List Processing in Real Time on a Serial Computer》中提出，Java 在 JDK 1.2 引入 WeakReference 类；其语义是不影响 GC，对象仅剩弱引用时即被回收。
+- term: 可达性分析（Reachability Analysis）
+  english: Reachability Analysis
+  origin: 源自 Lisp 的 mark-and-sweep 算法（McCarthy 1960）；Java GC 从 GC Roots（线程、静态字段、本地方法栈）出发，沿强引用链搜索，不可达对象即被回收。WeakReference 不构成可达路径。
+- term: 内存泄漏（Memory Leak）
+  english: Memory Leak
+  origin: 首次系统化于 C 语言 malloc/free 不匹配场景；Java 中由于 GC 存在，泄漏语义变为 '对象不再使用但仍被引用'，称为 'loiterer'（W. H. Press 语）；ThreadLocal 泄漏是典型 'unintended object retention'（Bloch 语）。
+- term: 虚拟线程（Virtual Thread）
+  english: Virtual Thread
+  origin: 由 JEP 444（JDK 21，2023）正式发布，原型可追溯至 Project Loom（2018）；本质是 JVM 调度的轻量级线程，挂起在 carrier thread 上；与 Go goroutine、Kotlin coroutine 类似但语言层 API 完整。
+- term: Scoped Values
+  english: Scoped Values
+  origin: 由 JEP 446（JDK 21 Preview）提出，借鉴 Haskell的 implicit parameters、Rust 的 scoped threads；本质是不可变、有界作用域的线程本地变量，由 JVM 内部 ScopedValueContainer 管理，自动随 run() 结束而销毁。
 ---
 
 ## 引言：从"安全"到"陷阱"

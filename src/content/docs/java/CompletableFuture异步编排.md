@@ -34,18 +34,12 @@ tags:
   - jep-453
   - concurrency
 learningObjectives:
-  - bloom: remember
-    objective: 复述 CompletableFuture 的双接口实现（Future + CompletionStage）以及 JDK 1.8 引入历史，列举其相对于 Future.get() 阻塞模型的核心改进点
-  - bloom: understand
-    objective: 解释 CompletionStage 接口的代数性质（结合律、合成律、异常传播律），理解 thenApply / thenCompose / thenCombine 在范畴论中的对应关系（Functor / Monad / Applicative）
-  - bloom: apply
-    objective: 运用 CompletableFuture 实现并行任务编排（allOf / anyOf / thenCombine）、超时控制（orTimeout / completeOnTimeout）、异常恢复（exceptionally / handle / whenComplete）等生产级模式
-  - bloom: analyze
-    objective: 分析 CompletableFuture 内部的 Completion 链表结构、Signaller 同步机制、ForkJoinPool.commonPool() 调度策略，识别 Async vs Sync 变体的执行语义差异
-  - bloom: evaluate
-    objective: 评估 CompletableFuture 与 Project Reactor、RxJava、Kotlin Coroutines、Go goroutine+channel 在异步编程模型上的设计哲学差异，针对不同场景选择最合适的异步抽象
-  - bloom: create
-    objective: 设计一个生产级 API 聚合框架，融合 CompletableFuture 并行编排、超时降级、熔断重试、Context 传递，并评估在虚拟线程（JEP 444）与结构化并发（JEP 453）下的迁移路径
+  - '复述 CompletableFuture 的双接口实现（Future + CompletionStage）以及 JDK 1.8 引入历史，列举其相对于 Future.get() 阻塞模型的核心改进点'
+  - '解释 CompletionStage 接口的代数性质（结合律、合成律、异常传播律），理解 thenApply / thenCompose / thenCombine 在范畴论中的对应关系（Functor / Monad / Applicative）'
+  - '运用 CompletableFuture 实现并行任务编排（allOf / anyOf / thenCombine）、超时控制（orTimeout / completeOnTimeout）、异常恢复（exceptionally / handle / whenComplete）等生产级模式'
+  - '分析 CompletableFuture 内部的 Completion 链表结构、Signaller 同步机制、ForkJoinPool.commonPool() 调度策略，识别 Async vs Sync 变体的执行语义差异'
+  - '评估 CompletableFuture 与 Project Reactor、RxJava、Kotlin Coroutines、Go goroutine+channel 在异步编程模型上的设计哲学差异，针对不同场景选择最合适的异步抽象'
+  - '设计一个生产级 API 聚合框架，融合 CompletableFuture 并行编排、超时降级、熔断重试、Context 传递，并评估在虚拟线程（JEP 444）与结构化并发（JEP 453）下的迁移路径'
 exercises:
   - id: ex-cf-01
     type: fill-blank
@@ -83,6 +77,7 @@ exercises:
       - "CompletableFuture.anyOf(future1, future2, future3).thenApply(...)"
       - "future1.thenApplyBoth(future2, (a, b) -> ...).thenApplyBoth(future3, ...)"
     correctIndex: 1
+    answer: "B"
     multiple: false
     difficulty: 2
     explanation: "allOf 返回 CompletableFuture<Void>，仅表示全部完成不携带结果；需在其后通过 thenApply 调用每个子 future 的 join()（此时已确保完成，不会阻塞）收集结果。anyOf 是任一完成；thenCombine 仅支持两个任务；thenApplyBoth 不存在（应为 thenCombine）。"
@@ -97,6 +92,7 @@ exercises:
       - "Async 变体仅是性能优化，行为完全等价于同步变体"
       - "thenApplyAsync 默认使用调用线程的 ThreadLocal 上下文"
     correctIndex: 1
+    answer: "B"
     multiple: false
     difficulty: 4
     explanation: "thenApply 的执行线程取决于时机：若前阶段已完成，则当前线程同步执行；若未完成，则由触发完成的线程执行（可能是 commonPool 工作线程）。这种不确定性是常见陷阱。thenApplyAsync 始终提交到 Executor（默认 commonPool），行为可预测但有线程切换开销。Async 变体并非纯优化，是语义差异。"
@@ -135,6 +131,7 @@ exercises:
           throw new UserProfileLoadException("Failed to load profile", ex.getCause());
       }
     errorDescription: "原代码使用 get() 会抛受检异常 ExecutionException 强制 try-catch，且语义在 allOf 之后调用 get 仍可能阻塞（语义模糊）。改用 join()（无阻塞风险 + Unchecked 异常）更符合 CompletableFuture 风格，并集中捕获 CompletionException。"
+    answer: "将 userFuture.get() / orderFuture.get() / creditFuture.get() 改为 join()，并用 try-catch 捕获 CompletionException 解包出原始异常后封装为业务异常 UserProfileLoadException。allOf().join() 后所有子 future 必已完成，join() 不会阻塞且抛运行时异常便于函数式风格。"
     difficulty: 3
     explanation: "allOf().join() 后所有子 future 必已完成（normal/exceptional），后续 join() 不会阻塞。get() 抛 ExecutionException（受检）需 try-catch；join() 抛 CompletionException（运行时）便于函数式风格。生产实践中应统一解包 CompletionException 取出 cause 再封装业务异常。"
     estimatedTime: 5
@@ -162,6 +159,7 @@ exercises:
                         });
       }
     errorDescription: "orTimeout 仅将 future 标记为异常完成（TimeoutException），不提供默认值。要实现降级必须链接 exceptionally 将 TimeoutException 转为默认值；非超时异常不应被降级吞掉。"
+    answer: "在 future.orTimeout(500, TimeUnit.MILLISECONDS) 后链接 .exceptionally(ex -> { if (ex instanceof TimeoutException) 返回降级默认值; else throw new CompletionException(ex); })。仅对 TimeoutException 降级返回缓存/默认值，其他异常重新抛出避免被吞。等价简洁写法可用 completeOnTimeout(fallback, 500, MS)。"
     difficulty: 4
     explanation: "Java 9 引入 orTimeout（超时异常完成）与 completeOnTimeout（超时填默认值）两种语义。completeOnTimeout(fallback, ...) 等价于 orTimeout + exceptionally(return fallback)，但更简洁；本例展示 exceptionally 路径以演示异常分支判断。注意：exceptionally 应判断异常类型，仅对 TimeoutException 降级，否则会掩盖真实故障。"
     estimatedTime: 6
@@ -178,6 +176,13 @@ exercises:
       - "虚拟线程权衡：JEP 444 下可用同步阻塞代码替代异步编排，可读性更高但 CompletableFuture 仍是有效抽象"
       - "结构化并发：JEP 453 的 StructuredTaskScope.ShutdownOnFailure 提供原生失败传播，但仍在 Preview"
       - "迁移路径：JDK 21 LTS 用 CompletableFuture；JDK 24+ GA 后逐步迁移到 StructuredTaskScope"
+    answer: |
+      关键实现：
+      1. 用 CompletableFuture.supplyAsync 启动 5 个下游调用，每个独立 .orTimeout(200, MS) 并链 .exceptionally(ex -> cache.get(key)) 实现降级；
+      2. 用 CompletableFuture.allOf(...).orTimeout(800, MS) 控制整体超时，再用 .completeOnTimeout(fallbackResponse, 800, MS) 兜底；
+      3. allOf 完成后用 thenApply 聚合 5 个子 future 的 join() 结果；
+      4. 上下文用 TransmittableThreadLocal 传递 traceId/userId（虚拟线程场景同样适用）。
+      权衡分析：JEP 444 虚拟线程下可用同步阻塞代码 + try-with-resources 达到类似吞吐，可读性更高；但 CompletableFuture 仍是结果编排的有效抽象。JEP 453 结构化并发（StructuredTaskScope.ShutdownOnFailure）提供原生失败传播与作用域边界，但 JDK 21 仍为 Preview。建议：JDK 21 LTS 用 CompletableFuture，JDK 24+ GA 后新代码优先 StructuredTaskScope，老代码保持 CompletableFuture 渐进迁移。
     difficulty: 5
     minWords: 300
     estimatedTime: 25
@@ -193,6 +198,10 @@ exercises:
       - "CompletableFuture 的局限性：无内置取消传播（cancel 仅本阶段）、无作用域边界、异常不自动传播到兄弟任务"
       - "迁移策略：JDK 21 LTS 仍以 CompletableFuture 为主，新增场景评估 StructuredTaskScope.preview()；JDK 25+ GA 后新代码优先 StructuredTaskScope，老代码保持 CompletableFuture"
       - "评估：CompletableFuture 是抽象层（结果编排），虚拟线程是执行层（线程调度），二者正交可组合"
+    answer: |
+      (1) 角色变化：CompletableFuture 在虚拟线程时代不会淘汰，仍是异步结果的抽象载体。虚拟线程降低了"必须用 CompletableFuture 避免线程阻塞"的压力——可用同步阻塞代码 + 虚拟线程达到类似吞吐；但 CompletableFuture 的组合原语（thenApply/thenCompose/exceptionally）仍是复杂结果编排的有效工具，可与 Executors.newVirtualThreadPerTaskExecutor() 配合保留组合能力同时享受虚拟线程的轻量调度。
+      (2) 与结构化并发的关系：JEP 453 的 StructuredTaskScope 解决了 CompletableFuture 的子任务生命周期管理缺失问题——原生支持取消传播、错误传播、作用域边界；CompletableFuture 的局限是 cancel 仅本阶段、无作用域边界、异常不自动传播到兄弟任务。两者互补：CompletableFuture 是结果编排抽象，StructuredTaskScope 是生命周期管理抽象。
+      (3) 迁移策略：JDK 21 LTS 仍以 CompletableFuture 为主，新增场景评估 StructuredTaskScope（Preview）；JDK 25+ GA 后新代码优先 StructuredTaskScope，老代码保持 CompletableFuture 渐进迁移。CompletableFuture 与虚拟线程正交可组合，无需急于重写。
     difficulty: 5
     minWords: 250
     estimatedTime: 20
@@ -267,7 +276,7 @@ references:
     title: "Reactive Design Patterns"
     venue: "Manning Publications"
     isbn: "978-1617291808"
-  - type: inproceedings
+  - type: conference
     authors:
       - Liskov, Barbara
       - Shrira, Liuba
@@ -276,7 +285,7 @@ references:
     venue: "Proceedings of the ACM SIGPLAN 1988 Conference on Programming Language Design and Implementation (PLDI)"
     pages: "260-267"
     doi: "10.1145/53990.54016"
-  - type: inproceedings
+  - type: conference
     authors:
       - Friedman, Daniel P.
       - Wise, David S.
@@ -284,7 +293,7 @@ references:
     title: "The Impact of Applicative Programming on Concurrent Computation"
     venue: "Proceedings of the 1976 Conference on Parallel Processing"
     pages: "230-235"
-  - type: article
+  - type: journal
     authors:
       - Sutter, Herb
     year: 2005

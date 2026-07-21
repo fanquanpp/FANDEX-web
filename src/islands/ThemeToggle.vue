@@ -42,17 +42,24 @@ const mounted = ref(false);
  * 1. 标记已挂载，触发图标淡入
  * 2. 从 localStorage 读取用户保存的主题偏好
  * 3. 如果没有保存值，则检测系统暗色模式偏好
- * 4. 根据结果设置 theme 值（注意：不在此处设置 data-theme 属性，
- *    因为全局初始化脚本通常在 HTML <head> 中已处理）
+ * 4. 根据结果设置 theme 值，并同步刷新 data-theme 属性与 colorScheme
+ *    （作为 BaseLayout 初始化脚本的二次保险：当组件被重新挂载、
+ *    或初始化脚本因故未执行时，确保 data-theme 始终处于显式声明状态，
+ *    避免 tokens.css 的 :root:not([data-theme]) 兜底逻辑误覆盖用户选择）
  */
 onMounted(() => {
   // 读取用户保存的主题偏好，无保存值时跟随系统
   const saved = localStorage.getItem('fandex-theme');
-  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    theme.value = 'dark';
+  let initial: 'light' | 'dark';
+  if (saved === 'dark' || saved === 'light') {
+    initial = saved;
   } else {
-    theme.value = 'light';
+    initial = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
+  theme.value = initial;
+  // 同步显式声明 data-theme，消除"无属性"中间态
+  document.documentElement.setAttribute('data-theme', initial);
+  document.documentElement.style.colorScheme = initial;
   // 下一帧标记挂载完成，触发 opacity 过渡（避免初始渲染闪烁）
   requestAnimationFrame(() => {
     mounted.value = true;
@@ -69,6 +76,7 @@ onMounted(() => {
 function toggle() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme.value);
+  document.documentElement.style.colorScheme = theme.value;
   localStorage.setItem('fandex-theme', theme.value);
 }
 </script>

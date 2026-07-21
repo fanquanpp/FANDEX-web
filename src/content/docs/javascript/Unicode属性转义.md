@@ -22,12 +22,12 @@ prerequisites:
   - javascript/语法速查
   - javascript/正则表达式
 learningObjectives:
-  - remember: 复述 Unicode 属性转义 \p{...} 与 \P{...} 的语法形态、必备的 u 标志、及其在 ES2018 中的标准化时间
-  - understand: 解释 Unicode 通用类别（General Category）、脚本（Script）、二进制属性（Binary Property）三类属性的语义差异与适用场景
-  - apply: 编写多语言词法分析器、Emoji 过滤器、强密码校验器等生产级正则，并正确处理大小写折叠与规范化
-  - analyze: 对比 \p{L} 与 \w、\p{N} 与 \d、\p{Script=Han} 与手工字符区间在跨语言文本上的覆盖差异，识别其漏匹配与误匹配边界
-  - evaluate: 评估不同属性转义模式在 V8/SpiderMonkey/JSC 引擎中的执行性能，给出大文本处理场景下的优化决策
-  - create: 设计可扩展的字符类别白名单 DSL，将业务规则与 Unicode 属性解耦，支持 Unicode 版本升级与多地区合规
+  - '{''remember'': ''复述 Unicode 属性转义 \\p{...} 与 \\P{...} 的语法形态、必备的 u 标志、及其在 ES2018 中的标准化时间''}'
+  - '{''understand'': ''解释 Unicode 通用类别（General Category）、脚本（Script）、二进制属性（Binary Property）三类属性的语义差异与适用场景''}'
+  - '{''apply'': ''编写多语言词法分析器、Emoji 过滤器、强密码校验器等生产级正则，并正确处理大小写折叠与规范化''}'
+  - '{''analyze'': ''对比 \\p{L} 与 \\w、\\p{N} 与 \\d、\\p{Script=Han} 与手工字符区间在跨语言文本上的覆盖差异，识别其漏匹配与误匹配边界''}'
+  - '{''evaluate'': ''评估不同属性转义模式在 V8/SpiderMonkey/JSC 引擎中的执行性能，给出大文本处理场景下的优化决策''}'
+  - '{''create'': ''设计可扩展的字符类别白名单 DSL，将业务规则与 Unicode 属性解耦，支持 Unicode 版本升级与多地区合规''}'
 exercises:
   - id: ex-unicode-01
     type: fill-blank

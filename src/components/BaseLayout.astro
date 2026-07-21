@@ -65,7 +65,11 @@ const base = import.meta.env.BASE_URL;
     <!--
       主题初始化脚本（渐进增强策略）
       ==============================
-      - SSR 阶段同步设置 data-theme，防止主题闪烁(FOUC)
+      - 在 HTML 解析早期同步设置 data-theme，防止主题闪烁(FOUC)
+      - 始终显式声明 data-theme 为 'light' 或 'dark'，避免 HTML 处于
+        "无 data-theme 属性"的中间态（否则 tokens.css 的
+        :root:not([data-theme]) 兜底逻辑在 prefers-color-scheme:dark
+        下会错误覆盖用户已选择的 light，导致主题切换后刷新被强制回退）
       - ThemeToggle Vue 岛屿通过 client:load 在 hydration 后接管交互
       - 水合失败时页面仍可正常浏览，仅缺少交互式切换按钮
         （用户主题偏好已通过 localStorage 持久化，刷新后保持）
@@ -73,15 +77,18 @@ const base = import.meta.env.BASE_URL;
     <script is:inline>
       (function () {
         var raw = localStorage.getItem('fandex-theme');
-        var isDark = false;
-        // 优先使用用户手动设置的主题，否则跟随系统偏好
-        if (raw === 'dark' || (!raw && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          isDark = true;
+        var theme;
+        // 优先使用用户手动设置的主题；无保存值时跟随系统偏好
+        if (raw === 'dark' || raw === 'light') {
+          theme = raw;
+        } else {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-        if (isDark) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.documentElement.style.colorScheme = 'dark';
-        }
+        // 始终显式设置 data-theme，消除"无属性"中间态
+        // 避免 tokens.css 的 :root:not([data-theme]) 兜底逻辑
+        // 在 prefers-color-scheme:dark 下错误覆盖用户已选择的 light 主题
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
       })();
     </script>
     <slot name="head" />

@@ -27,20 +27,13 @@ prerequisites:
   - javascript/语法速查
   - javascript/Object扩展
 learningObjectives:
-  - cognitiveLevel: remember
-    description: 记住 Proxy 构造器签名、13 种代理陷阱(trap)名称及对应的拦截操作
-  - cognitiveLevel: understand
-    description: 理解元编程(Metaprogramming)的三个层次( introspection / self-modification / intercession )及 Proxy 所属层次
-  - cognitiveLevel: understand
-    description: 阐释代理不变量(Invariants)的形式化定义,理解违反不变量时引擎抛出 TypeError 的原因
-  - cognitiveLevel: apply
-    description: 使用 Proxy + Reflect 实现响应式系统、私有属性保护、属性验证、对象虚拟化等场景
-  - cognitiveLevel: analyze
-    description: 分析 Reflect API 与 Proxy 陷阱的对称性,理解 Reflect 设计哲学与默认行为转发
-  - cognitiveLevel: evaluate
-    description: 评估 Vue 2 Object.defineProperty 与 Vue 3 Proxy 在响应式实现上的性能与能力差异
-  - cognitiveLevel: create
-    description: 设计并实现一个生产级响应式系统,支持依赖收集、副作用调度、深层代理、数组优化
+  - '{''cognitiveLevel'': ''remember'', ''description'': ''记住 Proxy 构造器签名、13 种代理陷阱(trap)名称及对应的拦截操作''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''理解元编程(Metaprogramming)的三个层次( introspection / self-modification / intercession )及 Proxy 所属层次''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''阐释代理不变量(Invariants)的形式化定义,理解违反不变量时引擎抛出 TypeError 的原因''}'
+  - '{''cognitiveLevel'': ''apply'', ''description'': ''使用 Proxy + Reflect 实现响应式系统、私有属性保护、属性验证、对象虚拟化等场景''}'
+  - '{''cognitiveLevel'': ''analyze'', ''description'': ''分析 Reflect API 与 Proxy 陷阱的对称性,理解 Reflect 设计哲学与默认行为转发''}'
+  - '{''cognitiveLevel'': ''evaluate'', ''description'': ''评估 Vue 2 Object.defineProperty 与 Vue 3 Proxy 在响应式实现上的性能与能力差异''}'
+  - '{''cognitiveLevel'': ''create'', ''description'': ''设计并实现一个生产级响应式系统,支持依赖收集、副作用调度、深层代理、数组优化''}'
 exercises:
   - id: proxy-ex-001
     type: fill-blank
@@ -142,7 +135,7 @@ exercises:
       (5) 实际生产可用 Suspense 模式,在 React 等框架中由调度器处理 pending。
     difficulty: hard
 references:
-  - type: spec
+  - type: standard
     authors:
       - ECMA International
     year: 2025
@@ -150,7 +143,7 @@ references:
     venue: ECMA Standard
     doi: 10.17445/ECMA-262
     url: https://tc39.es/ecma262/
-  - type: paper
+  - type: journal
     authors:
       - Mauro Bringas
       - Guido Rößling
@@ -158,7 +151,7 @@ references:
     title: 'On the Design of Meta-Object Protocols for JavaScript'
     venue: 'Journal of Object Technology'
     doi: 10.5381/jot.2012.11.1.a3
-  - type: paper
+  - type: journal
     authors:
       - Tom Van Cutsem
       - Mark S. Miller
@@ -166,7 +159,7 @@ references:
     title: 'Trustworthy Proxies: Virtual Inheritance for Array Wrappers'
     venue: 'Proceedings of the 11th Symposium on Dynamic Languages (DLS)'
     doi: 10.1145/2508168.2508175
-  - type: paper
+  - type: journal
     authors:
       - Tom Van Cutsem
       - Mark S. Miller
@@ -174,7 +167,7 @@ references:
     title: 'Proxies: Design Principles for Robust Object-oriented Intercession APIs'
     venue: 'Proceedings of the 6th Symposium on Dynamic Languages (DLS)'
     doi: 10.1145/1869631.1869638
-  - type: paper
+  - type: journal
     authors:
       - Eric Faust
       - Brian Hackett
@@ -198,7 +191,7 @@ etymology:
     origin: 源自拉丁语 "reflectere"(反射、折回),在元编程中指"将语言内部操作暴露为 API",让代理陷阱有对应的默认实现可调用。
   - term: Metaprogramming
     english: Metaprogramming
-    origin: "meta-" 希腊语前缀意为"关于、超出",metaprogramming 即"关于程序的程序",指编写操作其他程序(或自身)的程序。
+    origin: '"meta-" 希腊语前缀意为"关于、超出",metaprogramming 即"关于程序的程序",指编写操作其他程序(或自身)的程序。'
 ---
 
 # Proxy 与 Reflect

@@ -27,12 +27,12 @@ prerequisites:
   - c/指针深度解析
   - c/多文件编译
 learningObjectives:
-  - remember: 记忆 C 标准 §6.7.3 对 volatile 的定义、6 种必须使用 volatile 的场景与 5 种常见误用
-  - understand: 理解编译器优化机制、as-if 规则、可观察行为（observable behavior）与 volatile 的语义边界
-  - apply: 能够正确使用 volatile 处理内存映射 I/O、信号处理、setjmp/longjmp 等场景
-  - analyze: 分析 volatile 与 atomic 的本质区别，识别 volatile 在多线程环境下的局限性
-  - evaluate: 评估 C11 stdatomic、GCC __sync、__atomic 内建函数与 volatile 的适用场景
-  - create: 设计正确的跨线程通信与硬件抽象层代码，正确组合 volatile、atomic、memory barrier
+  - '{''remember'': ''记忆 C 标准 §6.7.3 对 volatile 的定义、6 种必须使用 volatile 的场景与 5 种常见误用''}'
+  - '{''understand'': ''理解编译器优化机制、as-if 规则、可观察行为（observable behavior）与 volatile 的语义边界''}'
+  - '{''apply'': ''能够正确使用 volatile 处理内存映射 I/O、信号处理、setjmp/longjmp 等场景''}'
+  - '{''analyze'': ''分析 volatile 与 atomic 的本质区别，识别 volatile 在多线程环境下的局限性''}'
+  - '{''evaluate'': ''评估 C11 stdatomic、GCC __sync、__atomic 内建函数与 volatile 的适用场景''}'
+  - '{''create'': ''设计正确的跨线程通信与硬件抽象层代码，正确组合 volatile、atomic、memory barrier''}'
 exercises:
   - id: ex-volatile-01
     type: fill-blank

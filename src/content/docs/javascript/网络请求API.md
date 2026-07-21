@@ -30,20 +30,13 @@ prerequisites:
   - javascript/Promise构造器
   - javascript/事件循环
 learningObjectives:
-  - cognitiveLevel: remember
-    description: 记住 Fetch API 的核心抽象(Request/Response/Headers)、WHATWG Fetch 标准的定位与生命周期
-  - cognitiveLevel: understand
-    description: 理解 AbortController/AbortSignal 的取消语义模型,阐释 Promise 与取消信号的组合原理
-  - cognitiveLevel: understand
-    description: 阐释 Web Streams API 的三种流(Readable/Writable/Transform)形式化定义与背压(backpressure)机制
-  - cognitiveLevel: apply
-    description: 使用 Fetch + AbortController + Streams 实现带超时、取消、下载进度的生产级 HTTP 客户端
-  - cognitiveLevel: analyze
-    description: 分析 Service Worker 缓存策略(Cache First/Network First/Stale-While-Revalidate)的适用场景与权衡
-  - cognitiveLevel: evaluate
-    description: 评估 Fetch 与 XMLHttpRequest、axios、GraphQL 客户端在不同场景下的优劣,选择合适的网络栈
-  - cognitiveLevel: create
-    description: 设计并实现一个支持重试、熔断、限流、并发控制的分布式 HTTP 客户端框架
+  - '{''cognitiveLevel'': ''remember'', ''description'': ''记住 Fetch API 的核心抽象(Request/Response/Headers)、WHATWG Fetch 标准的定位与生命周期''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''理解 AbortController/AbortSignal 的取消语义模型,阐释 Promise 与取消信号的组合原理''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''阐释 Web Streams API 的三种流(Readable/Writable/Transform)形式化定义与背压(backpressure)机制''}'
+  - '{''cognitiveLevel'': ''apply'', ''description'': ''使用 Fetch + AbortController + Streams 实现带超时、取消、下载进度的生产级 HTTP 客户端''}'
+  - '{''cognitiveLevel'': ''analyze'', ''description'': ''分析 Service Worker 缓存策略(Cache First/Network First/Stale-While-Revalidate)的适用场景与权衡''}'
+  - '{''cognitiveLevel'': ''evaluate'', ''description'': ''评估 Fetch 与 XMLHttpRequest、axios、GraphQL 客户端在不同场景下的优劣,选择合适的网络栈''}'
+  - '{''cognitiveLevel'': ''create'', ''description'': ''设计并实现一个支持重试、熔断、限流、并发控制的分布式 HTTP 客户端框架''}'
 exercises:
   - id: fetch-ex-001
     type: fill-blank
@@ -185,28 +178,28 @@ exercises:
       (6) 生产级实现还需考虑幂等性(GET/PUT 可重试,POST 需谨慎)。
     difficulty: hard
 references:
-  - type: spec
+  - type: standard
     authors:
       - WHATWG
     year: 2025
     title: 'Fetch Standard'
     venue: WHATWG Living Standard
     url: https://fetch.spec.whatwg.org/
-  - type: spec
+  - type: standard
     authors:
       - WHATWG
     year: 2025
     title: 'Streams Standard'
     venue: WHATWG Living Standard
     url: https://streams.spec.whatwg.org/
-  - type: spec
+  - type: standard
     authors:
       - W3C
     year: 2024
     title: 'Service Worker 1'
     venue: W3C Candidate Recommendation
     url: https://www.w3.org/TR/service-workers-1/
-  - type: spec
+  - type: standard
     authors:
       - ECMA International
     year: 2025
@@ -214,21 +207,21 @@ references:
     venue: ECMA Standard
     doi: 10.17445/ECMA-262
     url: https://tc39.es/ecma262/
-  - type: paper
+  - type: journal
     authors:
       - Anne van Kesteren
     year: 2015
     title: 'Fetch: a modern replacement for XMLHttpRequest'
     venue: 'WHATWG Blog'
     url: https://blog.whatwg.org/fetching-resources
-  - type: paper
+  - type: journal
     authors:
       - Domenic Denicola
     year: 2016
     title: 'Streams API: The Web Stream API Explained'
     venue: 'GitHub WICG/streams'
     url: https://github.com/whatwg/streams/blob/main/FAQ.md
-  - type: paper
+  - type: journal
     authors:
       - Jake Archibald
     year: 2015
@@ -255,16 +248,16 @@ etymology:
     origin: 源自古英语 "feccan"(取来、获取),计算机网络语境下指"从远程资源获取数据",WHATWG 选用此名替代冗长的 XMLHttpRequest。
   - term: AbortController
     english: AbortController
-    origin: "abort" 源自拉丁语 "aboriri"(流产、中途失败),Controller 即控制器。该 API 提供一种通用的取消机制,可中断 fetch、IndexedDB、Stream 等异步操作。
+    origin: '"abort" 源自拉丁语 "aboriri"(流产、中途失败),Controller 即控制器。该 API 提供一种通用的取消机制,可中断 fetch、IndexedDB、Stream 等异步操作。'
   - term: Stream
     english: Stream
     origin: 源自古英语 "strēam"(水流、河流),计算机科学中指"按顺序到达的数据序列",Web Streams API 模仿 Unix 管道,让数据分块流动。
   - term: Service Worker
     english: Service Worker
-    origin: "Service" 指后台服务,"Worker" 指 Web Worker(独立线程的脚本)。Service Worker 是一种在浏览器后台运行的脚本,充当网页与网络之间的可编程代理。
+    origin: '"Service" 指后台服务,"Worker" 指 Web Worker(独立线程的脚本)。Service Worker 是一种在浏览器后台运行的脚本,充当网页与网络之间的可编程代理。'
   - term: Backpressure
     english: Backpressure
-    origin: "back"(反向)+ "pressure"(压力),源自流体力学,指管道中下游阻塞导致上游压力反向传导。在 Stream 中指消费者速度慢于生产者时,反向通知生产者减速的机制。
+    origin: '"back"(反向)+ "pressure"(压力),源自流体力学,指管道中下游阻塞导致上游压力反向传导。在 Stream 中指消费者速度慢于生产者时,反向通知生产者减速的机制。'
 ---
 
 # 网络请求 API

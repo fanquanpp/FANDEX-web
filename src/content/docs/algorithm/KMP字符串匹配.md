@@ -53,14 +53,14 @@ references:
     pages: '323-350'
     doi: '10.1137/0206024'
     pages_note: 'The original KMP paper. Knuth, Morris, and Pratt independently discovered the algorithm in 1970; Knuth provided the linear-time complexity proof. The paper also proves the lower bound of 2n-m comparisons for any pattern matching algorithm on a 2-letter alphabet (improved by Cole 1994 to 2n-m in the worst case)'
-  - type: article
+  - type: journal
     authors:
       - 'Cook, Stephen A.'
     year: 1971
     title: 'Linear time simulation of deterministic two-way pushdown automata'
     venue: 'Information Processing, Proceedings of IFIP Congress 71, North-Holland, pp. 75-80'
     pages: 'Theoretical foundation that led to the KMP algorithm. Cook showed that deterministic two-way pushdown automata can be simulated in linear time; this result inspired Morris and Pratt to derive the linear-time pattern matching algorithm'
-  - type: article
+  - type: journal
     authors:
       - 'Aho, Alfred V.'
       - 'Corasick, Margaret J.'
@@ -72,7 +72,7 @@ references:
     pages: '333-340'
     doi: '10.1145/360825.360855'
     pages_note: 'The Aho-Corasick algorithm for multi-pattern matching. Builds a trie with failure links (generalization of KMP next array). Runs in O(n + m + z) time where z is the number of matches. Aho-Corasick is the foundation of fgrep, BSD grep -F, and many IDS systems'
-  - type: article
+  - type: journal
     authors:
       - 'Boyer, Robert S.'
       - 'Moore, J Strother'
@@ -84,7 +84,7 @@ references:
     pages: '762-772'
     doi: '10.1145/359842.359859'
     pages_note: 'The Boyer-Moore algorithm. Scans the pattern from right to left, using bad-character and good-suffix heuristics. Sublinear O(n/m) in the best case; O(nm) worst case naive, improved to O(n+m) by Galil 1979 and Cole 1994'
-  - type: article
+  - type: journal
     authors:
       - 'Karp, Richard M.'
       - 'Rabin, Michael O.'
@@ -107,7 +107,7 @@ references:
     pages: '1075-1091'
     doi: '10.1137/S0097539790325764'
     pages_note: 'Cole improved the upper bound of Boyer-Moore to 3n comparisons in the worst case and proved lower bounds for string matching. Cole 1995 (SIAM J. Comp.) further proved the 2n-m lower bound for prefix-based pattern matching is tight'
-  - type: article
+  - type: journal
     authors:
       - 'Horspool, R. Nigel'
     year: 1980
@@ -118,7 +118,7 @@ references:
     pages: '501-506'
     doi: '10.1002/spe.4380100608'
     pages_note: 'The Boyer-Moore-Horspool (BMH) algorithm. Simplification of Boyer-Moore using only the bad-character heuristic with the rightmost character. Practical performance is often superior to BM and KMP on natural language text'
-  - type: article
+  - type: journal
     authors:
       - 'Sunday, Daniel M.'
     year: 1990

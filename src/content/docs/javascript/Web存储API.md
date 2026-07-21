@@ -26,12 +26,12 @@ prerequisites:
   - javascript/浏览器对象模型
   - javascript/Promise与async
 learningObjectives:
-  - remember: 复述 Cookie、localStorage、sessionStorage、IndexedDB 的容量限制、生命周期与 API 形式，及 Web Storage 规范的标准化历程
-  - understand: 解释同源策略对存储的影响、Cookie 的安全属性（Secure、HttpOnly、SameSite）、Storage 事件机制与浏览器存储隔离模型
-  - apply: 编写生产级存储工具库，包括 JSON 序列化、TTL 过期机制、命名空间隔离、跨标签页同步、错误处理与降级方案
-  - analyze: 对比 Cookie、Web Storage、IndexedDB 在容量、性能、API 复杂度、安全性上的差异，识别各自适用场景
-  - evaluate: 评估 XSS、CSRF、追踪等安全风险，给出防御策略与同站/跨站 Cookie 配置方案
-  - create: 设计离线优先（offline-first）应用的存储架构，结合 Service Worker、Cache API、IndexedDB 实现可信赖的离线体验
+  - '{''remember'': ''复述 Cookie、localStorage、sessionStorage、IndexedDB 的容量限制、生命周期与 API 形式，及 Web Storage 规范的标准化历程''}'
+  - '{''understand'': ''解释同源策略对存储的影响、Cookie 的安全属性（Secure、HttpOnly、SameSite）、Storage 事件机制与浏览器存储隔离模型''}'
+  - '{''apply'': ''编写生产级存储工具库，包括 JSON 序列化、TTL 过期机制、命名空间隔离、跨标签页同步、错误处理与降级方案''}'
+  - '{''analyze'': ''对比 Cookie、Web Storage、IndexedDB 在容量、性能、API 复杂度、安全性上的差异，识别各自适用场景''}'
+  - '{''evaluate'': ''评估 XSS、CSRF、追踪等安全风险，给出防御策略与同站/跨站 Cookie 配置方案''}'
+  - '{''create'': ''设计离线优先（offline-first）应用的存储架构，结合 Service Worker、Cache API、IndexedDB 实现可信赖的离线体验''}'
 exercises:
   - id: ex-webstorage-01
     type: fill-blank

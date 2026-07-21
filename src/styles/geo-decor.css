@@ -7,7 +7,7 @@
  * 支持亮色/暗色双主题，移动端降级隐藏重型装饰，尊重 prefers-reduced-motion。
  *
  * 装饰母题：网格 / 圆弧切片 / 对角粗线 / 错位方块 / 曲线波纹 / 十字坐标 /
- *          点阵变体 / 平行线束 / 同心环 / 斜纹底纹 / 三角切片 / 颜色光晕 /
+ *          点阵变体 / 平行线束 / 同心环 / 斜纹底纹 / 三角切片 /
  *          螺旋 / 贝塞尔流 / 脉冲环 / 漂浮方块
  *
  * 适配来源：参考 KeMuONEXueKao 项目装饰系统，映射至 FANDEX 设计令牌
@@ -408,55 +408,12 @@
 }
 
 /* ===================================================================
-   颜色光晕类（彩色渐变光斑）
-   =================================================================== */
-
-/* 品牌色光晕 · 左上 */
-.geo-glow-primary-tl {
-  position: absolute;
-  top: -200px;
-  left: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--geo-glow-primary) 0%, transparent 70%);
-  opacity: 0.7;
-  pointer-events: none;
-  filter: blur(40px);
-}
-
-/* 强调色光晕 · 右下 */
-.geo-glow-accent-br {
-  position: absolute;
-  bottom: -200px;
-  right: -200px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--geo-glow-accent) 0%, transparent 70%);
-  opacity: 0.6;
-  pointer-events: none;
-  filter: blur(40px);
-}
-
-/* 信息色光晕 · 左下角 */
-.geo-glow-info-bl {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  bottom: -140px;
-  left: -140px;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(circle, var(--geo-glow-info) 0%, transparent 70%);
-  opacity: 0.18;
-  filter: blur(50px);
-}
-[data-theme='dark'] .geo-glow-info-bl {
-  opacity: 0.22;
-}
-
-/* ===================================================================
    动态装饰类 · v3 扩展
    =================================================================== */
+
+/* 说明：原有的"颜色光晕类"（geo-glow-primary-tl / geo-glow-accent-br /
+   geo-glow-info-bl）已移除，因其包含 filter:blur 与 radial-gradient 发散色晕，
+   与"克制有质感"的构成主义审美不符，且在低端设备上会显著影响渲染性能。 */
 
 /* 逆时针螺旋 · 多层圆环嵌套 */
 .geo-spiral-ccw {
@@ -711,9 +668,6 @@
   .geo-nested-squares-tl,
   .geo-hatch-block,
   .geo-triangle-rt,
-  .geo-glow-primary-tl,
-  .geo-glow-accent-br,
-  .geo-glow-info-bl,
   .geo-spiral-ccw,
   .geo-bezier-flow,
   .geo-cross-grid,

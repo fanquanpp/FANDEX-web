@@ -176,7 +176,7 @@ references:
     pages: '1028-1047'
     doi: '10.1145/355541.355562'
     pages_note: 'The asymptotically fastest known deterministic MST algorithm, achieving O(E alpha(E,V)) time. Uses a soft heap data structure to break the O(E log E) barrier'
-  - type: article
+  - type: journal
     authors:
       - 'Roskind, James E.'
       - 'Tarjan, Robert E.'

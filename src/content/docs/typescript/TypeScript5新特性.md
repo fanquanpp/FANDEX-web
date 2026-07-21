@@ -26,18 +26,12 @@ tags:
   - enums
   - ecmascript
 learningObjectives:
-  - bloom: understand
-    objective: 理解 TypeScript 5.0 至 5.x 各版本的核心新特性、设计动机与底层实现原理
-  - bloom: apply
-    objective: 运用 const 类型参数、satisfies 操作符、Stage 3 装饰器解决实际工程问题
-  - bloom: analyze
-    objective: 分析 moduleResolution: bundler 与 node/nodenext 的差异，选择最适配的模块解析策略
-  - bloom: evaluate
-    objective: 评估枚举现代化与 --erasableSyntaxOnly 对既有项目的兼容性影响，制定迁移策略
-  - bloom: create
-    objective: 设计基于 Stage 3 装饰器的元编程框架，结合 reflect-metadata 实现依赖注入与 AOP
-  - bloom: analyze
-    objective: 对比 ECMAScript 标准化装饰器与 experimentalDecorators 的语义差异
+  - '理解 TypeScript 5.0 至 5.x 各版本的核心新特性、设计动机与底层实现原理'
+  - '运用 const 类型参数、satisfies 操作符、Stage 3 装饰器解决实际工程问题'
+  - '分析 moduleResolution: bundler 与 node/nodenext 的差异，选择最适配的模块解析策略'
+  - '评估枚举现代化与 --erasableSyntaxOnly 对既有项目的兼容性影响，制定迁移策略'
+  - '设计基于 Stage 3 装饰器的元编程框架，结合 reflect-metadata 实现依赖注入与 AOP'
+  - '对比 ECMAScript 标准化装饰器与 experimentalDecorators 的语义差异'
 exercises:
   fill-blank:
     - question: "TypeScript 5.0 引入的 const 类型参数语法为____，它会让类型参数推断为最窄的字面量类型。"
@@ -174,39 +168,39 @@ references:
     journal: "Microsoft Developer Blog"
     year: 2023
     url: "https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/"
-    type: misc
+    type: website
   - author: Rosenwasser, Daniel
     title: "Announcing TypeScript 5.4"
     journal: "Microsoft Developer Blog"
     year: 2024
     url: "https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/"
-    type: misc
+    type: website
   - author: Rosenwasser, Daniel
     title: "Announcing TypeScript 5.5"
     journal: "Microsoft Developer Blog"
     year: 2024
     url: "https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/"
-    type: misc
+    type: website
   - author: Ehrenberg, Ron and Voss, Gabriel
     title: "ECMAScript Decorators Proposal, Stage 3"
     journal: "TC39"
     year: 2023
     url: "https://github.com/tc39/proposal-decorators"
-    type: misc
+    type: website
   - author: Bierman, Gavin M. and Abadi, Martín and Torgersen, Mads
     title: "Understanding TypeScript"
     journal: "ECOOP 2014 — Object-Oriented Programming"
     year: 2014
     pages: "257-281"
     doi: "10.1007/978-3-662-44202-9_11"
-    type: inproceedings
+    type: conference
   - author: Bracha, Gilad and Ungar, David
     title: "Mirrors: design principles for meta-level facilities of object-oriented programming languages"
     journal: "OOPSLA '04"
     year: 2004
     pages: "331-344"
     doi: "10.1145/1028976.1029004"
-    type: inproceedings
+    type: conference
   - author: Pierce, Benjamin C.
     title: "Types and Programming Languages"
     journal: "MIT Press"

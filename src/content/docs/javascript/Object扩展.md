@@ -24,35 +24,40 @@ tags:
   - structuredClone
   - Reflection
 learningObjectives:
-  - bloom: remember
-    objective: 列举 ES6 以来 Object 静态方法的演进时间线，复述每个方法所属的 ECMAScript 版本
-  - bloom: understand
-    objective: 解释属性描述符的数据属性与访问器属性两种模型，区分 writable 与 configurable 的语义
-  - bloom: apply
-    objective: 使用 Object.assign、Object.fromEntries、Object.groupBy、Object.hasOwn 等方法处理真实业务场景
-  - bloom: analyze
-    objective: 拆解 Object.create、Object.setPrototypeOf、Reflect.set 在原型链操作上的行为差异
-  - bloom: evaluate
-    objective: 评估 Object.freeze/seal/preventExtensions 三层不可变性的适用场景与性能开销
-  - bloom: create
-    objective: 设计一个支持深冻结、深克隆与原型快照的不可变数据工具库，集成结构化克隆算法
+  - '列举 ES6 以来 Object 静态方法的演进时间线，复述每个方法所属的 ECMAScript 版本'
+  - '解释属性描述符的数据属性与访问器属性两种模型，区分 writable 与 configurable 的语义'
+  - '使用 Object.assign、Object.fromEntries、Object.groupBy、Object.hasOwn 等方法处理真实业务场景'
+  - '拆解 Object.create、Object.setPrototypeOf、Reflect.set 在原型链操作上的行为差异'
+  - '评估 Object.freeze/seal/preventExtensions 三层不可变性的适用场景与性能开销'
+  - '设计一个支持深冻结、深克隆与原型快照的不可变数据工具库，集成结构化克隆算法'
 exercises:
-  - type: fill-blank
-    bloom: remember
+  - id: ex-obj-01
+    type: fill-blank
+    cognitiveLevel: remember
     question: "Object.is(NaN, NaN) 返回 ______，而 NaN === NaN 返回 ______。"
     answer: "true；false"
-  - type: choice
-    bloom: analyze
+    blankCount: 2
+    answers:
+      - "true"
+      - "false"
+    caseSensitive: false
+    explanation: "Object.is 采用 SameValue(x, y) 算法，对 NaN 与 -0 +0 做特殊处理；=== 使用 Strict Equality Comparison，NaN 与任何值都不相等（包括自身）。"
+  - id: ex-obj-02
+    type: choice
+    cognitiveLevel: analyze
     question: "下列代码输出是什么？\n```javascript\nconst obj = Object.create(null);\nobj.foo = 1;\nconsole.log(Object.hasOwn(obj, 'foo'));\nconsole.log(obj.hasOwnProperty('foo'));\n```"
     options:
       - "A. true true"
       - "B. true false"
       - "C. true 抛出 TypeError"
       - "D. false 抛出 TypeError"
+    correctIndex: 2
     answer: "C"
+    multiple: false
     explanation: "Object.hasOwn 对 null 原型对象能正常工作返回 true；而 obj.hasOwnProperty 需要从 Object.prototype 继承，null 原型对象没有此方法，会抛出 TypeError。"
-  - type: code-fix
-    bloom: analyze
+  - id: ex-obj-03
+    type: code-fix
+    cognitiveLevel: analyze
     question: |
       以下代码尝试深度冻结配置对象，但在生产环境出现"未冻结"报告。请修复：
       ```javascript
@@ -68,8 +73,18 @@ exercises:
       const config = { db: { host: 'localhost' }, list: [{ id: 1 }] };
       deepFreeze(config);
       ```
-    answer: |
-      ```javascript
+    buggyCode: |
+      function deepFreeze(obj) {
+        Object.freeze(obj);
+        for (const key in obj) {
+          if (typeof obj[key] === 'object') {
+            deepFreeze(obj[key]);
+          }
+        }
+        return obj;
+      }
+    language: javascript
+    fixedCode: |
       function deepFreeze(obj) {
         if (obj === null || typeof obj !== 'object') return obj;
         Object.freeze(obj);
@@ -82,41 +97,62 @@ exercises:
         }
         return obj;
       }
-      ```
-      原代码两个问题：(1) `for...in` 会遍历原型链上的可枚举属性；(2) 未检查 `Object.isFrozen` 导致循环引用时栈溢出。
-  - type: open-ended
-    bloom: create
+    errorDescription: "原代码两个问题：(1) for...in 会遍历原型链上的可枚举属性；(2) 未检查 Object.isFrozen 导致循环引用时栈溢出；(3) 未对 null 与非 object 类型做基线判断。"
+    answer: |
+      在 deepFreeze 入口加基线判断 if (obj === null || typeof obj !== 'object') return obj；将 for...in 换为 for (const value of Object.values(obj))；递归前加 !Object.isFrozen(value) 判断避免循环引用栈溢出。这样既避免遍历原型链，又防止循环引用。
+  - id: ex-obj-04
+    type: open-ended
+    cognitiveLevel: create
     question: "请设计一个 immutable 配置管理库，要求：(1) 支持深度冻结；(2) 提供 update(path, value) 接口返回新对象而不修改原对象；(3) 支持 TypeScript 类型推导；(4) 性能优于 JSON.parse(JSON.stringify(obj))。请描述数据结构与算法。"
+    keyPoints:
+      - "结构性共享（persistent data structure，类似 Immutable.js 的 HAMT）"
+      - "基于 Proxy 的写入拦截"
+      - "路径数组解析（lodash.set 风格）"
+      - "结构化克隆回退"
+      - "TypeScript 泛型与递归类型 Readonly<T>"
+      - "性能基准测试对比 JSON 序列化"
     answer: "应包括：结构性共享（persistent data structure，类似 Immutable.js 的 HAMT）、基于 Proxy 的写入拦截、路径数组解析（lodash.set 风格）、结构化克隆回退、TypeScript 泛型与递归类型 Readonly<T>、性能基准测试对比 JSON 序列化。"
+    minWords: 200
 references:
-  - author: [ECMA International]
+  - type: website
+    authors:
+      - "ECMA International"
     title: "ECMAScript 2026 Language Specification - Objects"
-    journal: "ECMA-262, 17th Edition"
+    venue: "ECMA-262, 17th Edition"
     year: 2026
     url: "https://tc39.es/ecma262/#sec-objects"
-  - author: [TC39]
+  - type: website
+    authors:
+      - "TC39"
     title: "Proposal: Object.groupBy and Map.groupBy"
-    journal: "TC39 Proposals"
+    venue: "TC39 Proposals"
     year: 2024
     url: "https://github.com/tc39/proposal-array-grouping"
-  - author: [TC39]
+  - type: website
+    authors:
+      - "TC39"
     title: "Proposal: Error Cause (includes Object.hasOwn rationale)"
-    journal: "TC39 Proposals"
+    venue: "TC39 Proposals"
     year: 2022
     url: "https://github.com/tc39/proposal-error-cause"
-  - author: [WHATWG]
+  - type: website
+    authors:
+      - "WHATWG"
     title: "HTML Living Standard - Structured clone algorithm"
-    journal: "Web Hypertext Application Technology Working Group"
+    venue: "Web Hypertext Application Technology Working Group"
     year: 2026
     url: "https://html.spec.whatwg.org/multipage/structured-data.html#structuredclone"
-  - author: [Mozilla Developer Network]
+  - type: documentation
+    authors:
+      - "Mozilla Developer Network"
     title: "Object reference"
-    journal: "MDN Web Docs"
+    venue: "MDN Web Docs"
     year: 2026
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
 etymology:
-  term: "Object"
-  origin: "Object 作为 JavaScript 语言的根构造器，由 Brendan Eich 在 1995 年实现。其原型 Object.prototype 是所有对象的隐式原型链终点。ES5（2009）首次引入 Object.keys、Object.freeze 等静态方法，开启了 Object API 的扩展时代；ES6（2015）大规模补全了 Reflect、Object.assign、Object.setPrototypeOf 等；ES2022-2024 进一步引入 Object.hasOwn 与 Object.groupBy。"
+  - term: "Object"
+    english: "Object"
+    origin: "Object 作为 JavaScript 语言的根构造器，由 Brendan Eich 在 1995 年实现。其原型 Object.prototype 是所有对象的隐式原型链终点。ES5（2009）首次引入 Object.keys、Object.freeze 等静态方法，开启了 Object API 的扩展时代；ES6（2015）大规模补全了 Reflect、Object.assign、Object.setPrototypeOf 等；ES2022-2024 进一步引入 Object.hasOwn 与 Object.groupBy。"
 lastReviewed: '2026-07-20'
 reviewer: FANDEX Content Engineering Team
 ---

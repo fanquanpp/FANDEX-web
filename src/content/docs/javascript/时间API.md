@@ -26,22 +26,16 @@ tags:
   - Calendar
   - iCalendar
 learningObjectives:
-  - bloom: remember
-    objective: 列举 Temporal API 的核心类型体系（Instant、ZonedDateTime、PlainDateTime、PlainDate、PlainTime、Duration、Now），复述每个类型的语义边界
-  - bloom: understand
-    objective: 解释 Date 对象的设计缺陷（可变性、月份零基、时区缺失）以及 Temporal 如何通过类型分离解决这些问题
-  - bloom: apply
-    objective: 使用 Temporal.Instant、Temporal.ZonedDateTime、Temporal.PlainDate 进行日期时间创建、运算、格式化与时区转换
-  - bloom: analyze
-    objective: 拆解 ISO 8601 字符串解析规则、IANA 时区数据库结构、夏令时（DST）转换的边界情况
-  - bloom: evaluate
-    objective: 评估不同时区存储策略（UTC 存储 + 本地展示 vs 本地存储）的适用场景与一致性风险
-  - bloom: create
-    objective: 设计一个跨时区的会议调度系统，集成 Temporal.ZonedDateTime、DST 容错、用户偏好持久化与冲突检测
+  - '列举 Temporal API 的核心类型体系（Instant、ZonedDateTime、PlainDateTime、PlainDate、PlainTime、Duration、Now），复述每个类型的语义边界'
+  - '解释 Date 对象的设计缺陷（可变性、月份零基、时区缺失）以及 Temporal 如何通过类型分离解决这些问题'
+  - '使用 Temporal.Instant、Temporal.ZonedDateTime、Temporal.PlainDate 进行日期时间创建、运算、格式化与时区转换'
+  - '拆解 ISO 8601 字符串解析规则、IANA 时区数据库结构、夏令时（DST）转换的边界情况'
+  - '评估不同时区存储策略（UTC 存储 + 本地展示 vs 本地存储）的适用场景与一致性风险'
+  - '设计一个跨时区的会议调度系统，集成 Temporal.ZonedDateTime、DST 容错、用户偏好持久化与冲突检测'
 exercises:
   - type: fill-blank
     bloom: remember
-    question: "Temporal API 中表示"绝对时刻"（与时区无关）的类型是 ______，而表示"带时区的日期时间"的类型是 ______。"
+    question: 'Temporal API 中表示"绝对时刻"（与时区无关）的类型是 ______，而表示"带时区的日期时间"的类型是 ______。'
     answer: "Temporal.Instant；Temporal.ZonedDateTime"
   - type: choice
     bloom: analyze
@@ -111,7 +105,7 @@ references:
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal"
 etymology:
   term: "Temporal"
-  origin: "Temporal API 由 Maggie Johnson-Pint 与 Philipp Dunkel 等于 2017 年发起提案，目标是用类型化的现代 API 替代 1995 年由 Brendan Eich 实现的 Date 对象。词源 temporal 来自拉丁语 temporalis，意为"时间的"。提案在 2021 年进入 Stage 3，2024 年进入 Stage 4，是 TC39 历史上规模最大的提案之一（规范文本超过 38000 字）。"
+  origin: 'Temporal API 由 Maggie Johnson-Pint 与 Philipp Dunkel 等于 2017 年发起提案，目标是用类型化的现代 API 替代 1995 年由 Brendan Eich 实现的 Date 对象。词源 temporal 来自拉丁语 temporalis，意为"时间的"。提案在 2021 年进入 Stage 3，2024 年进入 Stage 4，是 TC39 历史上规模最大的提案之一（规范文本超过 38000 字）。'
 lastReviewed: '2026-07-20'
 reviewer: FANDEX Content Engineering Team
 ---

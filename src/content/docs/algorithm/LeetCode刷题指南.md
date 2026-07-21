@@ -113,7 +113,7 @@ references:
     venue: 'Lulu Press'
     version: 'Book 1 (Chapters 1-5)'
     pages: 'ISBN 978-1718035558, comprehensive guide for competitive programming with ICPC/IOI focus'
-  - type: article
+  - type: journal
     authors:
       - 'Knuth, Donald E.'
     year: 1974
@@ -124,7 +124,7 @@ references:
     pages: '667-673'
     doi: '10.1145/361604.361612'
     pages_note: 'Turing Award lecture discussing programming as both science and art, foundational for algorithmic problem-solving mindset'
-  - type: article
+  - type: journal
     authors:
       - 'Sleator, Daniel D.'
       - 'Tarjan, Robert E.'
@@ -136,7 +136,7 @@ references:
     pages: '202-208'
     doi: '10.1145/2786.2793'
     pages_note: 'Foundational for LRU Cache (LeetCode 146). Introduced the potential method of amortized analysis and competitive analysis for online algorithms'
-  - type: article
+  - type: journal
     authors:
       - 'Tarjan, Robert E.'
     year: 1975
@@ -147,7 +147,7 @@ references:
     pages: '215-225'
     doi: '10.1145/321879.321884'
     pages_note: 'Foundational for Union-Find (LeetCode 547, 684). Introduced the inverse-Ackermann near-constant time analysis'
-  - type: article
+  - type: journal
     authors:
       - 'Boyer, Robert S.'
       - 'Moore, J. Strother'
@@ -159,7 +159,7 @@ references:
     pages: '762-772'
     doi: '10.1145/359842.359859'
     pages_note: 'Foundational for string matching algorithms covered in LeetCode 28 (Find the Index of the First Occurrence in a String)'
-  - type: article
+  - type: journal
     authors:
       - 'Knuth, Donald E.'
       - 'Morris, James H.'
@@ -172,7 +172,7 @@ references:
     pages: '323-350'
     doi: '10.1137/0206024'
     pages_note: 'KMP algorithm, linear-time string matching. Foundation for LeetCode 28, 214, 459'
-  - type: article
+  - type: journal
     authors:
       - 'Dijkstra, Edsger W.'
     year: 1959
@@ -183,7 +183,7 @@ references:
     pages: '269-271'
     doi: '10.1007/BF01386390'
     pages_note: 'Dijkstra shortest-path algorithm, foundation for LeetCode 743 (Network Delay Time), 1631 (Path With Minimum Effort)'
-  - type: article
+  - type: journal
     authors:
       - 'Bellman, Richard'
     year: 1952
@@ -194,7 +194,7 @@ references:
     pages: '716-719'
     doi: '10.1073/pnas.38.8.716'
     pages_note: 'Foundational paper for dynamic programming. LeetCode 70 (Climbing Stairs), 198 (House Robber), 322 (Coin Change), 72 (Edit Distance) all build on this paradigm'
-  - type: article
+  - type: journal
     authors:
       - 'Bellman, Richard'
     year: 1958

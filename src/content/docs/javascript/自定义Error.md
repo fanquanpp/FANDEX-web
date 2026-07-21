@@ -25,18 +25,12 @@ tags:
   - Sentry
   - ExceptionHandling
 learningObjectives:
-  - bloom: remember
-    objective: 列举 ECMAScript 内置错误类型体系（Error、TypeError、RangeError、SyntaxError、ReferenceError、URIError、EvalError）及各自触发场景
-  - bloom: understand
-    objective: 解释 ES6 类继承 Error 的原型链陷阱——为何必须 Object.setPrototypeOf(this, new.target.prototype) 才能保证 instanceof 正确工作
-  - bloom: apply
-    objective: 使用 ES2022 Error Cause 与 ES2021 AggregateError 构建可追溯的错误链与批量错误聚合
-  - bloom: analyze
-    objective: 拆解 V8 堆栈追踪格式（CallSite 对象、stackTraceLimit、Error.captureStackTrace）与 SpiderMonkey/JavaScriptCore 实现差异
-  - bloom: evaluate
-    objective: 评估自定义错误层次设计——扁平式 vs 层次式——在大型项目可维护性、Sentry 分组、TypeScript 类型推导上的权衡
-  - bloom: create
-    objective: 设计一个生产级错误监控 SDK，集成 window.onerror、unhandledrejection、Error Cause 链解析、Sentry 上报与采样降级策略
+  - '列举 ECMAScript 内置错误类型体系（Error、TypeError、RangeError、SyntaxError、ReferenceError、URIError、EvalError）及各自触发场景'
+  - '解释 ES6 类继承 Error 的原型链陷阱——为何必须 Object.setPrototypeOf(this, new.target.prototype) 才能保证 instanceof 正确工作'
+  - '使用 ES2022 Error Cause 与 ES2021 AggregateError 构建可追溯的错误链与批量错误聚合'
+  - '拆解 V8 堆栈追踪格式（CallSite 对象、stackTraceLimit、Error.captureStackTrace）与 SpiderMonkey/JavaScriptCore 实现差异'
+  - '评估自定义错误层次设计——扁平式 vs 层次式——在大型项目可维护性、Sentry 分组、TypeScript 类型推导上的权衡'
+  - '设计一个生产级错误监控 SDK，集成 window.onerror、unhandledrejection、Error Cause 链解析、Sentry 上报与采样降级策略'
 exercises:
   - type: fill-blank
     bloom: remember

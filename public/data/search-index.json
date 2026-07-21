@@ -20,16 +20,6 @@
     "updated": "2026-06-15"
   },
   {
-    "slug": "agent/AI-Scientist-v2自主研究",
-    "title": "AI-Scientist-v2自主研究",
-    "description": "Sakana 的 AI Scientist v2 (Yamada 等人, arXiv:2504.08066) 运行完整研究循环：假设、代码、实验、图表、论文、提交。它是第一个有生成论文通过 ICLR 2025 workshop 同行评审的系统。独立评估 (Beel 等人) 发现 42% 的实验...",
-    "tags": [],
-    "module": "agent",
-    "order": 0,
-    "difficulty": "",
-    "updated": ""
-  },
-  {
     "slug": "agent/Agent可观测性平台",
     "title": "Agent可观测性平台",
     "description": "三个开源Agent可观测性平台主导2026年。Langfuse（MIT）— 6M+安装/月，追踪 + 提示管理 + 评估 + 会话回放。Arize Phoenix（Elastic 2.0）— 深度Agent特定评估，RAG相关性，OpenInference自动仪器化。Comet Opik（Ap...",
@@ -93,6 +83,16 @@
     "slug": "agent/Agno与Mastra生产运行时",
     "title": "Agno与Mastra生产运行时",
     "description": "Agno（Python）和Mastra（TypeScript）是2026年的生产运行时配对。Agno瞄准微秒级Agent实例化和无状态FastAPI后端。Mastra在Vercel AI SDK基底上发布Agent、工具、工作流、统一模型路由和复合存储。",
+    "tags": [],
+    "module": "agent",
+    "order": 0,
+    "difficulty": "",
+    "updated": ""
+  },
+  {
+    "slug": "agent/AI-Scientist-v2自主研究",
+    "title": "AI-Scientist-v2自主研究",
+    "description": "Sakana 的 AI Scientist v2 (Yamada 等人, arXiv:2504.08066) 运行完整研究循环：假设、代码、实验、图表、论文、提交。它是第一个有生成论文通过 ICLR 2025 workshop 同行评审的系统。独立评估 (Beel 等人) 发现 42% 的实验...",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -210,16 +210,6 @@
     "updated": ""
   },
   {
-    "slug": "agent/LLM路由层",
-    "title": "LLM路由层 — 模型选择、回退、成本优化",
-    "description": "构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试",
-    "tags": ["LLM路由", "模型选择", "回退链", "成本优化", "AB测试"],
-    "module": "agent",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
     "slug": "agent/LangGraph状态图与持久执行",
     "title": "LangGraph状态图与持久执行",
     "description": "LangGraph是2026年低层有状态编排的参考。Agent是状态机；节点是函数；边是转换；状态是不可变的并在每步后检查点。从任何失败处精确恢复。",
@@ -234,6 +224,16 @@
     "title": "LlamaGuard与输入输出分类",
     "description": "掌握Llama Guard 3/4分类器、NeMo Guardrails防护栏和MLCommons危害分类法，理解分类器层的优势与局限",
     "tags": ["LlamaGuard", "分类器", "NeMo Guardrails", "MLCommons", "Emoji走私攻击"],
+    "module": "agent",
+    "order": 0,
+    "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
+    "slug": "agent/LLM路由层",
+    "title": "LLM路由层 — 模型选择、回退、成本优化",
+    "description": "构建LLM路由层，实现基于任务的路由、回退链、成本感知选择和A/B测试",
+    "tags": ["LLM路由", "模型选择", "回退链", "成本优化", "AB测试"],
     "module": "agent",
     "order": 0,
     "difficulty": "intermediate",
@@ -410,9 +410,9 @@
     "updated": ""
   },
   {
-    "slug": "agent/ReWOO与计划执行",
-    "title": "ReWOO与计划执行",
-    "description": "ReAct在一个流中交替思考和行动。ReWOO将它们分离：先做一个完整计划，然后执行。Token消耗减少5倍，HotpotQA准确率提升4%，而且你可以将规划器蒸馏到7B模型中。Plan-and-Execute将其泛化；Plan-and-Act将其扩展到Web导航。",
+    "slug": "agent/Reflexion语言强化学习",
+    "title": "Reflexion语言强化学习",
+    "description": "基于梯度的RL需要数千次试验和GPU集群来修复一个失败模式。Reflexion（Shinn等人，NeurIPS 2023）用自然语言做到这一点：每次失败的试验后，Agent写一段反思，存储在情景记忆中，并在下一次试验中以此记忆为条件。这是Letta的睡眠时间计算、Claude Code的CLA...",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -420,9 +420,9 @@
     "updated": ""
   },
   {
-    "slug": "agent/Reflexion语言强化学习",
-    "title": "Reflexion语言强化学习",
-    "description": "基于梯度的RL需要数千次试验和GPU集群来修复一个失败模式。Reflexion（Shinn等人，NeurIPS 2023）用自然语言做到这一点：每次失败的试验后，Agent写一段反思，存储在情景记忆中，并在下一次试验中以此记忆为条件。这是Letta的睡眠时间计算、Claude Code的CLA...",
+    "slug": "agent/ReWOO与计划执行",
+    "title": "ReWOO与计划执行",
+    "description": "ReAct在一个流中交替思考和行动。ReWOO将它们分离：先做一个完整计划，然后执行。Token消耗减少5倍，HotpotQA准确率提升4%，而且你可以将规划器蒸馏到7B模型中。Plan-and-Execute将其泛化；Plan-and-Act将其扩展到Web导航。",
     "tags": [],
     "module": "agent",
     "order": 0,
@@ -1400,26 +1400,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/GPU与云计算",
-    "title": "GPU与云计算",
-    "description": "验证本地 GPU 可用性，配置 Google Colab T4 GPU，基准测试 CPU vs GPU 矩阵乘法，估算 VRAM 可容纳的最大模型",
-    "tags": ["GPU", "CUDA", "云计算", "Google Colab", "性能基准"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": ""
-  },
-  {
-    "slug": "ai-engineering/GPU自动伸缩与Kubernetes",
-    "title": "Kubernetes上的GPU自动伸缩 — Karpenter、KAI调度器、Gang调度",
-    "description": "理解三层GPU自动伸缩架构：节点供给、Gang调度和应用层信号",
-    "tags": ["Kubernetes", "Karpenter", "KAI调度器", "Gang调度", "GPU自动伸缩", "HPA"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
     "slug": "ai-engineering/GitHub-Issue到PR自主代理",
     "title": "GitHub Issue到PR自主代理",
     "description": "AWS Remote SWE Agents、Cursor Background Agents、OpenAI Codex cloud和Google Jules都发布2026年相同产品形态：标记issue，获得PR。在云沙盒中运行代理，验证测试通过，发布带理由的review-ready PR。难点在于自动复现仓库构建环境、防止凭证泄露、强制每仓库预算、确保代理不能force-push。构建自托管版本并在成本和通过率上与托管替代比较。",
@@ -1437,6 +1417,26 @@
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "beginner",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/GPU与云计算",
+    "title": "GPU与云计算",
+    "description": "验证本地 GPU 可用性，配置 Google Colab T4 GPU，基准测试 CPU vs GPU 矩阵乘法，估算 VRAM 可容纳的最大模型",
+    "tags": ["GPU", "CUDA", "云计算", "Google Colab", "性能基准"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/GPU自动伸缩与Kubernetes",
+    "title": "Kubernetes上的GPU自动伸缩 — Karpenter、KAI调度器、Gang调度",
+    "description": "理解三层GPU自动伸缩架构：节点供给、Gang调度和应用层信号",
+    "tags": ["Kubernetes", "Karpenter", "KAI调度器", "Gang调度", "GPU自动伸缩", "HPA"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "intermediate",
     "updated": ""
   },
   {
@@ -1464,6 +1464,16 @@
     "title": "KNN与距离度量",
     "description": "K近邻算法通过找最近的邻居来分类，距离度量的选择决定了什么是\"近\"",
     "tags": ["KNN", "距离度量", "分类", "回归", "懒惰学习"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/Linux与AI",
+    "title": "Linux与AI",
+    "description": "Linux 文件系统导航，文件权限管理，apt 包管理，用户与 sudo，进程与 systemd，磁盘空间，网络传输，tmux 会话",
+    "tags": ["Linux", "Ubuntu", "命令行", "文件系统", "权限", "WSL2"],
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "beginner",
@@ -1530,16 +1540,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/Linux与AI",
-    "title": "Linux与AI",
-    "description": "Linux 文件系统导航，文件权限管理，apt 包管理，用户与 sudo，进程与 systemd，磁盘空间，网络传输，tmux 会话",
-    "tags": ["Linux", "Ubuntu", "命令行", "文件系统", "权限", "WSL2"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": ""
-  },
-  {
     "slug": "ai-engineering/MCP服务器与注册中心与治理",
     "title": "MCP服务器与注册中心与治理",
     "description": "Model Context Protocol在2026年从未来变成默认工具使用规范。Anthropic、OpenAI、Google和每个主要IDE都发布MCP客户端。Pinterest发布内部MCP服务器生态。AAIF Registry在.well-known正式化能力元数据。2026年生产形态：StreamableHTTP传输、OAuth 2.1范围、OPA策略门控、注册中心让平台团队发现验证启用服务器。端到端构建。",
@@ -1570,16 +1570,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/PyTorch入门",
-    "title": "PyTorch入门",
-    "description": "PyTorch是深度学习的工业标准框架，动态计算图让调试和实验更直观",
-    "tags": ["PyTorch", "张量", "自动微分", "GPU", "训练循环"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "beginner",
-    "updated": ""
-  },
-  {
     "slug": "ai-engineering/Python环境管理",
     "title": "Python环境管理",
     "description": "使用 uv、venv、conda 创建隔离虚拟环境，编写 pyproject.toml 和 lockfile，诊断依赖冲突，实施按阶段的环境策略",
@@ -1588,6 +1578,16 @@
     "order": 0,
     "difficulty": "beginner",
     "updated": "2026-06-15"
+  },
+  {
+    "slug": "ai-engineering/PyTorch入门",
+    "title": "PyTorch入门",
+    "description": "PyTorch是深度学习的工业标准框架，动态计算图让调试和实验更直观",
+    "tags": ["PyTorch", "张量", "自动微分", "GPU", "训练循环"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "beginner",
+    "updated": ""
   },
   {
     "slug": "ai-engineering/SGLang与RadixAttention",
@@ -1610,16 +1610,6 @@
     "updated": ""
   },
   {
-    "slug": "ai-engineering/Whisper架构与微调",
-    "title": "Whisper架构与微调",
-    "description": "深入理解Whisper的编码器-解码器架构、分块推理和LoRA微调",
-    "tags": ["Whisper", "ASR", "微调", "LoRA", "Transformer"],
-    "module": "ai-engineering",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
     "slug": "ai-engineering/vLLM服务内部机制",
     "title": "vLLM服务内部：PagedAttention、连续批处理、分块预填充",
     "description": "深入理解vLLM三大核心优化机制及其调度器工作原理",
@@ -1634,6 +1624,16 @@
     "title": "vLLM生产栈与LMCache KV卸载",
     "description": "理解vLLM生产栈参考部署和LMCache跨引擎KV缓存复用",
     "tags": ["vLLM生产栈", "LMCache", "KV卸载", "CPU卸载", "Kubernetes部署"],
+    "module": "ai-engineering",
+    "order": 0,
+    "difficulty": "intermediate",
+    "updated": ""
+  },
+  {
+    "slug": "ai-engineering/Whisper架构与微调",
+    "title": "Whisper架构与微调",
+    "description": "深入理解Whisper的编码器-解码器架构、分块推理和LoRA微调",
+    "tags": ["Whisper", "ASR", "微调", "LoRA", "Transformer"],
     "module": "ai-engineering",
     "order": 0,
     "difficulty": "intermediate",
@@ -3836,7 +3836,7 @@
   {
     "slug": "c/概述",
     "title": "C 语言概述",
-    "description": "C 语言的发展历史、特点及应用领域，包含备考复习要点。",
+    "description": "C 语言的发展历史、设计哲学、核心特点、应用领域与全栈知识图谱，对标 MIT 6.S081、Stanford CS107、CMU 15-213 教学水准。",
     "tags": ["c"],
     "module": "c",
     "order": 10,
@@ -3846,7 +3846,7 @@
   {
     "slug": "c/程序结构与基本语法",
     "title": "程序结构与基本语法",
-    "description": "C 程序的组成部分、注释规范、标识符规则及关键字。",
+    "description": "C 程序的组成部分、注释规范、标识符规则、关键字与编译过程，对标 MIT/Stanford/CMU 教学水准。",
     "tags": ["c"],
     "module": "c",
     "order": 20,
@@ -3856,12 +3856,12 @@
   {
     "slug": "c/数据类型详解",
     "title": "数据类型详解",
-    "description": "C 语言的基本类型、派生类型、空类型及其内存布局，包含备考复习要点。",
+    "description": "C 语言的整型、浮点型、派生类型、空类型、内存布局、ABI 与 C23 新类型，对标 MIT/Stanford/CMU 系统编程教学水准。",
     "tags": ["c", "memory"],
     "module": "c",
     "order": 30,
     "difficulty": "beginner",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/变量与常量",
@@ -3940,17 +3940,17 @@
     "module": "c",
     "order": 54,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/可变参数函数",
     "title": "可变参数函数",
-    "description": "stdarg.h与可变参数",
+    "description": "stdarg.h 机制、ABI 调用约定、类型安全与工程实践",
     "tags": [],
     "module": "c",
     "order": 55,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/信号处理",
@@ -3975,27 +3975,27 @@
   {
     "slug": "c/泛型选择",
     "title": "泛型选择",
-    "description": "C11 _Generic泛型选择",
+    "description": "C11 _Generic 泛型选择表达式原理、工程实现与最佳实践",
     "tags": [],
     "module": "c",
     "order": 58,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/位域",
     "title": "位域",
-    "description": "位域与紧凑数据存储",
+    "description": "位域原理、内存布局、跨平台实践与性能优化",
     "tags": [],
     "module": "c",
     "order": 59,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/对齐与内存布局",
     "title": "对齐与内存布局",
-    "description": "内存对齐与结构体布局",
+    "description": "C语言内存对齐与结构体布局：alignof/alignas、填充规则、packed、缓存行对齐、AoS/SoA、伪共享与对齐分配器。",
     "tags": [],
     "module": "c",
     "order": 60,
@@ -4015,12 +4015,12 @@
   {
     "slug": "c/属性与编译器扩展",
     "title": "属性与编译器扩展",
-    "description": "GCC/Clang属性与扩展",
+    "description": "GCC/Clang/MSVC 属性语法、C23 标准属性、跨编译器扩展与工程实践",
     "tags": [],
     "module": "c",
     "order": 61,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/安全函数与边界检查",
@@ -4030,7 +4030,7 @@
     "module": "c",
     "order": 62,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/内联函数与宏",
@@ -4040,7 +4040,7 @@
     "module": "c",
     "order": 63,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/复杂声明解析",
@@ -4090,7 +4090,7 @@
     "module": "c",
     "order": 67,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/共享内存与信号量",
@@ -4105,12 +4105,12 @@
   {
     "slug": "c/文件系统操作",
     "title": "文件系统操作",
-    "description": "目录操作与文件属性",
+    "description": "POSIX 文件系统 API、目录遍历、文件属性、权限管理、inotify 监控与跨平台文件操作，对标 MIT/Stanford/CMU 系统编程教学水准。",
     "tags": [],
     "module": "c",
     "order": 69,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/函数详解",
@@ -4125,12 +4125,12 @@
   {
     "slug": "c/动态库与静态库",
     "title": "动态库与静态库",
-    "description": "库的创建与使用",
+    "description": "库的创建、链接机制、符号解析、加载策略与跨平台实践",
     "tags": [],
     "module": "c",
     "order": 70,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/国际化与本地化",
@@ -4145,12 +4145,12 @@
   {
     "slug": "c/构建系统",
     "title": "构建系统",
-    "description": "CMake与构建工具",
+    "description": "CMake/Make/Ninja 构建系统原理、工程实践与跨平台管理",
     "tags": [],
     "module": "c",
     "order": 71,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/静态分析与调试",
@@ -4165,12 +4165,12 @@
   {
     "slug": "c/跨平台编程",
     "title": "跨平台编程",
-    "description": "C语言跨平台开发",
+    "description": "C 语言跨平台编程原理、抽象层设计与工程实践",
     "tags": [],
     "module": "c",
     "order": 73,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/嵌入式C编程",
@@ -4180,12 +4180,12 @@
     "module": "c",
     "order": 74,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/C与汇编交互",
     "title": "C与汇编交互",
-    "description": "内联汇编与外部汇编",
+    "description": "C语言与汇编交互：GCC/Clang内联汇编、操作数约束、内存屏障、原子操作、SIMD加速、外部汇编与跨架构支持。",
     "tags": [],
     "module": "c",
     "order": 75,
@@ -4265,7 +4265,7 @@
   {
     "slug": "c/函数调用栈帧",
     "title": "函数调用栈帧",
-    "description": "C语言函数调用栈帧详解：局部变量、返回地址、寄存器保存。",
+    "description": "C语言函数调用栈帧详解：局部变量、返回地址、寄存器保存、ABI规范与栈保护机制。",
     "tags": [],
     "module": "c",
     "order": 101,
@@ -4343,12 +4343,12 @@
   {
     "slug": "c/理论知识点",
     "title": "C 语言理论知识点",
-    "description": "编译流程、内存模型、链接与加载等核心理论知识。",
-    "tags": ["c", "theory"],
+    "description": "编译流程、内存模型、ABI、链接与加载、未定义行为、严格别名、序列点等 C 语言核心理论，对标 MIT/Stanford/CMU 系统编程教学水准。",
+    "tags": ["c", "theory", "compilation", "memory-model", "abi", "undefined-behavior"],
     "module": "c",
     "order": 120,
-    "difficulty": "intermediate",
-    "updated": ""
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "c/高级特性与系统编程",
@@ -5202,7 +5202,7 @@
   {
     "slug": "cpp/引用",
     "title": "C++ 引用",
-    "description": "左值引用、右值引用、引用与指针的区别及应用场景。",
+    "description": "左值引用、右值引用、常量引用、转发引用、引用折叠、悬空引用与 std::launder 全解。",
     "tags": ["cpp"],
     "module": "cpp",
     "order": 40,
@@ -5262,12 +5262,12 @@
   {
     "slug": "cpp/Lambda表达式",
     "title": "Lambda表达式",
-    "description": "Lambda捕获、泛型Lambda与C++23改进",
+    "description": "C++11 至 C++23 Lambda 表达式的捕获语义、闭包类型、性能模型与工程实践",
     "tags": [],
     "module": "cpp",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/模板元编程",
@@ -5306,12 +5306,21 @@
   {
     "slug": "cpp/C++20模块",
     "title": "C++20模块",
-    "description": "模块系统与import",
-    "tags": [],
+    "description": "C++20模块系统(Modules)完整原理：模块接口单元、分区、私有模块、编译模型、ABI影响与迁移策略",
+    "tags": [
+      "C++20",
+      "Modules",
+      "import",
+      "export",
+      "ABI",
+      "Build System",
+      "Header Units",
+      "Translation Unit"
+    ],
     "module": "cpp",
     "order": 57,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/设计模式与C++",
@@ -5355,13 +5364,13 @@
   },
   {
     "slug": "cpp/STL算法详解",
-    "title": "STL算法详解",
-    "description": "STL算法库深入",
-    "tags": [],
+    "title": "C++ STL 算法详解",
+    "description": "STL 算法库全解：非修改式、修改式、排序、搜索、数值、分区、堆、C++17 并行算法、C++20 Ranges、C++23 容器算法，含复杂度分析、迭代器约束、企业级实战与陷阱。",
+    "tags": ["cpp", "stl", "algorithms", "ranges"],
     "module": "cpp",
     "order": 61,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/字符串处理",
@@ -5386,12 +5395,19 @@
   {
     "slug": "cpp/异常安全",
     "title": "异常安全",
-    "description": "异常安全保证与RAII",
-    "tags": [],
+    "description": "异常安全保证(Exception Safety Guarantees)、RAII、强异常安全事务与异常中立性的完整原理与工程实践",
+    "tags": [
+      "Exception Safety",
+      "RAII",
+      "Strong Exception Guarantee",
+      "Copy-and-Swap",
+      "noexcept",
+      "Transactional Semantics"
+    ],
     "module": "cpp",
     "order": 64,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/多线程与并发",
@@ -5416,22 +5432,43 @@
   {
     "slug": "cpp/变参模板",
     "title": "变参模板",
-    "description": "可变参数模板与折叠表达式",
-    "tags": [],
+    "description": "可变参数模板(Variadic Templates)与折叠表达式(Fold Expressions)的完整原理、实现与工程实践",
+    "tags": [
+      "C++11",
+      "C++17",
+      "Variadic Templates",
+      "Fold Expressions",
+      "Template Metaprogramming",
+      "Parameter Pack"
+    ],
     "module": "cpp",
     "order": 67,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/constexpr与编译期计算",
     "title": "constexpr与编译期计算",
-    "description": "编译期常量与计算",
-    "tags": [],
+    "description": "constexpr/consteval/constinit完整原理、编译期求值模型、立即函数、constexpr if、编译期容器、与模板元编程的关系及工业级应用",
+    "tags": [
+      "constexpr",
+      "consteval",
+      "constinit",
+      "Compile-time",
+      "Constant Expression",
+      "Immediate Function",
+      "constexpr if",
+      "Metaprogramming",
+      "C++11",
+      "C++14",
+      "C++17",
+      "C++20",
+      "C++23"
+    ],
     "module": "cpp",
     "order": 68,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/命名空间与链接",
@@ -5466,12 +5503,12 @@
   {
     "slug": "cpp/C++内存模型",
     "title": "C++内存模型",
-    "description": "C++原子操作与内存序",
+    "description": "C++11 原子操作、内存序、happens-before 关系与无锁编程的工程实践",
     "tags": [],
     "module": "cpp",
     "order": 71,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/C++图形编程",
@@ -5516,12 +5553,12 @@
   {
     "slug": "cpp/C++测试框架",
     "title": "C++测试框架",
-    "description": "Google Test与Catch2",
+    "description": "Google Test、Catch2、doctest 等主流 C++ 测试框架的工程实践与对比",
     "tags": [],
     "module": "cpp",
     "order": 73,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/C++与Rust对比",
@@ -5546,12 +5583,12 @@
   {
     "slug": "cpp/C++性能优化",
     "title": "C++性能优化",
-    "description": "C++性能优化技巧",
+    "description": "C++性能优化的理论、方法、工具与工程实践",
     "tags": [],
     "module": "cpp",
     "order": 75,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/C++序列化",
@@ -5626,12 +5663,12 @@
   {
     "slug": "cpp/C++数学库",
     "title": "C++数学库",
-    "description": "数值计算与数学库",
+    "description": "数值计算、标准数学库与高性能第三方数学库的工程实践",
     "tags": [],
     "module": "cpp",
     "order": 85,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/智能指针",
@@ -5645,13 +5682,13 @@
   },
   {
     "slug": "cpp/C++日期时间",
-    "title": "C++日期时间",
-    "description": "chrono与日期时间处理",
-    "tags": [],
+    "title": "C++ 日期时间",
+    "description": "C++ chrono 库全解：duration、time_point、clock、C++20 日历与时区、C++23 时区数据库、leap second、计时基准、跨平台精度，含类型安全设计、UB 场景与企业级实战。",
+    "tags": ["cpp", "chrono", "datetime", "calendar", "timezone"],
     "module": "cpp",
     "order": 87,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/C++格式化输出",
@@ -5721,27 +5758,36 @@
     "module": "cpp",
     "order": 101,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "cpp/完美转发与引用折叠",
     "title": "完美转发与引用折叠",
-    "description": "C++完美转发与引用折叠详解：std::forward与转发引用。",
+    "description": "C++完美转发与引用折叠详解：std::forward、转发引用、参数包展开与元编程应用。",
     "tags": [],
     "module": "cpp",
     "order": 102,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "cpp/虚函数表与多态内存布局",
     "title": "虚函数表与多态内存布局",
-    "description": "C++虚函数表与多态内存布局详解：vtable、vptr。",
-    "tags": [],
+    "description": "C++虚函数表(vtable)、虚指针(vptr)、多重继承内存布局、RTTI机制与多态实现原理的完整深度解析",
+    "tags": [
+      "Virtual Function",
+      "vtable",
+      "vptr",
+      "Polymorphism",
+      "Memory Layout",
+      "Multiple Inheritance",
+      "RTTI",
+      "ABI"
+    ],
     "module": "cpp",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "cpp/智能指针循环引用",
@@ -5819,12 +5865,12 @@
   {
     "slug": "cpp/C++23新特性",
     "title": "C++23新特性",
-    "description": "C++23新特性详解：std::print、std::flat_map等。",
+    "description": "C++23新特性详解：std::print、std::expected、std::flat_map、deducing this、std::mdspan、std::generator 等。",
     "tags": [],
     "module": "cpp",
     "order": 110,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "cpp/模板",
@@ -5839,12 +5885,12 @@
   {
     "slug": "cpp/内存序与无锁编程",
     "title": "内存序与无锁编程",
-    "description": "C++内存序与无锁编程详解：std::memory_order。",
+    "description": "C++内存序与无锁编程详解：std::memory_order、std::atomic、fence、ABA 问题与无锁数据结构。",
     "tags": [],
     "module": "cpp",
     "order": 111,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "cpp/异常处理与性能优化",
@@ -6454,7 +6500,7 @@
     "module": "csharp",
     "order": 1,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/基础语法",
@@ -6464,47 +6510,47 @@
     "module": "csharp",
     "order": 2,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/面向对象编程",
     "title": "C# 面向对象编程",
-    "description": "类与对象、构造函数、继承、多态、抽象类与接口、属性与索引器、运算符重载、记录类型(record)",
+    "description": "类与对象、构造函数、继承、多态、抽象类与接口、属性与索引器、运算符重载、记录类型(record)、SOLID 原则与设计模式",
     "tags": [],
     "module": "csharp",
     "order": 3,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/泛型与集合",
     "title": "C# 泛型与集合",
-    "description": "泛型类与方法、约束、协变与逆变、List/Dictionary/HashSet/Queue/Stack、LINQ to Objects、迭代器(yield)",
+    "description": "泛型类型系统、约束、协变逆变、List/Dictionary/HashSet/Queue/Stack/PriorityQueue、不可变集合、Frozen 集合、迭代器(yield)、LINQ to Objects、性能模型与生产实践",
     "tags": [],
     "module": "csharp",
     "order": 4,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/异步编程",
     "title": "C# 异步编程",
-    "description": "async/await、Task/ValueTask、ConfigureAwait、并行编程(TPL)、Channel、IAsyncEnumerable、异步流、常见陷阱",
+    "description": "APM/EAP/TAP 演化、async/await 状态机、Task/ValueTask、SynchronizationContext、ConfigureAwait、并行编程(TPL)、Channel、IAsyncEnumerable、异步流、常见陷阱与最佳实践",
     "tags": [],
     "module": "csharp",
     "order": 5,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/LINQ与函数式编程",
     "title": "C# LINQ与函数式编程",
-    "description": "LINQ 查询语法与方法语法、延迟执行、标准查询运算符、PLINQ、表达式树、局部函数、模式匹配进阶",
+    "description": "LINQ 查询语法与方法语法、延迟执行、标准查询运算符、PLINQ、表达式树、局部函数、模式匹配进阶、函数式编程范式、Monad 与函子、范畴论应用",
     "tags": [],
     "module": "csharp",
     "order": 6,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/高级特性",
@@ -6518,13 +6564,13 @@
   },
   {
     "slug": "csharp/NET平台与生态",
-    "title": "C# .NET平台与生态",
-    "description": ".NET Runtime、BCL、NuGet 包管理、依赖注入、配置系统、日志、中间件管道、ASP.NET Core、EF Core、MAUI",
+    "title": "C# .NET 平台与生态",
+    "description": ".NET Runtime、BCL、NuGet 包管理、依赖注入、配置系统、日志、中间件管道、ASP.NET Core、EF Core、MAUI、性能诊断、AOT 编译",
     "tags": [],
     "module": "csharp",
     "order": 8,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/测试与工程化",
@@ -6559,12 +6605,12 @@
   {
     "slug": "csharp/异步编程详解",
     "title": "异步编程详解",
-    "description": "async/await与Task",
+    "description": "C# 异步编程全景解析：APM/EAP/TAP 三代模型、Task/ValueTask、CancellationToken、IAsyncEnumerable、await foreach、Channel、并发协调的深度原理与工程实践。",
     "tags": [],
     "module": "csharp",
     "order": 51,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "csharp/模式匹配",
@@ -6578,13 +6624,13 @@
   },
   {
     "slug": "csharp/记录类型",
-    "title": "记录类型",
-    "description": "record类型与with表达式",
+    "title": "C# 记录类型",
+    "description": "record 与 record struct、位置参数、with 表达式、值相等性、init 访问器、不可变性、Equals/GetHashCode 合约、拷贝语义、序列化、DDD 领域建模、函数式数据流、性能基准",
     "tags": [],
     "module": "csharp",
     "order": 53,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/泛型与协变逆变",
@@ -6599,12 +6645,12 @@
   {
     "slug": "csharp/Span与Memory",
     "title": "Span与Memory",
-    "description": "零分配内存操作",
+    "description": ".NET 零分配内存操作全景解析：Span<T>/ReadOnlySpan<T>/Memory<T> 的 ref struct 约束、stackalloc、切片运算、零拷贝、MemoryMarshal、ArrayPool<T>、MemoryManager<T> 的深度原理与工程实践。",
     "tags": [],
     "module": "csharp",
     "order": 55,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "csharp/源生成器",
@@ -6639,22 +6685,22 @@
   {
     "slug": "csharp/CSharp与MAUI",
     "title": "C#与MAUI",
-    "description": ".NET MAUI跨平台开发",
+    "description": ".NET MAUI 跨平台应用开发：架构原理、XAML、数据绑定、平台特定代码、原生 API 互操作、性能优化、部署发布全流程",
     "tags": [],
     "module": "csharp",
     "order": 59,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/CSharp与EF Core",
     "title": "C#与EF Core",
-    "description": "Entity Framework Core",
+    "description": "Entity Framework Core ORM 框架：DbContext、实体映射、查询、迁移、并发控制、性能优化、架构模式与生产实践",
     "tags": [],
     "module": "csharp",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "csharp/CSharp与依赖注入",
@@ -6699,22 +6745,22 @@
   {
     "slug": "csharp/LINQ延迟与立即执行",
     "title": "LINQ延迟与立即执行",
-    "description": "C# LINQ延迟执行与立即执行详解。",
+    "description": "C# LINQ 延迟执行与立即执行深度解析：IEnumerable<T>、IQueryable<T>、表达式树、yield return、迭代器状态机、ToList/ToArray 强制求值的全链路原理。",
     "tags": [],
     "module": "csharp",
     "order": 100,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "csharp/async-await状态机",
     "title": "async-await状态机",
-    "description": "C# async/await状态机生成原理详解。",
+    "description": "C# async/await 状态机生成原理详解：从编译器转换到 AsyncMethodBuilder、IAsyncStateMachine、MoveNext、SynchronizationContext 与 ConfigureAwait 的全链路剖析。",
     "tags": [],
     "module": "csharp",
     "order": 101,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "csharp/委托与事件底层原理",
@@ -6769,12 +6815,12 @@
   {
     "slug": "csharp/GC代机制",
     "title": "GC代机制",
-    "description": ".NET GC代机制详解：Generation 0/1/2。",
+    "description": ".NET GC 分代回收机制深度解析：Generation 0/1/2、SOH/LOH/POH、标记清除与压缩、固定对象、GCHandle、Server GC vs Workstation GC、GC 通知与调优的全链路原理。",
     "tags": [],
     "module": "csharp",
     "order": 107,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "csharp/值类型与引用类型",
@@ -6859,7 +6905,7 @@
   {
     "slug": "css/优先级计算",
     "title": "优先级计算",
-    "description": "权重规则",
+    "description": "深入解析 CSS 优先级（Specificity）与层叠算法（Cascade Algorithm）的规范、计算、工程实践与跨框架对比",
     "tags": [],
     "module": "css",
     "order": 51,
@@ -6879,7 +6925,7 @@
   {
     "slug": "css/margin合并与塌陷",
     "title": "margin合并与塌陷",
-    "description": "margin合并与塌陷",
+    "description": "深入解析 CSS margin 合并、塌陷机制及 BFC 块格式化上下文的工程实践",
     "tags": [],
     "module": "css",
     "order": 53,
@@ -6919,7 +6965,7 @@
   {
     "slug": "css/渐变",
     "title": "渐变",
-    "description": "linear-gradient、radial-gradient、conic-gradient",
+    "description": "深入解析 CSS 渐变（linear-gradient、radial-gradient、conic-gradient）的规范、几何算法、颜色插值与工程实践",
     "tags": [],
     "module": "css",
     "order": 57,
@@ -6939,7 +6985,7 @@
   {
     "slug": "css/背景增强",
     "title": "背景增强",
-    "description": "多背景、background-size、background-clip、background-origin",
+    "description": "深入解析 CSS Backgrounds Module Level 3/4 多背景、background-size、background-clip、background-origin、background-attachment 的规范、绘制算法与工程实践",
     "tags": [],
     "module": "css",
     "order": 59,
@@ -6989,7 +7035,7 @@
   {
     "slug": "css/容器查询",
     "title": "容器查询",
-    "description": "@container",
+    "description": "深入解析 CSS Container Queries 容器查询的规范、算法、工程实践与跨浏览器兼容性",
     "tags": [],
     "module": "css",
     "order": 62,
@@ -10039,7 +10085,7 @@
   {
     "slug": "go/切片原理",
     "title": "切片原理",
-    "description": "Go切片底层实现与扩容",
+    "description": "Go 切片底层实现、SliceHeader 结构、扩容算法、内存布局、GC 交互与工程级最佳实践",
     "tags": [],
     "module": "go",
     "order": 50,
@@ -10079,12 +10125,12 @@
   {
     "slug": "go/反射",
     "title": "反射",
-    "description": "reflect包详解",
-    "tags": [],
+    "description": "reflect包深度剖析：Type/Value/Kind 三大核心、动态调用、性能优化、反射元编程、生产级应用与陷阱",
+    "tags": ["reflection", "reflect", "metaprogramming", "dynamic-dispatch", "type-system"],
     "module": "go",
     "order": 52,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "go/内存对齐",
@@ -10159,7 +10205,7 @@
   {
     "slug": "go/Go与Kubernetes",
     "title": "Go与Kubernetes",
-    "description": "client-go与K8s开发",
+    "description": "client-go 与 Kubernetes 开发：Informer 机制、Controller 模式、CRD、Operator、Workqueue 与生产级最佳实践",
     "tags": [],
     "module": "go",
     "order": 64,
@@ -10169,7 +10215,7 @@
   {
     "slug": "go/Go与Docker",
     "title": "Go与Docker",
-    "description": "容器化部署",
+    "description": "Go 与 Docker 容器化：镜像分层、多阶段构建、scratch/distroless 镜像、CGO 静态编译、BuildKit、镜像安全与生产级最佳实践",
     "tags": [],
     "module": "go",
     "order": 65,
@@ -10229,7 +10275,7 @@
   {
     "slug": "go/Go与Fuzzing",
     "title": "Go与Fuzzing",
-    "description": "模糊测试",
+    "description": "Go 1.18+ 原生 Fuzzing 框架：覆盖率引导、变异引擎、语料库管理与生产级实战",
     "tags": [],
     "module": "go",
     "order": 70,
@@ -10249,7 +10295,7 @@
   {
     "slug": "go/Go与Wasm",
     "title": "Go与Wasm",
-    "description": "WebAssembly开发",
+    "description": "Go 与 WebAssembly：Wasm 字节码、栈式虚拟机、syscall/js 桥接、WASI、TinyGo 与浏览器端企业级应用",
     "tags": [],
     "module": "go",
     "order": 72,
@@ -10259,12 +10305,21 @@
   {
     "slug": "go/Go与代码生成",
     "title": "Go与代码生成",
-    "description": "go generate与代码生成",
-    "tags": [],
+    "description": "go generate与代码生成：Stringer、mockgen、sqlc、protobuf、wire 等工具与 AST 解析",
+    "tags": [
+      "code-generation",
+      "go-generate",
+      "ast",
+      "stringer",
+      "mockgen",
+      "sqlc",
+      "protobuf",
+      "wire"
+    ],
     "module": "go",
     "order": 73,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "go/Go与依赖注入",
@@ -10319,7 +10374,7 @@
   {
     "slug": "go/Go与文件监控",
     "title": "Go与文件监控",
-    "description": "fsnotify包",
+    "description": "Go 与文件监控：fsnotify、inotify/kqueue/ReadDirectoryChangesW 跨平台机制、事件去重、递归监听、热重载与生产级最佳实践",
     "tags": [],
     "module": "go",
     "order": 79,
@@ -10329,17 +10384,17 @@
   {
     "slug": "go/Go与时间",
     "title": "Go与时间",
-    "description": "time包详解",
-    "tags": [],
+    "description": "time包深度剖析：Time/Duration/Location 三大核心、单调时钟、时区处理、定时器、Ticker、性能优化与陷阱",
+    "tags": ["time", "monotonic-clock", "timezone", "timer", "ticker", "duration"],
     "module": "go",
     "order": 80,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "go/Go与正则表达式",
     "title": "Go与正则表达式",
-    "description": "regexp包详解",
+    "description": "Go 与正则表达式：regexp 包、RE2 语法、Thompson NFA 构造、Pike VM 算法、线性时间复杂度证明、跨引擎对比、性能优化、Unicode 支持与生产级最佳实践",
     "tags": [],
     "module": "go",
     "order": 81,
@@ -10349,7 +10404,7 @@
   {
     "slug": "go/Go与信号处理",
     "title": "Go与信号处理",
-    "description": "os/signal与优雅关闭",
+    "description": "os/signal 与 syscall：从 POSIX 信号到 Go 优雅关闭的工程实践",
     "tags": [],
     "module": "go",
     "order": 82,
@@ -10359,7 +10414,7 @@
   {
     "slug": "go/Go与性能分析",
     "title": "Go与性能分析",
-    "description": "pprof与性能调优",
+    "description": "Go pprof 与性能调优：CPU/堆/Goroutine/锁/阻塞采样、trace、火焰图、连续性能剖析与生产级调优实战",
     "tags": [],
     "module": "go",
     "order": 83,
@@ -10399,7 +10454,7 @@
   {
     "slug": "go/Go与中间件",
     "title": "Go与中间件",
-    "description": "HTTP中间件模式",
+    "description": "Go HTTP 中间件：Handler/HandlerFunc 接口、洋葱模型、Chain 组合律、context 传播、企业级网关实战",
     "tags": [],
     "module": "go",
     "order": 87,
@@ -10419,12 +10474,21 @@
   {
     "slug": "go/Go与限流",
     "title": "Go与限流",
-    "description": "限流与熔断",
-    "tags": [],
+    "description": "Go限流与熔断详解：令牌桶、漏桶、滑动窗口、分布式限流、熔断器、自适应限流与工程实践",
+    "tags": [
+      "rate-limiting",
+      "token-bucket",
+      "sliding-window",
+      "circuit-breaker",
+      "gobreaker",
+      "semaphore",
+      "redis",
+      "adaptive"
+    ],
     "module": "go",
     "order": 89,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "go/goroutine与channel通信原理",
@@ -10470,11 +10534,18 @@
     "slug": "go/内存逃逸分析",
     "title": "内存逃逸分析",
     "description": "Go内存逃逸分析详解：go build -gcflags=\"-m\"。",
-    "tags": [],
+    "tags": [
+      "escape-analysis",
+      "gc",
+      "stack-allocation",
+      "heap-allocation",
+      "performance",
+      "gcflags"
+    ],
     "module": "go",
     "order": 104,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "go/垃圾回收与GC调优",
@@ -10579,22 +10650,22 @@
   {
     "slug": "harmonyos/ArkTS语言特性",
     "title": "ArkTS语言特性",
-    "description": "ArkTS扩展语法与限制",
+    "description": "ArkTS 语言特性深度剖析：TypeScript 超集设计、声明式 UI 范式、状态驱动响应式系统、静态约束与运行时优化、AOT 编译与跨端协同。",
     "tags": [],
     "module": "harmonyos",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/状态管理",
     "title": "状态管理",
-    "description": "@State/@Prop/@Link等装饰器",
+    "description": "HarmonyOS ArkUI 状态管理系统深度剖析：@State/@Prop/@Link/@Provide/@Consume/@ObjectLink/@Watch/@StorageLink 全装饰器矩阵、响应式系统形式化语义、性能模型、跨组件数据流、不可变更新与可变更新的边界。",
     "tags": [],
     "module": "harmonyos",
     "order": 51,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/自定义组件",
@@ -10629,12 +10700,12 @@
   {
     "slug": "harmonyos/网络请求",
     "title": "网络请求",
-    "description": "HTTP请求与数据获取",
+    "description": "HTTP 协议、TCP/IP 栈、WebSocket、RESTful API、缓存与重试机制的形式化理论与工程实践",
     "tags": [],
     "module": "harmonyos",
     "order": 55,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/数据持久化",
@@ -10709,12 +10780,12 @@
   {
     "slug": "harmonyos/分布式能力",
     "title": "分布式能力",
-    "description": "跨设备协同与迁移",
+    "description": "跨设备协同、任务迁移与分布式数据同步的形式化理论与工程实践",
     "tags": [],
     "module": "harmonyos",
     "order": 64,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/性能优化",
@@ -10729,22 +10800,22 @@
   {
     "slug": "harmonyos/国际化与无障碍",
     "title": "国际化与无障碍",
-    "description": "多语言与无障碍支持",
+    "description": "多语言适配、文化感知、无障碍 API 的形式化理论与工程实践",
     "tags": [],
     "module": "harmonyos",
     "order": 67,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/测试与调试",
     "title": "测试与调试",
-    "description": "单元测试与调试技巧",
+    "description": "单元测试、UI 测试、断言理论、调试器原理与性能剖析的形式化方法与工程实践",
     "tags": [],
     "module": "harmonyos",
     "order": 68,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "harmonyos/应用签名与发布",
@@ -10779,7 +10850,7 @@
   {
     "slug": "harmonyos/ArkUI声明式语法",
     "title": "ArkUI声明式语法",
-    "description": "HarmonyOS ArkUI声明式语法详解：@Component、@Entry、@State、@Prop、@Link。",
+    "description": "HarmonyOS ArkUI声明式语法详解:@Component、@Entry、@State、@Prop、@Link。",
     "tags": [],
     "module": "harmonyos",
     "order": 102,
@@ -11364,7 +11435,7 @@
     "module": "java",
     "order": 20,
     "difficulty": "beginner",
-    "updated": "2026-05-03"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/程序结构与基本语法",
@@ -11400,17 +11471,7 @@
     "slug": "java/枚举与注解",
     "title": "枚举与注解",
     "description": "Java 枚举类型与注解系统的形式化定义、源码生成机制、注解处理器工作原理、与 C#/Kotlin/Scala 对比及工程实践",
-    "tags": [
-      "java",
-      "enum",
-      "annotation",
-      "typesafe-enum",
-      "jsr-175",
-      "jsr-201",
-      "annotation-processor",
-      "reflection",
-      "metadata"
-    ],
+    "tags": [],
     "module": "java",
     "order": 50,
     "difficulty": "intermediate",
@@ -11420,18 +11481,7 @@
     "slug": "java/泛型进阶",
     "title": "泛型进阶",
     "description": "Java 泛型进阶——类型擦除机制、通配符语义、边界约束、桥接方法与 Project Valhalla 演进的形式化定义、理论推导与工程实践",
-    "tags": [
-      "java",
-      "generics",
-      "type-erasure",
-      "wildcards",
-      "pecs",
-      "type-inference",
-      "project-valhalla",
-      "bounded-type-parameters",
-      "bridge-methods",
-      "heap-pollution"
-    ],
+    "tags": [],
     "module": "java",
     "order": 51,
     "difficulty": "advanced",
@@ -11460,12 +11510,21 @@
   {
     "slug": "java/JVM类加载机制",
     "title": "JVM类加载机制",
-    "description": "类加载器与双亲委派",
-    "tags": [],
+    "description": "类加载器、双亲委派模型、字节码增强与模块化类加载的系统性深度剖析",
+    "tags": [
+      "Java",
+      "JVM",
+      "ClassLoader",
+      "ParentDelegation",
+      "Bytecode",
+      "HotSwap",
+      "JPMS",
+      "JavaAgent"
+    ],
     "module": "java",
     "order": 54,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/JVM垃圾回收",
@@ -11480,12 +11539,12 @@
   {
     "slug": "java/Java反射",
     "title": "Java反射",
-    "description": "反射API与动态代理",
-    "tags": [],
+    "description": "反射API、动态代理、MethodHandle与字节码层面原理",
+    "tags": ["Java", "Reflection", "动态代理", "MethodHandle", "字节码", "JVM"],
     "module": "java",
     "order": 57,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java序列化",
@@ -11500,22 +11559,32 @@
   {
     "slug": "java/JavaIO与NIO",
     "title": "JavaIO与NIO",
-    "description": "BIO、NIO与AIO",
-    "tags": [],
+    "description": "BIO、NIO、AIO、零拷贝、Reactor模式与字节码层面原理",
+    "tags": ["Java", "IO", "NIO", "AIO", "零拷贝", "Reactor", "epoll", "字符编码"],
     "module": "java",
     "order": 59,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java新特性",
     "title": "Java新特性",
-    "description": "Java 17-21新特性",
-    "tags": [],
+    "description": "Java 8 至 21 现代语言特性、API 演进与 JVM 改进全景式深度解析",
+    "tags": [
+      "Java",
+      "Java17",
+      "Java21",
+      "LTS",
+      "Record",
+      "SealedClass",
+      "PatternMatching",
+      "VirtualThread",
+      "JEP"
+    ],
     "module": "java",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/运算符与表达式",
@@ -11529,13 +11598,13 @@
   },
   {
     "slug": "java/Spring基础",
-    "title": "Spring基础",
-    "description": "Spring框架核心概念",
-    "tags": [],
+    "title": "Spring 基础：IoC 容器、AOP、Bean 生命周期与企业级开发核心",
+    "description": "系统阐述 Spring 框架的 IoC 容器、AOP、Bean 生命周期、依赖注入、事务管理、Spring MVC 与 Spring Boot 核心机制。",
+    "tags": ["java", "spring", "ioc", "aop", "bean", "framework"],
     "module": "java",
     "order": 61,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/SpringBoot进阶",
@@ -11560,12 +11629,23 @@
   {
     "slug": "java/SpringBoot数据访问",
     "title": "SpringBoot数据访问",
-    "description": "JPA、MyBatis与数据访问",
-    "tags": [],
+    "description": "Spring Data JPA、MyBatis、R2DBC、JdbcTemplate 与事务、缓存、连接池的系统性深度剖析",
+    "tags": [
+      "Java",
+      "SpringBoot",
+      "JPA",
+      "MyBatis",
+      "R2DBC",
+      "JdbcTemplate",
+      "Hibernate",
+      "Transaction",
+      "HikariCP",
+      "Redis"
+    ],
     "module": "java",
     "order": 64,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java设计模式",
@@ -11580,52 +11660,57 @@
   {
     "slug": "java/Java函数式编程",
     "title": "Java函数式编程",
-    "description": "Lambda、Stream与函数式接口",
-    "tags": [],
+    "description": "Lambda、Stream、函数式接口与函数式编程范式的系统性深度剖析",
+    "tags": [
+      "Java",
+      "FunctionalProgramming",
+      "Lambda",
+      "Stream",
+      "FunctionalInterface",
+      "Monoid",
+      "HigherOrderFunction",
+      "PureFunction"
+    ],
     "module": "java",
     "order": 66,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java网络编程",
     "title": "Java网络编程",
     "description": "Socket与HTTP客户端",
-    "tags": [],
+    "tags": ["java", "network", "socket", "http", "netty"],
     "module": "java",
     "order": 67,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java日志系统",
     "title": "Java日志系统",
-    "description": "SLF4J、Logback与日志框架",
-    "tags": [],
+    "description": "SLF4J、Logback、Log4j 2、JUL 与结构化日志的全景式深度解析",
+    "tags": [
+      "Java",
+      "Logging",
+      "SLF4J",
+      "Logback",
+      "Log4j2",
+      "JUL",
+      "MDC",
+      "结构化日志",
+      "可观测性"
+    ],
     "module": "java",
     "order": 68,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java单元测试",
     "title": "Java单元测试",
     "description": "JUnit 5 Jupiter API、Mockito 桩件框架、AssertJ 流式断言、Spring Boot Test 测试切片、Testcontainers 集成测试、JMH 微基准测试与 TDD/BDD 工程实践",
-    "tags": [
-      "java",
-      "junit",
-      "jupiter",
-      "mockito",
-      "testng",
-      "assertj",
-      "tdd",
-      "bdd",
-      "spring-boot-test",
-      "testcontainers",
-      "jmh",
-      "parameterized-test",
-      "extension-model"
-    ],
+    "tags": [],
     "module": "java",
     "order": 69,
     "difficulty": "advanced",
@@ -11665,11 +11750,11 @@
     "slug": "java/Java与消息队列",
     "title": "Java与消息队列",
     "description": "Kafka与RabbitMQ集成",
-    "tags": [],
+    "tags": ["java", "mq", "kafka", "rabbitmq", "messaging"],
     "module": "java",
     "order": 72,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java与Redis",
@@ -11744,12 +11829,21 @@
   {
     "slug": "java/Java与响应式编程",
     "title": "Java与响应式编程",
-    "description": "Project Reactor与WebFlux",
-    "tags": [],
+    "description": "Reactive Streams 规范、Project Reactor、Spring WebFlux 与响应式系统设计的系统性深度剖析",
+    "tags": [
+      "Java",
+      "Reactive",
+      "ReactiveStreams",
+      "ProjectReactor",
+      "WebFlux",
+      "RxJava",
+      "Backpressure",
+      "RSocket"
+    ],
     "module": "java",
     "order": 80,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/方法详解",
@@ -11764,22 +11858,40 @@
   {
     "slug": "java/Java与虚拟线程",
     "title": "Java与虚拟线程",
-    "description": "Project Loom虚拟线程",
-    "tags": [],
+    "description": "Project Loom 虚拟线程、结构化并发、Continuation 机制与性能调优全景式深度解析",
+    "tags": [
+      "Java",
+      "VirtualThread",
+      "ProjectLoom",
+      "结构化并发",
+      "Continuation",
+      "并发编程",
+      "JVM",
+      "Java21"
+    ],
     "module": "java",
     "order": 81,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java与GraalVM",
     "title": "Java与GraalVM",
-    "description": "GraalVM原生镜像",
-    "tags": [],
+    "description": "GraalVM、Native Image、SubstrateVM、Truffle 框架与云原生 Java 的系统性深度剖析",
+    "tags": [
+      "Java",
+      "GraalVM",
+      "NativeImage",
+      "AOT",
+      "CloudNative",
+      "Serverless",
+      "SubstrateVM",
+      "Truffle"
+    ],
     "module": "java",
     "order": 82,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java与Kubernetes",
@@ -11824,12 +11936,12 @@
   {
     "slug": "java/Java与数据库连接",
     "title": "Java与数据库连接",
-    "description": "JDBC与连接池",
-    "tags": [],
+    "description": "JDBC 规范、连接池原理、事务管理、ORM 框架与高性能数据库访问最佳实践。",
+    "tags": ["java", "jdbc", "database", "connection-pool", "transaction"],
     "module": "java",
     "order": 87,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Java新特性与生态",
@@ -11854,12 +11966,12 @@
   {
     "slug": "java/JVM调优",
     "title": "JVM调优",
-    "description": "JVM调优详解：堆参数、GC日志、MAT分析。",
+    "description": "JVM调优详解：堆参数、GC日志、MAT分析、G1/ZGC调优、生产级性能工程。",
     "tags": [],
     "module": "java",
     "order": 100,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/集合框架详解",
@@ -11874,12 +11986,12 @@
   {
     "slug": "java/并发编程详解",
     "title": "并发编程详解",
-    "description": "Java并发编程详解：synchronized、Lock、AQS、原子类、线程池。",
+    "description": "Java 并发编程详解：JMM 形式化、synchronized 锁升级、AQS 原理、CAS、原子类、线程池、CompletableFuture、虚拟线程。",
     "tags": [],
     "module": "java",
     "order": 101,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/CompletableFuture异步编排",
@@ -11908,18 +12020,7 @@
     "slug": "java/ThreadLocal内存泄漏",
     "title": "ThreadLocal内存泄漏",
     "description": "Java ThreadLocal 内存泄漏的可达性分析、弱引用 Key 设计、线程池复用场景、Scoped Values（JEP 446）演进与生产级防御方案",
-    "tags": [
-      "java",
-      "threadlocal",
-      "memory-leak",
-      "weak-reference",
-      "garbage-collection",
-      "thread-pool",
-      "scoped-values",
-      "jep-446",
-      "concurrency",
-      "jvm"
-    ],
+    "tags": [],
     "module": "java",
     "order": 103,
     "difficulty": "advanced",
@@ -11928,12 +12029,12 @@
   {
     "slug": "java/反射与动态代理",
     "title": "反射与动态代理",
-    "description": "Java反射与动态代理详解：JDK Proxy、CGLib。",
+    "description": "Java反射与动态代理详解：JVM规范、Class文件结构、JDK Proxy、CGLib、MethodHandle、Spring AOP 原理。",
     "tags": [],
     "module": "java",
     "order": 104,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/注解处理器",
@@ -11943,7 +12044,7 @@
     "module": "java",
     "order": 105,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "java/分代ZGC详解",
@@ -12018,12 +12119,12 @@
   {
     "slug": "java/JVM内存模型",
     "title": "JVM 内存模型",
-    "description": "运行时数据区、垃圾回收算法与内存调优。",
+    "description": "JVM 内存模型深度解析：运行时数据区、JMM 形式化、分代 GC 算法、对象内存布局、现代收集器（G1/ZGC/Shenandoah）、内存调优与生产案例。",
     "tags": ["java", "memory"],
     "module": "java",
     "order": 170,
     "difficulty": "advanced",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/Lambda与函数式编程",
@@ -12048,12 +12149,12 @@
   {
     "slug": "java/SpringBoot学习笔记",
     "title": "Spring Boot 学习笔记",
-    "description": "Spring Boot 核心特性、自动配置与快速开发。",
+    "description": "Spring Boot 深度指南：自动配置原理、起步依赖、Actuator、Spring Data JPA、Spring Security、Spring Cloud 与生产级工程实践。",
     "tags": ["java"],
     "module": "java",
     "order": 180,
     "difficulty": "intermediate",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "java/网络编程",
@@ -12097,12 +12198,12 @@
   },
   {
     "slug": "java/理论知识点",
-    "title": "Java 理论知识点",
-    "description": "JVM 原理、类加载机制与内存管理核心知识。",
-    "tags": ["java", "theory", "performance"],
+    "title": "Java 理论知识点：JVM 原理、类加载机制与内存管理",
+    "description": "系统阐述 JVM 架构、类加载机制、内存模型、垃圾回收算法与性能调优核心知识。",
+    "tags": ["java", "theory", "performance", "jvm", "gc", "classloader"],
     "module": "java",
     "order": 220,
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "updated": ""
   },
   {
@@ -12148,12 +12249,12 @@
   {
     "slug": "javascript/控制流",
     "title": "控制流",
-    "description": "条件判断、循环结构与迭代方法。",
-    "tags": ["javascript"],
+    "description": "JavaScript 控制流的数学语义、形式化推导、工程实践与反模式：条件分支、循环结构、迭代器协议、短路求值、异常控制流的完整剖析。",
+    "tags": ["javascript", "control-flow"],
     "module": "javascript",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/高阶函数",
@@ -12163,7 +12264,7 @@
     "module": "javascript",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/递归与尾调用优化",
@@ -12272,12 +12373,12 @@
   {
     "slug": "javascript/断言",
     "title": "断言",
-    "description": "正则表达式先行与后行断言",
+    "description": "正则表达式先行断言（Lookahead）与后行断言（Lookbehind）的形式化理论、自动机基础、V8/SpiderMonkey 实现细节与企业级文本处理实践，对标 MIT 6.004 计算理论课程水准。",
     "tags": [],
     "module": "javascript",
     "order": 58,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/Unicode属性转义",
@@ -12292,12 +12393,12 @@
   {
     "slug": "javascript/函数-作用域与闭包",
     "title": "函数、作用域与闭包",
-    "description": "函数声明、箭头函数、作用域链与闭包原理。",
+    "description": "函数声明、箭头函数、作用域链、闭包原理、this 绑定机制、高阶函数、柯里化、尾调用优化的形式化定义与工程实践。",
     "tags": ["javascript", "functional"],
     "module": "javascript",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/自定义Error",
@@ -12403,7 +12504,7 @@
     "module": "javascript",
     "order": 66,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/Promise构造器",
@@ -12432,7 +12533,7 @@
     "module": "javascript",
     "order": 68,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "javascript/对象与数组",
@@ -12462,7 +12563,7 @@
     "module": "javascript",
     "order": 90,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/模块化",
@@ -12487,12 +12588,12 @@
   {
     "slug": "javascript/闭包的内存泄露与优化",
     "title": "闭包的内存泄露与优化",
-    "description": "JavaScript闭包导致的内存泄露原理、检测方法与优化策略。",
+    "description": "JavaScript 闭包导致的内存泄露原理、形式化建模、检测方法与工程级优化策略，对标 V8 引擎实现与现代前端框架实践。",
     "tags": [],
     "module": "javascript",
     "order": 100,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/原型链继承与class本质",
@@ -12537,12 +12638,12 @@
   {
     "slug": "javascript/ES6+新特性",
     "title": "ES6+ 新特性",
-    "description": "ES6至ES2024重要新特性：解构赋值、展开运算符、Symbol、Proxy、可选链、空值合并等详解。",
+    "description": "ES6 至 ES2024 重要新特性的形式化定义、工程实践与生产案例：解构赋值、展开运算符、Symbol、Proxy、可选链、空值合并、Records & Tuples、装饰器、模式匹配的完整剖析。",
     "tags": ["javascript", "es6"],
     "module": "javascript",
     "order": 105,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/深拷贝与浅拷贝",
@@ -12557,12 +12658,12 @@
   {
     "slug": "javascript/防抖与节流",
     "title": "防抖与节流",
-    "description": "JavaScript防抖（debounce）与节流（throttle）详解：原理、实现与实际应用。",
+    "description": "JavaScript 防抖（debounce）与节流（throttle）的形式化定义、速率限制理论、事件流调度算法、Lodash/VueUse/React Hooks 实现剖析与企业级性能优化实践，对标 MIT 6.831 用户界面工程与 CMU 17-445 软件工程课程水准。",
     "tags": [],
     "module": "javascript",
     "order": 106,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/数组高阶方法",
@@ -12577,22 +12678,22 @@
   {
     "slug": "javascript/Proxy与Reflect实际应用",
     "title": "Proxy与Reflect实际应用",
-    "description": "JavaScript Proxy与Reflect实际应用场景：响应式系统、验证、缓存、日志。",
+    "description": "JavaScript 元编程双壁 Proxy 与 Reflect 的形式化语义、陷阱（Trap）体系、Vue3 响应式实现、Immer/MobX/Solid 对比、企业级验证/缓存/日志/RPC 代理实践，对标 MIT 6.831 与 CMU 17-445 软件工程课程水准。",
     "tags": [],
     "module": "javascript",
     "order": 108,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/模块动态导入与代码分割",
     "title": "模块动态导入与代码分割",
-    "description": "JavaScript模块动态导入import()与代码分割策略详解。",
+    "description": "JavaScript 模块动态导入 import() 与代码分割策略深度剖析，涵盖 ES2020 规范、V8 模块图、Webpack/Vite/Rollup 实现细节与企业级性能优化。",
     "tags": [],
     "module": "javascript",
     "order": 109,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/原型与继承",
@@ -12637,22 +12738,22 @@
   {
     "slug": "javascript/Web API与浏览器接口",
     "title": "Web API 与浏览器接口",
-    "description": "浏览器Web API详解：Fetch、Storage、IntersectionObserver、Web Workers、Geolocation等常用接口。",
+    "description": "浏览器 Web API 详解：Fetch、Storage、IntersectionObserver、Web Workers、Geolocation、Broadcast Channel、ResizeObserver 等常用接口的形式化定义、工程实践与性能优化。",
     "tags": ["javascript", "web-api"],
     "module": "javascript",
     "order": 120,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/调试与性能优化",
     "title": "调试与性能优化",
-    "description": "浏览器 DevTools、性能分析与内存泄漏排查。",
-    "tags": ["javascript", "performance"],
+    "description": "浏览器 DevTools、性能分析模型、内存泄漏排查、火焰图解读、Core Web Vitals 治理与生产级性能优化实践的形式化定义与工程指南。",
+    "tags": ["javascript", "performance", "debugging"],
     "module": "javascript",
     "order": 120,
     "difficulty": "advanced",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/典型项目实战",
@@ -12672,7 +12773,7 @@
     "module": "javascript",
     "order": 140,
     "difficulty": "advanced",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "javascript/项目示例-待办事项应用",
@@ -12705,12 +12806,12 @@
   {
     "slug": "kotlin/概述与环境配置",
     "title": "Kotlin 概述与环境配置",
-    "description": "Kotlin 语言概述、发展历史、与 Java 的关系、多平台支持与环境搭建。",
+    "description": "Kotlin 语言概述、发展历史、设计哲学、与 Java 的关系、多平台支持、环境搭建与第一批可运行程序。对标 MIT 6.005、Stanford CS193P、CMU 15-214 教学水准。",
     "tags": [],
     "module": "kotlin",
     "order": 10,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/基础语法",
@@ -12815,72 +12916,72 @@
   {
     "slug": "kotlin/空安全详解",
     "title": "空安全详解",
-    "description": "Kotlin空安全与智能转换",
+    "description": "Kotlin 空安全深度解析：可空类型、智能转换、平台类型、lateinit、Elvis 运算符的形式化定义、字节码实现与企业级工程实践。",
     "tags": [],
     "module": "kotlin",
     "order": 50,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/密封类与代数数据类型",
     "title": "密封类与代数数据类型",
-    "description": "密封类与when穷举",
+    "description": "密封类、密封接口与代数数据类型（ADT）的原理、形式化与实践",
     "tags": [],
     "module": "kotlin",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/委托属性",
     "title": "委托属性",
-    "description": "委托属性与标准委托",
+    "description": "Kotlin 委托属性深度解析：lazy、observable、vetoable、map 委托、provideDelegate 的设计哲学、形式化定义、字节码实现与企业级工程实践。",
     "tags": [],
     "module": "kotlin",
     "order": 53,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/扩展函数",
     "title": "扩展函数",
-    "description": "扩展函数与扩展属性",
+    "description": "Kotlin 扩展函数与扩展属性的原理、形式化语义、工程实践与陷阱分析",
     "tags": [],
     "module": "kotlin",
     "order": 53,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/协程基础",
     "title": "协程基础",
-    "description": "Kotlin协程入门",
+    "description": "Kotlin 协程基础深度解析：suspend 函数、CoroutineScope、Job、Deferred、launch/async/runBlocking、结构化并发、Continuation 状态机原理。对标 MIT 6.005、Stanford CS193P、CMU 15-440 教学水准。",
     "tags": [],
     "module": "kotlin",
     "order": 54,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Flow与响应式流",
     "title": "Flow与响应式流",
-    "description": "Kotlin Flow与Channel",
+    "description": "Kotlin Flow与Channel及响应式流规范深度剖析",
     "tags": [],
     "module": "kotlin",
     "order": 55,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin作用域函数",
     "title": "Kotlin作用域函数",
-    "description": "let、run、with、apply、also",
+    "description": "let、run、with、apply、also 五大作用域函数深度剖析",
     "tags": [],
     "module": "kotlin",
     "order": 55,
     "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin集合操作",
@@ -12895,22 +12996,22 @@
   {
     "slug": "kotlin/Kotlin内联类",
     "title": "Kotlin内联类",
-    "description": "value class与内联优化",
+    "description": "value class 与内联优化的编译原理与工程实践",
     "tags": [],
     "module": "kotlin",
     "order": 58,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin契约",
-    "title": "Kotlin契约",
-    "description": "契约与编译器提示",
+    "title": "Kotlin 契约（Contracts）",
+    "description": "Kotlin 契约机制的形式化语义、编译器交互、效果系统与工程实践",
     "tags": [],
     "module": "kotlin",
     "order": 59,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与DSL",
@@ -12925,12 +13026,12 @@
   {
     "slug": "kotlin/Kotlin序列化",
     "title": "Kotlin序列化",
-    "description": "kotlinx.serialization",
+    "description": "kotlinx.serialization 的核心原理、工程实践与性能优化",
     "tags": [],
     "module": "kotlin",
     "order": 61,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与Android",
@@ -12955,12 +13056,12 @@
   {
     "slug": "kotlin/Kotlin类型系统",
     "title": "Kotlin类型系统",
-    "description": "泛型、型变与星投影",
+    "description": "Kotlin 类型系统深度解析：泛型、型变（协变 out / 逆变 in / 不变）、星投影、类型擦除、reified 类型参数、上下界约束、declaration-site 与 use-site variance 的形式化定义、编译器实现与企业级工程实践。对标 MIT 6.005、Stanford CS193P、CMU 15-312 教学水准。",
     "tags": [],
     "module": "kotlin",
     "order": 64,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与Compose",
@@ -13035,12 +13136,12 @@
   {
     "slug": "kotlin/Kotlin与编译器插件",
     "title": "Kotlin与编译器插件",
-    "description": "kapt、KSP与编译器插件",
+    "description": "kapt、KSP与编译器插件的原理、工程实践与性能优化",
     "tags": [],
     "module": "kotlin",
     "order": 74,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与Gradle",
@@ -13065,12 +13166,12 @@
   {
     "slug": "kotlin/Kotlin与Benchmark",
     "title": "Kotlin与Benchmark",
-    "description": "Kotlin性能基准测试",
+    "description": "基于 JMH 与 kotlinx-benchmark 的 Kotlin 性能基准测试方法论、工程实践与陷阱分析",
     "tags": [],
     "module": "kotlin",
     "order": 77,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与IO",
@@ -13084,13 +13185,13 @@
   },
   {
     "slug": "kotlin/Kotlin与正则",
-    "title": "Kotlin与正则",
-    "description": "Kotlin正则表达式",
+    "title": "Kotlin 与正则表达式",
+    "description": "Kotlin 正则表达式的形式化语义、JDK 集成、性能优化与工程实践",
     "tags": [],
     "module": "kotlin",
     "order": 79,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与时间",
@@ -13105,12 +13206,12 @@
   {
     "slug": "kotlin/Kotlin与并发安全",
     "title": "Kotlin与并发安全",
-    "description": "协程并发与线程安全",
+    "description": "Kotlin 并发安全深度解析：共享可变状态、数据竞争、Mutex、原子操作、CAS、Actor 模型、Channel、线程限制、Volatile、StateFlow 的形式化定义、字节码实现与企业级工程实践。对标 MIT 6.005、Stanford CS110、CMU 15-440 教学水准。",
     "tags": [],
     "module": "kotlin",
     "order": 81,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin与WebSocket",
@@ -13145,12 +13246,12 @@
   {
     "slug": "kotlin/Flow冷流与SharedFlow和StateFlow",
     "title": "Flow冷流与SharedFlow和StateFlow",
-    "description": "Kotlin Flow冷流与SharedFlow和StateFlow详解。",
+    "description": "Kotlin Flow冷流与SharedFlow和StateFlow详解：响应式流原理、冷热流对比、状态管理实践。",
     "tags": [],
     "module": "kotlin",
     "order": 101,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Channel与BroadcastChannel",
@@ -13165,12 +13266,12 @@
   {
     "slug": "kotlin/密封类与密封接口",
     "title": "密封类与密封接口",
-    "description": "Kotlin密封类与密封接口详解：受限继承与穷举检查。",
+    "description": "Kotlin 密封类与密封接口深度解析：受限继承、穷举检查、代数数据类型（ADT）、模式匹配、递归结构、when 表达式编译期检查的形式化定义、字节码实现与企业级工程实践。对标 MIT 6.005、Stanford CS193P、CMU 15-214 教学水准。",
     "tags": [],
     "module": "kotlin",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/内联类",
@@ -13195,22 +13296,22 @@
   {
     "slug": "kotlin/作用域函数区别",
     "title": "作用域函数区别",
-    "description": "Kotlin作用域函数区别：let、run、with、apply、also。",
+    "description": "Kotlin 作用域函数深度解析：let、run、with、apply、also 的设计哲学、形式化定义与工程实践。",
     "tags": [],
     "module": "kotlin",
     "order": 106,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/协程异常处理",
     "title": "协程异常处理",
-    "description": "Kotlin协程异常处理：CoroutineExceptionHandler、SupervisorJob。",
+    "description": "Kotlin 协程异常处理深度解析：CoroutineExceptionHandler、SupervisorJob、structured concurrency 异常传播机制的形式化定义、字节码实现与企业级工程实践。",
     "tags": [],
     "module": "kotlin",
     "order": 107,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "kotlin/Kotlin跨平台",
@@ -13613,20 +13714,20 @@
     "updated": ""
   },
   {
-    "slug": "llm/DPO直接偏好优化",
-    "title": "DPO直接偏好优化",
-    "description": "理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型",
-    "tags": ["DPO", "preference optimization", "对齐", "偏好学习"],
+    "slug": "llm/DeepSeek-V3架构详解",
+    "title": "DeepSeek-V3架构详解",
+    "description": "深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe",
+    "tags": ["DeepSeek", "MoE", "MLA", "MTP", "架构创新"],
     "module": "llm",
     "order": 0,
     "difficulty": "advanced",
     "updated": ""
   },
   {
-    "slug": "llm/DeepSeek-V3架构详解",
-    "title": "DeepSeek-V3架构详解",
-    "description": "深入分析 DeepSeek-V3 的架构创新，包括 MLA、DeepSeekMoE、MTP 和 DualPipe",
-    "tags": ["DeepSeek", "MoE", "MLA", "MTP", "架构创新"],
+    "slug": "llm/DPO直接偏好优化",
+    "title": "DPO直接偏好优化",
+    "description": "理解 DPO 算法如何绕过奖励模型，直接从人类偏好数据优化语言模型",
+    "tags": ["DPO", "preference optimization", "对齐", "偏好学习"],
     "module": "llm",
     "order": 0,
     "difficulty": "advanced",
@@ -13653,6 +13754,16 @@
     "updated": ""
   },
   {
+    "slug": "llm/LangGraph状态机",
+    "title": "LangGraph状态机",
+    "description": "理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流",
+    "tags": ["LangGraph", "state machine", "工作流", "Agent", "状态机"],
+    "module": "llm",
+    "order": 0,
+    "difficulty": "advanced",
+    "updated": ""
+  },
+  {
     "slug": "llm/LLM工程评估",
     "title": "LLM工程评估",
     "description": "理解 LLM 应用的评估框架，包括 LLM-as-Judge、评估流水线和回归测试",
@@ -13670,16 +13781,6 @@
     "module": "llm",
     "order": 0,
     "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
-    "slug": "llm/LangGraph状态机",
-    "title": "LangGraph状态机",
-    "description": "理解 LangGraph 的状态机设计，构建可控的多步骤 LLM 工作流",
-    "tags": ["LangGraph", "state machine", "工作流", "Agent", "状态机"],
-    "module": "llm",
-    "order": 0,
-    "difficulty": "advanced",
     "updated": ""
   },
   {
@@ -14005,17 +14106,17 @@
   {
     "slug": "lua/概述与环境配置",
     "title": "Lua 概述与环境配置",
-    "description": "Lua 语言特点、应用场景与开发环境搭建。",
-    "tags": ["lua"],
+    "description": "Lua 语言设计哲学、历史演进、形式化语义、运行时模型与多平台环境配置工程实践",
+    "tags": [],
     "module": "lua",
     "order": 10,
     "difficulty": "beginner",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/程序结构与基本语法",
     "title": "程序结构与基本语法",
-    "description": "Lua 语法基础、变量、运算符与控制结构。",
+    "description": "Lua 语法基础、变量、运算符、控制结构与作用域规则的工程级深度解析。",
     "tags": ["lua"],
     "module": "lua",
     "order": 20,
@@ -14035,17 +14136,17 @@
   {
     "slug": "lua/函数与闭包",
     "title": "函数与闭包",
-    "description": "Lua函数定义、闭包与高阶函数",
-    "tags": ["lua", "performance"],
+    "description": "Lua 函数定义、闭包机制、词法作用域与高阶函数的完整教学手册，涵盖形式化语义、性能模型与工程实践",
+    "tags": ["lua", "performance", "functions", "closures", "higher-order"],
     "module": "lua",
     "order": 40,
     "difficulty": "intermediate",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/元表与面向对象编程",
     "title": "元表与面向对象编程",
-    "description": "元表机制、元方法与面向对象设计模式。",
+    "description": "元表机制、元方法、面向对象设计模式与原型继承体系的工程级深度解析。",
     "tags": ["lua"],
     "module": "lua",
     "order": 50,
@@ -14055,32 +14156,47 @@
   {
     "slug": "lua/表与元表进阶",
     "title": "表与元表进阶",
-    "description": "Lua表操作与元表机制",
-    "tags": [],
+    "description": "Lua 表与元表深度解析：元方法体系、运算符重载、__index/__newindex 协议、代理表、原型继承、弱表引用、性能模型与多领域工程实践",
+    "tags": ["lua", "metatable", "metamethod", "operator-overloading", "prototype", "intermediate"],
     "module": "lua",
     "order": 50,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/面向对象编程",
     "title": "面向对象编程",
-    "description": "Lua OOP实现",
-    "tags": [],
+    "description": "Lua 面向对象编程深度解析：原型继承、类系统设计、多重继承、封装与私有性、多态、设计模式、SOLID 原则在动态语言中的实践",
+    "tags": [
+      "lua",
+      "oop",
+      "prototype",
+      "inheritance",
+      "polymorphism",
+      "design-patterns",
+      "intermediate"
+    ],
     "module": "lua",
     "order": 51,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/协程详解",
     "title": "协程详解",
-    "description": "Lua协程与多任务",
-    "tags": [],
+    "description": "Lua 协程深度解析:协作式多任务原理、coroutine API、状态机形式化、yield/resume 控制流、生成器模式、管道与数据流、协程 vs 线程对比、LuaJIT 与 5.4 协程演化、跨语言对比及工程实践",
+    "tags": [
+      "lua",
+      "coroutine",
+      "concurrency",
+      "generator",
+      "cooperative-multitasking",
+      "intermediate"
+    ],
     "module": "lua",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/环境与模块",
@@ -14095,32 +14211,32 @@
   {
     "slug": "lua/字符串模式匹配",
     "title": "字符串模式匹配",
-    "description": "Lua模式匹配与正则",
+    "description": "Lua 模式匹配的形式化定义、NFA 理论、API 语义、性能特性、ReDoS 防御与工程实践",
     "tags": [],
     "module": "lua",
     "order": 54,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua与C交互",
-    "title": "Lua与C交互",
-    "description": "Lua C API",
+    "title": "Lua 与 C 交互",
+    "description": "Lua C API 设计哲学、栈模型、userdata 生命周期、元表绑定、Continuation、引用机制与跨语言性能优化工程实践",
     "tags": [],
     "module": "lua",
     "order": 55,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua即时编译器",
     "title": "LuaJIT",
-    "description": "LuaJIT与FFI",
+    "description": "LuaJIT 即时编译器原理、Trace 录制、FFI 外部函数接口、性能优化与工程实践",
     "tags": [],
     "module": "lua",
     "order": 56,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua与Love2D",
@@ -14165,12 +14281,12 @@
   {
     "slug": "lua/模块与包",
     "title": "模块与包",
-    "description": "Lua模块系统与包管理详解",
-    "tags": ["lua"],
+    "description": "Lua 模块与包系统深度解析：require 机制、searchers/loaders 演化、LuaRocks 包管理、循环依赖治理、热重载、命名空间模式与多领域工程实践",
+    "tags": ["lua", "module", "package", "require", "luarocks", "intermediate"],
     "module": "lua",
     "order": 60,
     "difficulty": "intermediate",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua错误处理",
@@ -14185,12 +14301,12 @@
   {
     "slug": "lua/Lua迭代器",
     "title": "Lua迭代器",
-    "description": "自定义迭代器",
-    "tags": [],
+    "description": "Lua 迭代器深度解析:泛型 for 语义、无状态与有状态迭代器、协程迭代器、迭代器协议形式化、迭代器组合、惰性序列、跨语言对比及工程实践",
+    "tags": ["lua", "iterator", "generator", "functional", "coroutine", "intermediate"],
     "module": "lua",
     "order": 62,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua与World of Warcraft",
@@ -14205,12 +14321,12 @@
   {
     "slug": "lua/Lua性能优化",
     "title": "Lua性能优化",
-    "description": "Lua性能优化技巧",
-    "tags": [],
+    "description": "Lua 性能优化深度解析:解释器开销模型、寄存器与栈布局、表内存结构、字符串驻留、JIT 编译与 trace、GC 调优、profiling 工具链、热路径工程化优化与多领域实战案例",
+    "tags": ["lua", "performance", "optimization", "luajit", "jit", "gc", "profiling", "advanced"],
     "module": "lua",
     "order": 64,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/Lua调试技巧",
@@ -14225,22 +14341,22 @@
   {
     "slug": "lua/协程与异步",
     "title": "协程与异步",
-    "description": "Lua协程机制与异步编程实践",
-    "tags": ["lua", "async"],
+    "description": "Lua 协程与异步编程深度解析：协作式调度语义、CPS 变换、生成器与 Promise、async/await 模式、工程级异步框架设计与多领域实战案例",
+    "tags": ["lua", "coroutine", "async", "concurrency", "generators", "advanced"],
     "module": "lua",
     "order": 70,
-    "difficulty": "intermediate",
-    "updated": "2026-05-03"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/标准库详解",
     "title": "标准库详解",
-    "description": "Lua标准库详解：字符串库、表库、数学库、IO库、操作系统库与调试库。",
-    "tags": ["lua", "stdlib"],
+    "description": "Lua 标准库的形式化定义、内部实现、性能特性、版本差异与工程实践",
+    "tags": [],
     "module": "lua",
     "order": 70,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/元表与元方法详解",
@@ -14265,22 +14381,22 @@
   {
     "slug": "lua/弱表",
     "title": "弱表",
-    "description": "Lua弱表详解：weak table自动回收。",
-    "tags": [],
+    "description": "Lua 弱表（weak table）深度解析：弱引用语义、GC 协同机制、内存治理与高级应用案例",
+    "tags": ["lua", "weak-table", "garbage-collection", "memory-management", "advanced"],
     "module": "lua",
     "order": 102,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/环境与全局变量管理",
     "title": "环境与全局变量管理",
-    "description": "Lua环境与全局变量管理详解：_ENV。",
-    "tags": [],
+    "description": "Lua 环境与全局变量管理深度解析：_ENV 机制、setfenv/getfenv 演化、沙箱设计、严格模式与工程级模块隔离实践",
+    "tags": ["lua", "environment", "globals", "sandbox", "_ENV", "advanced"],
     "module": "lua",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "lua/C-API栈操作",
@@ -15003,16 +15119,6 @@
     "updated": ""
   },
   {
-    "slug": "multimodal/CLIP与对比预训练",
-    "title": "CLIP与对比视觉语言预训练",
-    "description": "从InfoNCE到Sigmoid损失，深入理解CLIP和SigLIP的对比学习机制",
-    "tags": ["CLIP", "SigLIP", "对比学习", "InfoNCE", "零样本分类"],
-    "module": "multimodal",
-    "order": 0,
-    "difficulty": "intermediate",
-    "updated": ""
-  },
-  {
     "slug": "multimodal/Chameleon与早期融合",
     "title": "Chameleon与早期融合Token统一模型",
     "description": "理解VQ-VAE图像分词器和共享词表的早期融合多模态架构",
@@ -15020,6 +15126,16 @@
     "module": "multimodal",
     "order": 0,
     "difficulty": "advanced",
+    "updated": ""
+  },
+  {
+    "slug": "multimodal/CLIP与对比预训练",
+    "title": "CLIP与对比视觉语言预训练",
+    "description": "从InfoNCE到Sigmoid损失，深入理解CLIP和SigLIP的对比学习机制",
+    "tags": ["CLIP", "SigLIP", "对比学习", "InfoNCE", "零样本分类"],
+    "module": "multimodal",
+    "order": 0,
+    "difficulty": "intermediate",
     "updated": ""
   },
   {
@@ -17425,32 +17541,43 @@
   {
     "slug": "python/变量与常量",
     "title": "变量与常量",
-    "description": "变量命名、动态类型、常量约定与作用域。",
-    "tags": ["python"],
+    "description": "Python 变量与常量深度剖析：从名字绑定、LEGB 作用域到引用语义、不可变性与企业级配置管理实践。",
+    "tags": [],
     "module": "python",
     "order": 30,
     "difficulty": "beginner",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/描述符协议",
-    "title": "描述符协议",
-    "description": "描述符协议与属性管理",
-    "tags": [],
+    "title": "Python 描述符协议：属性访问的底层机制与工程实践",
+    "description": "系统阐述 Python 描述符协议的形式化定义、属性查找链、数据与非数据描述符的差异、与元类/property/__slots__ 的协作，以及在 ORM、验证器、缓存属性、观察者模式等场景的工程实践。",
+    "tags": ["python", "descriptor", "metaprogramming", "property", "attribute-access", "oop"],
     "module": "python",
     "order": 34,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/基础数据类型",
-    "title": "基础数据类型",
-    "description": "数值、字符串、布尔类型与类型转换。",
-    "tags": ["python"],
+    "title": "Python 基础数据类型：从对象模型到工程实践的深度解析",
+    "description": "系统阐述 Python 基础数据类型（int/float/complex/bool/NoneType/str/bytes/Decimal/Fraction）的对象模型、内存布局、不可变性语义、IEEE 754 浮点精度、整数缓存机制、字符串驻留、类型转换规则、可变性与不可变性、引用语义与值语义，以及生产环境下的精度陷阱、性能优化与最佳实践。",
+    "tags": [
+      "python",
+      "data-types",
+      "int",
+      "float",
+      "string",
+      "bytes",
+      "decimal",
+      "ieee-754",
+      "immutability",
+      "type-conversion"
+    ],
     "module": "python",
     "order": 40,
     "difficulty": "beginner",
-    "updated": ""
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/协程与asyncio",
@@ -17495,22 +17622,22 @@
   {
     "slug": "python/元类",
     "title": "元类",
-    "description": "元类与类创建过程",
+    "description": "元类与类创建过程的深度解析，涵盖 type、__new__/__init__/__call__、__init_subclass__ 与企业级应用。",
     "tags": [],
     "module": "python",
     "order": 52,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/Python与SQLAlchemy",
     "title": "Python与SQLAlchemy",
-    "description": "SQLAlchemy ORM",
+    "description": "SQLAlchemy 深度剖析：从 Core SQL 表达式到 ORM Unit of Work、会话生命周期、N+1 查询治理与企业级架构实践。",
     "tags": [],
     "module": "python",
     "order": 55,
-    "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/多进程与多线程",
@@ -17564,13 +17691,13 @@
   },
   {
     "slug": "python/Python与Celery",
-    "title": "Python与Celery",
-    "description": "Celery异步任务队列",
-    "tags": [],
+    "title": "Python 与 Celery：分布式任务队列的设计、实现与工程实践",
+    "description": "系统阐述 Celery 分布式任务队列的架构、Broker/Worker/Backend 协作模型、AMQP 协议、任务状态机、Canvas 工作流（chain/group/chord）、Beat 调度、重试与幂等机制，以及生产级部署、监控与性能优化实践。",
+    "tags": ["python", "celery", "task-queue", "distributed", "async", "message-broker"],
     "module": "python",
     "order": 59,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/控制流",
@@ -17616,7 +17743,7 @@
     "slug": "python/Python与NLP",
     "title": "Python与NLP",
     "description": "自然语言处理核心理论、spaCy/Transformers/NLTK 工程实践与 Transformer 注意力机制形式化推导",
-    "tags": ["python", "nlp", "spacy", "transformers", "llm", "tokenizer", "attention"],
+    "tags": [],
     "module": "python",
     "order": 67,
     "difficulty": "intermediate",
@@ -17636,17 +17763,7 @@
     "slug": "python/Python与Web爬虫",
     "title": "Python与Web爬虫",
     "description": "HTTP 客户端、HTML 解析、Scrapy 框架、动态渲染、反爬对抗、分布式爬虫与合规伦理的工程实践，覆盖 requests、httpx、BeautifulSoup、lxml、parsel、Scrapy、Playwright、Selenium、aiohttp 等核心工具链。",
-    "tags": [
-      "python",
-      "web-scraping",
-      "crawler",
-      "scrapy",
-      "beautifulsoup",
-      "playwright",
-      "httpx",
-      "async",
-      "data-engineering"
-    ],
+    "tags": [],
     "module": "python",
     "order": 69,
     "difficulty": "advanced",
@@ -17656,7 +17773,7 @@
     "slug": "python/Python与自动化",
     "title": "Python与自动化",
     "description": "文件、任务调度、Web 与 DevOps 自动化的工程实践，覆盖 pathlib、APScheduler、Celery、Airflow、Playwright、Fabric、subprocess 等核心工具链。",
-    "tags": ["python", "automation", "scheduling", "devops", "scripting", "etl", "rpa"],
+    "tags": [],
     "module": "python",
     "order": 70,
     "difficulty": "advanced",
@@ -17686,7 +17803,7 @@
     "slug": "python/Python与加密",
     "title": "Python与加密",
     "description": "对称加密、非对称加密、哈希函数、数字签名、密码哈希与密钥管理的工程实践，覆盖 cryptography、hashlib、bcrypt、argon2 等核心库。",
-    "tags": ["python", "cryptography", "security", "encryption", "hashing", "tls", "pki"],
+    "tags": [],
     "module": "python",
     "order": 73,
     "difficulty": "advanced",
@@ -17695,22 +17812,31 @@
   {
     "slug": "python/Python与测试",
     "title": "Python与测试",
-    "description": "pytest与测试实践",
+    "description": "Python测试体系深度剖析：pytest框架、unittest标准库、TDD/BDD方法论、Mock与依赖隔离、覆盖率分析、属性测试、性能测试、CI/CD集成与生产级工程实践。",
     "tags": [],
     "module": "python",
     "order": 73,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "advanced",
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/Python与配置管理",
-    "title": "Python与配置管理",
-    "description": "配置文件与环境变量",
-    "tags": [],
+    "title": "Python 与配置管理：从环境变量到云原生动态配置的工程实践",
+    "description": "系统阐述 Python 配置管理的形式化定义、配置源层级、十二因素应用方法论、Pydantic Settings/Dynaconf/python-dotenv 等主流方案、多环境配置、动态配置与特性开关、密钥管理、容器化与 Kubernetes 配置、配置测试与校验、生产级最佳实践。",
+    "tags": [
+      "python",
+      "configuration",
+      "env-vars",
+      "pydantic",
+      "dynaconf",
+      "twelve-factor",
+      "secrets",
+      "kubernetes"
+    ],
     "module": "python",
     "order": 74,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/装饰器",
@@ -17755,12 +17881,12 @@
   {
     "slug": "python/Python与CI-CD",
     "title": "Python与CI-CD",
-    "description": "Python项目CI/CD",
+    "description": "Python项目CI/CD全流程详解：流水线设计、自动化测试、构建产物管理、镜像化交付、GitOps与渐进式发布",
     "tags": [],
     "module": "python",
     "order": 79,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/Python与性能优化",
@@ -17816,19 +17942,7 @@
     "slug": "python/Python与打包发布",
     "title": "Python与打包发布",
     "description": "Python 打包演进史、PEP 517/518/621 标准化、pyproject.toml 配置、wheel 与 sdist 构建、PyPI 发布流水线",
-    "tags": [
-      "python",
-      "packaging",
-      "pypi",
-      "pep517",
-      "pep518",
-      "pep621",
-      "build",
-      "twine",
-      "wheel",
-      "hatch",
-      "poetry"
-    ],
+    "tags": [],
     "module": "python",
     "order": 82,
     "difficulty": "intermediate",
@@ -17836,13 +17950,13 @@
   },
   {
     "slug": "python/Python与Jupyter",
-    "title": "Python与Jupyter",
-    "description": "Jupyter Notebook与数据分析",
-    "tags": [],
+    "title": "Python 与 Jupyter：交互式计算、数据分析与可复现研究",
+    "description": "系统阐述 Jupyter Notebook/Lab 的架构、内核协议、魔法命令、可视化、Widgets、性能优化与企业级部署实践。",
+    "tags": ["python", "jupyter", "notebook", "data-science", "visualization", "ipython"],
     "module": "python",
     "order": 83,
-    "difficulty": "beginner",
-    "updated": "2026-06-14"
+    "difficulty": "intermediate",
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/Python与GraphQL",
@@ -17947,22 +18061,22 @@
   {
     "slug": "python/上下文管理器",
     "title": "上下文管理器",
-    "description": "Python上下文管理器详解：__enter__、__exit__、contextlib。",
+    "description": "Python上下文管理器深度剖析：with语句语义、__enter__/__exit__协议、contextlib工具集、异步上下文管理器、ExitStack动态管理、资源管理 RAII 模式与生产级工程实践。",
     "tags": [],
     "module": "python",
     "order": 102,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/元类与单例模式",
     "title": "元类与单例模式",
-    "description": "Python元类与单例模式详解。",
+    "description": "元类驱动的单例模式深度剖析：从 __call__ 拦截到线程安全、测试可重置性与企业级应用。",
     "tags": [],
     "module": "python",
     "order": 103,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/异步编程详解",
@@ -17997,22 +18111,22 @@
   {
     "slug": "python/描述符",
     "title": "描述符",
-    "description": "Python描述符协议详解：__get__、__set__、__delete__。",
+    "description": "Python描述符协议详解：__get__、__set__、__delete__、数据描述符与非数据描述符、协议底层机制与生产级工程实践。",
     "tags": [],
     "module": "python",
     "order": 107,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/数据类与字段默认值",
     "title": "数据类与字段默认值",
-    "description": "Python数据类与字段默认值详解：dataclass、field、默认值工厂。",
+    "description": "Python 数据类与字段默认值深度剖析：从 dataclass 装饰器到 field 工厂、不可变性与企业级模型设计。",
     "tags": [],
     "module": "python",
     "order": 108,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/生成器与协程",
@@ -18027,12 +18141,12 @@
   {
     "slug": "python/类型注解与mypy",
     "title": "类型注解与mypy",
-    "description": "Python类型注解与mypy详解：typing模块、泛型、Protocol。",
+    "description": "Python类型注解与mypy详解：typing模块、泛型、Protocol、TypeVar、Literal、TypedDict与渐进式类型系统。",
     "tags": [],
     "module": "python",
     "order": 110,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "python/面向对象编程",
@@ -19788,17 +19902,7 @@
     "slug": "typescript/字面量类型与联合类型",
     "title": "字面量类型与联合类型",
     "description": "字面量类型、联合类型、可辨识联合的形式语义、类型论基础与穷尽性检查的工程实践",
-    "tags": [
-      "typescript",
-      "literal-types",
-      "union-types",
-      "discriminated-union",
-      "exhaustiveness-checking",
-      "type-narrowing",
-      "pattern-matching",
-      "singleton-types",
-      "type-theory"
-    ],
+    "tags": [],
     "module": "typescript",
     "order": 50,
     "difficulty": "advanced",
@@ -19822,17 +19926,17 @@
     "module": "typescript",
     "order": 51,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型守卫与自定义守卫",
     "title": "类型守卫与自定义守卫",
-    "description": "类型守卫、自定义类型谓词",
+    "description": "类型守卫、自定义类型谓词、断言函数、判别式联合与生产级类型收窄实践，含形式化定义与工程级案例。",
     "tags": [],
     "module": "typescript",
     "order": 52,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/索引签名与动态属性",
@@ -19862,7 +19966,7 @@
     "module": "typescript",
     "order": 57,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/装饰器详解",
@@ -19872,7 +19976,7 @@
     "module": "typescript",
     "order": 58,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/声明文件编写",
@@ -19967,7 +20071,7 @@
     "module": "typescript",
     "order": 63,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/符号与唯一类型",
@@ -19996,7 +20100,7 @@
     "module": "typescript",
     "order": 65,
     "difficulty": "intermediate",
-    "updated": "2026-06-13"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/枚举进阶",
@@ -20021,26 +20125,24 @@
   {
     "slug": "typescript/条件类型分发",
     "title": "条件类型分发",
-    "description": "分布式条件类型与控制",
-    "tags": [],
+    "description": "TypeScript 分布式条件类型（Distributive Conditional Types）的形式语义、控制策略、类型级算法与生产级应用：裸类型参数、阻止分发、never 空集语义、IsUnion、类型过滤与排列组合。",
+    "tags": [
+      "typescript",
+      "distributive-conditional-types",
+      "naked-type-parameter",
+      "type-level-programming",
+      "union-types"
+    ],
     "module": "typescript",
     "order": 67,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型推断infer扩展",
     "title": "类型推断infer扩展",
     "description": "TypeScript 中 infer 关键字的形式语义、推导规则与生产级应用——从函数返回值到模板字面量、从 Promise 解包到 AST 元编程",
-    "tags": [
-      "typescript",
-      "infer",
-      "conditional-types",
-      "type-inference",
-      "type-level-programming",
-      "template-literal-types",
-      "type-theory"
-    ],
+    "tags": [],
     "module": "typescript",
     "order": 68,
     "difficulty": "advanced",
@@ -20068,12 +20170,12 @@
   {
     "slug": "typescript/条件类型与映射类型",
     "title": "条件类型与映射类型",
-    "description": "TypeScript条件类型、infer关键字、映射类型、模板字面量类型与类型体操实战。",
+    "description": "TypeScript条件类型、infer关键字、映射类型、模板字面量类型与类型体操实战，含形式化定义、推导与工程实践。",
     "tags": ["typescript", "conditional-types", "mapped-types"],
     "module": "typescript",
     "order": 70,
     "difficulty": "advanced",
-    "updated": "2026-06-13"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型声明与模块解析",
@@ -20117,22 +20219,22 @@
   {
     "slug": "typescript/类型安全的状态管理",
     "title": "类型安全的状态管理",
-    "description": "构建类型安全的状态管理",
+    "description": "构建类型安全的状态管理系统，涵盖 Store 模式、Reducer/Action、选择器、中间件、异步流、不可变更新、有限状态机、原子状态与 Signal 响应式，并提供生产级最佳实践与案例研究。",
     "tags": [],
     "module": "typescript",
     "order": 72,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型安全的环境变量",
     "title": "类型安全的环境变量",
-    "description": "构建类型安全的环境变量管理",
+    "description": "构建类型安全的环境变量管理系统，涵盖字面量类型、映射类型、Zod 运行时校验、多环境配置与生产级最佳实践。",
     "tags": [],
     "module": "typescript",
     "order": 73,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型安全的表单验证",
@@ -20142,7 +20244,7 @@
     "module": "typescript",
     "order": 74,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型安全的国际化",
@@ -20162,22 +20264,13 @@
     "module": "typescript",
     "order": 76,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/类型安全的配置系统",
     "title": "类型安全的配置系统",
     "description": "类型安全配置系统的形式语义、深度类型操作、运行时校验与生产级 ConfigManager 工程实践",
-    "tags": [
-      "typescript",
-      "configuration",
-      "type-safety",
-      "zod",
-      "recursive-types",
-      "env-variables",
-      "schema-validation",
-      "type-gymnastics"
-    ],
+    "tags": [],
     "module": "typescript",
     "order": 76,
     "difficulty": "advanced",
@@ -20187,17 +20280,7 @@
     "slug": "typescript/类型安全的数据库查询",
     "title": "类型安全的数据库查询",
     "description": "TypeScript 类型安全数据库访问的形式语义、Row 类型推导原理与 Kysely/Drizzle/Prisma 三大 ORM 的工程对比",
-    "tags": [
-      "typescript",
-      "database",
-      "orm",
-      "sql",
-      "kysely",
-      "drizzle",
-      "prisma",
-      "type-inference",
-      "row-types"
-    ],
+    "tags": [],
     "module": "typescript",
     "order": 77,
     "difficulty": "advanced",
@@ -20207,15 +20290,7 @@
     "slug": "typescript/类型安全的发布订阅",
     "title": "类型安全的发布订阅",
     "description": "发布订阅模式的形式语义、TypeScript 类型级实现、与主流事件库对比及生产级工程实践",
-    "tags": [
-      "typescript",
-      "publish-subscribe",
-      "observer-pattern",
-      "event-driven",
-      "type-safety",
-      "covariance",
-      "contravariance"
-    ],
+    "tags": [],
     "module": "typescript",
     "order": 78,
     "difficulty": "advanced",
@@ -20248,47 +20323,47 @@
     "module": "typescript",
     "order": 80,
     "difficulty": "intermediate",
-    "updated": ""
+    "updated": "2026-07-20"
   },
   {
     "slug": "typescript/satisfies操作符",
     "title": "satisfies操作符",
-    "description": "satisfies操作符详解",
-    "tags": [],
+    "description": "TypeScript 4.9 引入的 satisfies 操作符详解：保留具体类型的同时进行类型验证，与类型注解、类型断言的形式语义对比，配置对象、字面量映射、运行时验证库集成的工程实践，类型拓宽与保留的代数性质证明。",
+    "tags": ["typescript", "satisfies", "type-narrowing", "type-validation", "literal-types"],
     "module": "typescript",
     "order": 81,
     "difficulty": "intermediate",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/迁移实战",
     "title": "TypeScript 迁移实战",
-    "description": "渐进式迁移策略、类型覆盖提升与常见迁移陷阱。",
+    "description": "渐进式迁移策略、类型覆盖提升、常见迁移陷阱与生产级最佳实践，涵盖 tsconfig 演进、JSDoc 桥接、ts-migrate 自动化与大型项目案例研究。",
     "tags": ["typescript"],
     "module": "typescript",
     "order": 90,
     "difficulty": "intermediate",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/条件类型与infer",
     "title": "条件类型与infer",
-    "description": "TypeScript条件类型与infer关键字详解：Conditional Types、类型推断与分布式条件类型。",
-    "tags": [],
+    "description": "TypeScript 条件类型与 infer 关键字详解：Conditional Types、分布式条件类型、类型推断与模式匹配的形式语义、工程实践与生产级应用。",
+    "tags": ["typescript", "conditional-types", "infer", "type-inference", "pattern-matching"],
     "module": "typescript",
     "order": 100,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/编译与性能优化",
     "title": "TypeScript 编译与性能优化",
-    "description": "TypeScript 编译流程、增量编译与输出优化策略。",
-    "tags": ["typescript"],
+    "description": "TypeScript 编译流程、增量编译、类型检查优化与构建工具集成：编译器架构、性能模型、复杂度分析、tsconfig 调优、项目引用、CI/CD 策略与生产级性能优化。",
+    "tags": ["typescript", "compilation", "performance", "incremental-build", "build-tools"],
     "module": "typescript",
     "order": 100,
     "difficulty": "advanced",
-    "updated": "2026-05-03"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/映射类型与键重映射",
@@ -20331,12 +20406,12 @@
   {
     "slug": "typescript/模块声明与全局类型增强",
     "title": "模块声明与全局类型增强",
-    "description": "TypeScript模块声明与全局类型增强：declare module、全局类型扩展。",
-    "tags": [],
+    "description": "TypeScript 模块声明与全局类型增强：declare module、声明合并、全局扩展与 DefinitelyRoots 类型生态的形式语义、工程实践与生产级模式。",
+    "tags": ["typescript", "declaration-files", "module-augmentation", "global-types", "d-ts"],
     "module": "typescript",
     "order": 104,
     "difficulty": "advanced",
-    "updated": "2026-06-14"
+    "updated": "2026-07-21"
   },
   {
     "slug": "typescript/tsconfig严格模式",
@@ -20589,16 +20664,6 @@
     "updated": "2026-06-13"
   },
   {
-    "slug": "vue3/Router详解",
-    "title": "Vue Router 详解",
-    "description": "路由配置、导航守卫、懒加载与路由元信息。",
-    "tags": ["vue3"],
-    "module": "vue3",
-    "order": 100,
-    "difficulty": "intermediate",
-    "updated": "2026-05-03"
-  },
-  {
     "slug": "vue3/computed缓存机制与watch执行时机",
     "title": "computed缓存机制与watch执行时机",
     "description": "Vue 3 computed缓存机制与watch执行时机详解。",
@@ -20607,6 +20672,16 @@
     "order": 100,
     "difficulty": "advanced",
     "updated": "2026-06-14"
+  },
+  {
+    "slug": "vue3/Router详解",
+    "title": "Vue Router 详解",
+    "description": "路由配置、导航守卫、懒加载与路由元信息。",
+    "tags": ["vue3"],
+    "module": "vue3",
+    "order": 100,
+    "difficulty": "intermediate",
+    "updated": "2026-05-03"
   },
   {
     "slug": "vue3/组合式API优势场景",

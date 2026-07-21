@@ -4,312 +4,298 @@ title: Java单元测试
 module: java
 category: dev-lang
 difficulty: advanced
-description: 'JUnit 5 Jupiter API、Mockito 桩件框架、AssertJ 流式断言、Spring Boot Test 测试切片、Testcontainers 集成测试、JMH 微基准测试与 TDD/BDD 工程实践'
+description: JUnit 5 Jupiter API、Mockito 桩件框架、AssertJ 流式断言、Spring Boot Test 测试切片、Testcontainers 集成测试、JMH 微基准测试与 TDD/BDD 工程实践
 author: fanquanpp
 updated: '2026-07-20'
 lastReviewed: 2026-07-20
 reviewer: FANDEX Content Engineering Team
 related:
-  - java/Java网络编程
-  - java/Java日志系统
-  - java/Java构建工具
-  - java/反射与动态代理
-  - java/Lambda与函数式编程
-  - java/控制流
+- java/Java网络编程
+- java/Java日志系统
+- java/Java构建工具
+- java/反射与动态代理
+- java/Lambda与函数式编程
+- java/控制流
 prerequisites:
-  - java/概述与开发环境
-  - java/Lambda与函数式编程
-  - java/反射与动态代理
+- java/概述与开发环境
+- java/Lambda与函数式编程
+- java/反射与动态代理
 tags:
-  - java
-  - junit
-  - jupiter
-  - mockito
-  - testng
-  - assertj
-  - tdd
-  - bdd
-  - spring-boot-test
-  - testcontainers
-  - jmh
-  - parameterized-test
-  - extension-model
+- java
+- junit
+- jupiter
+- mockito
+- testng
+- assertj
+- tdd
+- bdd
+- spring-boot-test
+- testcontainers
+- jmh
+- parameterized-test
+- extension-model
 learningObjectives:
-  - bloom: remember
-    objective: 复述 JUnit 5 的三模块架构（Platform/Jupiter/Vintage）以及 Jupiter 编程模型相对于 JUnit 4 的核心扩展点变化
-  - bloom: understand
-    objective: 解释 Mockito 的桩件（mock）、 spies（spy）、参数匹配器（Argument Matcher）与验证器（Verification）在隔离测试中的工作机制
-  - bloom: apply
-    objective: 运用 JUnit 5 的参数化测试（@ParameterizedTest）、动态测试（@TestFactory）与扩展模型（@ExtendWith）实现数据驱动与可组合的测试用例
-  - bloom: analyze
-    objective: 分析 Spring Boot Test 测试切片（@WebMvcTest/@DataJpaTest/@JsonTest）的上下文裁剪策略，识别过载与欠载场景
-  - bloom: evaluate
-    objective: 评估 TDD（Red-Green-Refactor）与 BDD（Given-When-Then）在不同项目语境下的适用性，对比 JUnit 5 与 TestNG、pytest、Jest 的设计哲学差异
-  - bloom: create
-    objective: 设计一个完整的分层测试体系，覆盖单元测试、切片测试、Testcontainers 集成测试与 JMH 微基准测试，并集成到 CI/CD 流水线
+- 复述 JUnit 5 的三模块架构（Platform/Jupiter/Vintage）以及 Jupiter 编程模型相对于 JUnit 4 的核心扩展点变化
+- 解释 Mockito 的桩件（mock）、 spies（spy）、参数匹配器（Argument Matcher）与验证器（Verification）在隔离测试中的工作机制
+- 运用 JUnit 5 的参数化测试（@ParameterizedTest）、动态测试（@TestFactory）与扩展模型（@ExtendWith）实现数据驱动与可组合的测试用例
+- 分析 Spring Boot Test 测试切片（@WebMvcTest/@DataJpaTest/@JsonTest）的上下文裁剪策略，识别过载与欠载场景
+- 评估 TDD（Red-Green-Refactor）与 BDD（Given-When-Then）在不同项目语境下的适用性，对比 JUnit 5 与 TestNG、pytest、Jest 的设计哲学差异
+- 设计一个完整的分层测试体系，覆盖单元测试、切片测试、Testcontainers 集成测试与 JMH 微基准测试，并集成到 CI/CD 流水线
 exercises:
-  - id: ex-junit-01
-    type: fill-blank
-    cognitiveLevel: remember
-    question: "JUnit 5 由三个子项目组成：JUnit Platform、JUnit Jupiter 和 JUnit ____。其中后者提供基于 JUnit 3/4 风格的向后兼容引擎。"
-    hint: "回顾 1.2 节架构组成"
-    answer: "Vintage"
-    blankCount: 1
-    answers:
-      - "Vintage"
-    caseSensitive: false
-    difficulty: 1
-    explanation: "JUnit Vintage Engine 是 JUnit 5 三模块中的向后兼容引擎，允许在新的 Platform 上运行老的 JUnit 3/4 测试，便于平滑迁移。"
-    estimatedTime: 1
-  - id: ex-junit-02
-    type: fill-blank
-    cognitiveLevel: understand
-    question: "在 Mockito 中，若希望调用真实对象的方法但又能对个别方法进行打桩，应使用 Mockito.____(realObject) 而非 Mockito.mock(...)。"
-    hint: "参考 3.2 节 Spy 与 Mock 的差异"
-    answer: "spy"
-    blankCount: 1
-    answers:
-      - "spy"
-    caseSensitive: false
-    difficulty: 2
-    explanation: "spy 包装真实对象，默认调用真实方法；mock 完全模拟对象，默认返回类型零值。spy 适用于部分打桩场景，但需注意 when(spy.foo()).thenReturn(...) 会先调用真实方法，应改用 doReturn().when(spy).foo()。"
-    estimatedTime: 2
-  - id: ex-junit-03
-    type: choice
-    cognitiveLevel: apply
-    question: "下列哪种 JUnit 5 注解用于声明参数化测试，并通过 CSV 字符串提供多组输入？"
-    options:
-      - "@ParameterizedTest 配合 @MethodSource(\"csvProvider\")"
-      - "@ParameterizedTest 配合 @CsvSource({\"1,one\", \"2,two\"})"
-      - "@TestFactory 配合 @CsvFileSource"
-      - "@RepeatedTest 配合 @ValueSource(strings={\"1,one\"})"
-    correctIndex: 1
-    multiple: false
-    difficulty: 2
-    explanation: "@CsvSource 直接以字符串数组形式内联 CSV 数据，每行对应一组参数；@MethodSource 引用返回 Stream/Iterable 的工厂方法；@TestFactory 用于动态测试而非参数化；@RepeatedTest 是重复执行同一测试。"
-    estimatedTime: 2
-  - id: ex-junit-04
-    type: choice
-    cognitiveLevel: analyze
-    question: "关于 Spring Boot Test 的测试切片（Slice），下列哪项描述是错误的？"
-    options:
-      - "@WebMvcTest 仅装配 MVC 层（Controller/@ControllerAdvice/HandlerMethodArgumentResolver），不加载 Service/Repository"
-      - "@DataJpaTest 默认使用内存数据库（H2）替换实际 DataSource，并自动 @Rollback"
-      - "@JsonTest 仅装配 Jackson/Gson 序列化器，启动开销远小于 @SpringBootTest"
-      - "@SpringBootTest 默认启动完整应用上下文并立即连接真实数据库"
-    correctIndex: 3
-    multiple: false
-    difficulty: 4
-    explanation: "@SpringBootTest 默认启动完整应用上下文，但不自动连接真实数据库——它不替代 DataSource；若要使用真实数据库，需要额外配置（如 @AutoConfigureTestDatabase(replace=NONE) 或 Testcontainers）。其余三项均为切片的正确描述。"
-    estimatedTime: 3
-  - id: ex-junit-05
-    type: code-fix
-    cognitiveLevel: apply
-    question: "下列 Mockito 打桩代码在调用 spy.intValue() 时会先触发真实方法执行，可能引发副作用。请修复："
-    buggyCode: |
-      List<Integer> real = new ArrayList<>();
-      List<Integer> spy = Mockito.spy(real);
-      when(spy.size()).thenReturn(100);  // 会先调用 real.size()
-      assertEquals(100, spy.size());
-    language: java
-    fixedCode: |
-      List<Integer> real = new ArrayList<>();
-      List<Integer> spy = Mockito.spy(real);
-      // doReturn 不会触发真实方法，避免副作用
-      doReturn(100).when(spy).size();
-      assertEquals(100, spy.size());
-    errorDescription: "when(spy.size()) 会先调用 spy.size()（即 real.size()），对有副作用或代价高的方法会出问题；doReturn().when(spy).method() 直接打桩，跳过真实方法调用。"
-    difficulty: 3
-    explanation: "Mockito 的 when(x) 语句先求值 x 再设定返回值，对于 spy 会触发真实方法；doReturn().when(spy).method() 反转了顺序，避免了真实调用。这是 Mockito 文档明确推荐的 spy 打桩方式。"
-    estimatedTime: 5
-  - id: ex-junit-06
-    type: code-fix
-    cognitiveLevel: analyze
-    question: "下列参数化测试使用 @MethodSource 但运行时报错 'No tests found'。请修复："
-    buggyCode: |
-      class FactorialTest {
-          @ParameterizedTest
-          @MethodSource("factorialProvider")
-          void factorial(int n, int expected) {
-              assertEquals(expected, factorial(n));
-          }
+- id: ex-junit-01
+  type: fill-blank
+  cognitiveLevel: remember
+  question: JUnit 5 由三个子项目组成：JUnit Platform、JUnit Jupiter 和 JUnit ____。其中后者提供基于 JUnit 3/4 风格的向后兼容引擎。
+  hint: 回顾 1.2 节架构组成
+  answer: Vintage
+  blankCount: 1
+  answers:
+  - Vintage
+  caseSensitive: false
+  difficulty: 1
+  explanation: JUnit Vintage Engine 是 JUnit 5 三模块中的向后兼容引擎，允许在新的 Platform 上运行老的 JUnit 3/4 测试，便于平滑迁移。
+  estimatedTime: 1
+- id: ex-junit-02
+  type: fill-blank
+  cognitiveLevel: understand
+  question: 在 Mockito 中，若希望调用真实对象的方法但又能对个别方法进行打桩，应使用 Mockito.____(realObject) 而非 Mockito.mock(...)。
+  hint: 参考 3.2 节 Spy 与 Mock 的差异
+  answer: spy
+  blankCount: 1
+  answers:
+  - spy
+  caseSensitive: false
+  difficulty: 2
+  explanation: spy 包装真实对象，默认调用真实方法；mock 完全模拟对象，默认返回类型零值。spy 适用于部分打桩场景，但需注意 when(spy.foo()).thenReturn(...) 会先调用真实方法，应改用 doReturn().when(spy).foo()。
+  estimatedTime: 2
+- id: ex-junit-03
+  type: choice
+  cognitiveLevel: apply
+  question: 下列哪种 JUnit 5 注解用于声明参数化测试，并通过 CSV 字符串提供多组输入？
+  options:
+  - '@ParameterizedTest 配合 @MethodSource("csvProvider")'
+  - '@ParameterizedTest 配合 @CsvSource({"1,one", "2,two"})'
+  - '@TestFactory 配合 @CsvFileSource'
+  - '@RepeatedTest 配合 @ValueSource(strings={"1,one"})'
+  correctIndex: 1
+  multiple: false
+  difficulty: 2
+  explanation: '@CsvSource 直接以字符串数组形式内联 CSV 数据，每行对应一组参数；@MethodSource 引用返回 Stream/Iterable 的工厂方法；@TestFactory 用于动态测试而非参数化；@RepeatedTest 是重复执行同一测试。'
+  estimatedTime: 2
+  answer: B. @CsvSource 直接以字符串数组形式内联 CSV 数据，每行对应一组参数；@MethodSource 引用返回 Stream/Iterable 的工厂方法；@TestFactory 用于动态测试而非参数化；@RepeatedTest 是重复执行同一测试。
+- id: ex-junit-04
+  type: choice
+  cognitiveLevel: analyze
+  question: 关于 Spring Boot Test 的测试切片（Slice），下列哪项描述是错误的？
+  options:
+  - '@WebMvcTest 仅装配 MVC 层（Controller/@ControllerAdvice/HandlerMethodArgumentResolver），不加载 Service/Repository'
+  - '@DataJpaTest 默认使用内存数据库（H2）替换实际 DataSource，并自动 @Rollback'
+  - '@JsonTest 仅装配 Jackson/Gson 序列化器，启动开销远小于 @SpringBootTest'
+  - '@SpringBootTest 默认启动完整应用上下文并立即连接真实数据库'
+  correctIndex: 3
+  multiple: false
+  difficulty: 4
+  explanation: '@SpringBootTest 默认启动完整应用上下文，但不自动连接真实数据库——它不替代 DataSource；若要使用真实数据库，需要额外配置（如 @AutoConfigureTestDatabase(replace=NONE) 或 Testcontainers）。其余三项均为切片的正确描述。'
+  estimatedTime: 3
+  answer: D. @SpringBootTest 默认启动完整应用上下文，但不自动连接真实数据库——它不替代 DataSource；若要使用真实数据库，需要额外配置（如 @AutoConfigureTestDatabase(replace=NONE) 或 Testcontainers）。其余三项均为切片的正确描述。
+- id: ex-junit-05
+  type: code-fix
+  cognitiveLevel: apply
+  question: 下列 Mockito 打桩代码在调用 spy.intValue() 时会先触发真实方法执行，可能引发副作用。请修复：
+  buggyCode: 'List<Integer> real = new ArrayList<>();
 
-          private static Stream<Arguments> factorialProvider() {
-              return Stream.of(Arguments.of(0, 1), Arguments.of(5, 120));
-          }
-      }
-    language: java
-    fixedCode: |
-      class FactorialTest {
-          @ParameterizedTest
-          @MethodSource("factorialProvider")
-          void factorial(int n, int expected) {
-              assertEquals(expected, factorial(n));
-          }
+    List<Integer> spy = Mockito.spy(real);
 
-          // 必须是 static（除非使用 @TestInstance(PER_METHOD)）
-          static Stream<Arguments> factorialProvider() {
-              return Stream.of(Arguments.of(0, 1), Arguments.of(5, 120));
-          }
-      }
-    errorDescription: "@MethodSource 引用的工厂方法默认必须是 static（属于类而非实例），否则 JUnit 5 报 'No tests found'。原代码 private static 是 static 但又是 private——JUnit 5 要求包级可见或 static，最稳妥是 static + 包级可见（无 private）。"
-    difficulty: 4
-    explanation: "JUnit 5 默认使用 PER_METHOD 实例生命周期（每测试方法新建实例），因此 @MethodSource 工厂方法必须是 static 才能在实例创建前被调用；若使用 @TestInstance(Lifecycle.PER_CLASS) 则可使用非 static 工厂方法。可见性需为包级或 public。"
-    estimatedTime: 6
-  - id: ex-junit-07
-    type: open-ended
-    cognitiveLevel: create
-    question: "请设计一个完整的分层测试体系，覆盖：(1) 纯单元测试（Service + Mock Repository）；(2) Web 切片测试（@WebMvcTest）；(3) 集成测试（Testcontainers + @SpringBootTest）；(4) 微基准测试（JMH）。要求：说明每层的输入/输出边界、依赖隔离手段、CI 中的执行频率，以及如何用 JaCoCo 度量覆盖率并集成到 PR Check。"
-    keyPoints:
-      - "单元测试层：JUnit 5 + Mockito + AssertJ，每方法 < 100ms，每次 commit 运行，覆盖率 ≥ 80%"
-      - "Web 切片测试：@WebMvcTest + MockMvc + @MockBean，不启动 Servlet 容器，仅校验序列化/校验/路由"
-      - "集成测试：@SpringBootTest + @Testcontainers（PostgreSQL/Redis/Kafka），每次 PR 合并前运行，可使用 @Tag('integration') 区分"
-      - "微基准测试：JMH @Benchmark + @State，单独 Maven/Gradle 模块，nightly 构建触发，避免与单元测试混跑"
-      - "覆盖率：JaCoCo + SonarQube Quality Gate，PR Check 阻断低于阈值"
-      - "讨论分层原则：测试金字塔（Mike Cohn）——单元多、集成少、端到端极少"
-    difficulty: 5
-    minWords: 300
-    estimatedTime: 25
-  - id: ex-junit-08
-    type: open-ended
-    cognitiveLevel: evaluate
-    question: "TDD（Red-Green-Refactor）与 BDD（Given-When-Then）常被并列讨论。请评估：(1) 二者在认知过程（外部行为 vs 内部实现）上的本质差异；(2) 在大型遗留系统改造中，哪种方法更易落地？为什么？(3) JUnit 5 的 @DisplayName 与 AssertJ 的 as() 描述能否构成 BDD 风格？请给出代码示例。"
-    keyPoints:
-      - "TDD 关注内部实现的设计反馈，BDD 关注外部行为的共享语言（Ubiquitous Language）"
-      - "TDD 的 Red 阶段是 'design pressure'，强迫设计可测试的接口；BDD 的 Given-When-Then 是 'conversation tool'，强迫需求方与开发对齐"
-      - "遗留系统：BDD 更易落地，因为它从外部行为切入，不需要先理解内部；TDD 需要先重构出可测试接缝"
-      - "JUnit 5 + AssertJ 可写：@DisplayName('作为管理员，我希望查询用户列表') + assertThat(users).as('用户列表应非空').isNotEmpty()"
-      - "工具链：Cucumber/JBehave 提供 Gherkin 解析，但成本高；JUnit 5 + AssertJ 是低成本的伪 BDD"
-      - "讨论：BDD 并非 TDD 的替代，而是 TDD 在 Specification 层的延伸"
-    difficulty: 5
-    minWords: 250
-    estimatedTime: 20
+    when(spy.size()).thenReturn(100);  // 会先调用 real.size()
+
+    assertEquals(100, spy.size());
+
+    '
+  language: java
+  fixedCode: 'List<Integer> real = new ArrayList<>();
+
+    List<Integer> spy = Mockito.spy(real);
+
+    // doReturn 不会触发真实方法，避免副作用
+
+    doReturn(100).when(spy).size();
+
+    assertEquals(100, spy.size());
+
+    '
+  errorDescription: when(spy.size()) 会先调用 spy.size()（即 real.size()），对有副作用或代价高的方法会出问题；doReturn().when(spy).method() 直接打桩，跳过真实方法调用。
+  difficulty: 3
+  explanation: Mockito 的 when(x) 语句先求值 x 再设定返回值，对于 spy 会触发真实方法；doReturn().when(spy).method() 反转了顺序，避免了真实调用。这是 Mockito 文档明确推荐的 spy 打桩方式。
+  estimatedTime: 5
+  answer: when(spy.size()) 会先调用 spy.size()（即 real.size()），对有副作用或代价高的方法会出问题；doReturn().when(spy).method() 直接打桩，跳过真实方法调用。 关键修复：// doReturn 不会触发真实方法，避免副作用
+- id: ex-junit-06
+  type: code-fix
+  cognitiveLevel: analyze
+  question: 下列参数化测试使用 @MethodSource 但运行时报错 'No tests found'。请修复：
+  buggyCode: "class FactorialTest {\n    @ParameterizedTest\n    @MethodSource(\"factorialProvider\")\n    void factorial(int n, int expected) {\n        assertEquals(expected, factorial(n));\n    }\n\n    private static Stream<Arguments> factorialProvider() {\n        return Stream.of(Arguments.of(0, 1), Arguments.of(5, 120));\n    }\n}\n"
+  language: java
+  fixedCode: "class FactorialTest {\n    @ParameterizedTest\n    @MethodSource(\"factorialProvider\")\n    void factorial(int n, int expected) {\n        assertEquals(expected, factorial(n));\n    }\n\n    // 必须是 static（除非使用 @TestInstance(PER_METHOD)）\n    static Stream<Arguments> factorialProvider() {\n        return Stream.of(Arguments.of(0, 1), Arguments.of(5, 120));\n    }\n}\n"
+  errorDescription: '@MethodSource 引用的工厂方法默认必须是 static（属于类而非实例），否则 JUnit 5 报 ''No tests found''。原代码 private static 是 static 但又是 private——JUnit 5 要求包级可见或 static，最稳妥是 static + 包级可见（无 private）。'
+  difficulty: 4
+  explanation: JUnit 5 默认使用 PER_METHOD 实例生命周期（每测试方法新建实例），因此 @MethodSource 工厂方法必须是 static 才能在实例创建前被调用；若使用 @TestInstance(Lifecycle.PER_CLASS) 则可使用非 static 工厂方法。可见性需为包级或 public。
+  estimatedTime: 6
+  answer: '@MethodSource 引用的工厂方法默认必须是 static（属于类而非实例），否则 JUnit 5 报 ''No tests found''。原代码 private static 是 static 但又是 private——JUnit 5 要求包级可见或 static，最稳妥是 static + 包级可见（无 private）。 关键修复：// 必须是 static（除非使用 @TestInstance(PER_METHOD)）'
+- id: ex-junit-07
+  type: open-ended
+  cognitiveLevel: create
+  question: 请设计一个完整的分层测试体系，覆盖：(1) 纯单元测试（Service + Mock Repository）；(2) Web 切片测试（@WebMvcTest）；(3) 集成测试（Testcontainers + @SpringBootTest）；(4) 微基准测试（JMH）。要求：说明每层的输入/输出边界、依赖隔离手段、CI 中的执行频率，以及如何用 JaCoCo 度量覆盖率并集成到 PR Check。
+  keyPoints:
+  - 单元测试层：JUnit 5 + Mockito + AssertJ，每方法 < 100ms，每次 commit 运行，覆盖率 ≥ 80%
+  - Web 切片测试：@WebMvcTest + MockMvc + @MockBean，不启动 Servlet 容器，仅校验序列化/校验/路由
+  - 集成测试：@SpringBootTest + @Testcontainers（PostgreSQL/Redis/Kafka），每次 PR 合并前运行，可使用 @Tag('integration') 区分
+  - 微基准测试：JMH @Benchmark + @State，单独 Maven/Gradle 模块，nightly 构建触发，避免与单元测试混跑
+  - 覆盖率：JaCoCo + SonarQube Quality Gate，PR Check 阻断低于阈值
+  - 讨论分层原则：测试金字塔（Mike Cohn）——单元多、集成少、端到端极少
+  difficulty: 5
+  minWords: 300
+  estimatedTime: 25
+  answer: 单元测试层：JUnit 5 + Mockito + AssertJ，每方法 < 100ms，每次 commit 运行，覆盖率 ≥ 80%；Web 切片测试：@WebMvcTest + MockMvc + @MockBean，不启动 Servlet 容器，仅校验序列化/校验/路由；集成测试：@SpringBootTest + @Testcontainers（PostgreSQL/Redis/Kafka），每次 PR 合并前运行，可使用 @Tag('integration') 区分；微基准测试：JMH @Benchmark + @State，单独 Maven/Gradle 模块，nightly 构建触发，避免与单元测试混跑；覆盖率：JaCoCo + SonarQube Quality Gate，PR Check 阻断低于阈值；讨论分层原则：测试金字塔（Mike Cohn）——单元多、集成少、端到端极少
+- id: ex-junit-08
+  type: open-ended
+  cognitiveLevel: evaluate
+  question: TDD（Red-Green-Refactor）与 BDD（Given-When-Then）常被并列讨论。请评估：(1) 二者在认知过程（外部行为 vs 内部实现）上的本质差异；(2) 在大型遗留系统改造中，哪种方法更易落地？为什么？(3) JUnit 5 的 @DisplayName 与 AssertJ 的 as() 描述能否构成 BDD 风格？请给出代码示例。
+  keyPoints:
+  - TDD 关注内部实现的设计反馈，BDD 关注外部行为的共享语言（Ubiquitous Language）
+  - TDD 的 Red 阶段是 'design pressure'，强迫设计可测试的接口；BDD 的 Given-When-Then 是 'conversation tool'，强迫需求方与开发对齐
+  - 遗留系统：BDD 更易落地，因为它从外部行为切入，不需要先理解内部；TDD 需要先重构出可测试接缝
+  - JUnit 5 + AssertJ 可写：@DisplayName('作为管理员，我希望查询用户列表') + assertThat(users).as('用户列表应非空').isNotEmpty()
+  - 工具链：Cucumber/JBehave 提供 Gherkin 解析，但成本高；JUnit 5 + AssertJ 是低成本的伪 BDD
+  - 讨论：BDD 并非 TDD 的替代，而是 TDD 在 Specification 层的延伸
+  difficulty: 5
+  minWords: 250
+  estimatedTime: 20
+  answer: TDD 关注内部实现的设计反馈，BDD 关注外部行为的共享语言（Ubiquitous Language）；TDD 的 Red 阶段是 'design pressure'，强迫设计可测试的接口；BDD 的 Given-When-Then 是 'conversation tool'，强迫需求方与开发对齐；遗留系统：BDD 更易落地，因为它从外部行为切入，不需要先理解内部；TDD 需要先重构出可测试接缝；JUnit 5 + AssertJ 可写：@DisplayName('作为管理员，我希望查询用户列表') + assertThat(users).as('用户列表应非空').isNotEmpty()；工具链：Cucumber/JBehave 提供 Gherkin 解析，但成本高；JUnit 5 + AssertJ 是低成本的伪 BDD；讨论：BDD 并非 TDD 的替代，而是 TDD 在 Specification 层的延伸
 references:
-  - type: book
-    authors:
-      - Beck, Kent
-    year: 2002
-    title: "Test-Driven Development: By Example"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0321146533"
-  - type: book
-    authors:
-      - Beck, Kent
-      - Andres, Cynthia
-    year: 2004
-    title: "Extreme Programming Explained: Embrace Change (2nd ed.)"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0321278654"
-  - type: book
-    authors:
-      - Cohn, Mike
-    year: 2009
-    title: "Succeeding with Agile: Software Development Using Scrum"
-    venue: "Addison-Wesley Professional"
-    isbn: "978-0321579362"
-  - type: inproceedings
-    authors:
-      - Beck, Kent
-      - Gamma, Erich
-    year: 1998
-    title: "Test Infected: Programmers Love Writing Tests"
-    venue: "Java Report, Vol. 3, No. 7"
-    pages: "37-50"
-  - type: documentation
-    authors:
-      - JUnit Team
-    year: 2024
-    title: "JUnit 5 User Guide"
-    venue: "JUnit Official Documentation"
-    url: "https://junit.org/junit5/docs/current/user-guide/"
-  - type: documentation
-    authors:
-      - Mockito Team
-    year: 2024
-    title: "Mockito 5 Documentation"
-    venue: "Mockito Official Documentation"
-    url: "https://site.mockito.org/"
-  - type: documentation
-    authors:
-      - AssertJ Team
-    year: 2024
-    title: "AssertJ Core Documentation"
-    venue: "AssertJ Official Documentation"
-    url: "https://assertj.github.io/doc/"
-  - type: documentation
-    authors:
-      - TestNG Team
-    year: 2024
-    title: "TestNG Documentation"
-    venue: "TestNG Official Documentation"
-    url: "https://testng.org/doc/documentation-main.html"
-  - type: documentation
-    authors:
-      - Spring Team
-    year: 2024
-    title: "Spring Boot Reference: Testing"
-    venue: "Spring Official Documentation"
-    url: "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing"
-  - type: documentation
-    authors:
-      - Testcontainers Team
-    year: 2024
-    title: "Testcontainers Documentation"
-    venue: "Testcontainers Official Documentation"
-    url: "https://java.testcontainers.org/"
-  - type: documentation
-    authors:
-      - OpenJDK Team
-    year: 2024
-    title: "Java Microbenchmark Harness (JMH)"
-    venue: "OpenJDK Official Project"
-    url: "https://openjdk.org/projects/code-tools/jmh/"
-  - type: inproceedings
-    authors:
-      - North, Dan
-    year: 2006
-    title: "Introducing BDD"
-    venue: "Better Software Magazine"
-    url: "https://dannorth.net/introducing-bdd/"
-  - type: article
-    authors:
-      - Fowler, Martin
-    year: 2006
-    title: "Mocks Aren't Stubs"
-    venue: "Martin Fowler's Bliki"
-    url: "https://martinfowler.com/articles/mocksArentStubs.html"
-  - type: article
-    authors:
-      - Meszaros, Gerard
-    year: 2003
-    title: "Test Double Patterns"
-    venue: "XUnit Test Patterns Wiki"
-    url: "http://xunitpatterns.com/"
-  - type: standard
-    authors:
-      - ISO/IEC
-    year: 2023
-    title: "ISO/IEC/IEEE 29119-1:2023 Software and systems engineering — Software testing"
-    venue: "International Organization for Standardization"
+- type: book
+  authors:
+  - Beck, Kent
+  year: 2002
+  title: 'Test-Driven Development: By Example'
+  venue: Addison-Wesley Professional
+  isbn: 978-0321146533
+- type: book
+  authors:
+  - Beck, Kent
+  - Andres, Cynthia
+  year: 2004
+  title: 'Extreme Programming Explained: Embrace Change (2nd ed.)'
+  venue: Addison-Wesley Professional
+  isbn: 978-0321278654
+- type: book
+  authors:
+  - Cohn, Mike
+  year: 2009
+  title: 'Succeeding with Agile: Software Development Using Scrum'
+  venue: Addison-Wesley Professional
+  isbn: 978-0321579362
+- type: conference
+  authors:
+  - Beck, Kent
+  - Gamma, Erich
+  year: 1998
+  title: 'Test Infected: Programmers Love Writing Tests'
+  venue: Java Report, Vol. 3, No. 7
+  pages: 37-50
+- type: documentation
+  authors:
+  - JUnit Team
+  year: 2024
+  title: JUnit 5 User Guide
+  venue: JUnit Official Documentation
+  url: https://junit.org/junit5/docs/current/user-guide/
+- type: documentation
+  authors:
+  - Mockito Team
+  year: 2024
+  title: Mockito 5 Documentation
+  venue: Mockito Official Documentation
+  url: https://site.mockito.org/
+- type: documentation
+  authors:
+  - AssertJ Team
+  year: 2024
+  title: AssertJ Core Documentation
+  venue: AssertJ Official Documentation
+  url: https://assertj.github.io/doc/
+- type: documentation
+  authors:
+  - TestNG Team
+  year: 2024
+  title: TestNG Documentation
+  venue: TestNG Official Documentation
+  url: https://testng.org/doc/documentation-main.html
+- type: documentation
+  authors:
+  - Spring Team
+  year: 2024
+  title: 'Spring Boot Reference: Testing'
+  venue: Spring Official Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing
+- type: documentation
+  authors:
+  - Testcontainers Team
+  year: 2024
+  title: Testcontainers Documentation
+  venue: Testcontainers Official Documentation
+  url: https://java.testcontainers.org/
+- type: documentation
+  authors:
+  - OpenJDK Team
+  year: 2024
+  title: Java Microbenchmark Harness (JMH)
+  venue: OpenJDK Official Project
+  url: https://openjdk.org/projects/code-tools/jmh/
+- type: conference
+  authors:
+  - North, Dan
+  year: 2006
+  title: Introducing BDD
+  venue: Better Software Magazine
+  url: https://dannorth.net/introducing-bdd/
+- type: journal
+  authors:
+  - Fowler, Martin
+  year: 2006
+  title: Mocks Aren't Stubs
+  venue: Martin Fowler's Bliki
+  url: https://martinfowler.com/articles/mocksArentStubs.html
+- type: journal
+  authors:
+  - Meszaros, Gerard
+  year: 2003
+  title: Test Double Patterns
+  venue: XUnit Test Patterns Wiki
+  url: http://xunitpatterns.com/
+- type: standard
+  authors:
+  - ISO/IEC
+  year: 2023
+  title: ISO/IEC/IEEE 29119-1:2023 Software and systems engineering — Software testing
+  venue: International Organization for Standardization
 etymology:
-  - term: "单元测试（Unit Test）"
-    english: "Unit Test"
-    origin: "源自 1970 年代 IBM 的层级测试实践，由 Kent Beck 在 1990 年代 Smalltalk 项目 SUnit 中系统化；2000 年与 Erich Gamma 合作用 Java 实现 JUnit，'unit' 一词借自模块化编程中的最小可测单元。"
-  - term: "桩件（Mock）"
-    english: "Mock Object"
-    origin: "由 Tim Mackinnon、Steve Freeman 与 Philip Craig 在 1999 年伦敦 XP Day 上首次提出，文章 'Endo-Testing: Unit Testing with Mock Objects' 发表于 XP 2000 会议；'mock' 原意为 '模仿'，与 'stub'（桩）、'fake'、'spy'、'dummy' 共同构成 Test Double 五分类（Meszaros 2003）。"
-  - term: "断言（Assertion）"
-    english: "Assertion"
-    origin: "源自 C 语言 assert() 宏（1980 年代），由 Brian Kernighan 与 Rob Pike 在《The Practice of Programming》中推广；JUnit 沿用 assertEquals/assertTrue 命名，AssertJ 进一步发展为流式断言（Fluent Assertion）。"
-  - term: "测试驱动开发（TDD）"
-    english: "Test-Driven Development"
-    origin: "Kent Beck 在 1990 年代 Chrysler Comprehensive Compensation (C3) 项目中提炼，2002 年成书《Test-Driven Development: By Example》；核心循环 Red-Green-Refactor 源自 Smalltalk SUnit 实践。"
-  - term: "行为驱动开发（BDD）"
-    english: "Behavior-Driven Development"
-    origin: "Dan North 在 2006 年文章《Introducing BDD》中提出，旨在让 TDD 更贴近业务语言；Given-When-Then 结构由 Chris Matts 与 North 共同发展，工具代表为 JBehave 与 Cucumber。"
-  - term: "微基准测试（Microbenchmark）"
-    english: "Microbenchmark"
-    origin: "由 Aleksey Shipilev 在 OpenJDK 项目中系统化，2013 年 JMH（Java Microbenchmark Harness）成为事实标准；'micro' 强调对单个方法/代码块的纳秒级测量，区别于 'macro'（系统级）与 'meso'（模块级）。"
+- term: 单元测试（Unit Test）
+  english: Unit Test
+  origin: 源自 1970 年代 IBM 的层级测试实践，由 Kent Beck 在 1990 年代 Smalltalk 项目 SUnit 中系统化；2000 年与 Erich Gamma 合作用 Java 实现 JUnit，'unit' 一词借自模块化编程中的最小可测单元。
+- term: 桩件（Mock）
+  english: Mock Object
+  origin: '由 Tim Mackinnon、Steve Freeman 与 Philip Craig 在 1999 年伦敦 XP Day 上首次提出，文章 ''Endo-Testing: Unit Testing with Mock Objects'' 发表于 XP 2000 会议；''mock'' 原意为 ''模仿''，与 ''stub''（桩）、''fake''、''spy''、''dummy'' 共同构成 Test Double 五分类（Meszaros 2003）。'
+- term: 断言（Assertion）
+  english: Assertion
+  origin: 源自 C 语言 assert() 宏（1980 年代），由 Brian Kernighan 与 Rob Pike 在《The Practice of Programming》中推广；JUnit 沿用 assertEquals/assertTrue 命名，AssertJ 进一步发展为流式断言（Fluent Assertion）。
+- term: 测试驱动开发（TDD）
+  english: Test-Driven Development
+  origin: 'Kent Beck 在 1990 年代 Chrysler Comprehensive Compensation (C3) 项目中提炼，2002 年成书《Test-Driven Development: By Example》；核心循环 Red-Green-Refactor 源自 Smalltalk SUnit 实践。'
+- term: 行为驱动开发（BDD）
+  english: Behavior-Driven Development
+  origin: Dan North 在 2006 年文章《Introducing BDD》中提出，旨在让 TDD 更贴近业务语言；Given-When-Then 结构由 Chris Matts 与 North 共同发展，工具代表为 JBehave 与 Cucumber。
+- term: 微基准测试（Microbenchmark）
+  english: Microbenchmark
+  origin: 由 Aleksey Shipilev 在 OpenJDK 项目中系统化，2013 年 JMH（Java Microbenchmark Harness）成为事实标准；'micro' 强调对单个方法/代码块的纳秒级测量，区别于 'macro'（系统级）与 'meso'（模块级）。
 ---
 
 ## 引言：从"测试是验证"到"测试是设计"

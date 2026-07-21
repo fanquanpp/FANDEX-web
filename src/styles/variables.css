@@ -97,9 +97,7 @@
   --geo-grid: rgba(13, 13, 13, 0.06); /* 背景网格线 */
   --geo-line: rgba(13, 13, 13, 0.12); /* 几何辅助线 */
   --geo-stripe: rgba(51, 102, 204, 0.05); /* 斜纹底纹 */
-  --geo-glow-primary: rgba(51, 102, 204, 0.18); /* 品牌色光晕 */
-  --geo-glow-accent: rgba(224, 90, 43, 0.16); /* 强调色光晕 */
-  --geo-glow-info: rgba(14, 165, 233, 0.18); /* 信息色光晕 */
+  --geo-glow-primary: rgba(51, 102, 204, 0.18); /* 品牌色填充（用于圆弧切片） */
 }
 
 /* ========== 暗色主题 ========== */
@@ -163,6 +161,4 @@
   --geo-line: rgba(235, 235, 235, 0.1);
   --geo-stripe: rgba(110, 168, 254, 0.08);
   --geo-glow-primary: rgba(110, 168, 254, 0.22);
-  --geo-glow-accent: rgba(240, 144, 112, 0.2);
-  --geo-glow-info: rgba(110, 168, 254, 0.2);
 }

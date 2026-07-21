@@ -8,180 +8,197 @@ description: Python 打包演进史、PEP 517/518/621 标准化、pyproject.toml
 author: fanquanpp
 updated: '2026-07-20'
 related:
-  - python/正则表达式
-  - python/Python与设计模式
-  - python/Python与Jupyter
-  - python/Python与虚拟环境
+- python/正则表达式
+- python/Python与设计模式
+- python/Python与Jupyter
+- python/Python与虚拟环境
 prerequisites:
-  - python/语法速查
+- python/语法速查
 tags:
-  - python
-  - packaging
-  - pypi
-  - pep517
-  - pep518
-  - pep621
-  - build
-  - twine
-  - wheel
-  - hatch
-  - poetry
+- python
+- packaging
+- pypi
+- pep517
+- pep518
+- pep621
+- build
+- twine
+- wheel
+- hatch
+- poetry
 learningObjectives:
-  - remember: 复述 Python 打包标准演进的关键 PEP（517、518、621、660、440）及其核心内容
-  - understand: 解释 pyproject.toml 三段式结构（build-system、project、tool）的职责划分
-  - apply: 使用 hatchling/setuptools/Poetry 构建符合 PEP 621 的可发布包
-  - apply: 使用 build + twine 完成 sdist/wheel 构建与 PyPI 上传
-  - analyze: 对比 setuptools、hatch、Poetry、flit、pdm 五种构建后端的架构差异与适用场景
-  - evaluate: 评估语义化版本（SemVer）与 PEP 440 在依赖管理中的兼容性
-  - create: 设计完整的发布流水线，包含测试、签名、Provenance、多平台 wheel 构建
+- '{''remember'': ''复述 Python 打包标准演进的关键 PEP（517、518、621、660、440）及其核心内容''}'
+- '{''understand'': ''解释 pyproject.toml 三段式结构（build-system、project、tool）的职责划分''}'
+- '{''apply'': ''使用 hatchling/setuptools/Poetry 构建符合 PEP 621 的可发布包''}'
+- '{''apply'': ''使用 build + twine 完成 sdist/wheel 构建与 PyPI 上传''}'
+- '{''analyze'': ''对比 setuptools、hatch、Poetry、flit、pdm 五种构建后端的架构差异与适用场景''}'
+- '{''evaluate'': ''评估语义化版本（SemVer）与 PEP 440 在依赖管理中的兼容性''}'
+- '{''create'': ''设计完整的发布流水线，包含测试、签名、Provenance、多平台 wheel 构建''}'
 exercises:
-  - id: pkg-ex-01
-    type: fill-blank
-    cognitiveLevel: remember
-    question: 在 pyproject.toml 中，[build-system] 段的 requires 字段声明构建依赖，build-backend 字段指定构建后端的 Python 模块路径，如 hatchling 项目应填写 ____。
-    blankCount: 1
-    answers:
-      - hatchling.build
-    caseSensitive: false
-    answer: hatchling.build
-    explanation: build-backend 是模块路径，hatchling 项目使用 hatchling.build；setuptools 使用 setuptools.build_meta。
-    difficulty: 2
-    estimatedTime: 2
-  - id: pkg-ex-02
-    type: choice
-    cognitiveLevel: understand
-    question: 关于 Python 打包格式的说法，正确的是？
-    options:
-      - sdist 是源码分发，包含 .tar.gz 压缩包，安装时需在目标环境编译
-      - wheel 是预编译二进制分发，安装速度快但无法跨 Python 版本兼容
-      - universal wheel 可同时兼容 Python 2 与 Python 3，文件名以 py2.py3 标识
-      - PyPI 上传的包必须同时包含 sdist 与 wheel，缺一不可
-    correctIndex: 2
-    multiple: false
-    explanation: universal wheel（py2.py3-none-any）可在 Py2/Py3 通用；现代 PyPI 允许只上传 wheel 或 sdist 之一，但最佳实践是同时上传以兼容特殊环境。
-    difficulty: 3
-    estimatedTime: 3
-  - id: pkg-ex-03
-    type: code-fix
-    cognitiveLevel: apply
-    question: 以下 pyproject.toml 配置存在两处不符合 PEP 621 规范的问题，请修正。
-    buggyCode: |
-      [build-system]
-      requires = ["setuptools"]
-      build-backend = "setuptools.build_meta"
+- id: pkg-ex-01
+  type: fill-blank
+  cognitiveLevel: remember
+  question: 在 pyproject.toml 中，[build-system] 段的 requires 字段声明构建依赖，build-backend 字段指定构建后端的 Python 模块路径，如 hatchling 项目应填写 ____。
+  blankCount: 1
+  answers:
+  - hatchling.build
+  caseSensitive: false
+  answer: hatchling.build
+  explanation: build-backend 是模块路径，hatchling 项目使用 hatchling.build；setuptools 使用 setuptools.build_meta。
+  difficulty: 2
+  estimatedTime: 2
+- id: pkg-ex-02
+  type: choice
+  cognitiveLevel: understand
+  question: 关于 Python 打包格式的说法，正确的是？
+  options:
+  - sdist 是源码分发，包含 .tar.gz 压缩包，安装时需在目标环境编译
+  - wheel 是预编译二进制分发，安装速度快但无法跨 Python 版本兼容
+  - universal wheel 可同时兼容 Python 2 与 Python 3，文件名以 py2.py3 标识
+  - PyPI 上传的包必须同时包含 sdist 与 wheel，缺一不可
+  correctIndex: 2
+  multiple: false
+  explanation: universal wheel（py2.py3-none-any）可在 Py2/Py3 通用；现代 PyPI 允许只上传 wheel 或 sdist 之一，但最佳实践是同时上传以兼容特殊环境。
+  difficulty: 3
+  estimatedTime: 3
+  answer: C. universal wheel（py2.py3-none-any）可在 Py2/Py3 通用；现代 PyPI 允许只上传 wheel 或 sdist 之一，但最佳实践是同时上传以兼容特殊环境。
+- id: pkg-ex-03
+  type: code-fix
+  cognitiveLevel: apply
+  question: 以下 pyproject.toml 配置存在两处不符合 PEP 621 规范的问题，请修正。
+  buggyCode: '[build-system]
 
-      [project]
-      name = "My Package"
-      version = "1.0"
-      dependencies = "requests, numpy"
-      requires-python = "3.8"
-    language: toml
-    fixedCode: |
-      [build-system]
-      requires = ["setuptools>=61.0"]
-      build-backend = "setuptools.build_meta"
+    requires = ["setuptools"]
 
-      [project]
-      name = "my-package"
-      version = "1.0.0"
-      dependencies = ["requests", "numpy"]
-      requires-python = ">=3.8"
-    errorDescription: 1) name 必须为合法包名（小写、连字符分隔，不能含空格）；2) dependencies 必须是字符串数组而非逗号分隔字符串；3) version 应符合 PEP 440；4) requires-python 应使用版本 specifier。
-    answer: name 改为 my-package；dependencies 改为数组
-    difficulty: 3
-    estimatedTime: 5
-  - id: pkg-ex-04
-    type: open-ended
-    cognitiveLevel: create
-    question: 你维护一个同时包含 Rust 扩展与 Python 接口的库（如 polars/orjson 类项目），需要支持 Linux/macOS/Windows 三平台与 Python 3.9-3.13 共 5 个版本的矩阵构建。请描述完整的发布流水线，包括 CI/CD 选型、wheel 构建策略、签名与可信发布。
-    keyPoints:
-      - 构建工具选型（maturin vs PyO3 vs cibuildwheel）
-      - CI/CD 平台（GitHub Actions 矩阵、cibuildwheel）
-      - 多平台 wheel 构建（manylinux、musllinux、macosx、win_amd64）
-      - 可信发布（Trusted Publishing，OIDC）
-      - 签名（sigstore、GPG）
-      - PyPI 上传策略（twine upload、API token）
-      - 回滚预案
-    minWords: 300
-    answer: 开放性问题，参考要点：使用 maturin + PyO3 构建 Rust 扩展；GitHub Actions 矩阵构建 15 个 wheel（3 平台 x 5 Python 版本）；cibuildwheel 简化跨平台；启用 PyPI Trusted Publishing（OIDC）替代 API token；用 sigstore 签名；上传时同时发布 sdist + 多平台 wheel。
-    difficulty: 5
-    estimatedTime: 30
+    build-backend = "setuptools.build_meta"
+
+
+    [project]
+
+    name = "My Package"
+
+    version = "1.0"
+
+    dependencies = "requests, numpy"
+
+    requires-python = "3.8"
+
+    '
+  language: toml
+  fixedCode: '[build-system]
+
+    requires = ["setuptools>=61.0"]
+
+    build-backend = "setuptools.build_meta"
+
+
+    [project]
+
+    name = "my-package"
+
+    version = "1.0.0"
+
+    dependencies = ["requests", "numpy"]
+
+    requires-python = ">=3.8"
+
+    '
+  errorDescription: 1) name 必须为合法包名（小写、连字符分隔，不能含空格）；2) dependencies 必须是字符串数组而非逗号分隔字符串；3) version 应符合 PEP 440；4) requires-python 应使用版本 specifier。
+  answer: name 改为 my-package；dependencies 改为数组
+  difficulty: 3
+  estimatedTime: 5
+- id: pkg-ex-04
+  type: open-ended
+  cognitiveLevel: create
+  question: 你维护一个同时包含 Rust 扩展与 Python 接口的库（如 polars/orjson 类项目），需要支持 Linux/macOS/Windows 三平台与 Python 3.9-3.13 共 5 个版本的矩阵构建。请描述完整的发布流水线，包括 CI/CD 选型、wheel 构建策略、签名与可信发布。
+  keyPoints:
+  - 构建工具选型（maturin vs PyO3 vs cibuildwheel）
+  - CI/CD 平台（GitHub Actions 矩阵、cibuildwheel）
+  - 多平台 wheel 构建（manylinux、musllinux、macosx、win_amd64）
+  - 可信发布（Trusted Publishing，OIDC）
+  - 签名（sigstore、GPG）
+  - PyPI 上传策略（twine upload、API token）
+  - 回滚预案
+  minWords: 300
+  answer: 开放性问题，参考要点：使用 maturin + PyO3 构建 Rust 扩展；GitHub Actions 矩阵构建 15 个 wheel（3 平台 x 5 Python 版本）；cibuildwheel 简化跨平台；启用 PyPI Trusted Publishing（OIDC）替代 API token；用 sigstore 签名；上传时同时发布 sdist + 多平台 wheel。
+  difficulty: 5
+  estimatedTime: 30
 references:
-  - type: standard
-    authors:
-      - Stufft, D.
-      - Coghlan, N.
-      - Holth, M.
-    year: 2016
-    title: 'PEP 518: Specifying minimum build system requirements for Python projects'
-    venue: Python Enhancement Proposals
-    url: https://peps.python.org/pep-0518/
-  - type: standard
-    authors:
-      - Stufft, D.
-      - Coghlan, N.
-      - Holth, M.
-    year: 2017
-    title: 'PEP 517: A build-system independent format for source trees'
-    venue: Python Enhancement Proposals
-    url: https://peps.python.org/pep-0517/
-  - type: standard
-    authors:
-      - Stufft, D.
-      - Coghlan, N.
-    year: 2020
-    title: 'PEP 621: Storing project metadata in pyproject.toml'
-    venue: Python Enhancement Proposals
-    url: https://peps.python.org/pep-0621/
-  - type: standard
-    authors:
-      - Etemadieftekhari, A.
-    year: 2013
-    title: 'PEP 440: Version identification and dependency specification'
-    venue: Python Enhancement Proposals
-    url: https://peps.python.org/pep-0440/
-  - type: standard
-    authors:
-      - Cannon, B.
-      - King, T.
-    year: 2019
-    title: 'PEP 566: Metadata for Python software packages 2.1'
-    venue: Python Enhancement Proposals
-    url: https://peps.python.org/pep-0566/
-  - type: technical-report
-    authors:
-      - Pustilnik, S.
-      - Stufft, D.
-    year: 2024
-    title: 'PyPI Trusted Publishing: OIDC-based authentication for package publishers'
-    venue: Python Packaging User Guide
-    url: https://docs.pypi.org/trusted-publishers/
-  - type: conference
-    authors:
-      - Shaw, S.
-      - Coghlan, N.
-      - Bicking, I.
-    year: 2020
-    title: 'A survey of Python packaging: Past, present, and future'
-    venue: SciPy 2020 Proceedings
-    pages: 234-245
-    doi: 10.25080/Majora-342d178e-020
+- type: standard
+  authors:
+  - Stufft, D.
+  - Coghlan, N.
+  - Holth, M.
+  year: 2016
+  title: 'PEP 518: Specifying minimum build system requirements for Python projects'
+  venue: Python Enhancement Proposals
+  url: https://peps.python.org/pep-0518/
+- type: standard
+  authors:
+  - Stufft, D.
+  - Coghlan, N.
+  - Holth, M.
+  year: 2017
+  title: 'PEP 517: A build-system independent format for source trees'
+  venue: Python Enhancement Proposals
+  url: https://peps.python.org/pep-0517/
+- type: standard
+  authors:
+  - Stufft, D.
+  - Coghlan, N.
+  year: 2020
+  title: 'PEP 621: Storing project metadata in pyproject.toml'
+  venue: Python Enhancement Proposals
+  url: https://peps.python.org/pep-0621/
+- type: standard
+  authors:
+  - Etemadieftekhari, A.
+  year: 2013
+  title: 'PEP 440: Version identification and dependency specification'
+  venue: Python Enhancement Proposals
+  url: https://peps.python.org/pep-0440/
+- type: standard
+  authors:
+  - Cannon, B.
+  - King, T.
+  year: 2019
+  title: 'PEP 566: Metadata for Python software packages 2.1'
+  venue: Python Enhancement Proposals
+  url: https://peps.python.org/pep-0566/
+- type: technical-report
+  authors:
+  - Pustilnik, S.
+  - Stufft, D.
+  year: 2024
+  title: 'PyPI Trusted Publishing: OIDC-based authentication for package publishers'
+  venue: Python Packaging User Guide
+  url: https://docs.pypi.org/trusted-publishers/
+- type: conference
+  authors:
+  - Shaw, S.
+  - Coghlan, N.
+  - Bicking, I.
+  year: 2020
+  title: 'A survey of Python packaging: Past, present, and future'
+  venue: SciPy 2020 Proceedings
+  pages: 234-245
+  doi: 10.25080/Majora-342d178e-020
 etymology:
-  - term: 打包
-    english: Packaging
-    origin: package 源自拉丁语 pact（包裹），计算机科学中指将软件分发的标准化单元
-  - term: 轮子
-    english: Wheel
-    origin: 2012 年 PEP 427 引入，比喻"预装好的轮子"即装即用，区别于需现场编译的 sdist
-  - term: 元数据
-    english: Metadata
-    origin: meta 源自希腊语 meta（关于），指描述数据的数据
-  - term: 语义化版本
-    english: Semantic Versioning
-    origin: 2011 年 Tom Preston-Werner 提出，遵循 MAJOR.MINOR.PATCH 格式
-  - term: 可信发布
-    english: Trusted Publishing
-    origin: 2023 年 PyPI 引入基于 OIDC 的可信发布机制，取代长期 API token
+- term: 打包
+  english: Packaging
+  origin: package 源自拉丁语 pact（包裹），计算机科学中指将软件分发的标准化单元
+- term: 轮子
+  english: Wheel
+  origin: 2012 年 PEP 427 引入，比喻"预装好的轮子"即装即用，区别于需现场编译的 sdist
+- term: 元数据
+  english: Metadata
+  origin: meta 源自希腊语 meta（关于），指描述数据的数据
+- term: 语义化版本
+  english: Semantic Versioning
+  origin: 2011 年 Tom Preston-Werner 提出，遵循 MAJOR.MINOR.PATCH 格式
+- term: 可信发布
+  english: Trusted Publishing
+  origin: 2023 年 PyPI 引入基于 OIDC 的可信发布机制，取代长期 API token
 lastReviewed: '2026-07-20'
 reviewer: FANDEX Content Engineering Team
 estimatedReadingTime: 90

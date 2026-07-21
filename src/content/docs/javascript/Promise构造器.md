@@ -31,20 +31,13 @@ prerequisites:
   - javascript/事件循环
   - javascript/高阶函数
 learningObjectives:
-  - cognitiveLevel: remember
-    description: 记住 Promise 构造器签名、三种状态(pending/fulfilled/rejected)、Promise A+ 规范的核心条款
-  - cognitiveLevel: understand
-    description: 理解 thenable 鸭子类型与 PromiseResolveThenableJob 的微任务调度机制
-  - cognitiveLevel: understand
-    description: 阐释 Promise 的状态机形式化定义,理解状态转换的不可逆性与单次性
-  - cognitiveLevel: apply
-    description: 使用 Promise 构造器与 Promise.withResolvers 实现事件包装、流式处理、超时控制等场景
-  - cognitiveLevel: analyze
-    description: 分析 Promise.all/race/allSettled/any 四种并发原语的语义差异与适用场景
-  - cognitiveLevel: evaluate
-    description: 评估 Promise 与 async/await、回调、Generator 在异步表达力与可读性上的权衡
-  - cognitiveLevel: create
-    description: 设计并实现一个符合 Promise A+ 规范的 Promise 库,支持并发控制、错误传播、取消语义
+  - '{''cognitiveLevel'': ''remember'', ''description'': ''记住 Promise 构造器签名、三种状态(pending/fulfilled/rejected)、Promise A+ 规范的核心条款''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''理解 thenable 鸭子类型与 PromiseResolveThenableJob 的微任务调度机制''}'
+  - '{''cognitiveLevel'': ''understand'', ''description'': ''阐释 Promise 的状态机形式化定义,理解状态转换的不可逆性与单次性''}'
+  - '{''cognitiveLevel'': ''apply'', ''description'': ''使用 Promise 构造器与 Promise.withResolvers 实现事件包装、流式处理、超时控制等场景''}'
+  - '{''cognitiveLevel'': ''analyze'', ''description'': ''分析 Promise.all/race/allSettled/any 四种并发原语的语义差异与适用场景''}'
+  - '{''cognitiveLevel'': ''evaluate'', ''description'': ''评估 Promise 与 async/await、回调、Generator 在异步表达力与可读性上的权衡''}'
+  - '{''cognitiveLevel'': ''create'', ''description'': ''设计并实现一个符合 Promise A+ 规范的 Promise 库,支持并发控制、错误传播、取消语义''}'
 exercises:
   - id: promise-ex-001
     type: fill-blank
@@ -275,14 +268,14 @@ exercises:
       (8) 未通过 Promise A+ 官方 872 测试,但核心条款符合规范。
     difficulty: hard
 references:
-  - type: spec
+  - type: standard
     authors:
       - Promise/A+ Working Group
     year: 2014
     title: 'Promises/A+ Specification'
     venue: Open Standard
     url: https://promisesaplus.com/
-  - type: spec
+  - type: standard
     authors:
       - ECMA International
     year: 2025
@@ -290,7 +283,7 @@ references:
     venue: ECMA Standard
     doi: 10.17445/ECMA-262
     url: https://tc39.es/ecma262/#sec-promise-objects
-  - type: paper
+  - type: journal
     authors:
       - Mark S. Miller
       - Tom Van Cutsem
@@ -299,7 +292,7 @@ references:
     title: 'Robust Composition: Towards a Principled Approach to the Promise Abstraction'
     venue: 'ECOOP 2013 - Object-Oriented Programming'
     doi: 10.1007/978-3-642-39038-8_8
-  - type: paper
+  - type: journal
     authors:
       - Claus Brabrand
       - Andrzej Wasowski
@@ -308,21 +301,21 @@ references:
     title: 'Programming the Web with High-Level Languages'
     venue: 'ACM SIGPLAN International Conference on Systems, Programming, Languages and Applications'
     url: https://www.brics.dk/~wasowski/papers/brabrand2016spl.pdf
-  - type: paper
+  - type: journal
     authors:
       - Brian Goetz
     year: 2006
     title: 'Java Concurrency in Practice - Chapter 5: Building Blocks'
     venue: 'Addison-Wesley Professional'
     url: https://jcip.net/
-  - type: paper
+  - type: journal
     authors:
       - Domenic Denicola
     year: 2014
-    title: 'You're Missing the Point of Promises'
+    title: 'You''re Missing the Point of Promises'
     venue: 'GitHub Gist'
     url: https://gist.github.com/domenic/3889970
-  - type: paper
+  - type: journal
     authors:
       - Kris Kowal
     year: 2009
@@ -340,7 +333,7 @@ references:
     authors:
       - Kyle Simpson
     year: 2016
-    title: 'You Don't Know JS: Async & Performance'
+    title: 'You Don''t Know JS: Async & Performance'
     venue: O'Reilly Media
     url: https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/README.md
 etymology:
@@ -352,7 +345,7 @@ etymology:
     origin: 由 "then" + "-able" 构成,意为"具有 then 方法的对象"。这是 Promise A+ 规范定义的鸭子类型,任何含 then 方法的对象都可作为 Promise 的解析值。
   - term: Microtask
     english: Microtask
-    origin: "micro-" 希腊语前缀意为"微小",task 即任务。微任务是 HTML 与 ECMAScript 规范定义的延迟任务,优先级高于宏任务,在当前事件循环结束前执行。
+    origin: '"micro-" 希腊语前缀意为"微小",task 即任务。微任务是 HTML 与 ECMAScript 规范定义的延迟任务,优先级高于宏任务,在当前事件循环结束前执行。'
   - term: Resolver
     english: Resolver
     origin: 源自拉丁语 "resolvere"(解开、解决),Promise 语境下指"将 pending 状态转为 fulfilled 的函数"。Promise.withResolvers 将 resolve/reject 暴露给构造器外部使用。
