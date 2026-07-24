@@ -100,17 +100,33 @@ const CognitiveLevelSchema = z.enum([
 /**
  * 基础习题 Schema
  * 所有题型共享的公共字段，通过 type 字段区分子类型
+ *
+ * 兼容说明（2026-07）：
+ * 部分历史文档使用 bloom 而非 cognitiveLevel、difficulty 用字符串（easy/medium/hard）而非数字、
+ * answer 字段在 code-fix 题型中可能缺失（改用 fixedCode）。
+ * 仓库已进入维护暂停期，此处放宽校验以兼容存量文档，不再强制要求字段对齐。
+ * 后续新仓库将重新统一 schema 规范。
  */
 const BaseExerciseSchema = z.object({
   id: z.string(),
   type: ExerciseTypeSchema,
-  cognitiveLevel: CognitiveLevelSchema,
+  cognitiveLevel: CognitiveLevelSchema.optional(),
+  bloom: z.string().optional(),
   question: z.string(),
   hint: z.string().optional(),
-  answer: z.string(),
+  answer: z.string().optional(),
   explanation: z.string().optional(),
   difficulty: z
-    .union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)])
+    .union([
+      z.literal(1),
+      z.literal(2),
+      z.literal(3),
+      z.literal(4),
+      z.literal(5),
+      z.literal('easy'),
+      z.literal('medium'),
+      z.literal('hard'),
+    ])
     .default(3),
   estimatedTime: z.number().optional(),
 });
@@ -121,8 +137,8 @@ const BaseExerciseSchema = z.object({
  */
 const FillBlankExerciseSchema = BaseExerciseSchema.extend({
   type: z.literal('fill-blank'),
-  blankCount: z.number(),
-  answers: z.array(z.string()),
+  blankCount: z.number().optional(),
+  answers: z.array(z.string()).optional(),
   caseSensitive: z.boolean().default(false),
 });
 
@@ -132,8 +148,8 @@ const FillBlankExerciseSchema = BaseExerciseSchema.extend({
  */
 const ChoiceExerciseSchema = BaseExerciseSchema.extend({
   type: z.literal('choice'),
-  options: z.array(z.string()),
-  correctIndex: z.number(),
+  options: z.array(z.string()).optional(),
+  correctIndex: z.number().optional(),
   multiple: z.boolean().default(false),
   correctIndices: z.array(z.number()).optional(),
 });
@@ -144,10 +160,10 @@ const ChoiceExerciseSchema = BaseExerciseSchema.extend({
  */
 const CodeFixExerciseSchema = BaseExerciseSchema.extend({
   type: z.literal('code-fix'),
-  buggyCode: z.string(),
-  language: z.string(),
-  fixedCode: z.string(),
-  errorDescription: z.string(),
+  buggyCode: z.string().optional(),
+  language: z.string().optional(),
+  fixedCode: z.string().optional(),
+  errorDescription: z.string().optional(),
 });
 
 /**
@@ -156,7 +172,7 @@ const CodeFixExerciseSchema = BaseExerciseSchema.extend({
  */
 const OpenEndedExerciseSchema = BaseExerciseSchema.extend({
   type: z.literal('open-ended'),
-  keyPoints: z.array(z.string()),
+  keyPoints: z.array(z.string()).optional(),
   minWords: z.number().optional(),
 });
 

@@ -46,7 +46,7 @@ exercises:
     hint: 参考 Promise A+ 规范第 1.1 节,状态只能从 pending 转换到 fulfilled 或 rejected。
     answer: pending; fulfilled; rejected; 不可逆
     explanation: Promise A+ 规范定义三种状态,pending 可转为 fulfilled 或 rejected,但 fulfilled 与 rejected 之间不可转换,且一旦离开 pending 就永久锁定。
-    difficulty: easy
+    difficulty: 1
   - id: promise-ex-002
     type: choice
     cognitiveLevel: understand
@@ -67,7 +67,7 @@ exercises:
       console.log(1) 同步执行 → Promise.resolve().then 注册微任务 → console.log(3) 同步执行
       → 当前宏任务结束 → 取出微任务执行 console.log(2)。
       故输出顺序为 1 3 2。
-    difficulty: medium
+    difficulty: 3
   - id: promise-ex-003
     type: code-fix
     cognitiveLevel: apply
@@ -98,7 +98,11 @@ exercises:
       (1) 执行器接收 resolve 参数;
       (2) 在 setTimeout 回调中调用 resolve('hello'),将值传给 then;
       (3) 也可直接用 Promise.withResolvers() 解构出 resolve/reject,避免嵌套。
-    difficulty: medium
+    buggyCode: "function delay(ms) {\n  const promise = new Promise(() => {\n    setTimeout(() => 'hello', ms);\n  });\n  return promise;\n}\ndelay(1000).then((v) => console.log(v));\n"
+    language: javascript
+    fixedCode: "function delay(ms) {\n  return new Promise((resolve) => {\n    setTimeout(() => resolve('hello'), ms);\n  });\n}\ndelay(1000).then((v) => console.log(v));\n"
+    errorDescription: 执行器函数未调用 resolve,Promise 永远停留在 pending 状态,then 回调无法触发。
+    difficulty: 3
   - id: promise-ex-004
     type: open-ended
     cognitiveLevel: create
@@ -266,7 +270,7 @@ exercises:
       (6) promise2 引用通过闭包捕获,在 handle 中完成解析;
       (7) 未实现 allSettled/any/finally,可作扩展练习;
       (8) 未通过 Promise A+ 官方 872 测试,但核心条款符合规范。
-    difficulty: hard
+    difficulty: 5
 references:
   - type: standard
     authors:
