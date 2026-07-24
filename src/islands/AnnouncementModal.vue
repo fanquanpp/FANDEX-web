@@ -26,7 +26,7 @@ import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
  * 说明：每次公告内容发生实质性变更时递增该版本号
  * 版本号变化后，已读状态对应的 localStorage key 随之改变，弹窗将重新展示给所有用户
  */
-const announcementVersion = '1';
+const announcementVersion = '2';
 
 /** localStorage 键名：携带版本号，版本升级后自动失效旧 key */
 const STORAGE_KEY = `fandex-announcement-dismissed-v${announcementVersion}`;
@@ -216,27 +216,27 @@ onBeforeUnmount(() => {
         </button>
 
         <!-- 公告标题 -->
-        <h2 id="announcement-title" class="announcement-title">内容更新公告</h2>
+        <h2 id="announcement-title" class="announcement-title">重要通知</h2>
 
         <!-- 公告元信息：发布日期与版本标识 -->
         <div class="announcement-meta">
-          <span class="announcement-date">2026 年 7 月</span>
+          <span class="announcement-date">2026 年 7 月 24 日</span>
           <span class="announcement-tag">公告</span>
         </div>
 
         <!-- 公告正文 -->
         <div class="announcement-body">
-          <p>尊敬的用户：</p>
           <p>
-            感谢您一直以来对 FANDEX 项目的关注与支持。FANDEX-Web
-            仓库内容（含文档）现已暂停更新与维护，后续本仓库仅保留对美术风格、UI/UX
-            设计的持续探索与尝试性更新。
+            为推进 FANDEX
+            体系的长期演进，整体项目正进行整合与重构，后续将以全新仓库（fanquanpp/FANDEX）作为唯一维护主体重新发布，预计
+            2026 年 8 月下旬正式完成。
           </p>
           <p>
-            FANDEX
-            体系项目目前正在进行整体整合与重构，后续将以全新仓库形式重新发布，所有更新与维护工作将仅针对新仓库开展。
+            据此，本仓库内容及站内文档自即日起暂停更新，但仍会围绕美术风格、交互体验（UI/UX）等方向持续探索。新仓库正式发布后，本仓库将进入只读归档状态，现有源码与历史
+            Release 仍可自由获取与使用；如有 fork 或二次开发需求，请遵循 MIT
+            许可证条款自行处理，作者不再对使用过程中的任何问题提供支持。
           </p>
-          <p class="announcement-sign">—— FANDEX 项目组</p>
+          <p class="announcement-sign">—— FANDEX 维护者</p>
         </div>
 
         <!-- 底部操作区：主按钮关闭并确认已读 -->
