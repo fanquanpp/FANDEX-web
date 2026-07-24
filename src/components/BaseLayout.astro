@@ -20,6 +20,7 @@ import '@/styles/tailwind.css';
 import { SITE } from '@/lib/constants';
 import { MAIN_CSP } from '@/lib/csp';
 import WebVitalsTracker from '@/islands/WebVitalsTracker.vue';
+import AnnouncementModal from '@/islands/AnnouncementModal.vue';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -98,6 +99,9 @@ const base = import.meta.env.BASE_URL;
     <!-- Web Vitals 采集器：client:idle 推迟到浏览器空闲时段水合
          采集是观测性任务，不应抢占首屏交互资源；改为 idle 可降低 INP/TBT 开销 -->
     <WebVitalsTracker client:idle />
+    <!-- 全站公告弹窗：client:load 尽快水合，确保用户首次访问即看到公告
+         关闭后通过 localStorage 持久化已读状态，后续不再弹出 -->
+    <AnnouncementModal client:load />
   </body>
 </html>
 
